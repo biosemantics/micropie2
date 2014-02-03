@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Anabaena.cylindrica.PCC7122</taxon_name>
+  <strain>PCC 7122</strain>
+  <reference>The Effects of Exogenous Amino Acids on Growth and Nitrogenase Activity in the Cyanobacterium Anabaena cylindrica PCC 7122 (Rawson, D., 1985)</reference>
+  <DOI>NA</DOI>
+  <file>Rawson, D. Anabaena.cylindrica.PCC7122.pdf</file>
+  <description>obligate photoautotroph, In Anabaena cylindrica glutamine synthetase has been shown to be the main route of NH4+ assimilation.</description>
+</treatment>

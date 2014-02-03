@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_gammatolerans</taxon_name>
+  <strain>EJ3T (=DSM 15229T=JCM 11827T)</strain>
+  <reference>Thermococcus gammatolerans sp. nov., a hyperthermophilic archaeon from a deep-sea hydrothermal vent that resists ionizing radiation IJSEM 53:847-851</reference>
+  <file>Thermococcus.gammatolerans.pdf</file>
+  <description>Cells are cocci (diameter 0.6–1.4 µm) that are motile by the presence of polar flagella.  Cell division occurs by constriction.  Obligately anaerobic.  Growth occurs at 55–95 ˚C, and the optimum temperature is 88 ˚C.  Grows optimally in the presence of 20 g NaCl per liter and at pH around 6.0.  No growth at 0 g per liter NaCl.  No growth occurred at pH 3.0 and 8.5.  Obligately organotrophic.  Grows preferentially on proteolysis products such as yeast extract, tryptone and peptone.  Does not grow on Casamino acids, acetate, succinate, propionate, pyruvate, gelatin, glucose, maltose or starch.  Sulfur or cystine are necessary for growth and reduced to hydrogen sulfide.  Thiosulfate, sulfate and sulfite are not used as electron acceptors.  Resistant to chloramphenicol, ampicillin, penicillin, kanamycin, vancomycin and streptomycin, but sensitive to rifampicin.  The type strain, EJ3T (=DSM 15229T=JCM 11827T), was isolated from an active chimney recovered from a hydrothermal site in Guaymas Basin (27˚ 01’ N and 111˚ 24’ W) at a depth of 2616 m.  The G+C content of the DNA was 51.3% (Tm).  No growth on amino acids, sucrose, cellobiose, lactose, glycogen, or xylose.  No autotrophic growth was observed using H2/CO2.</description>
+</treatment>

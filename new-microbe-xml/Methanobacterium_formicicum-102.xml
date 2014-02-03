@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_formicicum</taxon_name>
+  <strain>MF = DSM 1535</strain>
+  <reference>Isolation and Characterization of Methanobacterium formicicum MF  IJSB 37:171</reference>
+  <file>Methanobacterium.formicicum.pdf</file>
+  <description>Isolated from a domestic sewage sludge digestor in Urbana, Ill.  Surface colonies were flat, and subsurface colonies were filamentous spheroids.  A typical colony was picked with a platinum-iridium needle and inoculated into slant medium by stabbing. A single colony type was observed; one colony was picked, reinoculated onto slant medium, and named strain MF.  Strain MF grew and produced CH4 from H2 and CO2.  When H2 was replaced by N2, no growth or methanogenesis occurred unless formate (50 mM) was added.  Cells were crooked, gram-positive rods, 0.5 µm wide and 2 to 15 µm long, occurring as single cells with some chains and filaments.  Cells grew well at 37 and 45°C but not at 55°C.</description>
+</treatment>

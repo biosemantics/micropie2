@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanothermobacter_thermautotrophicus</taxon_name>
+  <strain>∆HT (=DSM 1053T=ATCC 29096T)</strain>
+  <reference>Phylogenetic analysis of 18 thermophilic Methanobacterium isolates supports the proposals to create a new genus, Methanothermobacter gen. nov., and to reclassify several isolates in three species, Methanothermobacter thermautotrophicus comb. nov., Methanothermobacter wolfeii comb. nov., and Methanothermobacter marburgensis sp. nov. IJSEM 50:43-53</reference>
+  <file>Methanothermobacter.thermautotrophicus.wolfeii.pdf</file>
+  <description>Cells are slender, cylindrical, irregularly crooked rods that are 0.35-0.5 µm wide and 3-7 µm long and frequently occur in filaments that are 10-120 µm long.  Gram-positive.  Non-motile.  Endospores not formed.  Deep colonies in roll tubes are tannish white, roughly spherical, diffuse and filamentous.  Growth is rapid in mineral medium with CO2 as the sole carbon source, NH3 as the sole nitrogen source, sulfide as the sole sulfur source and H2/CO2 as the sole energy source.  Not stimulated by organic additions, although acetate may be assimilated.  The DNA G+C content is 48-50 mol% as determined by thermal denaturation.  Habitat: thermophilic, anaerobic digesters, hot springs.  Temperature range is 40-75˚C, optimum 65-70˚C.  pH range is 6.0-8.8, optimum 7.2-7.6.  NaCl range is 0.1-35 g NaCl per liter, optimum 0.6 g NaCl per liter.  Habitat: mesophilic sewage sludge and hot springs.  The type strain is strain ∆HT (=DSM 1053T=ATCC 29096T), which was isolated from an anaerobic sewage sludge digester; this strain does not grow on formate.</description>
+</treatment>

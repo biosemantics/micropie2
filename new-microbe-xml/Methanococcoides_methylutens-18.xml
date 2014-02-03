@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcoides_methylutens</taxon_name>
+  <strain>MM1</strain>
+  <reference>Diversityof methanogenic archaea inamangrove sediment and isolation of a new Methanococcoides strain FEMS Microbiol Lett 291:247-253</reference>
+  <file>Methanococcoides.methylutens.MM1.pdf</file>
+  <description>Strain MM1 was not able to utilize dimethylsulfide and was further maintained on methanol.  The cells of strain MM1 were single, non-motile and irregularly coccoid, with a diameter ranging from 0.8 to 2.0 µm, with an average of 1.3 0.2 µm (n = 20, determined from phase-contrast microphotographs).  Aggregates were never found.  The cells lysed on addition of freshwater or SDS (final concentration 2%, w/v), indicating that a proteinaceous cell wall was present.  Strain MM1 was only able to metabolize methanol and methylated amines (mono-, di- and trimethylamine).  These substrates induced in methane production and an increase in the OD of the cultures.  Acetate, formate, H2/CO2, dimethylsulfide and/or methanethiol neither resulted in growth nor in methane production.  Cells were able to grow and produce methane within a temperature range of 23–35˚C (lower temperatures not tested) and a pH range of 6.5–8.3 on methanol or trimethylamine.  The fastest growth occurred when the NaCl concentration was between 200 and 600 mM.  The optimum Mg2+ concentration was 25–100 mM.  The cells exhibited specific growth rates (m) under optimum conditions (30–35 ˚C; pH 6.8–7.5; NaCl 400 mM; and Mg2+ 50mM) of 0.21 0.03 and 0.2200.03 per hour (n = 4 for all values) on methanol and trimethylamine, respectively.</description>
+</treatment>

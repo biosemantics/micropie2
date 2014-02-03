@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Ferroplasma_acidarmanus</taxon_name>
+  <strain>Fer1T</strain>
+  <reference>Characterization of Ferroplasma Isolates and Ferroplasma acidarmanus sp. nov., Extreme Acidophiles from Acid Mine Drainage and Industrial Bioleaching Environments</reference>
+  <file>Ferroplasma.acidarmanus.2.pdf</file>
+  <description>Isolated from an AMD site in California.  Morphology as described for the genus.  G+C content of 36.8 mol%.  Growth occurs between 23 and 46°C (mesophilic) and pH 0 and 1.5 (acidophilic).  The optimal growth temperature was 42˚C and the optimal pH was 1.2.  Grows chemoorganotrophically on yeast extract, Casamino Acids, and sugars and chemomixotrophically on Fe(II) and carbon sources.  Facultative anaerobe, coupling oxidation of yeast extract to Fe(III) reduction.  “F.  acidarmanus” Fer1T has been deposited in the American Type Culture Collection in the patent pending collection.  The following substrates supported growth: sucrose, D-glucose, starch, L-maltose, L-arabinose, D-xylose, D-mannitol, lactose, Casamino Acids, L-alanine, L-arginine, L-asparagine, L-aspartic acid, L-cysteine, L-glutamine, L-glutamic acid, L-glycine, L-histidine, L-isoleucine, L-leucine, L-lysine, L-methionine, L-phenylalanine, L-proline, L-serine, L-threonine, L-tryptophan, L-tyrosine, and L-valine.  D-galactose, D-fructose, and sorbitol did not support growth.  Slightly inhibited by ampicillin, chloramphenicol, kanamycin and gentamicin.  Strongly inhibited by rifampin and tetracycline.  Unable to grow autotrophically.</description>
+</treatment>

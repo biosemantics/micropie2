@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Archaeoglobus_fulgidus</taxon_name>
+  <strain>DSM 4304</strain>
+  <reference>Bergey’s Manual Genus description on pg 349-350, pg 351</reference>
+  <file>Cells coccoid, regular to highly irregular, 0.4-1.2 µm in width, occurring singly and in pairs.  Gram negative.  Monopolar polytrichous flagella.  Blue-green fluorescence at 420 nm.  Strictly anaerobic.  Sulfate or sulfite and thiosulfate used as electron acceptors.  Chemolithoautotrophic growth in the presence of H2/CO2.  Chemoorganotrophic growth on formate, formamide, D-lactate, L-lactate, glucose, starch, Casamino acids, peptone, gelatin, casein, meat extract, yeast extract, and extracts of bacterial and archaeal cells.  S˚ not used as electron acceptor.  S˚ inhibits growth.  Nitrate and nitrite not used as electron acceptors.  H2S and methane formed during growth. Resistant to rifampicin and streptolydigin.  Optimum growth at 83˚C. Isolated from the geothermally heated sea floor at Vulcano, Italy.  The mol% G+C of the DNA is 46 (Tm).</file>
+</treatment>

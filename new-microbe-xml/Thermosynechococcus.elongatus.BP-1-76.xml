@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Thermosynechococcus.elongatus.BP-1</taxon_name>
+  <strain>BP-1</strain>
+  <reference>Complete Genome Structure of the Thermophilic Cyanobacterium Thermosynechococcus elongatus BP-1 (Nakamura, Y., et al., 2002)</reference>
+  <DOI>NA</DOI>
+  <file>Nakamura, Y. et al. Thermosynechococcus.elongatus.BP-1.pdf</file>
+  <description>thermophilic unicellular cyanobacterium, The most distinctive feature of the unicellular rod-shaped cyanobacterium Thermosynechococcus elongatus strain BP-1 is its thermophilic character, It inhabits hot springs and has an optimum growth temperature of approximately 55◦ C. T. elongatus is an obligate photoautotrophic organism, pigmented with chlorophyll a, carotenoids and phycocyanobilin, and has long been used as a model organism for the study of photosynthesis. Although transformation by electroporation has been attempted in thermophilic cyanobacteria, it has been successful only in T. elongatus .</description>
+</treatment>

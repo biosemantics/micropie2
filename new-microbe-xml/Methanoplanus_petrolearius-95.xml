@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoplanus_petrolearius</taxon_name>
+  <strain>SEBR 4847T (=OCM 486)</strain>
+  <reference>Methanoplanus petrolearius sp nov, a novel methanogenic bacterium from an oil-producing well FEMS Microbiol Lett 147:51-56</reference>
+  <file>Methanoplanus.petrolearius.pdf</file>
+  <description>Round colonies (diameter: 1-2 mm) are present after 3 weeks of incubation at 37˚C.  Cells are irregular disc-shaped with a diameter of 1-3 µm.  The cells occur singly or in pairs and are non-motile under microscope.  Methanogenic and obligattely anaerobic member of the domain Archaea.  The optimum temperature for growth is 37˚C with no growth occurring at 25˚C and 45˚C.  The optimum pH is 7.0; growth occurs from pH 5.3 to 8.4.  The optimum NaCl concentration for growth is between 1 and 3% NaCl with growth occurring at NaCl concentrations ranging from 0 to 5%.  Doubling time is about 10 h under optimal conditions.  Produces methane from H2-CO2, formate, and CO2+2-propanol, CO2+1-butanol, and isobutanol.  The G+C content of the DNA is 50% (ad determined by HPLC).  Isolated from oil-producing well.  The type strain is SEBR 4847T (=OCM 486).</description>
+</treatment>

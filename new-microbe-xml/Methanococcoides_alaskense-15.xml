@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcoides_alaskense</taxon_name>
+  <strain>AK-5T (=OCM 775T=DSM 17273T)</strain>
+  <reference>Isolation and characterization of methylotrophic methanogens from anoxic marine sediments in Skan Bay, Alaska: description of Methanococcoides alaskense sp. nov., and emended description of Methanosarcina baltica IJSEM 55:2531-2538</reference>
+  <file>Methanococcoides.alaskense.Methanosarcina.baltica.pdf</file>
+  <description>Irregular cocci 1.5–2.0 µm in diameter, occurring singly.  Non-motile.  Pili are present.  TMA serves as catabolic substrate with methane as the product.  Methanol, acetate, dimethylsulfide, formate and hydrogen are not used as catabolic substrate.  TMA serves as sole organic substrate.  Fastest growth occurs at 23.6 ˚C, with salinity between 0.3 and 0.4 M and a pH of 6.3–7.5.  The type strain, AK-5T (=OCM 775T=DSM 17273T), was isolated from permanently cold, anoxic marine sediments at Skan Bay, Alaska.  Strain AK-9 (=OCM 793) is a reference strain.</description>
+</treatment>

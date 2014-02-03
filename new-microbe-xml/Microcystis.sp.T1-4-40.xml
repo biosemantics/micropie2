@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Microcystis.sp.T1-4</taxon_name>
+  <strain>T1-4</strain>
+  <reference>Phylogenetic relationships between toxic and non-toxic strains of the genus Microcystis based on 16S to 23S internal transcribed spacer sequence (Otsuka, S., et al., 1999)</reference>
+  <DOI>NA</DOI>
+  <file>Otsuka, S. et al Microcystis.sp.T1-4.pdf</file>
+  <description>contains phycoerythrin</description>
+</treatment>

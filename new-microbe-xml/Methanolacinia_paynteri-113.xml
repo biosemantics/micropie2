@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanolacinia_paynteri</taxon_name>
+  <strain>DSM 2545</strain>
+  <reference>Isolation and Characterization of Methanomicrobium paynteri sp. nov., a Mesophilic Methanogen Isolated from Marine Sediments AEM 46:484-490</reference>
+  <file>Methanomicrobium.paynteri.pdf</file>
+  <description>The cells are gram-negative, irregular rods that occur singly without filaments, 0.6 by 1.5 to 2.5 µ.m in size; they undergo a morphological change to a coccoid shape during substrate deprivation and remain viable at room temperature for months.  Colonies in agar are off-white and circular with entire edges.  Only hydrogen-carbon dioxide served as a growth substrate.  Neither growth nor methane production was detected after 5 weeks when this substrate was replaced by ethanol, methanol, formate, acetate, propionate, pyruvate, monomethylamine, dimethylamine, or trimethylamine, glutamate, or glucose.  The organism can tolerate a variety of organic secondary buffers.  The organism does not require yeast extract or Trypticase, but does require acetate. The optimum growth temperature is 40°C.  The optimum sodium concentration is 0.15 M.  The optimum pH for growth is 7.0.  The minimum generation time is 4.8 h.  The DNA base composition is 44.9 mol% guanine plus cytosine.  The type strain is G-2000 (=ATCC 33997 =DSM 2545).</description>
+</treatment>

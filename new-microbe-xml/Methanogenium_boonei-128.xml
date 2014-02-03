@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanogenium_boonei</taxon_name>
+  <strain>AK-7</strain>
+  <reference>Diversity of Archaea in Marine Sediments from Skan Bay, Alaska, Including Cultivated Methanogens, and Description of Methanogenium boonei sp. nov. AEM 73:407-414</reference>
+  <file>Methenogenium.boonei.pdf</file>
+  <description>The organism takes the form of irregular cocci 1.0 to 2.5 µm in diameter, occurring singly, and is nonmotile.  CO2 plus H2 or formate serves as the sole catabolic substrate, with methane as the end product.  No growth occurred withn either acetate or TMA was added as the catabolic substrate.  1-propanol, 2-propanol, ethanol, methanol, 1-butanol, and 2-butanol were not catabolized.  Actate and complex organic matter (yeast extract) are required for growth.  The fastest growth occurred at 19.4°C, with a salinity of 0.3 to 0.5 M Na+ and a pH of 6.4 to 7.8.  It was isolated from permanently cold, anoxic marine sediments at Skan Bay, Alaska.  The type strain is AK-7 (OCM 787/DSMZ 17338).  Did not catabolize acetate, trimethylamine, 1-propalol, 2-propanol, ethanol, methanol, 1-butanol, and 2-butanol.</description>
+</treatment>

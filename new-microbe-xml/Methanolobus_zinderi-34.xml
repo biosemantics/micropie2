@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanolobus_zinderi</taxon_name>
+  <strain>SD1T (=ATCC BAA-1601T=DSM 21339T)</strain>
+  <reference>Methanolobus zinderi sp. nov., a methylotrophic methanogen isolated from a deep subsurface coal seam IJSEM 59:1064-1069</reference>
+  <file>Methanolobus.zinderi.pdf</file>
+  <description>Cells are irregular coccoids, 1.0–2.0 µm in diameter.  Cells are lysed by detergents.  Gram-negative.  Non-motile.  Cells grow by forming methane from methanol, monomethylamine, dimethylamine, or trimethylamine.  Cells are unable to grow with H2/CO2, acetate, formate, or dimethylsulfide.  The maximum rate of growth is between 40–50 ˚C, 0.2–0.6 M NaCl, 100–200 mM MgCl2 and pH 7.0–8.0.  No organic compounds are required for growth.  The type strain, SD1T (=ATCC BAA-1601T=DSM 21339T), was isolated from a coal seam near Monroe, LA, USA.  The G+C content of the genomic DNA of the type strain is 42±1 mol%.</description>
+</treatment>

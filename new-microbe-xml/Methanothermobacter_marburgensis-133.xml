@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanothermobacter_marburgensis</taxon_name>
+  <strain>MarburgT (= DSM 2133T)</strain>
+  <reference>Phylogenetic analysis of 18 thermophilic Methanobacterium isolates supports the proposals to create a new genus, Methanothermobacter gen. nov., and to reclassify several isolates in three species, Methanothermobacter thermautotrophicus comb. nov., Methanothermobacter wolfeii comb. nov., and Methanothermobacter marburgensis sp. nov. IJSEM 50:43-53</reference>
+  <file>Methanothermobacter.thermautotrophicus.wolfeii.pdf</file>
+  <description>Cells are slender, cylindrical rods that are 0.30-0.4 µm wide and 3.0-3.5 µmlong and frequently occur in pairs or chains up to 20 µm long.  Gram-positive.  Nonmotile.  Endospores not formed.  Colonies on agar plates are 1.4 mm in diameter, white or slightly yellowish, and convex.  Growth is rapid in mineral medium with CO2 as the sole carbon source, NH3 as the sole nitrogen source, sulfide as the sole sulfur source and H2/CO2 as the sole energy source.  Growth on formate is not possible.  Not stimulated by organic additions, although acetate may be assimilated.  The DNA G+C content of the type strain is 48 mol% as determined by thermal denaturation.  Strains may harbour one plasmid, and the type strain is infected by lytic phages.  Temperature range is 45-70˚C, optimum 65˚C.  pH range is 5.0-8.0, optimum 6.8-7.4.  NaCl range is 0.1-35 g NaCl per liter, optimum 0.5 g NaCl per liter.  Habitat: mesophilic sewage sludge and hot springs.  The type strain is strain MarburgT (= DSM 2133T), which was isolated from mesophilic sewage sludge.</description>
+</treatment>

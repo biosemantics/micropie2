@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Microcoleus.chthonoplastes.PCC7420</taxon_name>
+  <strain>PCC 7420</strain>
+  <reference>hetR and patS, two genes necessary for heterocyst pattern formation, are widespread in filamentous nonheterocyst-forming cyanobacteria (Zhang, J., et al., 2009)</reference>
+  <DOI>10.1099/mic.0.027540-0</DOI>
+  <file>Zhang, J. et al. Microcoleus.chthonoplastes.PCC7420.pdf</file>
+  <description>filamentous, nondiazotrophic strains</description>
+</treatment>

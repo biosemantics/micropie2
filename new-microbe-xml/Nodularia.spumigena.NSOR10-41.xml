@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Nodularia.spumigena.NSOR10</taxon_name>
+  <strain>NSOR10</strain>
+  <reference>Characterization of PPT Ns, a Cyanobacterial Phosphopantetheinyl Transferase from Nodularia spumigena NSOR10 (Copp, J., et al., 2007)</reference>
+  <DOI>10.1128/JB.01850-06</DOI>
+  <file>Copp, J. et al. Nodularia.spumigena.NSOR10.pdf</file>
+  <description>N. spumigena NSOR10 is also able to form heterocysts, Algal blooms of N. spumigena occur mainly in the estuaries and coastal waters of southern Australia but have also been reported in the Baltic Sea, New Zealand, and North America. Many blooms are highly toxic due to the nonribosomal production of the protein phosphatase-inhibiting hepatotoxin nodularin.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Sulfolobus_shibatae</taxon_name>
+  <strain>B12 = DSM 5389</strain>
+  <reference>Isolate B12, which harbours a virus-like element, represents a new species of the archaebacterial genus Sulfolobus, Sulfolobus shibatae, sp. nov. Arch Microbiol 154:594-599</reference>
+  <file>Sulfolobus.shibatae.pdf</file>
+  <description>Cells coccoid but may have several flattened-to deeply indented faces; occur singly.  Overall diameter 0.7 to 1.5 µm.  Cells devoid of peptidoglycan, surrounded by regular protein layer; periodic hexagonal structure visible in electron microscope.  Colonies are pale tan, translucent, smooth, and convex with entire margins.  Aerobic.  Weakly motile, depending on culture conditions.  Growth inhibited by phosphate concentrations above about 10 mM.  In 0.2% yeast extract, pH 3, optimal growth temperature 81˚C, maximal 86˚C.   D-arabinose, D-galactose, D-glucose, D-mannose, lactose, lactulose, maltose, sucrose, raffinose, starch, and tryptone also utilized.  Facultatively chemolithoautotrophic growth by sulphur oxidation.  DNA composition 35 mol% G + C.  Isolated from acidic geothermal spring.  The type strain is B12 (DSM 5389).</description>
+</treatment>

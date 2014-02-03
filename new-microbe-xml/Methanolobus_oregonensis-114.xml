@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanolobus_oregonensis</taxon_name>
+  <strain>DSM 5435</strain>
+  <reference>Bergey’s Manal vol 1. pg 286 and Table A2.22.  Generic description on page 283.</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Irregular cocci, 1.0-1.5 µm in diameter, occurring individually or in aggregates.  Gram-negative.  Nonmotile.  Sensitive to lysis by detergents.  Cells grow with catabolic substrate plus either vitamins or peptones as sole organic additions to the medium, but yeast extract stimulates growth.  The mol% G+C is 40.9.  Able to grow on methyl sulfides.  Stimulated by biotin and thiamine.  Able to grow between pH pH 8 and 9.  Able to grow between 0.3-1.0 M NaCl.  Enriched and isolated from a slurry of subsurface solids from a saline, alkaline aquifer.  Able to grow between 30-40˚C.  Catabolic substrates are methanol, methylamines, methanol, and methyl sulfides.  No growth on H2/CO2, formate, acetate, or alcohols other than methanol.  Tungstate is required.</description>
+</treatment>

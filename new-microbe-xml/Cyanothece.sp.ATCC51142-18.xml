@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Cyanothece.sp.ATCC51142</taxon_name>
+  <strain>ATCC 51142</strain>
+  <reference>Oscilllating Behavior of Carbohydrate Granule Formation and Dinitrogen Fixation in the Cyanobacterium Cyanothece sp. Strain ATCC 51142 (Schneegurt, M.A., et al., 1994)</reference>
+  <DOI>NA</DOI>
+  <file>Schneegurt, M. et al Cyanobium.sp.PCC7001.pdf</file>
+  <description>aerobic, unicellular, diazotrophic cyanobacterium that fixes N2 during discrete periods of its cell cycle, Under N2-fixing conditions, large inclusion granules form between the thylakoid membranes, granules are composed of carbohydrate, with some protein, fixes N2 during discrete diurnal periods, cells exhibit diurnal oscillations of important metabolic functions,</description>
+</treatment>

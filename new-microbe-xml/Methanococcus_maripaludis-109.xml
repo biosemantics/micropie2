@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcus_maripaludis</taxon_name>
+  <strain>various</strain>
+  <reference>Bergey’s Manual vol 1. pg 240, Tables A2.8 and A2.9, and generic description from pg 236-237.</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Irregular cocci, 1.0-2.0 µm in diameter during balanced growth.  Cells lose integrity during Gram staining and lyse completely within 10 s when suspended in either distilled water or 0.01% SDS.  Motile, by means of polar tufts of flagella.  Obligately anaerobic.  Mesophilic.  Obligately methanogenic.  H2 and formate servce as electron donors.  Acetate, methanol, and methylamines are not substrates for methanogenesis.  Alcohols, including isopropanol, are not substrates for methanogenesis.  Nitrogen sources include ammonium, N2 gas, and alanine.   Cell diameter ranges between 0.9 and 1.3 µm.  Can grow with N2 serving as the sole nitrogen source.  The mol% G+C ranges between 33-35%.  H2/CO2 and formate serve as substrates for methanogenesis.  Acetate is not required for growth, although acetate stimulates growth.  Sulfide and elemental sulfur may serve as sulfur sources.  Temperature range for growth is &lt;20-45˚C.  The pH range for growth is 6.5-8.0.  The NaCl range for growth is 0.3-5.0 % NaCl (w/v), with the optimal NaCl being 0.6-2.0 %.</description>
+</treatment>

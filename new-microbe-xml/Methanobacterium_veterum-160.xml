@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_veterum</taxon_name>
+  <strain>MK4T (=DSM 19849T =VKM B-2440T)</strain>
+  <reference>Methanobacterium veterum sp. nov., from ancient Siberian permafrost IJSEM 60:455-459</reference>
+  <file>Methanobacterium.veterum.pdf</file>
+  <description>Gram-negative-staining, non-motile, non-spore-forming, anaerobic, chemoautotrophic rods.  Cells are slightly crooked, 2.0–8.0 µm long and 0.40–0.45 µm wide, occur singly or in chains (up to 30 µm long) and show epifluorescence at 420 nm.  Cells divide through septum formation.  Uses H2 plus CO2, methanol plus H2 and methylamine plus H2 as sources for growth and methane production.  It does not grow on formate, acetate, ethanol, isopropanol, isobutanol, methylamine or trimethylamine.  Growth is stimulated by acetate.  Optimum growth conditions are 28 ˚C, pH 7.0–7.2 and 0.05 M NaCl.  The G+C content of the DNA of the type strain is 33.8 mol%.  The type strain, MK4T (=DSM 19849T =VKM B-2440T), was isolated from ancient (3 million years old) permafrost sediments from the Kolyma lowland, Russia (70˚ 06’ N 154˚ 04’ E).</description>
+</treatment>

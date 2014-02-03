@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Ignicoccus_islandicus</taxon_name>
+  <strain>Kol8T (=DSM 13165T=ATCC 700957T)</strain>
+  <reference>Ignicoccus gen. nov., a novel genus of hyperthermophilic, chemolithoautotrophic Archaea, represented by two new species, Ignicoccus islandicus sp. nov. and Ignicoccus pacificus sp. nov. IJSEM 50:2093-2100</reference>
+  <file>Ignicoccus.islandicus.pacificus.pdf</file>
+  <description>Slightly irregular cocci, about 1.2-3 µm in diameter, monopolar polytrichous flagella.  Gram-negative.  Occurring singly and in pairs.  No evidence for a regular arrayed surface protein.  Growth between 70 and 98 °C, pH 3.8-6.5 and 0.3-5.5% NaCl; optima are 90 °C, pH 5.8 and 2% NaCl.  Strictly anaerobic.  Chemolithoautotrophic growth in the presence of H2 and CO2 with sulfur as electron acceptor.  No chemo-organotrophic growth on meat extract, yeast extract, peptone, Casamino acids, gelatin, starch, formate, acetate and glucose.  Sulfate, sulfite, thiosulfate, nitrate and oxygen are not used as electron acceptors.  H2S (up to 25 µM) is formed during growth.  Growth stimulated by addition of 0.1% meat extract, tryptone or gelatin.  Type strain is isolate Kol8T (=DSM 13165T=ATCC 700957T), isolated from the Kolbeinsey Ridge, north of Iceland.  The core lipids are acyclic 2,3-di-O-phytanyl-sn-glycerol and glyceroldialkyl glycerol tetraether in a relative ratio of about 1:1.  Cells contain phytanyl di- and tetraether lipids. Ampicillin-, rifampicin- and vancomycin-resistant.</description>
+</treatment>

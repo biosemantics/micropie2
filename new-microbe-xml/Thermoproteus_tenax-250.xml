@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermoproteus_tenax</taxon_name>
+  <strain>Kra 1 = ATCC35583 = DSM 2078</strain>
+  <reference>Bergey’s Manual pg 170-173</reference>
+  <file>Non-motile.  Pili attached laterally and/or terminally.  Grows chemoautotrophically with H2 and Sulfur as energy sources and CO2 as carbon source, or by sulfur respiration of different compounds serving as carbon sources.  Carbon sources include glucose, starch, glycogen, fumarate, and amino acids.  Unable to use lactate, acetate, and pyruvate.  Malate replaces sulfur as electron acceptor.  Growth stimulated by yeast extract.  Grows best at pH 5 and 90˚C but grows even up to 96˚C.  Isolated from Krafla, Iceland.   The mol% G+C of the DNA is 55.5.   Rigid rods of 0.4 µm in diameter and from &lt;1 to 100 µm in length.  No cell septa.  Obligately anaerobic.</file>
+</treatment>

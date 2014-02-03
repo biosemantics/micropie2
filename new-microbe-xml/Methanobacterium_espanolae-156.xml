@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_espanolae</taxon_name>
+  <strain>GP9T = NRC 5912</strain>
+  <reference>Isolation and Characterization of Methanobacterium espanolae sp. nov., a Mesophilic, Moderately Acidiphilic Methanogen? IJSB 40:12-18</reference>
+  <file>Methanobacterium.espanolae.pdf</file>
+  <description>Stains gram positive.  Nonspore forming, nonmotile rods.  Cells are often present in chains.  Optimum pH, 5.6 to 6.2; minimum pH, 4.7.  Grows at pH values of 7.7 or higher (higher pH values not tested).  Optimum temperature, ca.  35°C.  No growth at 15 or 50°C.  H2-CO2 is the only methanogenic substrate used for growth. Acetate, formate, propionate, butyrate, pyruvate, methanol, or trimethylamine could not serve as a sole source of carbon and energy for growth. Kanamycin and bacitracin were severe inhibitors of growth and methanogenesis, whereas 100 µM bromoethanesulfonic acid caused 30 % inhibition.  The G+C content of the DNA is 34.0 mol% (as determined by the Tm method).  The type strain of Methanobacterium espanolae is strain GP9.  This strain has been deposited with the National Research Council of Canada culture collection as strain NRC 5912.  The source of strain GP9T was methanogenic enrichment from the anoxic zone of primary sludge from a bleach kraft mill.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanogenium_marisnigri</taxon_name>
+  <strain>JR1 = DSM 1498</strain>
+  <reference>Methanogenium, a New Genus of Marine Methanogenic Bacteria, and Characterization of Methanogenium cariaci sp. nov. and Methanogenium marisnigri sp. nov. Arch Microbiol 121:147-153</reference>
+  <file>Methanogenium.cariaci.pdf</file>
+  <description>Irregular cocci; cell width 1.3 µm.  Cells are peritrichously flagellated.  Gram-negative; sensitive to 1% SDS.  Cell wall has a periodic surface pattern.  Colony characteristics: Circular, convex, yellow with entire edges and a shiny surface.  DNA base composition: 61 mol % G + C.  Temperature optimum 20- 25˚C.  pH optimum 6.2 to 6.6.  Isolated from sediment from the Black Sea.  Fastidious anaerobe; formate or H2-CO2 serve as substrates for growth and methane production; acetate and methanol do not. Optimal growth at 0.19M Na+; Trypticase required for growth.  Type strain: JR1.  DSM number 1498 Gottingen, FRG.  The description of the type strain is the same as for the species.</description>
+</treatment>

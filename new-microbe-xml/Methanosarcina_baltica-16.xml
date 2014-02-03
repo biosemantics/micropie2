@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanosarcina_baltica</taxon_name>
+  <strain>GS1-AT (=DSM 14042T=JCM 11281T)</strain>
+  <reference>Isolation and characterization of methylotrophic methanogens from anoxic marine sediments in Skan Bay, Alaska: description of Methanococcoides alaskense sp. nov., and emended description of Methanosarcina baltica IJSEM 55:2531-2538</reference>
+  <file>Methanococcoides.alaskense.Methanosarcina.baltica.pdf</file>
+  <description>Cells are irregular cocci with diameters of 1.5–3 µm and occur singly, in pairs or in tetrads.  Cells may be non-motile and lack flagella or cells may exhibit monopolar, monotrichous flagellation.  Methanol and methylamines serve as catabolic substrate, with methane as the end product.  Did not use acetate as catabolic substrate.  Dimethylsulfide, formate and H2/CO2 are not used as energy sources.  Growth occurs between 22.3 and 28 ˚C, with an optimum at 25 ˚C for the type strain.  The doubling time is 84 h at 25 ˚C, 120 h at 9 ˚C and 167 h at 4 ˚C.  After transfer of cultures, long lag phases lasting 15–20 days at 25 ˚C and 25 days at 4–9 ˚C are observed.  Growth occurs at 0.1–0.7 M Na+, with fastest growth occurring at 0.3–0.4 M Na+ and at pH values between 6.5 and 7.5.  The type strain, GS1-AT (=DSM 14042T=JCM 11281T), was isolated from the anoxic surface layer of the sediment at a depth of 241 m in the Gotland Deep of the Baltic Sea.</description>
+</treatment>

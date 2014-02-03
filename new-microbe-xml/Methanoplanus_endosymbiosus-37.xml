@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoplanus_endosymbiosus</taxon_name>
+  <strain>DSM 3599</strain>
+  <reference>Isolation and characterization of Methanoplanus endosymbiosus sp. nov., an endosymbiont of the marine sapropelic ciliate Metopus contortus Quennerstedt Arch Microbiol 144:367-374</reference>
+  <file>Methanoplanus.endosymbiosus.pdf</file>
+  <description>Cells are Gram-negative discs with an average diameter of 1.6- 3.4 µm, occurring singly.  The cell envelope shows a regular hexagonal surface pattern and consists of proteins of which one is dominating and has an apparent molecular weight of 110,000 dalton.  Colonies are whitish yellow, convex, circular with entire margin and shiny surface.  Formate or hydrogen can serve as growth substrate, tungsten is required.  Yeast extract, tryptone soya broth or rumen fluid are growth stimulating.  Growth occurs between 16˚C and 36˚C with optimum at 32˚C.  Optimal pH is 7.0, optimal salt (NaCl) concentration is 0.25 M.  No growth occurs on acetate, methanol or trimethylamine.  Cells are disintegrated by 0.001% SDS or 0.01% Triton X-100 in 2% NaCl.  DNA base composition is 38.7 mol % G + C.  Cells are present as endosymbionts in the marine ciliate Metopus contortus Quennerstedt. The type strain is DSM 3599.</description>
+</treatment>

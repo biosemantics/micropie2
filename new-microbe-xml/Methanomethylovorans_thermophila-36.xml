@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanomethylovorans_thermophila</taxon_name>
+  <strain>L2FAWT (=DSM 17232T=ATCC BAA-1173T)</strain>
+  <reference>Methanomethylovorans thermophila sp. nov., a thermophilic, methylotrophic methanogen from an anaerobic reactor fed with methanol IJSEM 55:2465-2470</reference>
+  <file>Methanomethylovorans.thermophila.pdf</file>
+  <description>Cells are irregular, non-motile and coccoid with a diameter of 0.7–1.5 µm.  Cells occur singly and sometimes in clusters of two or four cells.  Cells lyse in 0.1% (w/v) SDS. Cells stain Gram-negative.  Temperature range for growth is from 42 to 58 ˚C, with the optimum at 50 ˚C.  The type strain is slightly acidophilic (pH range 5–7.5, with an optimum at pH 6.5) and has a low salt tolerance (lower than 0.3 M NaCl).  Methanol, monomethylamine, dimethylamine, and trimethylamine are the only catabolic and methanogenic substrates.  H2/CO2, formate, acetate, propanol, dimethylsulfide, and methanethiol were not used as substrates.  The type strain, strain L2FAWT (=DSM 17232T=ATCC BAA-1173T), was isolated from a UASB bioreactor treating paper-mill wastewater.</description>
+</treatment>

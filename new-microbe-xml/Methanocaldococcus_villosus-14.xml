@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocaldococcus_villosus</taxon_name>
+  <strain>KIN24-T80T (=DSM 22612T =JCM 16315T)</strain>
+  <reference>Methanocaldococcus villosus sp. nov., a heavily flagellated archaeon that adheres to surfaces and forms cell–cell contacts IJSEM 61:1239-1245</reference>
+  <file>Methanocaldococcus.villosus.pdf</file>
+  <description>Cells are regular to irregular cocci, 1–2 µm in diameter, occurring singly or in pairs.  They possess an S-layer with (pseudo-) sixfold symmetry and have an irregular, striated pattern on the cell surface.  Highly motile by means of over 50 flagella which can also serve as adherence structures and for formation of cell–cell contacts.  Chemolithoautotrophic.  Uses solely CO2 and H2 as carbon and energy sources for production of methane.  No growth occurred on acetate, formate, methanol, pyruvate, and yeast extract.  Anaerobic.  Growth occurs at 55–90˚C (optimum 80˚C), 0.5–5.5% (w/v) NaCl [optimum 2.5% (w/v)] and pH 5.5–7.0 (optimum pH 6.5). Optimal doubling time is 45 min.  Growth is stimulated by selenate, tungstate and yeast extract. Cells stain Gram-negative.  Colonies are round and pale yellow, about 1–2 mm in diameter, when grown on Phytagel-solidified plates.  Cells lyse rapidly in water, hypotonic solution and 0.01% (w/v) SDS.  Distinguished from other members of the genus Methanocaldococcus by 16S rRNA gene sequence analysis and comparison of whole-cell protein SDS-PAGE patterns.  The type strain is KIN24-T80T (=DSM 22612T =JCM 16315T), isolated from a shallow submarine hydrothermal system at Kolbeinsey Ridge, north of Iceland.</description>
+</treatment>

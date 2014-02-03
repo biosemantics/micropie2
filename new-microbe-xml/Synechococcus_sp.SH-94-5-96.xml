@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus_sp.SH-94-5</taxon_name>
+  <strain>SH-94-5</strain>
+  <reference>Ecological Physiology of Synechococcus sp. Strain SH-94-5, a Naturally Occurring Cyanobacterium Deficient in Nitrate Assimilation (Miller, S., CASTENHOLZ, R., 2001)</reference>
+  <DOI>10.1128/AEM.67.7.3002–3009.2001</DOI>
+  <file>Miller, S. et al. Synechococcus sp.SH-94-5.pdf</file>
+  <description>nitrate assimilation-deficient cyanobacterium which was isolated from an ammonium-replete hot spring in central Oregon, While this clone could grow on ammonium and some forms of organic nitrogen as sole nitrogen sources, it could not grow on either nitrate or nitrite, even under conditions favoring passive diffusion. It was determined that this clone does not express functional nitrate reductase or nitrite reductase and that the lack of activity of either enzyme is not due to inactivation of the cyanobacterial nitrogen control protein NtcA. A number of lines of evidence indicate that Synechococcus sp. strain SH-94-5 was derived from a population of nitrate assimilation-deficient cells comprising a numerically significant component of the South Harney Hot Spring microbiota at the time of collection., SH-94-5 can grow on a number of N sources, with ammonium and glutamine being the best observed substrates for growth, The doubling time of ammonium-grown SH-94-5 increased with increasing ammonium concentration over the tested range of 0.5 to 5 mM, Like many cyanobacteria, SH-94-5 can grow with urea as the sole N source, but only at rates much lower than those reported for other strains,</description>
+</treatment>

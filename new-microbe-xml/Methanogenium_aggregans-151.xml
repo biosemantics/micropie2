@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanogenium_aggregans</taxon_name>
+  <strain>MSt (= DSM 3027)</strain>
+  <reference>Isolation and Characterization of Methanogenium aggregans sp. nov. IJSB 35:127-130</reference>
+  <file>Methanogenium.aggregans.pdf</file>
+  <description>Cells stain gram negative; irregular cocci occur singly or in aggregates and have an average diameter of 1 µm.  Not motile; sensitive to 0.03% sodium dodecyl sulfate.  H2-CO2 and formate are substrates for growth and methane production.  Acetate, methanol, monomethylamine, dimethylamine, and trimethylamine are not metabolized.  Acetate plus either yeast extract or Trypticase peptone is required for growth.  NaCl requirement, &lt;0.2%.  The optimal growth temperature is 35°C.  The pH for optimal growth is between 6.5 and 7.0.  The guanine-plus-cytosine content is 52 mol%.  The type strain is strain MSt (= DSM 3027).</description>
+</treatment>

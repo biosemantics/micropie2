@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocaldococcus_sp._FS406-22</taxon_name>
+  <strain>FS406-22</strain>
+  <reference>Nitrogen fixation at 92˚C by a hydrothermal vent archaeon Science 314:1783-1784</reference>
+  <file>Methanocaldococcus.FS406-22.pdf</file>
+  <description>Isolated from deep-sea hydrothermal vent fluid.  Reduces N2 to NH3 up to 92˚C.  Capable of growth from 58˚C to 92˚C in a medium containing marine salts and H2 plus CO2.  Optimal growth temperature of 90˚C.</description>
+</treatment>

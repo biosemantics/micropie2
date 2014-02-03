@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcoides_euhalobius</taxon_name>
+  <strain>283</strain>
+  <reference>Taxonomic description of Methanococcoides euhalobius and its transfer to the Methanohalophilus genus Ant van Leeuw 71:313-318</reference>
+  <file>Methanohalophilus.euhalobius.pdf</file>
+  <description>Irregular non-motile cocci, 1.0 to 2.5 µm diameter occurring single or in aggregates.  Cells are sensitive to lysis by 0.01% of sodium dodecyl sulfate or TritonX–100 and exhibit a gram-negative reaction.  Circular pale yellow colonies with entire margins are 1 mm in diameter after 14 days of growth.  Methylamines and methanol are used for growth and methanogenesis. H2-CO2, formate and acetate are not used.  The temperature range for growth is from 15 to 50˚C, the optimum temperature is 28–37˚C.  The pH optimum is between 6.8 and 7.3.  Growth occurs at the pH range from 5.8 to 8.0.  Obligate moderate halophile, optimal growth in the presence of 1.0 M NaCl, the range of salinity tolerated is from0.16 to 2.3 M.  Biotin, Ca2+ and Mg2+ are required for growth.  Yeast extract stimulates growth, but it is not essential for growth.  The G +C content of the DNA is 43.0 mol%.  Habitat: mineralized stratal waters of oil deposits (Tataria, Russia).  The type strain is strain 283 which was deposited in the Institute of Microbiology (Moscow, Russia).</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermoproteus_uzoniensis</taxon_name>
+  <strain>768-20</strain>
+  <reference>Complete Genome Sequence of the Thermoacidophilic Crenarchaeon  Thermoproteus uzoniensis 768-20 J Bact 193:3256-3257</reference>
+  <file>Thermoproteus.uzoniensis.2.pdf</file>
+  <description>Thermophilic anaerobic crenarchaeon isolated from a solfataric field in Moutnovsky volcano, Kamchatka, Russia.  Obligate anaerobic acidophile growing optimally at pH 5.5 and 85˚C on proteinaceous substrates and some sugars, reducing elemental sulfur to H2S.</description>
+</treatment>

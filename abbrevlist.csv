@@ -1,0 +1,35 @@
+^.$[]{}|*+?, escape symbol
+gen\. nov\., gen_dot_space_nov_dot
+spec\. nov\., spec_dot_space_nov_dot
+sp\. nov\., sp_dot_space_nov_dot
+comb\. nov\., comb_dot_space_nov_dot
+var\., var_dot
+˚C, degree_celsius_1
+"C, degree_celsius_2
+◦ C, degree_celsius_3
+°C, degree_celsius_4
+ca\., ca_dot
+Chl a, Chl_a
+Chl b, Chl_b
+Chl c, Chl_c
+Chl d, Chl_d
+chl a, chl_a
+chl b, chl_b
+chl c, chl_c
+Chl d, chl_d
+chlorophyll (Chl) a, chlorophyll_(Chl)_a
+chlorophyll (Chl) b, chlorophyll_(Chl)_b
+chlorophyll (Chl) c, chlorophyll_(Chl)_c
+chlorophyll (Chl) d, chlorophyll_(Chl)_d
+Chlorophyll a,Chlorophyll_a
+Chlorophyll b,Chlorophyll_b
+Chlorophyll c,Chlorophyll_c
+Chlorophyll d,Chlorophyll_d
+chlorophyll a,chlorophyll_a
+chlorophyll b,chlorophyll_b
+chlorophyll c,chlorophyll_c
+chlorophyll d,chlorophyll_d
+
+
+
+

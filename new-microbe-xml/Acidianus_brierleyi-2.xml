@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Acidianus_brierleyi</taxon_name>
+  <strain>DSM 1651</strain>
+  <reference>Acidianus infernus gen. nov., sp. nov., and Acidianus brierleyi comb. nov.: Facultatively Aerobic, Extremely Acidophilic Thermophilic Sulfur-Metabolizing Archaebacteria IJSB 36:559-564</reference>
+  <file>Acidianus.brierleyi.infernus.pdf</file>
+  <description>Cells are about 1 to 1.5 µm wide.  Gram negative.  Non-motile.  Packed cells from aerobic cultures are ochre colored and packed cells from extremely anaerobic cultures are grayish black.  Growth is chemolithotrophic by means of oxidation or reduction of S˚ or by means of oxidation of ferrous iron.  Organotrophic growth occurs in the presence of O2 and yeast extract, peptone, tryptone, beef extract, or Casamino Acids.  The temperature range for growth is 45 to 75°C; the optimum temperature is 70°C.  The pH range for growth is 1 to 6; the optimum pH is 1.5 to 2.  Anaerobically grown cultures at pH 2 cannot be used as innocula when they are stored for more than 4 months at 4°C.  The viability of such cultures can be increased up to 6 to 8 months by raising the pH to 5.5 by adding CaCO3.  Cells lyse at pH 7.  The DNA-dependent ribonucleic acid polymerase consists of nine subunits with different molecular weights; it requires Mg2+ and is resistant to rifampin and streptolydigine.  The organism was isolated from an acidic solfataric spring.  The type strain is strain DSM 1651.  Aerobic hydrogen oxidation.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Metallosphaera_prunae</taxon_name>
+  <strain>Ron 12/Il = DSM 10039</strain>
+  <reference>Metallosphaera prunae, sp. nov., a Novel Metal-mobilizing, Thermoacidophilic Archaeum, Isolated from a Uranium Mine in Germany Syst Appl Microbiol 18:560-566</reference>
+  <file>Metallosphaera.prunae.pdf</file>
+  <description>Gram-negative irregular cocci with a diameter of about 1 µm.  Cells possess flagella, which are 13 nm in width.  Growth between 55° and 80°C (optimum around 75˚C) and, pH 1.0 and 4.5.  Optimal doubling time 3.5 hours.  Aerobic, facultatively chemolithoautotrophic growth on sulfidic ores like pyrite, chalcopyrite and sphalerite and on elemental sulfur.  Aerobic hydrogen oxidation, optimal O2 concentration around 12% (v/v).  Organotrophic growth on yeast extract, peptone and beef extract.  No sulfur reduction anaerobically.  Cell envelope composed of protein subunits with P3 symmetry and, depending on the growth conditions, of a fibrillar surface coat.  DNA with a G+C content of 46 mol%.  Isolated from a smoldering slag heap of a uranium mine in Thiiringen, Germany.  Type strain: Metallosphaera prunae, Ron 12/Il, DSM 10039, Braunschweig, FRG.  Starch, L-arabinose, D-galactose, maltose, D-ribose, and casamino acids did not serve as energy sources.  No growth occurred on brown coal, lignite, hard coal, and anthracite.  Thiosulfate, tetrathionate, and ferrous sulfate did not serve as energy sources.  Under anaerobic conditions in the presence of H2 and elemental sulfur neither growth nor sulfur reduction was observed.</description>
+</treatment>

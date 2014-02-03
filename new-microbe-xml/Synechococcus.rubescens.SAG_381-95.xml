@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.rubescens.SAG_381</taxon_name>
+  <strain>SAG 3.81</strain>
+  <reference>Nitrate and Phosphate Affect Cultivability of Cyanobacteria from Environments with Low Nutrient Levels (Ernst, A., et al., 2005)</reference>
+  <DOI>10.1128/AEM.71.6.3379–3383.2005</DOI>
+  <file>Ernst, A. et al. Synechococcus.rubescens.SAG 381.pdf</file>
+  <description>small red-pigmented phycoerythrin (PE)-rich cyanobacteria, dominate the autotrophic picoplankton in freshwater ecosystems, These non-bloom-forming Synechococcus spp. (19) belong to the same phylogenetic clade as marine Synechococcus spp. and Prochlorococcus spp., can tolerate high nitrate if phosphate is low</description>
+</treatment>

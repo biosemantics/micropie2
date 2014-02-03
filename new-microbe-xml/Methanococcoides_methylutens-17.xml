@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcoides_methylutens</taxon_name>
+  <strain>TMA-10=ATCC 33938</strain>
+  <reference>Isolation and Characterization of a Methylotrophic Marine Methanogen, Methanococcoides methylutens gen. nov., sp. nov. AEM 45:684-690</reference>
+  <file>Methanococcoides.methylutens.pdf</file>
+  <description>Morphology and colony characteristics are the same as those described for the genus: temperature optimum 30 to 35°C; pH optimum 7.0 to 7.5; source anaerobic sediments from the Sumner branch of Scripps Canyon located near La Jolla, Calif.; physiology, fastidious anaerobe.  TMA, methylamine, and methanol serve as substrates for growth and methanogenesis; H2-CO2, formate, and acetate do not; nutrition, optimal growth at 0.44 M NaCl and 25 mM or greater MgSO4; yeast extract, Trypticase, rumen fluid, or B vitamins stimulate growth; type strain, TMA-10. This strain has been deposited in the American Type Culture Collection, Rockville, Md., as number 33938.</description>
+</treatment>

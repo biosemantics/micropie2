@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Nodularia.harveyana.CCAP_1452_1</taxon_name>
+  <strain>CCAP 1452/1</strain>
+  <reference>Diverse taxa of cyanobacteria produce β-N-methylamino-L-alanine, a neurotoxic amino acid (Cox, P., et al. 2004)</reference>
+  <DOI>NA</DOI>
+  <file>Cox, P. et al. Nodularia.harveyana.CCAP 1452-1.pdf</file>
+  <description>production of the cyclic pentapeptide nodularins appears to be limited to Nodularia, produces β-N-methylamino-L-alanine, a neurotoxic amino acid</description>
+</treatment>

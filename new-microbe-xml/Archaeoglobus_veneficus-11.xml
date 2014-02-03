@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Archaeoglobus_veneficus</taxon_name>
+  <strain>SNP6, DSM 11195</strain>
+  <reference>Archaeoglobus veneficus sp. nov., a Novel Facultative Chemolithoautotrophic Hyperthermophilic Sulfite Reducer, Isolated from Abyssal Black Smokers</reference>
+  <file>Archaeoglobus.veneficus.pdf</file>
+  <description>Cells are highly irregular cocci to triangular plate-shaped lobes, width between 0.5 and 1.2 µm, occurring singly or in pairs.  Motile by polar flagella.  Blue-green fluorescence at 436 nm.  Gram-negative.  Growth between 65 and 85°C (optimum: 80˚C), pH 6.5 and 8.0 (optimum: pH 7) and 0.5 and 4% NaCl (optimum: 2% NaCl).  Shortest doubling time one hour.  Obligate anaerobic.  Chemolithoautotrophic growth by oxidation of molecular hydrogen using sulfite or thiosulfate as electron acceptors.  Organotrophic sulfite respiration with formate, acetate, pyruvate, isopropanol, ethanol, fumarate, and glucose.  H2S (up to 6 µmol per mL) and methane (up to 2 µmol per mL) are formed during growth.  Sulfate, nitrate or nitrite cannot serve as electron acceptors.  Elemental sulfur inhibits growth.  Resistant to ampicillin, vancomycin, rifampicin, streptolydigin.  Cell envelope consists of a surface layer composed of hexagonally arranged complexes (center-to-center distance: 19 nm).  DNA base composition 45 mol% G+C.  Type strain: Archaeoglobus veneficus, SNP6, DSM 11195, Braunschweig, Germany.  (Isolated from a black smoker wall, "Snake Pit" site, Mid-Atlantic Ridge).  In the presence of H2, no stimulation of growth could be observed by the addition of yeast extract or acetate.  No growth with citrate, lactate, or starch as electron donors.</description>
+</treatment>

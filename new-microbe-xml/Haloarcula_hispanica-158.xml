@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Haloarcula_hispanica</taxon_name>
+  <strain>DSM 4426 = ATCC 33960</strain>
+  <reference>Bergey’s Manual generic description pg 305-6, pg 307</reference>
+  <file>Cells are pleomorphic rods, 0.5-1.0 x 0.3 µm.  Motile by polar flagella.  Growth occurs in media containing 2.5-5.2 M NaCl.  Optimum NaCl concentration: 3.5-4.2 M.     Minimal Mg2+ concentration 0.005 M.  Temperature range for growth: 25-50˚C.  Optimal growth at 35-40˚C.  The pH range for growth is 6-8.  Optimum growth at pH 7.0. Possibly facultatively anaerobic in the presence of nitrate.  Utilizes a variety of compounds as sole carbon and energy sources: glucose, lactose, sucrose, glycerol, mannitol, sorbitol, acetate, citrate, lactate, malate, pyruvate, succinate, arginine, glutamine, and lysine.  Acid is produced from fructose, galactose, and mannose.  Starch and gelatin are hydrolyzed.  Some strains hydrolyze casein.  Indole is variable.  Nitrate is reduced with gas production.  Susceptible to only high concentration of bacitracin (40 µg per mL).  Isolated from marine salterns in Spain.  G+C content of the DNA is 62.7% (Tm). Gram negative.  Oxidase and catalase positive.  Polar lipids are characterized by the presence of C20C20 derivatives of TGD-2.  Resistant to penicillin, chloramphenicol, streptomycin, and tetracycline.  Sensitive to anisomycin, bacitracin, novobiocin and vibriostat (0/129).</file>
+</treatment>

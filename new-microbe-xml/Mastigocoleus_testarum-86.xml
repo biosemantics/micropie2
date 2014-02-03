@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Mastigocoleus_testarum</taxon_name>
+  <strain>BC008</strain>
+  <reference>Ca2+ -ATPase mediated carbonate dissolution is prevalent among cyanobacterial euendoliths (Ramirez-Reinat, E., Garcia-Pichel, F., 2011)</reference>
+  <DOI>10.1128/AEM.06633-11</DOI>
+  <file>Ramirez-Reinat, E., Garcia-Pichel, F. Mastigocoleus testarum.pdf</file>
+  <description>filamentous euendolithic cyanobacterium, is able to bore into solid carbonates using Ca2+ -ATPases to take up Ca2+ from the medium at the excavation front, promoting dissolution of CaCO3</description>
+</treatment>

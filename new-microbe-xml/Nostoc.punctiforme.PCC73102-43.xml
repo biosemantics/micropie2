@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Nostoc.punctiforme.PCC73102</taxon_name>
+  <strain>PCC 73102</strain>
+  <reference>Identification of Sesquiterpene Synthases from Nostoc punctiforme PCC 73102 and Nostoc sp. Strain PCC 7120 (Agger, S., et al., 2008)</reference>
+  <DOI>10.1128/JB.00759-08</DOI>
+  <file>Agger, S. et al Nostoc.punctiforme.PCC73102.pdf</file>
+  <description>plant and fungal symbiont</description>
+</treatment>

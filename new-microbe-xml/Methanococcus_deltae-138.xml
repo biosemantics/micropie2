@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcus_deltae</taxon_name>
+  <strain>ARC</strain>
+  <reference>Isolation and Characterization of Two New Methane-Producing Cocci: Methanogenium olentangyi, sp. nov., and Methanococcus deltae, sp. nov. Arch Microbiol 134:28-32</reference>
+  <file>Methanogenium.olentangyi.Methanococcus.deltae.pdf</file>
+  <description>Irregular cocci, cell diameter 1.0-1.5 µm.  Non-motile.  Cell walls sensitive to 0.001% SDS and distilled water.  Colonial morphology: Circular, shiny, greenish-yellow with dark centers, convex.  DNA G + C content: 40.5 mol%.  Growth temperature optimum: 37 ˚C, range 30- 45 ˚C.  Physiology: Strict anaerobe, CO2 plus H2, and formate serve as substrates for growth and methane production.  Phenol red not reduced.  Nutrition: Obligate marine methanogen, requires 3 % NaCl for growth, optimum NaCl concentration is 3.5 - 4.0 %.  Acetate, trypticase, yeast extract, vitamins not required for growth.  Type strain: ARC.  The description of the type strain is the same as for the species.  Did not grow on methanol, methylamine, acetate, yeast extract, trypticase, and vitamins.</description>
+</treatment>

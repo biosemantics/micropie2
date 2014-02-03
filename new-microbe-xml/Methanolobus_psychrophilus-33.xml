@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanolobus_psychrophilus</taxon_name>
+  <strain>R15T (JCM 14818T; CGMCC 1.5060T)</strain>
+  <reference>Methanogenesis from Methanol at Low Temperatures by a Novel Psychrophilic Methanogen, “Methanolobus psychrophilus” sp. nov., Prevalent in Zoige Wetland of the Tibetan Plateau AEM 74:6114-6120</reference>
+  <file>Methanolobus.psychrophilus.pdf</file>
+  <description>Cells are elliptical (0.9 to 1.0 width by 1.0 to 1.2 µm length), with one or two polar flagella, are wrapped by a capsule-like material, and frequently form loose aggregates.  The strain is psychrophilic and grows most rapidly at 18°C, with no growth above 25°C.  Methanol is the preferred methanogenic substrate; methylamine and methyl sulfide are used as well. H2-CO2, formate, and acetate are not utilized.  It is slightly halophilic.  Better growth occurs in a medium supplemented with 15 to 300 mM NaCl, optimal growth occurs with 200 to 250 mM NaCl, and no growth occurs with 5 mM or 800 mM NaCl.  The pH range for growth is 6.0 to 8.0, and the optimum pH is 7.0 to 7.2.  Yeast extract is not essential but stimulates growth.  The G +C content of the DNA of strain R15 is 44.9 mol% (at melting temperature).  Methanolobus psychrophilus R15T (JCM 14818T; CGMCC 1.5060T) is isolated from Zoige wetland soil, obtained from a permanently cold wetland located on the Tibetan plateau in southwestern China.</description>
+</treatment>

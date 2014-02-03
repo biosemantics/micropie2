@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcoides_burtonii</taxon_name>
+  <strain>DSM 6242</strain>
+  <reference>Bergey’s Manual vol 1. pg 278, Table A2.20 and generic description from pg 276.</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Optimal growth temperature 23.4˚C.  Grows between 1.7 and 29.5˚C.  Optimum pH for growth 7.7.  Growth occurs between 0.1-0.5 M NaCl.  The mol% G+C is 39.6.  Isolated from the anoxic hypolimnion of Ace Lake, Antarctica.  Irregular cocci, 0.8-1.8 µm in diameter; occurring singly or in pairs.  Stringly anaerobic.  Trimethylamine, dimethylamine, methylamine, and methanol are substrates for growth and methanogenesis.  Acetate, dimethylsulfide, formate, and H2/CO2 are not substrates for growth and methanogenesis.</description>
+</treatment>

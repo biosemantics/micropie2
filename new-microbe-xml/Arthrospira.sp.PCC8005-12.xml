@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Arthrospira.sp.PCC8005</taxon_name>
+  <strain>PCC 8005</strain>
+  <reference>Genome Sequence of the Edible Cyanobacterium Arthrospirai sp. PCC 8005 (Janssen, P.J., et al., 2010)</reference>
+  <DOI>10.1128/JB.00116-10</DOI>
+  <file>Janssen et al 2010 Arthrospira.sp.PCC8005.pdf</file>
+  <description>nonheterocystous filamentous cyanobacteria that typically reside in alkaline lakes. have a high protein content, are rich in essential fatty acids, and produce a variety of minerals, vitamins, and nutritional pigments.</description>
+</treatment>

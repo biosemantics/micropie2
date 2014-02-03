@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Microcystis.aeruginosa.NIES-843</taxon_name>
+  <strain>NIES-843</strain>
+  <reference>Complete Genomic Structure of the Bloom-forming Toxic Cyanobacterium Microcystis aeruginosa NIES-843 (Kaneko, T., et al., 2007)</reference>
+  <DOI>10.1093/dnares/dsm026</DOI>
+  <file>Kaneko, T. et al Microcystis.aeruginosa.NIES-843.pdf</file>
+  <description>planktonic, gas-vacuolated cyanobacteria, toxic bloom-forming, It produces a cyclic heptapeptide hepatotoxin, termed microcystin1 and a depsipeptide, chymotrypsininhibitor called cyanopeptolin,2 and is widely distributed geographically, from cold-temperate climates to the tropics. Microcystis is characterized as a cyanobacterium with gas vesicles, a coccoid cell shape, a tendency to form aggregates or colonies, and an amorphous mucilage or sheath. the morphology of Microcystis is highly variable,</description>
+</treatment>

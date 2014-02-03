@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Pyrococcus_horikoshii</taxon_name>
+  <strain>OT3 = JCM 9974</strain>
+  <reference>Pyrococcus horikoshii sp nov, a hyperthermophilic archaeon isolated from a hydrothermal vent at the Okinawa Trough Extremophiles 2:123-130</reference>
+  <file>Pyrococcus.horikoshii.pdf</file>
+  <description>Cells are slightly irregular cocci between 0.8 and 2 µm in diameter, showing a polar tuft of flagella.  The cell envelope consists of a complete S-layer enclosing a periplasmic space around the cytoplasmic membrane.  Obligate anaerobe.  Growth occurs at temperatures between 80 and 102 ˚C, with an optimum at 98˚C.  Optimum pH for growth is 7.0, and growth occurs from pH 5-8.  NaCl concentration allowing growth ranges from 1-5%; optimum 2.4%.  Elemental sulfur is not essential for growth but it greatly stimulates growth and results in higher growth yield.  Heterotrophic growth occurs on peptone, yeast extract, beef extract, tryptone, casein, on casamino acids supplemented with tryptophan in the presence of vitamins, and on a mixture of 21 amino acids when vitamins present.  Tryptophan is required for growth.  G+C content is 44 mol%.  Isolated from the Okinawa Trough vents at a depth of 1395m.  Type stain: Pyrococcus horikoshii JCM 9974.  No growth was detected in mineral salts medium amended with CO2 or N2 gas phases.  Growth not supported by sucrose, glucose, maltose, cellobiose, citrate, pyruvate, glycerol, lactate, acetate, and olive oil.  Isolate has ether lipid membranes.  Has minor amounts of diether lipid.</description>
+</treatment>

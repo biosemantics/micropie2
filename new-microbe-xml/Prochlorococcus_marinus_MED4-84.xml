@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Prochlorococcus_marinus_MED4</taxon_name>
+  <strain>MED4</strain>
+  <reference>Cellularacclimation strategies ofa minimal picocyanobacteriumto phosphate stress (Fuszard, M., et al., 2010)</reference>
+  <DOI>10.1111/j.1574-6968.2010.01942.x</DOI>
+  <file>Fuszard, M. et al. Prochlorococcus marinus MED4.pdf</file>
+  <description>obligate oxygen-evolving photoautotrophic marine picocyanobacteria of significant importance to world biogeochemical cycles, and are considered the most abundant photosynthetic organism on Earth, They are widespread throughout the photic regions of the world’s oceans between 40°S and 50°N, with cell densities of up to 105 cellsmL-1 in the central oligotrophic gyres, They are principally distinguished into two taxonomic clades due to physiological niche adaptation to light intensity: high light and low light-adapted ecotypes,</description>
+</treatment>

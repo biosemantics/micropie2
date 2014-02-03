@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocalculus_taiwanensis</taxon_name>
+  <strain>P2F9704aT (=OCM 671T=CCRC 16182T=DSM 14663T)</strain>
+  <reference>Methanocalculus taiwanensis sp. nov., isolated from an estuarine environment IJSEM 52:1799-1806</reference>
+  <file>Methanocalculus.taiwanensis.pdf</file>
+  <description>Irregular coccoid cells that stain Gram-negative, are non-motile, and are 0.9-1.4 µm in diameter.  Lysed by 0.1 g SDS per liter.  Cells are resistant to ampicillin, penicillin, kanamycin, spectinomycin and tetracycline but sensitive to chloramphenicol.  Catabolic substrates used include H2/CO2 and formate, but not acetate, methanol, trimethylamine, ethanol, 2-propanol, isobutanol or 2-butanol.  Acetate is required for cell growth.  Tungsten was not required but stimulated growth; addition of tungsten as a trace element greatly extends the ranges of temperature, pH and salt allowing growth.  Optimal growth occurs in the presence of 0.5% NaCl (w/v) at pH 6.7 at 37 °C.  Type strain is strain P2F9704aT (=OCM 671T=CCRC 16182T=DSM 14663T), which was isolated from the water of an estuary in Eriln Shi near Wong-Kong, Taiwan.  The reference strain is strain P2F9705.</description>
+</treatment>

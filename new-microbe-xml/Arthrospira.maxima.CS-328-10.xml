@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Arthrospira.maxima.CS-328</taxon_name>
+  <strain>CS-328</strain>
+  <reference>Contribution of a Sodium Ion Gradient to Energy Conservation during Fermentation in the Cyanobacterium Arthrospira (Spirulina) maxima  CS-328 (Carrieri, D., et al., 2011)</reference>
+  <DOI>10.1128/AEM.00612-11</DOI>
+  <file>Carrieri et al 2011 Arthrospira.maxima.CS-328.pdf</file>
+  <description>filamentous, nondiazotrophic cyanobacterium. thrives under extreme salt and pH conditions. In its natural environment, Arthrospira sp. filaments grow to high cell densities. They are known to maintain a sodium gradient that is used to import carbonate via an obligate sodium carbonate symporter. As expected, they also have a membrane-bound sodium extrusion pump that is dependent on the presence of ATP.</description>
+</treatment>

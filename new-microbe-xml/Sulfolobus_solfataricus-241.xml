@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Sulfolobus_solfataricus</taxon_name>
+  <strain>98/2</strain>
+  <reference>Bergey’s Manual pg 198-199, pg 201-202</reference>
+  <file>Cells are 0.8-2.0 µm in diameter.  Temperature for growth: 50-87˚C; optimum 85˚C.  The pH for growth: 2-5.5; optimum pH 4.5.  Cells lyse at pH &gt; 7.5.  Organotrophic growth on complex substrates like yeast extract, tryptone, and casamino acids and on sugars like galactose, glucose, ribose, sucrose, lactose, mannose, and xylose.  Poor growth by oxidation of molecular hydrogen.  Able to oxidize S˚.   Gram negative.  Obligate aerobe.  Facultatively chemolithoautotrophic.  Lithotrophic growth via oxidation of sulfidic ores, sulfide, S˚, or tetrathionate resulting in the production of sulfuric acid.  No growth by anaerobic sulfur reduction.  Cell membrane consists of isopranyl ether lipids, tetraethers with cyclopentane rings, and diethers.  Caldariellaquinone and sulfolobusquinone are present.</file>
+</treatment>

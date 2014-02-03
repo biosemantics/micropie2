@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Arthrospira.platensis.str.Paraca</taxon_name>
+  <strain>Paraca</strain>
+  <reference>Phylogenetic relationships of Arthrospira strains inferred from 16S rRNA gene and cpcBA-IGS sequences (Choi, G., et al., 2012)</reference>
+  <DOI>http://dx.doi.org/10.4490/algae.2012.27.2.075</DOI>
+  <file>Choi, G. et al. Arthrospira.platensis.str.Paraca.pdf</file>
+  <description>species of cyanobacteria used in health foods, animal feed, food additives, and fine chemicals, commercially important filamentous cyanobacterium with an annual production estimated at over 3,000 tons per year, the largest among microalgae, Found in tropical and subtropical regions in warm lakes with a high carbonate and bicarbonate content, and high pH and salinity, a rich source of proteins, minerals, vitamin B12, β-carotene, and essential fatty acids, such as γ-linolenic acid. Owing to its high protein content of up to approximately 60-70% on a dry weight basis, the amino acids present in Arthrospira match the proportions recommended by the Food and Agriculture Organization, Plus, it does not require any chemical or physical processing in order to become digestible due to the absence of a cellulose cell wall, can be used as feed for fish, poultry, and farm animals</description>
+</treatment>

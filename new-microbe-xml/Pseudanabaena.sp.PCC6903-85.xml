@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Pseudanabaena.sp.PCC6903</taxon_name>
+  <strain>PCC 6903</strain>
+  <reference>Nitrogen control of the glnN gene that codes for GS type III, the only glutamine synthetase in the cyanobacterium Pseudanabaena sp. PCC 6903 (Crespo, J., et al., 1998)</reference>
+  <DOI>NA</DOI>
+  <file>Crespo, J. et al. Pseudanabaena.sp.PCC6903.pdf</file>
+  <description>filamentous non-nitrogen-fixing cyanobacterium, lacking the typical prokaryotic glutamine synthetase type I</description>
+</treatment>

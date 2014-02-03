@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanothermobacter_tenebrarum</taxon_name>
+  <strain>RMAST (DSM 23052T, JCM 16532T, NBRC 106236T)</strain>
+  <reference>Methanothermobacter tenebrarum sp. nov., a hydrogenotrophic thermophilic methanogen isolated from gas-associated formation water of a natural gas field in Japan IJSEM (in press as of May 4, 2012)</reference>
+  <file>Methanothermobacter.tenebrarum.pdf</file>
+  <description>Cells are non-motile and straight rods with sizes of 0.5 µm width by 3.5-10.5 µm length.  Cells often occur in pairs.  Gram reaction positive.  May possess a thick cell wall (ca. 20 nm).  Solely grows on H2 and CO2.  Neither acetate, formate, pyruvate, monomethylamine, dimethylamine, trimethylamine, methanol, ethanol, 1-propanol, 2-propanol, 1-butanol, 2-methylpropanol was utilized for growth or methanogenesis.  Non-autotrophic.  Requires either casamino acids (Difco), tryptone (Difco), yeast extract (BBL), or vitamin mixture for growth.  Acetate stimulates growth.  Grows in the ranges of 45-80 °C (optimum 70 °C), pH 5.8-8.7 (optimum pH 6.9-7.7), and 0.001-20 (optimum 2.5) NaCl g per liter.  Cells are not disrupted by 1 % SDS or distilled water.  Gentiobiosyl caldarchaetidylinositol and gentiobiosyl caldarchaetidylethanolamine are found as polar lipids. The G+C content of the DNA of the type strain is 41.5 mol % determined by HPLC.  The type strain, RMAST (DSM 23052T, JCM 16532T, NBRC 106236T), was isolated from gas-associated formation water of a gas-producing well in a natural gas field at Niigata, Japan.</description>
+</treatment>

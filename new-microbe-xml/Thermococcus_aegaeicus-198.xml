@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_aegaeicus</taxon_name>
+  <strain>P5T (=DSM 12767T=JCM 10828T)</strain>
+  <reference>Thermococcus aegaeicus sp. nov. and Staphylothermus hellenicus sp. nov., two novel hyperthermophilic archaea isolated from geothermally heated vents off Palaeochori Bay, Milos, Greece IJSEM 50:2101-2108</reference>
+  <file>Thermococcus.aegaeicus.Staphylothermus.hellenicus.pdf</file>
+  <description>Cells are irregular cocci with a diameter of 0.8-1.5 µm.  Cells occasionally form aggregates of up to ten cells.  Growth occurs between 50 and 95 °C with an optimum between 88 and 90 °C.  Doubling time at 90 °C is 1.1 h.  pH range of growth is between 4.5 and 7.5 with an optimum around pH 6.  Optimal NaCl concentration is 2%, but growth is observed between 0.5 and 6.5%.  Obligate anaerobe, utilizing complex organic compounds like yeast extract, peptone and tryptone as carbon source.  Obligate heterotroph.  Starch can be utilized under an N2/CO2 atmosphere but not under an H2/CO2 atmosphere.  No growth on pyruvate, malt extract, maltose and casein.  Elemental sulfur stimulates growth.  DNA G+C content is 45 mol%.  The type strain was isolated from sediments of Palaeochori Bay, Milos, Greece, located at a depth of 4 m.  The type strain is P5T (=DSM 12767T=JCM 10828T).  Non-motile. Unable to grow in the presence of casein, chitin, pyruvate, cellulose, sodium formate, maltose, glucose, cellobiose, trehalose, ribose, sorbose, sucrose or methanol as sole carbon sources under H2/CO2 or N2/CO2.  Could not use thiosulfate, sulfite, or sulfate in place of sulfur.  G+C content of 45.5 mol%.</description>
+</treatment>

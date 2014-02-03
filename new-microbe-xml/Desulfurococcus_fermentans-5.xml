@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Desulfurococcus_fermentans</taxon_name>
+  <strain>Z-1312T (=DSM 16532T=VKM V-2316T)</strain>
+  <reference>Desulfurococcus fermentans sp. nov., a novel hyperthermophilic archaeon from a Kamchatka hot spring, and emended description of the genus Desulfurococcus IJSEM 55:995-999</reference>
+  <file>Desulfurococcus.fermentans.pdf</file>
+  <description>Cells are cocci, 1–4 µm in diameter, with one polar flagellum.  Obligate anaerobe.  Temperature growth range from 63 to 89 ˚C, with optimum at 82 ˚C.  pH growth range from 4.8 to 6.8, with optimum at pH 6.0.  Obligate chemoorganoheterotroph; obtains energy by fermentation of arabinose, agarose, amygdalin, arbutin, casein hydrolysate, cellulose, dextran, dulcitol, fructose, lactose, laminarin, lichenan, maltose, pectin, peptone, ribose, starch and sucrose.  No growth is observed on glucose, mannitol, sorbitol or xylose.  Fermentation products detected are acetate, H2 and CO2.  Growth is not inhibited by 100% H2.  Elemental sulfur, sulfate, thiosulfate and nitrate do not stimulate growth and are not used as electron acceptors.  The G+C content of DNA of the type strain is 42.5 mol%.  The type strain, strain Z-1312T (=DSM 16532T=VKM V-2316T), was isolated from a hot spring of Uzon caldera, Kamchatka peninsula, Russia.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_flexile</taxon_name>
+  <strain>GHT (=AS 1.5092T=JCM 15416T)</strain>
+  <reference>Methanobacterium movens sp. nov. and Methanobacterium flexile sp. nov., isolated from lake sediment IJSEM 61:2974-2978</reference>
+  <file>Methanobacterium.movens.flexile.pdf</file>
+  <description>Cells are rods (0.3–0.5 µm wide x 2–5 µm long).  Utilizes both H2/CO2 and formate for methane production.  Chains of cells are formed in formate or under high pressure H2/CO2 (80 : 20, v/v; 100–250 kPa), and single cells are formed under lower pressure H2 (H2/CO2/N2; 40 : 10 : 50, v/v; 100–150 kPa).  Acetate, methanol, ethanol, trimethylamine, isobutanol and 2-propanol are not used.  Grows optimally at 35–38 ˚C and pH 7.0–7.5.  Yeast extract is indispensable for growth.  The DNA G+C content of the type strain is 36.4 mol% (Tm) and 37.3 mol% (HPLC).  The type strain is GHT (=AS 1.5092T=JCM 15416T), isolated from the sediment of Gahai lake, China.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_arcticum</taxon_name>
+  <strain>M2T (=DSM 19844T =VKM B-2371T)</strain>
+  <reference>Methanobacterium arcticum sp. nov., a methanogenic archaeon from Holocene Arctic permafrost IJSEM 61:144-147</reference>
+  <file>Methanobacterium.arcticum.pdf</file>
+  <description>Cells are Gram-negative, non-motile, non-spore-forming, slightly curved rods, 0.45–0.50 µm wide and 3.0–6.0 µm long.  Often forms filaments and cyst-like coccoid cells.  Strictly anaerobic.  Chemoautotrophic.  Optimal growth at 37 ˚C; maximum temperature is 45 ˚C.  Optimal growth at pH 6.8–7.2; no growth at pH 5.0 or 9.0.  Utilizes H2/CO2 and formate for growth and methane generation, but not acetate, methanol, ethanol, 2-propanol, 2-butanol, methylamines, methanol/H2 or methylamine/H2.  Growth is not stimulated by acetate.  The DNA G+C content of the type strain is 38.1 mol%.  The type strain M2T (=DSM 19844T =VKM B-2371T) was isolated from Holocene permafrost sediments from the Kolyma lowland, Russia (70u 069 N 154u 049 E).</description>
+</treatment>

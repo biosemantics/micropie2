@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanofollis_formosanus</taxon_name>
+  <strain>ML15T (=OCM 789T=DSM 15483T)</strain>
+  <reference>Methanofollis formosanus sp. nov., isolated from a fish pond IJSEM 55:837-842</reference>
+  <file>Methanofollis.formosanus.pdf</file>
+  <description>Irregularly coccoid cells, non-motile, 1.5–2.0 µm in diameter.  Obligately anaerobic cells.  Stains Gram-negative.  Cell wall has an SDS-sensitive S-layer protein with an Mr of 138 800.  Catabolic substrates used include H2/CO2 and formate, but not acetate, methanol, trimethylamine, dimethylamine, ethanol, 2-propanol, iso-butanol, 2-butanol or dimethylamine.  Cells are mesophilic and grow at 20– 42 ˚C, with optimal growth at 37 ˚C.  Cells grow at pH 5.6– 7.3, with optimal growth at pH 6.6.  Cells grow well in 0–4% NaCl, with optimal growth at 3% NaCl.  Addition of acetate reduces the lag time and the trace element tungsten greatly promotes cell growth and extends the growth range.  No growth is detected in minimal medium.  Growth is completely inhibited by chloramphenicol and partly inhibited by tetracycline, but not by ampicillin, penicillin, kanamycin or spectinomycin.  The G+C content of DNA of strain ML15T is 58.4 mol%.  The type strain is strain ML15T (=OCM 789T=DSM 15483T), isolated from a marine water aquaculture fish pond near Wang-gong, Taiwan.</description>
+</treatment>

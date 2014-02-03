@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Anabaena_sp.PCC_7120</taxon_name>
+  <strain>PCC 7120</strain>
+  <reference>Outer membrane proteins induced by iron deficiency in Anabaena sp. PCC 7120 (Yanling, D., Xu,. X., 2009)</reference>
+  <DOI>NA</DOI>
+  <file>Yanling, D., Xu,. X. Anabaena sp.PCC 7120.pdf</file>
+  <description>Anabaena species are filamentous nitrogen-fixing cyanobacteria, which synthesize siderophores such as schizokinen and anachelin [3–5]. Iron starvation leads to oxidative stress in Anabaena [6]. A large gene cluster involved in siderophore synthesis was identified in Anabaena sp. PCC 7120 (hereafter referred to as Anabaena 7120) [7]. A proteomic study of the outer membrane in this cyanobacterium also revealed the presence of predicted receptors for the siderophore–Fe3+ complex. One of the proteins Alr0397 (SchT) was shown to be the TonB-dependent schizokinen transporter up-regulated under iron-deficient conditions.</description>
+</treatment>

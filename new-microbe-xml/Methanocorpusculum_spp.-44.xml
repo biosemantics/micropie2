@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocorpusculum_spp.</taxon_name>
+  <strain>MSP</strain>
+  <reference>Isolation and Characterization of New Strains of Methanogens from Cold Terrestrial Habitats Syst Appl Microbiol 26:312-318</reference>
+  <file>Methanosarcina.lacustris.others.pdf</file>
+  <description>Isolated from anoxic sediments of a pond polluted with paper-mill waste water of the Syktyvkar Forest Industry Complex.  Strain MSP was represented by motile irregular cocci with a diameter of 0.3–0.6 µm.  Metabolized H2/CO2 and formate.  Did not metabolize formate, 2-propanol/CO2, 2-butanol/CO2, methanethiol, dimethyl sulfide, methanol, monomethylamine, dimethylamine, trimethylamine, or acetate.  Motile.  Temperature range 5-35˚C, with temperature optimum of 25˚C.</description>
+</treatment>

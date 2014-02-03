@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_alcaliphilum</taxon_name>
+  <strain>WeN4 (= DSM 3387)</strain>
+  <reference>Methanobacterium alcaliphilum sp. nov. an H2-Utilizing Methanogen That Grows at High pH Values IJSB 36:380-382</reference>
+  <file>Methanobacterium.alcaliphilum.pdf</file>
+  <description>Long rods, 0.5 to 0.6 wide by 2 to 25 µm long, occurring individually or in pairs, more rarely in short chains or filaments.  Gram negative.  Nonmotile.  Colonies grow to 1.0 to 1.5 mm in diameter.  Colonies are yellowish to cream colored, smooth, opaque, raised, convex, and circular with entire margins.  Subsurface colonies are cream colored, small (diameter, 0.2 mm) irregular spheroids.  H2-CO2 is the sole substrate for growth and methanogenesis.  Acetate was not required for growth.  Growth factors present in Trypticase peptone or yeast extract are required for growth.  Optimal growth occurs between pH 8.1 and 9.1 and near 37°C.  The G+C content of the deoxyribonucleic acid is 57 mol%.  The type strain is strain WeN4 (= DSM 3387).</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobrevibacter_wolinii</taxon_name>
+  <strain>SHT (=DSM 11976T=OCM 814T)</strain>
+  <reference>Description of Methanobrevibacter gottschalkii sp. nov., Methanobrevibacter thaueri sp. nov., Methanobrevibacter woesei sp. nov. and Methanobrevibacter wolinii sp. nov. IJSEM 52:819-822</reference>
+  <file>Methanobrevibacter.gottschalkii.thaueri.wosei.wolinii.pdf</file>
+  <description>Coccobacillus with slightly tapered or rounded ends, about 0.6 µm in width and 1.0-1.4 µm in length, occurring in pairs or short chains.  Gram-positive.  Cell walls are composed of pseudomurein.  The peptide moiety contains glutamate, alanine, lysine and ornithine.  Galactosamine is absent or present at low concentrations and glucosamine is present in cellwall hydrolysates.  Cells are resistant to lysis by SDS.  Optimum temperature 37 °C.  Optimum pH 7.  Strict anaerobe.  Cells grown in rumen ¯uid medium are catalase-negative.  Grows and produces methane from H2 and CO2.  Does not grow or produce methane from formate, acetate, methanol, trimethylamines or methanol with H2.  Requires either acetate and/or one or more components of trypticase or yeast extract for growth.  Growth does not occur in medium 1 except when it is emended with coenzyme M and branched-chain fatty acids.  May require either or both of the nutrients.  Does not grow in medium with salt concentrations similar to sea water.  Growth is inhibited by bile salts.  The DNA G+C content is 33 mol% (Tm).  Strain SHT was isolated from enrichments of sheep faeces.  The type strain is strain SHT (=DSM 11976T=OCM 814T).  The GenBank accession number of its 16S rRNA sequence is U55240.</description>
+</treatment>

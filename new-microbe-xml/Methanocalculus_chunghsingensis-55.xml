@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocalculus_chunghsingensis</taxon_name>
+  <strain>K1F9705bT (=OCM 772T=DSM 14646T)</strain>
+  <reference>Methanocalculus chunghsingensis sp. nov., isolated from an estuary and a marine fishpond in Taiwan IJSEM 54:183-189</reference>
+  <file>Methanocalculus.chunghsingensis.pdf</file>
+  <description>Irregularly coccoid cells, non-motile or weakly motile with flagella.  Obligately anaerobic cells; Gram-negative.  Cell wall is composed of proteinaceous, SDS-sensitive, S-layer subunits with relative molecular masses that range from 88 100 to 102 200.  Catabolic substrates used include H2/CO2 and formate, but not acetate, methanol, trimethylamine, dimethylamine, ethanol, propan-2-ol, isobutanol or butan- 2-ol.  Cells are mesophilic; growth occurs at 20–45 ˚C, with optimum at 37 ˚C.  Cells grow over a wide pH range, from 6.0 to 8.0; optimal pH is 7.2.  Cells grow well at 0–12% NaCl; optimal NaCl concentration for growth is 1.0%.  Acetate is required for growth.  Tungsten is highly stimulatory for some strains.  Growth is inhibited completely by chloramphenicol and partially by tetracycline, but not by ampicillin, penicillin, kanamycin or spectinomycin.  DNA G+C content of cells is about 50.0 mol%.  The type strain is K1F9705bT (=OCM 772T=DSM 14646T).  Isolated from a marine water aquaculture fishpond near Wong-Kong, Taiwan.  Reference strains are K1F9705c and O1F9704a.</description>
+</treatment>

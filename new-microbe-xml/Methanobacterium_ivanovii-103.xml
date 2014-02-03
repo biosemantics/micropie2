@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_ivanovii</taxon_name>
+  <strain>31=DSMZ 2611 = OCM 140</strain>
+  <reference>Bergey’s Manual vol. 1 pg. 217</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Cells are slightly curved rods with rounded ends, 0.5-0.8 by 1-15 µm, occurring singly or in short chains.  Stain Gram-positive.  Nonmotile.  Surface colonies yellow-greenish, smooth, and round, 3-6 mm in diameter after 14 d of incubation.  Grows with ammonia or dinitrogen as a nitrogen source.  Sulfide, cysteine, or methionine serves as a sulfur source.  Isolated from an oil-bearing sandstone rock core obtained from 1650 m deep in the Bondyuzshkoe oil field on the Kama River of the Tartar Republic of the former Soviet Union.</description>
+</treatment>

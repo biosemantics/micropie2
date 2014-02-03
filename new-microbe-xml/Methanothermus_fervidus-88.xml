@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanothermus_fervidus</taxon_name>
+  <strain>DSM 2088</strain>
+  <reference>Methanothermus fervidus, sp. nov., a Novel Extremely Thermophilic Methanogen Isolated from an Icelandic Hot Spring Zbl Bakt Hyg I Abt Orig C 2:166-178</reference>
+  <file>Methanothermus.fervidus.pdf</file>
+  <description>Straight to slightly curved rods, 1 to 3 µm long and 0.3-0.4 µm in width, occurring singly and in pairs, but never in long filaments.  They are nonmotile and gram-positive.  No growth can be detected at 60 °C or below.  Optimal growth is at 83 °C at pH 6.5.  The upper temperature limit is 97 °C.  Methane is formed from H2 and CO2.  Yeast extract is required for growth in artificial medium.  Formate and acetate do not serve as substrates.  Colonies are formed on polysilicate plates 1 to 3 mm in diameter, and are round, smooth, opaque, and slightly greyish.  No growth can be observed on agar.  The cell wall contains pseudomurein consisting of N-acetyl-glucosamine, N-acetyl-galactosamine, N-talosaminuronic acid, glutamic acid, alanine, and lysine.  The cell envelope consists of a double-layer of pseudomurein and protein.  The DNA base composition is 33 mol °/o G + C.  The RNA polymerase does not precipitate with antibodies against RNA polymerase from Methanobacterium thermoautotrophicum.  The type strain is DSM 2088 (isolated from an Icelandic hot spring).</description>
+</treatment>

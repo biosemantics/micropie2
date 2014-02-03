@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Halorubrum_trapanicum</taxon_name>
+  <strain>NRC 34021</strain>
+  <reference>Transfer of Halobacterium saccharovorum, Halobacterium sodomense, Halobacterium trapanicum NRC 34021 and Halobacterium lacusprofundi to the Genus Halorubrum gen. nov., as Halorubrum saccharovorum comb.  nov., Halorubrum sodomense comb. nov., Halorubrum trapanicum comb. nov., and Halorubrum lacusprofundi comb. nov. Syst Appl Micriobiol 18:237-243</reference>
+  <file>Halorubrum.saccharovorum.sodomense.trapanicum.lacusprofundi.pdf</file>
+  <description>Non-motile, pleomorphic rods (0.7-1.0 x 1.5-3.0 µm).  Cells contain low levels of carotenoid, and colonies are pale orange, almost colorless.  Strictly aerobic.  Oxidase- and catalase-positive.  Chemoorganotrophic.  Glucose, fructose and sucrose are utilized with the production of acid.  Indole-negative.  Starch is not hydrolyzed.  Gelatin negative.  Nitrate is reduced to nitrite.  The polar lipids are C20, C20 derivatives of PG, PGP, PGS and a sulphated mannosyl glucosyl diether glycolipid.  Isolated from solar salt (Trapani, Sicily).  The mol% G+C of the DNA is 64.3 (Bd).  A minor DNA component has not been detected.  Type strain: NRC 34021.  Gas vacuoles absent.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Palaeococcus_helgesonii</taxon_name>
+  <strain>PI1 = 15127</strain>
+  <reference>Palaeococcus helgesonii sp. nov., a facultatively anaerobic, hyperthermophilic archaeon from a geothermal well on Vulcano Island, Italy Arch Microbiol 179:394-401</reference>
+  <file>Palaeococcus.helgesonii.pdf</file>
+  <description>Regular to slightly irregular cocci, 0.6–1.5 µm in diameter.  Cells occur singly or in pairs.  Cells have tufts of polar flagella.  Obligately heterotrophic growth with yeast extract, peptone, tryptone, beef extract, or casein, in the presence of S˚.  Growth also on yeast extract or peptone without S˚.  Growth on anoxic or microoxic (PO2 0–0.18 bar) YPS-V medium.  Growth range is 45–85 °C (optimum 80 °C), pH 5–8 (optimum 6.5), and 0.5–6.0% NaCl (optimum 2.8%).  Optimal doubling time is 50 min at 80 °C on YPS-V medium.  The G+C content of genomic DNA is 42.5 mol% (HPLC).  Organism was isolated from a water sample obtained from a geothermal well (Pozzo Istmo) near the Baia di Levante on Vulcano, Italy.  Type strain is Palaeococcus helgesonii PI1, which has been deposited with the Deutsche Sammlung von Mikroorganismen und Zellkulturen, Braunschweig, Germany, under accession number DSM 15127. No growth was observed on medium supplemented with S˚ and trace amounts (0.01 g per liter) of yeast extract or on the organic substrates starch, sucrose, maltose, glucose, fructose, lactose, formate, acetate, propanoate, pyruvate, citrate, with or without S˚ in the presence of trace amounts of yeast extract.  Isolate PI1 did not grow autotrophically (H2:CO2) with or without trace amounts of yeast extract.</description>
+</treatment>

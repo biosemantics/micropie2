@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Microcystis.aeruginosa.PCC7820</taxon_name>
+  <strain>PCC 7820</strain>
+  <reference>Inactivation of an ABC Transporter Gene, mcyH, Results in Loss of Microcystin Production in the Cyanobacterium Microcystis aeruginosa PCC 7806 (Pearson, L., et al. 2004)</reference>
+  <DOI>10.1128/AEM.70.11.6370-6378.2004</DOI>
+  <file>Pearson, L. et al. Microcystis.aeruginosa.PCC7820.pdf</file>
+  <description>The cyanobacterium Microcystis aeruginosa is widely known for its production of the potent hepatotoxin microcystin. Microcystin is synthesized nonribosomally by the thiotemplate function of a large, modular enzyme complex. The cyclic heptapeptide microcystin, first isolated from the freshwater cyanobacterium Microcystis aeruginosa, is a potent hepatotoxin (32). In addition to causing death and illness in animals, fish, and livestock, chronic exposure to sublethal doses of microcystin has been linked to the high incidence of certain types of liver cancer (hepatocellular carcinoma) in several communities in China (35). Release of microcystin into the extracellular environment has in the past been attributed to the death and lysis of cyanobacterial blooms., the presence of microcystin in the wall and sheath area of intact M. aeruginosa cells,</description>
+</treatment>

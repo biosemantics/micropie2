@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Aciduliprofundum_boonei</taxon_name>
+  <strain>T469</strain>
+  <reference>A ubiquitous thermoacidophilic archaeon from deep-sea hydrothermal vents Nature 442:444-447</reference>
+  <file>Aciduliprofundum.boonei.pdf</file>
+  <description>Anaerobic heterotrophic sulphur- and iron-reducing thermoacidophile belonging to the kingdom Euryarchaeota.  Cells are pleiomorphic to spherical, about 0.6–1 µm in diameter, with a single flagellum and an S-layer.  Grows best at 70˚C and pH 4.2–4.8.  From actively venting deep-sea vent deposits, first isolated from deep-sea vents at 22˚ 10.8’ S, 176˚ 36.1’ W (Mariner vent field).  Used yeast extract, casein, trypticase, and peptone as an electron donor.  Used ferric iron or S˚ as an electron acceptor.  Requires NaCl (optimum 2.5-3.5%) for growth.  Membrane lipids are predominantly composed of glycerol dibiphytanyl glycerol tetraethers containing 0–4 cyclopentane rings.</description>
+</treatment>

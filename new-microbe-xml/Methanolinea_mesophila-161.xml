@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanolinea_mesophila</taxon_name>
+  <strain>TNRT (=NBRC 105659T=DSM 23604T)</strain>
+  <reference>Methanolinea mesophila sp. nov., a hydrogenotrophic methanogen isolated from rice field soil, and proposal of the archaeal family Methanoregulaceae fam. nov. within the order Methanomicrobiales  IJSEM 62:1389-1395</reference>
+  <file>Methanolinea.mesophila.pdf</file>
+  <description>Cells are non-motile, rod-shaped, 0.3 µm wide and 2.0–6.5 µm long.  Multicellular filamentous (up to around 100 µm) and coccoid (about 1 µm in diameter) cells are also observed, especially in the late-exponential phase cultures.  H2/CO2 and formate can be used for growth and methane production.  Acetate is required for growth.  Acetate, 1-propanol, 2-propanol, ethanol, 1-butanol, 2-butanol, cyclopentanol, methanol, methylamine, dimethylamine, trimethylamine, and propionate did not support growth and/or methane production.  Acetate was required for growth.  Yeast extract and coenzyme M were not required but enhanced growth.  Growth occurs at 20–40 ˚C (optimum at 37 ˚C), at pH 6.5–7.4 (optimum pH 7.0) and in the presence of NaCl concentrations below 25 g per liter.  Cultures are resistant to ampicillin, kanamycin, streptomycin and vancomycin at a concentration of 100 µg per liter.  The type strain, TNRT (=NBRC 105659T=DSM 23604T), was isolated from rice field soil in Tainan, Taiwan.  The DNA G+C content of the type strain is 56.4 mol%.</description>
+</treatment>

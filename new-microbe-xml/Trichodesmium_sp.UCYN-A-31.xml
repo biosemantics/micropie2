@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Trichodesmium_sp.UCYN-A</taxon_name>
+  <strain>UCYN-A</strain>
+  <reference>Intriguing diversity among diazotrophic picoplankton along a Mediterranean transect: a dominance of rhizobia (Moal, M., et al., 2011)</reference>
+  <DOI>10.5194/bg-8-827-2011</DOI>
+  <file>Moal, M. et al. Trichodesmium sp.UCYN-A.pdf</file>
+  <description>photosynthetic diazotrophs, these free living organisms show a significant degree of nutritional independence towards carbon and nitrogen, UCYN-A are of picoplanktonic size (0.7–1.5 μm,), In addition to being freeliving, UCYN have also been suggested to produce mucilage, to attach to inert particles or to live in association with planktonic eukaryotes., These observations imply that UCYN could also contribute to nitrogen fixation of the large size fraction, thus reinforcing their role in global diazotrophic activity. However, sporadic blooms of UCYN have been reported to reach 102 to 103 cell ml-1 in the same coastal Mediterranean environment, or in Pacific and Atlantic Ocean. At stations where species richness was characterised, temperature was 25°C, being slightly under or above the optimal temperature range for UCYN-A (23– 24 °C). Still, UCYN-A limiting factors seem slightly relaxed in the less oligotrophic western basin and at coastal station off Israel, where they were recovered. We suspect carbon to be the controlling factor or UCYN-A development. UCYN-A has been recently demonstrated to lack photosystem II, the complex which allows CO2 reduction, making it probably dependent on an unknown organic source of carbon, a unique feature among planktonic diazotrophic cyanobacteria. The origin of this carbon puzzles the scientific community, and UCYN-A has been suggested to obtain it from dead particles or other organisms</description>
+</treatment>

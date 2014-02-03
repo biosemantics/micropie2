@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_acidaminovorans</taxon_name>
+  <strain>AEDII10 = DSM 11906</strain>
+  <reference>Thermococcus acidaminovorans sp nov, a new hyperthermophilic alkilophilic archaeon growing on amino acids Extremophiles 2:109-114</reference>
+  <file>Thermococcus.acidaminovorans.pdf</file>
+  <description>Coccoid-shaped cells, of 0.8-1.3 µm in diameter.  Obligately anaerobic.  Temperature range for growth from 56˚C to 93˚C; optimum around 85˚C.  pH range for growth from pH 5.0 to 9.5 with the optimum around pH 9.0, and growth in 1%-6% NaCl with an optimum around 2%-3%.  Strictly heterotrophic.  Defined amino acids, casamino acids, yeast extract, peptone, meat extract, tryptone, and casein are fermented.  Growth not inhibited by H2.  Growth with and without polysulfide or sulfur, with a significant stimulation of the growth rate in the presence of polysulfide or sulfur.  G+C content of DNA is approximately 49 mol %.  Core lipids consist of 2,3-di-O-phytanyl-sn-glycerol and glycerol-dialkyl-glycerol tetraethers.  Isolated from a shallow marine hydrothermal system at Vulcano, Italy.  Type Strain Thermococcus acidaminovorans AEDII10 = DSM 11906.  No growth was observed on glucose, fructose, xylose, lactose, maltose, sucrose, xylane, or starch.  In the presence of polysulfide or sulfur, H2S is formed.  No growth was observed under autotrophic conditions.  The lipid pattern showed only phosphoglycolipids.  Aminolipids, phospholipids, and glycolipids were absent.</description>
+</treatment>

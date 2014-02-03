@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_kanagiense</taxon_name>
+  <strain>169T (=DSM 22026T=JCM 15797T)</strain>
+  <reference>Methanobacterium kanagiense sp. nov., a hydrogenotrophic methanogen, isolated from rice-field soil IJSEM 61:1246-1252</reference>
+  <file>Methanobacterium.kanagiense.pdf</file>
+  <description>Cells are non-motile, Gram-reaction-variable and rod-shaped (1.6–5.0 µm long by 0.35–0.5 µm wide).  Hydrogen/carbon dioxide are the only substrates that support growth.  Formate, methylamines, acetate, pyruvate, methanol and other alcohols plus carbon dioxide are not utilized.  Grows autotrophically in mineral medium without any organic additives.  Growth is not stimulated by acetate or yeast extract.  Vitamins are not essential for growth.  Grows at 15– 45 ˚C, at pH 6.5–9.6, and with 0–70 g NaCl per liter.  The type strain, 169T (=DSM 22026T =JCM 15797T), was isolated from an anaerobic, propionate-oxidizing enrichment culture derived from rice-field soil.  The DNA G+C content of the type strain is 39.3 mol% (as determined by HPLC).</description>
+</treatment>

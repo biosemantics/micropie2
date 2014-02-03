@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermofilum_pendens</taxon_name>
+  <strain>Hrk5 = ATCC 35544 = DSM 2475</strain>
+  <reference>Bergey’s Manual pg. 178</reference>
+  <file>Cells 0.15-0.35 µm in diameter and 1 to &gt; 100 µm in length with terminal pili.  Rarely branched or with sharp bends.  Gram negative.  Anaerobic.  Thermoacidophilic.  Utilizes peptides by sulfur respiration.  Optimum pH for growth is 5.  Grows best at 85-90˚C.  The mol % G+C of the DNA is 57.6.</file>
+</treatment>

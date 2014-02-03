@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.sp.JA-3-3Ab</taxon_name>
+  <strain>JA-3-3Ab</strain>
+  <reference>Genetic diversity and distribution of periphytic Synechococcus spp. in biofilms and picoplankton of Lake Constance (Becker, S., et al., 2004)</reference>
+  <DOI>NA</DOI>
+  <file>Becker, S. et al. Synechococcus.sp.JA-3-3Ab.pdf</file>
+  <description>Synechococcus spp. are coccoid unicellular picocyanobacteria that are ubiquitous and occur in marine and freshwater habitats. They contribute significantly to the overall primary production in ecosystems of all climatic zones. According to the chromophores associated with the phycobiliproteins, two major pigment types of Synechococcus  spp. are distinguished, red-pigmented phycoerythrin (PE)-rich strains, and blue-green phycocyanin (PC)-rich strains devoid of phycoerythrin. Light quality, through its effect on growth rate, is important in controlling the occurrence of picocyanobacteria with different accessory pigments</description>
+</treatment>

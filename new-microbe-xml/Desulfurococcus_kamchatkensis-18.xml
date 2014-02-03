@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Desulfurococcus_kamchatkensis</taxon_name>
+  <strain>1221nT (=DSM 18924T=VKM B-2413T)</strain>
+  <reference>Desulfurococcus kamchatkensis sp. nov., a novel hyperthermophilic protein-degrading archaeon isolated from a Kamchatka hot spring IJEM 59:1743-1747</reference>
+  <file>Desulfurococcus.kamchatkensis.pdf</file>
+  <description>Cells are non-motile cocci, 0.6–1 µm in diameter.  Obligate anaerobe.  Hyperthermophile, growing in the temperature range 65–87 ˚C with an optimum at 85 ˚C, and neutrophile, growing in the pH range 5.5–7.5 with an optimum at pH 6.5.  Obligate chemo-organoheterotroph, obtains energy by fermentation of biotrypticase, tryptone, peptone, beef extract, yeast extract, a-keratin (porcine hair), albumin, gelatin, sucrose, glucose, dextrin and dextran.  Methanol, ethanol, arabinose, fructose, lactose, galactose, maltose, cellobiose, succinate, fumarate, pyruvate, acetate, starch, xylan, microcrystalline cellulose, carboxymethylcellulose, pectin, Casamino acids, b-keratin (ground feathers), chitin, casein and casein hydrolysate are not utilized.  Main products of glucose fermentation are H2, CO2 and acetate.  Growth is inhibited by H2.  Elemental sulfur stimulates growth and is used as an electron acceptor.  Sulfate does not influence growth, whereas sulfite, thiosulfate and nitrate inhibit growth.  The G+C content of the DNA of the type strain is 44.4 mol%.  The type strain, 1221nT (=DSM 18924T=VKM B-2413T), was isolated from Izvilistyi spring (54˚ 50’ 06.5” N 160˚ 00’ 57.1” E, pH 5.9, 81 ˚C) of Central Field, Uzon Caldera, Kamchatka, Russia.</description>
+</treatment>

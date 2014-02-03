@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Chroococcidiopsis.thermalis.PCC7203</taxon_name>
+  <strain>PCC 7203</strain>
+  <reference>Evidence for polyphyletic origin of the members of the orders of Oscillatoirales and Pleurocapsales as determined by 16s rDNA analysis (Ishida, T., et al., 2001)</reference>
+  <DOI>NA</DOI>
+  <file>Ishida et al 2001 Chroococcidiopsis.thermalis.PCC7203.pdf</file>
+  <description>autotrophic bacteria that perform oxygenic photosynthesis</description>
+</treatment>

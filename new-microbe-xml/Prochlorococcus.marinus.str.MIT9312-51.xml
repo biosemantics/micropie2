@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Prochlorococcus.marinus.str.MIT9312</taxon_name>
+  <strain>MIT 9312</strain>
+  <reference>Carotenoid Biosynthesis in Cyanobacteria: Structural and Evolutionary Scenarios Based on Comparative Genomics (Liang, C., et al., 2006)</reference>
+  <DOI>NA</DOI>
+  <file>Liang, C. et al. Prochlorococcus.marinus.str.MIT9312.pdf</file>
+  <description>cyanobacteria</description>
+</treatment>

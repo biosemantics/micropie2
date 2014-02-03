@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanospirillurn_hungatii</taxon_name>
+  <strain>JF1= ATCC 27890</strain>
+  <reference>Methanospirillurn, a New Genus of Methanogenic Bacteria, and Characterization of Methanospirillurn hungatii sp.nov. IJSB 24:465-469</reference>
+  <file>Methanospirillum.hungatii.pdf</file>
+  <description>Curved rods measuring 7.4 µm long by 0.5 µm wide.  Cells most often occur in filaments from 15 to several hundred µm in length.  Gram negative.  Gram negative.  Other gram-negative properties include resistance to lysozyme and a striated cell surface.  Motile by means of polar, tufted flagella.  Endospores are absent.  Colony characteristics: Light yellow, circular, convex with lobate margins, uniquely striated when observed under low-power magnification.  DNA base composition 45 mol% G + C.  Temperature optimum 30 to 37˚C.  pH optimum 6.6 to 7.4.  Source: Sewage sludge. Fastidious anaerobe ; formate or H2-CO2 serves as a substrate for methane production; benzoate, ethanol, methanol, pyruvate, and acetate do not serve as substrates for methane production.  Nutrition: Best growth is obtained in a complex medium containing yeast extract and Trypticase.  Rumen fluid is not required.  Type strain: JF1.  This strain has been deposited in the American Type Culture Collection (ATCC), Rockville, Md.  under the number 27890.  The description of the type strain is the same as that given above for the genus and species.</description>
+</treatment>

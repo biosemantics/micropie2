@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus_BO_8807</taxon_name>
+  <strain>BO 887</strain>
+  <reference>Nitrate and Phosphate Affect Cultivability of Cyanobacteria from Environments with Low Nutrient Levels (Ernst, A., et al., 2005)</reference>
+  <DOI>10.1128/AEM.71.6.3379–3383.2005</DOI>
+  <file>Ernst, A. et al. Synechococcus BO 8807.pdf</file>
+  <description>At low levels of nutrient loading, small red-pigmented phycoerythrin (PE)-rich cyanobacteria of the Synechococcus type dominate the autotrophic picoplankton in freshwater ecosystems., Thus, in strain BO 8807 the tolerance towards phosphate seemed to be paired with a high sensitivity towards nitrate, non-bloom-forming</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_thermophilus</taxon_name>
+  <strain>DSM 2373T (=OCM 174T)</strain>
+  <reference>Methanogenium frittonii Harris et al. 1996 is a later synonym of Methanoculleus thermophilus (Rivard and Smith 1982) Maestrojua´n et al. 1990 IJSEM 55:1097-1099</reference>
+  <file>Methanoculleus.thermophilus.pdf</file>
+  <description>Secondary alcohols might be used as electron donor by single strains.  Most strains require acetate as a carbon source for growth, but single strains might be autotrophic.  Trypticase peptone or yeast extract stimulates growth in all strains.  The DNA G+C content is 55–59 mol%; the type strain has a G+C content of 59 mol%.  The type strain is DSM 2373T (=OCM 174T).</description>
+</treatment>

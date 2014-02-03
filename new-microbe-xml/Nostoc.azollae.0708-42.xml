@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Nostoc.azollae.0708</taxon_name>
+  <strain>0708</strain>
+  <reference>Genome fluctuations in cyanobacteria reflect evolutionary, developmental and adaptive traits (Larsson, J., et al., 2011)</reference>
+  <DOI>NA</DOI>
+  <file>Larsson, J. et al Nostoc.azollae.0708.pdf</file>
+  <description>heterocystous</description>
+</treatment>

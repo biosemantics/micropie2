@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanosarcina_horonobensis</taxon_name>
+  <strain>HB-1T (=DSM 21571T =JCM 15518T =NBRC 102577T)</strain>
+  <reference>Methanosarcina horonobensis sp. nov., a methanogenic archaeon isolated from a deep subsurface Miocene formation IJSEM 61:2503-2507</reference>
+  <file>Methanosarcina.horonobensis.pdf</file>
+  <description>Cells are strictly anaerobic, gram-reaction-negative, irregular cocci that are 1.4–2.9 µm in diameter and lysed by 0.01% (w/v) SDS.  Grows on methanol, dimethylamine, trimethylamine, dimethylsulfide and acetate but not on monomethylamine, H2/CO2, formate, 2-propanol, 2-butanol or cyclopentanol.  Cells grow at 20–42 ˚C (optimum 37 ˚C), at pH 6.0–7.75 (optimum pH 7.0–7.25), in 0–0.35 M NaCl (optimum 0.1 M) and with 0–0.7 M MgSO4 (optimum 0–0.2 M).  The type strain, HB-1T (=DSM 21571T =JCM 15518T =NBRC 102577T), was isolated in Horonobe, Japan, from deep subsurface groundwater from a siliceous mudstone formation. The DNA G+C content of the type strain is 41.4±0.4 mol%.</description>
+</treatment>

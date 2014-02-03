@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcus_aeolicus</taxon_name>
+  <strain>Nankai-3T (=OCM 812T=DSM 17508T)</strain>
+  <reference>Methanococcus aeolicus sp. nov., a mesophilic, methanogenic archaeon from shallow and deep marine sediments IJSEM 56:1525-1529</reference>
+  <file>Methanococcus.aeolicus.pdf</file>
+  <description>Coccoid cells, 1.5–2 µm in diameter and occurring singly, motile and sensitive to lysis by detergent.  Strictly anaerobic, growing autotrophically by reduction of CO2 to CH4, with H2 (or formate) as electron donor.  Acetate, methanol, methylamines, ethanol, 1-propanol and 2-propanol are not catabolized.  1-Butanol and 2-butanol inhibit methane production.  N2 or NH3 may serve as nitrogen source; H2S or S˚ may serve as sulfur source.  Selenium stimulates growth.  Grows fastest at mesophilic temperatures or slightly above (46 ˚C), near neutral pH and at salinities of 0.2–0.4 M Na+.  Maximum specific growth rate is approximately 0.5 per hour.  The G+C content of the DNA of strain PL-15/HP is 32 mol% (by chromatographic analysis of bases).  Habitat is marine sediments.  The type strain is strain Nankai-3T (=OCM 812T=DSM 17508T); strains PL-15/HP (=OCM 836P=DSM 17251P) and Nankai-2 (=OCM 811) are reference strains</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_uliginosum</taxon_name>
+  <strain>P2St DSM 2956</strain>
+  <reference>Isolation and characterization of Methanobacterium uliginosum sp. nov. from a marshy soil Can J Microbiol 30:1477-1481</reference>
+  <file>Methanobacterium.uliginosum.pdf</file>
+  <description>Gram-positive rods, about 1.9 - 3.9 µm in length and 0.2 - 0.6 µm in diameter.  Pseudomurein sacculi present containing both GlcN and GalN.  The G + C content of the DNA is 29.4 mol% (melting-point analysis) and 33.8 mol% (direct nucleotide analysis).  Optimal growth at 40°C.  Resistant against penicillin and ampicillin (100 µg/mL).  The rods can release small spherical cells.  Only H2-CO2 is used as sole energy and carbon source.  Methaylamine, methanol, acetate, and formate could not serve as sole energy source and were not required for growth.  Yeast extract, peptone, acetate, and formate not required.  The type strain is strain P2St DSM 2956 Gottingen, Federal Republic of Germany.</description>
+</treatment>

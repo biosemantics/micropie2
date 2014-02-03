@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.sp.PCC7942</taxon_name>
+  <strain>PCC 7942</strain>
+  <reference>SipA, a novel type of protein from Synechococcus sp.PCC7942, binds to the kinase domain of NblS (Espinosa, J., et al., 2005)</reference>
+  <DOI>10.1111/j.1574-6968.2005.00007.x</DOI>
+  <file>Espinosa, J. et al. Synechococcus.sp.PCC7942.pdf</file>
+  <description>Cyanobacteria respond to nutrient stress conditions by degrading their light harvesting complexes for photosynthesis,</description>
+</treatment>

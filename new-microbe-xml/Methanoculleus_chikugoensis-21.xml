@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_chikugoensis</taxon_name>
+  <strain>MG62T (=JCM 10825T=DSM 13459T)</strain>
+  <reference>Methanoculleus chikugoensis sp. nov., a novel methanogenic archaeon isolated from paddy field soil in Japan, and DNA–DNA hybridization among Methanoculleus species IJSEM 51:1663-1669</reference>
+  <file>Methanoculleus.chikugoensis.pdf</file>
+  <description>Cells are irregularly coccoid, 1.0-2.0 µm in diameter, with a proteinaceous cell wall, and flagellated.  Strictly anaerobic.  Cells grow on H2/CO2, formate, 2-propanol/CO2, 2-butanol/CO2 and cyclopentanol/ CO2 as substrates for methanogenesis.  Acetate, ethanol, methanol and methylamines are not utilized.  The optimum temperature and pH for growth are 25-30°C and 6.7-7.2.  Cells contain archaeol and caldarchaeol as core lipids, aminopentanetetrol and glycerol as phospholipid polar head groups and galactose as glycolipid sugar, but glucose is absent.  The type strain is MG62T (=JCM 10825T=DSM 13459T), which was isolated from a paddy field soil in Chikugo, Fukuoka, Japan.</description>
+</treatment>

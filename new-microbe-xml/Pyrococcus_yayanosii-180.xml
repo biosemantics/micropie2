@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Pyrococcus_yayanosii</taxon_name>
+  <strain>CH1</strain>
+  <reference>Pyrococcus CH1, an obligate piezophilic hyperthermophile: extending the upper pressure-temperature limits for life ISME J 3:873-876</reference>
+  <file>Pyrococcus.CH1.pdf</file>
+  <description>Highly motile irregular cocci with a diameter of about 1-1.5 µm.  Growth was observed only under strictly anaerobic conditions, within a temperature range of 80-108˚C and a pressure range of 20-120 MPa, with optima at 98˚C and 52 MPa.  No growth under atmospheric pressure at various temperatures ranging from 60 to 110˚C.  Thus CH1 strain should be considered as an obligate piezophile.  pH and salt concentrations allowing growth were in the range 6.0–9.5 (optimum 7.5–8) and 2.5–5.5% NaCl (optimum 3.5%) respectively.  Under these optimal conditions, generation time was about 50 min.  CH1 is a chemoorganotrophic organism growing on complex carbon sources such as peptone, tryptone, yeast extract or beef extract.  Poor growth was recorded on casamino acids, and no growth on carbohydrates, alcohols or single amino acids.  With appropriate carbon sources, growth was stimulated by elemental sulphur.  The G+C content of the genomic DNA of strain CH1 was 49.0 mol%.  Isolated from hydrothermal vent smoker sulphide samples, mid-Atlantic Ridge at 4000-4100 m depth.</description>
+</treatment>

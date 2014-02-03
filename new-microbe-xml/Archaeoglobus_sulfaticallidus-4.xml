@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Archaeoglobus_sulfaticallidus</taxon_name>
+  <strain>PM70-1T (=DSM 19444T=JCM 14716T),</strain>
+  <reference>Archaeoglobus sulfaticallidus sp. nov., a thermophilic and facultatively lithoautotrophic sulfate-reducer isolated from black rust exposed to hot ridge flank crustal fluids Archaeoglobus.sulfaticallidus.pdf</reference>
+  <file>IJSEM 60:2745-2752</file>
+  <description>Cells are non-motile irregular lobes or triangles (0.4– 2.2 µm in diameter), occurring singly or in pairs, but sometimes in short chains of up to five cells.  Shows blue–green fluorescence under UV light.  Strictly anaerobic; grows by reduction of sulfate, sulfite or thiosulfate in the presence of lactate, pyruvate or H2/CO2.  Growth is inhibited by elemental sulfur.  Yeast extract stimulates growth, but cannot be used as an electron donor.  Growth occurs at 60–80 ˚C (optimum 75 ˚C), at pH 6.3–7.6 (optimum pH 7) and in the presence of 0.5–3.5% (w/v) NaCl (optimum 2 %).  The type strain is PM70-1T (=DSM 19444T=JCM 14716T), isolated from black rust formed on the steel surface of a seafloor borehole observatory (ODP CORK 1026B, eastern flank of Juan de Fuca Ridge) emitting hot (~64 ˚C) crustal fluids (water depth 2658 m).  The DNA G+C content of the type strain is 42 mol% (Tm method).  Unable to grow by iron reduction or nitrate reduction or using formate, acetate, yeast extract, methanol, ethanol, or fumarate as electron donors.</description>
+</treatment>

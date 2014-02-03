@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocella_arvoryzae</taxon_name>
+  <strain>MRE50T (=NBRC 105507T =DSM 22066T)</strain>
+  <reference>Methanocella arvoryzae sp. nov., a hydrogenotrophic methanogen isolated from rice field soil IJSEM 60:2918-2923</reference>
+  <file>Methanocella.arvoryzae.pdf</file>
+  <description>Cells occur singly and most are rod-shaped.  Coccoid cells are also observed, especially in late-exponential phase cultures.  Methane is produced from H2/CO2 and formate.  Acetate is required for growth and yeast extract enhances growth.  Acetate, 1-propanol, 2-propanol, ethanol, 1-butanol, 2-butanol, cyclopentanol, methanol, methylamine, trimethylamine, and dimethylamine did not support growth or methane production.  Growth occurs at 37–55 ˚C (optimum 45 ˚C), at pH 6–7.8 (optimum pH 7.0) and in the presence of NaCl concentrations below 20 g per liter.  The DNA G+C content of the type strain is 56.7 mol% (HPLC).  The type strain, MRE50T (=NBRC 105507T =DSM 22066T), was isolated from a thermophilic methanogenic consortium, which was originally established from a rice field soil in Italy.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanothermobacter_defluvii</taxon_name>
+  <strain>DSM 7466</strain>
+  <reference>Bergey’s Manual vol 1. pg 232, Table A2.7, and generic description on pg. 230.</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Cells curved or crooked slender rods, moderately long to filamentous, 0.3-0.5 µm wide.  Gram positive.  Nonmotile.  Cells produce fimbriae.  Strictly anaerobic.  Fastest growth between 55˚C and 65˚C.  Energy metabolism by the reduction of CO2 to CH4, with H2 as the electron donor.  Formate is also used as a substrate for methanogenesis.  Acetate is not required as a growth factor.  Capable of growth between pH 7-8.  Sulfur is reduced to sulfide.  Ammonia is the sole nitrogen source, and sulfide may serve as the sulfur source.  Habitat: anaerobic sewage sludge digestors.  The mol% G+C is 62.2.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_gorgonarius</taxon_name>
+  <strain>W-12 (= DSM 10395T)</strain>
+  <reference>Thermococcus gorgonarius sp. nov. and Thermococcus pacificus sp. nov. : heterotrophic extremely thermophilic archaea from New Zealand submarine hot vents IJSB 48:23-29</reference>
+  <file>Thermococcus.gorgonarius.pacificus.pdf</file>
+  <description>Cells are irregular cocci, 0.3-1.2 µm in diameter, motile with polar flagella.  The cell envelope consists of one layer of subunits.  The major protein of the cell wall has an Mr of 75000.  Protrusions of different kinds: prostheca-like, chains of bubbles, fimbriae network.  Obligate anaerobe. Grows at temperatures 68-95 ˚C, optimally at 80-88 ˚C, and at pH 5.8-8.5, optimally at pH 6.5-7-2.  Grows on peptone and yeast extract; produces weak growth on pyruvate.  Does not utilize glucose, maltose, starch, Casamino acids, volatile fatty acids, lactate, acetate, propionate, methanol, ethanol, or molecular hydrogen.  In closed vessels growth is dependent on the presence of elemental sulfur which is reduced to H2S.  Growth products on peptone are CO2, H2S, acetate, propionate, isobutyrate and isovalerate.  G + C content of DNA is 50.6 mol%.  Source of isolate: sand from the shore of Whale Island, New Zealand.  The type strain is strain W-12 (= DSM 10395T). Requires NaCl for growth.  Grows between 1.0-5.0% NaCl, optimal 2-3.5%.  Unable to grow autotrophically on H2/CO2. Elemental sulfur could not be substituted by thiosulfate, sulfite, sulfate, cystine, fumarate or nitrate.</description>
+</treatment>

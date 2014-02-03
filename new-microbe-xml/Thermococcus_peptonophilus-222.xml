@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_peptonophilus</taxon_name>
+  <strain>OG-1, JCM 9653</strain>
+  <reference>Thermococcus peptonophilus sp. nov., a fast-growing, extremely thermophilic archaebacterium isolated from deep-sea hydrothermal vents Arch Microbiol 164:159-164</reference>
+  <file>Thermococcus.peptonophilus.pdf</file>
+  <description>Cells are cocci, 0.7-2 µm in diameter, occurring mostly singly or in pairs.  Multiply by constriction.  Motile with a polar tuft of flagella.  The cell envelope consists of two layers, the external one is electron-dense.  Obligately anaerobic.  Temperature range of growth from 60 to 100˚C optimum 85˚C.  pH range of growth from pH 3 to 8, with the optimum around pH 6.  NaCl concentrations allowing growth range from 1 to 5%; optimum 3%.  Sulfur is not essential for growth, although elemental sulfur greatly stimulates growth.  Heterotrophic growth on peptone, tryptone, yeast extract, beef extract and/or non-hydrolyzed casein.  No growth on free amino acids, sugars, organic acids, or in the absence of organic substrates.  Growth is inhibited by rifampicin.  G+C content is 52 mol%.  Inhabits marine hydrothermal vents in the western Pacific Ocean, specifically found in Izu-Bonin and South Mariana Trough areas.  Isolated from hydrothermal fluids.  Type strain: Thermococcus peptonophilus OG-1, JCM 9653, Wako-shi, Japan.  Not able to use or to grow on sucrose, glucose, maltose, acetate, propionate, pyruvate, succinate, and a mixture of amino acids.  Unable to grow autotrophically in the absence of peptides.  The presence of NH4Cl had a stimulating effect on growth.</description>
+</treatment>

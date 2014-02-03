@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanosarcina_thermophila</taxon_name>
+  <strain>TM-1 (= DSM 1825)</strain>
+  <reference>Methanosarcina thermophila sp. nov. a Thermophilic, Acetotrophic, Methane-Producing Bacterium IJSB 35:522-523</reference>
+  <file>Methanosarcina.thermophila.pdf</file>
+  <description>Cells are gram positive and spherical and appear as irregular aggregates which are often more than 100 µm across and which appear refractile when viewed by phase-contrast microscopy.  Colonies in agar are 1 to 3 mm in diameter and yellow and have a rough granular consistency.  Growth occurs on acetate, methanol, or methylated amines and may occur slowly on H2-CO2.  The optimum growth temperature is near 50˚C, and the optimum pH is between 6.0 and 7.0.  The only described strain requires para-aminobenzoic acid for growth.  The DNA base composition of this strain is 42 mol% guanine plus cytosine.  Source: 55°C anaerobic sludge digestor.  Type strain: strain TM-1 (= DSM 1825).</description>
+</treatment>

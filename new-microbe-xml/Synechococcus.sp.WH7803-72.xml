@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.sp.WH7803</taxon_name>
+  <strain>WH7803</strain>
+  <reference>The marine cyanobacterium Synechococcus sp. WH7805 requires urease (urea amidohydrolase, EC 3.5.1.5) to utilize urea as a nitrogen source: molecular-genetic and biochemical analysis of the enzyme (Collier, J., et al., 1999)</reference>
+  <DOI>NA</DOI>
+  <file>Collier, J. et al. Synechococcus.sp.WH7803.pdf</file>
+  <description>Synechococcus sp. strain WH7803, which could use either ammonium or nitrate but not urea.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Natronorubrurn_tibetense</taxon_name>
+  <strain>GA33T  = AS 1.2123</strain>
+  <reference>Characterization of two novel haloalkaliphilic archaea Natronorubrurn bangense gen. nov., sp. nov. and Natronorubrurn tibetense gen. nov., sp. nov. IJSB 49:261-266</reference>
+  <file>Natronorubrurn.bangense.tibetense.pdf</file>
+  <description>Cells are pleomorphic, flat-shaped and uniformly stain Gram-negative.  Non-motile.  Growth occurs in media containing 12-30% NaCl with an optimum at 20% NaCl.  Growth is between pH 8.5 and pH 11.0, with an optimum at pH 9.0.  Amino acids are utilized.  The growth is stimulated by glucose, fructose, maltose, sucrose and lactose.  Indole is formed from tryptophan.  Starch and casein are not hydrolysed.  H2S is not produced from thiosulfate.  Gelatin is liquefied.  Tween 40 and 60 are hydrolysed but Tween 80 is not.  The polar lipids are C20-C25 derivatives of PG, PGP and two uncharacterized minor phospholipids.  The G + C content of the DNA is 60.1 mol%.  Type strain is GA33T, deposited as AS 1.2123. Does not reduce nitrate. Catalase- and oxidase-positive.  Growth stimulated by acetate, glucose, fructose, and sucrose.  Growth not stimulated by mannitol. Sensitive to erythromycin.</description>
+</treatment>

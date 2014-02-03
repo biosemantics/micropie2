@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Acidiplasma_cupricumulans</taxon_name>
+  <strain>DSM 16651 = JCM 13668</strain>
+  <reference>Ferroplasma cupricumulans sp. nov., a novel moderately thermophilic, acidophilic archaeon isolated from an industrial-scale chalcocite bioleach heap Extremophiles 10:525-530</reference>
+  <file>Ferroplasma.cupricumulans.pdf</file>
+  <description>Isolated from a commercial chalcocite heap leaching operation in Myanmar.  Moderately thermophilic archaeon, which grows optimally at 55 ˚C and which has a maximum temperature of 63 ˚C for growth.  Morphology was described for this genus.  It has an optimum pH of 1.0– 1.2.  The strain grows chemomixotrophically, oxidising ferrous iron in the presence of yeast extract.  A facultative aerobe, the stain reduces ferric iron under anaerobic conditions.  No growth was obtained from aerobic cultures containing elemental sulfur and tetrathionate and thiosulfate.  Did not oxidize glucose, cellobiose, meat extract, tryptone, acetate, elemental sulfur.  The mol% G + C content of genomic DNA is 34.0%.  The strain has been deposited within the German Collection of Microorganisms and Cell Cultures (DSMZ) (DSM 16651) and the Japan Collection of Microorganisms (JCM) (JCM 13668).</description>
+</treatment>

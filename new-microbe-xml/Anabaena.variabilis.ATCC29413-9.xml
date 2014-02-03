@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Anabaena.variabilis.ATCC29413</taxon_name>
+  <strain>ATCC29413</strain>
+  <reference>Directe mutagenesis of an iron-sulfur protein of the photosystem I complex in the filamentous cyanobacterium Anabaena variabilis ATCC 29413 (Mannan, R., et al., 1991)</reference>
+  <DOI>NA</DOI>
+  <file>Mannan et al 1991 Anabaena.variabilis.ATCC29413.pdf</file>
+  <description>a filamentous nitrogen-fixing cyanobacterium, can grow in the dark</description>
+</treatment>

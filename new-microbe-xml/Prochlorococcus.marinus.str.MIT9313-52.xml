@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Prochlorococcus.marinus.str.MIT9313</taxon_name>
+  <strain>MIT 9313</strain>
+  <reference>ClpP: A distinctive family of cylindrical energy-dependent serine proteases (Yu, A., Houry, W., 2007)</reference>
+  <DOI>NA</DOI>
+  <file>Yu, A., Houry, W., Prochlorococcus.marinus.str.MIT9313.pdf</file>
+  <description>cyanobacteria</description>
+</treatment>

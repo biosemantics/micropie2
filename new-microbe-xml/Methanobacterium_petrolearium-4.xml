@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_petrolearium</taxon_name>
+  <strain>Mic5c12T (=NBRC 105198T =DSM 22353T)</strain>
+  <reference>Methanobacterium petrolearium sp. nov. and Methanobacterium ferruginis sp. nov., mesophilic methanogens isolated from salty environments IJSEM 61:138-143</reference>
+  <file>Methanobacterium.petrolearium.ferruginis.pdf</file>
+  <description>Cells are non-motile, Gram-staining-variable rods, 0.3 µm wide and 2.4–4.7 µm long, and are not lysed by 0.01% SDS or hypotonic solution (distilled water).  White colonies are formed on solid medium.  Strictly anaerobic.   H2 is utilized for growth and methane production, but formate, acetate, methanol, methylamine, 2-propanol, isobutanol, cyclopentanol and ethanol are not.  Acetate and yeast extract are essential for growth.  Grows at 20–40 ˚C (optimum 35 ˚C), at pH 5.5–9.0 (optimum pH 6.5) and with 0–1.2 M NaCl (optimum 0–0.68 M NaCl).  The type strain, Mic5c12T (=NBRC 105198T=DSM 22353T), was isolated from sludge deposited in a crude oil storage tank in Japan.  The DNA G+C content of the type strain is 38.3 mol%.</description>
+</treatment>

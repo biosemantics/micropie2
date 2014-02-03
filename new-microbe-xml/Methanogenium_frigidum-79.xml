@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanogenium_frigidum</taxon_name>
+  <strain>Ace-2 (= SMCC 459W)</strain>
+  <reference>Methanogenium frigidum sp. nov., a Psychrophilic, H2-Using Methanogen from Ace Lake, Antarctica IJSB 47:1068-1072</reference>
+  <file>Methanogenium.frigidum.pdf</file>
+  <description>Cells are irregular nonmotile coccoids (diameter 1.2 to 2.5 µm) and occur singly.  Pili and flagella are absent.  Cells stain gram negative.  Lysed by 0.1 g of sodium dodecyl sulfate per liter.  Growth is slow, and the fastest growth rate is 0.24 per day (doubling time 2.9 days).  Growth is fastest on H2 plus CO2; slower growth occurs on formate.  Acetate, methanol, and trimethylamine are not catabolized, but acetate is required as a carbon source.  Grows in mineral medium supplemented with acetate; peptones and yeast extract are stimulatory.  Sulfide can serve as a sole sulfur source, and ammonia can serve as a sole nitrogen source.  Obligate psychrophile.  The Topt is 15˚C, and the temperature range for growth is 17°C to the freezing point of the culture medium; no growth occurs at temperatures above 19°C.  Slightly halophilic (good growth occurs in the presence of 350 to 600 mM Na+, but no growth occurs in the presence of 100 or 850 mM Na+).  Fastest growth occurs at pH values between 7.5 and 7.9 (pH range for growth 6.3 to 8.0; no growth occurs at pH 6.0 or 8.5).  The habitat is perennially cold, sulfate-depleted saline waters.  The type strain is strain Ace-2 (= SMCC 459W), which was isolated from Ace Lake in Antarctica.</description>
+</treatment>

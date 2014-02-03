@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobrevibacter_thaueri</taxon_name>
+  <strain>CWT (=DSM 11995T= OCM 817T)</strain>
+  <reference>Description of Methanobrevibacter gottschalkii sp. nov., Methanobrevibacter thaueri sp. nov., Methanobrevibacter woesei sp. nov. and Methanobrevibacter wolinii sp. nov. IJSEM 52:819-822</reference>
+  <file>Methanobrevibacter.gottschalkii.thaueri.wosei.wolinii.pdf</file>
+  <description>Coccobacillus, with slightly tapered ends, about 0.5 µm in width and 0.6-1.2 µm in length, occurring in pairs and short chains.  Some chains may have elongated cells.  Gram-positive reaction.  Cell walls are composed of pseudomurein.  The peptide moiety contains glutamate, alanine and lysine.  Galactosamine and glucosamine may be present at very low concentrations in cell-wall hydrolysates.  Cells are resistant to lysis by SDS.  Optimum temperature 37 °C.  Optimum pH 7.  Strict anaerobe.  Cells grown in rumen fluid medium are catalase-negative.  Grows and produces methane from H2 and CO2.  Does not grow or produce methane from formate, acetate, methanol, trimethylamine or methanol with H2.  Requires either acetate and/or one or more components of trypticase or yeast extract for growth.  Does not require coenzyme Mor branched-chain fatty acids for growth.  Does not grow in medium with salt concentrations similar to sea water.  Growth is inhibited by bile salts.  The DNA G+C content is 38 mol% (Tm).  Strain CWT was isolated from enrichments of cow faeces.  The type strain is strain CWT (=DSM 11995T= OCM 817T).</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Acidiplasma_cupricumulans</taxon_name>
+  <strain>BH2T (=DSM 16551T =JCM 13668T)</strain>
+  <reference>Acidiplasma aeolicum gen. nov., sp. nov., a euryarchaeon of the family Ferroplasmaceae isolated from a hydrothermal pool, and transfer of Ferroplasma cupricumulans to Acidiplasma cupricumulans comb. nov. IJSEM 59:2815-2823</reference>
+  <file>Acidiplasma.aeolicum.cupricumulans.pdf</file>
+  <description>Morphology is as described for the genus; in addition, cells are often rod-like, with a tendency to form branched morphologies.  The type strain is strain BH2T (=DSM 16551T =JCM 13668T).</description>
+</treatment>

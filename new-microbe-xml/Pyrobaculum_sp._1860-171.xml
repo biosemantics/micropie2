@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Pyrobaculum_sp._1860</taxon_name>
+  <strain>1860</strain>
+  <reference>Complete Genome Sequence of Strain 1860, a Crenarchaeon of the Genus Pyrobaculum Able To Grow with Various Electron Acceptors J Bact 194:727-728</reference>
+  <file>Pyrobaculum.sp.1860.pdf</file>
+  <description>Strain 1860 was isolated from Lake Fumarolic (84°C, pH 6.8) in the Uzon Caldera in Kamchatka, Russia.  Strain 1860 is an obligate anaerobe able to grow on different organic substrates.  Nitrate, arsenate, thiosulfate, soluble ferric iron citrate, and insoluble ferric iron oxide may be used as respiratory electron acceptors.</description>
+</treatment>

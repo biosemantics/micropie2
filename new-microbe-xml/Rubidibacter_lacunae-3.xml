@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Rubidibacter_lacunae</taxon_name>
+  <strain>KORDI-51-2T</strain>
+  <reference>Rubidibacter lacunae gen. nov., sp. nov., a unicellular, phycoerythrin-containing cyanobacterium isolated from seawater of Chuuk lagoon, Micronesia (Choi, D., et al., 2008) IJSEM 58: 2807-2811</reference>
+  <DOI>10.1099/ijs.0.65798-0</DOI>
+  <file>Choi, D. et al. Rubidibacter lacunae.pdf</file>
+  <description>Unicellular marine cyanobacterium isolated from surface seawater in Chuuk Lagoon, Micronesia. Maroon colored rod-shaped cells 2.5-4.7µm in length and 0.9-1.5µm in width. Requires seawater for growth. Growth occurs between 25-35°C with optimum growth at 30°C, and in concentrations of sea salts between 2-7% (optimum at 5%). Utilizes ammonia, nitrate, and urea as sole nitrogen sources. G+C content of 60.5 mol %. 16S rRNA sequence relates this organism to the members of the 'Halothece' cluster, but lies under a different genus due to similarity in sequence of only 90.7-92.1%. Contains phycoerythrin, and dominant carotenoid pigments are zeaxanthin, ß-carotene and echinenone.</description>
+</treatment>

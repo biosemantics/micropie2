@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Lyngbya.sp.PCC8106</taxon_name>
+  <strain>PCC 8106</strain>
+  <reference>Genomic insights into the physiology and ecology of the marine filamentous cyanobacterium Lyngbya majuscule (Jones, A., et al., 2011)</reference>
+  <DOI>NA</DOI>
+  <file>Jones, A. et al. Lyngbya.sp.PCC8106.pdf</file>
+  <description>marine filamentous cyanobacteria</description>
+</treatment>

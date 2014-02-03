@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_palmolei</taxon_name>
+  <strain>INSLUZT (= DSM 4273T)</strain>
+  <reference>Methanoculleus palmolei sp. nov., an irregularly coccoid methanogen from an anaerobic digester treating wastewater of a palm oil plant in North-Sumatra, Indonesia IJSB 48:1111-1117</reference>
+  <file>Methanoculleus.palmolei.pdf</file>
+  <description>Cells are coccoid methanogens, 1.25-2 µm in diameter.  Acetate is required as growth factor and growth is stimulated by potassium and tungstate ions.  Cells are mesophilic and grow optimally at 40 ˚C (range 22- 50 ˚C) and at neutral pH values around pH 6.9-7.5 (pH range 6.5-8-0).  Cells grow on H2/CO2, formate, 2- propanol/CO2, 2-butanol/CO2 and cyclopentanol/ CO2.  No growth and no methane production is observed on acetate, methanol, ethanol, 1 -propanol, 2- pentanol/CO2, 2,3-butanediol, dimethylamine and lactate.  A secondary alcohol dehydrogenase activity, dependent on F420, oxidizes 2-propanol, 2-butanol, 2- pentanol and cyclopentanol, but not ethanol, 1- propanol, cyclohexanol, 2,3-butanediol or acetoin.  The DNA G + C content is 59 mol %(Tm method) and 59.5 mol% (HPLC method).  Strain INSLUZT (= DSM 4273T) is the type strain.</description>
+</treatment>

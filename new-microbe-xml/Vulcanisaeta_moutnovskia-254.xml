@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Vulcanisaeta_moutnovskia</taxon_name>
+  <strain>768-28</strain>
+  <reference>Cultivated anaerobic acidophilic/acidotolerant thermophiles from terrestrial and deep-sea hydrothermal habitat  Extremophiles 9:437-448</reference>
+  <file>Vulcanisaeta.mout.pdf</file>
+  <description>Isolated from water and mud (brown clay) from the terrestrial hot spring surrounded with ferric oxide deposits, Moutnovsky area.  Cells were long, straight rods, 5.0 x 0.5 µm in size.  Grew optimally at 80-85˚C and pH 5.0-5.5.  Growth was supported by different fermentable substrates, peptone and yeast extract supporting the best growth.  Thiosulfate and elemental sulfur stimulated the growth and were reduced to hydrogen sulfide.</description>
+</treatment>

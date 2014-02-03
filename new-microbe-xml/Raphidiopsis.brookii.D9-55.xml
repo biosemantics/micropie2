@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Raphidiopsis.brookii.D9</taxon_name>
+  <strain>D9</strain>
+  <reference>The Smallest Known Genomes of Multicellular and Toxic Cyanobacteria: Comparison, Minimal Gene Sets for Linked Traits and the Evolutionary Implications (Stucken, K., et al., 2010)</reference>
+  <DOI>NA</DOI>
+  <file>Stucken, K. et al. Raphidiopsis.brookii.D9.pdf</file>
+  <description>synthesizes neurotoxins associated with paralytic shellfish poisoning (PSP), filamentous cyanobacteria, non-heterocystous</description>
+</treatment>

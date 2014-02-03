@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_onnurineus</taxon_name>
+  <strain>NA1T = KCTC 10859 = JCM 13517</strain>
+  <reference>Thermococcus onnurineus sp. nov., a hyperthermophilic archaeon isolated from a deep-sea hydrothermal vent area at the PACMANUS field J Microbiol Biotechnol 16:1826-1831</reference>
+  <file>Thermococcus.onnurineus.pdf</file>
+  <description>Cells of this strain were motile by means of polar flagella, coccoid-shaped with a diameter of 0.5-1.0 µm, and occurred as single cells.  Optimal temperature, pH, and NaCl concentration for growth were 80˚C, 8.5, and 3.5% respectively.  Anaerobic.  Obligate heterotroph that utilizes yeast extract, beef extract, tryptone, peptone, casein, and starch as carbon and energy sources.  Elemental sulfur was required for growth and was reduced to hydrogen sulfide.  The G+C content of the genomic DNA was 52.0 mol%.  Strain NA1T represents a novel species for which the name Thermococcus onnurineus sp. nov. is proposed.  The type strain is NA1T = KCTC 10859 = JCM 13517.  Isolated from sediment samples from the PACMANUS hydrothermal field at a depth of 1650 m.  No growth was detected at 60 or 95˚C.  Growth was supported within a pH range of 5.0 to 9.0.  The NaCl concentrations supporting growth were between 1.0 and 5.0%.</description>
+</treatment>

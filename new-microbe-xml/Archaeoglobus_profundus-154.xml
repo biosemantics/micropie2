@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Archaeoglobus_profundus</taxon_name>
+  <strain>DSM 3651</strain>
+  <reference>Bergey’s Manual pg 351</reference>
+  <file>Highly irregular cocci, sometimes triangular.  Occur singly and in pairs.  Gram negative.  Motility and flagella not observed.  Blue-green fluorescence at 420 nm.  Temperature for growth 65-90˚C (optimum 82˚C); pH 4.5-7.5; 0.9-3.6% NaCl.  Strictly anaerobic.  Mixotrophic.  H2 obligately required.  Acetate, lactate, pyruvate, yeast extract, meat extract, peptone, and acetate-containing crude oil may serve as organic carbon sources.  Sulfate. Thiosulfate, and sulfite serve as electron acceptors for growth. S˚ not used as electron acceptor.  S˚ is inhibitory to growth.  Cell envelope consists of an S-layer.  Resistant to rifampicin and streptolydigin. Isolated from the deep sea hydrothermal system off Guaymas, Mexico. Nitrate and nitrite not used as electron acceptors.  H2S and methane formed during growth. The mol% G+C of the DNA is 41 (Tm).</file>
+</treatment>

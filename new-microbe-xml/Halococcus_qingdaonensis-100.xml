@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Halococcus_qingdaonensis</taxon_name>
+  <strain>CM5T (=CGMCC 1.4243T=JCM 13587T)</strain>
+  <reference>Halococcus qingdaonensis sp. nov., a halophilic archaeon isolated from a crude sea-salt sample IJSEM 57:600-604</reference>
+  <file>Halococcus.qingdaonensis.pdf</file>
+  <description>Aerobic, Gram-negative, non-motile cocci, 0.6–1.5 µm in diameter, often occurring as doublets or tetrads.  Colonies are red in colour, wet and smooth-surfaced with clear edges, reaching 0.5 mm in size after 7 days of cultivation at 37 ˚C.  The optimum temperature for growth is 35–40 ˚C; the pH range for growth is 4.0–9.0, with optimum growth at pH 6.0.  It requires at least 10% NaCl for growth and 18% is the optimum.  No lysis is observed in distilled water.  The optimal Mg2+ concentration is 40 mM.  Catalase reaction is positive.  It has no oxidase, arginine dihydrolase or urease activity.  Gelatin is not liquefied.  The reaction for Tween 80 is negative.  Glucose can be used as the sole carbon source for growth.  The type strain is susceptible to rifampicin and bacitracin, moderately susceptible to neomycin and chloramphenicol and resistant to erythromycin, ampicillin, kanamycin, streptomycin, tetracycline, hygromycin and penicillin.  Main polar lipids are phosphatidylglycerol, phosphatidylglycerol methylphosphate, sulfated diglycosyl diether.  No phosphatidylglycerol sulfate is present.  The G+C content of the type strain is 61.2 mol%.  The type strain, CM5T (=CGMCC 1.4243T=JCM 13587T), was isolated from a crude sea-salt sample collected near Qingdao in eastern China.  Does not reduce nitrate.  Does not utilize lactose as a carbon source.</description>
+</treatment>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Nostoc.sp.PCC7120</taxon_name>
+  <strain>PCC 7120</strain>
+  <reference>In vitro characterization of a carotenoid cleavage dioxygenase from Nostoc sp. PCC 7120 reveals a novel cleavage pattern, cytosolic localization and induction by highlight (Scherzinger, D., et al., 2008)</reference>
+  <DOI>10.1111/j.1365-2958.2008.06282.x</DOI>
+  <file>Scherzinger, D. et al. Nostoc.sp.PCC7120.pdf</file>
+  <description>The filamentous freshwater cyanobacterium Nostoc sp. PCC 7120 contributes to cyanobacterial blooms that represent a serious problem for the management of drinking water</description>
+</treatment>

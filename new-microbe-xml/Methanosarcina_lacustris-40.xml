@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanosarcina_lacustris</taxon_name>
+  <strain>ZS (= DSM 13486T, VKM B-2268)</strain>
+  <reference>Methanosarcina lacustris sp. nov., a New Psychrotolerant Methanogenic Archaeon from Anoxic Lake Sediments Syst Appl Microbiol 24:362-367</reference>
+  <file>Methanosarcina.lacustris.pdf</file>
+  <description>Cells are Gram-positive, irregular cocci 1.5–3.5 µm in diameter.  Non-motile.  Form massive aggregates.  Grows on liquid medium as irregular aggregates.  Utilizes methanol, H2/CO2, MMA, DMA, TMA with methane production.  Does not use formate, acetate, pyruvate or DMS. Psychrotolerant, optimal growth temperature is 25 °C.  Maximum temperature for growth is 35 °C, minimum 1 °C.  pH range for growth is 4.5–8.5, optimum 7.0.  Strictly anaerobic.  The G+C content of DNA is 43.4 mol %.  Isolated from anoxic lake sediments (Switzerland).  Type strain is ZS (= DSM 13486T, VKM B-2268).</description>
+</treatment>

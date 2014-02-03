@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Archaeoglobus_infectus</taxon_name>
+  <strain>Arc51T (=NBRC 100649T=DSM 18877T)</strain>
+  <reference>Archaeoglobus infectus sp. nov., a novel thermophilic, chemolithoheterotrophic archaeon isolated from a deep-sea rock collected at Suiyo Seamount, Izu-Bonin Arc, western Pacific Ocean IJSEM 58:810-816</reference>
+  <file>Archaeoglobus.infectus.pdf</file>
+  <description>Cells are irregular cocci (0.5–1.0 µm in diameter) with single flagella and show blue–green fluorescence at 436 nm.  Obligately anaerobic.  Grows chemolithoheterotrophically by the oxidation of molecular hydrogen, using thiosulfate and sulfite as electron acceptors.  Sulfate, elemental sulfur, nitrate, nitrite and Fe(III) are not used as electron acceptors.  Acetate, glucose, butyrate, citrate, formate, fumarate, glutamate, lactate, malate, propionate, pyruvate, succinate, arginine, asparagines, cysteine, histidine, leucine, methionine, ethanol, 2-propanol, methanol, peptone, yeast extract, and casamino acids could not be used as electron donors as a substitute for hydrogen.  Acetate is required as a carbon source for growth.  Coenzyme M is also necessary for growth.  Elemental sulfur inhibits growth.  Grows at 60–75 ˚C.  Optimum growth occurs at 70 ˚C, pH 6.5 and 3% (w/v) NaCl.  The genomic DNA G+C content of the type strain is 46.0 mol% (as determined by HPLC).  The type strain, Arc51T (=NBRC 100649T=DSM 18877T), was isolated from a rock sample collected in a hydrothermal vent in Suiyo Seamount, Izu-Bonin Arc, western Pacific Ocean.</description>
+</treatment>

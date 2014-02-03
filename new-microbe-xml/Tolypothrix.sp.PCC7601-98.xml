@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Tolypothrix.sp.PCC7601</taxon_name>
+  <strain>PCC 7601</strain>
+  <reference>The NblAI protein from the filamentous cyanobacterium Tolypothrix PCC 7601: regulation of its expression and interactions with phycobilisome components (Luque, I., et al., 2003)</reference>
+  <DOI>10.1046/j.1365-2958.2003.03768.x</DOI>
+  <file>Luque, I. et al. Tolypothrix.sp.PCC7601.pdf</file>
+  <description>filamentous strain, cyanobacteria like Tolypothrix PCC 7601 can adapt the pigment composition of their phycobilisome to the prevalent wavelengths of light, a process known as complementary chromatic adaptation (CCA) which allows these organisms to efficiently utilize the available light energy for achieving maximal growth rates, It implies de novo syntheses of molecules that will form phycobilisomes adapted to the new light conditions. This regulation has been proposed not to involve any active degradation process, Active phycobilisome degradation is known to occur under environmental conditions that imbalance photosynthesis and might lead to the production of toxic oxygenspecies, and thus to cell damage. Tolypothrixsp. PCC 7601 is a filamentous cyanobacterium unable to fix nitrogen, but a spontaneous revertant (PCC 7601/1) has been isolated that has regained the ability to differentiate fully functional heterocysts,</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobrevibacter_curvatus</taxon_name>
+  <strain>RFM-2 = DSM 11111</strain>
+  <reference>Physiological Ecology of Methanobrevibacter cuticularis sp. nov. and Methanobrevibacter curvatus sp. nov., Isolated from the Hindgut of the Termite Reticulitermes flavipes AEM 62:3620-3631</reference>
+  <file>Methanobrevibacter.cuticularis.curvatus.pdf</file>
+  <description>Curved rods with slightly tapered ends, 0.34 by 1.6 µm in size, occurring singly or in pairs.  Nonmotile.  Gram positive-like by staining and cell wall ultrastructure.  Cells have polar fibers of 3 by 300 µm.  No endospores formed.  Strict anaerobe.  Catalase positive, oxidase negative.  Metabolizes H2 plus CO2, yielding CH4 as the sole product.  Methanol, methanol plus H2, CO, acetate, ethanol, isopropanol, trimethylamine, dimethylamine, theobromine, theophylline, trimethoxybenzoate, lactate, pyruvate, glucose, and formate are not metabolized.  pH optimum 7.1 to 7.2 (range 6.5 to 8.5); temperature optimum 30˚C (range,10 to 30˚C).  Complex nutritional supplements, e.g., 40% (vol/vol) clarified rumen fluid and nutrient broth (Difco), required for growth.  Source: Hindgut contents of the termite Reticulitermes flavipes (Kollar) (Rhinotermitidae).  Type strain: RFM-2. Deposited in the Deutsche Sammlung von Mikroorganismen, Gottingen, Germany (DSM 11111).</description>
+</treatment>

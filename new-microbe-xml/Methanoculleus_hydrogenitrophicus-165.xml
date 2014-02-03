@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_hydrogenitrophicus</taxon_name>
+  <strain>HCT (=CGMCC 1.5146T =JCM 16311T)</strain>
+  <reference>Methanoculleus hydrogenitrophicus sp. nov., a methanogenic archaeon isolated from wetland soil IJSEM 60:2165-2169</reference>
+  <file>Methanoculleus.hydrogenitrophicus.pdf</file>
+  <description>Cells are non-motile, Gram-negative-staining, irregular coccoids.  Cells resist lysis by 1% (w/v) SDS.  Produces methane only from H2 and CO2.  Formate not used for growth or methane formation.  Acetate, methanol, ethanol, trimethylamine, isobutanol and 2-propanol did not support growth and methane formation.  Acetate is not required for growth; yeast extract stimulates growth.  Growth occurs at 18–45 ˚C with optimum growth around 37 ˚C.  The pH range is 5.0–8.5, with optimum growth around pH 6.6.  The DNA G+C content of the type strain is 60.2 mol%.  The type strain, HCT (=CGMCC 1.5146T =JCM 16311T), was isolated from the Zoige wetland, China. Formate, acetate, methanol, ethanol, trimethylamine, isobutanol and 2-propanol (each at 20 mM) did not support growth.</description>
+</treatment>

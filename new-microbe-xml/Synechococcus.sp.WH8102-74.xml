@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.sp.WH8102</taxon_name>
+  <strain>WH 8102</strain>
+  <reference>Computational inference and experimental validation of the nitrogen assimilation regulatory network in cyanobacterium Synechococcus sp. WH 8102 (Zhengchang, S., et al., 2005)</reference>
+  <DOI>10.1093/nar/gkj496</DOI>
+  <file>Zhengchang, S. et al. Synechococcus.sp.WH8102.pdf</file>
+  <description>cyanobacterium, major oxygenic phototrophic strains living in a wide range of oceanographic areas, and they together contribute to a great portion of global CO2 fixation</description>
+</treatment>

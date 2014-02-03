@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Fervidicoccus_fontis</taxon_name>
+  <strain>Kam940T (=DSM 19380T =VKM B- 2539T)</strain>
+  <reference>Fervidicoccus fontis gen. nov., sp. nov., an anaerobic, thermophilic crenarchaeote from terrestrial hot springs, and proposal of Fervidicoccaceae fam. nov. and Fervidicoccales ord. nov. IJSEM 60:2082-2088</reference>
+  <file>Fervidicoccus.fontis.pdf</file>
+  <description>Cells are regular cocci.  Cell envelope consists of an S-layer covering the cytoplasmic membrane.  Non-motile.  Temperatures of 65–70 ˚C and slightly acidic pH (5.5–6.0) are preferred for growth.  Obligately anaerobic.  Organotrophic.  Additional electron acceptors are not necessary.  Cells are 1–3 µm in diameter.  Grows at 55–85 ˚C and pH 4.5–7.0.  Growth occurs on beef extract, gelatin, peptone, pyruvate, rhamnose, sucrose and yeast extract with yields above 107 cells per mL.  Sulfate, sulfite, thiosulfate and nitrate do not stimulate growth.  H2 (100 %) in the gas phase inhibits growth completely.  The core lipid fraction consists of GDGTs with zero to four cyclopentyl rings.  The DNA G+C content of the type strain is 37 mol%.  The type strain is Kam940T (=DSM 19380T =VKM B- 2539T), isolated from a hot spring of the east thermal field of the Uzon caldera, Kamchatka. No growth was detected on acetate, agarose, casein hydrolysate, chitin, cellulose (CM-cellulose and filter paper), dextran, glucose, fructose, fumarate, a-keratin, lactate, maltose, mannitol, methanol, pectin, xylan or H2.  Yeast extract required for growth.</description>
+</treatment>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.sp.WH8102</taxon_name>
+  <strain>WH8102</strain>
+  <reference>Photophysiology of the marine cyanobacterium Synechococcus sp. WH8102, a new model organism (Six, C., et al., 2004)</reference>
+  <DOI>NA</DOI>
+  <file>Six, C. et al. Synechococcus.sp.WH8102.pdf</file>
+  <description>Although it is routinely maintained at 20 to 30 μmol photons m–2 s–1 in culture, Synechococcus sp. WH8102, which has one of the highest PUB:PEB ratios ever reported among isolates in culture (1.95 at low light), can in fact be grown over a wide range of growth irradiance. Synechococcus sp. WH7803, which has a PUB:PEB ratio of only 0.40 at low light, has previously been shown to be able to grow under continuous irradiances up to 2000 μmol photons m–2 s–1. The maximum growth rate of Synechococcus sp. WH8102 (μmax = 1.13 ± 0.02 d–1) is significantly higher than that of Prochlorococcus SS120 and MED4 (μmax = 0.53 and 0.63 d–1, respectively) but compares well with that of the high PUB Synechococcus sp. Strain WH8103 (μmax = 1.0 ± 0.1 d-1). Synechococcus sp. WH8102 acclimates to changes in growth irradiances by drastic variations in the relative content of chl a, β-carotene and PBPs, whereas zeaxanthin remains at a quasi constant level whatever the irradiance.</description>
+</treatment>

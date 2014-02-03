@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Halorubrum_tebenquichense</taxon_name>
+  <strain>ALT6-92T = CECT 5317T (=DSM 14210T)</strain>
+  <reference>Halorubrum tebenquichense sp. nov., a novel halophilic archaeon isolated from the Atacama Saltern, Chile ISEM 52:149-155</reference>
+  <file>Halorubrum.tebenquichense.pdf</file>
+  <description>Cell are irregularly disc-shaped (1.2-0.8 x 1.0-1.5 µm).  Gram-negative.  The colonies are red-orange in agar plates containing 25% (w/v) total salts, and orange in medium at 15-20% (w/v) total salts.  Chemoorganotrophic and aerobic.  Grows in the presence of 2.5-5.2 M NaCl at 40 °C.  The temperature range is 35-50 °C and the pH range is 7.0-10.0.  Magnesium is not required for growth.  Catalase- and oxidase-positive.  H2S is produced from cysteine, and nitrate is reduced.  Aesculin is hydrolysed.  No acid is produced from sugars and polyols.  Glucose, fructose, galactose, mannose, trehalose, acetate and pyruvate are used as carbon and energy sources.  Susceptible to novobiocin (30 µg) and bacitracin (10 U).  The polar lipids are glycerol diether analogues of phosphatidylglycerol and phosphatidylglycerophosphate.  Phosphatidylglycerosulfate is not detected.  The major glycolipid is S-DGD-3 and two minor glycolipids (X1 and X2).  Isolated from hypersaline Lake Tebenquiche situated in the Atacama Saltern, Chile.  The G+C content of the DNA is 63.2 mol% (Tm).  The type strain is ALT6-92T and has been deposited in the Coleccion Espanola de Cultivos Tipo, Valencia, Spain as CECT 5317T (=DSM 14210T).</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobrevibacter_acididurans</taxon_name>
+  <strain>ATMT = MCMB 613T  = OCM 804T</strain>
+  <reference>Methanobrevibacter acididurans sp. nov., a novel methanogen from a sour anaerobic digester IJSEM 52:1081-1087</reference>
+  <file>Methanobrevibacter.acididurans.pdf</file>
+  <description>Cells occur singly, in pairs or in chains.  They are cocci, 0.3-0.5 µm in diameter.  Cells are Gram-positive, do not form spores and are resistant to lysis by SDS and hypotonic solutions.  Hydrogenotrophic.  Formate, acetate, methanol, trimethylamine, 2-propanol and 2-butanol are not utilized as growth and energy substrates.  Mesophilic.  The optimum temperature is 35 °C.  No growth occurs at or above 40 °C.  The optimum pH for growth is pH 6.0.  However, it can also produce methane at pH 5.0.  Bile-sensitive.  Rumen fluid is required for growth.  Acetate and amino acids are required.  Coenzyme M and 2-methylbutyric acid are not required in the presence of rumen fluid.  The type strain was obtained from an acidogenic digester.  The type strain, ATMT, has been deposited as MCMB 613T at the Agharkar Research Institute, Pune, India, and as OCM 804T at the Oregon Collection of Methanogens, USA.</description>
+</treatment>

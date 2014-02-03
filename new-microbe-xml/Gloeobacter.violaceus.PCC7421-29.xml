@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Gloeobacter.violaceus.PCC7421</taxon_name>
+  <strain>PCC 7421</strain>
+  <reference>Complete Genome Structure of Gloeobacter violaceus PCC 7421, a Cyanobacterium that Lacks Thylakoids (Nakamura, Y., et al., 2003)</reference>
+  <DOI>NA</DOI>
+  <file>Nakamura, Y. et al. Gloeobacter.violaceus.PCC7421.pdf</file>
+  <description>Lacks Thylakoids, a rod-shape unicellular cyanobacterium isolated from calcareous rock in Switzerland, obligate photoautotroph containing chlorophyll (Chl) a, carotenoids, and phycobiliproteins (phycoerythrin, phycocyanin and allophycocyanin) with a lower relative ratio of Chl a to phycobiliproteins than that of typical cyanobacteria. Gloeobacter is sensitive to strong light and its generation time is relatively long (approximately 72 hr).</description>
+</treatment>

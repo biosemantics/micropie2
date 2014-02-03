@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Acidianus_hospitalis</taxon_name>
+  <strain>W1</strain>
+  <reference>Genomic analysis of Acidianus hospitalis W1 a host for studying crenarchaeal virus and plasmid life cycles Extremophiles 15:487-497</reference>
+  <file>Acidianus.hospitalis.pdf</file>
+  <description>Acidianus hospitalis W1 is the first Acidianus strain to be isolated carrying a conjugative plasmid pAH1 which is a member of the plasmid family predicted to generate an archaea-specific conjugative apparatus.  These plasmids are also integrative elements and in an encaptured state have been implicated in facilitating chromosomal DNA conjugation for some Sulfolobus species.  A. hospitalis is also a viable host for the model Acidianus alpha lipothrixvirus AFV1, a filamentous virus carrying exceptional claw-like structures at its termini which is currently the subject of detailed structural studies.</description>
+</treatment>

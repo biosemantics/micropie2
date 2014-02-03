@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermoproteus_neutrophilus</taxon_name>
+  <strain>V24Sta = DSM 2338</strain>
+  <reference>Bergey’s Manual pg 170-173</reference>
+  <file>Facultative chemolithotroph, which can utilize acetate instead of CO2 as carbon source, gaining energy by the formation of H2S from H2 and sulfur.  Grows optimally at pH 6.5 but also at a pH as high as pH 7.0.  The mol% G+C of the DNA is unavailable.  Rigid rods of 0.4 µm in diameter and from &lt;1 to 100 µm in length.  No cell septa.  Obligately anaerobic.</file>
+</treatment>

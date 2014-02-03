@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Prochlorothrix.hollandica.PCC9006</taxon_name>
+  <strain>PCC 9006</strain>
+  <reference>Peptidoglycan-Polysaccharide Complex in the Cell Wall of the Filamentous Prochlorophyte Prochlorothrix hollandica (Jurgens, U., et al., 1989)</reference>
+  <DOI>NA</DOI>
+  <file>Jurgens, U. et al. Prochlorothrix.hollandica.PCC9006.pdf</file>
+  <description>Members of Prochlorophyta, a proposed new division of procaryotes, are characterized by the combination of a procaryotic cell structure and the presence of chlorophylls a and b., filamentous free living Prochlorothrix hollandica, recently isolated from the freshwater Loosdrecht Lakes, The cell wall morphology of P. hollandica resembles the multilayered fine structure of cyanobacteria and gram-negative bacteria. A mucilaginous sheath is not seen external to the cell wall. This study confirmed the presence of a peptidoglycan layer in the cell wall of P. hollandica, which was suggested by morphological studies. It is concluded from this study that the filamentous organism P. hollandica is similar in cell wall organization to cyanobacteria, combining structural features of both gram-positive and gram-negative cell wall types.</description>
+</treatment>

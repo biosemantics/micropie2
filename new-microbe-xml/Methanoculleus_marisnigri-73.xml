@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_marisnigri</taxon_name>
+  <strain>JR1</strain>
+  <reference>Complete genome sequence of Methanoculleus marisnigri Romesser et al. 1981 type strain JR1 Standards in genomic Sciences 1:189-196</reference>
+  <file>Methanoculleus.marisnigri.pdf</file>
+  <description>Methanoculleus marisnigri JR1 was isolated from Black Sea sediment at a depth of 0.5-20 cm.  The enrichment medium consisted of 30% distilled water and 70% sea water with the addition of acetate, formate, trypticase, yeast extract, vitamin solution, trace mineral solution, and volatile fatty acid solution.  Cells were maintained in serum vials under an atmosphere of 80% H2 and 20% CO2 by a modification of the Hungate technique.  The physiological characteristics of M. marisnigri were described as follows.  The cells were irregular cocci with peritrichous flagella.  The cell wall was composed of glycoprotein and lacked peptidoglycan.  The optimal growth temperature was 20-25°C with growth observed between 15 and 45°C.  The optimal pH for growth was 6.4 with a range of 6.0-7.5.  The optimal salt concentration for growth was around 0.1 M NaCl, and growth was observed between 0.0 and 0.7 M NaCl.  Neither acetate nor yeast extract was stimulatory for growth.  Trypticase was required, and it could not be replaced by Casamino acids or other peptide mixtures.  Coenzyme M and Coenzyme F420 were both detected in M. marisnigri.  Growth was observed with H2/CO2 or formate but not with acetate or methanol.  M. marisnigri was subsequently shown to grow with secondary alcohols as the electron donor for methanogenesis.</description>
+</treatment>

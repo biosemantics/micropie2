@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Archaeoglobus_veneficus</taxon_name>
+  <strain>DSM 11195</strain>
+  <reference>Bergey’s Manual pg 351-2</reference>
+  <file>Cells are highly irregular cocci to triangular plate-shaped lobes, 0.5-1.2 µm in diameter, occurring singly or in pairs.  Gram negative.  Motile by polar flagella.  Blue-green fluorescence at 420 nm.  Growth temperature, 65-85˚C (optimum 80˚C); pH 6.5-8.0 (optimum pH 7); 0.5-4% NaCl (optimum 2%.  Shortest doubling time, 1 h.  Obligately anaerobic.  Chemolithoautotrophic growth with molecular hydrogen using sulfite or thiosulfate as electron acceptors.  Organotrophic sulfite respiration with formate, acetate, pyruvate, isopropanol, ethanol, fumarate, and glucose.  H2S and methane are formed during growth.  Sulfate, nitrate or nitrite cannot serve as electron acceptors.  Elemental sulfur inhibits growth.  Resistant to ampicillin, vancomycin, rifampicin, streptolydigin.  Isolated from a black smoker wall, “Snake Pit” site, Mid-Atlantic Ridge. The mol% G+C of the DNA is 45 (Tm and direct analysis).</file>
+</treatment>

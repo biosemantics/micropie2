@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Haloterrigena_turkmenica</taxon_name>
+  <strain>VKM B-1734T = NCIMB 13204T = ATCC 51198T</strain>
+  <reference>Proposal to transfer Halococcus turkmenicus, Halobacterium trapanicum JCM 9743 and strain GSL-11 to Haloterrigena turkmenica gen. nov., comb. nov.</reference>
+  <file>Haloterrigena.turkmenica.pdf</file>
+  <description>Gram-negative rods. Colonies are pigmented red or light pink due of the presence of C50-carotenoids. Chemo-organotrophic and aerobic. Halophilic requiring at least 2 M NaCl. Membrane polar lipids are glycerol-diether analogues of PG, PGP-Me and some glycolipids. Coccoid or oval cells, 1-5-2 µm in diameter.  Detailed physiological characterization is described by Zvyagintseva &amp; Tarasov (1987).  G+ C content was 59.8 mol%.  Membrane glycolipid is S2-DGD (mannose-2,6 disulfate 1 + 2 glucose-glycerol diether).  Both diphytanyl moieties (C20, C20) and phytanyl-sesterterpanyl moieties (C20, C25) of PG and PGP-Me are present in cell membranes.  Isolated from sulfate saline soil of Turkmenia.  Type strain is 4kT and has been deposited as VKM B-1734T = NCIMB 13204T = ATCC 51198T.</description>
+</treatment>

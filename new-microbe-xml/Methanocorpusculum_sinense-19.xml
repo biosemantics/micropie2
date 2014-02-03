@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocorpusculum_sinense</taxon_name>
+  <strain>DSM 4274</strain>
+  <reference>Methanocorpusculaceae fam. nov., represented by Methanocorpusculum parvum, Methanocorpusculum sinense spec. nov. and Methanocorpusculum bavaricum spec. nov. Arch Microbiol 151:381-390</reference>
+  <file>Methanocorpusculum.parvum.sinense.bavaricum.pdf</file>
+  <description>Small, irregular coccoid cells usually occurring singly, &lt; 1 µm in diameter.  Flagellated and weakly motile.  Gram negative.  Cell envelope consists of a hexagonally arranged S-layer with a center-to-center spacing of the subunits of 15.8 nm.  Glycoprotein subunits with an apparent molecular weight of Mr 92000 are found.  Obligately anaerobic and chemoorganotrophic.  Methane is produced from H2/CO2 and formate.  No growth or methane production from acetate, methylamines, methanol, ethanol, l-propanol, 2-propanol/CO2, 1-butanol, 2-butanol/CO2 and cyclohexanol.  The optimal growth temperature is 30˚C.  No growth observed at or below 15˚C and at or above 45˚C.  Optimal pH 7.0.  No dependence of growth on NaCl.  Growth factors present in clarified rumen fluid are required for growth.  G+C content of the DNA is 52.0 mo1% (Tm) and 50.0 mol% (HPLC).</description>
+</treatment>

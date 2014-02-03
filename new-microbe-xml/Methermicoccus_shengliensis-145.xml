@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methermicoccus_shengliensis</taxon_name>
+  <strain>ZC-1T (=CGMCC 1.5056T=DSM 18856T)</strain>
+  <reference>Methermicoccus shengliensis gen. nov., sp. nov., a thermophilic, methylotrophic methanogen isolated from oil-production water, and proposal of Methermicoccaceae fam. nov. IJSEM 57:2964-2969</reference>
+  <file>Methermicoccus.shengliensis.pdf</file>
+  <description>Cells are small, motile cocci with a diameter of 0.7–1.0 µm.  Cells occur in clusters of two to four cells, and sometimes form cysts during the exponential phase.  Cells are lysed in SDS (0.01 %, w/v) and H2O, but not in PBS (0.2 M) or NaCl solution (0.9 %, w/v).  HS-Coenzyme M stimulates cell growth dramatically.  Only methanol, methylamine and trimethylamine are used as substrates for methanogenesis.  No growth or methanogenesis on formate, acetate, ethanol, dimethylsulfide, propan-2-ol, isobutanol, butan-2-ol, H2/CO2, or H2/CO.  Fast growth occurs at pH 6.0–6.5 (range for growth, pH 5.5– 8.0), 65 ˚C (range for growth, 50–70 ˚C), 0.3–0.5 M NaCl (range for growth, 0.2–1.1 M) and 0.05–0.20 M MgCl2.  The DNA G+C content is 56 mol%.  The type strain, ZC-1T (=CGMCC 1.5056T=DSM 18856T), was isolated from oil-production water of Shengli oilfield, China.</description>
+</treatment>

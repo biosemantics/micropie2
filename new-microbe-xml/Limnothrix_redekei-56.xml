@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Limnothrix_redekei</taxon_name>
+  <strain>PUPCCC 116</strain>
+  <reference>Isolation and Characterization of Exopolysaccharides Produced by the Cyanobacterium Limnothrix redekei PUPCCC 116 (Khattar, J., et al., 2010)</reference>
+  <DOI>10.1007/s12010-010-8922-3</DOI>
+  <file>Khattar, J. et al. Limnothrix redekei.pdf</file>
+  <description>a filamentous cyanobacterium, The exopolysaccharides produced by L. redekei were found to be heteropolysaccharides with protein moieties. The polysaccharide had a complex composition that contained four neutral sugars and uronic acid. FT-IR spectra demonstrated that EPS was a type of polyanionic polysaccharide that contained carboxyl and carbonyl groups. Rheological studies showed that EPS of L. redekei showed non-Newtonian, pseudoplastic shear thinning properties similar to commercial xanthan, which suggests that these may be valuable for use in pharmaceutical and food industries.</description>
+</treatment>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Prochlorococcus.marinus.str.MIT9301</taxon_name>
+  <strain>MIT 9301</strain>
+  <reference>Linear chromosomes in bacteria: no straight edge advantage? (Galperin, M. 2007)</reference>
+  <DOI>10.1111/j.1462-2920.2007.01328.x</DOI>
+  <file>Galperin, M. Prochlorococcus.marinus.str.MIT9301.pdf</file>
+  <description>cyanobacteria</description>
+</treatment>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Crocosphaera.watsonii.WH0003</taxon_name>
+  <strain>WH 0003</strain>
+  <reference>Two strains of Crocosphaera watsonii with highly conserved genomes are distinguished by strain-specific features (Bench, S., et al. 2011)</reference>
+  <DOI>10.3389/fmicb.2011.00261</DOI>
+  <file>Bench, S. et al. Crocosphaera.watsonii.WH0003.pdf</file>
+  <description>Unicellular nitrogen-fixing cyanobacteria are important components of marine phytoplankton., One of the two most abundant open ocean unicellular cyanobacteria groups, free-living</description>
+</treatment>

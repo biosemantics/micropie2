@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanolobus_siciliae</taxon_name>
+  <strain>T4/M (= OCM 156 = DSM 3028)</strain>
+  <reference>Isolation and Characterization of a Dimethyl Sulfide-Degrading Methanogen, Methanolobus siciliae HI350, from an Oil Well, Characterization of M. siciliae T4/MT, and Emendation of M. siciliae IJSB 41:410-416</reference>
+  <file>Methanolobus.sicilae.pdf</file>
+  <description>Cells are irregular, nonmotile, and coccoid (diameter, 1.5 to 3 µm), occur singly or sometimes in aggregates, and stain gram negative.  They are lysed by 1 g of sodium dodecyl sulfate per liter.  Surface colonies are dark yellow, circular, and convex with entire edges and attain a diameter of 2.0 mm in 2 weeks.  Trimethylamine, methanol, dimethyl sulfide, and perhaps methanethiol are catabolic substrates, but H2-CO2, formate, and acetate are not.  No organic compounds other than a catabolic substrate are required for growth, but yeast extract stimulates growth.  Sodium and magnesium are required for growth.  Growth is most rapid in the presence of 0.4 to 0.6 M Na+, in the presence of 60 to 200 mM Mg2+, at pH 6.5 to 6.8, and at 40°C.  The G+C content of the DNA is 42 to 43 mol%.  The known habitats are anoxic marine sediments and saline subsurface sediments.  Strain T4/M (= OCM 156 = DSM 3028), the type strain, was isolated from marine sediment, and strain HI350 (= OCM 58) was isolated from an oil well.</description>
+</treatment>

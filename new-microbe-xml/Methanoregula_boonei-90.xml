@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoregula_boonei</taxon_name>
+  <strain>6A8T (=DSM 21154T =JCM 14090T)</strain>
+  <reference>Methanoregula boonei gen. nov., sp. nov., an acidiphilic methanogen isolated from an acidic peat bog IJSEM 61:45-52</reference>
+  <file>Methanoregula.boonei.pdf</file>
+  <description>Displays the following properties in addition to those described for the genus.  Cells occur as thin rods, dividing irregularly and sometimes producing longer rods, shorter rods or irregular cocci.  They have a mean diameter of 0.2–0.8 µm and are non-motile, and many cells have pilus-like appendages.  The cell envelope is composed of an SDS-sensitive S-layer.  Cells are obligately hydrogenotrophic.  Produces methane from H2/CO2, but not formate, acetate, methanol, ethanol, 2-propanol, butanol, or trimethylamine.  Acetate, coenzyme M, vitamins and yeast extract were required for growth.  Grows at pH 4.5–5.5, with optimum growth near pH 5.1.  Grows between 10 and 40 ˚C, with an optimum near 35– 37 ˚C.  Cultures are also extremely salt sensitive, producing methane at exponential rates within a narrow salt range from 0.4 mM Na+ to 25 mM NaCl, and they are adapted to oligotrophic and low pH environments.  Growth is inhibited by millimolar quantities of sulfide as a reducing agent, while Ti(III) and coenzyme M (2-mercaptoethanesulfonic acid) are tolerated.  The genomic DNA G+C content of the type strain is 54.5 mol%, as determined from the genome sequence.  The type strain is 6A8T (=DSM 21154T =JCM 14090T).</description>
+</treatment>

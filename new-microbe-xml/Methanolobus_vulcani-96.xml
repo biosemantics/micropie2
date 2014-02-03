@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanolobus_vulcani</taxon_name>
+  <strain>PL-12/M (= OCM 157)</strain>
+  <reference>Physiological Characterization and Emended Description of Methanolobus vulcani IJSB 45:400-402</reference>
+  <file>Methanolobus.vulcani.pdf</file>
+  <description>Irregularly coccoid, gram negative, nonmotile.  Lysed by 0.1 g of sodium dodecyl sulfate per liter.  Grows on methanol or trimethylamine, but not on dimethyl sulfide, formate, acetate, or H2-CO2.  Biotin and a catabolic substrate are the only organic compounds required for growth; yeast extract and peptone stimulate growth.  Grows well at 37˚C, at pH 7.2, and in the presence of 0.5 M NaCl and 13 mM Mg2+.  The guanine-plus-cytosine content of the DNA is 39 mol%.  The type strain is PL-12/M (= OCM 157).  Habitat: sea sediments near Vulcano Island, Italy.</description>
+</treatment>

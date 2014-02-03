@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanospirillum_lacunae</taxon_name>
+  <strain>Ki8-1T (=NBRC 104920T =JCM 16384T =DSM 22751T)</strain>
+  <reference>Methanospirillum lacunae sp. nov., a methaneproducing archaeon isolated from a puddly soil, and emended descriptions of the genus Methanospirillum and Methanospirillum hungatei IJSEM 60:2563-2566</reference>
+  <file>Methanospirillum.lacunae.pdf</file>
+  <description>Strictly anaerobic, mesophilic, neutrophilic or mildly alkaliphilic.  Cells are Gram-stain-negative, non-sporulating and motile by polar, tufted flagella.  Cells form curved or wavy rods with blunt ends.  Produce methane from H2 or formate.  The G+C content of the genomic DNA is 45– 49.5 mol%.  Represent a distinct phylogenetic lineage in the family Methanospirillaceae based on 16S rRNA gene sequence analysis.  Cells are 0.5–0.6 µm wide by 11–25 µm in length, and often from 8 to 26 µm in length.  Growth occurs at 15–37 ˚C, with optimum growth at 30 ˚C.  The pH range for growth is 6.0–9.5, with optimum growth at pH 7.5.  Growth occurs below 1% NaCl (w/v), with optimum growth in basal medium without the addition of NaCl.  Methane is produced from H2 and formate, but not from acetate, pyruvate, methanol, ethanol, 1-propanol, 2-propanol, 1- butanol, 2-butanol or trimethylamine.  Acetate or yeast extract is required for growth.  The G+C content of the genomic DNA of the type strain is 45.3 mol%.  The type strain, Ki8-1T (=NBRC 104920T =JCM 16384T =DSM 22751T), was isolated from puddly soil in Kisarazu, Chiba, Japan.</description>
+</treatment>

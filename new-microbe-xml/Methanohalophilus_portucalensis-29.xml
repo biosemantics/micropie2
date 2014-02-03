@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanohalophilus_portucalensis</taxon_name>
+  <strain>FDF-1 (= OCM 59)</strain>
+  <reference>Isolation and Characterization of Methanohalophilus portucalensis sp. nov. and DNA Reassociation Study of the Genus Methanohalophilus IJSB 43:430-437</reference>
+  <file>Methanohalophilus.portucalensis.pdf</file>
+  <description>Cells are irregular, nonmotile, coccoid cells (diameter 0.6 to 2.0 µm) and are gram negative.  The coccoid cells occur singly, in pairs, or, less commonly, in small aggregates.  Strictly anaerobic.  Cells are sensitive to lysis by 0.2 g of sodium dodecyl sulfate per liter.  The catabolic substrates include methanol and methylamines, but not H2 plus CO2, formate, acetate, methane thiol, or dimethyl sulfide.  Cells grow in medium containing minerals plus trimethylamine as the sole organic substrate, but some strains require p-aminobenzoate, biotin, or both.  Growth is most rapid in medium containing 0.5 to 2 M NaCl, at pH 6.5 to 7.5, and at temperatures of about 40°C.  The G+C content of the DNA is 43 to 44 mol%.  The type strain is strain FDF-1 (= OCM 59), which was isolated from sediments from a salinarium in Figiera da Foz, Portugal.</description>
+</treatment>

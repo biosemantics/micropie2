@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanosarcina_mazei</taxon_name>
+  <strain>S-6 = DSM 2053 = OCM 26</strain>
+  <reference>Bergey’s Manal vol 1. pg 275, Table A2.19, and generic description on pg 269.</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Individual, irregular coccoid cells 1.0-3.0 µm in diameter form irregular clumps 20-100 µm or more in diameter.  Gram negative.  Nonmotile.  Strictly anaerobic. Cells are lysed by SDS.  Methanol, methylamine, dimethylamine, and trimethylamine are converted to methane.  Either acetate or H2/CO2 may be used.  H2/CO2 may be used concurrently with trimethylamine or methanol.  Butyrate, ethanol, butanol, and acetone are not methanogenic substrates.  Ammonia may serve as a nitrogen source.  Grows well at 30-40˚C and pH 5.5-8.0; optimum growth is obtained at pH 6.8-7.2.  Not all strains are capable of rapid growth on H2/CO2.  Habitat: decaying leaves, garden soil, sewage sludge digestors, black mud, and feces of herbivorous animals.  Also isolated from urban solid waste and various sewage and animal waste digestors and lagoons.  The mol % G+C is 42.</description>
+</treatment>

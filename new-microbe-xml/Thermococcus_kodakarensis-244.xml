@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_kodakarensis</taxon_name>
+  <strain>KOD1</strain>
+  <reference>Purification and Characterization of a Thermostable Thiol Protease from a Newly Isolated Hyperthermophilic Pyrococcus sp. AEM 60:4559-4566</reference>
+  <file>Thermococcus.kodakarensis2.pdf</file>
+  <description>Isolated from samples from a solfatara at a wharf on Kodakara Island, Japan.  The growth temperature of the strain ranged from 65 to 100˚C.  The optimal growth temperature was 95˚C.  The doubling time was estimated to be 40 min.  Could not grow at or above 105˚C.  The optimum pH and NaCl concentration for the growth were found to be 7.0 and 30 g per liter, respectively.  Sulfur reduction to H2S occurred in the liquid medium during growth.  Could not grow autotrophically with or without sulfur.  Sulfur generally enhanced the growth and was essential if peptone or casamino acids were used as the carbon source.  Sensitive to rifampin and insensitive to chloramphenicol, kanamycin, and penicillin.  Cells were irregular cocci about 1.0 µm in diameter, sometimes in pairs, and were highly motile with several polar flagella.  The GC content of the DNA was estimated to be 38 mol%.  Contains tetraether-type lipids, diether-type lipids, and some other esters or fatty acids.</description>
+</treatment>

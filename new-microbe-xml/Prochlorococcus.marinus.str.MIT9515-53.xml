@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Prochlorococcus.marinus.str.MIT9515</taxon_name>
+  <strain>MIT 9515</strain>
+  <reference>Identification of a gene essential for protoporphyrinogen IX oxidase activity in the cyanobacterium Synechocystis sp. PCC6803 (Kazushige, K., et al., 2010)</reference>
+  <DOI>NA</DOI>
+  <file>Kazushige, K. et al. Prochlorococcus.marinus.str.MIT9515.pdf</file>
+  <description>cyanobacteria</description>
+</treatment>

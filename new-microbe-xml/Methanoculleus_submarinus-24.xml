@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_submarinus</taxon_name>
+  <strain>Nankai-1 (= OCM 780 = SMCC 780W = DSMZ 15122)</strain>
+  <reference>Isolation of a Methanogen from Deep Marine Sediments That Contain Methane Hydrates, and Description of Methanoculleus submarinus sp. nov. AEM 69:3311-3316</reference>
+  <file>Methanoculleus.submarinus.pdf</file>
+  <description>Irregular cocci 0.8 to 2.0 µm in average diameter, occurring singly and sometimes in pairs.  Nonmotile but possesses flagella.  Fimbriae are not present.  H2 plus CO2 or formate serves as a catabolic substrate, with CH4 as the product.  Cells did not catabolize acetate, trimethylamine, or methanol, either alone or in combination with formate.  Acetate is the sole organic nutrient required for cell carbon.  Fastest growth was at a specific growth rate of about 2.4 per day; fastest growth occurred at 45°C, with a salinity of 0.1 to 0.4 M Na+ and a pH of 4.8 to 7.7.  Isolated from deep marine sediments where methane hydrates occur. Type strain: Nankai-1 (= OCM 780 = SMCC 780W = DSMZ 15122).</description>
+</treatment>

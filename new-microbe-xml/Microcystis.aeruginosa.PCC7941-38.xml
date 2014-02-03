@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Microcystis.aeruginosa.PCC7941</taxon_name>
+  <strain>PCC 7941</strain>
+  <reference>Spatiotemporal changes in the genetic diversity of a bloom-forming Microcystis aeruginosa (cyanobacteria) population (Briand, E., et al., 2009)</reference>
+  <DOI>NA</DOI>
+  <file>Briand, E. et al Microcystis.aeruginosa.PCC7941.pdf</file>
+  <description>bloom-forming</description>
+</treatment>

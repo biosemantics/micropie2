@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Cyanothece.sp.ATCC51472</taxon_name>
+  <strain>ATCC 51472</strain>
+  <reference>Systems Biology and Metabolic Engineering Approaches for Biological Hydrogen Production (Amador-Noguez, D. et al., 2009)</reference>
+  <DOI>NA</DOI>
+  <file>Amador-Noguez, D. et al. Cyanothece.sp.ATCC51472.pdf</file>
+  <description>a unicellular diazotrophic cyanobacterium, is not capable of generating significant amounts of H2  from stored glycogen under dark fermentative conditions, nor does it produce H2 under light conditions in the presence of ammonia or N2</description>
+</treatment>

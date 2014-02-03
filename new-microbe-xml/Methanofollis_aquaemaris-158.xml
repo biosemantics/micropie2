@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanofollis_aquaemaris</taxon_name>
+  <strain>N2F9704T (=OCM 746T= CCRC 16166T)</strain>
+  <reference>Methanofollis aquaemaris sp. nov., a methanogen isolated from an aquaculture fish pond IJSEM 51:1873-1880</reference>
+  <file>Methanofollis.aquaemaris.pdf</file>
+  <description>Irregularly coccoid cells, non-motile, 1.2-2 µm in diameter.  Obligately anaerobic cells stain Gram-negatively.  Cell wall is composed of an SDS-sensitive S-layer protein with an Mr of 137000.  The catabolic substrates used include H2/CO2 and formate, but not acetate, methanol, trimethylamine, dimethylamine, ethanol, 2-propanol, isobutanol or 2-butanol.  Cells are mesophilic and can grow at temperatures of 20-43 °C with an optimum at 37 °C.  Cells grow over a wide range of pH from 6.3 to 8.0 and the optimal pH is 6.5.  Cells grow well within the range of 0-6% NaCl with an optimal NaCl concentration of 0.5%.  The addition of acetate reduces the lag time and the trace element tungsten greatly promotes cell growth and extends the growth range.  Growth is inhibited completely by chloramphenicol and partly by tetracycline but not by ampicillin, penicillin, kanamycin or spectinomycin.  The type strain is strain N2F9704T (=OCM 746T= CCRC 16166T).  The habitat is a marine-water aquaculture fish pond near Wong-Kong, Taiwan.</description>
+</treatment>

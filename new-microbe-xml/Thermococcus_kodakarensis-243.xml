@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_kodakarensis</taxon_name>
+  <strain>KOD1</strain>
+  <reference>Catalyzing “Hot” Reactions: Enzymes from Hyperthermophilic Archaea The Chemical Record</reference>
+  <file>Thermococcus.kodakarensis.pdf</file>
+  <description>Grows from 65 to 100˚C.  The optimum pH and NaCl concentrations for growth are 7.0 and 3%, respectively.  Although the strain does grow by fermentation of yeast extract and tryptone, elemental sulfur significantly enhances the growth rate.  Excess reducing equivalents are used to reduce the sulfur to hydrogen sulfide, and are released in the gas phase.  KOD1 cells are irregular cocci, with a diameter of approximately 1mm.  The cells are highly motile and harbor several polar flagella.</description>
+</treatment>

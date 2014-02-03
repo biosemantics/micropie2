@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.sp.CC9605</taxon_name>
+  <strain>CC9605</strain>
+  <reference>Molecular ecology of the marine cyanobacterial genera Prochlorococcus and Synechococcus (Scanlan, D., West, N., 2002)</reference>
+  <DOI>NA</DOI>
+  <file>Scanlan, D., West, N. Synechococcus.sp.CC9605.pdf</file>
+  <description>photoautotrophic picoplankton, distributed ubiquitously throughout oceanic regions, ranging from polar through temperate to tropical waters and are generally more abundant in nutrient-rich surface waters, intense orange phycoerythrin fluorescence, oxygenic photoautotrophs</description>
+</treatment>

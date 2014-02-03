@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanosarcina_acetivorans</taxon_name>
+  <strain>C2A = DSM 2834 = ATCC 35395</strain>
+  <reference>Methanosarcina acetivorans sp. nov., an Acetotrophic Methane- Producing Bacterium Isolated from Marine Sediments AEM 47:971-978</reference>
+  <file>Methanosarcina.acetivorans.pdf</file>
+  <description>Morphovars of this species, when grown on acetate, occur as irregular cocci, septated cell aggregates, or communal cysts that contain several individual cocci within a common envelope.  Individual cocci are 1.9 µm in diameter and nonmotile.  Surface colonies are pale yellow, circular, and convex with entire edges.  Cells are lysed by SDS and possess a thin (10-nm), gram-negative cell wall.  Acetate, methanol, methylamine, dimethylamine, and trimethylamine are growth substrates; H2-CO2 (80:20) and sodium formate are not; NaCl (0.2 M optimum) and Mg2+ (0.05 to 1.0 M optimum) are required for growth; no exogenous growth factors are required; the optimum temperature is 35 to 40°C; the optimum pH is 6.5 to 7.0; it is a strict anaerobe.  The source is anaerobic sediments from the Sumner branch of Scripps Canyon located near La Jolla, California.  The type strain is C2A.  This strain has been deposited in the German Collection of Microorganisms, Gottingen, Germany, as DSM 2834 and in the American Type Culture Collection, Rockville, Md., as ATCC 35395.</description>
+</treatment>

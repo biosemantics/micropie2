@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_celericrescens</taxon_name>
+  <strain>TS2T (=NBRC 101555T=JCM 13640T= DSM 17994T)</strain>
+  <reference>Thermococcus celericrescens sp. nov., a fast growing and cell-fusing hyperthermophilic archaeon from a deep-sea hydrothermal vent IJSEM 57:437-443</reference>
+  <file>Thermococcus.celericrescens.pdf</file>
+  <description>Cells are irregular cocci, variable in size (0.7–4.0 µm in diameter, depending on the level of cell fusion) and motile with a polar tuft of flagella.  Sulfur is not necessary for growth, but enhances it.  Cells grow in the temperature range of 50 to 85 ˚C (optimum at 80 ˚C), pH range of pH 5.6 to 8.3 (optimum at pH 7.0) and with 1.0–4.5% NaCl (optimum 3.0 %).  The shortest doubling time is 20 min.  Strict anaerobe.  Obligate chemo-organotroph.  Grows on yeast extract and tryptone.  Core lipids consist of archaeol, trialkyl-caldarchaeol and caldarchaeol, without a cyclopentane ring.  The DNA G+C content is 54.6 mol%.  The type strain, TS2T (=NBRC 101555T=JCM 13640T= DSM 17994T), was isolated from hot water emitted from a casing pipe driven into a hydrothermal site at Suiyo Seamount (28˚ 34’ N 140˚ 38’ E) at a depth of 1380 m.  Casamino acids (supplemented with glutamine, asparagine and tryptophan), starch, sucrose, maltose, glucose, citrate, lactate and acetate, did not support the growth.  Sensitive to rifampicin, but resistant to novobiocin, chloramphenicol, streptomycin, tetracycline and ampicillin.</description>
+</treatment>

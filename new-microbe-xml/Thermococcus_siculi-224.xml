@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_siculi</taxon_name>
+  <strain>RG-20 (DSM 12349)</strain>
+  <reference>Thermococcus siculi sp nov, a novel hyperthermophilic archaeon isolated from a deep-sea hydrothermal vent  at the Mid-Okinawa Trough Extremophiles 3:55-62</reference>
+  <file>Thermococcus.siculi.pdf</file>
+  <description>Cells are regular to slightly irregular, nonmotile cocci (0.8-2.0 µm in diameter) that occur singly or in pairs and divide by constriction.  Obligately anaerobic.  Susceptible to rifampicin.  Growth occurs between 50˚C and 93˚C, with an optimum temperature of 85˚C.  Grows optimally at pH 7.0 (range 5.0-9.0) and 20 g per liter NaCl (range 10-40 g per liter).  Utilizes yeast extract, tryptone, peptone, and casein.  Obligately heterotrophic.  Sulfur is not required for growth but significantly stimulates growth.  Cystine supports rapid growth and is able to substitute elemental sulfur.  Core lipids contain archaeol and caldarchaeol.  The mol% G+C content of the DNA is 55.8.  Type strain RG-20 (DSM 12349) was isolated from hydrothermal vent fluids collected at mid-Okinawa Trough in the southwest Pacific Ocean.  Unable to grow on gelatin, collagen, cellobiose, lactose, fructose, maltose, xylose, starch, pullulan, xylan, cellulose, olive oil, ethanol, acetate, and pyruvate.  Could not use thiosulfate or sulfite as an electron acceptor.  Resistant to streptomycin, chloramphenicol, ampicillin, and kanamycin.</description>
+</treatment>

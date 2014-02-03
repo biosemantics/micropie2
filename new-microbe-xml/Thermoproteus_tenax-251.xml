@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermoproteus_tenax</taxon_name>
+  <strain>Kra 1 = ATCC35583 = DSM 2078</strain>
+  <reference>Thermoproteales: a novel type of extremely thermoacidophilic anaerobic archaebacteria isolated from Icelandic solfataras Zbl.Bakt.Hyg., I.Abt.Orig.C 2:205-227</reference>
+  <file>n.a.</file>
+  <description>Presence of polyisoprenoid ether lipids.  Resistant to rifampicin, streptomycin, vancomycin and chloramphenicol.  Organic substrates include glucose, ethanol, malate, and formamide.</description>
+</treatment>

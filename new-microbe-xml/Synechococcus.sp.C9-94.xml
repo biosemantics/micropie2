@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.sp.C9</taxon_name>
+  <strain>C9</strain>
+  <reference>Nitrate and Phosphate Affect Cultivability of Cyanobacteria from Environments with Low Nutrient Levels (Ernst, A., et al., 2005)</reference>
+  <DOI>10.1128/AEM.71.6.3379–3383.2005</DOI>
+  <file>Ernst, A. et al. Synechococcus.sp.C9.pdf</file>
+  <description>grows well on nitrate, was obtained from Octopus Spring, Yellowstone National Park, a spring with no detectable ammonium</description>
+</treatment>

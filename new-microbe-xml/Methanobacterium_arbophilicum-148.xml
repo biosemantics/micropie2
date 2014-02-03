@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_arbophilicum</taxon_name>
+  <strain>DHI = ATCC 29097</strain>
+  <reference>Methanobacterium arbophilicum sp.nov. An obligate anaerobe isolated from wetwood of living trees Ant van Leeuw 41:453-552</reference>
+  <file>Methanobacterium.arbophilicum.pdf</file>
+  <description>Morphology.  Rods, 0.53 to 0.75 µm in diameter and 1.8 to 3.5 µm in length.  Rods occurring singly, in pairs, or chains.  Gram-positive.  Flagella and spores absent.  Colony characteristics.  Cream-white, roughly round, diffuse, and somewhat filamentous.  Mature colonies do not exceed 0.5 mm in diameter.  DNA base composition.  27.5 mol % GC.  Temperature relationships.  Optimum, 30 to 37˚C; maximum 45˚; minimum 10˚C.  Nutrition.  Chemolithotrophic, requires both H2 and CO2 for growth.  Capable of autotrophic growth on mineral salts-H2/CO2 medium that contains vitamins.  Formate, methanol, acetate, and ethanol alone did not serve as substrates for methane formation.  Growth greatly stimulated by the addition of organic compounds.  Very strict anaerobe.  Relation to pH.  Optimum, 7.5 to 8.0.  No growth below 6.4 or above 8.6.  Source.  Inner wetwood tissue of living trees and aquatic sediments.  Type strain.  DHI.  This strain has been deposited in the American Type Culture Collection (ATCC), Rockville, Maryland, ATCC 29097.</description>
+</treatment>

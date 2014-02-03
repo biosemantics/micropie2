@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Halobiforma_nitratireducens</taxon_name>
+  <strain>C231T (=AS 1.1980T=JCM 10879T)</strain>
+  <reference>Characterization of a novel halophilic archaeon, Halobiforma haloterrestris gen. nov., sp. nov., and transfer of Natronobacterium nitratireducens to Halobiforma nitratireducens comb. nov. IJSEM 52:2271-2280</reference>
+  <file>Halobiforma.haloterrestris.nitratireducens.pdf</file>
+  <description>The description is identical to that published for Nbt. nitratireducens by Xin et al. (2001). The type strain is strain C231T (=AS 1.1980T=JCM 10879T).</description>
+</treatment>

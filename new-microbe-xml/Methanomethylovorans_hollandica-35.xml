@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanomethylovorans_hollandica</taxon_name>
+  <strain>DMS1T</strain>
+  <reference>Isolation and Characterization of Methanomethylovorans hollandica gen. nov., sp. nov., Isolated from Freshwater Sediment, a Methylotrophic Methanogen Able To Grow on Dimethyl Sulfide and Methanethiol AEM 65:3641-3650</reference>
+  <file>Methanomethylovorans.hollandica.pdf</file>
+  <description>Cells are irregular, nonmotile, coccoid (diameter 1 to 1.5 µm), and gram negative.  Cells normally occur in clusters consisting of two to four cells which form large aggregates.  Cells are not sensitive to lysis by 1.0 g of SDS per liter.  Trimethylamine, dimethylamine, monomethylamine, methanol, DMS, and MT are catabolic substrates, but H2-CO2 and acetate are not.  Growth is most rapid in the presence of 0 to 0.04 M NaCl, and no growth occurs at NaCl concentrations higher than 0.4 M.  Optimal growth occurs at pH 6.5 to 7.0, and no growth occurs at pH values lower than 6.0 and higher than 8.0.  Growth is most rapid at 34 to 37°C, and very slow or no growth occurs at temperatures below 12°C and above 40°C.  Type strain DMS1 was isolated from a slurry prepared from a eutrophic pond sediment (Campus of Dekkerswald Institute, Nijmegen, The Netherlands).  Strain DMS1T has been deposited in the culture collection of the Deutsche Sammlung von Mikroorganismen (Braunschweig, Germany).</description>
+</treatment>

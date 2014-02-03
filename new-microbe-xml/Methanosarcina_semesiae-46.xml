@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanosarcina_semesiae</taxon_name>
+  <strain>MD1T = DSM 12914</strain>
+  <reference>Methanosarcina semesiae sp. nov., a dimethylsulfide-utilizing methanogen from mangrove sediment IJSEM 50:171-178</reference>
+  <file>Methanosarcina.semesiae.pdf</file>
+  <description>Cells are coccoid bodies 1.4±0.2 µm in diameter occurring as individual cells.  Susceptible to hyposmotic lysis.  Cells stain Gram-positive.  Obligate methylotroph.  DMS, MT, methanol, MMA, DMA and TMA used for growth and methanogenesis.  Acetate, formate and H2/CO2 are not utilized.  The aforementioned substrate utilization, however, is based on only one strain.  Cells grow optimally at 30-35 °C, pH 6.5-7.5 and in the presence of 0.2-0.6 M NaCl and 10-100 mM Mg2+ or 5-10 mM Ca2+.  Habitat is marine sediments.  The type strain isMD1T, which was isolated from Indian Ocean sediments obtained from the mangrove forest at Mtoni creek, Dar es Salaam, Tanzania.M. semesiae strain MD1T is deposited in the DSM culture collection (DSM 12914).</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobrevibacter_ruminantium</taxon_name>
+  <strain>M1</strain>
+  <reference>Bergey’s Manual vol 1. pg 222-223 and generic description from pg 218.</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Isolated from bovin rumen contents.  Short oval rod or coccobacillus with tapered ends 0.7 µm in width and 0.8-1.7 µm in length.  Nonmotile.  Requires acetate as a major cource of cell carbon.  In addition to one or more B vitamins, it requires 2-mercaptoethanesulfonic acid (coenzyme M), 2-methylbutyric acid, and a mixture of amino acids.  Growth with formate as an energy source is slow, and cultures do not grow to the same optical density as with H2 and CO2.  Formate is probably first converted to H2 and CO2 via a formate dehydrogenase coupled to a hydrogenase.  Optimal temperature 37-40˚C.  Temperature range 30-45˚C.  Energy for growth is obtained by reduction of CO2 to CH4 by using H2 and sometimes formate as the electron donor.  Acetate, methanol, methylamines, or other organic compounds are not used as electron donors for CH4 formation.  NH4+ is a major course of cell nitrogen.</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobrevibacter_filiformis</taxon_name>
+  <strain>RFM-3 = DSM 11501</strain>
+  <reference>Methanobrevibacter filiformis sp. nov., a filamentous methanogen from termite hindguts Arch Microbiol 139:287-292</reference>
+  <file>Methanobrevibacter.filiformis.pdf</file>
+  <description>Filament-forming rods with slightly tapered ends, 0.23–28 µm in width and usually &gt; 50 µm long.  Individual filaments of over 100 µm in length are occasionally observed.  Septation within filaments typically occurs at ca.  4-µm intervals.  Rarely occurs as single 4-µm-long cells.  Non-motile.  Gram-positive-like by staining and by cell wall ultrastructure.  No endospores formed.  Strict anaerobe.  Catalase-positive.  Metabolizes H2+CO2 to CH4 according to the following equation: 4 H2 + CO2 -&gt; CH4 + 2 H2O.  Methanol, methanol+H2, formate, CO, acetate, ethanol, isopropanol, trimethylamine, dimethylamine, theobromine, theophylline, trimethoxybenzoate, lactate, pyruvate, and glucose are not metabolized.  Temperature optimum for growth, 30°C (range, 10– 33.5°C); pH optimum, 7.0–7.2 (range, 6.0–7.5).  Yeast extract (&gt; 0.01%, v/v) required for growth.  Growth inhibited in media with 1 mM cysteine or sulfide as a reducing agent, but not by 1 mM dithiothreitol.  Source: hindgut contents of the termite R.  flavipes (Rhinotermitidae) collected in Woods Hole (Mass., USA).  Type strain: RFM-3.  Deposited in the Deutsche Sammlung von Mikroorganismen und Zellkulturen (Braunschweig, Germany) under accession no.  DSM 11501.</description>
+</treatment>

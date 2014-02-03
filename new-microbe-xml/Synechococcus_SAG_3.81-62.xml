@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus_SAG_3.81</taxon_name>
+  <strain>SAG3.81</strain>
+  <reference>Nitrate and Phosphate Affect Cultivability of Cyanobacteria from Environments with Low Nutrient Levels (Ernst, A., et al., 2005)</reference>
+  <DOI>10.1128/AEM.71.6.3379–3383.2005</DOI>
+  <file>Ernst, A. et al. Synechococcus SAG 3.81.pdf</file>
+  <description>tolerance of nitrate is paired with high sensitivity towards phosphate, At low levels of nutrient loading, small red-pigmented phycoerythrin (PE)-rich cyanobacteria of the Synechococcus type dominate the autotrophic picoplankton in freshwater ecosystems., non-bloom-forming</description>
+</treatment>

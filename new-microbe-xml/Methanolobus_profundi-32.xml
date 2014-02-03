@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanolobus_profundi</taxon_name>
+  <strain>MobMT (=DSM 21213T=NBRC 104158T)</strain>
+  <reference>Methanolobus profundi sp. nov., a methylotrophic methanogen isolated from deep subsurface sediments in a natural gas field IJSEM 59:714-718</reference>
+  <file>Methanolobus.profundi.pdf</file>
+  <description>Cells are irregular, motile cocci (diameter, 0.9–1.2 µm) and occur singly, in pairs, in tetracocci and in aggregates.  Strictly anaerobic.  Gram-negative.  Lysed by 0.01% (w/v) SDS and hypotonic solution (distilled water).  Colonies on the surface of solid medium are circular with entire margins, shiny, convex and yellowish-white.  Methane is produced from methanol, monomethylamine, dimethylamine and trimethylamine, but not from H2/CO2, formate, acetate, ethanol or dimethyl sulfide.  Growth occurs between 9 and 37 ˚C, with an optimum at 30 ˚C.  The pH range for growth is 6.1–7.8 and the optimum is pH 6.5.  Sodium and magnesium are required for growth: the ranges are 0.1–1.0 M Na+ (optimum 0.35 M) and 10–400 mM Mg2+ (optimum 15–25 mM).  Vitamins, tungsten and selenium are not required.  Resistant to ampicillin, penicillin G, vancomycin, kanamycin and tetracycline at concentrations of at least 100 mg per mL.  The DNA G+C content of strain MobMT is 42.4 mol%.  The type strain, MobMT (=DSM 21213T=NBRC 104158T), was isolated in Mobara, Japan, from deep subsurface sediments from a natural gas field filled with ancient seawater.</description>
+</treatment>

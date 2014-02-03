@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoplanus_limicola</taxon_name>
+  <strain>DSM 2279</strain>
+  <reference>Methanoplanus limicola, a Plate-Shaped Methanogen Representing a Novel Family, the Methanoplanaceae Arch Microbiol 132:31-36</reference>
+  <file>Methanoplanus.limicola.pdf</file>
+  <description>Angular, crystal-like plates 0.07- 0.30 µm thick and 1.6- 2.8 µm long and 1.5 µm wide, occurring singly.  The cells are sometimes branched, without septa.  The cell envelope shows a hexagonal surface pattern and contains a dominating glycoprotein.  No sacculus is present.  A polar tuft of flagella can be seen, each flagellum about 13.3 nm in diameter and up to 32 µm long.  The cells contain electron dense round inclusions about 0.1 - 0.2 µm in diameter.  On polysilicate plates round, smooth, bright, ochre colored, flat colonies, about 2 mm in diameter are formed.  Weakly motile.  Anaerobic.  Gram-negative.  Growth between 17˚C and 41˚C, optimum 40˚C.  Optimal salt concentration is 1% NaCI, optimal pH is 7.  H2 and formate serve as substrates for growth and methane production.  In addition, acetate is strictly required.  No growth occurs on acetate alone, on methanol, and on methylamines.  Cells are resistant against vancomycin, penicillin, kanamycin, and tetracycline.  The DNA forms complexes with 16s rRNA from Methanogenium rnarisnigri with a fractional stability of 0.59.  The G + C content of the DNA is 47.5 mol %.  Lives possibly in seawater and freshwater swamps.  Type strain: DSM 2279.</description>
+</treatment>

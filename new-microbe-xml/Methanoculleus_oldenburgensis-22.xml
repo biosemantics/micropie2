@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_oldenburgensis</taxon_name>
+  <strain>CB-1=DSM 6216</strain>
+  <reference>Isolation and characterization of a novel mesophilic, fresh-water methanogen from river sediment Methanoculleus oldenburgensis sp. nov. Arch Microbiol 157:54-59</reference>
+  <file>Methanoculleus.oldenburgensis.pdf</file>
+  <description>The cells are non-motile, fimbriated irregular cocci 0.5-1.5 µm in diameter, occurring singly, seldom in pairs.  The cell envelope consists of a protein S-layer and is easily lysed by detergents, e.g. Triton X-100 (0.01 %) and sodium dodecyl sulfate (0.01%).  Growth occurs in a synthetic, acetate-containing (0.1% w/v) mineral medium with H2-CO2 and/or formate as substrates.  No growth and methane formation was observed with methylotrophic substrates methylamine, methanol, ethanol, and acetate.  Growth occurs within the temperature range of 25˚C to &lt; 50˚C, with an optimum at 45˚C.  The optimal pH-value for growth is between 7.5 - 8.0 and the pH range is 6.5 - 8.5.  Sodium chloride is not required and is inhibitory at levels exceeding 1.5% (w/v).  The cells contain putrescine, symhomospermidine and spermine as typical polyamines.  The polar lipid pattern is similar to the one of the Methanoculleus species.  The G + C content of the DNA is 48.6 mol% (Tm).  The habitat of strain CB-1 is the sediment of the Hunte river near Oldenburg.  Strain CB-1 has been deposited in the collection Deutsche Sammlung von Mikroorganismen und Zellkulturen GmbH, 3300 Braunschweig, FRG, under DSM 6216.</description>
+</treatment>

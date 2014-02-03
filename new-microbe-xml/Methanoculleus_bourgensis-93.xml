@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_bourgensis</taxon_name>
+  <strain>MS2 (= DSM 3045)</strain>
+  <reference>Isolation and Characterization of Methanogenium bourgense sp. nov. IJSB 36:297-301</reference>
+  <file>Methanogenium.bourgense.pdf</file>
+  <description>Cells are irregular, nonmotile cocci 1 to 2 µm in diameter and stain gram negative.  They are sensitive to lysis by 0.2 g of sodium dodecyl sulfate per liter.  Young colonies are circular, convex, and white; older colonies are yellowish.  H2-CO2 and formate are the only substrates used for growth and methanogenesis.  Methanol, acetate, and trimethylamine did not support growth or methanogenesis.  Acetate is required for growth, and yeast extract or Trypticase peptone is highly stimulatory.  Growth is most rapid at pH 6.7, with 10 g of NaCl per liter, and at 35 to 40°C.  The guanine-plus-cytosine content is 59 mol%.  The type strain is strain MS2 (= DSM 3045).</description>
+</treatment>

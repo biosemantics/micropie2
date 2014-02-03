@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_coalescens</taxon_name>
+  <strain>TS1T (=JCM 12540T=DSM 16538T)</strain>
+  <reference>Thermococcus coalescens sp. nov., a cell-fusing hyperthermophilic archaeon from Suiyo Seamount IJSEM 55:2507-2514</reference>
+  <file>Thermococcus.coalescens.pdf</file>
+  <description>Cells are irregular cocci, variable in size (0.5–5.0 µm in diameter depending on the level of cell fusion) and motile by a polar tuft of flagella.  Sulfur is not necessary for growth but significantly enhances growth.  With sulfur, cells grow in the range of 57–90 ˚C (optimum 87 ˚C), pH 5.2–8.7 (optimum, pH 6.5) and 1.5–4.5% NaCl (optimum 2.5 %).  The highest apparent growth rate is 2.5 per hour.  Strict anaerobe.  Obligate chemo-organotroph.  Grows on yeast extract and tryptone.  Core lipids consist of archaeol, trialkyl-caldarchaeol and caldarchaeol, without cyclopentane ring.  The DNA G+C content is 53.9 mol%.  The type strain, TS1T (=JCM 12540T=DSM 16538T), was isolated from hot water emitted from a casing pipe driven into a hydrothermal site at Suiyo Seamount (28˚ 34’ 17” N 140˚ 38’ 38” E) at a depth of 1380 m. Other growth substrates, such as Casamino acids, starch, sucrose, maltose, glucose, citrate, lactate and acetate, did not support the growth.  H2/CO2 headspace gas did not support autotrophic growth in medium devoid of yeast extract and tryptone.  Elemental sulfur was stimulatory, but not required for growth.  Sensitive to rifampicin and novobiocin but resistant to chloramphenicol, streptomycin, tetracycline and ampicillin.</description>
+</treatment>

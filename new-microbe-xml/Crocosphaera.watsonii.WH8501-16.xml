@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Crocosphaera.watsonii.WH8501</taxon_name>
+  <strain>WH 8501</strain>
+  <reference>Genome-wide analysis of diel gene expression in the unicellular N2-fixing cyanobacterium Crocosphaera watsonii WH 8501 (Shi, T.,  et al., 2010)</reference>
+  <DOI>NA</DOI>
+  <file>Shi et al 2010 Crocosphaera.watsonii.WH8501.pdf</file>
+  <description>important nitrogen fixer in oligotrophic tropical and subtropical oceans, unicellular, planktonic and fixes N2 in the aerobic surface waters of the ocean</description>
+</treatment>

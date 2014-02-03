@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_subterraneum</taxon_name>
+  <strain>A8pT (= DSM l1074T)</strain>
+  <reference>Methanobacterium subterraneurn sp. nov., a new alkaliphilic, eurythermic and halotolerant methanogen isolated from deep granitic groundwater ISJB 48:357-367</reference>
+  <file>Methanobacteriumsubterraneum.pdf</file>
+  <description>Cells are non-motile, small and thin rods, 0.6-1-2 µm in length and 0-1-0.15 µm in diameter, often in aggregates but not in chains.  The substrates used for growth and methane production include hydrogen and carbon dioxide and formate, but not methylamines, acetate, pyruvate, dimethyl sulfide, methanol or other alcohols plus carbon dioxide.  It grows autotrophically in mineral medium without any organic additions.  Growth is inhibited by yeast extract (2 g per L), Casamino acids (1 g per L), isobutyric acid (5 mg per L), n-butyric acid (5 mg per L), Na2Se0, (2 mg per L), ZnCl, (2 mg per L), CoC1, (2 mg per L), NiC1, (20 mg per L) and MnCl, (20 mg per L).  Vitamins are not essential for growth.  Growth conditions: temperature 36-45˚C, pH 6.5-9.2, salinity 0.2-1-4 M NaCl.  The G + C content of the DNA is 54.5 mol % (as determined by thermal melting point).  Isolated from granitic rock groundwater from the Asp0 hard rock laboratory tunnel, South-Eastern Sweden.  The type strain is A8pT (= DSM l1074T), and the reference strains are 3067 and C2BIS (= DSM 11075), isolated from granitic groundwater at the depths 68, 409 and 420 m below sea level, respectively.  The 16s rRNA gene sequences of A8pT, 3067 and C2BIS have EMBL/GenBank accession numbers X99044, Y 12592 and X99045, respectively.</description>
+</treatment>

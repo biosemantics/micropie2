@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermoplasma_volcanium</taxon_name>
+  <strain>GSS-1 = ATCC 51530 = DSM 4299</strain>
+  <reference>Bergey’s Manual pg 335-339</reference>
+  <file>Pleomorphic, varying in shape from spherical to filamentous structures.  Cells 0.1-0.5 µm.  Cells lack a true cell wall and are surrounded by a single triple layer membrane.  Membrane contains ether lipids based on 40 carbon, isopranoid branched diglycerol tetraethers.  Lipids lack fatty acid ester residues.  The lipids are ether-linked C40 biphytanyl diglycerol tetraethers along with small amounts of C20 phytanyl glycerol diethers.  Gram negative.  Facultatively aerobic.  Anaerobic growth is enhanced by elemental sulfur, which is reduced to H2S via respiration.  Obligate thermoacidophile.  Growth between 33 and 67˚C (optimum 60˚C) and pH values of 1.0-4.0 (optimum pH 2.0).  Occurs free-living in continental and submarine solfataras in Italy.  The mol% G+C of the DNA is 38.  Obligately heterotrophic with growth on extracts of yeast, meat, and bacteria or archaea cells.  Cells are generally motile, with a single polar flagellum.  Sucrose, glucose, galactose, mannose, and fructose stimulate growth.  Resistant to vancomycin, ampicillin, ristocetin, novobiocin, rifampicin, streptomycin, and chloramphenicol.</file>
+</treatment>

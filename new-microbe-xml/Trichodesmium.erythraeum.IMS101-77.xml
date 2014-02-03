@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Trichodesmium.erythraeum.IMS101</taxon_name>
+  <strain>IMS101</strain>
+  <reference>Temporal separation of cell divisionand diazotrophy in themarine diazotrophic cyanobacteriumTrichodesmiumerythraeum IMS101 (Sandh, G., et al., 2009)</reference>
+  <DOI>10.1111/j.1574-6968.2009.01608.x</DOI>
+  <file>Sandh, G. et al. Trichodesmium.erythraeum.IMS101.pdf</file>
+  <description>marine nonheterocystous diazotrophic cyanobacterium, The marine nonheterocystous diazotrophic cyanobacterium. Trichodesmium is a globally important organism, as it sequesters large quantities of carbon dioxide (via photosynthesis) and atmospheric nitrogen gas (via nitrogen fixation) into the biogeochemical cycles of warmer oligotrophic oceans. To accomplish this, Trichodesmium shows a unique physiological and developmental adaptation to accommodate the nitrogen fixation process while at the same time performing oxygenic photosynthesis. The genus Trichodesmium fixes nitrogen in the light period, although this is the supposed exclusive norm for heterocystous cyanobacteria. Both natural and cultured Trichodesmium spp. synthesize the nitrogen- fixing enzyme nitrogenase in a specific cell type, the diazocyte, a strategy to protect the oxygen-sensitive nitrogenase enzyme complex</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Halorubrum_cibi</taxon_name>
+  <strain>B31T (=JCM 15757T =DSM 19504T)</strain>
+  <reference>Halorubrum cibi sp. nov., an extremely halophilic archaeon from salt-fermented seafood J Microbiol 47:162-166</reference>
+  <file>Halorubrum.cibi.pdf</file>
+  <description>The cells are Gram-staining-negative, motile and rodshaped (0.4-0.5 µm wide and 0.8-1.1 µm long).  The colonies are red-colored, circular with entire margin, convex and shiny with a diameter of 0.5-1.0 mm after incubating 5 days on complex agar medium at 37°C.  Growth occurs at temperatures ranging from 17 to 45°C (optimum, 30-37°C), in the presence of 15-30% (w/v) NaCl (optimum, 23-25%), and in the pH range 7.0 to 8.5 (optimum, pH 7.5).  Mg2+ is required for growth.  Anaerobic growth with nitrate, sulfate, thiosulfate or DMSO does not occur.  Cell lysis occurs on hypotonic condition.  The isolate does not reduce nitrate to nitrite under aerobic condition, is catalase-positive and oxidase-negative, and is negative for indole formation.  Casein, starch, urea, DNA, gelatin, and Tween 80 are not hydrolysed.  Lactose is utilized as carbon and energy source, but fructose, acetate, sucrose, glucose, citrate, and formate are not.  Resistant to the following antimicrobial compounds (µg/ml): penicillin (50), ampicillin (25), chloramphenicol (50), and erythromycin (50); Sensitive to: novobiocin (25), bacitracin (25), ampicillin (50), anisomycin (25), and aphidicolin (25).  The polar lipids are PG, PGP-Me and S-DGD.  The G+C content of B31T genomic DNA is 61.7 mol%.  The type strain is B31T (=JCM 15757T =DSM 19504T) and it was isolated from salt-fermented seafood from Korea.</description>
+</treatment>

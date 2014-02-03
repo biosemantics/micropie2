@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_beijingense</taxon_name>
+  <strain>8-2T =DSM 15999T=CGMCC 1.5011T</strain>
+  <reference>Methanobacterium beijingense sp. nov., a novel methanogen isolated from anaerobic digesters IJSEM 55:325-329</reference>
+  <file>Methanobacterium.beijingense.pdf</file>
+  <description>Cells are rod-shaped and non-motile and stain Gram negative.  Cells are resistant to lysis by 1% (w/v) SDS and hypotonic solution.  Colonies are greyish-white, opaque and rounded with entire edges and up to 1 mm in diameter.  Methanogenic.  Growth substrates include H2/CO2 and formate. No growth on acetate, methanol, ethanol, trimethylamine, isobutanol or isopropanol.  Yeast extract is required; however, peptone, vitamins and acetate are not required.  Acetate stimulates growth.  The temperature for growth ranges from 25 to 50 ˚C, with optimal growth at 37 ˚C.  The pH value range for growth is 6.5–8.6 and the optimum pH is 7.2–7.7.  The DNA base composition of the type strain is 38.9 mol% G+C (Tm).  The type strain, 8-2T (=DSM 15999T=CGMCC 1.5011T), was isolated from an anaerobic digester for the treatment of beer-manufacture wastewater.   The NaCl range was 0-0.5 M.</description>
+</treatment>

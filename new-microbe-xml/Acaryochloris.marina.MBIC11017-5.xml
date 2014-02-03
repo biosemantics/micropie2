@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Acaryochloris.marina.MBIC11017</taxon_name>
+  <strain>MBIC11017</strain>
+  <reference>Niche adaptation and genome expansion in the chlorophyll d-producing cyanobacterium Acaryochloris marina (Swingley, W., et al., 2008)</reference>
+  <DOI>NA</DOI>
+  <file>Swingley et al 2008 Acaryochloris marina.pdf</file>
+  <description>Acaryochloris marina is a unique cyanobacterium that is able to produce chlorophyll d as its primary photosynthetic pigment and thus efficiently use far-red light for photosynthesis. The cyanobacterium Acaryochloris marina was found to be the only oxygenic photoautotroph that uses the pigment chlorophyll (Chl) d as the predominant photosynthetic pigment, with only trace amounts of Chl a. Although A. marina produces phycobiliproteins (PBPs), they do not form phycobilisomes (PBS), a typical structure for cyanobacterial peripheral antenna, but instead accumulate rod-shaped PBP complexes. By using Chl d, A. marina thrives in these environments with low visible light intensity but high near infrared intensity where no other photosynthetic organisms absorb strongly. The most significant feature of A. marina is its ability to produce Chl d as a major photosynthetic pigment, which accounts for up to 99% of all cellular chlorophyll.</description>
+</treatment>

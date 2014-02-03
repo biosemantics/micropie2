@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanofollis_tationis</taxon_name>
+  <strain>DSM 2702T</strain>
+  <reference>Reclassification of Methanogenium tationis and Methanogenium liminatans as Methanofollis tationis gen.  nov., comb. nov and Methanofollis liminatans comb. nov. and description of a new strain of Methanofollis liminatans IJSB 49:247-255</reference>
+  <file>Methanofollis.taitionis.liminatans.pdf</file>
+  <description>Irregularly coccoid cells, 1.5-3 µm in diameter, with a proteinaceous, SDS-sensitive S-layer.  Cells stain Gram-negative.  Cells are motile or non-motile.  Obligately anaerobic, no microaerophilic or aerobic growth.  Strains are mesophilic (range 15 to 45˚C).  Substrates for growth and methane production are H2/CO2 and formate.  Methanol, methylamines, ethanol, 2-propanol/CO2, 2-butanol/CO2 and cyclopentanol/CO2 are not utilized.  Cells contain tatiopterin, a modified pterin distinct from methanopterin and sarcinapterin.  Lipid composition as that described for the genus.  The G+C content of DNA of the only strain known so far is 54 mol% (Tm).  The type strain is DSM 2702T and was isolated from a solfataric field on Mount Tatio in the Atacama desert in northern Chile.</description>
+</treatment>

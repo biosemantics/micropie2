@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_thermoaggregans</taxon_name>
+  <strain>DSM 3266</strain>
+  <reference>Isolation and characterization of a new thermophilic and autotrophic methane producing bacterium: Methanobacterium thermoaggregans spec. nov. Arch Microbiol 142:218-222</reference>
+  <file>Methanobacterium.thermoaggregans.pdf</file>
+  <description>Gram-negative regular rods, mostly occurring in filaments and aggregates; single cells are 4-8 µm in length and 0.4 µm in diameter; cells are non-motile, showing ultrastructural diversity (intracytoplasmic membranes).  DNA base composition: 42 mol% G + C.  Temperature optimum at 65˚C, temperature range 40-75˚C.  pH optimum near 7.0- 7.5; growth occurs between pH 6.5 and 9.0.  Obligately anaerobic; H2+CO2 serve as the only substrate for growth and CH4 formation.  Grows autotrophically in defined mineral medium with H2+CO2.  Yeast extract stimulates growth but is not required.  Acetate not required for growth.  Addition of NaCl inhibits growth.  Source: Mud from a cattle pasture.  Type strain: Methanobacterium thermoaggregans has been deposited in the German culture collection (DSM), Gottingen, FRG, number 3266.</description>
+</treatment>

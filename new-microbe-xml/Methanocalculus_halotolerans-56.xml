@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocalculus_halotolerans</taxon_name>
+  <strain>SEBR 4845T = OCM 470T</strain>
+  <reference>Methanocalculus halotolerans gen. nov., sp. nov., isolated from an oil-producing well IJSB 48:821-828</reference>
+  <file>Methanocalculus.halotolerans.pdf</file>
+  <description>Round colonies (diameter, 1 mm) are present after 10 weeks incubation at 37 ˚C.  Cells are irregular cocci with a diameter of 0.8-1 µm.  The cells occur singly or in pairs and possess two to three peritrichous flagella.  The optimum temperature for growth is 38 ˚C with no growth occurring at 24 and 50 ˚C.  The optimum pH is 7.6; growth occurs from pH 7.0 to 8.4.  The optimum NaCl concentration for growth is 5% with growth occurring in 0-12.5% NaCl.  Doubling time is about 12 h under optimal conditions.  Produces methane from H2+CO2 and formate.  Requires acetate for growth; yeast extract is stimulatory.  Cannot catabolize acetate, methanol, trimethylamine, lactate, glucose, CO2 + 1-propanol, CO2 + 2-propanol, CO2 + 1-butanol, or 2-butanol as substrates for methanogenesis.  The G+ C content of the DNA is 55 mol% (as determined by HPLC).  Isolated from an oil-producing well.  The type strain is SEBR 4845T deposited in Oregon Collection of Methanogens (= OCM 470T).</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocalculus_pumilus</taxon_name>
+  <strain>MHT-1T = DSM 12632T = JCM 10627T</strain>
+  <reference>Methanocalculus pumilus sp. nov., a heavymetal- tolerant methanogen isolated from a waste-disposal site IJSEM 50:1723-1729</reference>
+  <file>Methanocalculus.pumilus.pdf</file>
+  <description>Cells are irregular cocci 0.8-1.0 µm in diameter and occur singly.  Gram-negative.  Susceptibility to lysis by SDS (0.1 g per liter) and by hypotonic conditions is observed.  Growth occurs between 25 and 45 °C, with an optimum at 35 °C.  The pH range for growth is 5.5-9.0, with an optimum around neutral pH.  Growth occurs at NaCl concentrations between 0 and 7%, with an optimum at 1.0%.  The doubling time is approximately 12 h under optimum conditions.  The substrates used for growth and methanogenesis are H2/CO2 and formate, but not acetate, pyruvate, glucose, trimethylamine, methanol, ethanol, 1-propanol, 2-propanol, 1-butanol or 2-butanol.  Acetate is required for growth.  The G+C content of the DNA is 51.9 mol% (as determined by HPLC).  The type strain is Methanocalculus pumilus MHT-1T, which was isolated from leachate at a waste-disposal site in Osaka, Japan.  Strain MHT-1T has been deposited in the DSMZ Deutsche Sammlung von Mikroorganismen und Zellkulturen (DSM 12632T) and the Japan Collection of Microorganisms (JCM 10627T).</description>
+</treatment>

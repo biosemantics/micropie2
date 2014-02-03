@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanosalsum_zhilinae</taxon_name>
+  <strain>DSM 4017</strain>
+  <reference>Bergey’s Manal vol 1. pg 288, generic description on pg. 287.</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Irregular, angular cocci occurring individually or occasionally in clumps or tetras.  Gram-negative.  Cell wall is an S-layer.  Slowly motile by one or two flagella.  Stictly anaerobic.  Grows most rapidly at 35-45˚C (growth range, 20-50˚C), 0.4-0.7 M Na+ (growth range 0.2-2.1 M Na+) and pH 8.7-9.5 (growth range pH 8-10).  Bicarbonate is required.  Energy metabolism is by the formation of methane from methylamines, emthanol, or dimethylsulfide.  Acetate, formate, H2/CO2, tetramethylammonium, pyruvate, and alcohols other than methanol are not used.  The mol% G+C is 40.1 (Tm).  Isoalted from sediments of a lake in the Lake Magadi.</description>
+</treatment>

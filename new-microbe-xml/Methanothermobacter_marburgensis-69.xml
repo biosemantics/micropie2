@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanothermobacter_marburgensis</taxon_name>
+  <strain>DX01</strain>
+  <reference>Isolation and characterization of a new strain of Methanothermobacter marburgensis DX01 from hot springs in China Anaerobe 16:54-59</reference>
+  <file>Methanothermobacter.marburgensis.pdf</file>
+  <description>Isolated from a hot spring in China.  Growth is rapid in MM with CO2 as the sole carbon source, NH3 as the sole nitrogen source, sulfide as the sole sulfur source and H2/CO2 as the sole energy source.  Growth on formate is not possible.  Growth did not occur on methanol, formate, acetate, trimethylamine, methane thiol, ethanol, and acetate.  The optimal temperature for growth is 65˚C.  Methane production and growth were observed between 38˚C and 70˚C.  The pH range was 5.0 to 8.2 and the pH optimum was 7.0 to 7.4.  The NaCl concentration range was 0.1 to 35 g per liter and the optimum NaCl concentration was 0.5 g per liter.  Cell pellets collected by centrifugation were brick red.  Cells were 0.4 µm wide and between 3 and 30 µm long.  The G+C mol % was 52.</description>
+</treatment>

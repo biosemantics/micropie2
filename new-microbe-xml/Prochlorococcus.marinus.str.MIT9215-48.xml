@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Prochlorococcus.marinus.str.MIT9215</taxon_name>
+  <strain>MIT 9215</strain>
+  <reference>Phylogenetic composition of Prochlorococcus and Synechococcus in cold eddies of the South China Sea (Jing, H., et al., 2012)</reference>
+  <DOI>10.3354/ame01546</DOI>
+  <file>Jing, H. et al. Prochlorococcus.marinus.str.MIT9215.pdf</file>
+  <description>Unicellular picocyanobacteria, Prochlorococcus and Synechococcus, the most abundant photosynthetic microorganisms in the global oceans, occupy a key position in the marine microbial food web and contribute significantly to global primary production. Prochlorococcus are generally more abundant than Synechococcus by 1 to 2 orders of magnitude except in coastal and upwelling regions. Although the 2 genera often co-occur, they have different geographical distributions. Prochlorococcus are numerically dominant in the warm oligotrophic oceans (Campbell et al. 1994), whereas Synechococcus predominate in coastal and more temperate/mesotrophic open oceans with wider global distribution. Prochlorococcus is composed of multiple genetically and physiologically differentiated subgroups, including at least 6 closely related lightadapted subgroups which are distributed at different water depths. High-light-adapted (HL) Prochlorococcus dominate in the surface mixed layer and can be further subdivided into HL I and HLII subgroups; whilst the low-light-adapted (LL) Prochlorococcus dominate in the deeper layer of the euphotic zone and comprise at least 4 ecotypes LL I, LLII, LL III and LL IV. Similar to what is found in the subtropical North Pacific gyre, Prochlorococcus are the most abundant autotrophic picoplankton in the South China Sea during summer</description>
+</treatment>

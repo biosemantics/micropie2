@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcus_igneus</taxon_name>
+  <strain>Kol 5 = DSM 5666</strain>
+  <reference>Methanococcus igneus sp. nov., a novel hyperthermophilic methanogen from a shallow submarine hydrothermal system Syst Appl Microbiol 13:263-269</reference>
+  <file>Methanococcus.igneus.pdf</file>
+  <description>Cells are irregular cocci about 1.3-1.8 µm in width.  Many pairs are formed during exponential growth phase.  Cell envelope consisting of protein subunits (S-layer).  Cells are immotile and no tufts of flagella visible.  Convex pale yellow round smooth colonies formed on agar.  Growth between 45 and 91˚C (optimum: 88˚C) and between 0.45 and 7.2% salt (optimum: 1.8%).  pH range of growth between 5 and 7.5 (optimum: 5.7).  Strictly anaerobic, obligately chemolithoautotrophic.  Formation of methane from H2 and CO2.  No stimulation of growth by Na2SeO4 or by yeast extract or peptone.  S˚ inhibitory to growth.  H2S formed  from H2 and S˚.  The DNA base composition is 31 mol % GC.  Isolated from a shallow submarine hydrothermal vent system at the Kolbeinsey rise situated on the Mid Atlantic Ridge north off Iceland, at a depth of 106 m.  Type strain is Methanococcus igneus Kol 5 = DSM 5666, Braunschweig, FRG.</description>
+</treatment>

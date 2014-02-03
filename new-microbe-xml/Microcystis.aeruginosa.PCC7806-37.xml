@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Microcystis.aeruginosa.PCC7806</taxon_name>
+  <strain>PCC 7806</strain>
+  <reference>Insertional mutagenesis of a peptide synthetase gene that is responsible for the hepatoxin produciton in the cyanobacterium Microcystis aeruginosa PCC 7806 (Dittman, E., et al., 1997)</reference>
+  <DOI>NA</DOI>
+  <file>Dittman, E. et al Microcystis.aeruginosa.PCC7806.pdf</file>
+  <description>Bloom-forming, produces microcystins, unicellular freshwater species</description>
+</treatment>

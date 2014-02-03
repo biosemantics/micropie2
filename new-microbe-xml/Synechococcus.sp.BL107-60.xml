@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.sp.BL107</taxon_name>
+  <strain>BL107</strain>
+  <reference>Phylogeny of Calvin cycle enzymes supports Plantae monophyly (Prieto-Reyes, A., et al., 2007)</reference>
+  <DOI>NA</DOI>
+  <file>Prieto-Reyes, A. et al. Synechococcus.sp.BL107.pdf</file>
+  <description>cyanobacterium</description>
+</treatment>

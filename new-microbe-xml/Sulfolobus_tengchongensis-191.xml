@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Sulfolobus_tengchongensis</taxon_name>
+  <strain>RT8-4T = AS1.3345</strain>
+  <reference>Sulfolobus tengchongensis sp. nov., a novel thermoacidophilic archaeon isolated from a hot spring in Tengchong, China Extremophiles 7:493-498</reference>
+  <file>Sulfolobus.tengchongensis.pdf</file>
+  <description>Cells are irregular cocci with a diameter of 1.0–1.2 µm.  Peritrichous flagella (approximately 10 nm in diameter) are long and curved.  Colonies are dark yellow, smooth and flat.  Cells grow optimally on medium supplemented with tryptone.  D-Arabinose, D-xylose, D-galactose, D-fructose, sucrose, and L-glutamic acid can be utilized as the sole source of carbon and energy.  D-Glucose, D-mannose, rhamnose, D-sorbitol, lactose, and L-aspartic acid are not utilized.  Growth also occurs on Brock’s medium supplemented with elemental sulfur under aerobic conditions.  No anaerobic growth is apparent under either heterotrophic or autotrophic growth conditions.  Under aerobic and chemoheterotrophic growth conditions, cells grow at temperatures from 65 to 95 ˚C, and optimal growth occurs at 85 ˚C.  Cells grow at pH 1.7–6.5, and optimal growth occurs at pH 3.5.  The G+C content is 34.4 mol%, as calculated from a Tm value.  The type strain is Sulfolobus tengchongensis RT8-4T, which has been deposited with China General Microbiological Culture Collection Center as strain AS1.3345.  Capable of using D-arabinose, D-xylose, D-galactose, maltose, sucrose, D-fructose, L-glutamic acid, tryptone, and yeast extract.  Unable to use D-glucose, D-mannose, D-rhamnose, lactose, D-sorbitol, and L-aspartic acid.</description>
+</treatment>

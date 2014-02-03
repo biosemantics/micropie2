@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_receptaculi</taxon_name>
+  <strain>ZC-2T (DSM 18860T =CGMCC 1.5087T)</strain>
+  <reference>Isolationand characterization of Methanoculleus receptaculi sp. nov. fromShengli oil field,China FEMS Microbiol Lett 285:65-71</reference>
+  <file>Methanoculleus.receptaculi.2.pdf</file>
+  <description>Cells are nonmotile cocci and typically 0.8–1.7 µm in diameter.  They occur singly or in pairs.  The temperature range and optimum for growth are &lt;30–65˚C and 50–55˚C, respectively.  The pH range and optimum for growth are 6.5–8.5 and 7.5–7.8, respectively.  The NaCl range and optimum for growth are 0–1.3M and 0.2 M, respectively.  Substrates that can be utilized for methanogenesis by strain ZC-2T are H2/CO2 or sodium formate. Potential substrates not utilized are sodium acetate, trimethylamine, monomethylamine, ethanol, dimethylsulfide, isopropanol, isobutanol, butan-2-ol or H2/CO.  Acetate is a growth factor required for strain ZC-2T.  The G+C content of the genomic DNA is 55.2 mol%. The type strain, ZC-2T (DSM 18860T =CGMCC 1.5087T), was isolated from production water of an oil reservoir of Shengli oil field.</description>
+</treatment>

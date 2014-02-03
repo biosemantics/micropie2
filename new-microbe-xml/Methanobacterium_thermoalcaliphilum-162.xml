@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_thermoalcaliphilum</taxon_name>
+  <strain>AC60 = DSM 3267</strain>
+  <reference>Methanobacterium thermoalcaliphilum spec. nov. a new moderately alkaliphilic and thermophilic autotrophic methanogen Arch Microbiol 142:211-217</reference>
+  <file>Methanobacterium.thermoalcaliphilum.pdf</file>
+  <description>Morphology: Gram-negative, nonmotile, straight rods.  Size 0.3 µm diameter by 3-4 µm long.  Cells occur singly or in chains.  Insensitive to antibiotics inhibiting peptidoglycan synthesis (penicillin, ampicillin and vancomycin).  Colony characteristics: Circular, pale yellow in colour with entire edges.  Temperature relationship: Optimum, 58-62˚C range: 40-69˚C.  pH relationship: Optimum, 7.5- 8.5; range: 6,5 - 10.0.  DNA base composition: 38.8 mol% G + C.  Physiology: Obligately anaerobic; only H2 + CO2 serve as substrates for growth and methanogenesis.  No growth occurred with methanol, formate, acetate or methylamines.  Yeast extract was necessary for growth.  Nutrition: Growth autotrophically in defined mineral medium and H2 + CO2 with the addition of yeast extract; elevated NaCl not required.  Nickel stimulates growth.  Source: Biogas digestor of cattle manure.  Type strain: AC60 has been deposited in the German culture collection (DSM), Gottingen, FRG, number 3267.</description>
+</treatment>

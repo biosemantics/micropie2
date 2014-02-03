@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Synechococcus.sp.CC9311</taxon_name>
+  <strain>CC9311</strain>
+  <reference>Biogeography of Photosynthetic Light-Harvesting Genes in Marine Phytoplankton (Bibby, T., et al., 2009)</reference>
+  <DOI>NA</DOI>
+  <file>Bibby, T. et al. Synechococcus.sp.CC9311.pdf</file>
+  <description>prokaryotic photoautotrophs, two distinct light-harvesting systems, chlorophyll-bound protein complexes or phycobilin-bound protein complexes, marine cyanobacteria, dominant genera at temperate latitudes and coastal regions, The LH system in Synechococcus involves the phycobilisome (PBS), stacks of chromophorylated protein complexes located externally to the photosynthetic thylakoid membrane</description>
+</treatment>

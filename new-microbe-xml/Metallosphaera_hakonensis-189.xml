@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Metallosphaera_hakonensis</taxon_name>
+  <strain>HO1-1T = IAM 14250T, JCM 8857T, DSM 7519T and ATCC 51241T</strain>
+  <reference>Sulfolobus hakonensis sp. nov., a Novel Species of Acidothermophilic Archaeon IJSB 46:377-382</reference>
+  <file>Sulfolobus.hakonensis.pdf</file>
+  <description>The cells are lobed, gram-negative cocci (diameter, 0.9 to 1.1 µm) and are surrounded by cell wall which consists of regularly arranged structures.  Growth occurs at temperatures between 50 and 80°C (optimum temperature, 70°C) and at pH 1.0 to 4.0 (optimum pH, 3.0).  Aerobic and facultatively chemolithoautotrophic.  Lithotrophic growth occurs on elemental sulfur, ferrous sulfide, sodium tetrathionate, and hydrogen sulfide.  Weak growth occurs in the presence of 1.0% maltose, glutamic acid, or tryptophan as a sole carbon and energy source.  The G+C content of the genomic DNA is 38.4 mol%.  The main cellular lipids are calditoglycerocaldiarchaeol (CGTE) and caldarchaeol.  The type strain is strain H01-1 (= IAM 14250 = JCM 8857 = DSM 7519 = ATCC 51241).  Isolated from hot spring water containing mud which was obtained near a point from which H2S-containing gas was actively gushing out in a lava field at Owaku-dani, Hakone, Japan.  Did not grow under anaerobic conditions with an H2-CO2 gas phase in medium supplemented with glucose and yeast extract, regardless of the presence of elemental sulfur. Unable to utilize D-arabinose, D-ribose, D-xylose, D-fructose, D-galactose, D-glucose, D-mannose, L-rhamnose, lactose, sucrose, raffinose, and L-aspartic acid.</description>
+</treatment>

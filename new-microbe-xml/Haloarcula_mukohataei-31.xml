@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Haloarcula_mukohataei</taxon_name>
+  <strain>arg-2 (= JCM 9738)</strain>
+  <reference>Haloarcula argentinensis sp. nov. and Haloarcula mukohataei sp. nov., Two New Extremely Halophilic Archaea Collected in Argentina IJSB 47:73-77</reference>
+  <file>Haloarcula.argentinensis.mukohataei.pdf</file>
+  <description>Gram-negative.  Motile by means of polar flagella.  Short rods (ca. 2.0 by 0.5 µm) in actively growing cultures and pleiomorphic in stationary cultures.  Colonies are about 2 mm in diameter after 1 week of incubation at 40°C on 1.5% agar plates containing 20% salt.  They are translucent, entire, smooth, and red-orange.  Chemoorganotrophic.  Growth is strictly aerobic.  Growth occurs in the presence of 2.5 to 4.5 M NaCl; optimum growth occurs in the presence of 3.0 to 3.5 M NaCl at 40°C.  The minimum Mg2+ concentration required for growth is 3 mM in solid medium, but concentration dependence for growth is not observed at Mg2+ concentrations between 3 and 300 mM.  Acids are produced from many sugars (sucrose, maltose, glucose, galactose, mannose, ribose, and glycerol).  Resistant to chloramphenicol (30 µg/ml), kanamycin (30 µg/ml), and penicillin (10 IU/ml).  Susceptible to anisomycin (10 µg/ml), novobiocin (5 µg/ml), and pravastatin (10 µg/ml).  The G+C content of the DNA is 65 mol% (as determined by the thermal denaturation method).  Catalase- and oxidase-positive.  The fructose-bisphosphate aldolase is class I (EDTA insensitive).  Nonsaponifiable ether-linked phosphoglyceride lipid.  The major glycolipid is unknown.  Contains retinal protein.  The type strain is strain arg-2 (= JCM 9738).</description>
+</treatment>

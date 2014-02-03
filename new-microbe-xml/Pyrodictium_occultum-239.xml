@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Pyrodictium_occultum</taxon_name>
+  <strain>PL-19 = DSM 2709</strain>
+  <reference>Bergey’s Manual pg 192-195</reference>
+  <file>Cells polymorphous disks and dishes, about 0.3-2.5 µm in diameter and usually 0.2 µm thick.  Networks of cannulae formed.  Growth by hydrogen-sulfur autotrophy, or in the presence of yeast extract, on H2/CO2 and sulfite.  Optimal growth temperature around 105˚C.  Growth between 0.2-12% NaCl and pH 4.5-7.2.  The mol % G+C of the DNA is 62 (Tm).  Chemolithotrophic.  H2S is formed from sulfur and hydrogen.  Non-motile.  Strictly anaerobic.</file>
+</treatment>

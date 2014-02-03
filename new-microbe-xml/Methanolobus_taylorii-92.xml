@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanolobus_taylorii</taxon_name>
+  <strain>GS-16 (= OCM 58 = DSM 9005)</strain>
+  <reference>Methanolobus taylorii sp. nov., a New Methylotrophic, Estuarine Methanogen IJSB 44:573-575</reference>
+  <file>Methanolobus.taylorii.pdf</file>
+  <description>Cells are coccoid bodies 0.5 to 1 µm in diameter and sometimes grow in large clumps.  Lysed by detergents.  Gram negative.  Nonmotile.  Cells grow by forming methane from methylamines, methylsulfides, and methanol.  They form methane from dimethylselenide and methylmercury and ethane from diethylsulfide, but they cannot grow on any of these substrates, nor can they grow on methionine, dimethyl disulfide, formate, H2-CO2, or acetate.  Cells grow well at 37˚C, at pH 7.2 to 8.8, and in the presence of 0.2 to 1.2 M NaCl.  Very strictly anaerobic.  Biotin and catabolic substrate are the only organic compounds required for growth.  The guanine-plus-cytosine content of the DNA of the type strain is 40.8 mol% (as determined by a chromatographic analysis of bases).  The habitat is estuarine sediments.  The type strain is GS-16 (= OCM 58 = DSM 9005).</description>
+</treatment>

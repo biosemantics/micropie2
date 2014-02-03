@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_aarhusense</taxon_name>
+  <strain>H2-LRT =DSM 15219T=ATCC BAA-828T</strain>
+  <reference>Methanobacterium aarhusense sp. nov., a novel methanogen isolated from a marine sediment (Aarhus Bay, Denmark) IJSEM 54:759-763</reference>
+  <file>Methanobacterium.aarhusense.pdf</file>
+  <description>Colonies are circular, greyish, surrounded by a white zone.  After 6 weeks, up to 1 mm in diameter. Cells are straight or crooked rods, 5–18 mm long and 0.7 mm wide.  Occur often in filaments and tend to attach to particles. Gram-positive.  Non-motile. Methanogenic.  Do not lyse after transfer into demineralized water or in 4% Triton X-100 medium. Lyses in 1% SDS medium.  Member of the Euryarchaeota of the domain Archaea.  H2/CO2 is the only substrate that supports growth. Chemoautotrophic. Does not grow on methanol, formate, acetate, ethanol, 2-propanol, CO, trimethylamine, dimethyl sulphide or methane thiol.  Growth is not stimulated by acetate, yeast extract or vitamins.  Optimum growth temperature is 45C.  Neither growth nor methane production is observed at 48 ˚C.  Methane production, but no growth occurs at 5 ˚C.  Optimum pH is between 7.5 and 8.  No growth occurs at pH 5 or 9.  DNA base composition is 34.9 mol% G+C (as determined by HPLC).  The type strain is H2-LRT (=DSM 15219T=ATCC BAA-828T).  Isolated from the methane–sulphate transition zone at 1.7 m below the sediment surface in Aarhus Bay, Denmark.  Strain H2-LRT utilized hydrogen sulphide but not sulphate as a sulphur source, which is in agreement with what has been reported from other species within the genus Methanobacterium (Boone, 2001).</description>
+</treatment>

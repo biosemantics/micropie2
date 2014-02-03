@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Natrialba_taiwanensis</taxon_name>
+  <strain>B1TT = DSM 12281T = JCM 9577T</strain>
+  <reference>Transfer of Natrialba asiatica B1T to Natrialba taiwanensis sp. nov. and description of Natrialba aegyptiaca sp. nov., a novel extremely halophilic, aerobic, non-pigmented member of the Archaea from Egypt that produces extracellular poly(glutamic acid) IJSEM 51:1133-1142</reference>
+  <file>Natrialba.taiwanensis.aegyptica.pdf</file>
+  <description>Non-pigmented rods or coccobacilli, 0.3-0.5 x 1-1.5 µm.  Cells are Gram-negative and motile.  The optimum temperature for growth is 35-40 °C, with a maximum at 55 °C.  The pH range for growth is pH 5-10, with an optimum in the range pH 7.5-7.8.  The NaCl range for growth is 2.0 M saturation, with an optimum at 3.5 M.  NaCl may be replaced to a large extent by KCl.  Aerobic, catalase- and oxidase-positive.  Acid is produced from xylose, arabinose, glucose (weak), sucrose, maltose (weak) and starch but not from lactose.  Amylolytic, but casein and gelatin are not hydrolysed.  Tweens 20, 40 and 80 are hydrolysed but not egg yolk (lecithin).  This species was isolated by Kamekura &amp; Dyall-Smith and was classified initially as Natrialba asiatica strain B1T. Isolated from solar salts produced in Taiwan.  The type strain is strain B1TT, which has been deposited in the DSMZ as DSM 12281T and the JCM as JCM 9577T.  Susceptible to fucidic acid, bactracin, nitrofurantoin, novobiocin, anisomycin, trimethoprim, and rifampicin.  Resistant to nystatin, tetracycline, nalidixic acid, erythromycin, chloramphenicol, streptomycin, and penicillin G.</description>
+</treatment>

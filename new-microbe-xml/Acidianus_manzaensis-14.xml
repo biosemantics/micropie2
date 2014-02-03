@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Acidianus_manzaensis</taxon_name>
+  <strain>NA-1T = NBRC 100595</strain>
+  <reference>Acidianus manzaensis sp. nov., a Novel Thermoacidophilic Archaeon Growing Autotrophically by the Oxidation of H2 with the Reduction of Fe3+ Curr Microbiol 53:406-411</reference>
+  <file>Acidianus.manzaensis.pdf</file>
+  <description>Isolated from a hot fumarole in Manza, Japan.  It is a facultative autotroph capable of both anaerobic and aerobic growth.  H2, S˚, yeast extract, pyruvate, peptone, tryptone, casamino acids, sucrose, mannose, lactose, and glucose can serve as electron donors using Fe3+ or O2 as an electron acceptor for anaerobic and aerobic respiration, respectively.  S˚, NO3-, NO2-, SO42-, Mn4+, fumarate, or Fe2O3 cannot serve as electron acceptors for anaerobic respiration.  Growth occurs at 60–90 ˚C and pH 1.0–5.0.  The cells are nearly regular cocci, approximately 0.5– 0.8 lm in diameter.  The cell envelope consists of an Slayer attached to the cytoplasmic membrane and contains caldariellaquinone.  The G + C content of the DNA is 29.9 mol%.  The type strain is Acidianus manzaensis strain NA-1T, deposited in the culture collections of the National Institute of Technology and Evolution (NBRC 100595).  Tetrathionate, Fe(II), acetate, malate, succinate, formate, fumarate, glycerol, lactate, citrate, glycine, and beef extract, could not be used as an electron donor.</description>
+</treatment>

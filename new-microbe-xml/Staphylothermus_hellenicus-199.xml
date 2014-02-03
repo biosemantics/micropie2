@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Staphylothermus_hellenicus</taxon_name>
+  <strain>P8T (=DSM 12710T=JCM 10830T)</strain>
+  <reference>Thermococcus aegaeicus sp. nov. and Staphylothermus hellenicus sp. nov., two novel hyperthermophilic archaea isolated from geothermally heated vents off Palaeochori Bay, Milos, Greece IJSEM 50:2101-2108</reference>
+  <file>Thermococcus.aegaeicus.Staphylothermus.hellenicus.pdf</file>
+  <description>Cells are irregular cocci with a diameter of 0.8-1.3 µm, often growing in large aggregates.  Growth occurs between 70 and 90 °C with an optimum at 85 °C.  Doubling time at 85 °C is about 2.9 h.  pH range of growth is between 4.5 and 7.0 with an optimum around pH 6.  Growth occurs between 2 and 8% NaCl with an optimum at 4%.  Obligate anaerobe.  Grows with yeast extract as carbon source, but growth on peptone as carbon source is poor.  Growth is absolutely dependent on elemental sulfur.  DNA G+C content is 38 mol%.  The type strain was isolated from a geothermally heated sediment at Palaeochori Bay, Milos, Greece located at a depth of 9.4 m.  The type strain is P8T (=DSM 12710T=JCM 10830T).  Non-motile. Poor growth was observed on peptone.  No growth occurred in the presence of casein, pyruvate, cellulose, sodium formate, maltose, glucose, cellobiose, trehalose, ribose, sorbose, sucrose or methanol as sole carbon sources under H2/CO2 or N2/CO2.  The growth of P8T was absolutely dependent upon the presence of elemental sulfur.  Could not use thiosulfate, sulfite, or sulfate in place of sulfur. G+C content of 38.8 mol%.</description>
+</treatment>

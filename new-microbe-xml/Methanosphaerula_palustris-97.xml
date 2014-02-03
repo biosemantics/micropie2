@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanosphaerula_palustris</taxon_name>
+  <strain>E1-9cT (=ATCC BAA-1565T =DSM 19958T)</strain>
+  <reference>Methanosphaerula palustris gen. nov., sp. nov., a hydrogenotrophic methanogen isolated from a minerotrophic fen peatland IJSEM 59:928-935</reference>
+  <file>Methanosphaerula.palustris.pdf</file>
+  <description>Cells stain Gram-positive and do not lyse with 0.1% SDS.  Cells are 0.5–0.8 µm in diameter and autofluorescent when exposed to near-UV light.  The optimum pH is about 5.5; growth occurs at pH 4.8–6.4.  The temperature optimum is about 30 ˚C with growth occurring at 14–35 ˚C.  Optimal growth is observed in 15–35 mM total Na+, but no growth is observed in the presence of 100 mM total Na+ or 0.5% NaCl.  Doubling time is about 19 h under optimal conditions.  Methane is produced from H2/CO2 or formate, but not from trimethylamine, ethanol, methanol, 2-propanol, 2-butanol, acetate, propionate or butyrate.  Formate concentrations &gt;50 mM are inhibitory at pH 5.5.  Vitamins, coenzyme M, acetate (4 mM) and low concentrations of Na2S (&lt;0.08 mM) are required for growth.  The type strain is E1-9cT (=ATCC BAA-1565T =DSM 19958T), isolated from minerotrophic fen peatland.  The DNA G+C content of the type strain is 58.9±2 mol%.</description>
+</treatment>

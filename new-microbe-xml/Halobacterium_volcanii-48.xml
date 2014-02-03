@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Halobacterium_volcanii</taxon_name>
+  <strain>DS 2</strain>
+  <reference>Halobacterium volcanii spec. nov., a Dead Sea Halobacterium with a Moderate Salt Requirement Arch Microbiol 104:207-214</reference>
+  <file>Halobacterium.volcanii.pdf</file>
+  <description>Cells basically disc-shaped and frequently cupped when grown under optimal conditions; 1- 3 x 2-3 µm and 0.4-0.5 µm in thickness.  Non-motile.  Pleomorphic; spherical, irregular and also bizarre structures are often seen, especially when conditions are not optimal for growth.  Very fragile.  Lysis takes place in hypotonic solutions.  Surface of cells textured with a hexagonal pattern.  Thin sections of the cell envelope display the fine structure typical of halobacteria.  Division by constriction.  Chemoorganotrophic, aerobic.  Yeast extract and tryptone are good sources of organic nutrilites.  No growth anaerobically with nitrate.  Requires at least 1 M NaCl for growth; optimum NaCl concentration range 1.7-2.5 M at 30-40˚C; 5 M NaCl is strongly inhibitory.  Optimum MgCl2 concentration 0.2 M; fair growth still occurs at 1.5 M.  Large excess of acidic over basic amino acids in bulk protein.  Amino sugar content of cell envelope very low; cell envelope lacks muramic acid.  Lipid largely terpenoid; no fatty acid derivatives present.  Pigmentation red-to-orange due to carotenoids.  DNA base composition: 63.4 moles guanine + cytosine.  Habitat: The Dead Sea.  Holotype: Strain DS 2; deposited in the National Collection of Marine Bacteria, Torry Research Station, P.O.  Box 31, Aberdeen, Scotland, AB9 8DG.  Gas vacuoles not present.</description>
+</treatment>

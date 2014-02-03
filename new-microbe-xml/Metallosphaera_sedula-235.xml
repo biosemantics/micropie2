@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Metallosphaera_sedula</taxon_name>
+  <strain>TH2 = DSM 5348</strain>
+  <reference>Bergey’s Manual pg 204-6</reference>
+  <file>Cells regular to irregular cocci with a diameter of 0.6-1.5 µm.  Gram negative.  Motile by possession of flagella.  Growth between 50 and 80˚C, optimum around 75˚C and pH 1.0-4.5.  Optimal doubling time around 5 h.  Aerobic; facultatively chemolithoautotrophic growth on sulfidic ores and sulfur.  Aerobic hydrogen oxidation, optimal O2 concentrations around 0.5%.  No sulfur reduction in the presence of molecular hydrogen.  Organotrophic growth on yeast extract, peptone, tryptone, casamino acids, and beef extract.  Lithotrophic growth on sulfidic ores like pyrite, sphalerite, and chalcopyrite and on S˚ resulting in the production of sulfuric acid.  Cell membrane consists of isopranyl ether lipids.  The mol % G+C of the DNA is 45 % (Tm).</file>
+</treatment>

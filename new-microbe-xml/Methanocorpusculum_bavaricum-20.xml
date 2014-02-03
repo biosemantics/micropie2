@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocorpusculum_bavaricum</taxon_name>
+  <strain>DSM 4179</strain>
+  <reference>Methanocorpusculaceae fam. nov., represented by Methanocorpusculum parvum, Methanocorpusculum sinense spec. nov. and Methanocorpusculum bavaricum spec. nov. Arch Microbiol 151:381-390</reference>
+  <file>Methanocorpusculum.parvum.sinense.bavaricum.pdf</file>
+  <description>Small, irregular coccoid cells usually occurring singly, &lt; 1 µm in diameter.  Flagellated and weakly motile.  Gram negative.  Cell envelope consists of a hexagonally arranged S-layer with a center-to-center spacing of the subunits of 16.0 nm.  Glycoprotein subunits with an apparent molecular weight of 94000 are found.  Strictly anaerobic and chemoorganotrophic.   Methane is produced from H2/CO2, formate, 2-propanol/CO2 and 2-butanol/CO2.  No growth and methane production observed on acetate, methylamines, methanol, ethanol, l-propanol, l-butanol and cyclohexanol.  Optimal growth temperature 37 ˚C, no growth at or below 15˚C and at or above 45˚C. Optimal pH 7.0.  Clarified tureen fluid obligately required for growth.  The G + C content of the DNA is 47.7 mol% (Tm) and 51 mol% (HPLC).  Isolated from anaerobic sediment of a wastewater treatment pond of the sugar factory in Regensburg (FRG).</description>
+</treatment>

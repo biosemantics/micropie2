@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermoproteus_tenax</taxon_name>
+  <strain>Kra 1 = ATCC35583 = DSM 2078</strain>
+  <reference>Chemoautotrophic metabolism of anaerobic extremely thermophilic archaebacteria. Nature 301:511-513</reference>
+  <file>n.a.</file>
+  <description>Isolated from mud hole in Krafla, Iceland.  Is able to grow with CO as a sole carbon source provided that sulfur is available as a terminal electron acceptor.  H2S and CO2 are produced.  Can also grow autotrophically using CO2.</description>
+</treatment>

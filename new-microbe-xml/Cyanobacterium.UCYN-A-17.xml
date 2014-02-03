@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Cyanobacterium.UCYN-A</taxon_name>
+  <strain>UCYN-A</strain>
+  <reference>Metabolic streamlining in an open-ocena nitrogen-fixing cyanobacterium (Tripp, J.H., et al., 2010)</reference>
+  <DOI>10.1038/nature08786</DOI>
+  <file>Tripp et al 2010 Cyanobacterium.UCYN-A.pdf</file>
+  <description>periodically abundant N2-fixing5 marine cyanobacterium, photofermentative metabolism and is dependent on other organisms for essential compounds, has a reduced genome, lack of photosystem II, lack of biosynthetic pathways for several amino acids and purines suggests that this organism depends on other organisms either in close association or in symbiosis for critical nutrients, genome is small, genome is asingle, circular chromosome with 1,214 identified protein-coding regions, the genome lacked part or all of several crucial metabolic pathways, including the tricarboxylic acid (TCA) cycle, the Calvin cycle, biosynthesis of several amino acids and de novo purine biosynthesis, has only a single candidate TCA cycle enzyme (malate:quinone oxidoreductase), needs alternative electron donors if it uses photosystem I to make the reductant NADPH</description>
+</treatment>

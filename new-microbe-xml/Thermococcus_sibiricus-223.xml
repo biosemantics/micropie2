@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_sibiricus</taxon_name>
+  <strain>MM 739 = DSM 12597</strain>
+  <reference>Isolation and characterization of Thermococcus sibiricus sp. nov. from a Western Siberia high-temperature oil reservoir Extremophiles 5:85-91</reference>
+  <file>Thermococcus.sibiricus.pdf</file>
+  <description>Cells are nonmotile irregular cocci 0.5–1.0 µm in diameter.  Anaerobe.  Organotroph, fermenting peptides.  No growth was found on sugars, polysaccharides, organic acids, alcohols, or molecular hydrogen.  Elemental sulfur stimulates fermentative growth on peptides in closed vessels.  Hyperthermophile, growing in the temperature range from 40° to 88°C, with an optimum at 78°C.  Neutrophile, growing in the pH range 5.8 to 9.0 with an optimum at 7.5.  Adapted to marine salinity, 5–70 g per liter NaCl, with the optimum at 18–20 g per liter.  G+C content of DNA, 38.4 mol%.  Isolated from formation water of high-temperature Samotlor oil reservoir, Western Siberia.  Type strain MM 739 was deposited in the Deutsche Sammlung von Mikroorganismen und Zellkulturen (DSMZ) GmbH, Germany, under DSM 12597.  Capable of growth utilizing peptone, yeast extract, beef extract, and soya bean extract.  The presence of sulfur was not obligatory but stimulated growth.  No growth was observed on starch, pyruvate, glucose, acetate, methanol, ethanol, or lactate.  No autotrophic growth on H2/CO2 in either the presence or absence of sulfur.  H2S, CO2, acetate, isobutyrate, and isovalerate were the main metabolic products when peptone was the substrate.</description>
+</treatment>

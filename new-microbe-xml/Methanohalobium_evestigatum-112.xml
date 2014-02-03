@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanohalobium_evestigatum</taxon_name>
+  <strain>Z-7303</strain>
+  <reference>Bergey’s Manual vol 1. pg 279-280.</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Non-motile.  Strictly anaerobic.  Extremely happhilic.  Moderately thermophilic,.  Strictly methylotrophic.  Trimethylamine, dimenthylamine, and methylamine are substrates for growth and methanogenesis.  Acetate, formate, and H2/CO2 are not utilized for growth or methanogenesis.  Methanol is utilized at very low concentrations (&lt;5 mM). Cell morphology is strongly influenced by the concentration of divalent cations.  Thermotolerant, growth observed after 8 min at 100˚C.  The cell wall is SDS resistant.  Energy-yielding metabolism involves methane and ammonia production from methylamines; trimethylamine is the preferred substrate.  Hydrogen is formed during growth.  There is no growth on methanol at 123 mM or 20 mM, but growth at 5 mM has been reported.  Trimethylamine may serve as a sole carbon and energy source.  Ammonia serves as a nitrogen source, and sulfide serves as as sulfur source.  Isolated from the sediments of saline lagoons in Sivash, covered by a dense cyanobacterial mat of Microcoleus chthonoplastes.  The mol% G+C is 37 (Tm).</description>
+</treatment>

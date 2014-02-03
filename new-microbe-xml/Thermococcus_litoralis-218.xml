@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Thermococcus_litoralis</taxon_name>
+  <strain>NS-C (DSM 5473)</strain>
+  <reference>Thermococcus litoralis sp. nov.: A new species of extremely thermophilic marine archaebacteria Arch Microbiol 153:205-207</reference>
+  <file>Thermococcus.litoralis.pdf</file>
+  <description>Cells are regular to irregular about 0.5 - 3.0 µm in diameter, mostly occurring singly, sometimes in pairs.  Cells are not flagellated.  They grow obligately heterotrophically on yeast extract, peptone, meat extract, casein and tryptone and are able to reduce sulfur.  Slight growth on pyruvate.  Cells are extreme thermophiles growing between 55 and 98˚C with an optimum around 85˚C, between pH 4.0 and 8.0 with the optimum at pH 6 and between 1.8-6.5% NaCl.  They are sensitive to Rifampicin.  G + C content of DNA is about 38 mol%.  Isolated from shallow submarine solfataras at Lucrino/ Naples and Porto di Levante/Vulcano.  Type strain: Thermococcus litoralis NS-C (DSM 5473).  In the presence of sulfur, higher growth yields were observed, accompanied by H2S production.  No growth occurred on glucose, sucrose, ribose, xylose, maltose, galactose, arabinose, raffinose, lactose, sorbose, formiate, acetate, propionate, lactate, glutamate, ethanol, methanol, methylamine, glycerol, starch, casamino acids, single L-amino acids and amino acid mixtures.  Slight growth was found in the presence of pyruvate.  Sensitive to rifampicin.</description>
+</treatment>

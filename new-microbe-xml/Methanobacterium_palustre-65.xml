@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobacterium_palustre</taxon_name>
+  <strain>F (=DSM 3108)</strain>
+  <reference>Characterization of a new mesophilic, secondary alcohol-utilizing methanogen, Methanobacterium palustre spec. nov. from a peat bog Arch Microbiol 151:1-9</reference>
+  <file>Methanobacteriumpalustre.pdf</file>
+  <description>Rod-shaped cells, 0.5 µm wide by 2.5-5 µm in length, occasionally form filaments of up to 65 µn.  Gram-positive, non-motile.  Colonies on agar medium are yellowish, round, convex with a smooth surface, 2- 3 mm in diameter.  Temperature optimum around 37˚C, pH optimum around 7.0.  No salt-requirement, but tolerates 1.8% NaCl.  Utilizes H2/CO2, formate, 2-propanol/CO2 and 2-butanol/ CO2 for growth and/or methane production.  Grows autotrophically on H2/CO2.  The G + C content of the DNA is 34 mol% (Tm).  The habitat is a marshy soil in the Sippenauer Moor close to Kelheim/Bavaria.  The type strain is strain F (DSM 3108).</description>
+</treatment>

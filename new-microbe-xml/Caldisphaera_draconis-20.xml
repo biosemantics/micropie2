@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Caldisphaera_draconis</taxon_name>
+  <strain>18U65</strain>
+  <reference>Isolation, Characterization, and Ecology of Sulfur-Respiring Crenarchaea Inhabiting Acid-Sulfate-Chloride-Containing Geothermal Springs in Yellowstone National Park AEM 73:6669-6677</reference>
+  <file>Caldisphaera.draconis.Acidilobus.sulfurreducens.pdf</file>
+  <description>Hot spherical cell from Dragon Spring.  Growth is anaerobic.  Cells are coccoid, 0.8 to 1.0 µm in diameter, and are found singly or in pairs.  Cell envelope contains a cytoplasmic membrane and an outer S-layer.  Chemoorganotrophic metabolism capable of growth on tryptone, Casamino Acids, peptone, yeast extract, beef extract, glycogen, gelatin, and lodgepole pine needle extract with S˚ as sole TEA.  Fermentative growth on peptone and yeast extract.  Growth over a pH range of 1.5 to 5.0, a temperature range of 60 to 79°C, and a Cl- range of 0 to 86 mM.  Optimal growth occurs at pH 2.5 to 3.0, 70 to 72°C, and 17 to 34 mM Cl-.  Generation time under optimal conditions is 19 h.  Core lipid fraction contains GDGTs containing four to six cyclopentyl rings.  Genomic DNA G+C content is 53.9 mol%.  The type strain 18U65 was isolated from Dragon Spring, Norris Geyser Basin, YNP, WY.  Could not utilize glucose, galactose, fructose, ribose, lactose, maltose, xylose, sucrose, arabinose, mannose, glycerin, cellobiose, cellulose, starch, soya extract, methane, propane, propylene, ethanol, butanol, propanol, isopropanol, methanol, acetone, butyrate, propionate, succinate, lactate, pyruvate, acetate, citrate, malate, formate, fumarate, and benzoate.</description>
+</treatment>

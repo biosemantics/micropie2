@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Microcoleus.vaginatus.FGP-2</taxon_name>
+  <strain>FGP-2</strain>
+  <reference>Genome of the Cyanobacterium Microcoleus vaginatus FGP-2, a Photosynthetic Ecosystem Engineer of Arid Soil Biocrusts Worldwide (Starkenburg, S., et al., 2011)</reference>
+  <DOI>10.1128/JB.05138-11</DOI>
+  <file>Starkenburg, S. et al Microcoleus.vaginatus.FGP-2.pdf</file>
+  <description>filamentous cyanobacterium, help stabilize the soil surface and contribute significantly to soil carbon inputs</description>
+</treatment>

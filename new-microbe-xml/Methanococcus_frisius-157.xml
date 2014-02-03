@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanococcus_frisius</taxon_name>
+  <strain>DSM 3318 (= ATCC 43330)</strain>
+  <reference>Transfer of Methanococcus frisius to the Genus Methanosarcina as Methanosarcina frisia comb. nov. IJSB 39:91-92</reference>
+  <file>Methanococcus.frisius.pdf</file>
+  <description>Cells are fragile, regular cocci (diameter, 0.5 to 2.0 µm) and occur singly or in pairs, never in aggregates.  The cells are gram negative and possess no flagella but exhibit fimbrialike structures.  Methanosarcina frisia grows in temperature range from 22 to 42˚C, with optimum growth at 36°C.  The pH optimum is between 6.5 and 7.2.  The DNA base composition is 38.2 mol% guanine plus cytosine.  The organism is strictly anaerobic and grows in a defined mineral medium with H2-CO2, methanol, or methylamines.  Acetate and formate are not used.  Yeast extract stimulates growth.  Sodium chloride is required (at least 20 g/liter).  The habitat is the shoal mud of marine environments.  The type strain of Methanosarcina frisia is strain DSM 3318 (= ATCC 43330), which was isolated from the black mud of the Leybucht (North Sea) (2).</description>
+</treatment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanocaldococcus_jannaschii</taxon_name>
+  <strain>JAL-1 = DSM 2661</strain>
+  <reference>Methanococcus jannaschii sp. nov., an extremely thermophilic methanogen from a submarine hydrothermal vent Arch Microbiol 136:254-261</reference>
+  <file>Methanocaldococcus.jannaschii.pdf</file>
+  <description>Irregular cocci measuring 1.5 µm in diameter, occuring singly or in pairs.  Cells are osmotically fragile and easily lysed in low osmolal solutions.  Single electron dense cell wall; surface is composed of hexagonally ordered substructures; cells are motile; two bundles of flagella insert near one pole.  Colonies convex, circular, yellowish in color with a smooth shiny surface.  DNA base composition  31 mol % G + C.  Temperature optimum near 85 ˚C; range 50 – 85˚C.  pH  Optimum near 6.0; growth occurs at pH 5.2 to 7.0.  Obligately anaerobic.  H2/CO2 serve as substrate for growth and CH4 formation.  Grows autotrophically in defined medium with H2/CO2.  No growth was detected from formate, acetate, methanol, or methylamines.  Acetate, formate, yeast extract, trypticase, vitamins were not required for growth or stimulatory.  NaCl required for growth (optimal at 0.5 M Na+).  Selenium stimulates growth.  Sulfide is required. Isolated from sedimentary material at base of a "white smoker" submarine hydrothermal vent, East Pacific Rise, at a depth of 2,600 m.  Type strain  JAL-1 has been deposited in the German culture collection (DSM) Gottingen, FRG, number 2661.</description>
+</treatment>

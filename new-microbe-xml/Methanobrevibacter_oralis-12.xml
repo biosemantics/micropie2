@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanobrevibacter_oralis</taxon_name>
+  <strain>ZR=DSM 7256</strain>
+  <reference>Isolation and Characterization of Methanobrevibacter oralis sp. nov. Curr Microbiol 29:7-12</reference>
+  <file>Methanobrevibacter.oralis.pdf</file>
+  <description>Cells are short, oval rods with tapered ends, 0.4-0.5 µm in width and 0.7-1.2 µm in length. Cells occur most frequently in pairs or short chains; they are Gram positive and non-motile.  The organism is a very strict anaerobe.  The optimum temperature is 35˚-37˚C, the temperature range is 25˚-39˚C, the optimum pH is 6.9-7.4, and the pH range is 6.2-8.0. The optimum sodium chloride concentration is between 0.01 and 0.1 M, and there is no growth above 0.2 M.  Fecal extract is required for growth, and VFA mixture is highly stimulatory. Growth occurs under H2-CO2 atmosphere.  Formate, acetate, and methanol are not required for growth.  The DNA G+C content is 28 mol% G+C.</description>
+</treatment>

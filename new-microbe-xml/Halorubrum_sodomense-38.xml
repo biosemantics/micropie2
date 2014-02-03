@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Halorubrum_sodomense</taxon_name>
+  <strain>ATCC 33755</strain>
+  <reference>Transfer of Halobacterium saccharovorum, Halobacterium sodomense, Halobacterium trapanicum NRC 34021 and Halobacterium lacusprofundi to the Genus Halorubrum gen. nov., as Halorubrum saccharovorum comb.  nov., Halorubrum sodomense comb. nov., Halorubrum trapanicum comb. nov., and Halorubrum lacusprofundi comb. nov. Syst Appl Micriobiol 18:237-243</reference>
+  <file>Halorubrum.saccharovorum.sodomense.trapanicum.lacusprofundi.pdf</file>
+  <description>Rod-shaped cells (0.5 x 2.5-5 µm).  Motile by a tuft of polar flagella.  Gas vacuoles are not present.  Strictly aerobic.  Oxidase- and catalase-positive.  Growth occurs in media containing between 0.5 (in the presence of 1.5-2 M Mg2+) and 4.3 M NaCl; optimum concentration: 1.7-2.5 M NaCl in the presence of 0.6-1.2 M Mg2+. Mg2+ can be partially replaced by Ca2+.  Temperature range for growth: 20-50°C; optimum temperature: 40°C.  Chemoorganotrophic.  Certain sugars (glucose, fructose, maltose, sucrose) and glycerol are utilized for growth with acid production.  Galactose, mannose, ribose and lactose are not utilized.  Amino acids are required for growth.  Starch is hydrolyzed.  Gelatin is not hydrolyzed.  Indole-negative.  The polar lipids are C20, C20 derivatives of PG, PGP, PGS, and a sulphated mannosyl glucosyl diether glycolipid.  Isolated from the Dead Sea.  The mol% G+C of the DNA is 68 (Bd).  A minor DNA component has not been detected.  Type strain: ATCC 33755.</description>
+</treatment>

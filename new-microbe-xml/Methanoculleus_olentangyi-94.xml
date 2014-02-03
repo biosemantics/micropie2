@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanoculleus_olentangyi</taxon_name>
+  <strain>RC/ER</strain>
+  <reference>Isolation and Characterization of Two New Methane-Producing Cocci: Methanogenium olentangyi, sp. nov., and Methanococcus deltae, sp. nov. Arch Microbiol 134:28-32</reference>
+  <file>Methanogenium.olentangyi.Methanococcus.deltae.pdf</file>
+  <description>Irregular cocci, cell diameter 1.0-1.5 µm.  Non-motile.  Cell wall sensitive to 0.001% SDS and distilled water.  Colonial morphology: Circular, mucoid, yellow, shiny, and convex.  DNA G + C content: 54.4mo1%.  Growth temperature optimum 37 ˚C; range 30-45˚C.  Source: Freshwater sediment, Olentangy River, Ohio. Strict anaerobe, CO2 and H2 serve as substrates for growth and methane production.  No growth or methane production on methanol, methanol plus acetate, or formate.  Acetate required for growth.  Formate, methanol, and methylamine not metabolized.  Phenol red reduced.  Nutrition: Optimum growth in 1% NaCl.  Trypticase, yeast extract, vitamins not required.  Type strain: RC/ER.  The description of the type strain is the same as for the species.</description>
+</treatment>

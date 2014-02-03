@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Oscillatoria.sp.PCC6506</taxon_name>
+  <strain>PCC 6506</strain>
+  <reference>Biosynthesis of Cylindrospermopsin and 7-Epicylindrospermopsin in Oscillatoria sp. Strain PCC 6506: Identification of the cyr Gene Cluster and Toxin Analysis (Mazmouz, R., et al., 2010)</reference>
+  <DOI>10.1128/AEM.00717-10</DOI>
+  <file>Mazmouz, R. et al Oscillatoria.sp.PCC6506.pdf</file>
+  <description>a benthic cyanobacterium that produces these deadly neurotoxins</description>
+</treatment>

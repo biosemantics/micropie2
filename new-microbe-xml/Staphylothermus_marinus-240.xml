@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Staphylothermus_marinus</taxon_name>
+  <strain>F1 = ATCC 49053 = DSM 3639</strain>
+  <reference>Bergey’s Manual pg. 186-7</reference>
+  <file>Cells slightly irregular cocci occurring singly, in pairs, and short chains, and as aggregates of up to 100 cells.  Width about 0.5-15 µm.  Strictly anaerobic.  Heterotrophic growth in the presence of sulfur on peptone, tryptone, yeast extract, meat extract, and extracts of bacteria or archaea cells.  H2S, CO2, acetate, and isovalerate are formed as metabolic products.  Optimum temperature is 92˚C.  Maximum temperature is 98˚C.  Resistant to vancomycin, kanamycin, streptomycin, and chloramphenicol.  Gram negative.  Phytanyl glycerol diether, dibiphytanyl diglycerol tetraether and a yet unknown ether lipid component are present.  Isolated from anaerobic samples taken from the beach of Vulcano, Italy and from an abyssal black smoker vents at the East Pacific Rise.  Marine. The mol % G+C of the DNA is 35 (Tm).</file>
+</treatment>

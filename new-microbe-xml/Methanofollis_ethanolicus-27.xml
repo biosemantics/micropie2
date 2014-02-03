@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanofollis_ethanolicus</taxon_name>
+  <strain>HASUT (=NBRC 104120T=JCM 15103T=DSM 21041T)</strain>
+  <reference>Methanofollis ethanolicus sp. nov., an ethanol utilizing methanogen isolated from a lotus field IJSEM 59:800-805</reference>
+  <file>Methanofollis.ethanolicus.pdf</file>
+  <description>Strictly anaerobic.  Cells stain Gram-negative, are nonmotile, irregular cocci, 2–3 µm in diameter, and are resistant to lysis with &lt;0.1% SDS (w/v).  H2, formate, ethanol, 1-propanol and 1-butanol can be used for growth and methane production.  Secondary alcohols (2-propanol, 2-butanol and cyclopentanol) are not utilized.  Acetate is required as carbon source for growth on substrates other than ethanol.  Yeast extract enhances growth.  Temperature range for growth is 15–40 ˚C (optimum 37 ˚C).  pH range for growth is 6.5–7.5 (optimum pH 7.0).  Growth occurs in the presence of 0–2.5% NaCl but does not occur in the presence of 3.0% NaCl.  The G+C content of the DNA of the type strain is 60.9 mol% (HPLC).  The type strain, HASUT (=NBRC 104120T=JCM 15103T=DSM 21041T), was isolated from lotus field mud at Nagaoka, Niigata, Japan.  Related most closely to Methanofollis liminatans GKZPZT (96.1% 16S rRNA gene sequence similarity).</description>
+</treatment>

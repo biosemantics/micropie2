@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanohalophilus_mahii</taxon_name>
+  <strain>SLP = ATCC 35705</strain>
+  <reference>Methanohalophilus mahii gen. nov. sp. nov. a Methylotrophic Halophilic Methanogent IJSB 38:122-123</reference>
+  <file>Methanohalophilus.mahii.pdf</file>
+  <description>Morphology and colony characteristics are the same as those described above for the genus.  Sodium chloride optimum, 2.0 M.  Temperature optimum 35˚C, no growth at temperatures above 45°C.  pH optimum, approximately 7.5.  Source, anaerobic sediment from Great Salt Lake, Utah.  Physiology, fastidious anaerobe.  Trimethylamine, dimethylamine, methylamine, and methanol serve as substrates for growth and methanogenesis; hydrogen-carbon dioxide, formate, and acetate do not serve as substrates for growth and methanogenesis.  The G+C content of the deoxyribonucleic acid is 48.5 mol%, as determined by buoyant density.  The type strain is strain SLP (Salt Lake Paterek).  This strain has been deposited in the American Type Culture Collection as strain ATCC 35705.</description>
+</treatment>

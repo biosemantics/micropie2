@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanotorris_igneus</taxon_name>
+  <strain>Kol 5 = DSM 5666</strain>
+  <reference>Bergey’s Manual vol 1. pg 245-246.</reference>
+  <file>BM.Eury.pdf</file>
+  <description>Regular to irregular coccus, 1.3-1.8 µm in diameter.  Nonmotile.  Obligate anaerobic.  Hyperthermophilic with temperature optimum 88˚C.  Grows between 45-91˚C.  pH optimum 5.7.  Is capable of growth between pH 5.0-7.5.  NaCl optimum is 1.8 % (w/v).  The NaCl range is 0.9-5.4%.  Obligate methanogen.  Hydrogen serves as the electron donor.  Formate, acetate, methanol, and methylamines are not substrates for methanogenesis.  Grows autotrophically in mineral medium.  Complex carbon sources are not stimulatory.  Nitrogen sources include ammonium.  Sulfur sources include sulfide and elemental sulfur.  Isolated from deep-sea and shallow marine hydrothermal systems.  The mol % G+C is 31 (Tm).</description>
+</treatment>

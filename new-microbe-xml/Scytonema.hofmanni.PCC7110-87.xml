@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Lisa Moore">
+  <taxon_name>Scytonema.hofmanni.PCC7110</taxon_name>
+  <strain>PCC 7110</strain>
+  <reference>Polyphyly of true branching cyanobacteria (Stigonematales) (Gugger, M., Hoffman, L., 2004)</reference>
+  <DOI>10.1099/ijs.0.02744-0</DOI>
+  <file>Gugger, M., Hoffman, L., Scytonema.hofmanni.PCC7110.pdf</file>
+  <description>nostocalean strain</description>
+</treatment>

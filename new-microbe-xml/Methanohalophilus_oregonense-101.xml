@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanohalophilus_oregonense</taxon_name>
+  <strain>WALl (= OGI 99 = DSM 5439)</strain>
+  <reference>Methanohalophilus oregonense sp. nov. a Methylotrophic Methanogen from an Alkaline, Saline Aquifer IJSB 40:111-116</reference>
+  <file>Methanohalophilus.oregonense.pdf</file>
+  <description>Cells are irregular, nonmotile coccoids (diameter, 1 to 1.5 µm) which exhibit a gram-negative reaction.  Coccoids may occur individually or in aggregates.  Cells are sensitive to lysis by 0.2 g of SDS per liter.  Trimethylamine, methanol, and dimethylsulfide are catabolic substrates, but H2-CO2, formate, and acetate are not.  Growth is most rapid with yeast extract in the medium, but vitamins or peptones support growth.  Surface colonies are approximately 1 mm in diameter after 10 days; they are circular, entire, smooth, and tan.  Growth is most rapid at 0.1 to 1.5 M Na+, and no growth occurs at 1.75 M Na+.  Growth is rapid at pH 8.2 to 9.2, and growth occurs at pH values between 7.6 and 9.4.  Growth is most rapid at 35 to 37˚C, good growth occurs at 30 to 40˚C, and no growth occurs at 10 or 45°C.  The guanine-plus-cytosine content is 40.9 mol%, as determined by chromatographic analysis of nucleoside bases.  The type strain is strain WALl (= OGI 99 = DSM 5439), which was isolated from a slurry of subsurface solids from a saline, alkaline aquifer.</description>
+</treatment>

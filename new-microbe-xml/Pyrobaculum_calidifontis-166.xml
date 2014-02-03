@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Pyrobaculum_calidifontis</taxon_name>
+  <strain>VA1 = JCM 11548</strain>
+  <reference>Pyrobaculum calidifontis sp. nov., a novel hyperthermophilic archaeon that grows in atmospheric air Archaea 1:113-121</reference>
+  <file>Pyrobaculum.calidifontis.pdf</file>
+  <description>Rod-shaped cells are usually 1.5 to 10 µm long and 0.5 to 1.0 µm wide.  Motile.  Only heterotrophic growth has been observed.  Grows on 0.1% yeast extract, tryptone, nutrient broth, peptone, or Casamino acids.  Highest growth rates were observed with 1.0% tryptone with 0.1% yeast extract.  Facultatively aerobic.  Oxygen (aerobic) and nitrate (anaerobic) serve as electron acceptors.  Elemental sulfur inhibits aerobic cell growth.  Thiosulfate enhances aerobic cell growth, but is not essential.  Aerobic growth occurs between 75 and 100 °C (optimum, 90 to 95 °C), at pH 5.5 to 8.0 (optimum, pH 7.0), at 0 to 0.8% NaCl (optimum, 0%).  The G+C content of genomic DNA is about 51 mol%.  Type strain: Pyrobaculum calidifontis VA1, JCM 11548, Wako, Japan (isolated from Calamba, Laguna, the Philippines).  Glucose, maltose, lactose, starch, pyruvate, succinate and acetate did not support growth.  Elemental sulfur, thiosulfate, sulfate, sulfite, and ferric iron did not support growth.  Resistant to chloramphenicol, penicillin G, streptomycin, and vancomycin.  Sensitive to rifampicin.</description>
+</treatment>

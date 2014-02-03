@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Desulfurococcus_mucosus</taxon_name>
+  <strain>DSM 2162</strain>
+  <reference>Bergey’s Manual generic description pg 181</reference>
+  <file>Cells cocci.  Stains Gram-negative.  Utilizes protein, peptides, or carbohydrates facultatively by sulfur respiration or fermentation.  Growth by sulfur reduction to H2S.  Cell envelope flexible.  Forms a strongly smelling unknown product and produces a slimy polymer attached to its surface.  Non-motile.  Optimum pH for growth 6.0.  Optimum temperature for growth 85˚C.  Sugars not used.  Lives in solfataric hot springs at pH 2.2-6.5 and up to 97˚C. The mol% G+C of the DNA is 51.3.  The major core lipids are glycerol dialkyglycerol tetraethers and 2,3-di-O-phytanyl-sn-glycerol.  Resistant to rifampicin and streptolydigin.</file>
+</treatment>

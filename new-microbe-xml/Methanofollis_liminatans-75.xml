@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Methanofollis_liminatans</taxon_name>
+  <strain>GKZPZT (= DSM 4140T)</strain>
+  <reference>Reclassification of Methanogenium tationis and Methanogenium liminatans as Methanofollis tationis gen.  nov., comb. nov and Methanofollis liminatans comb. nov. and description of a new strain of Methanofollis liminatans IJSB 49:247-255</reference>
+  <file>Methanofollis.taitionis.liminatans.pdf</file>
+  <description>Irregularly coccoid or ring-shaped cells, 1.25-2.0 µm in diameter, with a proteinaceous, SDS-sensitive S-layer.  Cells stain Gram-negative.  Some strains may be motile.  Obligately anaerobic, no microaerophilic or aerobic growth.  Cells are mesophilic (range 15 to 45˚C) with an optimum at 40 ˚C.  Substrates for growth and methane production are H2/CO2, formate, 2-propanol/CO2, 2-butanol/CO2 and cyclopentanol/ CO2.  Secondary and cyclic alcohols are oxidized to the respective ketones.  Methanol, methylamines, ethanol and acetate are not utilized as catabolic substrates.  Cells of GKZPZT contain a secondary alcohol dehydrogenase dependent on F420 and devoid of Zn.  Lipid composition as that described for the genus.  The G + C content of DNA of the type strain is 60 mol % (Tm).  The type strain is GKZPZT (= DSM 4140T), isolated from an industrial wastewater bioreactor (Biohochreaktor, Hoechst, Kelsterbach, Frankfurt, Germany).</description>
+</treatment>

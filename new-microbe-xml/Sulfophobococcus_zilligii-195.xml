@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treatment dataprovider="Carrine Blank">
+  <taxon_name>Sulfophobococcus_zilligii</taxon_name>
+  <strain>K1 = DSM 11193</strain>
+  <reference>Sulfophobococcus zilligii gen. nov., spec. nov. a Novel Hyperthermophilic Archaeum Isolated from Hot Alkaline Springs of Iceland System Appl Microbiol 20:102-110</reference>
+  <file>Sulfophobococcus.zilligii.pdf</file>
+  <description>Regular or slightly irregular cocci (3-5 µm diam.) with a tuft of filaments, which are 40 µg in length.  Growth between 70° and 95°C at neutral to slightly alkaline pH values.  Strictly anaerobic, fermentative growth.  Growth inhibited by elemental sulfur.  Membrane lipids consist exclusively of dibiphytanylglycerol tetraethers.  Respiratory lipoquinones are absent.  No murein.  DNA G+C content between 54 and 56 mol%.  Tends to form higher aggregates and adsorb to amorphous particles in the medium.  Optimal growth at 85°C, pH 7.5.  Strictly anaerobic fermentative growth on yeast extract.  Unable to grow on peptone, starch, casamino acids, glucose, ethanol, acetate, xylan or cellulose.  Growth inhibited by elemental sulfur.  DNA G+C content: 54.7 mol% (Tm).  16S rDNA sequence analysis:  Habitat: hot alkaline springs of Iceland.  Type strain: strain K1, deposited at the DSMZ under the number DSM 11193.  Resistant to chloramphenicol, streptomycin and rifampin.</description>
+</treatment>
