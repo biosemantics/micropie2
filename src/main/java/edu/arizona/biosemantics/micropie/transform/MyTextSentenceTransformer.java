@@ -28,10 +28,10 @@ import edu.stanford.nlp.util.CoreMap;
 
 public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 
-	private ClausIE clausIE;
 	private StanfordCoreNLP pipeline;
 	private Map<Sentence, ParseResult> cachedParseResults = new HashMap<Sentence, ParseResult>();
 	private PennTreebankLanguagePack pennTreebankLanguagePack;
+	private ClausIE clausIE;
 	
 	public MyTextSentenceTransformer() {
 		Properties stanfordCoreProperties = new Properties();
@@ -39,8 +39,8 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 		this.pipeline = new StanfordCoreNLP(stanfordCoreProperties);
 		
 		this.clausIE = new ClausIE();
-		this.clausIE.initParser();
-		this.clausIE.getOptions().print(new OutputStream() {
+		clausIE.initParser();
+		clausIE.getOptions().print(new OutputStream() {
 		    private String buffer;
 			@Override
 			public void write(int b) throws IOException {
@@ -65,6 +65,7 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 	
 	@Override
 	public List<Sentence> transform(String text) {
+		log(LogLevel.INFO, "transform text to sentences: " + text);
 		List<Sentence> result = new LinkedList<Sentence>();
 		List<String> sentences = getSentences(text);
 		for(String sentence : sentences) {
@@ -72,6 +73,7 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 				result.addAll(this.compoundSplit(sentence));
 			}
 		}
+		log(LogLevel.INFO, "done transforming text to sentences. Created " + result.size() + " sentences");
 		return result;
 	}
 	
@@ -80,6 +82,7 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 	}
 	
 	private List<String> getSentences(String text) {
+		log(LogLevel.INFO, "split text to sentences using stanford corenlp pipeline...");
 		List<String> result = new LinkedList<String>();
 		Annotation document = new Annotation(text);
 		pipeline.annotate(document);
@@ -87,42 +90,50 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 		for (CoreMap sentenceAnnotation : sentenceAnnotations) {
 			result.add(sentenceAnnotation.toString());
 		}
+		log(LogLevel.INFO, "done splitting text to sentences using stanford corenlp pipeline. Created " + result.size() + " sentences");
 		return result;
 	}
 
 	private List<Sentence> compoundSplit(String text) {
+		log(LogLevel.INFO, "split compound sentences into subsentences using clausIE...");
 		List<Sentence> result = new LinkedList<Sentence>();
-		
-		log(LogLevel.INFO, "ClausIE parse... text " + text);
+		log(LogLevel.INFO, "clausIE parse...");
+				
 		clausIE.parse(text);
-		log(LogLevel.INFO, "Done ClausIE parse");
+		log(LogLevel.INFO, "clausIE parse complete");
 		Tree dependencyTree = clausIE.getDepTree();
 		log(LogLevel.INFO, "Dependency parse : ");
-		log(LogLevel.INFO, dependencyTree.pennString()
-				.replaceAll("\n", "\n                   ").trim());
-		
+		log(LogLevel.INFO, dependencyTree.pennString());
+		log(LogLevel.INFO, "Semantic graph   : ");
+		log(LogLevel.INFO, clausIE.getSemanticGraph().toFormattedString());
+		//.replaceAll("\n", "\n                   ").trim());
+		//.replaceAll("\n", "\n                   ").trim());
 		
 		List<String> sentenceList = new ArrayList<String>();
-		handleCaseA(text, sentenceList);
-		handleCaseB(text, sentenceList);	
+		handleCaseA(text, sentenceList, clausIE);
+		handleCaseB(text, sentenceList, clausIE);	
 		
 		if (sentenceList.size() > 1) {
+			log(LogLevel.INFO, "found subsentences: " + sentenceList.size());
 			for (String sentenceText : sentenceList) {
 				Sentence sentence = new Sentence(sentenceText);
+				log(LogLevel.INFO, "clausIE parse...");
 				clausIE.parse(sentenceText);
+				log(LogLevel.INFO, "clausIE parse complete");
 				dependencyTree = clausIE.getDepTree();
-				cachedParseResults.put(sentence, getParseResult(dependencyTree));
+				cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
 				result.add(sentence);
 			}
 		} else {
+			log(LogLevel.INFO, "did not find subsentences");
 			Sentence sentence = new Sentence(text);		
-			cachedParseResults.put(sentence, getParseResult(dependencyTree));
+			cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
 			result.add(sentence);
 		}
 		return result;
 	}
 	
-	private ParseResult getParseResult(Tree dependencyTree) {
+	private ParseResult getParseResult(Tree dependencyTree, ClausIE clausIE) {
 		GrammaticalStructureFactory grammaticalStructureFactory = pennTreebankLanguagePack.grammaticalStructureFactory();
 		GrammaticalStructure grammaticalStructure = grammaticalStructureFactory.newGrammaticalStructure(dependencyTree);
 		Collection<TypedDependency> typedDependencies = grammaticalStructure.typedDependenciesCollapsed();
@@ -130,9 +141,9 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 		return parseResult;
 	}
 
-	private void handleCaseB(String text, List<String> subSentenceList) {
+	private void handleCaseB(String text, List<String> subSentenceList, ClausIE clausIE) {
+		log(LogLevel.INFO, "handle case B...");
 		String depTreeString = clausIE.getDepTree().pennString();
-		log(LogLevel.INFO, "depTreeString :: " + depTreeString);
 
 		boolean containWhichOrThat = false;
 		String whichOrTahtClauseKeywordOne = "";
@@ -140,7 +151,7 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 
 		if (depTreeString.contains("(WHNP (WDT which))")
 				|| depTreeString.contains("(WHNP (WDT that))")) {
-			log(LogLevel.INFO, "Yes, it contains \"that\" or \"which\"");
+			//log(LogLevel.INFO, "Yes, it contains \"that\" or \"which\"");
 			containWhichOrThat = true;
 			
 			if ( text.contains("that") ) {
@@ -150,11 +161,11 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 				if (inputSentArrayOneArray.length > 3) {
 					whichOrTahtClauseKeywordOne = inputSentArrayOneArray[1];
 					whichOrTahtClauseKeywordTwo = inputSentArrayOneArray[2] + " " + inputSentArrayOneArray[3];
-					log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
+					//log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
 				} else {
 					whichOrTahtClauseKeywordOne = inputSentArrayOneArray[1];
 					whichOrTahtClauseKeywordTwo = inputSentArrayOneArray[2];
-					log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
+					//log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
 				}
 			} else if ( text.contains("which") ) {
 				String[] inputSentArray = text.split("which");
@@ -162,11 +173,11 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 				if (inputSentArrayOneArray.length > 3) {
 					whichOrTahtClauseKeywordOne = inputSentArrayOneArray[1];
 					whichOrTahtClauseKeywordTwo = inputSentArrayOneArray[2] + " " + inputSentArrayOneArray[3];
-					log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
+					//log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
 				} else {
 					whichOrTahtClauseKeywordOne = inputSentArrayOneArray[1];
 					whichOrTahtClauseKeywordTwo = inputSentArrayOneArray[2];
-					log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
+					//log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
 				}
 			}
 		}
@@ -206,14 +217,17 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 				additionalSent += clausIEGetPropositionsOneArray[i].replaceAll("\"", "");
 			}	
 			additionalSent += ".";
-			log(LogLevel.INFO, "Input sentence 2   : " + text);
-			log(LogLevel.INFO, "additionalSent :: " + additionalSent);
+			//log(LogLevel.INFO, "Input sentence 2   : " + text);
+			//log(LogLevel.INFO, "additionalSent :: " + additionalSent);
 			
+			log(LogLevel.INFO, "additional sentence found and added: " + additionalSent);
 			subSentenceList.add(additionalSent);
 		}
+		log(LogLevel.INFO, "Done handling case B");
 	}
 
-	private void handleCaseA(String text, List<String> subSentenceList) {
+	private void handleCaseA(String text, List<String> subSentenceList, ClausIE clausIE) {
+		log(LogLevel.INFO, "handle case A...");
 		// This section is for detecting the sentence structure "A is B that/whcih is C ..."
 		// And then transfer it into =>
 		// A is C ...
@@ -222,36 +236,16 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 		// (WHNP (WDT which))
 		// (WHNP (WDT that))
 
-		
-		log(LogLevel.INFO, "Semantic graph   : ");
-		log(LogLevel.INFO, clausIE.getSemanticGraph()
-				.toFormattedString()
-				.replaceAll("\n", "\n                   ").trim());
-
-		// clause detection
-		log(LogLevel.INFO, "ClausIE time     : ");
-		long start = System.currentTimeMillis();
-
+		log(LogLevel.INFO, "detect clauses ...");
 		clausIE.detectClauses();
-		clausIE.generatePropositions();
-		long end = System.currentTimeMillis();
-		log(LogLevel.INFO, (end - start) / 1000. + "s");
-
-		log(LogLevel.INFO, "Clauses          : ");
-		String sep = "";
+		log(LogLevel.INFO, "done detecting clauses: ");
 		for (Clause clause : clausIE.getClauses()) {
-			log(LogLevel.INFO, sep
-					+ clause.toString(clausIE.getOptions()));
-			sep = "                   ";
+			log(LogLevel.INFO, clause.toString(clausIE.getOptions()));
 		}
-
-		// generate propositions
-		log(LogLevel.INFO, "clausIE.getPropositions().size():"
-				+ clausIE.getPropositions().size() + "\n");
-
-		log(LogLevel.INFO, "Propositions     : ");
-
-		sep = "";
+		
+		log(LogLevel.INFO, "generate propositions ...");
+		clausIE.generatePropositions();
+		log(LogLevel.INFO, "done generating propositions: "+ clausIE.getPropositions().size());
 
 		for (Proposition prop : clausIE.getPropositions()) {
 			String propString = prop.toString();
@@ -265,11 +259,13 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 												// letter
 
 			propString += ".";
-			log(LogLevel.INFO, sep + propString);
-			sep = "                   ";
 
 			subSentenceList.add(propString);
+			log(LogLevel.INFO, "Additional sentence (propositions-string) added: " + propString);
+			
 		}
+		
+		log(LogLevel.INFO, "Done handling case A");
 	}
 
 }

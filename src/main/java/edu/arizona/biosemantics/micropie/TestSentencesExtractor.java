@@ -38,10 +38,15 @@ public class TestSentencesExtractor implements Callable<TestSentenceExtractResul
 	public TestSentenceExtractResult call() throws Exception {
 		TestSentenceExtractResult result = new TestSentenceExtractResult();
 		
+		log(LogLevel.INFO, "Normalize text... : " + text);
 		text = textNormalizer.transform(text);
-		log(LogLevel.INFO, "Normalized text: " + text);
+		log(LogLevel.INFO, "Done normalizing, resulting text: " + text);
+		log(LogLevel.INFO, "Transforming text to sentences");
 		List<Sentence> sentences = textSentenceTransformer.transform(text);
+		log(LogLevel.INFO, "Done transforming text to sentences");
 		result.setSentences(sentences);
+		
+		log(LogLevel.INFO, "Generating sentences metadata... ");
 		for(int i=0; i<sentences.size(); i++) {
 			Sentence sentence = sentences.get(i);
 			SentenceMetadata metadata = new SentenceMetadata();
@@ -53,8 +58,9 @@ public class TestSentencesExtractor implements Callable<TestSentenceExtractResul
 			result.putSentenceMetadata(sentence, metadata);
 			result.addTaxonSentence(taxon, sentence);
 		}
+		log(LogLevel.INFO, "Done generating sentences metadata... ");
 		countDownLatch.countDown();
-		System.out.println("Count " + countDownLatch.getCount());
+		System.out.println("Countdown latch: " + countDownLatch.getCount());
 		return result;
 	}
 }
