@@ -20,12 +20,12 @@ public class GcExtractor implements IContentExtractor {
 		// input: the original sentnece
 		// output: String array?
 
-		// System.out.println("Original Sent : " + sent);
+		// log(LogLevel.INFO, "Original Sent : " + sent);
 		text = text.substring(0, text.length() - 1); // remove the period at the
 														// last position
 
 		// String[] sentArray = sent.split(" ");
-		// System.out.println("sentArray.length :" + sentArray.length );
+		// log(LogLevel.INFO, "sentArray.length :" + sentArray.length );
 
 		// \s\d*\.\d*\s
 		String patternStringGc = "Guanosine plus cytosine|guanine-plus-cytosine|\\sG\\s\\+\\sC\\s|\\(G+C\\s|G\\s*\\+\\s*C|\\s+G\\s*\\+\\s*C\\s+|\\s+g\\s*\\+\\s*c\\s+|\\s+GC\\s+|\\s+gc\\s+|%GC|%G+C";
@@ -40,10 +40,10 @@ public class GcExtractor implements IContentExtractor {
 		List<Integer> gcPositionList = new ArrayList<Integer>();
 		while (matcherGc.find()) {
 			String matchWord = matcherGc.group();
-			// System.out.println("matchWord :: " + matchWord);
+			// log(LogLevel.INFO, "matchWord :: " + matchWord);
 
 			text = text.replace(matchWord, " G+C ");
-			// System.out.println("sent :: " + sent);
+			// log(LogLevel.INFO, "sent :: " + sent);
 
 			String[] sentArray = text.split(" ");
 			for (int i = 0; i < sentArray.length; i++) {
@@ -56,7 +56,7 @@ public class GcExtractor implements IContentExtractor {
 						}
 					}
 					if (isIncluded == false) {
-						// System.out.println("Pos :" + i );
+						// log(LogLevel.INFO, "Pos :" + i );
 						gcPositionList.add(i);
 						gcStringList.add(matchWord.trim());
 					}
@@ -67,7 +67,7 @@ public class GcExtractor implements IContentExtractor {
 		String[] sentArray = text.split(" ");
 		for (int i = 0; i < gcPositionList.size(); i++) {
 			int itemInGcPositionList = gcPositionList.get(i);
-			// System.out.print(matcherGc.group() + "\n");
+			// log(LogLevel.INFO, (matcherGc.group() + "\n");
 			String subSent = "";
 			int subSentStartFlag = itemInGcPositionList - 15;
 			if (subSentStartFlag <= 0) {
@@ -82,7 +82,7 @@ public class GcExtractor implements IContentExtractor {
 				subSent += " " + sentArray[j];
 			}
 
-			// System.out.println("subSent : " + subSent);
+			// log(LogLevel.INFO, "subSent : " + subSent);
 
 			String patternStringMolPercent = "\\s*MOL\\s*%\\s*|\\s*mol\\s*%\\s*|\\s?Mol\\s?%\\s?";
 			Pattern patternMolPercent = Pattern
@@ -122,15 +122,15 @@ public class GcExtractor implements IContentExtractor {
 			Matcher matcher = pattern.matcher(subSent);
 
 			while (matcherMolPercent.find() && matcher.find()) {
-				// System.out.print(gcStringList.get(i) + "\n");
-				// System.out.print(matcherMolPercent.group() + "\n");
-				// System.out.print(matcher.group() + "\n");
+				// log(LogLevel.INFO, (gcStringList.get(i) + "\n");
+				// log(LogLevel.INFO, (matcherMolPercent.group() + "\n");
+				// log(LogLevel.INFO, (matcher.group() + "\n");
 
 				boolean isIncluded = false;
 				for (String itemInOutputContentList : output) {
 					if (itemInOutputContentList.equals(matcher.group().trim())) {
 						isIncluded = true;
-						// System.out.print("Has this :: " +
+						// log(LogLevel.INFO, ("Has this :: " +
 						// itemInGcContentList);
 					}
 				}

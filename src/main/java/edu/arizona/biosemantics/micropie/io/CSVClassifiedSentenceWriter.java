@@ -3,20 +3,17 @@ package edu.arizona.biosemantics.micropie.io;
 import java.io.BufferedWriter;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import au.com.bytecode.opencsv.CSVWriter;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.model.ClassifiedSentence;
 
 public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 
 	private OutputStream outputStream;
-	private String seperator;
-
-	public CSVClassifiedSentenceWriter(String seperator) {
-		this.seperator = seperator;
-	}
 	
 	public void setOutputStream(OutputStream outputStream) {
 		this.outputStream = outputStream;
@@ -25,14 +22,14 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 	@Override
 	public void write(List<ClassifiedSentence> classifiedSentences)
 			throws Exception {
-		BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
-		
-		for(ClassifiedSentence sentence : classifiedSentences) {
-			
-			bufferedWriter.write(getPredicitionsString(sentence.getPredictions()) + seperator + sentence.getSentence().getText() + "\n"); 
-		}
-		bufferedWriter.flush();
-		bufferedWriter.close();
+		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
+		List<String[]> lines = new LinkedList<String[]>();
+		for(ClassifiedSentence classifiedSentence : classifiedSentences) 
+			lines.add(new String[] { getPredicitionsString(classifiedSentence.getPredictions()), 
+					classifiedSentence.getSentence().getText()});
+		writer.writeAll(lines);
+		writer.flush();
+		writer.close();
 	}
 
 	private String getPredicitionsString(Set<ILabel> predictions) {

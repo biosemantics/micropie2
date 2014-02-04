@@ -2,6 +2,7 @@ package edu.arizona.biosemantics.micropie.model;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.log.LogLevel;
 
 public class Sentence implements Cloneable {
 
@@ -67,10 +68,8 @@ public class Sentence implements Cloneable {
 			clone.text = this.text;
 			return clone;
 		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
+			log(LogLevel.ERROR, "Could not clone sentence", e);
 		}
 		return null;
 	}
-	
-	
 }

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
+import edu.arizona.biosemantics.micropie.log.LogLevel;
+
 public class TextNormalizer implements ITextTransformer {
 	
 	private LinkedHashMap<String, String> abbreviations;
@@ -33,7 +35,7 @@ public class TextNormalizer implements ITextTransformer {
 		while (textToken.hasMoreTokens()) {
 			String tokenString = textToken.nextToken();
 
-			// System.out.println("111::" + tokenString);
+			// log(LogLevel.INFO, "111::" + tokenString);
 			if (tokenString.length() > 2) {
 				if (tokenString.substring(0,1).equals("(") && tokenString.substring(tokenString.length()-1,tokenString.length()).equals(")")
 						|| tokenString.substring(0,1).equals("(") && tokenString.substring(tokenString.length()-2,tokenString.length()-1).equals(")")) {
@@ -47,7 +49,7 @@ public class TextNormalizer implements ITextTransformer {
 					isStartP = true;
 					isEndP = false;
 				}
-				System.out.println("(::"+isStartP+"::"+isEndP+"::"+isNested);
+				log(LogLevel.INFO, "(::"+isStartP+"::"+isEndP+"::"+isNested);
 			
 			} else if (tokenString.contains(")")) {
 				if (isNested == true) {
@@ -57,7 +59,7 @@ public class TextNormalizer implements ITextTransformer {
 					isEndP = true;
 					isStartP = false;
 				}
-				System.out.println(")::"+isStartP+"::"+isEndP+"::"+isNested);									
+				log(LogLevel.INFO, ")::"+isStartP+"::"+isEndP+"::"+isNested);									
 			}			
 			
 			if (tokenString.length() > 2) {
@@ -65,12 +67,12 @@ public class TextNormalizer implements ITextTransformer {
 						|| tokenString.substring(0,1).equals("(") && tokenString.substring(tokenString.length()-2,tokenString.length()-1).equals(")")) {
 				
 					String finalCompoundTokenReplacement = tokenString.replaceAll("\\.", "_dot");
-					System.out.println("finalCompoundTokenReplacement ::" + finalCompoundTokenReplacement);
+					log(LogLevel.INFO, "finalCompoundTokenReplacement ::" + finalCompoundTokenReplacement);
 					text = text.replace(tokenString, finalCompoundTokenReplacement);
 				
 					parenthesisReplacements.put(tokenString, finalCompoundTokenReplacement);
 
-					System.out.println(tokenString);
+					log(LogLevel.INFO, tokenString);
 						
 					compoundToken = " ";
 				}
@@ -89,36 +91,36 @@ public class TextNormalizer implements ITextTransformer {
 				
 				
 				String finalCompoundTokenReplacement = finalCompoundToken.replaceAll("\\.", "_dot");
-				System.out.println("finalCompoundTokenReplacement ::" + finalCompoundTokenReplacement);
+				log(LogLevel.INFO, "finalCompoundTokenReplacement ::" + finalCompoundTokenReplacement);
 				text = text.replace(finalCompoundToken, finalCompoundTokenReplacement);
 				
 				parenthesisReplacements.put(finalCompoundToken, finalCompoundTokenReplacement);
-				System.out.println(finalCompoundToken);
+				log(LogLevel.INFO, finalCompoundToken);
 				
 				compoundToken = " ";
 				isEndP = false;
 			} else if (isStartP == false && isEndP == false && isNested == false) {
-				// System.out.println(tokenString);
+				// log(LogLevel.INFO, tokenString);
 				newSent += tokenString + " ";
 			}
 
 			// if (tokenString.contains(".") &&
 			// tokenString.subSequence(tokenString.length()-1,
 			// tokenString.length()).equals(".")) {
-			// System.out.println(tokenString);
+			// log(LogLevel.INFO, tokenString);
 			// }
 
 			// if
 			// (tokenString.matches("G\\s*\\+\\s*C|g\\s*\\+\\s*c||GC||gc"))
 			// {
-			// System.out.println(tokenString);
+			// log(LogLevel.INFO, tokenString);
 			// isTokenMatch = true;
 			// }
 
 		}
 
-		// System.out.println("newSent::" + newSent);
-		System.out.println(newSent);
+		// log(LogLevel.INFO, "newSent::" + newSent);
+		log(LogLevel.INFO, newSent);
 		
 		replace(text, this.abbreviations);
 		replace(text, parenthesisReplacements);
@@ -127,7 +129,8 @@ public class TextNormalizer implements ITextTransformer {
 	
 	public String replace(String text, LinkedHashMap<String, String> replacements) {
 		for (String original : replacements.keySet()) {
-			text = text.replaceAll(original, replacements.get(original));
+			//or was this meant to work as regex replace? (.replace vs .replaceAll)
+			text = text.replace(original, replacements.get(original));
 		}
 		return text;
 	}

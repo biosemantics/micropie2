@@ -11,6 +11,7 @@ import java.util.Properties;
 import de.mpii.clausie.ClausIE;
 import de.mpii.clausie.Clause;
 import de.mpii.clausie.Proposition;
+import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.ParseResult;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
@@ -74,8 +75,8 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 		
 		clausIE.parse(text);
 		Tree dependencyTree = clausIE.getDepTree();
-		System.out.print("Dependency parse : ");
-		System.out.println(dependencyTree.pennString()
+		log(LogLevel.INFO, "Dependency parse : ");
+		log(LogLevel.INFO, dependencyTree.pennString()
 				.replaceAll("\n", "\n                   ").trim());
 		
 		
@@ -109,7 +110,7 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 
 	private void handleCaseB(String text, List<String> subSentenceList) {
 		String depTreeString = clausIE.getDepTree().pennString();
-		System.out.println("depTreeString :: " + depTreeString);
+		log(LogLevel.INFO, "depTreeString :: " + depTreeString);
 
 		boolean containWhichOrThat = false;
 		String whichOrTahtClauseKeywordOne = "";
@@ -117,8 +118,7 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 
 		if (depTreeString.contains("(WHNP (WDT which))")
 				|| depTreeString.contains("(WHNP (WDT that))")) {
-			System.out
-					.println("Yes, it contains \"that\" or \"which\"");
+			log(LogLevel.INFO, "Yes, it contains \"that\" or \"which\"");
 			containWhichOrThat = true;
 			
 			if ( text.contains("that") ) {
@@ -128,11 +128,11 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 				if (inputSentArrayOneArray.length > 3) {
 					whichOrTahtClauseKeywordOne = inputSentArrayOneArray[1];
 					whichOrTahtClauseKeywordTwo = inputSentArrayOneArray[2] + " " + inputSentArrayOneArray[3];
-					System.out.println(whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
+					log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
 				} else {
 					whichOrTahtClauseKeywordOne = inputSentArrayOneArray[1];
 					whichOrTahtClauseKeywordTwo = inputSentArrayOneArray[2];
-					System.out.println(whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
+					log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
 				}
 			} else if ( text.contains("which") ) {
 				String[] inputSentArray = text.split("which");
@@ -140,11 +140,11 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 				if (inputSentArrayOneArray.length > 3) {
 					whichOrTahtClauseKeywordOne = inputSentArrayOneArray[1];
 					whichOrTahtClauseKeywordTwo = inputSentArrayOneArray[2] + " " + inputSentArrayOneArray[3];
-					System.out.println(whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
+					log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
 				} else {
 					whichOrTahtClauseKeywordOne = inputSentArrayOneArray[1];
 					whichOrTahtClauseKeywordTwo = inputSentArrayOneArray[2];
-					System.out.println(whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
+					log(LogLevel.INFO, whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo); 
 				}
 			}
 		}
@@ -166,8 +166,8 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 			String clausIEGetPropositionsOne = "";
 			for (Proposition prop : clausIE.getPropositions()) {
 				if ( prop.toString().contains(whichOrTahtClauseKeywordOne) && prop.toString().contains(whichOrTahtClauseKeywordTwo) ) {
-					//System.out.print(prop.toString());
-					//System.out.print(whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo);
+					//log(LogLevel.INFO, (prop.toString());
+					//log(LogLevel.INFO, (whichOrTahtClauseKeywordOne + " and " + whichOrTahtClauseKeywordTwo);
 					clausIEGetPropositionsOne = prop.toString().substring(1,prop.toString().length() - 1);
 				}
 			}
@@ -184,8 +184,8 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 				additionalSent += clausIEGetPropositionsOneArray[i].replaceAll("\"", "");
 			}	
 			additionalSent += ".";
-			System.out.println("Input sentence 2   : " + text);
-			System.out.println("additionalSent :: " + additionalSent);
+			log(LogLevel.INFO, "Input sentence 2   : " + text);
+			log(LogLevel.INFO, "additionalSent :: " + additionalSent);
 			
 			subSentenceList.add(additionalSent);
 		}
@@ -201,33 +201,33 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 		// (WHNP (WDT that))
 
 		
-		System.out.print("Semantic graph   : ");
-		System.out.println(clausIE.getSemanticGraph()
+		log(LogLevel.INFO, "Semantic graph   : ");
+		log(LogLevel.INFO, clausIE.getSemanticGraph()
 				.toFormattedString()
 				.replaceAll("\n", "\n                   ").trim());
 
 		// clause detection
-		System.out.print("ClausIE time     : ");
+		log(LogLevel.INFO, "ClausIE time     : ");
 		long start = System.currentTimeMillis();
 
 		clausIE.detectClauses();
 		clausIE.generatePropositions();
 		long end = System.currentTimeMillis();
-		System.out.println((end - start) / 1000. + "s");
+		log(LogLevel.INFO, (end - start) / 1000. + "s");
 
-		System.out.print("Clauses          : ");
+		log(LogLevel.INFO, "Clauses          : ");
 		String sep = "";
 		for (Clause clause : clausIE.getClauses()) {
-			System.out.println(sep
+			log(LogLevel.INFO, sep
 					+ clause.toString(clausIE.getOptions()));
 			sep = "                   ";
 		}
 
 		// generate propositions
-		System.out.print("clausIE.getPropositions().size():"
+		log(LogLevel.INFO, "clausIE.getPropositions().size():"
 				+ clausIE.getPropositions().size() + "\n");
 
-		System.out.print("Propositions     : ");
+		log(LogLevel.INFO, "Propositions     : ");
 
 		sep = "";
 
@@ -243,7 +243,7 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 												// letter
 
 			propString += ".";
-			System.out.println(sep + propString);
+			log(LogLevel.INFO, sep + propString);
 			sep = "                   ";
 
 			subSentenceList.add(propString);

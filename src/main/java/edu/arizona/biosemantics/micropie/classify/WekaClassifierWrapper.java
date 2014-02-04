@@ -38,6 +38,7 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 	 * Sets up attributes, filter and classifier of the weka toolkit
 	 */
 	public WekaClassifierWrapper(ILabel[] labels, IFilterDecorator filterDecorator) {
+		this.labels = labels;
 		setupAttributes();
 		setupFilteredClassifier(filterDecorator);
 	}

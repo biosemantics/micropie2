@@ -19,12 +19,12 @@ public class CellSizeExtractor implements IContentExtractor {
 		// input: the original sentnece
 		// output: String array?
 
-		// System.out.println("Original Sent : " + sent);
+		// log(LogLevel.INFO, "Original Sent : " + sent);
 		text = text.substring(0, text.length() - 1); // remove the period at the
 														// last position
 
 		// String[] sentArray = sent.split(" ");
-		// System.out.println("sentArray.length :" + sentArray.length );
+		// log(LogLevel.INFO, "sentArray.length :" + sentArray.length );
 
 		//
 		// Fail // String patternStringCellSize = "(.*) (µm in diameter) (.*)";
@@ -35,10 +35,10 @@ public class CellSizeExtractor implements IContentExtractor {
 		Matcher matcherCellSize = patternCellSize.matcher(text);
 
 		while (matcherCellSize.find()) {
-			// System.out.println("Whloe Sent::" + matcherCellSize.group());
-			// System.out.println("Part 1::" + matcherCellSize.group(1));
-			// System.out.println("Part 2::" + matcherCellSize.group(2));
-			// System.out.println("Part 3::" + matcherCellSize.group(3));
+			// log(LogLevel.INFO, "Whloe Sent::" + matcherCellSize.group());
+			// log(LogLevel.INFO, "Part 1::" + matcherCellSize.group(1));
+			// log(LogLevel.INFO, "Part 2::" + matcherCellSize.group(2));
+			// log(LogLevel.INFO, "Part 3::" + matcherCellSize.group(3));
 			String part1 = matcherCellSize.group(1);
 			String patternString = "(" + "\\s\\d+$|" + "\\s\\d+\\s|"
 					+ "\\s\\d+\\.\\d*$|" + "\\s\\d+\\.\\d+\\s|" +
@@ -72,7 +72,7 @@ public class CellSizeExtractor implements IContentExtractor {
 			Matcher matcher = pattern.matcher(part1);
 
 			while (matcher.find()) {
-				// System.out.println("Size is ::" + matcher.group());
+				// log(LogLevel.INFO, "Size is ::" + matcher.group());
 				output.add(matcher.group().trim()
 						+ " µm in diameter");
 			}
@@ -85,10 +85,10 @@ public class CellSizeExtractor implements IContentExtractor {
 		matcherCellSize = patternCellSize.matcher(text);
 
 		while (matcherCellSize.find()) {
-			// System.out.println("Whloe Sent::" + matcherCellSize.group());
-			// System.out.println("Part 1::" + matcherCellSize.group(1));
-			// System.out.println("Part 2::" + matcherCellSize.group(2));
-			// System.out.println("Part 3::" + matcherCellSize.group(3));
+			// log(LogLevel.INFO, "Whloe Sent::" + matcherCellSize.group());
+			// log(LogLevel.INFO, "Part 1::" + matcherCellSize.group(1));
+			// log(LogLevel.INFO, "Part 2::" + matcherCellSize.group(2));
+			// log(LogLevel.INFO, "Part 3::" + matcherCellSize.group(3));
 			String part3 = matcherCellSize.group(3);
 			String patternString = "(" + "\\s\\d+$|" + "\\s\\d+\\s|"
 					+ "\\s\\d+\\.\\d*$|" + "\\s\\d+\\.\\d+\\s|" +
@@ -122,7 +122,7 @@ public class CellSizeExtractor implements IContentExtractor {
 			Matcher matcher = pattern.matcher(part3);
 
 			while (matcher.find()) {
-				// System.out.println("Size is ::" + matcher.group());
+				// log(LogLevel.INFO, "Size is ::" + matcher.group());
 				output.add("diameter of " + matcher.group().trim()
 						+ " µm");
 			}
@@ -137,10 +137,10 @@ public class CellSizeExtractor implements IContentExtractor {
 		matcherCellSize = patternCellSize.matcher(text);
 
 		while (matcherCellSize.find()) {
-			// System.out.println("Whloe Sent::" + matcherCellSize.group());
-			// System.out.println("Part 1::" + matcherCellSize.group(1));
-			// System.out.println("Part 2::" + matcherCellSize.group(2));
-			// System.out.println("Part 3::" + matcherCellSize.group(3));
+			// log(LogLevel.INFO, "Whloe Sent::" + matcherCellSize.group());
+			// log(LogLevel.INFO, "Part 1::" + matcherCellSize.group(1));
+			// log(LogLevel.INFO, "Part 2::" + matcherCellSize.group(2));
+			// log(LogLevel.INFO, "Part 3::" + matcherCellSize.group(3));
 			String part2 = matcherCellSize.group(2);
 			String part3 = matcherCellSize.group(3);
 

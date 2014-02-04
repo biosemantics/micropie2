@@ -2,6 +2,7 @@ package edu.arizona.biosemantics.micropie.io;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -10,7 +11,6 @@ import org.jdom2.input.SAXBuilder;
 
 public class XMLTextReader implements ITextReader {
 
-	private InputStream inputStream;
 	private Element rootNode;
 
 	/**
@@ -18,11 +18,9 @@ public class XMLTextReader implements ITextReader {
 	 * @throws IOException 
 	 * @throws JDOMException 
 	 */
-	public void setInputStream(InputStream inputStream) throws JDOMException, IOException {
-		this.inputStream = inputStream;
-		
+	public void setInputStream(InputStream inputStream) throws JDOMException, IOException {		
 		SAXBuilder builder = new SAXBuilder();
-		Document xmlDocument = (Document) builder.build(inputStream);
+		Document xmlDocument = (Document) builder.build(new InputStreamReader(inputStream, "UTF8"));
 		rootNode = xmlDocument.getRootElement();
 	}
 	

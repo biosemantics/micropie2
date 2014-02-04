@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.micropie.log.ObjectStringifier;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
 
@@ -35,12 +37,15 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 				result.add(label);
 		}
 		
+		log(LogLevel.INFO, "Prediction for " + sentence.toString() + "\n"
+				+ " -> " + ObjectStringifier.getInstance().stringify(result));
 		return result;
 	}
 
 	@Override
 	public void train(List<Sentence> trainingData) throws Exception {
 		for(ILabel label : labels) {
+			log(LogLevel.INFO, "Training SVM for label " + label.getValue());
 			SVMClassifier classifier = new SVMClassifier(BinaryLabel.values(), filterDecorator);
 			classifiers.put(label, classifier);
 			
