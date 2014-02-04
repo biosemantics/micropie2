@@ -9,6 +9,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
@@ -32,9 +36,29 @@ import edu.arizona.biosemantics.micropie.transform.feature.MyFilterDecorator;
 
 public class Main {
 
+	// User Input
+	private String trainingFile = "131001-sampleCombinedSentencesList-csv-CB-manipulated-by-EW-131030-test-3-copy-2.csv";
+	private String abbreviationFile = "abbrevlist.csv";
+	private String testFolder = "new-microbe-xml";
+	private boolean parallelProcessing = true;
+	private int testSentenceExtractorMax = 1;
+	private String predictionsFile = "predictions.csv";
+	private String matrixFile = "matrix.csv";
+	
+	// Non-User Input
+	private ExecutorService executorService;
 	private Map<Sentence, ClassifiedSentence> sentenceClassificationMap;
 	private Map<Sentence, SentenceMetadata> sentenceMetadata;
 	private Map<String, List<Sentence>> taxonSentencesMap;
+	
+	public Main(){
+		if(!this.parallelProcessing)
+			executorService = Executors.newSingleThreadExecutor();
+		if(this.parallelProcessing && this.testSentenceExtractorMax < Integer.MAX_VALUE)
+			executorService = Executors.newFixedThreadPool(testSentenceExtractorMax);
+		if(this.parallelProcessing && this.testSentenceExtractorMax == Integer.MAX_VALUE)
+			executorService = Executors.newCachedThreadPool();
+	}
 	
 	public void run() {
 		sentenceClassificationMap = new HashMap<Sentence, ClassifiedSentence>();
@@ -72,39 +96,54 @@ public class Main {
 	private List<Sentence> createTestSentences() throws Exception {
 		log(LogLevel.INFO, "Reading test sentences...");
 		List<Sentence> testSentences = new LinkedList<Sentence>();
-		File inputFolder = new File("new-microbe-xml");
+		File inputFolder = new File(testFolder);
 		CSVAbbreviationReader abbreviationReader = new CSVAbbreviationReader();
-		abbreviationReader.setInputStream(new FileInputStream("abbrevlist.csv"));
+		abbreviationReader.setInputStream(new FileInputStream(abbreviationFile));
 		LinkedHashMap<String, String> abbreviations = abbreviationReader.read();
 		ITextTransformer textNormalizer = new TextNormalizer(abbreviations);
 		XMLTextReader textReader = new XMLTextReader();
 		MyTextSentenceTransformer textSentenceTransformer = new MyTextSentenceTransformer();
-		//TODO parallelize here
-		for(File inputFile : inputFolder.listFiles()) {
+			
+		File[] inputFiles = inputFolder.listFiles();
+		List<Future<TestSentenceExtractResult>> futureExtractResults = 
+				new LinkedList<Future<TestSentenceExtractResult>>();
+		CountDownLatch testSentencesExtractorLatch = new CountDownLatch(inputFiles.length);
+		for(File inputFile : inputFiles) {
 			log(LogLevel.INFO, "Reading from " + inputFile.getName() + "...");
 			textReader.setInputStream(new FileInputStream(inputFile));
 			String taxon = textReader.getTaxon();
 			log(LogLevel.INFO, "Taxon: " + taxon);
 			String text = textReader.read();
 			log(LogLevel.INFO, "Text: " + text);
-			text = textNormalizer.transform(text);
-			log(LogLevel.INFO, "Normalized text: " + text);
-			List<Sentence> sentences = textSentenceTransformer.transform(textReader.read());
-			for(int i=0; i<sentences.size(); i++) {
-				Sentence sentence = sentences.get(i);
-				SentenceMetadata metadata = new SentenceMetadata();
-				metadata.setSourceFile(inputFile.getName());
-				metadata.setSourceId(i);
-				metadata.setTaxon(taxon);
-				metadata.setCompoundSplitSentence(sentences.size() > 1);
-				metadata.setParseResult(textSentenceTransformer.getCachedParseResult(sentence));
-				sentenceMetadata.put(sentence, metadata);
-				if(!taxonSentencesMap.containsKey(taxon))
-					taxonSentencesMap.put(taxon, new LinkedList<Sentence>());
-				taxonSentencesMap.get(taxon).add(sentence);
-			}
-			testSentences.addAll(sentences);
+			TestSentencesExtractor extractor = new TestSentencesExtractor(inputFile, 
+					taxon, text, textNormalizer, textSentenceTransformer);
+			Future<TestSentenceExtractResult> futureResult = executorService.submit(extractor);
+			futureExtractResults.add(futureResult);
 		}
+		
+		try {
+			testSentencesExtractorLatch.await();
+			executorService.shutdown();
+		} catch (InterruptedException e) {
+			log(LogLevel.ERROR, "Problem with latch or executorService", e);
+		}
+		
+		for(Future<TestSentenceExtractResult> result : futureExtractResults) {
+			try {
+				TestSentenceExtractResult extractResult = result.get();
+				this.sentenceMetadata.putAll(extractResult.getSentenceMetadataMap());
+				for(String taxon : extractResult.getTaxonSentencesMap().keySet()) {
+					if(!this.taxonSentencesMap.containsKey(taxon))
+						this.taxonSentencesMap.put(taxon, new LinkedList<Sentence>());
+					this.taxonSentencesMap.get(taxon).addAll(
+							extractResult.getTaxonSentencesMap().get(taxon));
+				}
+				testSentences.addAll(extractResult.getSentences());
+			} catch (Exception e) {
+				log(LogLevel.ERROR, "Problem getting Future from chunkCollector", e);
+			}
+		}
+		
 		log(LogLevel.INFO, "Done reading test sentences...");
 		return testSentences;
 	}
@@ -113,7 +152,7 @@ public class Main {
 		log(LogLevel.INFO, "Reading training data...");
 		CSVSentenceReader reader = new CSVSentenceReader();
 		// reader.setInputStream(new FileInputStream("131001-sampleCombinedSentencesList-csv-CB-manipulated-by-EW-131030-test-3.csv"));
-		reader.setInputStream(new FileInputStream("131001-sampleCombinedSentencesList-csv-CB-manipulated-by-EW-131030-test-3-copy-2.csv"));
+		reader.setInputStream(new FileInputStream(trainingFile));
 		List<Sentence> trainingSentences = reader.read();	
 		log(LogLevel.INFO, "Done reading training sentences...");
 		return trainingSentences;
@@ -135,7 +174,6 @@ public class Main {
 	}
 
 	private void writePredictionResults(List<ClassifiedSentence> predictions) throws Exception {
-		String predictionsFile = "predictions.csv";
 		log(LogLevel.INFO, "Writing prediciton results to " + predictionsFile + "...");
 		CSVClassifiedSentenceWriter classifiedSentenceWriter = new CSVClassifiedSentenceWriter();
 		classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
@@ -152,7 +190,6 @@ public class Main {
 	}
 
 	private void writeMatrix(TaxonCharacterMatrix matrix) throws Exception {
-		String matrixFile = "matrix.csv";
 		log(LogLevel.INFO, "Writing matrix to " + matrixFile + "...");
 		CSVTaxonCharacterMatrixWriter matrixWriter = new CSVTaxonCharacterMatrixWriter();
 		matrixWriter.setOutputStream(new FileOutputStream(matrixFile));

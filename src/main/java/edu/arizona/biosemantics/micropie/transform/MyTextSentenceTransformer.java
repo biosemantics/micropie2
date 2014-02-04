@@ -73,7 +73,9 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 	private List<Sentence> compoundSplit(String text) {
 		List<Sentence> result = new LinkedList<Sentence>();
 		
+		log(LogLevel.INFO, "ClausIE parse...");
 		clausIE.parse(text);
+		log(LogLevel.INFO, "Done ClausIE parse");
 		Tree dependencyTree = clausIE.getDepTree();
 		log(LogLevel.INFO, "Dependency parse : ");
 		log(LogLevel.INFO, dependencyTree.pennString()
