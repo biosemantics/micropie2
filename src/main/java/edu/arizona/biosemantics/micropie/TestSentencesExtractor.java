@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
 
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
@@ -21,15 +22,16 @@ public class TestSentencesExtractor implements Callable<TestSentenceExtractResul
 	private String text;
 	private ITextTransformer textNormalizer;
 	private MyTextSentenceTransformer textSentenceTransformer;
+	private CountDownLatch countDownLatch;
 
 	public TestSentencesExtractor(File inputFile, String taxon, String text,
-			ITextTransformer textNormalizer,
-			MyTextSentenceTransformer textSentenceTransformer) {
+			ITextTransformer textNormalizer, MyTextSentenceTransformer textSentenceTransformer, CountDownLatch countDownLatch) {
 		this.inputFile = inputFile;
 		this.taxon = taxon;
 		this.text = text;
 		this.textNormalizer = textNormalizer;
 		this.textSentenceTransformer = textSentenceTransformer;
+		this.countDownLatch = countDownLatch;
 	}
 
 	@Override
@@ -51,6 +53,8 @@ public class TestSentencesExtractor implements Callable<TestSentenceExtractResul
 			result.putSentenceMetadata(sentence, metadata);
 			result.addTaxonSentence(taxon, sentence);
 		}
+		countDownLatch.countDown();
+		System.out.println("Count " + countDownLatch.getCount());
 		return result;
 	}
 }

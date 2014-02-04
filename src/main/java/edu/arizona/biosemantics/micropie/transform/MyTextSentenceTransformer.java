@@ -1,5 +1,7 @@
 package edu.arizona.biosemantics.micropie.transform;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -38,7 +40,25 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 		
 		this.clausIE = new ClausIE();
 		this.clausIE.initParser();
-		this.clausIE.getOptions().print(System.out, "# ");
+		this.clausIE.getOptions().print(new OutputStream() {
+		    private String buffer;
+			@Override
+			public void write(int b) throws IOException {
+				byte[] bytes = new byte[1];
+		        bytes[0] = (byte) (b & 0xff);
+		        buffer = buffer + new String(bytes);
+
+		        if (buffer.endsWith ("\n")) {
+		        	buffer = buffer.substring (0, buffer.length () - 1);
+		            flush();
+		        }
+			}
+			@Override
+		    public void flush () {
+		    	log(LogLevel.INFO, buffer);
+		    	buffer = "";
+		    }
+		}, "#ClausIE# ");
 		
 		this.pennTreebankLanguagePack = new PennTreebankLanguagePack();
 	}
@@ -73,7 +93,7 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 	private List<Sentence> compoundSplit(String text) {
 		List<Sentence> result = new LinkedList<Sentence>();
 		
-		log(LogLevel.INFO, "ClausIE parse...");
+		log(LogLevel.INFO, "ClausIE parse... text " + text);
 		clausIE.parse(text);
 		log(LogLevel.INFO, "Done ClausIE parse");
 		Tree dependencyTree = clausIE.getDepTree();

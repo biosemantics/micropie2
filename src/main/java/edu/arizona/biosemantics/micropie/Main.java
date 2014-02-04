@@ -110,15 +110,19 @@ public class Main {
 		CountDownLatch testSentencesExtractorLatch = new CountDownLatch(inputFiles.length);
 		for(File inputFile : inputFiles) {
 			log(LogLevel.INFO, "Reading from " + inputFile.getName() + "...");
-			textReader.setInputStream(new FileInputStream(inputFile));
-			String taxon = textReader.getTaxon();
-			log(LogLevel.INFO, "Taxon: " + taxon);
-			String text = textReader.read();
-			log(LogLevel.INFO, "Text: " + text);
-			TestSentencesExtractor extractor = new TestSentencesExtractor(inputFile, 
-					taxon, text, textNormalizer, textSentenceTransformer);
-			Future<TestSentenceExtractResult> futureResult = executorService.submit(extractor);
-			futureExtractResults.add(futureResult);
+			try {
+				textReader.setInputStream(new FileInputStream(inputFile));
+				String taxon = textReader.getTaxon();
+				log(LogLevel.INFO, "Taxon: " + taxon);
+				String text = textReader.read();
+				log(LogLevel.INFO, "Text: " + text);
+				TestSentencesExtractor extractor = new TestSentencesExtractor(inputFile, 
+						taxon, text, textNormalizer, textSentenceTransformer, testSentencesExtractorLatch);
+				Future<TestSentenceExtractResult> futureResult = executorService.submit(extractor);
+				futureExtractResults.add(futureResult);
+			} catch(Exception e) {
+				log(LogLevel.ERROR, "Could not read test sentences from " + inputFile.getName(), e);
+			}
 		}
 		
 		try {
