@@ -192,7 +192,7 @@ public class Options {
 	
 	/**Print settings*/
 	public void print(OutputStream out, String prefix) {
-		PrintStream pout = new PrintStream(out);
+		/*PrintStream pout = new PrintStream(out);
 
 		pout.println(prefix + "CLAUSE DETECTION");
 		pout.println(prefix + "  Dict. copular        : " + dictCopular.size() + someWords(dictCopular.words));
@@ -217,6 +217,6 @@ public class Options {
 		pout.println(prefix + "  Max. opt. args      : " + maxOptionalArgs);
 		pout.println(prefix + "  Lemmatize           : " + lemmatize);
 		pout.println(prefix + "  Appositions verb    : \"" + appositionVerb + "\"");
-		pout.println(prefix + "  Possessive verb     : \"" + possessiveVerb + "\"");
+		pout.println(prefix + "  Possessive verb     : \"" + possessiveVerb + "\"");*/
 	}
 }

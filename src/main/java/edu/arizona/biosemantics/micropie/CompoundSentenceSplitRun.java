@@ -1,45 +1,37 @@
-package edu.arizona.biosemantics.micropie.transform;
+package edu.arizona.biosemantics.micropie;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
 
 import de.mpii.clausie.ClausIE;
 import de.mpii.clausie.Clause;
 import de.mpii.clausie.Proposition;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
-import edu.arizona.biosemantics.micropie.model.ParseResult;
 import edu.arizona.biosemantics.micropie.model.Sentence;
-import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
-import edu.stanford.nlp.pipeline.Annotation;
-import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-import edu.stanford.nlp.trees.GrammaticalStructure;
-import edu.stanford.nlp.trees.GrammaticalStructureFactory;
-import edu.stanford.nlp.trees.PennTreebankLanguagePack;
+import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+import edu.stanford.nlp.parser.lexparser.LexicalizedParserQuery;
+import edu.stanford.nlp.process.TokenizerFactory;
 import edu.stanford.nlp.trees.Tree;
-import edu.stanford.nlp.trees.TypedDependency;
-import edu.stanford.nlp.util.CoreMap;
 
-public class MyTextSentenceTransformer implements ITextSentenceTransformer {
+public class CompoundSentenceSplitRun implements Callable<List<String>> {
 
-	private StanfordCoreNLP pipeline;
-	private Map<Sentence, ParseResult> cachedParseResults = new HashMap<Sentence, ParseResult>();
-	private PennTreebankLanguagePack pennTreebankLanguagePack;
+	private String sentence;
+	private CountDownLatch compoundSentenceSplitLatch;
 	private ClausIE clausIE;
-	
-	public MyTextSentenceTransformer() {
-		Properties stanfordCoreProperties = new Properties();
-		stanfordCoreProperties.put("annotators", "tokenize, ssplit");
-		this.pipeline = new StanfordCoreNLP(stanfordCoreProperties);
+
+	public CompoundSentenceSplitRun(String sentence, LexicalizedParser lexicalizedParser, 
+			TokenizerFactory<CoreLabel> tokenizerFactory, CountDownLatch compoundSentenceSplitLatch) {
+		this.sentence = sentence;
+		this.compoundSentenceSplitLatch = compoundSentenceSplitLatch;
 		
-		this.clausIE = new ClausIE();
-		clausIE.initParser();
+		LexicalizedParserQuery parserQuery = (LexicalizedParserQuery)lexicalizedParser.parserQuery();
+		this.clausIE = new ClausIE(lexicalizedParser, tokenizerFactory, parserQuery);
 		clausIE.getOptions().print(new OutputStream() {
 		    private String buffer;
 			@Override
@@ -59,47 +51,15 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 		    	buffer = "";
 		    }
 		}, "#ClausIE# ");
-		
-		this.pennTreebankLanguagePack = new PennTreebankLanguagePack();
-	}
-	
-	@Override
-	public List<Sentence> transform(String text) {
-		log(LogLevel.INFO, "transform text to sentences: " + text);
-		List<Sentence> result = new LinkedList<Sentence>();
-		List<String> sentences = getSentences(text);
-		for(String sentence : sentences) {
-			if(sentence.length() > 3) {
-				result.addAll(this.compoundSplit(sentence));
-			}
-		}
-		log(LogLevel.INFO, "done transforming text to sentences. Created " + result.size() + " sentences");
-		return result;
-	}
-	
-	public ParseResult getCachedParseResult(Sentence sentence) {
-		return cachedParseResults.get(sentence);
-	}
-	
-	private List<String> getSentences(String text) {
-		log(LogLevel.INFO, "split text to sentences using stanford corenlp pipeline...");
-		List<String> result = new LinkedList<String>();
-		Annotation document = new Annotation(text);
-		pipeline.annotate(document);
-		List<CoreMap> sentenceAnnotations = document.get(SentencesAnnotation.class);
-		for (CoreMap sentenceAnnotation : sentenceAnnotations) {
-			result.add(sentenceAnnotation.toString());
-		}
-		log(LogLevel.INFO, "done splitting text to sentences using stanford corenlp pipeline. Created " + result.size() + " sentences");
-		return result;
 	}
 
-	private List<Sentence> compoundSplit(String text) {
+	@Override
+	public List<String> call() {
 		log(LogLevel.INFO, "split compound sentences into subsentences using clausIE...");
-		List<Sentence> result = new LinkedList<Sentence>();
+		List<String> result = new LinkedList<String>();
 		log(LogLevel.INFO, "clausIE parse...");
 				
-		clausIE.parse(text);
+		clausIE.parse(sentence);
 		log(LogLevel.INFO, "clausIE parse complete");
 		Tree dependencyTree = clausIE.getDepTree();
 		log(LogLevel.INFO, "Dependency parse : ");
@@ -110,37 +70,29 @@ public class MyTextSentenceTransformer implements ITextSentenceTransformer {
 		//.replaceAll("\n", "\n                   ").trim());
 		
 		List<String> sentenceList = new ArrayList<String>();
-		handleCaseA(text, sentenceList, clausIE);
-		handleCaseB(text, sentenceList, clausIE);	
+		handleCaseA(sentence, sentenceList, clausIE);
+		handleCaseB(sentence, sentenceList, clausIE);	
 		
 		if (sentenceList.size() > 1) {
 			log(LogLevel.INFO, "found subsentences: " + sentenceList.size());
 			for (String sentenceText : sentenceList) {
-				Sentence sentence = new Sentence(sentenceText);
 				log(LogLevel.INFO, "clausIE parse...");
 				clausIE.parse(sentenceText);
 				log(LogLevel.INFO, "clausIE parse complete");
 				dependencyTree = clausIE.getDepTree();
-				cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
-				result.add(sentence);
+				//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
+				result.add(sentenceText);
 			}
 		} else {
 			log(LogLevel.INFO, "did not find subsentences");
-			Sentence sentence = new Sentence(text);		
-			cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
+			//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
 			result.add(sentence);
 		}
+		compoundSentenceSplitLatch.countDown();
+		System.out.println(compoundSentenceSplitLatch.getCount());
 		return result;
 	}
 	
-	private ParseResult getParseResult(Tree dependencyTree, ClausIE clausIE) {
-		GrammaticalStructureFactory grammaticalStructureFactory = pennTreebankLanguagePack.grammaticalStructureFactory();
-		GrammaticalStructure grammaticalStructure = grammaticalStructureFactory.newGrammaticalStructure(dependencyTree);
-		Collection<TypedDependency> typedDependencies = grammaticalStructure.typedDependenciesCollapsed();
-		ParseResult parseResult = new ParseResult(clausIE.getDepTree(), typedDependencies);
-		return parseResult;
-	}
-
 	private void handleCaseB(String text, List<String> subSentenceList, ClausIE clausIE) {
 		log(LogLevel.INFO, "handle case B...");
 		String depTreeString = clausIE.getDepTree().pennString();

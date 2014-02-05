@@ -41,7 +41,8 @@ public class CSVTaxonCharacterMatrixWriter implements IMatrixWriter {
 			row[0] = taxon;
 			i=1;
 			for(String character : characters) 
-				header[i++] = getValueString(taxonCharacterMap.get(taxon).get(character));
+				row[i++] = getValueString(taxonCharacterMap.get(taxon).get(character));
+			lines.add(row);
 		}
 		
 		//write
@@ -61,6 +62,8 @@ public class CSVTaxonCharacterMatrixWriter implements IMatrixWriter {
 			stringBuilder.append(value + ",");
 		}
 		String result = stringBuilder.toString();
+		if(result.isEmpty())
+			return result;
 		return result.substring(0, result.length() - 1);
 	}
 

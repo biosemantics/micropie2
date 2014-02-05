@@ -65,10 +65,11 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 	
 	private Sentence createTwoClassData(ILabel label, Sentence sentence) {
 		Sentence result = (Sentence)sentence.clone();
-		if(result.getLabel().equals(label))
-			result.setLabel(BinaryLabel.YES);
-		else
-			result.setLabel(BinaryLabel.NO);
+		if(result.getLabel() != null)
+			if(result.getLabel().equals(label))
+				result.setLabel(BinaryLabel.YES);
+			else
+				result.setLabel(BinaryLabel.NO);
 		return result;
 	}
 

@@ -1,23 +1,14 @@
 package edu.arizona.biosemantics.micropie.model;
 
 public class SentenceMetadata {
-
-	private String sourceFile;
+	
 	private int sourceId;
-	private String taxon;
 	private ParseResult parseResult;
 	private boolean compoundSplitSentence;
+	private TaxonTextFile taxonTextFile;
 	
 	public SentenceMetadata() {
 		
-	}
-
-	public String getSourceFile() {
-		return sourceFile;
-	}
-
-	public void setSourceFile(String sourceFile) {
-		this.sourceFile = sourceFile;
 	}
 
 	public int getSourceId() {
@@ -26,14 +17,6 @@ public class SentenceMetadata {
 
 	public void setSourceId(int sourceId) {
 		this.sourceId = sourceId;
-	}
-
-	public String getTaxon() {
-		return taxon;
-	}
-
-	public void setTaxon(String taxon) {
-		this.taxon = taxon;
 	}
 
 	public ParseResult getParseResult() {
@@ -50,6 +33,14 @@ public class SentenceMetadata {
 
 	public void setCompoundSplitSentence(boolean compoundSplitSentence) {
 		this.compoundSplitSentence = compoundSplitSentence;
+	}
+
+	public void setTaxonTextFile(TaxonTextFile taxonTextFile) {
+		this.taxonTextFile = taxonTextFile;
+	}
+
+	public TaxonTextFile getTaxonTextFile() {
+		return taxonTextFile;
 	}
 		
 	
