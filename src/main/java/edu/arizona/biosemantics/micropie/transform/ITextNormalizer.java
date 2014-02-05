@@ -4,7 +4,7 @@ package edu.arizona.biosemantics.micropie.transform;
  * Transforms text
  * @author rodenhausen
  */
-public interface ITextTransformer {
+public interface ITextNormalizer {
 
 	/**
 	 * @param text

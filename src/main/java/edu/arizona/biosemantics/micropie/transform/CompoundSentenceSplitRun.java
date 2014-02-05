@@ -77,9 +77,9 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 			log(LogLevel.INFO, "found subsentences: " + sentenceList.size());
 			for (String sentenceText : sentenceList) {
 				log(LogLevel.INFO, "clausIE parse...");
-				clausIE.parse(sentenceText);
+				//clausIE.parse(sentenceText);
 				log(LogLevel.INFO, "clausIE parse complete");
-				dependencyTree = clausIE.getDepTree();
+				//dependencyTree = clausIE.getDepTree();
 				//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
 				result.add(sentenceText);
 			}

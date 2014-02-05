@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -29,12 +30,14 @@ public class CSVSentenceReader implements ISentenceReader {
 	
 	@Override
 	public List<Sentence> read() throws IOException {
+		log(LogLevel.INFO, "Reading sentences...");
 		List<Sentence> result = new LinkedList<Sentence>();
 		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
 	    List<String[]> lines = reader.readAll();
 		for(String[] line : lines)
 			result.add(new Sentence(line[7], Label.getEnum(line[0])));
 	    reader.close();
+		log(LogLevel.INFO, "Done reading sentences...");
 		return result;
 	}
 

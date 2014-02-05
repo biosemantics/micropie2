@@ -19,10 +19,10 @@ public class SentenceSplitRun implements Callable<List<String>> {
 	
 	private String text;
 	private CountDownLatch sentenceSplitLatch;
-	private ITextTransformer normalizer;
+	private ITextNormalizer normalizer;
 	private StanfordCoreNLP stanfordCoreNLP;
 
-	public SentenceSplitRun(String text, ITextTransformer normalizer, StanfordCoreNLP stanfordCoreNLP, 
+	public SentenceSplitRun(String text, ITextNormalizer normalizer, StanfordCoreNLP stanfordCoreNLP, 
 			CountDownLatch sentenceSplitLatch) {
 		this.text = text;
 		this.sentenceSplitLatch = sentenceSplitLatch;

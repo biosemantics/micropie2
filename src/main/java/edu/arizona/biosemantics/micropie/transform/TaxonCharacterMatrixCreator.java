@@ -8,8 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.ClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.Sentence;
@@ -28,11 +32,19 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 
 	private LinkedHashSet<String> characters;
 	private IContentExtractorProvider contentExtractorProvider;
+	private Map<String, List<Sentence>> taxonSentencesMap;
+	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
+	private Map<Sentence, ClassifiedSentence> classifiedSentencesMap;
 
-
-	public TaxonCharacterMatrixCreator() {
-		String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease caused|Metabolism (energy & carbon source)|Mono & di-saccharides|Polysaccharides|Amino acids|Alcohols|Fatty acids|Other energy or carbon sources|Fermentation products|Polyalkanoates (plastics)|Other metabolic product|Antibiotic sensitivity|Antibiotic resistant";
-		this.characters = new LinkedHashSet<String>(Arrays.asList(characterListString.split("\\|")));
+	@Inject
+	public TaxonCharacterMatrixCreator(@Named("Characters")LinkedHashSet<String> characters, 
+			@Named("TaxonSentencesMap")Map<String, List<Sentence>> taxonSentencesMap, 
+			@Named("SentenceMetadataMap")Map<Sentence, SentenceMetadata> sentenceMetadataMap, 
+			@Named("SentenceClassificationMap")Map<Sentence, ClassifiedSentence> classifiedSentencesMap) {
+		this.characters = characters;
+		this.taxonSentencesMap = taxonSentencesMap;
+		this.sentenceMetadataMap = sentenceMetadataMap;
+		this.classifiedSentencesMap = classifiedSentencesMap;
 		
 		this.contentExtractorProvider = new IContentExtractorProvider() {
 			@Override
@@ -52,8 +64,9 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 	}
 	
 	@Override
-	public TaxonCharacterMatrix create(Map<String, List<Sentence>> taxonSentencesMap, Map<Sentence, SentenceMetadata> sentenceMetadata, Map<Sentence, ClassifiedSentence> classifiedSentences) {
+	public TaxonCharacterMatrix create() {
 			TaxonCharacterMatrix result = new TaxonCharacterMatrix();
+		log(LogLevel.INFO, "Creating matrix...");
 		result.setTaxa(taxonSentencesMap.keySet());
 		result.setCharacters(characters);
 		
@@ -68,8 +81,8 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 			
 			List<Sentence> sentences = taxonSentencesMap.get(taxon);
 			for(Sentence sentence : sentences) {
-				SentenceMetadata metadata = sentenceMetadata.get(sentence);
-				ClassifiedSentence classifiedSentence = classifiedSentences.get(sentence);
+				SentenceMetadata metadata = sentenceMetadataMap.get(sentence);
+				ClassifiedSentence classifiedSentence = classifiedSentencesMap.get(sentence);
 				Set<ILabel> predictions = classifiedSentence.getPredictions();
 				for(ILabel label : predictions) {
 					if(label instanceof Label) {
@@ -84,6 +97,7 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 			}
 		}
 		result.setTaxonCharacterMap(taxonCharacterMap);
+		log(LogLevel.INFO, "Done creating matrix");
 		return result;
 	}
 }

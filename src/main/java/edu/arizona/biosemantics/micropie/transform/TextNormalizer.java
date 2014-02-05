@@ -4,13 +4,17 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 
-public class TextNormalizer implements ITextTransformer {
+public class TextNormalizer implements ITextNormalizer {
 	
 	private LinkedHashMap<String, String> abbreviations;
 	
-	public TextNormalizer(LinkedHashMap<String, String> abbreviations) throws IOException {
+	@Inject
+	public TextNormalizer(@Named("Abbreviations")LinkedHashMap<String, String> abbreviations) throws IOException {
 		this.abbreviations = abbreviations;
 	}
 

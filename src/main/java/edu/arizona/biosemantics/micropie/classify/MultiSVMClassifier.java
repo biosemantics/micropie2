@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.log.ObjectStringifier;
 import edu.arizona.biosemantics.micropie.model.Sentence;
@@ -14,12 +17,14 @@ import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
 
 public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifier {
 
-	private ILabel[] labels;
+	private List<ILabel> labels;
 	private IFilterDecorator filterDecorator;
 	private Map<ILabel, SVMClassifier> classifiers = new HashMap<ILabel, SVMClassifier>();
 	private boolean trained = false;
 
-	public MultiSVMClassifier(ILabel[] labels, IFilterDecorator filterDecorator) {
+	@Inject
+	public MultiSVMClassifier(@Named("MultiSVMClassifier_Labels") List<ILabel> labels, 
+			@Named("MultiSVMClassifier_FilterDecorator") IFilterDecorator filterDecorator) {
 		this.labels = labels;
 		this.filterDecorator = filterDecorator;
 	}
@@ -44,6 +49,7 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 
 	@Override
 	public void train(List<Sentence> trainingData) throws Exception {
+		log(LogLevel.INFO, "Training classifier...");
 		for(ILabel label : labels) {
 			log(LogLevel.INFO, "Training SVM for label " + label.getValue());
 			SVMClassifier classifier = new SVMClassifier(BinaryLabel.values(), filterDecorator);
@@ -53,6 +59,7 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 			classifier.train(twoClassData);
 		}
 		trained = true;
+		log(LogLevel.INFO, "Done training");
 	}
 
 	private List<Sentence> createTwoClassData(ILabel label, List<Sentence> sentences) {

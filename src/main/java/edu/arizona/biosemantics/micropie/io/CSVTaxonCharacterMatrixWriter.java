@@ -10,9 +10,10 @@ import java.util.Map;
 import java.util.Set;
 
 import au.com.bytecode.opencsv.CSVWriter;
+import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 
-public class CSVTaxonCharacterMatrixWriter implements IMatrixWriter {
+public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWriter {
 
 	private OutputStream outputStream;
 	
@@ -22,6 +23,7 @@ public class CSVTaxonCharacterMatrixWriter implements IMatrixWriter {
 
 	@Override
 	public void write(TaxonCharacterMatrix matrix) throws Exception {
+		log(LogLevel.INFO, "Writing matrix...");
 		LinkedHashSet<String> characters = matrix.getCharacters();
 		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));		
 		List<String[]> lines = new LinkedList<String[]>();
@@ -49,6 +51,7 @@ public class CSVTaxonCharacterMatrixWriter implements IMatrixWriter {
 		writer.writeAll(lines);
 		writer.flush();
 		writer.close();
+		log(LogLevel.INFO, "Done writing matrix");
 	}
 
 	/**
