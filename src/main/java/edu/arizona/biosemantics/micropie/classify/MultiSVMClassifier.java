@@ -35,7 +35,7 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 	public Set<ILabel> getClassification(Sentence sentence) throws Exception {
 		if(!trained)
 			throw new Exception("Classifier is not trained");
-		
+				
 		Set<ILabel> result = new HashSet<ILabel>();
 		for(ILabel label : labels) {
 			Sentence twoClassSentence = this.createTwoClassData(label, sentence);

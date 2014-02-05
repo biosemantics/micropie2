@@ -29,17 +29,15 @@ public class FilterDecorator implements IFilterDecorator {
 		NGramTokenizer tokenizer = new NGramTokenizer();
 		tokenizer.setNGramMaxSize(nGramMaxSize);
 		tokenizer.setNGramMinSize(nGramMinSize);
-		tokenizer.setDelimiters(" ");
+		tokenizer.setDelimiters("\\s+");
 		stringToWordVector.setTokenizer(tokenizer);
 		stringToWordVector.setAttributeIndicesArray(new int[] { 1 });
-		stringToWordVector.setLowerCaseTokens(true);
-		
+		stringToWordVector.setLowerCaseTokens(true);	
 		stringToWordVector.setOutputWordCounts(true);
 		stringToWordVector.setWordsToKeep(Integer.MAX_VALUE);
 		stringToWordVector.setMinTermFreq(minFrequency);
 		stringToWordVector.setTFTransform(true); // text frequency
-	
-		System.out.println(stringToWordVector.getLowerCaseTokens());
+
 		multiFilter.setFilters(new Filter[] { stringToWordVector });
 	}
 }

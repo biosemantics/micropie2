@@ -136,9 +136,7 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 		if(!trained)
 			throw new Exception("Classifier is not trained");
 		Instance instance = createInstance(sentence.getText());
-
 		double[] resultDistribution = filteredClassifier.distributionForInstance(instance);
-				
 		int maxPropabilityIndex = 0;
 		double maxPropability = 0.0;
 		for(int i=0; i<resultDistribution.length; i++) {
