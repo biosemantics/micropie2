@@ -83,7 +83,12 @@
 			<artifactId>libsvm</artifactId>
 			<version>3.1</version>
 			<!-- <version>3.17</version> can somehow not be found on classpath when used -->
-		</dependency>
+		</dependency>    
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>16.0.1</version>
+		</dependency>      
 	</dependencies>
 
 	<build>

@@ -15,6 +15,8 @@ import edu.arizona.biosemantics.micropie.log.ObjectStringifier;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
 
+//TODO: Make weka log things such as filtered data (e.g. matrix actually passed into SVM)
+//TODO: Evaluate this classifier to work correct on small example training/test data
 public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifier {
 
 	private List<ILabel> labels;

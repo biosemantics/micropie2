@@ -49,8 +49,8 @@ public class Config extends AbstractModule {
 	private int nGramMaxSize = 1;
 	private int nGramMinFrequency = 1;
 	
-	private boolean parallelProcessing = true;
-	private int maxThreads = 2;
+	private boolean parallelProcessing = false;
+	private int maxThreads = 1;
 	
 	@Override
 	protected void configure() {

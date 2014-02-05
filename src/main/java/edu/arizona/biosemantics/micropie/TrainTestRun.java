@@ -5,17 +5,17 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListeningExecutorService;
+import com.google.common.util.concurrent.MoreExecutors;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
@@ -60,7 +60,7 @@ public class TrainTestRun implements IRun {
 	
 	private boolean parallelProcessing;
 	private int maxThreads;
-	private ExecutorService executorService;
+	private ListeningExecutorService executorService;
 	
 	private Map<Sentence, ClassifiedSentence> sentenceClassificationMap;
 	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
@@ -108,11 +108,11 @@ public class TrainTestRun implements IRun {
 		this.matrixWriter = matrixWriter;
 		
 		if(!this.parallelProcessing)
-			executorService = Executors.newSingleThreadExecutor();
+			executorService = MoreExecutors.listeningDecorator(Executors.newSingleThreadExecutor());
 		if(this.parallelProcessing && this.maxThreads < Integer.MAX_VALUE)
-			executorService = Executors.newFixedThreadPool(maxThreads);
+			executorService = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(maxThreads));
 		if(this.parallelProcessing && this.maxThreads == Integer.MAX_VALUE)
-			executorService = Executors.newCachedThreadPool();
+			executorService = MoreExecutors.listeningDecorator(Executors.newCachedThreadPool());
 	}
 	
 	@Override
@@ -164,12 +164,12 @@ public class TrainTestRun implements IRun {
 			}
 		}
 		
-		List<Future<List<String>>> sentenceSplits = new ArrayList<Future<List<String>>>(textFiles.size());
+		List<ListenableFuture<List<String>>> sentenceSplits = new ArrayList<ListenableFuture<List<String>>>(textFiles.size());
 		CountDownLatch sentenceSplitLatch = new CountDownLatch(textFiles.size());
 		for(TaxonTextFile textFile : textFiles) {
 			SentenceSplitRun splitRun = new SentenceSplitRun(textFile.getText(), textNormalizer, stanfordCoreNLP, 
 					sentenceSplitLatch);
-			Future<List<String>> futureResult = executorService.submit(splitRun);
+			ListenableFuture<List<String>> futureResult = executorService.submit(splitRun);
 			sentenceSplits.add(futureResult);
 		}
 		
@@ -179,32 +179,85 @@ public class TrainTestRun implements IRun {
 			log(LogLevel.ERROR, "Problem with latch", e);
 		}
 		
-		int numberOfSentences = getNumberOfSentences(sentenceSplits);
-		List<List<Future<List<String>>>> subsentenceSplitsPerFile = new LinkedList<List<Future<List<String>>>>();
-		CountDownLatch compoundSentenceSplitLatch = new CountDownLatch(numberOfSentences);
-		for(int i=0; i<textFiles.size(); i++) {
+
+		//TODO Parallel processing doesn't work right, gives NullPointerException in getBestParse() from LexicalizedParser and NoSuchParseException also
+		//They should 
+		// - not occur if enough memory is used
+		// - or something is not set up right with threads competing for the use of them? However Stanford CoreNLP claims to be thread safe? Is ClausIE not?
+		// - these exceptions, if not treated right, and a countdownlatch is used, can cause the latch to not count to zero and thus make main thread continue
+		// - Try to cut down on sentence length for the sentences passed to ClausIE to reduce computation time and memory necessary to get best parse (exponential complexity?)
+		// --e.g. replace phrases such as L-arabinose, fructose, sucrose, L-sorbitol, glucose-1-phosphate, glucose-6-phosphate, maltose, ... by ENUMERATION to allow easy parse?
+		// --then whatever outcome parse has use it on all the elements?
+		
+		//http://stackoverflow.com/questions/19243260/stanford-corenlp-failing-only-on-windows
+		//http://stackoverflow.com/questions/12305667/how-is-exception-handling-done-in-a-callable
+		
+		//int numberOfSentences = getNumberOfSentences(sentenceSplits);
+		//List<List<ListenableFuture<List<String>>>> subsentenceSplitsPerFile = new LinkedList<List<ListenableFuture<List<String>>>>();
+		//final CountDownLatch compoundSentenceSplitLatch = new CountDownLatch(numberOfSentences);
+		//final CountDownLatch compoundSentenceSplitLatchDummy = new CountDownLatch(numberOfSentences);
+		/*for(int i=0; i<textFiles.size(); i++) {
 			List<String> sentences = sentenceSplits.get(i).get();
-			List<Future<List<String>>> subsentenceSplits = new LinkedList<Future<List<String>>>();
+			List<ListenableFuture<List<String>>> subsentenceSplits = new LinkedList<ListenableFuture<List<String>>>();
 			for(String sentence : sentences) {
 				CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(sentence, lexicalizedParser, 
-						tokenizerFactory, compoundSentenceSplitLatch);
-				Future<List<String>> futureResult = executorService.submit(splitRun);
+						tokenizerFactory);
+				ListenableFuture<List<String>> futureResult = executorService.submit(splitRun);
+				futureResult.addListener(new Runnable() {
+					@Override
+					public void run() {
+						System.out.println("done");
+				//		compoundSentenceSplitLatch.countDown();
+				//		System.out.println(compoundSentenceSplitLatch.getCount());
+					}
+				}, this.executorService);
 				subsentenceSplits.add(futureResult);
 			}
 			subsentenceSplitsPerFile.add(subsentenceSplits);
-		}
+		}*/
 		
-		try {
+		/*for(List<ListenableFuture<List<String>>> fileFutures : subsentenceSplitsPerFile) {
+			for(ListenableFuture<List<String>> future : fileFutures) {
+				try {
+					List<String> result = future.get();
+				} catch(Exception e) {
+					System.out.println("something went wrong with this guy");
+					e.printStackTrace();
+				}
+			}
+		}*/
+		
+		/*try {
 			compoundSentenceSplitLatch.await();
 		} catch (InterruptedException e) {
 			log(LogLevel.ERROR, "Problem with latch", e);
+		}*/
+		
+		
+		int numberOfSentences = getNumberOfSentences(sentenceSplits);
+		List<List<List<String>>> subsentenceSplitsPerFile = new LinkedList<List<List<String>>>();
+		for(int i=0; i<textFiles.size(); i++) {
+			List<String> sentences = sentenceSplits.get(i).get();
+			List<List<String>> subsentenceSplits = new LinkedList<List<String>>();
+			for(String sentence : sentences) {
+				CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(sentence, lexicalizedParser, 
+						tokenizerFactory);
+				try {
+					List<String> result = splitRun.call();
+					subsentenceSplits.add(result);
+					System.out.println(numberOfSentences--);
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			subsentenceSplitsPerFile.add(subsentenceSplits);
 		}
 		
 		List<Sentence> result = new LinkedList<Sentence>();
 		for(int i=0; i<textFiles.size(); i++) {
 			List<String> sentences = sentenceSplits.get(i).get();
 			for(int j=0; j<sentences.size(); j++) {
-				List<String> subsentences = subsentenceSplitsPerFile.get(i).get(j).get();
+				List<String> subsentences = subsentenceSplitsPerFile.get(i).get(j);//.get();
 				for(String subsentence : subsentences) {
 					Sentence sentence = new Sentence(subsentence);
 					result.add(sentence);
@@ -226,9 +279,9 @@ public class TrainTestRun implements IRun {
 		return result;
 	}
 	
-	private int getNumberOfSentences(List<Future<List<String>>> sentenceSplitsList) throws InterruptedException, ExecutionException {
+	private int getNumberOfSentences(List<ListenableFuture<List<String>>> sentenceSplitsList) throws InterruptedException, ExecutionException {
 		int i=0;
-		for(Future<List<String>> sentenceSplits : sentenceSplitsList) {
+		for(ListenableFuture<List<String>> sentenceSplits : sentenceSplitsList) {
 			List<String> sentences = sentenceSplits.get();
 			i += sentences.size();
 		}

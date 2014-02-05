@@ -22,78 +22,88 @@ import edu.stanford.nlp.trees.Tree;
 public class CompoundSentenceSplitRun implements Callable<List<String>> {
 
 	private String sentence;
-	private CountDownLatch compoundSentenceSplitLatch;
+	//private CountDownLatch compoundSentenceSplitLatch;
 	private ClausIE clausIE;
 
 	public CompoundSentenceSplitRun(String sentence, LexicalizedParser lexicalizedParser, 
-			TokenizerFactory<CoreLabel> tokenizerFactory, CountDownLatch compoundSentenceSplitLatch) {
+			TokenizerFactory<CoreLabel> tokenizerFactory) {
 		this.sentence = sentence;
-		this.compoundSentenceSplitLatch = compoundSentenceSplitLatch;
+		//this.compoundSentenceSplitLatch = compoundSentenceSplitLatch;
 		
-		LexicalizedParserQuery parserQuery = (LexicalizedParserQuery)lexicalizedParser.parserQuery();
-		this.clausIE = new ClausIE(lexicalizedParser, tokenizerFactory, parserQuery);
-		clausIE.getOptions().print(new OutputStream() {
-		    private String buffer;
-			@Override
-			public void write(int b) throws IOException {
-				byte[] bytes = new byte[1];
-		        bytes[0] = (byte) (b & 0xff);
-		        buffer = buffer + new String(bytes);
-
-		        if (buffer.endsWith ("\n")) {
-		        	buffer = buffer.substring (0, buffer.length () - 1);
-		            flush();
-		        }
-			}
-			@Override
-		    public void flush () {
-		    	log(LogLevel.INFO, buffer);
-		    	buffer = "";
-		    }
-		}, "#ClausIE# ");
+		try {
+			LexicalizedParserQuery parserQuery = (LexicalizedParserQuery)lexicalizedParser.parserQuery();
+			this.clausIE = new ClausIE(lexicalizedParser, tokenizerFactory, parserQuery);
+			clausIE.getOptions().print(new OutputStream() {
+			    private String buffer;
+				@Override
+				public void write(int b) throws IOException {
+					byte[] bytes = new byte[1];
+			        bytes[0] = (byte) (b & 0xff);
+			        buffer = buffer + new String(bytes);
+	
+			        if (buffer.endsWith ("\n")) {
+			        	buffer = buffer.substring (0, buffer.length () - 1);
+			            flush();
+			        }
+				}
+				@Override
+			    public void flush () {
+			    	log(LogLevel.INFO, buffer);
+			    	buffer = "";
+			    }
+			}, "#ClausIE# ");
+		} catch(Exception e) {
+			log(LogLevel.ERROR, "Problem initializing ClausIE", e);
+		}
 	}
 
 	@Override
-	public List<String> call() {
-		log(LogLevel.INFO, "split compound sentences into subsentences using clausIE...");
+	public List<String> call() throws Exception {
 		List<String> result = new LinkedList<String>();
-		log(LogLevel.INFO, "clausIE parse...");
-				
-		clausIE.parse(sentence);
-		log(LogLevel.INFO, "clausIE parse complete");
-		Tree dependencyTree = clausIE.getDepTree();
-		log(LogLevel.INFO, "Dependency parse : ");
-		log(LogLevel.INFO, dependencyTree.pennString());
-		log(LogLevel.INFO, "Semantic graph   : ");
-		log(LogLevel.INFO, clausIE.getSemanticGraph().toFormattedString());
-		//.replaceAll("\n", "\n                   ").trim());
-		//.replaceAll("\n", "\n                   ").trim());
-		
-		List<String> sentenceList = new ArrayList<String>();
-		handleCaseA(sentence, sentenceList, clausIE);
-		handleCaseB(sentence, sentenceList, clausIE);	
-		
-		if (sentenceList.size() > 1) {
-			log(LogLevel.INFO, "found subsentences: " + sentenceList.size());
-			for (String sentenceText : sentenceList) {
-				log(LogLevel.INFO, "clausIE parse...");
-				//clausIE.parse(sentenceText);
-				log(LogLevel.INFO, "clausIE parse complete");
-				//dependencyTree = clausIE.getDepTree();
+		try {
+			log(LogLevel.INFO, "split compound sentences into subsentences using clausIE... sentence: " + sentence);
+			System.out.println("compound split " + sentence);
+			log(LogLevel.INFO, "clausIE parse...");
+					
+			clausIE.parse(sentence);
+			log(LogLevel.INFO, "clausIE parse complete");
+			Tree dependencyTree = clausIE.getDepTree();
+			log(LogLevel.INFO, "Dependency parse : ");
+			log(LogLevel.INFO, dependencyTree.pennString());
+			log(LogLevel.INFO, "Semantic graph   : ");
+			log(LogLevel.INFO, clausIE.getSemanticGraph().toFormattedString());
+			//.replaceAll("\n", "\n                   ").trim());
+			//.replaceAll("\n", "\n                   ").trim());
+			
+			List<String> sentenceList = new ArrayList<String>();
+			handleCaseA(sentence, sentenceList, clausIE);
+			handleCaseB(sentence, sentenceList, clausIE);	
+			
+			if (sentenceList.size() > 1) {
+				log(LogLevel.INFO, "found subsentences: " + sentenceList.size());
+				for (String sentenceText : sentenceList) {
+					log(LogLevel.INFO, "clausIE parse...");
+					//clausIE.parse(sentenceText);
+					log(LogLevel.INFO, "clausIE parse complete");
+					//dependencyTree = clausIE.getDepTree();
+					//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
+					result.add(sentenceText);
+				}
+			} else {
+				log(LogLevel.INFO, "did not find subsentences");
 				//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
-				result.add(sentenceText);
+				result.add(sentence);
 			}
-		} else {
-			log(LogLevel.INFO, "did not find subsentences");
-			//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
-			result.add(sentence);
+		} catch(Exception e) {
+			log(LogLevel.ERROR, "Problem running compoundSentenceSplitRun", e);
 		}
-		compoundSentenceSplitLatch.countDown();
-		System.out.println(compoundSentenceSplitLatch.getCount());
+		//compoundSentenceSplitLatch.countDown();
+		//System.out.println(compoundSentenceSplitLatch.getCount());
+		System.out.println("done compound split");
 		return result;
 	}
 	
-	private void handleCaseB(String text, List<String> subSentenceList, ClausIE clausIE) {
+	private void handleCaseB(String text, List<String> subSentenceList, ClausIE clausIE)  throws Exception {
 		log(LogLevel.INFO, "handle case B...");
 		String depTreeString = clausIE.getDepTree().pennString();
 
@@ -178,7 +188,7 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 		log(LogLevel.INFO, "Done handling case B");
 	}
 
-	private void handleCaseA(String text, List<String> subSentenceList, ClausIE clausIE) {
+	private void handleCaseA(String text, List<String> subSentenceList, ClausIE clausIE)  throws Exception {
 		log(LogLevel.INFO, "handle case A...");
 		// This section is for detecting the sentence structure "A is B that/whcih is C ..."
 		// And then transfer it into =>
