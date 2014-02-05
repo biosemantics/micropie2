@@ -39,6 +39,7 @@ public class FilterDecorator implements IFilterDecorator {
 		stringToWordVector.setMinTermFreq(minFrequency);
 		stringToWordVector.setTFTransform(true); // text frequency
 	
+		System.out.println(stringToWordVector.getLowerCaseTokens());
 		multiFilter.setFilters(new Filter[] { stringToWordVector });
 	}
 }
