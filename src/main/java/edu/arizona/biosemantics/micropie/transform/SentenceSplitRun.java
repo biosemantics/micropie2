@@ -1,4 +1,4 @@
-package edu.arizona.biosemantics.micropie;
+package edu.arizona.biosemantics.micropie.transform;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,8 +9,6 @@ import java.util.concurrent.CountDownLatch;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
-import edu.arizona.biosemantics.micropie.transform.ITextTransformer;
-import edu.arizona.biosemantics.micropie.transform.TextNormalizer;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;

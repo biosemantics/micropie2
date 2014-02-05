@@ -32,8 +32,10 @@ import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
+import edu.arizona.biosemantics.micropie.transform.CompoundSentenceSplitRun;
 import edu.arizona.biosemantics.micropie.transform.ITextTransformer;
-import edu.arizona.biosemantics.micropie.transform.MyTaxonCharacterMatrixCreator;
+import edu.arizona.biosemantics.micropie.transform.TaxonCharacterMatrixCreator;
+import edu.arizona.biosemantics.micropie.transform.SentenceSplitRun;
 import edu.arizona.biosemantics.micropie.transform.TextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
 import edu.arizona.biosemantics.micropie.transform.feature.MyFilterDecorator;
@@ -247,7 +249,7 @@ public class Main {
 		
 	private TaxonCharacterMatrix createMatrix() {
 		log(LogLevel.INFO, "Creating matrix...");
-		MyTaxonCharacterMatrixCreator matrixCreator = new MyTaxonCharacterMatrixCreator();
+		TaxonCharacterMatrixCreator matrixCreator = new TaxonCharacterMatrixCreator();
 		TaxonCharacterMatrix matrix = matrixCreator.create(taxonSentencesMap, sentenceMetadataMap, sentenceClassificationMap);
 		log(LogLevel.INFO, "Done creating matrix");
 		return matrix;

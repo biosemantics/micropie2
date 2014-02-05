@@ -9,7 +9,7 @@ import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 
-public interface IMatrixCreator {
+public interface ITaxonCharacterMatrixCreator {
 
 	TaxonCharacterMatrix create(Map<String, List<Sentence>> taxonSentencesMap,
 			Map<Sentence, SentenceMetadata> sentenceMetadata,

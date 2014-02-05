@@ -24,13 +24,13 @@ import edu.arizona.biosemantics.micropie.transform.regex.IContentExtractorProvid
  * Taxon x Character matrix
  * @author rodenhausen
  */
-public class MyTaxonCharacterMatrixCreator implements IMatrixCreator {
+public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator {
 
 	private LinkedHashSet<String> characters;
 	private IContentExtractorProvider contentExtractorProvider;
 
 
-	public MyTaxonCharacterMatrixCreator() {
+	public TaxonCharacterMatrixCreator() {
 		String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease caused|Metabolism (energy & carbon source)|Mono & di-saccharides|Polysaccharides|Amino acids|Alcohols|Fatty acids|Other energy or carbon sources|Fermentation products|Polyalkanoates (plastics)|Other metabolic product|Antibiotic sensitivity|Antibiotic resistant";
 		this.characters = new LinkedHashSet<String>(Arrays.asList(characterListString.split("\\|")));
 		
