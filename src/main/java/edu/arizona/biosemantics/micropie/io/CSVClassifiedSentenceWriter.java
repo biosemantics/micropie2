@@ -42,7 +42,10 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 			stringBuilder.append(label + ",");
 		}
 		String result = stringBuilder.toString();
-		return result.substring(0, result.length() - 1);
+		if( result.length() == 0)
+			return result; 
+		else
+			return result.substring(0, result.length() - 1);
 	}
 
 }

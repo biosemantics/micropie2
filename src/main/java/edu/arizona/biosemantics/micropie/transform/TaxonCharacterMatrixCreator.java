@@ -50,11 +50,11 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 			@Override
 			public IContentExtractor getContentExtractor(Label label) {
 				switch(label) {
-				case c0:
-					return new GcExtractor();
 				case c1:
-					return new GrowthPhExtractor();
+					return new GcExtractor();
 				case c2:
+					return new GrowthPhExtractor();
+				case c3:
 					return new CellSizeExtractor();
 				default:
 					return null;
