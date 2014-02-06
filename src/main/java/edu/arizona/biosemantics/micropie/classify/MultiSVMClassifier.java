@@ -1,6 +1,5 @@
 package edu.arizona.biosemantics.micropie.classify;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -14,22 +13,23 @@ import com.google.inject.name.Named;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.log.ObjectStringifier;
 import edu.arizona.biosemantics.micropie.model.Sentence;
-import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
 
 //TODO: Make weka log things such as filtered data (e.g. matrix actually passed into SVM)
 //TODO: Evaluate this classifier to work correct on small example training/test data
 public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifier {
 
 	private List<ILabel> labels;
-	private IFilterDecorator filterDecorator;
 	private Map<ILabel, SVMClassifier> classifiers = new HashMap<ILabel, SVMClassifier>();
 	private boolean trained = false;
+	private String multiFilterOptions;
+	private String libSVMOptions;
 
 	@Inject
 	public MultiSVMClassifier(@Named("MultiSVMClassifier_Labels") List<ILabel> labels, 
-			@Named("MultiSVMClassifier_FilterDecorator") IFilterDecorator filterDecorator) {
+			@Named("MultiFilterOptions")String multiFilterOptions, @Named("LibSVMOptions")String libSVMOptions) {
 		this.labels = labels;
-		this.filterDecorator = filterDecorator;
+		this.multiFilterOptions = multiFilterOptions;
+		this.libSVMOptions = libSVMOptions;
 	}
 	
 	@Override
@@ -55,7 +55,7 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		log(LogLevel.INFO, "Training classifier...");
 		for(ILabel label : labels) {
 			log(LogLevel.INFO, "Training SVM for label " + label.getValue());
-			SVMClassifier classifier = new SVMClassifier(BinaryLabel.valuesList(), filterDecorator);
+			SVMClassifier classifier = new SVMClassifier(BinaryLabel.valuesList(), multiFilterOptions, libSVMOptions);
 			classifiers.put(label, classifier);
 			
 			List<Sentence> twoClassData = createTwoClassData(label, trainingData);

@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -14,6 +15,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
+import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
@@ -26,8 +28,6 @@ import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.TextNormalizer;
-import edu.arizona.biosemantics.micropie.transform.feature.FilterDecorator;
-import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
 import edu.arizona.biosemantics.micropie.transform.regex.CellSizeExtractor;
 import edu.arizona.biosemantics.micropie.transform.regex.ContentExtractorProvider;
 import edu.arizona.biosemantics.micropie.transform.regex.GcExtractor;
@@ -56,6 +56,11 @@ public class Config extends AbstractModule {
 	
 	private boolean parallelProcessing = false;
 	private int maxThreads = 1;
+	
+	private String nGramTokenizerOptions = "-delimiters ' ' -max 1 -min 1";
+	private String stringToWordVectorOptions = "-W " + Integer.MAX_VALUE + " -T -L -M 1 -tokenizer weka.core.tokenizer.NGramTokenizer " + nGramTokenizerOptions + "";
+	private String multiFilterOptions = "-D -F weka.filters.unsupervised.attribute.StringToWordVector " + stringToWordVectorOptions + "";
+	private String libSVMOptions = "-S 0 -D 3 -K 2 -G 0 -R 0 -N 0.5 -M 100 -C 2048 -P 1e-3";
 	
 	@Override
 	protected void configure() {
@@ -99,9 +104,10 @@ public class Config extends AbstractModule {
 		bind(Integer.class).annotatedWith(Names.named("maxThreads")).toInstance(
 				maxThreads);
 		
-		bind(IFilterDecorator.class).annotatedWith(Names.named("MultiSVMClassifier_FilterDecorator"))
-				.to(FilterDecorator.class);
+		bind(String.class).annotatedWith(Names.named("MultiFilterOptions")).toInstance(multiFilterOptions);
 		
+		bind(String.class).annotatedWith(Names.named("LibSVMOptions")).toInstance(libSVMOptions);
+				
 		bind(ISentenceReader.class).to(CSVSentenceReader.class).in(Singleton.class);
 		
 		bind(ITextNormalizer.class).to(TextNormalizer.class);
@@ -187,4 +193,5 @@ public class Config extends AbstractModule {
 		
 		weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO, "Weka Logging started"); 
 	}
+
 }

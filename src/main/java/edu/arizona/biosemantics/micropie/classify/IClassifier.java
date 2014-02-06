@@ -1,6 +1,5 @@
 package edu.arizona.biosemantics.micropie.classify;
 
-import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 
 /**
@@ -15,13 +14,6 @@ public interface IClassifier {
 	 * @throws Exception
 	 */
 	public ILabel getClassification(Sentence sentence) throws Exception;
-	
-	/**
-	 * Uses a {@link edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator} for configuration of a data filter
-	 * @param filterDecorator to use for filter configuration
-	 */
-	public void setupFilteredClassifier(IFilterDecorator filterDecorator);
-	
 	
 	
 }
