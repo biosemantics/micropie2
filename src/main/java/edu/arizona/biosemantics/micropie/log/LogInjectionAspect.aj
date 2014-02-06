@@ -68,4 +68,5 @@ public aspect LogInjectionAspect {
 	 * ILoggable classes are specified below
 	 */
 	declare parents : edu.arizona.biosemantics.micropie..* implements ILoggable;
+	declare parents : weka.core.logging..* implements ILoggable;
 }

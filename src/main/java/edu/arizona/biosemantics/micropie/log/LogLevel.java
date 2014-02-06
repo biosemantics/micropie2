@@ -5,5 +5,5 @@ package edu.arizona.biosemantics.micropie.log;
  * @author rodenhausen
  */
 public enum LogLevel {
-	TRACE, DEBUG, INFO, ERROR, FATAL, WARN
+	TRACE, DEBUG, INFO, WARN, ERROR, FATAL
 }
