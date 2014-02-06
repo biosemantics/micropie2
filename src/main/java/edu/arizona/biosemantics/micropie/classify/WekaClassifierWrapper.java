@@ -3,6 +3,7 @@ package edu.arizona.biosemantics.micropie.classify;
 import java.util.List;
 
 import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.micropie.log.ObjectStringifier;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
 import weka.classifiers.meta.FilteredClassifier;
@@ -148,7 +149,10 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 				maxPropabilityIndex = i;
 			}
 		}
-		return labels.get(maxPropabilityIndex);
+		ILabel result = labels.get(maxPropabilityIndex);
+		log(LogLevel.INFO, "Prediction for " + sentence.toString() + "\n"
+				+ " -> " + ObjectStringifier.getInstance().stringify(result));
+		return result;
 	}
 		
 }

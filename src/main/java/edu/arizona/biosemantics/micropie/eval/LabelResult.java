@@ -2,6 +2,7 @@ package edu.arizona.biosemantics.micropie.eval;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.log.ObjectStringifier;
 
 /**
  * LabelResult stores the precision, recall, accuracy, f1 measures calculated for a specific label
@@ -62,7 +63,7 @@ public class LabelResult {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(label.toString() + "\n");
+		builder.append(ObjectStringifier.getInstance().stringify(label) + "\n");
 		builder.append("precision: " + precision + "\n");
 		builder.append("recall: " + recall + "\n");
 		builder.append("accuracy: " + accuracy + "\n");

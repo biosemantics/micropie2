@@ -126,9 +126,7 @@ public class TrainTestRun implements IRun {
 			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>();	
 			//TODO possibly parallelize here
 			for(Sentence testSentence : testSentences) {
-				log(LogLevel.INFO, "predictor for: " + testSentence);
 				Set<ILabel> prediction = classifier.getClassification(testSentence);
-				log(LogLevel.INFO, "prediction result: " + prediction);
 				MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence(testSentence, prediction);
 				sentenceClassificationMap.put(testSentence, classifiedSentence);
 				predictions.add(classifiedSentence);
