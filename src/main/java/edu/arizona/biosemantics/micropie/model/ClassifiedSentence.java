@@ -1,25 +1,23 @@
 package edu.arizona.biosemantics.micropie.model;
 
-import java.util.Set;
-
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 
 public class ClassifiedSentence {
 
-	private Set<ILabel> predictions;
+	private ILabel prediction;
 	private Sentence sentence;
 	
-	public ClassifiedSentence(Sentence sentence, Set<ILabel> predictions) {
+	public ClassifiedSentence(Sentence sentence, ILabel prediction) {
 		this.sentence = sentence;
-		this.predictions = predictions;
+		this.prediction = prediction;
 	}
 
-	public Set<ILabel> getPredictions() {
-		return predictions;
+	public ILabel getPrediction() {
+		return prediction;
 	}
 
-	public void setPredictions(Set<ILabel> predictions) {
-		this.predictions = predictions;
+	public void setPredictions(ILabel prediction) {
+		this.prediction = prediction;
 	}
 
 	public Sentence getSentence() {
@@ -29,7 +27,5 @@ public class ClassifiedSentence {
 	public void setSentence(Sentence sentence) {
 		this.sentence = sentence;
 	}
-	
-	
 	
 }

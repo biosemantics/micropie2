@@ -21,13 +21,18 @@ import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.io.CSVAbbreviationReader;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.ISentenceReader;
-import edu.arizona.biosemantics.micropie.model.ClassifiedSentence;
+import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.TextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.feature.FilterDecorator;
 import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
+import edu.arizona.biosemantics.micropie.transform.regex.CellSizeExtractor;
+import edu.arizona.biosemantics.micropie.transform.regex.ContentExtractorProvider;
+import edu.arizona.biosemantics.micropie.transform.regex.GcExtractor;
+import edu.arizona.biosemantics.micropie.transform.regex.GrowthPhExtractor;
+import edu.arizona.biosemantics.micropie.transform.regex.IContentExtractorProvider;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -39,8 +44,8 @@ public class Config extends AbstractModule {
 
 	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease caused|Metabolism (energy & carbon source)|Mono & di-saccharides|Polysaccharides|Amino acids|Alcohols|Fatty acids|Other energy or carbon sources|Fermentation products|Polyalkanoates (plastics)|Other metabolic product|Antibiotic sensitivity|Antibiotic resistant";
 	
-	private String trainingFile = "training-base-140205-test1.csv";
-	private String testFolder = "new-microbe-xml-2";
+	private String trainingFile = "training-base-140205.csv";
+	private String testFolder = "new-microbe-xml-1";
 	private String abbreviationFile = "abbrevlist.csv";
 	private String predicitonsFile = "predictions.csv";
 	private String matrixFile = "matrix.csv";
@@ -151,11 +156,11 @@ public class Config extends AbstractModule {
 			}
 		}).in(Singleton.class);
 		
-		bind(new TypeLiteral<Map<Sentence, ClassifiedSentence>>() {})
-			.annotatedWith(Names.named("SentenceClassificationMap")).toProvider(new Provider<Map<Sentence, ClassifiedSentence>>() {
+		bind(new TypeLiteral<Map<Sentence, MultiClassifiedSentence>>() {})
+			.annotatedWith(Names.named("SentenceClassificationMap")).toProvider(new Provider<Map<Sentence, MultiClassifiedSentence>>() {
 			@Override
-			public Map<Sentence, ClassifiedSentence> get() {
-				return new HashMap<Sentence, ClassifiedSentence>();
+			public Map<Sentence, MultiClassifiedSentence> get() {
+				return new HashMap<Sentence, MultiClassifiedSentence>();
 			}
 		}).in(Singleton.class);
 		
@@ -174,5 +179,12 @@ public class Config extends AbstractModule {
 				return new HashMap<String, List<Sentence>>();
 			}
 		}).in(Singleton.class);
+		
+		bind(IContentExtractorProvider.class).to(ContentExtractorProvider.class).in(Singleton.class);
+		bind(GcExtractor.class).in(Singleton.class);
+		bind(GrowthPhExtractor.class).in(Singleton.class);
+		bind(CellSizeExtractor.class).in(Singleton.class);
+		
+		weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO, "Weka Logging started"); 
 	}
 }

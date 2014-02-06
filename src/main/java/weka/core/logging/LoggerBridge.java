@@ -41,7 +41,7 @@ public class LoggerBridge extends Logger {
 			newLevel = LogLevel.WARN;
 			break;
 		}
-		System.out.println(newLevel + " " + cls + " " + method + " " + level + ": " + msg);
+		
 		log(newLevel, cls + " " + method + " " + level + ": " + msg);
 	}
 }

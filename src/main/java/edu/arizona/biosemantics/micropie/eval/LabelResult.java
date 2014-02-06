@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie.eval;
 
+import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 
 /**
@@ -8,7 +9,7 @@ import edu.arizona.biosemantics.micropie.classify.Label;
  */
 public class LabelResult {
 
-	private Label label;
+	private ILabel label;
 	private double precision;
 	private double recall;
 	private double accuracy;
@@ -21,7 +22,7 @@ public class LabelResult {
 	 * @param accuracy
 	 * @param f1
 	 */
-	public LabelResult(Label label, double precision, double recall,
+	public LabelResult(ILabel label, double precision, double recall,
 			double accuracy, double f1) {
 		this.label = label;
 		this.precision = precision;
@@ -61,7 +62,7 @@ public class LabelResult {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(label.name() + "\n");
+		builder.append(label.toString() + "\n");
 		builder.append("precision: " + precision + "\n");
 		builder.append("recall: " + recall + "\n");
 		builder.append("accuracy: " + accuracy + "\n");

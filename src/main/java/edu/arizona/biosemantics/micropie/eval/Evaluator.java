@@ -2,6 +2,7 @@ package edu.arizona.biosemantics.micropie.eval;
 
 import java.util.List;
 
+import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.model.ClassifiedSentence;
 
@@ -11,21 +12,23 @@ import edu.arizona.biosemantics.micropie.model.ClassifiedSentence;
  */
 public class Evaluator {
 	
+	
+	
 	/**
 	 * @param classifiedReviews to evaluate
 	 * @return the EvaluationResult
 	 */
-	public EvaluationResult evaluate(List<ClassifiedSentence> classifiedReviews) {
-		int reviewCount = classifiedReviews.size();
+	public EvaluationResult evaluate(List<ClassifiedSentence> classifiedSentences, ILabel[] labels) {
+		int reviewCount = classifiedSentences.size();
 		
 		EvaluationResult result = new EvaluationResult();
 		
 		int sumTruePositives = 0;
-		for(Label label : Label.values()) {
-			int truePositives = getTruePositives(classifiedReviews, label);
-			int falsePositives = getFalsePositives(classifiedReviews, label);
-			int falseNegatives = getFalseNegatives(classifiedReviews, label);
-			int trueNegatives = getTrueNegatives(classifiedReviews, label);
+		for(ILabel label : labels) {
+			int truePositives = getTruePositives(classifiedSentences, label);
+			int falsePositives = getFalsePositives(classifiedSentences, label);
+			int falseNegatives = getFalseNegatives(classifiedSentences, label);
+			int trueNegatives = getTrueNegatives(classifiedSentences, label);
 			
 			double precision = truePositives / ((double) (truePositives + falsePositives));
 			double recall = truePositives / ((double) (truePositives + falseNegatives));
@@ -42,37 +45,37 @@ public class Evaluator {
 		return result;
 	}
 	
-	private int getTruePositives(List<ClassifiedSentence> classifiedSentences, Label label) {
+	private int getTruePositives(List<ClassifiedSentence> classifiedSentences, ILabel label) {
 		int result = 0;
 		for(ClassifiedSentence classifiedSentence : classifiedSentences) 
-			if(classifiedSentence.getPredictions().equals(label) && 
+			if(classifiedSentence.getPrediction().equals(label) && 
 					classifiedSentence.getSentence().getLabel().equals(label)) 
 				result++;
 		return result;
 	}
 	
-	private int getFalsePositives(List<ClassifiedSentence> classifiedSentences, Label label) {
+	private int getFalsePositives(List<ClassifiedSentence> classifiedSentences, ILabel label) {
 		int result = 0;
 		for(ClassifiedSentence classifiedSentence : classifiedSentences) 
-			if(classifiedSentence.getPredictions().equals(label) && 
+			if(classifiedSentence.getPrediction().equals(label) && 
 					!classifiedSentence.getSentence().getLabel().equals(label)) 
 				result++;
 		return result;
 	}
 	
-	private int getTrueNegatives(List<ClassifiedSentence> classifiedSentences, Label label) {
+	private int getTrueNegatives(List<ClassifiedSentence> classifiedSentences, ILabel label) {
 		int result = 0;
 		for(ClassifiedSentence classifiedSentence : classifiedSentences) 
-			if(!classifiedSentence.getPredictions().equals(label) && 
+			if(!classifiedSentence.getPrediction().equals(label) && 
 					!classifiedSentence.getSentence().getLabel().equals(label)) 
 				result++;
 		return result;
 	}
 
-	private int getFalseNegatives(List<ClassifiedSentence> classifiedSentences, Label label) {
+	private int getFalseNegatives(List<ClassifiedSentence> classifiedSentences, ILabel label) {
 		int result = 0;
 		for(ClassifiedSentence classifiedSentence : classifiedSentences) 
-			if(!classifiedSentence.getPredictions().equals(label) && 
+			if(!classifiedSentence.getPrediction().equals(label) && 
 					classifiedSentence.getSentence().getLabel().equals(label)) 
 				result++;
 		return result;

@@ -1,5 +1,8 @@
 package edu.arizona.biosemantics.micropie.classify;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * The classification labels and their values used in the datasets
  * @author rodenhausen
@@ -41,6 +44,13 @@ public enum Label implements ILabel {
 	public String getValue() {
 		return value;
 	}	
-
+	
+	public static List<ILabel> valuesList() {
+		List<ILabel> values = new LinkedList<ILabel>();
+		for(ILabel value : values()) {
+			values.add(value);
+		}
+		return values;
+	}
 
 }

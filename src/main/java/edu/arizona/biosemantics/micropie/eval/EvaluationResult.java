@@ -3,7 +3,7 @@ package edu.arizona.biosemantics.micropie.eval;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.classify.ILabel;
 
 /**
  * EvaluationResult contains the {@link edu.arizona.sista.ista555.eval.LabelResult} for 
@@ -12,14 +12,14 @@ import edu.arizona.biosemantics.micropie.classify.Label;
  */
 public class EvaluationResult {
 
-	private Map<Label, LabelResult> resultMap = new LinkedHashMap<Label, LabelResult>();
+	private Map<ILabel, LabelResult> resultMap = new LinkedHashMap<ILabel, LabelResult>();
 	private double overallAccuracy;
 	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Overall accuracy: " + overallAccuracy + "\n");
-		for(Label label : resultMap.keySet()) {
+		for(ILabel label : resultMap.keySet()) {
 			LabelResult result = resultMap.get(label);
 			builder.append(result.toString() + "\n");
 		}
@@ -30,7 +30,7 @@ public class EvaluationResult {
 	 * @param label to set result for
 	 * @param labelResult to set
 	 */
-	public void setLabelResult(Label label, LabelResult labelResult) {
+	public void setLabelResult(ILabel label, LabelResult labelResult) {
 		resultMap.put(label, labelResult);
 	}
 	
@@ -38,7 +38,7 @@ public class EvaluationResult {
 	 * @param label to get result for
 	 * @return labelResult for label
 	 */
-	public LabelResult getLabelResult(Label label) {
+	public LabelResult getLabelResult(ILabel label) {
 		return resultMap.get(label);
 	}
 

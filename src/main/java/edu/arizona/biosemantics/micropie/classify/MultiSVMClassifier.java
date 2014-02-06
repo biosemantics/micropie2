@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie.classify;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -54,7 +55,7 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		log(LogLevel.INFO, "Training classifier...");
 		for(ILabel label : labels) {
 			log(LogLevel.INFO, "Training SVM for label " + label.getValue());
-			SVMClassifier classifier = new SVMClassifier(BinaryLabel.values(), filterDecorator);
+			SVMClassifier classifier = new SVMClassifier(BinaryLabel.valuesList(), filterDecorator);
 			classifiers.put(label, classifier);
 			
 			List<Sentence> twoClassData = createTwoClassData(label, trainingData);

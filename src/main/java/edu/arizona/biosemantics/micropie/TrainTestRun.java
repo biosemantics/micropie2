@@ -26,7 +26,7 @@ import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
-import edu.arizona.biosemantics.micropie.model.ClassifiedSentence;
+import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
@@ -62,7 +62,7 @@ public class TrainTestRun implements IRun {
 	private int maxThreads;
 	private ListeningExecutorService executorService;
 	
-	private Map<Sentence, ClassifiedSentence> sentenceClassificationMap;
+	private Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap;
 	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
 	private Map<String, List<Sentence>> taxonSentencesMap;
 	
@@ -73,7 +73,7 @@ public class TrainTestRun implements IRun {
 			@Named("maxThreads") int maxThreads, 
 			@Named("predictionsFile") String predictionsFile, 
 			@Named("matrixFile") String matrixFile,
-			@Named("SentenceClassificationMap")Map<Sentence, ClassifiedSentence> sentenceClassificationMap,
+			@Named("SentenceClassificationMap")Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap,
 			@Named("SentenceMetadataMap")Map<Sentence, SentenceMetadata> sentenceMetadataMap,
 			@Named("TaxonSentencesMap")Map<String, List<Sentence>> taxonSentencesMap,
 			MultiSVMClassifier classifier,
@@ -123,11 +123,13 @@ public class TrainTestRun implements IRun {
 			classifier.train(trainingSentences);
 			
 			List<Sentence> testSentences = createTestSentences();
-			List<ClassifiedSentence> predictions = new LinkedList<ClassifiedSentence>();	
+			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>();	
 			//TODO possibly parallelize here
 			for(Sentence testSentence : testSentences) {
+				log(LogLevel.INFO, "predictor for: " + testSentence);
 				Set<ILabel> prediction = classifier.getClassification(testSentence);
-				ClassifiedSentence classifiedSentence = new ClassifiedSentence(testSentence, prediction);
+				log(LogLevel.INFO, "prediction result: " + prediction);
+				MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence(testSentence, prediction);
 				sentenceClassificationMap.put(testSentence, classifiedSentence);
 				predictions.add(classifiedSentence);
 			}

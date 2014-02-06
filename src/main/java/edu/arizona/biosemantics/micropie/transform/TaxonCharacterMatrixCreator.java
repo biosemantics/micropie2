@@ -14,7 +14,7 @@ import com.google.inject.name.Named;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
-import edu.arizona.biosemantics.micropie.model.ClassifiedSentence;
+import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
@@ -34,33 +34,19 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 	private IContentExtractorProvider contentExtractorProvider;
 	private Map<String, List<Sentence>> taxonSentencesMap;
 	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
-	private Map<Sentence, ClassifiedSentence> classifiedSentencesMap;
+	private Map<Sentence, MultiClassifiedSentence> classifiedSentencesMap;
 
 	@Inject
 	public TaxonCharacterMatrixCreator(@Named("Characters")LinkedHashSet<String> characters, 
 			@Named("TaxonSentencesMap")Map<String, List<Sentence>> taxonSentencesMap, 
 			@Named("SentenceMetadataMap")Map<Sentence, SentenceMetadata> sentenceMetadataMap, 
-			@Named("SentenceClassificationMap")Map<Sentence, ClassifiedSentence> classifiedSentencesMap) {
+			@Named("SentenceClassificationMap")Map<Sentence, MultiClassifiedSentence> classifiedSentencesMap,
+			IContentExtractorProvider contentExtractorProvider) {
 		this.characters = characters;
 		this.taxonSentencesMap = taxonSentencesMap;
 		this.sentenceMetadataMap = sentenceMetadataMap;
 		this.classifiedSentencesMap = classifiedSentencesMap;
-		
-		this.contentExtractorProvider = new IContentExtractorProvider() {
-			@Override
-			public IContentExtractor getContentExtractor(Label label) {
-				switch(label) {
-				case c1:
-					return new GcExtractor();
-				case c2:
-					return new GrowthPhExtractor();
-				case c3:
-					return new CellSizeExtractor();
-				default:
-					return null;
-				}
-			}
-		};
+		this.contentExtractorProvider = contentExtractorProvider;
 	}
 	
 	@Override
@@ -82,16 +68,20 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 			List<Sentence> sentences = taxonSentencesMap.get(taxon);
 			for(Sentence sentence : sentences) {
 				SentenceMetadata metadata = sentenceMetadataMap.get(sentence);
-				ClassifiedSentence classifiedSentence = classifiedSentencesMap.get(sentence);
+				MultiClassifiedSentence classifiedSentence = classifiedSentencesMap.get(sentence);
 				Set<ILabel> predictions = classifiedSentence.getPredictions();
+				
+				Set<IContentExtractor> extractors = new HashSet<IContentExtractor>();
 				for(ILabel label : predictions) {
 					if(label instanceof Label) {
-						IContentExtractor extractor = contentExtractorProvider.getContentExtractor((Label)label);
-						String character = extractor.getCharacter();
-						if(characters.contains(character)) {
-							Set<String> content = extractor.getContent(sentence.getText());
-							characterMap.get(character).addAll(content);
-						}
+						extractors.addAll(contentExtractorProvider.getContentExtractor((Label)label));
+					}
+				}
+				for(IContentExtractor extractor : extractors) {
+					String character = extractor.getCharacter();
+					if(characters.contains(character)) {
+						Set<String> content = extractor.getContent(sentence.getText());
+						characterMap.get(character).addAll(content);
 					}
 				}
 			}

@@ -2,6 +2,7 @@ package edu.arizona.biosemantics.micropie.classify;
 
 import java.util.List;
 
+import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.transform.feature.IFilterDecorator;
 import weka.classifiers.meta.FilteredClassifier;
@@ -23,12 +24,12 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 	protected Attribute textAttribute;
 	protected Instances instances;
 	private MultiFilter filter;
-	private ILabel[] labels;
+	private List<ILabel> labels;
 	
 	/**
 	 * Sets up attributes, filter and classifier of the weka toolkit
 	 */
-	public WekaClassifierWrapper(ILabel[] labels) {
+	public WekaClassifierWrapper(List<ILabel> labels) {
 		this.labels = labels;
 		setupAttributes();
 		setupFilteredClassifier(null);
@@ -37,7 +38,7 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 	/**
 	 * Sets up attributes, filter and classifier of the weka toolkit
 	 */
-	public WekaClassifierWrapper(ILabel[] labels, IFilterDecorator filterDecorator) {
+	public WekaClassifierWrapper(List<ILabel> labels, IFilterDecorator filterDecorator) {
 		this.labels = labels;
 		setupAttributes();
 		setupFilteredClassifier(filterDecorator);
@@ -84,6 +85,7 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 	@Override
 	public void train(List<Sentence> trainingData) throws Exception {
 		instances = createInstances(trainingData);
+		log(LogLevel.TRACE, "Training data in ARFF format: \n" + instances.toString());
 		filter.setInputFormat(instances);		
 		filteredClassifier.buildClassifier(instances);
 		trained = true;
@@ -136,6 +138,7 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 		if(!trained)
 			throw new Exception("Classifier is not trained");
 		Instance instance = createInstance(sentence.getText());
+		log(LogLevel.TRACE, "Test data in ARFF format: \n" + instance.toString());
 		double[] resultDistribution = filteredClassifier.distributionForInstance(instance);
 		int maxPropabilityIndex = 0;
 		double maxPropability = 0.0;
@@ -145,7 +148,7 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 				maxPropabilityIndex = i;
 			}
 		}
-		return labels[maxPropabilityIndex];
+		return labels.get(maxPropabilityIndex);
 	}
 		
 }

@@ -1,5 +1,8 @@
 package edu.arizona.biosemantics.micropie.classify;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public enum BinaryLabel implements ILabel {
 	
 	NO("0"), YES("1");
@@ -27,10 +30,18 @@ public enum BinaryLabel implements ILabel {
             	return label;
         throw new IllegalArgumentException();
     }
-
+	
 	@Override
 	public String getValue() {
 		return value;
-	}	
+	}
+
+	public static List<ILabel> valuesList() {
+		List<ILabel> values = new LinkedList<ILabel>();
+		for(ILabel value : values()) {
+			values.add(value);
+		}
+		return values;
+	}
 
 }
