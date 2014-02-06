@@ -10,3 +10,5 @@
 /.settings
 .classpath
 .project
+.DS_Store
+predictions.csv
