@@ -46,9 +46,7 @@ public class CellShapeExtractor implements IContentExtractor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		String returnString = "";	
-		//System.out.println("Sent :" + sent);
+			
 		text = text.substring(0, text.length()-1);
 		text = " " + text + " ";		
 
@@ -57,15 +55,11 @@ public class CellShapeExtractor implements IContentExtractor {
 			keywordString = keywordString.toLowerCase();
 			String patternString = "\\s"+keywordString+"\\,|\\s"+keywordString+"\\s|^"+keywordString+"\\s|^"+keywordString+"\\,"; // !?!?
 			Pattern pattern = Pattern.compile(patternString);
-			Matcher matcher = pattern.matcher(text.toLowerCase());
-				
+			Matcher matcher = pattern.matcher(text.toLowerCase());		
 			if (matcher.find()) {
-				// System.out.print(matcher.group() + "\n");
-				// System.out.println("Sent : " + text + " contains :" + characterName + "::" + keywordString);
 				output.add(matcher.group().trim());			
 			}
 		}
-
 		return output;
 	}
 
