@@ -33,6 +33,7 @@ import edu.arizona.biosemantics.micropie.transform.regex.ContentExtractorProvide
 import edu.arizona.biosemantics.micropie.transform.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.transform.regex.GrowthPhExtractor;
 import edu.arizona.biosemantics.micropie.transform.regex.IContentExtractorProvider;
+import edu.arizona.biosemantics.micropie.transform.regex.CellShapeExtractor;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -42,7 +43,7 @@ import edu.stanford.nlp.process.TokenizerFactory;
 
 public class Config extends AbstractModule {
 
-	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease caused|Metabolism (energy & carbon source)|Mono & di-saccharides|Polysaccharides|Amino acids|Alcohols|Fatty acids|Other energy or carbon sources|Fermentation products|Polyalkanoates (plastics)|Other metabolic product|Antibiotic sensitivity|Antibiotic resistant";
+	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease caused|Metabolism (energy & carbon source)|Mono & di-saccharides|Polysaccharides|Amino acids|Alcohols|Fatty acids|Other energy or carbon sources|Fermentation products|Polyalkanoates (plastics)|Other metabolic product|Antibiotic sensitivity|Antibiotic resistant|Cell Size";
 	
 	private String trainingFile = "training-base-140205.csv";
 	private String testFolder = "new-microbe-xml-1";
@@ -190,6 +191,7 @@ public class Config extends AbstractModule {
 		bind(GcExtractor.class).in(Singleton.class);
 		bind(GrowthPhExtractor.class).in(Singleton.class);
 		bind(CellSizeExtractor.class).in(Singleton.class);
+		bind(CellShapeExtractor.class).in(Singleton.class);
 		
 		weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO, "Weka Logging started"); 
 	}
