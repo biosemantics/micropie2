@@ -1,4 +1,4 @@
-package edu.arizona.biosemantics.micropie.transform.regex;
+package edu.arizona.biosemantics.micropie.extract.regex;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -7,12 +7,25 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GcExtractor implements IContentExtractor {
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
-	private String character = "%G+C";
+import edu.arizona.biosemantics.micropie.classify.ILabel;
+
+public class GcExtractor extends AbstractCharacterValueExtractor {
+
+	public GcExtractor(ILabel label) {
+		super(label, "%G+C");
+	}
 	
+	@Inject
+	public GcExtractor(@Named("GcExtractor_Label")ILabel label, 
+			@Named("GcExtractor_Label")String character) {
+		super(label, character);
+	}
+
 	@Override
-	public Set<String> getContent(String text) {
+	public Set<String> getCharacterValue(String text) {
 		// TODO Auto-generated constructor stub
 		Set<String> output = new HashSet<String>(); // Output,
 																	// format::List<String>
@@ -142,10 +155,4 @@ public class GcExtractor implements IContentExtractor {
 
 		return output;
 	}
-
-	@Override
-	public String getCharacter() {
-		return character;
-	}
-
 }

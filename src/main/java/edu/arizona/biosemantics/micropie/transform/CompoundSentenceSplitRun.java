@@ -30,37 +30,38 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 		this.sentence = sentence;
 		//this.compoundSentenceSplitLatch = compoundSentenceSplitLatch;
 		
-		try {
-			LexicalizedParserQuery parserQuery = (LexicalizedParserQuery)lexicalizedParser.parserQuery();
-			this.clausIE = new ClausIE(lexicalizedParser, tokenizerFactory, parserQuery);
-			clausIE.getOptions().print(new OutputStream() {
-			    private String buffer;
-				@Override
-				public void write(int b) throws IOException {
-					byte[] bytes = new byte[1];
-			        bytes[0] = (byte) (b & 0xff);
-			        buffer = buffer + new String(bytes);
-	
-			        if (buffer.endsWith ("\n")) {
-			        	buffer = buffer.substring (0, buffer.length () - 1);
-			            flush();
-			        }
-				}
-				@Override
-			    public void flush () {
-			    	log(LogLevel.INFO, buffer);
-			    	buffer = "";
-			    }
-			}, "#ClausIE# ");
-		} catch(Exception e) {
-			log(LogLevel.ERROR, "Problem initializing ClausIE", e);
-		}
+		//according to stanford corenlp documentation 
+		// - lexicalizedParser is thread safe
+		// - PTBTokenizerFactory is not
+		// - lexicalizedparserquery is meant to be instantiated per each thread (not thread safe), see
+		//   http://nlp.stanford.edu/downloads/parser-faq.shtml#n
+		LexicalizedParserQuery parserQuery = (LexicalizedParserQuery)lexicalizedParser.parserQuery();
+		this.clausIE = new ClausIE(lexicalizedParser, tokenizerFactory, parserQuery);
+		clausIE.getOptions().print(new OutputStream() {
+		    private String buffer;
+			@Override
+			public void write(int b) throws IOException {
+				byte[] bytes = new byte[1];
+		        bytes[0] = (byte) (b & 0xff);
+		        buffer = buffer + new String(bytes);
+
+		        if (buffer.endsWith ("\n")) {
+		        	buffer = buffer.substring (0, buffer.length () - 1);
+		            flush();
+		        }
+			}
+			@Override
+		    public void flush () {
+		    	log(LogLevel.INFO, buffer);
+		    	buffer = "";
+		    }
+		}, "#ClausIE# ");
 	}
 
 	@Override
 	public List<String> call() throws Exception {
 		List<String> result = new LinkedList<String>();
-		try {
+		//try {
 			log(LogLevel.INFO, "split compound sentences into subsentences using clausIE... sentence: " + sentence);
 			System.out.println("compound split " + sentence);
 			log(LogLevel.INFO, "clausIE parse...");
@@ -94,9 +95,9 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 				//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
 				result.add(sentence);
 			}
-		} catch(Exception e) {
+		/*} catch(Exception e) {
 			log(LogLevel.ERROR, "Problem running compoundSentenceSplitRun", e);
-		}
+		}*/
 		//compoundSentenceSplitLatch.countDown();
 		//System.out.println(compoundSentenceSplitLatch.getCount());
 		System.out.println("done compound split");

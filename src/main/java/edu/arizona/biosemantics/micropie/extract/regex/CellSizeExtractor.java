@@ -1,18 +1,30 @@
-package edu.arizona.biosemantics.micropie.transform.regex;
+package edu.arizona.biosemantics.micropie.extract.regex;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CellSizeExtractor implements IContentExtractor {
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
-	private String character = "Cell size";
+import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.classify.Label;
+
+public class CellSizeExtractor extends AbstractCharacterValueExtractor {
+
+	public CellSizeExtractor(ILabel label) {
+		super(label, "Cell size");
+	}
+	
+	@Inject
+	public CellSizeExtractor(@Named("CellSizeExtractor_Label")Label label, 
+			@Named("CellSizeExtractor_Character")String character) {
+		super(label, character);
+	}
 	
 	@Override
-	public Set<String> getContent(String text) {
+	public Set<String> getCharacterValue(String text) {
 		Set<String> output = new HashSet<String>(); // Output,
 																	// format::List<String>
 
@@ -149,10 +161,4 @@ public class CellSizeExtractor implements IContentExtractor {
 		}
 		return output;
 	}
-
-	@Override
-	public String getCharacter() {
-		return character;
-	}
-
 }

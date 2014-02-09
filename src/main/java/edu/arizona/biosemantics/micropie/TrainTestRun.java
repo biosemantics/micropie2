@@ -21,6 +21,7 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
+import edu.arizona.biosemantics.micropie.extract.TaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
@@ -34,10 +35,11 @@ import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.arizona.biosemantics.micropie.transform.CompoundSentenceSplitRun;
 import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.SentenceSplitRun;
-import edu.arizona.biosemantics.micropie.transform.TaxonCharacterMatrixCreator;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.process.CoreLabelTokenFactory;
+import edu.stanford.nlp.process.PTBTokenizer;
 import edu.stanford.nlp.process.TokenizerFactory;
 
 public class TrainTestRun implements IRun {
@@ -52,7 +54,6 @@ public class TrainTestRun implements IRun {
 	private XMLTextReader textReader;
 	private ITextNormalizer textNormalizer;
 	private LexicalizedParser lexicalizedParser;
-	private TokenizerFactory<CoreLabel> tokenizerFactory;
 	private StanfordCoreNLP stanfordCoreNLP;
 	private CSVClassifiedSentenceWriter classifiedSentenceWriter;
 	private TaxonCharacterMatrixCreator matrixCreator;
@@ -82,7 +83,6 @@ public class TrainTestRun implements IRun {
 			ITextNormalizer textNormalizer,
 			StanfordCoreNLP stanfordCoreNLP,
 			LexicalizedParser lexicalizedParser,
-			TokenizerFactory<CoreLabel> tokenizerFactory, 
 			CSVClassifiedSentenceWriter classifiedSentenceWriter, 
 			TaxonCharacterMatrixCreator matrixCreator, 
 			CSVTaxonCharacterMatrixWriter matrixWriter
@@ -102,7 +102,6 @@ public class TrainTestRun implements IRun {
 		this.textNormalizer = textNormalizer;
 		this.stanfordCoreNLP = stanfordCoreNLP;
 		this.lexicalizedParser = lexicalizedParser;
-		this.tokenizerFactory = tokenizerFactory;
 		this.classifiedSentenceWriter = classifiedSentenceWriter;
 		this.matrixCreator = matrixCreator;
 		this.matrixWriter = matrixWriter;
@@ -116,7 +115,8 @@ public class TrainTestRun implements IRun {
 	}
 	
 	@Override
-	public void run() {		
+	public void run() {
+		long startTime = System.currentTimeMillis();
 		try {
 			sentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = sentenceReader.read();	
@@ -143,6 +143,7 @@ public class TrainTestRun implements IRun {
 		}
 		
 		executorService.shutdown();
+		System.out.println("DONE: " + ((long)System.currentTimeMillis() - startTime) + " ms");
 	}
 	
 	private List<Sentence> createTestSentences() throws IOException, InterruptedException, ExecutionException {
@@ -186,46 +187,69 @@ public class TrainTestRun implements IRun {
 		// - or something is not set up right with threads competing for the use of them? However Stanford CoreNLP claims to be thread safe? Is ClausIE not?
 		// - these exceptions, if not treated right, and a countdownlatch is used, can cause the latch to not count to zero and thus make main thread continue
 		// - Try to cut down on sentence length for the sentences passed to ClausIE to reduce computation time and memory necessary to get best parse (exponential complexity?)
+		// - Try to pre-pos tag things known
 		// --e.g. replace phrases such as L-arabinose, fructose, sucrose, L-sorbitol, glucose-1-phosphate, glucose-6-phosphate, maltose, ... by ENUMERATION to allow easy parse?
 		// --then whatever outcome parse has use it on all the elements?
 		
 		//http://stackoverflow.com/questions/19243260/stanford-corenlp-failing-only-on-windows
 		//http://stackoverflow.com/questions/12305667/how-is-exception-handling-done-in-a-callable
+		//http://nlp.stanford.edu/downloads/parser-faq.shtml#n
+		//http://nlp.stanford.edu/downloads/parser-faq.shtml#k
+		//-> sort sentences according to length buckets and use number of threads according to 
+		//approx memory usage for the buckets, e.g. can do 4 of max length 20 at once if ~1024M Heap.
+		//http://nlp.stanford.edu/downloads/corenlp-faq.shtml#memory
+		//http://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/parser/lexparser/LexicalizedParser.html
 		
-		//int numberOfSentences = getNumberOfSentences(sentenceSplits);
-		//List<List<ListenableFuture<List<String>>>> subsentenceSplitsPerFile = new LinkedList<List<ListenableFuture<List<String>>>>();
+		int numberOfSentences = getNumberOfSentences(sentenceSplits);
+		List<List<ListenableFuture<List<String>>>> subsentenceSplitsPerFile = new LinkedList<List<ListenableFuture<List<String>>>>();
 		//final CountDownLatch compoundSentenceSplitLatch = new CountDownLatch(numberOfSentences);
 		//final CountDownLatch compoundSentenceSplitLatchDummy = new CountDownLatch(numberOfSentences);
-		/*for(int i=0; i<textFiles.size(); i++) {
+		//int overall = 0;
+		//int maxSize = 0;
+		for(int i=0; i<textFiles.size(); i++) {
 			List<String> sentences = sentenceSplits.get(i).get();
 			List<ListenableFuture<List<String>>> subsentenceSplits = new LinkedList<ListenableFuture<List<String>>>();
 			for(String sentence : sentences) {
-				CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(sentence, lexicalizedParser, 
-						tokenizerFactory);
-				ListenableFuture<List<String>> futureResult = executorService.submit(splitRun);
-				futureResult.addListener(new Runnable() {
-					@Override
-					public void run() {
-						System.out.println("done");
-				//		compoundSentenceSplitLatch.countDown();
-				//		System.out.println(compoundSentenceSplitLatch.getCount());
-					}
-				}, this.executorService);
-				subsentenceSplits.add(futureResult);
+				/*String[] tokens = sentence.split("\\s+");
+				System.out.println("length " + tokens.length);
+				int size = tokens.length;
+				overall += size;
+				if(size > maxSize) {
+					maxSize = size;
+				}*/
+				if(sentence.length() <= 50) {
+				
+					CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(sentence, lexicalizedParser, 
+							PTBTokenizer.factory(new CoreLabelTokenFactory(), ""));
+					ListenableFuture<List<String>> futureResult = executorService.submit(splitRun);
+					/*futureResult.addListener(new Runnable() {
+						@Override
+						public void run() {
+							System.out.println("done");
+					//		compoundSentenceSplitLatch.countDown();
+					//		System.out.println(compoundSentenceSplitLatch.getCount());
+						}
+					}, this.executorService);*/
+					subsentenceSplits.add(futureResult);
+				}
 			}
 			subsentenceSplitsPerFile.add(subsentenceSplits);
-		}*/
+		}
+		//double avgLength = (double)overall / numberOfSentences;
+		//System.out.println("avg: " + avgLength);
+		//System.out.println("maxSize: " + maxSize);
 		
-		/*for(List<ListenableFuture<List<String>>> fileFutures : subsentenceSplitsPerFile) {
+		for(List<ListenableFuture<List<String>>> fileFutures : subsentenceSplitsPerFile) {
 			for(ListenableFuture<List<String>> future : fileFutures) {
 				try {
+					System.out.println("get");
 					List<String> result = future.get();
 				} catch(Exception e) {
 					System.out.println("something went wrong with this guy");
 					e.printStackTrace();
 				}
 			}
-		}*/
+		}
 		
 		/*try {
 			compoundSentenceSplitLatch.await();
@@ -233,8 +257,8 @@ public class TrainTestRun implements IRun {
 			log(LogLevel.ERROR, "Problem with latch", e);
 		}*/
 		
-		
-		int numberOfSentences = getNumberOfSentences(sentenceSplits);
+		//non-threaded
+		/*int numberOfSentences = getNumberOfSentences(sentenceSplits);
 		List<List<List<String>>> subsentenceSplitsPerFile = new LinkedList<List<List<String>>>();
 		for(int i=0; i<textFiles.size(); i++) {
 			List<String> sentences = sentenceSplits.get(i).get();
@@ -251,13 +275,12 @@ public class TrainTestRun implements IRun {
 				}
 			}
 			subsentenceSplitsPerFile.add(subsentenceSplits);
-		}
-		
+		}*/
 		List<Sentence> result = new LinkedList<Sentence>();
 		for(int i=0; i<textFiles.size(); i++) {
-			List<String> sentences = sentenceSplits.get(i).get();
-			for(int j=0; j<sentences.size(); j++) {
-				List<String> subsentences = subsentenceSplitsPerFile.get(i).get(j);//.get();
+			List<ListenableFuture<List<String>>> fileFuture = subsentenceSplitsPerFile.get(i);
+			for(int j=0; j<fileFuture.size(); j++) {
+				List<String> subsentences = fileFuture.get(j).get();//.get();
 				for(String subsentence : subsentences) {
 					Sentence sentence = new Sentence(subsentence);
 					result.add(sentence);

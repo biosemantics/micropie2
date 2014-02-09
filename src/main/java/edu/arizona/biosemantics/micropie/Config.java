@@ -1,15 +1,18 @@
 package edu.arizona.biosemantics.micropie;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provider;
@@ -20,20 +23,25 @@ import com.google.inject.name.Names;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.regex.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.CellShapeExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.CharacterValueExtractorProvider;
+import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.io.CSVAbbreviationReader;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
+import edu.arizona.biosemantics.micropie.io.CharacterValueExtractorReader;
+import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.io.ISentenceReader;
+import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.TextNormalizer;
-import edu.arizona.biosemantics.micropie.transform.regex.CellSizeExtractor;
-import edu.arizona.biosemantics.micropie.transform.regex.ContentExtractorProvider;
-import edu.arizona.biosemantics.micropie.transform.regex.GcExtractor;
-import edu.arizona.biosemantics.micropie.transform.regex.GrowthPhExtractor;
-import edu.arizona.biosemantics.micropie.transform.regex.IContentExtractorProvider;
-import edu.arizona.biosemantics.micropie.transform.regex.CellShapeExtractor;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -62,6 +70,9 @@ public class Config extends AbstractModule {
 	private String stringToWordVectorOptions = "-W " + Integer.MAX_VALUE + " -T -L -M 1 -tokenizer weka.core.tokenizer.NGramTokenizer " + nGramTokenizerOptions + "";
 	private String multiFilterOptions = "-D -F weka.filters.unsupervised.attribute.StringToWordVector " + stringToWordVectorOptions + "";
 	private String libSVMOptions = "-S 0 -D 3 -K 2 -G 0 -R 0 -N 0.5 -M 100 -C 2048 -P 1e-3";
+	
+	private Set<ICharacterValueExtractor> characterValueExtractors = 
+			getCharacterValueExtractors("CharacterValueExtractors");
 	
 	@Override
 	protected void configure() {
@@ -109,6 +120,8 @@ public class Config extends AbstractModule {
 		
 		bind(String.class).annotatedWith(Names.named("LibSVMOptions")).toInstance(libSVMOptions);
 				
+		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(characterValueExtractors);
+		
 		bind(ISentenceReader.class).to(CSVSentenceReader.class).in(Singleton.class);
 		
 		bind(ITextNormalizer.class).to(TextNormalizer.class);
@@ -187,13 +200,35 @@ public class Config extends AbstractModule {
 			}
 		}).in(Singleton.class);
 		
-		bind(IContentExtractorProvider.class).to(ContentExtractorProvider.class).in(Singleton.class);
-		bind(GcExtractor.class).in(Singleton.class);
-		bind(GrowthPhExtractor.class).in(Singleton.class);
-		bind(CellSizeExtractor.class).in(Singleton.class);
-		bind(CellShapeExtractor.class).in(Singleton.class);
+		bind(ICharacterValueExtractorProvider.class).to(CharacterValueExtractorProvider.class).in(Singleton.class);
 		
 		weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO, "Weka Logging started"); 
+	}
+
+	private Set<ICharacterValueExtractor> getCharacterValueExtractors(String extratorsDirectory) {
+		Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
+		
+		File inputDir = new File(extratorsDirectory);
+		if(!inputDir.exists() || inputDir.isFile()) 
+			return extractors;
+		
+		ICharacterValueExtractorReader extractorReader = new CharacterValueExtractorReader();
+		for(File file : inputDir.listFiles()) {
+			try {
+				ICharacterValueExtractor extractor = extractorReader.read(file);
+				extractors.add(extractor);
+			} catch(Exception e) {
+				log(LogLevel.ERROR, "Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped", e);
+			}
+		}
+		
+		//Add additional more "customized" extractors than the universal keyword based one
+		//e.g.
+		extractors.add(new CellSizeExtractor(Label.c1));
+		extractors.add(new CellSizeExtractor(Label.c2));
+		extractors.add(new GcExtractor(Label.c2));
+		
+		return extractors;
 	}
 
 }

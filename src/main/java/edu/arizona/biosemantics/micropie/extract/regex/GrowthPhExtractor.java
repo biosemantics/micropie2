@@ -1,20 +1,31 @@
-package edu.arizona.biosemantics.micropie.transform.regex;
+package edu.arizona.biosemantics.micropie.extract.regex;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
+import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 
-public class GrowthPhExtractor implements IContentExtractor {
-
-	private String character = "Growth PH";
+public class GrowthPhExtractor extends AbstractCharacterValueExtractor {
+	
+	public GrowthPhExtractor(ILabel label) {
+		super(label, "Growth PH");
+	}
+	
+	@Inject
+	public GrowthPhExtractor(@Named("GrowthPhExtractor_Label")Label label, 
+			@Named("GrowthPhExtractor_Character")String character) {
+		super(label, character);
+	}
 	
 	@Override
-	public Set<String> getContent(String text) {
+	public Set<String> getCharacterValue(String text) {
 		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 		
 		// input: the original sentnece
@@ -194,10 +205,4 @@ public class GrowthPhExtractor implements IContentExtractor {
 		
 		return output;
 	}
-
-	@Override
-	public String getCharacter() {
-		return character;
-	}
-
 }

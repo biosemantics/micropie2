@@ -1,4 +1,4 @@
-package edu.arizona.biosemantics.micropie.transform;
+package edu.arizona.biosemantics.micropie.extract;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,16 +13,16 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
-import edu.arizona.biosemantics.micropie.transform.regex.CellSizeExtractor;
-import edu.arizona.biosemantics.micropie.transform.regex.GcExtractor;
-import edu.arizona.biosemantics.micropie.transform.regex.GrowthPhExtractor;
-import edu.arizona.biosemantics.micropie.transform.regex.IContentExtractor;
-import edu.arizona.biosemantics.micropie.transform.regex.IContentExtractorProvider;
 
 /**
  * Taxon x Character matrix
@@ -31,7 +31,7 @@ import edu.arizona.biosemantics.micropie.transform.regex.IContentExtractorProvid
 public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator {
 
 	private LinkedHashSet<String> characters;
-	private IContentExtractorProvider contentExtractorProvider;
+	private ICharacterValueExtractorProvider contentExtractorProvider;
 	private Map<String, List<Sentence>> taxonSentencesMap;
 	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
 	private Map<Sentence, MultiClassifiedSentence> classifiedSentencesMap;
@@ -41,7 +41,7 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 			@Named("TaxonSentencesMap")Map<String, List<Sentence>> taxonSentencesMap, 
 			@Named("SentenceMetadataMap")Map<Sentence, SentenceMetadata> sentenceMetadataMap, 
 			@Named("SentenceClassificationMap")Map<Sentence, MultiClassifiedSentence> classifiedSentencesMap,
-			IContentExtractorProvider contentExtractorProvider) {
+			ICharacterValueExtractorProvider contentExtractorProvider) {
 		this.characters = characters;
 		this.taxonSentencesMap = taxonSentencesMap;
 		this.sentenceMetadataMap = sentenceMetadataMap;
@@ -71,16 +71,16 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 				MultiClassifiedSentence classifiedSentence = classifiedSentencesMap.get(sentence);
 				Set<ILabel> predictions = classifiedSentence.getPredictions();
 				
-				Set<IContentExtractor> extractors = new HashSet<IContentExtractor>();
+				Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
 				for(ILabel label : predictions) {
 					if(label instanceof Label) {
 						extractors.addAll(contentExtractorProvider.getContentExtractor((Label)label));
 					}
 				}
-				for(IContentExtractor extractor : extractors) {
+				for(ICharacterValueExtractor extractor : extractors) {
 					String character = extractor.getCharacter();
 					if(characters.contains(character)) {
-						Set<String> content = extractor.getContent(sentence.getText());
+						Set<String> content = extractor.getCharacterValue(sentence.getText());
 						characterMap.get(character).addAll(content);
 					}
 				}
