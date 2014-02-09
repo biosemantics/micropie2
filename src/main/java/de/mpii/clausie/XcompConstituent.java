@@ -33,9 +33,9 @@ public class XcompConstituent extends IndexedConstituent {
      * @param root The root vertex of this constituent ({@see {@link #root})
      * @param type type of this constituent 
      * @param clauses derived from this constituent*/
-	public XcompConstituent(SemanticGraph semanticGraph, IndexedWord root,
+	public XcompConstituent(SemanticGraph sentSemanticGraph, SemanticGraph semanticGraph, IndexedWord root,
 			Type type, List<Clause> clauses) {
-		super(semanticGraph, root, type);
+		super(sentSemanticGraph, semanticGraph, root, type);
 		this.setClauses(clauses);
 	}
 	/** Constructs a new indexed constituent for the xcomp relation.
@@ -48,10 +48,10 @@ public class XcompConstituent extends IndexedConstituent {
      *            {@link #excludedVertexes})
      * @param type type of this constituent
      * * @param clauses derived from this constituent*/
-	public XcompConstituent(SemanticGraph semanticGraph, IndexedWord root,
+	public XcompConstituent(SemanticGraph sentSemanticGraph, SemanticGraph semanticGraph, IndexedWord root,
 			Set<IndexedWord> additionalVertexes,
 			Set<IndexedWord> excludedVertexes, Type type, List<Clause> clauses) {
-		super(semanticGraph, root, additionalVertexes, excludedVertexes, type);
+		super(sentSemanticGraph, semanticGraph, root, additionalVertexes, excludedVertexes, type);
 		this.setClauses(clauses);
 	}
 
@@ -69,6 +69,7 @@ public class XcompConstituent extends IndexedConstituent {
 	public XcompConstituent clone() {
     	XcompConstituent clone = new XcompConstituent();
         clone.type = type;
+        clone.sentSemanticGraph = new SemanticGraph(this.sentSemanticGraph);
         clone.semanticGraph = new SemanticGraph(this.getSemanticGraph());
         clone.root = this.getRoot();
         clone.additionalVertexes = new TreeSet<IndexedWord>(this.additionalVertexes);

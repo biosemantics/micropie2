@@ -28,7 +28,7 @@ public class IndexedConstituent extends Constituent {
     // -- member variables ------------------------------------------------------------------------
 
 	/** Semantic graph for this sentence */
-    protected static SemanticGraph sentSemanticGraph;
+    protected SemanticGraph sentSemanticGraph;
 	
     /** Semantic graph for this constituent */
     protected SemanticGraph semanticGraph;
@@ -59,9 +59,10 @@ public class IndexedConstituent extends Constituent {
      * @param excludedVertexes Vertexes that are excluded from this constituent ({@see
      *            {@link #excludedVertexes})
      * @param type type of this constituent */
-    public IndexedConstituent(SemanticGraph semanticGraph, IndexedWord root,
+    public IndexedConstituent(SemanticGraph sentSemanticGraph, SemanticGraph semanticGraph, IndexedWord root,
             Set<IndexedWord> additionalVertexes, Set<IndexedWord> excludedVertexes, Type type) {
         super(type);
+        this.sentSemanticGraph = sentSemanticGraph;
         this.semanticGraph = semanticGraph;
         this.root = root;
         this.additionalVertexes = new TreeSet<IndexedWord>(additionalVertexes);
@@ -73,8 +74,8 @@ public class IndexedConstituent extends Constituent {
      * @param semanticGraph Semantic graph for this constituent ({@see #semanticGraph})
      * @param root The root vertex of this constituent ({@see {@link #root})
      * @param type type of this constituent */
-    public IndexedConstituent(SemanticGraph semanticGraph, IndexedWord root, Type type) {
-        this(semanticGraph, root, new TreeSet<IndexedWord>(), new TreeSet<IndexedWord>(), type);
+    public IndexedConstituent(SemanticGraph sentSemanticGraph, SemanticGraph semanticGraph, IndexedWord root, Type type) {
+        this(sentSemanticGraph, semanticGraph, root, new TreeSet<IndexedWord>(), new TreeSet<IndexedWord>(), type);
     }
 
     /** Creates a deep copy of this indexed constituent. */
@@ -82,6 +83,7 @@ public class IndexedConstituent extends Constituent {
 	public IndexedConstituent clone() {
         IndexedConstituent clone = new IndexedConstituent();
         clone.type = type;
+        clone.sentSemanticGraph = new SemanticGraph(sentSemanticGraph);
         clone.semanticGraph = new SemanticGraph(semanticGraph);
         clone.root = this.root;
         clone.additionalVertexes = new TreeSet<IndexedWord>(this.additionalVertexes);
