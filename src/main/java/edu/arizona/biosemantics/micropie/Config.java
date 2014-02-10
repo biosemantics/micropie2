@@ -226,7 +226,7 @@ public class Config extends AbstractModule {
 		//e.g.
 		// extractors.add(new CellSizeExtractor(Label.c1));
 		extractors.add(new CellSizeExtractor(Label.c2));
-		extractors.add(new GcExtractor(Label.c2));
+		extractors.add(new GcExtractor(Label.c1));
 		
 		return extractors;
 	}

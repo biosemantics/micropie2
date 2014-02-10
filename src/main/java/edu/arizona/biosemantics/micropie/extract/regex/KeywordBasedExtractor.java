@@ -24,20 +24,16 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 	public Set<String> getCharacterValue(String text) {
 		// TODO 
 		// use keywords and regex to extract character values
-		
 		Set<String> returnCharacterStrings = new HashSet<String>();
 		for (String keywordString : keywords) {
 			keywordString = keywordString.toLowerCase();
 			String patternString = "\\s"+keywordString+"\\,|\\s"+keywordString+"\\s|^"+keywordString+"\\s|^"+keywordString+"\\,"; // !?!?
 			Pattern pattern = Pattern.compile(patternString);
-			Matcher matcher = pattern.matcher(text.toLowerCase());
-				
+			Matcher matcher = pattern.matcher(text.toLowerCase());			
 			if (matcher.find()) {
 				returnCharacterStrings.add(matcher.group().trim());
-				System.out.println("YES::" + matcher.group().trim());
 			}
-		}		
-		
+		}			
 		return returnCharacterStrings;
 	}
 

@@ -217,7 +217,7 @@ public class TrainTestRun implements IRun {
 				if(size > maxSize) {
 					maxSize = size;
 				}*/
-				if(sentence.length() <= 50) {
+				// if(sentence.length() <= 50) {
 				
 					CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(sentence, lexicalizedParser, 
 							PTBTokenizer.factory(new CoreLabelTokenFactory(), ""));
@@ -231,7 +231,7 @@ public class TrainTestRun implements IRun {
 						}
 					}, this.executorService);*/
 					subsentenceSplits.add(futureResult);
-				}
+				// }
 			}
 			subsentenceSplitsPerFile.add(subsentenceSplits);
 		}
