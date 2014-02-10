@@ -224,7 +224,7 @@ public class Config extends AbstractModule {
 		
 		//Add additional more "customized" extractors than the universal keyword based one
 		//e.g.
-		extractors.add(new CellSizeExtractor(Label.c1));
+		// extractors.add(new CellSizeExtractor(Label.c1));
 		extractors.add(new CellSizeExtractor(Label.c2));
 		extractors.add(new GcExtractor(Label.c2));
 		
