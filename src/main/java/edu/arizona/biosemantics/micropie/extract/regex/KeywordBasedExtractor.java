@@ -33,7 +33,8 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 			Matcher matcher = pattern.matcher(text.toLowerCase());
 				
 			if (matcher.find()) {
-				returnCharacterStrings.add(matcher.group().trim());			
+				returnCharacterStrings.add(matcher.group().trim());
+				System.out.println("YES::" + matcher.group().trim());
 			}
 		}		
 		
