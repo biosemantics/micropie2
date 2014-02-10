@@ -29,6 +29,10 @@ import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhMaxExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhMinExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempMaxExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempMinExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.io.CSVAbbreviationReader;
@@ -51,7 +55,7 @@ import edu.stanford.nlp.process.TokenizerFactory;
 
 public class Config extends AbstractModule {
 
-	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease caused|Metabolism (energy & carbon source)|Mono & di-saccharides|Polysaccharides|Amino acids|Alcohols|Fatty acids|Other energy or carbon sources|Fermentation products|Polyalkanoates (plastics)|Other metabolic product|Antibiotic sensitivity|Antibiotic resistant|Cell Size";
+	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell Wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Size";
 	
 	private String trainingFile = "training-base-140205.csv";
 	private String testFolder = "new-microbe-xml-1";
@@ -225,8 +229,12 @@ public class Config extends AbstractModule {
 		//Add additional more "customized" extractors than the universal keyword based one
 		//e.g.
 		// extractors.add(new CellSizeExtractor(Label.c1));
-		extractors.add(new CellSizeExtractor(Label.c2));
+		// extractors.add(new CellSizeExtractor(Label.c2));
 		extractors.add(new GcExtractor(Label.c1));
+		extractors.add(new GrowthTempMaxExtractor(Label.c3));
+		extractors.add(new GrowthTempMinExtractor(Label.c3));
+		extractors.add(new GrowthPhMaxExtractor(Label.c3));
+		extractors.add(new GrowthPhMinExtractor(Label.c3));
 		
 		return extractors;
 	}
