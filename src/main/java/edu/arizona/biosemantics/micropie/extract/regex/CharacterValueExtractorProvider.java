@@ -26,7 +26,9 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 	
 	@Override
 	public Set<ICharacterValueExtractor> getContentExtractor(Label label) {
-		return labelExtractorsMap.get(label);
+		if(labelExtractorsMap.containsKey(label))
+			return labelExtractorsMap.get(label);
+		return new HashSet<ICharacterValueExtractor>();
 	}
 
 	@Override
