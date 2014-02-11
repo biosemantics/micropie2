@@ -9,9 +9,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
@@ -209,7 +212,7 @@ public class TrainTestRun implements IRun {
 		for(int i=0; i<textFiles.size(); i++) {
 			List<String> sentences = sentenceSplits.get(i).get();
 			List<ListenableFuture<List<String>>> subsentenceSplits = new LinkedList<ListenableFuture<List<String>>>();
-			for(String sentence : sentences) {
+			for(final String sentence : sentences) {
 				/*String[] tokens = sentence.split("\\s+");
 				System.out.println("length " + tokens.length);
 				int size = tokens.length;
@@ -217,7 +220,7 @@ public class TrainTestRun implements IRun {
 				if(size > maxSize) {
 					maxSize = size;
 				}*/
-				if(sentence.length() <= 300) {
+				if(sentence.length() <= 200) {
 				
 					CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(sentence, lexicalizedParser, 
 							PTBTokenizer.factory(new CoreLabelTokenFactory(), ""));
@@ -230,6 +233,16 @@ public class TrainTestRun implements IRun {
 					//		System.out.println(compoundSentenceSplitLatch.getCount());
 						}
 					}, this.executorService);*/
+					subsentenceSplits.add(futureResult);
+				} else {
+					ListenableFuture<List<String>> futureResult = executorService.submit(new Callable<List<String>>() {
+						@Override
+						public List<String> call() throws Exception {
+							List<String> result = new LinkedList<String>();
+							result.add(sentence);
+							return result;
+						}
+					});
 					subsentenceSplits.add(futureResult);
 				}
 			}
