@@ -58,7 +58,7 @@ public class Config extends AbstractModule {
 	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell Wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Size";
 	
 	private String trainingFile = "training-base-140205.csv";
-	private String testFolder = "new-microbe-xml-1";
+	private String testFolder = "new-microbe-xml";
 	private String abbreviationFile = "abbrevlist.csv";
 	private String predicitonsFile = "predictions.csv";
 	private String matrixFile = "matrix.csv";
