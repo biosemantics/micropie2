@@ -46,14 +46,18 @@ public class GrowthPhMaxExtractor extends AbstractCharacterValueExtractor {
 			// System.out.println("pH range::" + matcher.group(3));
 			String part3 = matcher.group(3);
 			String patternStringRange = "(" + 
-					"\\d+\\sto\\s\\d+|" +
 					"\\d+\\.\\d+\\sto\\s\\d+\\.\\d+|" +
-					"\\d+-\\d+|" +
+					"\\d+\\sto\\s\\d+|" +
+
 					"\\d+\\.\\d+-\\d+\\.\\d+|" +
-					"\\d+–\\d+|" +
+					"\\d+-\\d+|" +
+					
 					"\\d+\\.\\d+–\\d+\\.\\d+|" +
-					"between\\s\\d+\\sand\\s\\d+|" +
-					"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+" +
+					"\\d+–\\d+|" +
+
+					"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
+					"between\\s\\d+\\sand\\s\\d+" +
+
 					")";
 			// patternString =
 			// "(.*)(\\s\\d*\\s\\+\\/\\-\\s\\d*\\s|\\s\\d*\\s|\\s\\d*\\.\\d*\\s|\\s\\d*\\-\\s*\\d*\\s)(.*)";
@@ -76,38 +80,42 @@ public class GrowthPhMaxExtractor extends AbstractCharacterValueExtractor {
 			// }
 			
 			// outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-			
-			String rangeString = matchStringList.get(0).toString();
 			String growPhMin = "0";
-			String growPhMax = "0";
-			if (rangeString.contains("to")){
-				String[] rangeStringArray = rangeString.split("to");
-				if (rangeStringArray.length > 1) {
-					growPhMin = rangeStringArray[0].trim();
-					growPhMax = rangeStringArray[1].trim();
-				}		
+			String growPhMax = "0";			
+			if (matchStringList.size() > 0) {
+				String rangeString = matchStringList.get(0).toString();
+
+				if (rangeString.contains("to")){
+					String[] rangeStringArray = rangeString.split("to");
+					if (rangeStringArray.length > 1) {
+						growPhMin = rangeStringArray[0].trim();
+						growPhMax = rangeStringArray[1].trim();
+					}		
+				}
+				if (rangeString.contains("-")){
+					String[] rangeStringArray = rangeString.split("-");
+					if (rangeStringArray.length > 1) {
+						growPhMin = rangeStringArray[0].trim();
+						growPhMax = rangeStringArray[1].trim();
+					}		
+				}
+				if (rangeString.contains("–")){
+					String[] rangeStringArray = rangeString.split("–");
+					if (rangeStringArray.length > 1) {
+						growPhMin = rangeStringArray[0].trim();
+						growPhMax = rangeStringArray[1].trim();
+					}		
+				}			
+				if (rangeString.contains("and")){
+					String[] rangeStringArray = rangeString.split("and");
+					if (rangeStringArray.length > 1) {
+						growPhMin = rangeStringArray[0].trim();
+						growPhMax = rangeStringArray[1].trim();
+					}		
+				}							
 			}
-			if (rangeString.contains("-")){
-				String[] rangeStringArray = rangeString.split("-");
-				if (rangeStringArray.length > 1) {
-					growPhMin = rangeStringArray[0].trim();
-					growPhMax = rangeStringArray[1].trim();
-				}		
-			}
-			if (rangeString.contains("–")){
-				String[] rangeStringArray = rangeString.split("–");
-				if (rangeStringArray.length > 1) {
-					growPhMin = rangeStringArray[0].trim();
-					growPhMax = rangeStringArray[1].trim();
-				}		
-			}			
-			if (rangeString.contains("and")){
-				String[] rangeStringArray = rangeString.split("and");
-				if (rangeStringArray.length > 1) {
-					growPhMin = rangeStringArray[0].trim();
-					growPhMax = rangeStringArray[1].trim();
-				}		
-			}			
+
+			
 			
 			// output.add("pH range " + matchStringList.get(0).toString());
 			// output.add("growPhMin " + growTempMin);

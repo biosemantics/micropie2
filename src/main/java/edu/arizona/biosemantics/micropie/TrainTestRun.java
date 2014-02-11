@@ -220,7 +220,7 @@ public class TrainTestRun implements IRun {
 				if(size > maxSize) {
 					maxSize = size;
 				}*/
-				if(sentence.length() <= 200) {
+				if(sentence.length() <= 80) {
 				
 					CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(sentence, lexicalizedParser, 
 							PTBTokenizer.factory(new CoreLabelTokenFactory(), ""));

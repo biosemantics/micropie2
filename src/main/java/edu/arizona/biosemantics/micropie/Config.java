@@ -31,6 +31,7 @@ import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhMaxExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhMinExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhOptimalExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempMaxExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempMinExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
@@ -235,6 +236,7 @@ public class Config extends AbstractModule {
 		extractors.add(new GrowthTempMinExtractor(Label.c3));
 		extractors.add(new GrowthPhMaxExtractor(Label.c3));
 		extractors.add(new GrowthPhMinExtractor(Label.c3));
+		extractors.add(new GrowthPhOptimalExtractor(Label.c3));
 		
 		return extractors;
 	}
