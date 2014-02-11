@@ -21,8 +21,8 @@ public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Inject
-	public GrowthPhMinExtractor(@Named("GrowthTempMaxExtractor_Label")Label label, 
-			@Named("GrowthTempMaxExtractor_Character")String character) {
+	public GrowthPhMinExtractor(@Named("GrowthPhMinExtractor_Label")Label label, 
+			@Named("GrowthPhMinExtractor_Character")String character) {
 		super(label, character);
 	}
 	
@@ -33,7 +33,7 @@ public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
 		// input: the original sentnece
 		// output: String array?
 		
-		// Example:  ... Temperature range 5-40˚C ..., The temperature range for growth is 18 to 37°C.
+		// Example:  ... pH range 5-40˚C ..., The pH range for growth is 18 to 37°C.
 		String patternString = "(.*)(\\s?ph range\\s?)(.*)";
 		
 		Pattern pattern = Pattern.compile(patternString);
@@ -43,7 +43,7 @@ public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
 			// System.out.println("Whloe Sent::" + matcher.group());
 			// System.out.println("Part 1::" + matcher.group(1));
 			// System.out.println("Part 2::" + matcher.group(2));
-			System.out.println("temperature range::" + matcher.group(3));
+			// System.out.println("pH range::" + matcher.group(3));
 			String part3 = matcher.group(3);
 			String patternStringRange = "(" + 
 					"\\d+\\sto\\s\\d+|" +
@@ -78,41 +78,41 @@ public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
 			// outpputContentList.add("temperature range " + matchStringList.get(0).toString());
 			
 			String rangeString = matchStringList.get(0).toString();
-			String growTempMin = "0";
-			String growTempMax = "0";
+			String growPhMin = "0";
+			String growPhMax = "0";
 			if (rangeString.contains("to")){
 				String[] rangeStringArray = rangeString.split("to");
 				if (rangeStringArray.length > 1) {
-					growTempMin = rangeStringArray[0].trim();
-					growTempMax = rangeStringArray[1].trim();
+					growPhMin = rangeStringArray[0].trim();
+					growPhMax = rangeStringArray[1].trim();
 				}		
 			}
 			if (rangeString.contains("-")){
 				String[] rangeStringArray = rangeString.split("-");
 				if (rangeStringArray.length > 1) {
-					growTempMin = rangeStringArray[0].trim();
-					growTempMax = rangeStringArray[1].trim();
+					growPhMin = rangeStringArray[0].trim();
+					growPhMax = rangeStringArray[1].trim();
 				}		
 			}
 			if (rangeString.contains("–")){
 				String[] rangeStringArray = rangeString.split("–");
 				if (rangeStringArray.length > 1) {
-					growTempMin = rangeStringArray[0].trim();
-					growTempMax = rangeStringArray[1].trim();
+					growPhMin = rangeStringArray[0].trim();
+					growPhMax = rangeStringArray[1].trim();
 				}		
 			}			
 			if (rangeString.contains("and")){
 				String[] rangeStringArray = rangeString.split("and");
 				if (rangeStringArray.length > 1) {
-					growTempMin = rangeStringArray[0].trim();
-					growTempMax = rangeStringArray[1].trim();
+					growPhMin = rangeStringArray[0].trim();
+					growPhMax = rangeStringArray[1].trim();
 				}		
 			}			
 			
-			// output.add("temperature range " + matchStringList.get(0).toString());
-			// output.add("growTempMin " + growTempMin);
-			// output.add("growTempMax " + growTempMax);
-			output.add(growTempMin);
+			// output.add("pH range " + matchStringList.get(0).toString());
+			// output.add("growPhMin " + growTempMin);
+			// output.add("growPhMax " + growTempMax);
+			output.add(growPhMin);
 		}		
 		
 		return output;
