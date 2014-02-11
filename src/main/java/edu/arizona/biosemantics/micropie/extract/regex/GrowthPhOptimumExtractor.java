@@ -14,15 +14,15 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 
-public class GrowthPhOptimalExtractor extends AbstractCharacterValueExtractor {
+public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 	
-	public GrowthPhOptimalExtractor(ILabel label) {
-		super(label, "Temperature minimum");
+	public GrowthPhOptimumExtractor(ILabel label) {
+		super(label, "pH optimum");
 	}
 	
 	@Inject
-	public GrowthPhOptimalExtractor(@Named("GrowthPhOptimalExtractor_Label")Label label, 
-			@Named("GrowthPhOptimalExtractor_Character")String character) {
+	public GrowthPhOptimumExtractor(@Named("GrowthPhOptimumExtractor_Label")Label label, 
+			@Named("GrowthPhOptimumExtractor_Character")String character) {
 		super(label, character);
 	}
 	
@@ -121,5 +121,6 @@ public class GrowthPhOptimalExtractor extends AbstractCharacterValueExtractor {
 		return output;
 	}
 }
+
 
 
