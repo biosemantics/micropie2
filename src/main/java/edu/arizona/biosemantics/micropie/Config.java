@@ -28,12 +28,14 @@ import edu.arizona.biosemantics.micropie.extract.regex.CellShapeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclOptimumExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhMaxExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhMinExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhOptimumExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempMaxExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempMinExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempOptimumExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.io.CSVAbbreviationReader;
@@ -237,6 +239,8 @@ public class Config extends AbstractModule {
 		extractors.add(new GrowthPhMaxExtractor(Label.c3));
 		extractors.add(new GrowthPhMinExtractor(Label.c3));
 		extractors.add(new GrowthPhOptimumExtractor(Label.c3));
+		extractors.add(new GrowthTempOptimumExtractor(Label.c3));
+		extractors.add(new GrowthNaclOptimumExtractor(Label.c3));
 		
 		return extractors;
 	}
