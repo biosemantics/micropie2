@@ -47,15 +47,26 @@ public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
 			String part3 = matcher.group(3);
 			String patternStringRange = "(" + 
 					"\\d+\\.\\d+\\sto\\s\\d+\\.\\d+|" +
+					"\\d+\\.\\d+\\sto\\s\\d+|" +
+					"\\d+\\sto\\s\\d+\\.\\d+|" +
 					"\\d+\\sto\\s\\d+|" +
 
 					"\\d+\\.\\d+-\\d+\\.\\d+|" +
+					"\\d+\\.\\d+-\\d+|" +
+					"\\d+-\\d+\\.\\d+|" +
 					"\\d+-\\d+|" +
 					
 					"\\d+\\.\\d+–\\d+\\.\\d+|" +
+					"\\d+\\.\\d+–\\d+|" +
+					"\\d+–\\d+\\.\\d+|" +						
 					"\\d+–\\d+|" +
 
+					"at least\\s\\d+\\.\\d+|" +
+					"at least\\d+–\\d+|" +
+					
 					"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
+					"between\\s\\d+\\.\\d+\\sand\\s\\d+|" +
+					"between\\s\\d+\\sand\\s\\d+\\.\\d+|" +
 					"between\\s\\d+\\sand\\s\\d+" +
 
 					")";
@@ -109,10 +120,18 @@ public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
 				if (rangeString.contains("and")){
 					String[] rangeStringArray = rangeString.split("and");
 					if (rangeStringArray.length > 1) {
-						growPhMin = rangeStringArray[0].trim();
+						growPhMin = rangeStringArray[0].replace("between", "");
+						growPhMin = growPhMin.trim();
 						growPhMax = rangeStringArray[1].trim();
 					}		
 				}
+				if (rangeString.contains("at least")){
+					String[] rangeStringArray = rangeString.split("at least");
+					if (rangeStringArray.length > 1) {
+						growPhMin = rangeStringArray[1].trim();
+						growPhMax = "-";
+					}		
+				}				
 			}	
 				
 				

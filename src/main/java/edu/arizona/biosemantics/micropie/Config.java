@@ -24,10 +24,15 @@ import com.google.inject.name.Names;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.regex.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.CellDiameterExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.CellLongExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellShapeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.CellWideExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclMaxExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclMinExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclOptimumExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhMaxExtractor;
@@ -58,8 +63,8 @@ import edu.stanford.nlp.process.TokenizerFactory;
 
 public class Config extends AbstractModule {
 
-	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell Wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Size";
-	
+	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Diameter|Cell Long|Cell Wide|Cell Membrane & Cell Wall Components|External features|Filterability|Internal features|Lysis Susceptibility|Physiological requirements|Antibiotics|Secreted Products|Storage Products|Tests|Pathogen Target Organ|Complex Mixtures|Inorganic|Metals|Nitrogen Compounds|Organic|Organic Acids|Other";
+
 	private String trainingFile = "training-base-140205.csv";
 	private String testFolder = "new-microbe-xml";
 	private String abbreviationFile = "abbrevlist.csv";
@@ -232,8 +237,14 @@ public class Config extends AbstractModule {
 		//Add additional more "customized" extractors than the universal keyword based one
 		//e.g.
 		// extractors.add(new CellSizeExtractor(Label.c1));
-		// extractors.add(new CellSizeExtractor(Label.c2));
+		//extractors.add(new CellSizeExtractor(Label.c2));
+		
 		extractors.add(new GcExtractor(Label.c1));
+		extractors.add(new CellDiameterExtractor(Label.c2));
+		extractors.add(new CellLongExtractor(Label.c2));
+		extractors.add(new CellWideExtractor(Label.c2));
+		
+		
 		extractors.add(new GrowthTempMaxExtractor(Label.c3));
 		extractors.add(new GrowthTempMinExtractor(Label.c3));
 		extractors.add(new GrowthPhMaxExtractor(Label.c3));
@@ -241,6 +252,8 @@ public class Config extends AbstractModule {
 		extractors.add(new GrowthPhOptimumExtractor(Label.c3));
 		extractors.add(new GrowthTempOptimumExtractor(Label.c3));
 		extractors.add(new GrowthNaclOptimumExtractor(Label.c3));
+		extractors.add(new GrowthNaclMaxExtractor(Label.c3));
+		extractors.add(new GrowthNaclMinExtractor(Label.c3));
 		
 		return extractors;
 	}

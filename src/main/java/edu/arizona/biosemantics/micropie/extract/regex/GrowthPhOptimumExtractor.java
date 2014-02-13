@@ -43,7 +43,7 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 			// System.out.println("Whloe Sent::" + matcher.group());
 			// System.out.println("Part 1::" + matcher.group(1));
 			// System.out.println("Part 2::" + matcher.group(2));
-			System.out.println("Part 3::" + matcher.group(3));
+			// System.out.println("Part 3::" + matcher.group(3));
 			String matchPart3 = matcher.group(3);
 			matchPart3 = " " + matchPart3 + " ";
 			String[] matchPart3Array = matchPart3.split(" ");				

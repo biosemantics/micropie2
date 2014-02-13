@@ -30,6 +30,8 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 		Set<String> returnCharacterStrings = new HashSet<String>();
 		for (String keywordString : keywords) {
 			keywordString = keywordString.toLowerCase();
+			keywordString = keywordString.replace("+", "\\+");
+			
 			String patternString = "\\s"+keywordString+"\\,|\\s"+keywordString+"\\s|^"+keywordString+"\\s|^"+keywordString+"\\,"; // regular expression pattern
 			Pattern pattern = Pattern.compile(patternString);
 			Matcher matcher = pattern.matcher(text.toLowerCase());			

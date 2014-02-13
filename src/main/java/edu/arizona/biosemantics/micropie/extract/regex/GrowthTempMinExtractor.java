@@ -21,8 +21,8 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Inject
-	public GrowthTempMinExtractor(@Named("GrowthTempMaxExtractor_Label")Label label, 
-			@Named("GrowthTempMaxExtractor_Character")String character) {
+	public GrowthTempMinExtractor(@Named("GrowthTempMinExtractor_Label")Label label, 
+			@Named("GrowthTempMinExtractor_Character")String character) {
 		super(label, character);
 	}
 	
@@ -43,19 +43,30 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 			// System.out.println("Whloe Sent::" + matcher.group());
 			// System.out.println("Part 1::" + matcher.group(1));
 			// System.out.println("Part 2::" + matcher.group(2));
-			System.out.println("temperature range::" + matcher.group(3));
+			// System.out.println("temperature range::" + matcher.group(3));
 			String part3 = matcher.group(3);
 			String patternStringRange = "(" + 
 					"\\d+\\.\\d+\\sto\\s\\d+\\.\\d+|" +
+					"\\d+\\.\\d+\\sto\\s\\d+|" +
+					"\\d+\\sto\\s\\d+\\.\\d+|" +
 					"\\d+\\sto\\s\\d+|" +
 
 					"\\d+\\.\\d+-\\d+\\.\\d+|" +
+					"\\d+\\.\\d+-\\d+|" +
+					"\\d+-\\d+\\.\\d+|" +
 					"\\d+-\\d+|" +
 					
 					"\\d+\\.\\d+–\\d+\\.\\d+|" +
+					"\\d+\\.\\d+–\\d+|" +
+					"\\d+–\\d+\\.\\d+|" +						
 					"\\d+–\\d+|" +
 
+					"at least\\s\\d+\\.\\d+|" +
+					"at least\\d+–\\d+|" +
+					
 					"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
+					"between\\s\\d+\\.\\d+\\sand\\s\\d+|" +
+					"between\\s\\d+\\sand\\s\\d+\\.\\d+|" +
 					"between\\s\\d+\\sand\\s\\d+" +
 
 					")";
@@ -109,8 +120,16 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 				if (rangeString.contains("and")){
 					String[] rangeStringArray = rangeString.split("and");
 					if (rangeStringArray.length > 1) {
-						growTempMin = rangeStringArray[0].trim();
+						growTempMin = rangeStringArray[0].replace("between", "");
+						growTempMin = growTempMin.trim();
 						growTempMax = rangeStringArray[1].trim();
+					}		
+				}
+				if (rangeString.contains("at least")){
+					String[] rangeStringArray = rangeString.split("at least");
+					if (rangeStringArray.length > 1) {
+						growTempMin = rangeStringArray[1].trim();
+						growTempMax = "-";
 					}		
 				}
 			}	

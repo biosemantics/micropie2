@@ -14,7 +14,7 @@ import edu.arizona.biosemantics.micropie.classify.Label;
 public class CellSizeExtractor extends AbstractCharacterValueExtractor {
 
 	public CellSizeExtractor(ILabel label) {
-		super(label, "Cell size");
+		super(label, "Cell Size");
 	}
 	
 	@Inject
