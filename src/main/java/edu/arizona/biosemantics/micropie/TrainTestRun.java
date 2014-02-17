@@ -1,10 +1,15 @@
 package edu.arizona.biosemantics.micropie;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -121,6 +126,13 @@ public class TrainTestRun implements IRun {
 	public void run() {
 		long startTime = System.currentTimeMillis();
 		try {
+			
+			sentenceReader.setInputStream(new FileInputStream(trainingFile));
+			List<Sentence> trainingSentences = sentenceReader.read();	
+
+			nFolderCrossValidation(10, trainingSentences);
+
+			/*
 			sentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = sentenceReader.read();	
 			classifier.train(trainingSentences);
@@ -141,6 +153,7 @@ public class TrainTestRun implements IRun {
 			TaxonCharacterMatrix matrix = matrixCreator.create();
 			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
 			matrixWriter.write(matrix);
+			*/
 		} catch(Exception e) {
 			log(LogLevel.ERROR, "Could not run Main", e);
 		}
@@ -323,6 +336,191 @@ public class TrainTestRun implements IRun {
 		}
 		return i;
 	}
+	
+	private void nFolderCrossValidation(int numberOfFold, List<Sentence> trainingSentences) throws Exception {
+
+		StringBuilder outputStringBuilder = new StringBuilder();
+		outputStringBuilder.append("Category,NumberOfRecord,TruePositive,FalsePositive,TrueNegative,FalseNegative,Precision,Recall,Accuracy\n");
+		
+		// int numberOfFold = 10;
+
+		int foldInterval = (trainingSentences.size() / numberOfFold) + 1;
+
+		System.out.println("Size :: " + trainingSentences.size());
+		System.out.println("foldInterval :: " + foldInterval);
+
+		String[][] labelPredictionPairLit = new String[trainingSentences.size()][2];
+		
+		int rowIndex = 0;
+		
+			for (int i = 0; i < numberOfFold; i++) {
+			// List<List<Double>> testingStatTotal = new ArrayList<List<Double>>();
+			System.out.println("\nfold :: " + (i + 1));
+			int startFlag = (foldInterval * i);
+			int endFlag;
+			if (i == (numberOfFold - 1)) {
+				endFlag = (trainingSentences.size() - 1);
+			} else {
+				endFlag = (foldInterval * (i + 1) - 1);
+			}
+			System.out.println("testing data is :: " + startFlag + " to :: "
+					+ endFlag);
+
+			List<Sentence> subTrainingSentences = new LinkedList<Sentence>();
+			List<Sentence> subTestingSentences = new LinkedList<Sentence>();
+			subTrainingSentences.addAll(trainingSentences);
+			
+			for (int j = startFlag; j <= endFlag; j++) {
+				subTrainingSentences.remove(trainingSentences.get(j));
+				subTestingSentences.add(trainingSentences.get(j));
+			}
+			// System.out.println("trainingSentences.size()::" + trainingSentences.size());
+			// System.out.println("subTrainingSentences.size()::" + subTrainingSentences.size());
+			// System.out.println("subTestingSentences.size()::" + subTestingSentences.size());
+			
+			
+			
+			classifier.train(subTrainingSentences);
+			
+			List<Sentence> testSentences = subTestingSentences;
+			
+			
+			
+			//TODO possibly parallelize here
+			for(Sentence testSentence : testSentences) {
+				Set<ILabel> prediction = classifier.getClassification(testSentence);
+				String predictionString = "";
+
+				Iterator<ILabel> iterator = prediction.iterator();
+			    while(iterator.hasNext()) {
+			    	predictionString = iterator.next().toString();
+			    }
+				
+				// System.out.println(testSentence.getLabel() + " versus " + predictionString);
+				labelPredictionPairLit[rowIndex][0] = testSentence.getLabel().toString();
+				labelPredictionPairLit[rowIndex][1] = predictionString;
+	
+				rowIndex++;
+
+			}
+
+		}
+
+
+		for (int i = 1; i <= 9; i++) {
+			double truePositive = 0.0;
+			double falsePositive = 0.0;
+			double trueNegative = 0.0;
+			double falseNegative = 0.0;
+			String labelString = String.valueOf(i);
+			
+			int labelSize = 0;
+			for (int j = 0; j < labelPredictionPairLit.length; j++) {
+				String label = labelPredictionPairLit[j][0];
+				String prediction = labelPredictionPairLit[j][1];
+				//  if (prediction.equals(labelString)) {
+				//  }
+				if (prediction.equals(labelString) && label.equals(labelString) )
+					truePositive += 1;
+
+				if (prediction.equals(labelString) && !label.equals(labelString) )
+					falsePositive += 1;
+
+				if (!prediction.equals(labelString) && label.equals(labelString) )
+					falseNegative += 1;
+				
+				if (!prediction.equals(labelString) && !label.equals(labelString) && prediction.equals(label) )
+					trueNegative += 1;
+
+				
+				labelSize++;
+				
+				// Reference
+				// http://dearalex0321.wordpress.com/2008/08/20/precision-recall/
+				// v => Prediction
+				// _prob.y[j] => actual label
+				
+				// if ( v == _prob.y[j] && v == labelInteger ) {
+				//	correct++;
+				// }
+				
+				// if ( v == labelInteger && _prob.y[j] == labelInteger ) {
+				//	truePositive++;
+				// }
+				// if ( v != labelInteger && _prob.y[j] == labelInteger ) {
+				//	falseNegative++;
+				// }
+				// if ( v == labelInteger && _prob.y[j] != labelInteger ) {
+				//	falsePositive++;
+				// }
+				// if ( v != labelInteger && _prob.y[j] != labelInteger && v == _prob.y[j] ) {
+				// //if ( v != labelInteger && _prob.y[j] != labelInteger ) {
+				//	trueNegative++;
+				// }
+			}
+			double precision;
+			if (truePositive == 0 && falsePositive == 0)
+				precision = 0;
+			else
+				precision = truePositive
+						/ (truePositive + falsePositive);
+			
+			double recall;
+			if (truePositive == 0 && falseNegative == 0)
+				recall = 0;
+			else
+				recall = truePositive / (truePositive + falseNegative);
+			
+			double accuracy = (truePositive + trueNegative)
+					/ labelPredictionPairLit.length;
+			
+			// System.out.println("precision:"+ precision);
+			// System.out.println("recall:"+ recall);
+			// System.out.println("accuracy:"+ accuracy);
+			
+
+			
+			Date date = new Date();
+			
+			outputStringBuilder.append("Category " + labelString + ",");
+			outputStringBuilder.append(labelSize + ",");
+			outputStringBuilder.append(truePositive + ",");
+			outputStringBuilder.append(falsePositive + ",");
+			outputStringBuilder.append(trueNegative + ",");
+			outputStringBuilder.append(falseNegative + ",");
+			outputStringBuilder.append(precision + ",");
+			outputStringBuilder.append(recall + ",");
+			outputStringBuilder.append(accuracy + "\n");
+			// outputStringBuilder.append(date.toString());
+
+			
+		}			
+			
+			
+		try (PrintWriter out = new PrintWriter(new BufferedWriter(
+				new FileWriter("WekaLibSVM-n-folder-cross-validation.csv", true)))) {
+			out.println(outputStringBuilder);
+		} catch (IOException e) {
+			// exception handling left as an exercise for the reader
+		}
+		
+		
+		StringBuilder lpPairStringBuilder = new StringBuilder();
+
+		for (int j = 0; j < labelPredictionPairLit.length; j++) {
+			String label = labelPredictionPairLit[j][0];
+			String prediction = labelPredictionPairLit[j][1];
+			lpPairStringBuilder.append(label + "," + prediction + "\n");
+		}
+		try (PrintWriter out = new PrintWriter(new BufferedWriter(
+				new FileWriter("WekaLibSVM-n-folder-cross-validation-lp-Pair.csv", true)))) {
+			out.println(lpPairStringBuilder);
+		} catch (IOException e) {
+			// exception handling left as an exercise for the reader
+		}		
+	}
+	
+	
 
 
 }
