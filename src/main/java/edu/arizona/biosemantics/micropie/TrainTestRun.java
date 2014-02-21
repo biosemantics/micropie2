@@ -43,12 +43,20 @@ import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.arizona.biosemantics.micropie.transform.CompoundSentenceSplitRun;
 import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.SentenceSplitRun;
+import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations.TokensAnnotation;
 import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 import edu.stanford.nlp.process.TokenizerFactory;
+import edu.stanford.nlp.semgraph.SemanticGraph;
+import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
+import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
+import edu.stanford.nlp.util.CoreMap;
 
 public class TrainTestRun implements IRun {
 
@@ -130,8 +138,11 @@ public class TrainTestRun implements IRun {
 			sentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = sentenceReader.read();	
 
-			nFolderCrossValidation(10, trainingSentences);
+			// nFolderCrossValidation(10, trainingSentences);
 
+			List<Sentence> testSentences = createTestSentences();
+			createUSPInputs(testSentences, sentenceMetadataMap);
+			
 			/*
 			sentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = sentenceReader.read();	
@@ -520,7 +531,92 @@ public class TrainTestRun implements IRun {
 		}		
 	}
 	
-	
+	private void createUSPInputs(List<Sentence> sentenceList, Map<Sentence, SentenceMetadata> sentenceMetadataMap) throws IOException, InterruptedException, ExecutionException {
+
+		int counter = 1;
+		for(Sentence sentence : sentenceList) {
+			
+			
+			StringBuilder depStringBuilder = new StringBuilder();
+			StringBuilder inputStringBuilder = new StringBuilder();
+			StringBuilder morphStringBuilder = new StringBuilder();
+			StringBuilder textStringBuilder = new StringBuilder();
+			
+			
+			// SentenceMetadata sentenceMetadata = sentenceMetadataMap.get(sentence);
+			// System.out.println(sentenceMetadata.getTaxonTextFile());
+			// System.out.println(sentenceMetadata.getSourceId());
+
+			
+			// sentence.getText()
+			String text = sentence.getText();
+			log(LogLevel.INFO, "split text to sentences using stanford corenlp pipeline...");
+			
+			// List<String> result = new LinkedList<String>();
+			
+			Annotation annotation = new Annotation(text);
+			stanfordCoreNLP.annotate(annotation);
+			List<CoreMap> sentenceAnnotations = annotation.get(SentencesAnnotation.class);
+			for (CoreMap sentenceAnnotation : sentenceAnnotations) {
+				// result.add(sentenceAnnotation.toString());
+				for (CoreLabel token: sentenceAnnotation.get(TokensAnnotation.class)) {
+											
+					String pos = token.get(PartOfSpeechAnnotation.class);
+					System.out.println(token + "_" + pos);
+					
+					if (token.toString().equals("_")) {
+						inputStringBuilder.append("dash_" + pos + "\n");
+						morphStringBuilder.append("dash\n");	
+					} else {
+						inputStringBuilder.append(token + "_" + pos + "\n");
+						morphStringBuilder.append(token.toString().toLowerCase() + "\n");	
+					}
+
+				}
+				
+				
+				SemanticGraph dependencies = sentenceAnnotation.get(CollapsedCCProcessedDependenciesAnnotation.class);
+				depStringBuilder.append(dependencies.toString("plain"));
+				// System.out.println(dependencies);
+				System.out.println("SemanticGraph::" + dependencies.toString("plain"));
+				textStringBuilder.append(sentence.getText());
+
+			}
+			//log(LogLevel.INFO, "done splitting text to sentences using stanford corenlp pipeline. Created " + result.size() + " sentences");
+			
+			
+			
+
+			try (PrintWriter out = new PrintWriter(new BufferedWriter(
+					new FileWriter("temp/dep/" + counter + ".dep", false)))) {
+				out.println(depStringBuilder);
+			} catch (IOException e) {
+				// exception handling left as an exercise for the reader
+			}
+			try (PrintWriter out = new PrintWriter(new BufferedWriter(
+					new FileWriter("temp/morph/" + counter + ".input", false)))) {
+				out.println(inputStringBuilder);
+			} catch (IOException e) {
+				// exception handling left as an exercise for the reader
+			}		
+			try (PrintWriter out = new PrintWriter(new BufferedWriter(
+					new FileWriter("temp/morph/" + counter + ".morph", false)))) {
+				out.println(morphStringBuilder);
+			} catch (IOException e) {
+				// exception handling left as an exercise for the reader
+			}
+			try (PrintWriter out = new PrintWriter(new BufferedWriter(
+					new FileWriter("temp/text/" + counter + ".txt", false)))) {
+				out.println(textStringBuilder);
+			} catch (IOException e) {
+				// exception handling left as an exercise for the reader
+			}
+			
+			
+			
+			counter++;
+		}
+	}
 
 
 }
