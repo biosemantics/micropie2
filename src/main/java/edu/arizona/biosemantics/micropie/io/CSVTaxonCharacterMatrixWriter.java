@@ -12,6 +12,7 @@ import java.util.Set;
 import au.com.bytecode.opencsv.CSVWriter;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
+import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 
 public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWriter {
 
@@ -37,13 +38,14 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		lines.add(header);
 
 		//create matrix content
-		Map<String, Map<String, Set<String>>> taxonCharacterMap = matrix.getTaxonCharacterMap();
-		for(String taxon : matrix.getTaxa()) {
+		Map<TaxonTextFile, Map<String, Set<String>>> taxonCharacterMap = matrix.getTaxonCharacterMap();
+		for(TaxonTextFile taxonFile : matrix.getTaxonFiles()) {
 			String[] row = new String[characters.size() + 1];
-			row[0] = taxon;
-			i=1;
+			row[0] = taxonFile.getTaxon();
+			row[1] = taxonFile.getInputFile().getName();
+			i=2;
 			for(String character : characters) 
-				row[i++] = getValueString(taxonCharacterMap.get(taxon).get(character));
+				row[i++] = getValueString(taxonCharacterMap.get(taxonFile).get(character));
 			lines.add(row);
 		}
 		

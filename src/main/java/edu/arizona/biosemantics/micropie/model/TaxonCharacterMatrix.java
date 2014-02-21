@@ -6,27 +6,27 @@ import java.util.Set;
 
 public class TaxonCharacterMatrix {
 
-	private Set<String> taxa;
-	private Map<String, Map<String, Set<String>>> taxonCharacterMap;
+	private Set<TaxonTextFile> taxonFiles;
+	private Map<TaxonTextFile, Map<String, Set<String>>> taxonCharacterMap;
 	private LinkedHashSet<String> characters;
 	
-	public void setTaxa(Set<String> taxa) {
-		this.taxa = taxa;
+	public void setTaxonFiles(Set<TaxonTextFile> taxonFiles) {
+		this.taxonFiles = taxonFiles;
 	}
 
 	public void setCharacters(LinkedHashSet<String> characters) {
 		this.characters = characters;
 	}
 
-	public void setTaxonCharacterMap(Map<String, Map<String, Set<String>>> taxonCharacterMap) {
+	public void setTaxonCharacterMap(Map<TaxonTextFile, Map<String, Set<String>>> taxonCharacterMap) {
 		this.taxonCharacterMap = taxonCharacterMap;
 	}
 
-	public Set<String> getTaxa() {
-		return taxa;
+	public Set<TaxonTextFile> getTaxonFiles() {
+		return taxonFiles;
 	}
 
-	public Map<String, Map<String, Set<String>>> getTaxonCharacterMap() {
+	public Map<TaxonTextFile, Map<String, Set<String>>> getTaxonCharacterMap() {
 		return taxonCharacterMap;
 	}
 

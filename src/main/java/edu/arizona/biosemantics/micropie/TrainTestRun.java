@@ -81,7 +81,7 @@ public class TrainTestRun implements IRun {
 	
 	private Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap;
 	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
-	private Map<String, List<Sentence>> taxonSentencesMap;
+	private Map<TaxonTextFile, List<Sentence>> taxonSentencesMap;
 	
 	@Inject
 	public TrainTestRun(@Named("trainingFile") String trainingFile,
@@ -92,7 +92,7 @@ public class TrainTestRun implements IRun {
 			@Named("matrixFile") String matrixFile,
 			@Named("SentenceClassificationMap")Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap,
 			@Named("SentenceMetadataMap")Map<Sentence, SentenceMetadata> sentenceMetadataMap,
-			@Named("TaxonSentencesMap")Map<String, List<Sentence>> taxonSentencesMap,
+			@Named("TaxonSentencesMap")Map<TaxonTextFile, List<Sentence>> taxonSentencesMap,
 			MultiSVMClassifier classifier,
 			CSVSentenceReader sentenceReader,
 			XMLTextReader textReader,
@@ -327,7 +327,7 @@ public class TrainTestRun implements IRun {
 					metadata.setCompoundSplitSentence(subsentences.size() > 1);
 					//metadata.setParseResult(textSentenceTransformer.getCachedParseResult(sentence));
 					sentenceMetadataMap.put(sentence, metadata);
-					String taxon = textFiles.get(i).getTaxon();
+					TaxonTextFile taxon = textFiles.get(i);
 					if(!taxonSentencesMap.containsKey(taxon))
 						taxonSentencesMap.put(taxon, new LinkedList<Sentence>());
 					taxonSentencesMap.get(taxon).add(sentence);

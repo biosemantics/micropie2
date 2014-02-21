@@ -52,6 +52,7 @@ import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
+import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.TextNormalizer;
 import edu.stanford.nlp.ling.CoreLabel;
@@ -204,11 +205,11 @@ public class Config extends AbstractModule {
 			}
 		}).in(Singleton.class);
 		
-		bind(new TypeLiteral<Map<String, List<Sentence>>>() {})
-			.annotatedWith(Names.named("TaxonSentencesMap")).toProvider(new Provider<Map<String, List<Sentence>>>() {
+		bind(new TypeLiteral<Map<TaxonTextFile, List<Sentence>>>() {})
+			.annotatedWith(Names.named("TaxonSentencesMap")).toProvider(new Provider<Map<TaxonTextFile, List<Sentence>>>() {
 			@Override
-			public Map<String, List<Sentence>> get() {
-				return new HashMap<String, List<Sentence>>();
+			public Map<TaxonTextFile, List<Sentence>> get() {
+				return new HashMap<TaxonTextFile, List<Sentence>>();
 			}
 		}).in(Singleton.class);
 		
