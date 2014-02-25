@@ -30,9 +30,10 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		List<String[]> lines = new LinkedList<String[]>();
 		
 		//create header
-		String[] header = new String[characters.size() + 1];
+		String[] header = new String[characters.size() + 2];
 		header[0] = "taxon";
-		int i=1;
+		header[1] = "file";
+		int i=2;
 		for(String character : characters) 
 			header[i++] = character;
 		lines.add(header);
@@ -40,7 +41,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		//create matrix content
 		Map<TaxonTextFile, Map<String, Set<String>>> taxonCharacterMap = matrix.getTaxonCharacterMap();
 		for(TaxonTextFile taxonFile : matrix.getTaxonFiles()) {
-			String[] row = new String[characters.size() + 1];
+			String[] row = new String[characters.size() + 2];
 			row[0] = taxonFile.getTaxon();
 			row[1] = taxonFile.getInputFile().getName();
 			i=2;
