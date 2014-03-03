@@ -155,7 +155,8 @@ public class Config extends AbstractModule {
 			@Override
 			public StanfordCoreNLP get() {
 				Properties stanfordCoreProperties = new Properties();
-				stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse");
+				// stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse");
+				stanfordCoreProperties.put("annotators", "tokenize, ssplit");
 				return new StanfordCoreNLP(stanfordCoreProperties);
 			}
 		}).in(Singleton.class);
@@ -244,7 +245,6 @@ public class Config extends AbstractModule {
 		extractors.add(new CellDiameterExtractor(Label.c2));
 		extractors.add(new CellLongExtractor(Label.c2));
 		extractors.add(new CellWideExtractor(Label.c2));
-		
 		
 		extractors.add(new GrowthTempMaxExtractor(Label.c3));
 		extractors.add(new GrowthTempMinExtractor(Label.c3));

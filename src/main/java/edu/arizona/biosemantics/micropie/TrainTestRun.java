@@ -7,7 +7,9 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,6 +22,15 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.xml.sax.InputSource;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
@@ -56,6 +67,14 @@ import edu.stanford.nlp.process.TokenizerFactory;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
+import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedDependenciesAnnotation;
+import edu.stanford.nlp.trees.GrammaticalStructure;
+import edu.stanford.nlp.trees.GrammaticalStructureFactory;
+import edu.stanford.nlp.trees.PennTreebankLanguagePack;
+import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation;
+import edu.stanford.nlp.trees.TreebankLanguagePack;
+import edu.stanford.nlp.trees.TypedDependency;
 import edu.stanford.nlp.util.CoreMap;
 
 public class TrainTestRun implements IRun {
@@ -135,15 +154,16 @@ public class TrainTestRun implements IRun {
 		long startTime = System.currentTimeMillis();
 		try {
 			
-			sentenceReader.setInputStream(new FileInputStream(trainingFile));
-			List<Sentence> trainingSentences = sentenceReader.read();	
-
+			// sentenceReader.setInputStream(new FileInputStream(trainingFile));
+			// List<Sentence> trainingSentences = sentenceReader.read();	
 			// nFolderCrossValidation(10, trainingSentences);
 
-			List<Sentence> testSentences = createTestSentences();
-			createUSPInputs(testSentences, sentenceMetadataMap);
+			// List<Sentence> testSentences = createTestSentences();
+			// createUSPInputs(testSentences, sentenceMetadataMap);
 			
-			/*
+			
+			
+			
 			sentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = sentenceReader.read();	
 			classifier.train(trainingSentences);
@@ -164,7 +184,8 @@ public class TrainTestRun implements IRun {
 			TaxonCharacterMatrix matrix = matrixCreator.create();
 			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
 			matrixWriter.write(matrix);
-			*/
+			
+			
 		} catch(Exception e) {
 			log(LogLevel.ERROR, "Could not run Main", e);
 		}
@@ -562,7 +583,7 @@ public class TrainTestRun implements IRun {
 				for (CoreLabel token: sentenceAnnotation.get(TokensAnnotation.class)) {
 											
 					String pos = token.get(PartOfSpeechAnnotation.class);
-					System.out.println(token + "_" + pos);
+					// System.out.println(token + "_" + pos);
 					
 					if (token.toString().equals("_")) {
 						inputStringBuilder.append("dash_" + pos + "\n");
@@ -576,42 +597,107 @@ public class TrainTestRun implements IRun {
 				
 				
 				SemanticGraph dependencies = sentenceAnnotation.get(CollapsedCCProcessedDependenciesAnnotation.class);
-				depStringBuilder.append(dependencies.toString("plain"));
-				// System.out.println(dependencies);
-				System.out.println("SemanticGraph::" + dependencies.toString("plain"));
+				// the same as above
+				//SemanticGraph dependencies = sentenceAnnotation.get(CollapsedDependenciesAnnotation.class);
+				
+				
+				// Deprecated
+				// String depString  = dependencies.toString("plain");
+				// depString = depString.replaceAll(",", ", ");
+				// System.out.println("Dependency String::" + depString);
+				// depStringBuilder.append(dependencies.toString("plain"));
+				// Deprecated
+				
+				// System.out.println("xml format::" + dependencies.toString("xml"));	
+				String depStringXml = dependencies.toString("xml");				
+				
+				String depStringPlain = "";
+				SAXBuilder saxBuilder = new SAXBuilder();
+				try {
+				    Document xmlDocument = saxBuilder.build(new StringReader(depStringXml));
+				    // String message = xmlDocument.getRootElement().getText();
+				    // System.out.println(message);
+					Element rootNode = xmlDocument.getRootElement();
+					// System.out.println(rootNode.getName()); //<dependencies style="typed"> => dependencies
+					// System.out.println(rootNode.getAttributeValue("style")); //  style="typed" => typed
+
+					List depList = rootNode.getChildren("dep");
+					for ( int i = 0; i <= depList.size()-1; i++ ){
+						Element element = (Element) depList.get(i);
+						// System.out.println("dep type : "+ element.getAttributeValue("type"));
+						depStringPlain += element.getAttributeValue("type") + "(";
+
+						// System.out.println("governor : "+ element.getChildText("governor"));
+						depStringPlain += element.getChildText("governor") + "-";
+						List<Element> childrenList = element.getChildren("governor");
+						for ( int j = 0; j <= childrenList.size()-1; j++ ){
+							Element element2 = childrenList.get(j);
+							// System.out.println("idx : "+ element2.getAttributeValue("idx"));
+							depStringPlain += element2.getAttributeValue("idx");
+						}
+						depStringPlain += ", ";
+						
+						// System.out.println("dependent : "+ element.getChildText("dependent"));
+						depStringPlain += element.getChildText("dependent") + "-";
+						List<Element> childrenList2 = element.getChildren("dependent");
+						for ( int j = 0; j <= childrenList2.size()-1; j++ ){
+							Element element2 = childrenList2.get(j);
+							// System.out.println("idx : "+ element2.getAttributeValue("idx"));
+							depStringPlain += element2.getAttributeValue("idx");
+						}
+						depStringPlain += ")\n";
+						
+					}
+					depStringBuilder.append(depStringPlain);
+					// System.out.println("dependencies::" + dependencies);
+					// System.out.println("depStringPlain:: " + depStringPlain);
+					
+					
+				} catch (JDOMException e) {
+				    // handle JDOMException
+				} catch (IOException e) {
+				    // handle IOException
+				}
+				
+				
 				textStringBuilder.append(sentence.getText());
 
 			}
 			//log(LogLevel.INFO, "done splitting text to sentences using stanford corenlp pipeline. Created " + result.size() + " sentences");
 			
-			
+			new File("usp").mkdirs();
+			new File("usp/dep").mkdirs();
+			new File("usp/morph").mkdirs();
+			new File("usp/text").mkdirs();
+
 			
 
 			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("temp/dep/" + counter + ".dep", false)))) {
+					new FileWriter("usp/dep/" + counter + ".dep", false)))) {
 				out.println(depStringBuilder);
 			} catch (IOException e) {
 				// exception handling left as an exercise for the reader
 			}
 			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("temp/morph/" + counter + ".input", false)))) {
+					new FileWriter("usp/morph/" + counter + ".input", false)))) {
 				out.println(inputStringBuilder);
 			} catch (IOException e) {
 				// exception handling left as an exercise for the reader
 			}		
 			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("temp/morph/" + counter + ".morph", false)))) {
+					new FileWriter("usp/morph/" + counter + ".morph", false)))) {
 				out.println(morphStringBuilder);
 			} catch (IOException e) {
 				// exception handling left as an exercise for the reader
 			}
 			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("temp/text/" + counter + ".txt", false)))) {
+					new FileWriter("usp/text/" + counter + ".txt", false)))) {
 				out.println(textStringBuilder);
 			} catch (IOException e) {
 				// exception handling left as an exercise for the reader
 			}
 			
+		
 			
 			
 			counter++;
