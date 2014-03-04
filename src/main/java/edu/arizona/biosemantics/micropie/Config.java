@@ -155,7 +155,7 @@ public class Config extends AbstractModule {
 			@Override
 			public StanfordCoreNLP get() {
 				Properties stanfordCoreProperties = new Properties();
-				// stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse");
+				//stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse");
 				stanfordCoreProperties.put("annotators", "tokenize, ssplit");
 				return new StanfordCoreNLP(stanfordCoreProperties);
 			}
