@@ -72,7 +72,8 @@ public class TrainTestRun implements IRun {
 	private XMLTextReader textReader;
 	private ITextNormalizer textNormalizer;
 	private LexicalizedParser lexicalizedParser;
-	private StanfordCoreNLP stanfordCoreNLP;
+	private StanfordCoreNLP tokenizeSSplit;
+	private StanfordCoreNLP tokenizeSSplitPosParse;
 	private CSVClassifiedSentenceWriter classifiedSentenceWriter;
 	private TaxonCharacterMatrixCreator matrixCreator;
 	private CSVTaxonCharacterMatrixWriter matrixWriter;
@@ -84,6 +85,7 @@ public class TrainTestRun implements IRun {
 	private Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap;
 	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
 	private Map<TaxonTextFile, List<Sentence>> taxonSentencesMap;
+
 
 	@Inject
 	public TrainTestRun(
@@ -98,7 +100,8 @@ public class TrainTestRun implements IRun {
 			@Named("TaxonSentencesMap") Map<TaxonTextFile, List<Sentence>> taxonSentencesMap,
 			MultiSVMClassifier classifier, CSVSentenceReader sentenceReader,
 			XMLTextReader textReader, ITextNormalizer textNormalizer,
-			StanfordCoreNLP stanfordCoreNLP,
+			@Named("TokenizeSSplit") StanfordCoreNLP tokenizeSSplit,
+			@Named("TokenizeSSplitPosParse") StanfordCoreNLP tokenizeSSplitPosParse,
 			LexicalizedParser lexicalizedParser,
 			CSVClassifiedSentenceWriter classifiedSentenceWriter,
 			TaxonCharacterMatrixCreator matrixCreator,
@@ -116,7 +119,8 @@ public class TrainTestRun implements IRun {
 		this.sentenceReader = sentenceReader;
 		this.textReader = textReader;
 		this.textNormalizer = textNormalizer;
-		this.stanfordCoreNLP = stanfordCoreNLP;
+		this.tokenizeSSplit = tokenizeSSplit;
+		this.tokenizeSSplitPosParse = tokenizeSSplitPosParse;
 		this.lexicalizedParser = lexicalizedParser;
 		this.classifiedSentenceWriter = classifiedSentenceWriter;
 		this.matrixCreator = matrixCreator;
@@ -205,7 +209,7 @@ public class TrainTestRun implements IRun {
 		CountDownLatch sentenceSplitLatch = new CountDownLatch(textFiles.size());
 		for (TaxonTextFile textFile : textFiles) {
 			SentenceSplitRun splitRun = new SentenceSplitRun(
-					textFile.getText(), textNormalizer, stanfordCoreNLP,
+					textFile.getText(), textNormalizer, tokenizeSSplit,
 					sentenceSplitLatch);
 			ListenableFuture<List<String>> futureResult = executorService
 					.submit(splitRun);
@@ -589,7 +593,7 @@ public class TrainTestRun implements IRun {
 			// List<String> result = new LinkedList<String>();
 
 			Annotation annotation = new Annotation(text);
-			stanfordCoreNLP.annotate(annotation);
+			this.tokenizeSSplitPosParse.annotate(annotation);
 			List<CoreMap> sentenceAnnotations = annotation
 					.get(SentencesAnnotation.class);
 			for (CoreMap sentenceAnnotation : sentenceAnnotations) {

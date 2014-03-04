@@ -151,15 +151,23 @@ public class Config extends AbstractModule {
 				}
 		});
 		
-		bind(StanfordCoreNLP.class).toProvider(new Provider<StanfordCoreNLP>() {
+		bind(StanfordCoreNLP.class).annotatedWith(Names.named("TokenizeSSplit")).toProvider(new Provider<StanfordCoreNLP>() {
 			@Override
 			public StanfordCoreNLP get() {
 				Properties stanfordCoreProperties = new Properties();
-				//stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse");
 				stanfordCoreProperties.put("annotators", "tokenize, ssplit");
 				return new StanfordCoreNLP(stanfordCoreProperties);
 			}
 		}).in(Singleton.class);
+		
+		bind(StanfordCoreNLP.class).annotatedWith(Names.named("TokenizeSSplitPosParse")).toProvider(new Provider<StanfordCoreNLP>() {
+			@Override
+			public StanfordCoreNLP get() {
+				Properties stanfordCoreProperties = new Properties();
+				stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse");
+				return new StanfordCoreNLP(stanfordCoreProperties);
+			}
+		});
 		
 		bind(LexicalizedParser.class).toProvider(new Provider<LexicalizedParser>() {
 			@Override
