@@ -1,0 +1,9 @@
+amod(forms-2, Coccoid-1)
+nsubj(predominate-4, forms-2)
+aux(predominate-4, may-3)
+amod(cultures-7, certain-6)
+prep_in(predominate-4, cultures-7)
+prep_including(cultures-7, co-culture-9)
+amod(cells-12, eukaryotic-11)
+prep_with(co-culture-9, cells-12)
+

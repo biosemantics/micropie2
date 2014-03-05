@@ -1,0 +1,7 @@
+amod(protrusions-3, filamentous-2)
+dep(Exhibits-1, protrusions-3)
+partmod(Exhibits-1, extending-4)
+det(surface-8, the-6)
+nn(surface-8, cell-7)
+prep_from(extending-4, surface-8)
+

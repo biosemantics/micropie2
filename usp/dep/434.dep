@@ -1,0 +1,9 @@
+det(cells-2, The-1)
+nsubj(filterable-4, cells-2)
+cop(filterable-4, are-3)
+det(filter-10, a-6)
+amod(filter-10, 450-nm-7)
+nn(filter-10, pore-8)
+nn(filter-10, size-9)
+prep_through(filterable-4, filter-10)
+

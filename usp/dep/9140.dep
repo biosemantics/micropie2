@@ -1,0 +1,11 @@
+nn(strain-2, Type-1)
+nsubj(deposited-5, strain-2)
+nn(K1-4, strain-3)
+dep(strain-2, K1-4)
+det(DSMZ-8, the-7)
+prep_at(deposited-5, DSMZ-8)
+det(DSM-12, the-10)
+nn(DSM-12, number-11)
+prep_under(deposited-5, DSM-12)
+num(DSM-12, 11193-13)
+

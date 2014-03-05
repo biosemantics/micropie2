@@ -1,0 +1,11 @@
+appos(Rods-1, 0.53-3)
+num(µm-6, 0.75-5)
+prep_to(0.53-3, µm-6)
+prep_in(µm-6, diameter-8)
+number(3.5-12, 1.8-10)
+dep(3.5-12, to-11)
+num(µm-13, 3.5-12)
+prep_to(0.53-3, µm-13)
+conj_and(µm-6, µm-13)
+prep_in(µm-13, length-15)
+

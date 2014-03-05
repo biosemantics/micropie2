@@ -1,0 +1,6 @@
+nn(amounts-2, Trace-1)
+nsubj(stimulate-6, amounts-2)
+nn(extract-5, yeast-4)
+prep_of(amounts-2, extract-5)
+dobj(stimulate-6, growth-7)
+

@@ -1,0 +1,11 @@
+nsubj(sources-12, NH4-1)
+cc(sources-12, +-2)
+dep(sources-12, one-4)
+amod(acids-8, more-6)
+nn(acids-8, amino-7)
+conj_or(one-4, acids-8)
+dep(sources-12, acids-8)
+aux(sources-12, may-9)
+cop(sources-12, be-10)
+amod(sources-12, major-11)
+

@@ -1,0 +1,10 @@
+nsubj(~-4, Cells-1)
+cop(~-4, are-2)
+amod(~-4, square-3)
+num(mm-6, 262-5)
+dep(~-4, mm-6)
+amod(mm-10, flat-8)
+tmod(flat-8, 0.2-9)
+conj_and(~-4, mm-10)
+advmod(~-4, thick-11)
+

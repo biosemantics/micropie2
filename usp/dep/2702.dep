@@ -1,0 +1,11 @@
+amod(cultures-2, Young-1)
+nsubj(show-3, cultures-2)
+amod(cells-5, rod-like-4)
+dobj(show-3, cells-5)
+dep(cells-5, 0.5-7)
+num(x-10, 1-9)
+dep(0.5-7, x-10)
+dep(x-10, 2-11)
+num(µm-14, 4-13)
+dep(2-11, µm-14)
+

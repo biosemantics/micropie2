@@ -1,0 +1,8 @@
+prep_to(Susceptible-1, novobiocin-3)
+prep_to(Susceptible-1, bacitracin-5)
+conj_and(novobiocin-3, bacitracin-5)
+amod(agent-9, vibriostatic-8)
+prep_to(Susceptible-1, agent-9)
+conj_and(novobiocin-3, agent-9)
+num(agent-9, 0\/129-10)
+

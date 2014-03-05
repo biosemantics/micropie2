@@ -1,0 +1,10 @@
+dobj(synthesizes-1, neurotoxins-2)
+partmod(neurotoxins-2, associated-3)
+amod(shellfish-6, paralytic-5)
+prep_with(associated-3, shellfish-6)
+nsubj(synthesizes-1, poisoning-7)
+appos(poisoning-7, PSP-9)
+amod(cyanobacteria-13, filamentous-12)
+appos(poisoning-7, cyanobacteria-13)
+appos(cyanobacteria-13, non-heterocystous-15)
+

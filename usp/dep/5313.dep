@@ -1,0 +1,12 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(N2F9704T-6, strain-3)
+cop(N2F9704T-6, is-4)
+nn(N2F9704T-6, strain-5)
+amod(746T-9, =-7)
+nn(746T-9, OCM-8)
+dep(N2F9704T-6, 746T-9)
+amod(16166T-12, =-10)
+nn(16166T-12, CCRC-11)
+dep(746T-9, 16166T-12)
+

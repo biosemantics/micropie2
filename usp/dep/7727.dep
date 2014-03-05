@@ -1,0 +1,8 @@
+advmod(irregular-4, slightly-3)
+amod(cocci-5, irregular-4)
+prep_to(Regular-1, cocci-5)
+amod(cocci-5, 0.6-7)
+num(µm-10, 1.5-9)
+dep(Regular-1, µm-10)
+prep_in(µm-10, diameter-12)
+

@@ -1,0 +1,7 @@
+det(sequence-5, The-1)
+nn(sequence-5, 16S-2)
+nn(sequence-5, rRNA-3)
+nn(sequence-5, gene-4)
+nsubj(unique-7, sequence-5)
+cop(unique-7, is-6)
+

@@ -1,0 +1,12 @@
+nsubjpass(described-7, NCIMB-3)
+num(NCIMB-3, 786-4)
+auxpass(described-7, was-5)
+advmod(described-7, originally-6)
+dep(Comment-1, described-7)
+cc(proposed-12, not-10)
+advmod(proposed-12, formally-11)
+dep(described-7, proposed-12)
+nn(subsp-17, Halobacterium-15)
+nn(subsp-17, cutirubrum-16)
+prep_as(described-7, subsp-17)
+

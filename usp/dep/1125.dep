@@ -1,0 +1,9 @@
+nsubj(non-motile-3, Cells-1)
+cop(non-motile-3, are-2)
+dobj(non-motile-3, coccus-shaped-5)
+dep(coccus-shaped-5, 1.0-7)
+num(µm-10, 1.5-9)
+dep(1.0-7, µm-10)
+dobj(non-motile-3, Gram-stain-negative-13)
+conj_and(coccus-shaped-5, Gram-stain-negative-13)
+

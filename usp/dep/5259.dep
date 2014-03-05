@@ -1,0 +1,12 @@
+nsubjpass(required-3, Acetate-1)
+auxpass(required-3, is-2)
+nn(factor-6, growth-5)
+prep_as(required-3, factor-6)
+nsubjpass(stimulated-10, growth-8)
+auxpass(stimulated-10, is-9)
+conj_and(required-3, stimulated-10)
+nn(ions-15, potassium-12)
+conj_and(potassium-12, tungstate-14)
+nn(ions-15, tungstate-14)
+agent(stimulated-10, ions-15)
+

@@ -1,0 +1,6 @@
+det(growth-2, No-1)
+num(g-5, 0-4)
+prep_at(growth-2, g-5)
+nn(NaCl-8, liter-7)
+prep_per(growth-2, NaCl-8)
+

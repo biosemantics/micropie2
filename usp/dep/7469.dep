@@ -1,0 +1,12 @@
+dobj(Possesses-1, phosphatidylglycerol-2)
+appos(phosphatidylglycerol-2, PG-4)
+nn(ester-9, phosphatidylglycerophosphate-7)
+nn(ester-9, methyl-8)
+appos(phosphatidylglycerol-2, ester-9)
+appos(ester-9, PGP-Me-11)
+det(phospholipid-16, a-14)
+amod(phospholipid-16, minor-15)
+dobj(Possesses-1, phospholipid-16)
+conj_and(phosphatidylglycerol-2, phospholipid-16)
+appos(phospholipid-16, PL1-18)
+

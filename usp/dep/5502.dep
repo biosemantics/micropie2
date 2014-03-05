@@ -1,0 +1,9 @@
+det(organism-2, The-1)
+nsubj(requires-3, organism-2)
+dobj(requires-3, Trypticase-4)
+det(solution-9, a-6)
+nn(solution-9, trace-7)
+nn(solution-9, vitamin-8)
+dobj(requires-3, solution-9)
+conj_and(Trypticase-4, solution-9)
+

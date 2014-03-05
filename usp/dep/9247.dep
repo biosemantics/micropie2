@@ -1,0 +1,10 @@
+advmod(common-2, Fairly-1)
+amod(streams-5, unpolluted-4)
+prep_in(common-2, streams-5)
+amod(benthose-8, rocky-7)
+prep_with(streams-5, benthose-8)
+dep(common-2, forming-10)
+dobj(forming-10, tufts-11)
+amod(colonies-14, filamentous-13)
+prep_of(tufts-11, colonies-14)
+

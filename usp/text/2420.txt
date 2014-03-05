@@ -1,0 +1,1 @@
+Glucose, ribose and acetate support growth as single carbon and energy sources.

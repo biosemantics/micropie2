@@ -1,0 +1,13 @@
+nsubj(pleomorphic-3, Cells-1)
+cop(pleomorphic-3, are-2)
+advmod(comprising-6, predominantly-5)
+xcomp(pleomorphic-3, comprising-6)
+amod(cocci-8, irregular-7)
+dobj(comprising-6, cocci-8)
+nsubj(range-10, that-9)
+rcmod(cocci-8, range-10)
+prep_from(range-10, 1.0-12)
+num(µm-15, 3.0-14)
+prep_to(range-10, µm-15)
+prep_in(µm-15, diameter-17)
+

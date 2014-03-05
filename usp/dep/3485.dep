@@ -1,0 +1,6 @@
+aux(contain-3, Did-1)
+neg(contain-3, not-2)
+det(derivatives-6, any-4)
+nn(derivatives-6, glycolipid-5)
+dobj(contain-3, derivatives-6)
+

@@ -1,0 +1,1 @@
+Cells consume N-acetylglucosamine GlcNAc 2 3 and pyruvate.

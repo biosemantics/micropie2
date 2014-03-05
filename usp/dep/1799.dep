@@ -1,0 +1,7 @@
+aux(utilize-3, Does-1)
+neg(utilize-3, not-2)
+dobj(utilize-3, lactose-4)
+det(source-8, a-6)
+nn(source-8, carbon-7)
+prep_as(utilize-3, source-8)
+

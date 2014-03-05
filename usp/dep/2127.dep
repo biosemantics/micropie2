@@ -1,0 +1,11 @@
+det(colonies-2, The-1)
+nsubj(pink-4, colonies-2)
+nsubj(small-6, colonies-2)
+nsubj(mucoid-13, colonies-2)
+cop(pink-4, are-3)
+conj_and(pink-4, small-6)
+num(mm-9, 0.5-1-8)
+dep(small-6, mm-9)
+advmod(mucoid-13, very-12)
+conj_and(pink-4, mucoid-13)
+

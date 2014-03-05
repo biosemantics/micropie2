@@ -1,0 +1,8 @@
+nn(products-2, Main-1)
+nsubj(H2-7, products-2)
+nn(fermentation-5, glucose-4)
+prep_of(products-2, fermentation-5)
+cop(H2-7, are-6)
+conj_and(H2-7, CO2-9)
+conj_and(H2-7, acetate-11)
+

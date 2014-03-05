@@ -1,0 +1,13 @@
+nsubj(yielded-8, Addition-1)
+nn(extract-4, yeast-3)
+prep_of(Addition-1, extract-4)
+amod(media-7, anaerobic-6)
+prep_to(extract-4, media-7)
+amod(growth-10, better-9)
+dobj(yielded-8, growth-10)
+dep(yielded-8, than-11)
+det(absence-14, the-13)
+prep_in(yielded-8, absence-14)
+nn(extract-17, yeast-16)
+prep_of(absence-14, extract-17)
+

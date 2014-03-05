@@ -1,0 +1,6 @@
+nsubjpass(reduced-6, Nitrate-1)
+conj_and(Nitrate-1, nitrite-3)
+nsubjpass(reduced-6, nitrite-3)
+auxpass(reduced-6, are-4)
+neg(reduced-6, not-5)
+

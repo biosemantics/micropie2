@@ -1,0 +1,12 @@
+dobj(Utilizes-1, peptides-2)
+advmod(reducing-5, simultaneously-4)
+partmod(peptides-2, reducing-5)
+amod(sulfur-7, elemental-6)
+dobj(reducing-5, sulfur-7)
+aux(depend-12, does-10)
+neg(depend-12, not-11)
+conj_but(Utilizes-1, depend-12)
+prt(depend-12, on-13)
+dobj(depend-12, it-14)
+amod(it-14, obligatory-15)
+

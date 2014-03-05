@@ -1,0 +1,6 @@
+dobj(Utilizes-1, alanine-2)
+dobj(Utilizes-1, ornithine-4)
+conj_and(alanine-2, ornithine-4)
+dobj(Utilizes-1, pyruvate-6)
+conj_and(alanine-2, pyruvate-6)
+

@@ -1,0 +1,6 @@
+det(Text-3, The-1)
+amod(Text-3, taxonomic-2)
+nn(subsp-7, M.-5)
+nn(subsp-7, capricolum-6)
+prep_of(Text-3, subsp-7)
+

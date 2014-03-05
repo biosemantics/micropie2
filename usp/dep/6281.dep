@@ -1,0 +1,10 @@
+nsubj(Gram-stain-negative-3, Cells-1)
+nsubj(non-sporulating-5, Cells-1)
+nsubj(motile-7, Cells-1)
+cop(Gram-stain-negative-3, are-2)
+conj_and(Gram-stain-negative-3, non-sporulating-5)
+conj_and(Gram-stain-negative-3, motile-7)
+amod(flagella-12, polar-9)
+amod(flagella-12, tufted-11)
+prep_by(Gram-stain-negative-3, flagella-12)
+

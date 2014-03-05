@@ -1,0 +1,5 @@
+nn(walls-2, Cell-1)
+nsubjpass(composed-4, walls-2)
+auxpass(composed-4, are-3)
+prep_of(composed-4, pseudomurein-6)
+

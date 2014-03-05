@@ -1,0 +1,7 @@
+amod(sites-5, anaerobic-3)
+amod(sites-5, hot-4)
+dep(Habitat-1, sites-5)
+amod(systems-9, deep-sea-7)
+amod(systems-9, hydrothermal-8)
+prep_of(sites-5, systems-9)
+

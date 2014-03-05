@@ -1,0 +1,12 @@
+nsubj(stimulated-5, Thiosulfate-1)
+nsubjpass(reduced-10, Thiosulfate-1)
+amod(sulfur-4, elemental-3)
+conj_and(Thiosulfate-1, sulfur-4)
+nsubj(stimulated-5, sulfur-4)
+det(growth-7, the-6)
+dobj(stimulated-5, growth-7)
+auxpass(reduced-10, were-9)
+conj_and(stimulated-5, reduced-10)
+nn(sulfide-13, hydrogen-12)
+prep_to(reduced-10, sulfide-13)
+

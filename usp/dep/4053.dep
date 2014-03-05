@@ -1,0 +1,4 @@
+amod(cells-4, cyst-like-2)
+nn(cells-4, coccoid-3)
+dep(Forms-1, cells-4)
+

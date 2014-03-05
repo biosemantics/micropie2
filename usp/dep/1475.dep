@@ -1,0 +1,12 @@
+nsubj(rods-4, Cells-1)
+nsubj(Gram-negative-16, Cells-1)
+cop(rods-4, are-2)
+amod(rods-4, slender-3)
+dep(rods-4, 0.5-6)
+dep(0.5-6, 1.0-8)
+dep(0.5-6, 1.0-10)
+conj_x(1.0-8, 1.0-10)
+num(µm-13, 3.0-12)
+dep(0.5-6, µm-13)
+conj_and(rods-4, Gram-negative-16)
+

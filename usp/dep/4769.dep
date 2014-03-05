@@ -1,0 +1,7 @@
+nn(extract-4, Growth-1)
+conj_and(Growth-1, yeast-3)
+nn(extract-4, yeast-3)
+nsubjpass(supported-6, extract-4)
+auxpass(supported-6, be-5)
+dobj(supported-6, growth-7)
+

@@ -1,0 +1,10 @@
+nsubj(able-3, Cells-1)
+cop(able-3, are-2)
+aux(grow-5, to-4)
+xcomp(able-3, grow-5)
+det(range-9, a-7)
+nn(range-9, pH-8)
+prep_over(grow-5, range-9)
+number(9.2-12, 6-11)
+prep_of(range-9, 9.2-12)
+

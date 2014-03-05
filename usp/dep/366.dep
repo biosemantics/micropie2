@@ -1,0 +1,11 @@
+aux(oxidize-3, Did-1)
+neg(oxidize-3, not-2)
+dobj(oxidize-3, glucose-4)
+appos(glucose-4, cellobiose-6)
+nn(extract-9, meat-8)
+appos(glucose-4, extract-9)
+appos(glucose-4, tryptone-11)
+appos(glucose-4, acetate-13)
+amod(sulfur-16, elemental-15)
+appos(glucose-4, sulfur-16)
+

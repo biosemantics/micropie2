@@ -1,0 +1,13 @@
+nsubj(exhibit-9, Colonies-1)
+amod(medium-4, solid-3)
+prep_on(Colonies-1, medium-4)
+number(%-7, 0.8-6)
+amod(agar-8, %-7)
+prep_with(medium-4, agar-8)
+nsubj(fried-11, typical-10)
+ccomp(exhibit-9, fried-11)
+nn(morphology-13, egg-12)
+dobj(fried-11, morphology-13)
+amod(magnification-16, low-15)
+prep_at(fried-11, magnification-16)
+

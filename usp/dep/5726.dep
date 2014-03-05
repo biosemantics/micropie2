@@ -1,0 +1,5 @@
+amod(cells-2, Coccoid-1)
+partmod(cells-2, forming-4)
+amod(aggregates-6, loose-5)
+dobj(forming-4, aggregates-6)
+

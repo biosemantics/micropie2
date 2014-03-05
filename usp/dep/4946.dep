@@ -1,0 +1,7 @@
+det(strains-2, All-1)
+nsubj(grow-3, strains-2)
+advmod(grow-3, rapidly-4)
+amod(tubes-8, pressurized-6)
+nn(tubes-8, culture-7)
+prep_in(grow-3, tubes-8)
+

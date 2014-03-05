@@ -1,0 +1,4 @@
+det(soil-5, a-3)
+amod(soil-5, ricefield-4)
+prep_from(Isolated-1, soil-5)
+

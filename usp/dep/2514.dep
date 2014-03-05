@@ -1,0 +1,7 @@
+nn(extract-4, Maltose-1)
+conj_and(Maltose-1, yeast-3)
+nn(extract-4, yeast-3)
+nsubjpass(used-6, extract-4)
+auxpass(used-6, are-5)
+prep_for(used-6, growth-8)
+

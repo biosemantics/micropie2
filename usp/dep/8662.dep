@@ -1,0 +1,6 @@
+nn(embryos-4, chicken-3)
+prep_for(Pathogenic-1, embryos-4)
+nn(inoculation-8, yolk-6)
+nn(inoculation-8, sac-7)
+prep_via(Pathogenic-1, inoculation-8)
+

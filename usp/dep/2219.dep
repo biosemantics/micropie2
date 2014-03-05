@@ -1,0 +1,5 @@
+conj_and(Starch-1, casein-3)
+mark(are-5, whereas-4)
+dep(casein-3, are-5)
+neg(are-5, not-6)
+

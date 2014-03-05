@@ -1,0 +1,11 @@
+amod(pH-2, Optimal-1)
+nsubj(concentration-7, pH-2)
+cop(concentration-7, is-3)
+num(concentration-7, 7-4)
+amod(concentration-7, Optimal-5)
+nn(concentration-7, salt-6)
+cop(NaCl-11, is-8)
+number(%-10, 1-9)
+amod(NaCl-11, %-10)
+rcmod(concentration-7, NaCl-11)
+

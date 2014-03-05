@@ -1,0 +1,13 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubjpass(stimulated-5, strain-3)
+nsubj(lyses-12, strain-3)
+auxpass(stimulated-5, is-4)
+agent(stimulated-5, addition-7)
+prep_of(addition-7, tungsten-9)
+advmod(lyses-12, spontaneously-11)
+conj_and(stimulated-5, lyses-12)
+advmod(deprived-14, when-13)
+advcl(lyses-12, deprived-14)
+prep_of(deprived-14, energy-16)
+

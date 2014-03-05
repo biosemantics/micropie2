@@ -1,0 +1,6 @@
+amod(triglycosyl-3, sulfated-2)
+dep(Characteristic-1, triglycosyl-3)
+nn(diethers-6, tetraglycosyl-5)
+dep(Characteristic-1, diethers-6)
+conj_and(triglycosyl-3, diethers-6)
+

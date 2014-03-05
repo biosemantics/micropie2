@@ -1,0 +1,6 @@
+partmod(GDGTs-1, containing-2)
+dobj(containing-2, four-3)
+num(rings-7, six-5)
+nn(rings-7, cyclopentyl-6)
+prep_to(containing-2, rings-7)
+

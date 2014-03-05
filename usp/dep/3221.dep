@@ -1,0 +1,10 @@
+amod(rod-3, Gram-negative-1)
+advmod(rod-3, primarily-2)
+nsubjpass(found-10, rod-3)
+amod(cells-5, shaped-4)
+dep(rod-3, cells-5)
+amod(forms-7, pleomorphic-6)
+dep(rod-3, forms-7)
+aux(found-10, can-8)
+auxpass(found-10, be-9)
+

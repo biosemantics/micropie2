@@ -1,0 +1,7 @@
+dobj(Requires-1, NaCl-2)
+amod(2.5-3-5, optimum-4)
+dep(NaCl-2, 2.5-3-5)
+num(%-7, .5-6)
+dep(2.5-3-5, %-7)
+prep_for(NaCl-2, growth-10)
+

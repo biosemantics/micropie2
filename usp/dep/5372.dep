@@ -1,0 +1,12 @@
+advmod(coccoid-2, Irregularly-1)
+amod(cells-3, coccoid-2)
+num(µm-7, 1.5-3-5)
+num(µm-7, .0-6)
+appos(cells-3, µm-7)
+dep(diameter-9, in-8)
+amod(cells-3, diameter-9)
+det(S-layer-16, a-12)
+amod(S-layer-16, proteinaceous-13)
+amod(S-layer-16, SDS-sensitive-15)
+prep_with(cells-3, S-layer-16)
+

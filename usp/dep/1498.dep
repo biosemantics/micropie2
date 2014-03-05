@@ -1,0 +1,7 @@
+nn(extract-2, Yeast-1)
+nsubj(support-6, extract-2)
+nn(acids-5, casamino-4)
+conj_and(extract-2, acids-5)
+nsubj(support-6, acids-5)
+dobj(support-6, growth-7)
+

@@ -1,0 +1,11 @@
+det(growth-3, No-1)
+amod(growth-3, anaerobic-2)
+nsubj(apparent-5, growth-3)
+cop(apparent-5, is-4)
+preconj(heterotrophic-8, either-7)
+amod(conditions-12, heterotrophic-8)
+conj_or(heterotrophic-8, autotrophic-10)
+amod(conditions-12, autotrophic-10)
+nn(conditions-12, growth-11)
+prep_under(apparent-5, conditions-12)
+

@@ -1,0 +1,9 @@
+nn(INSLUZT-2, Strain-1)
+nsubj(strain-11, INSLUZT-2)
+amod(DSM-5, =-4)
+appos(INSLUZT-2, DSM-5)
+dep(DSM-5, 4273T-6)
+cop(strain-11, is-8)
+det(strain-11, the-9)
+nn(strain-11, type-10)
+

@@ -1,0 +1,13 @@
+nsubjpass(produced-4, Methane-1)
+nsubjpass(produced-4, Methane-1)
+auxpass(produced-4, is-2)
+neg(produced-4, not-3)
+conj_or(produced-4, produced-4)
+prep_from(produced-4, acetate-6)
+prep_from(produced-4, methylamines-8)
+conj_or(acetate-6, methylamines-8)
+prep_from(produced-4, formate-10)
+conj_or(acetate-6, formate-10)
+prep_with(produced-4, H2-14)
+prep_without(produced-4, H2-14)
+

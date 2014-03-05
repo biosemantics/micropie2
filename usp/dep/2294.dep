@@ -1,0 +1,5 @@
+nn(diether-3, Mannosyl-1)
+nn(diether-3, glucosyl-2)
+nsubj(present-5, diether-3)
+cop(present-5, is-4)
+

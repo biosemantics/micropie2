@@ -1,0 +1,6 @@
+nsubj(occurs-2, Growth-1)
+amod(media-7, most-4)
+amod(media-7, conventional-5)
+nn(media-7, mycoplasma-6)
+prep_in(occurs-2, media-7)
+

@@ -1,0 +1,10 @@
+nsubj(gram-negative-3, Cells-1)
+cop(gram-negative-3, are-2)
+amod(cocci-5, irregular-4)
+nsubj(µm-10, cocci-5)
+cop(µm-10, is-6)
+num(.5-9, 0.5-1-8)
+prep_about(µm-10, .5-9)
+ccomp(gram-negative-3, µm-10)
+prep_in(µm-10, diameter-12)
+

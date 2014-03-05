@@ -1,0 +1,9 @@
+det(DNA-5, The-1)
+nn(DNA-5, DNA-2)
+nn(DNA-5, G+C-3)
+nn(DNA-5, content-4)
+nsubj(%-9, DNA-5)
+cop(%-9, is-6)
+number(mol-8, 56.1-7)
+num(%-9, mol-8)
+

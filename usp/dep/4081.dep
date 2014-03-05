@@ -1,0 +1,9 @@
+nsubj(long-5, Chains-1)
+conj_and(Chains-1, filaments-3)
+nsubj(long-5, filaments-3)
+cop(long-5, are-4)
+number(15-8, 10-6)
+dep(15-8, to-7)
+num(µm-9, 15-8)
+dep(long-5, µm-9)
+

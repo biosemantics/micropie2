@@ -1,0 +1,11 @@
+nn(factors-2, Growth-1)
+nsubjpass(required-11, factors-2)
+amod(factors-2, present-3)
+nn(peptone-6, Trypticase-5)
+prep_in(present-3, peptone-6)
+nn(extract-9, yeast-8)
+prep_in(present-3, extract-9)
+conj_or(peptone-6, extract-9)
+auxpass(required-11, are-10)
+prep_for(required-11, growth-13)
+

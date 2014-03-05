@@ -1,0 +1,5 @@
+nsubj(is-2, It-1)
+det(species-6, a-4)
+amod(species-6, common-5)
+prep_although(is-2, species-6)
+

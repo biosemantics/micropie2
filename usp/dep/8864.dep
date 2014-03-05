@@ -1,0 +1,6 @@
+appos(crescens-1, growing-3)
+nn(n.-7, M.-5)
+nn(n.-7, L.-6)
+dep(crescens-1, n.-7)
+dep(n.-7, part-8)
+

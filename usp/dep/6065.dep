@@ -1,0 +1,6 @@
+amod(bodies-2, Coccoid-1)
+num(µm-5, 1.5-2-3)
+num(µm-5, .0-4)
+dep(bodies-2, µm-5)
+prep_in(µm-5, diameter-7)
+

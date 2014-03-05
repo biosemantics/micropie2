@@ -1,0 +1,4 @@
+nn(sources-2, Nitrogen-1)
+nn(acids-5, Casamino-4)
+dep(sources-2, acids-5)
+

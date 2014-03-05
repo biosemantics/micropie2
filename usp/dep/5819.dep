@@ -1,0 +1,12 @@
+nsubj(discs-4, Cells-1)
+cop(discs-4, are-2)
+amod(discs-4, Gram-negative-3)
+det(diameter-8, an-6)
+amod(diameter-8, average-7)
+prep_with(discs-4, diameter-8)
+prep_of(diameter-8, 1.6-10)
+num(µm-13, 3.4-12)
+dep(discs-4, µm-13)
+partmod(µm-13, occurring-15)
+advmod(occurring-15, singly-16)
+

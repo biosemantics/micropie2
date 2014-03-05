@@ -1,0 +1,9 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(TA-lT-6, strain-3)
+cop(TA-lT-6, is-4)
+amod(TA-lT-6, isolate-5)
+amod(15161T-10, =-8)
+nn(15161T-10, IF0-9)
+appos(TA-lT-6, 15161T-10)
+

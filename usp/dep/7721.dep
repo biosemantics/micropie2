@@ -1,0 +1,13 @@
+det(absence-3, the-2)
+prep_in(produced-11, absence-3)
+conj_or(absence-3, presence-5)
+prep_in(produced-11, presence-5)
+prep_of(absence-3, NaNO3-7)
+nsubjpass(produced-11, H2-9)
+auxpass(produced-11, was-10)
+prep_during(produced-11, growth-13)
+det(H2S-16, no-15)
+nsubjpass(detected-18, H2S-16)
+auxpass(detected-18, was-17)
+conj_and(produced-11, detected-18)
+

@@ -1,0 +1,13 @@
+aux(hydrolyse-3, Does-1)
+neg(hydrolyse-3, not-2)
+dobj(hydrolyse-3, arginine-4)
+dobj(hydrolyse-3, casein-6)
+conj_or(arginine-4, casein-6)
+dobj(hydrolyse-3, gelatin-8)
+conj_or(arginine-4, gelatin-8)
+dobj(hydrolyse-3, Tween-10)
+conj_or(arginine-4, Tween-10)
+num(Tween-10, 80-11)
+dobj(hydrolyse-3, starch-13)
+conj_or(arginine-4, starch-13)
+

@@ -1,0 +1,7 @@
+amod(temperature-2, Optimum-1)
+nsubj(C.-8, temperature-2)
+prep_for(temperature-2, growth-4)
+cop(C.-8, is-5)
+number(°-7, 37-40-6)
+num(C.-8, °-7)
+

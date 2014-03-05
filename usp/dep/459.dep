@@ -1,0 +1,11 @@
+amod(characteristics-7, Cultural-1)
+amod(characteristics-7, nutritional-3)
+conj_and(nutritional-3, physiological-6)
+amod(characteristics-7, physiological-6)
+nsubjpass(reported-11, characteristics-7)
+auxpass(reported-11, are-8)
+advmod(reported-11, essentially-9)
+advmod(reported-11, as-10)
+nn(bactoclasticum-14, A.-13)
+prep_for(reported-11, bactoclasticum-14)
+

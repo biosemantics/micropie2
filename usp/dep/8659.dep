@@ -1,0 +1,6 @@
+nsubj(spiroplasma-6, It-1)
+cop(spiroplasma-6, is-2)
+det(spiroplasma-6, the-3)
+advmod(primitive-5, most-4)
+amod(spiroplasma-6, primitive-5)
+

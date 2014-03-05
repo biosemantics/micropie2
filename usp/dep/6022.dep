@@ -1,0 +1,9 @@
+nsubj(substrate-5, Acetate-1)
+cop(substrate-5, is-2)
+det(substrate-5, the-3)
+amod(substrate-5, only-4)
+partmod(substrate-5, used-6)
+prep_for(used-6, growth-8)
+prep_for(used-6, methanogenesis-10)
+conj_and(growth-8, methanogenesis-10)
+

@@ -1,0 +1,12 @@
+det(patterns-4, The-1)
+nn(patterns-4, PAGE-2)
+nn(patterns-4, polypeptide-3)
+nsubj(distinct-7, patterns-4)
+cop(distinct-7, are-5)
+advmod(distinct-7, also-6)
+det(patterns-10, the-9)
+prep_from(distinct-7, patterns-10)
+det(species-14, these-12)
+num(species-14, four-13)
+prep_of(patterns-10, species-14)
+

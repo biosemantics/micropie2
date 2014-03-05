@@ -1,0 +1,4 @@
+det(strains-2, Some-1)
+nsubj(utilize-3, strains-2)
+dobj(utilize-3, methanol-4)
+

@@ -1,0 +1,6 @@
+amod(chemoorganotroph-2, Obligate-1)
+nsubj(grows-4, chemoorganotroph-2)
+advmod(grows-4, only-5)
+amod(products-8, proteic-7)
+prep_on(grows-4, products-8)
+

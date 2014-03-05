@@ -1,0 +1,6 @@
+nsubj(required-4, Serum-1)
+conj_or(Serum-1, sterol-3)
+nsubj(required-4, sterol-3)
+amod(growth-7, sustained-6)
+prep_for(required-4, growth-7)
+

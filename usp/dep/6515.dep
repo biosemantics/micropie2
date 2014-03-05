@@ -1,0 +1,9 @@
+det(envelope-3, The-1)
+nn(envelope-3, cell-2)
+nsubj(consists-4, envelope-3)
+det(double-layer-7, a-6)
+prep_of(consists-4, double-layer-7)
+prep_of(double-layer-7, pseudomurein-9)
+prep_of(double-layer-7, protein-11)
+conj_and(pseudomurein-9, protein-11)
+

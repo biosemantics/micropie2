@@ -1,0 +1,1 @@
+Strain IC-167T grows optimally around 85 ˚C, pH 3.74.2, with a doubling time of 8 h.  Grows at low salinity (0-0.75 % NaCl).

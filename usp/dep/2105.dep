@@ -1,0 +1,9 @@
+nsubj(different-3, Movement-1)
+cop(different-3, is-2)
+prep_from(different-3, that-5)
+det(polarly-8, the-7)
+prep_of(that-5, polarly-8)
+partmod(polarly-8, flagellated-9)
+dobj(flagellated-9, strains-10)
+prep_of(strains-10, halobacteria-12)
+

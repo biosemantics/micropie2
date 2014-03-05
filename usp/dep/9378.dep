@@ -1,0 +1,9 @@
+amod(NaCl-9, optimally-2)
+num(%-5, 2-3-4)
+prep_at(optimally-2, %-5)
+appos(%-5, w\/v-7)
+dobj(Grows-1, NaCl-9)
+dobj(Grows-1, pH-11)
+conj_and(NaCl-9, pH-11)
+num(pH-11, 7.0-12)
+

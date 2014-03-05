@@ -1,0 +1,13 @@
+advmod(related-2, Antigenically-1)
+csubj(shown-8, related-2)
+det(species-6, the-4)
+amod(species-6, latter-5)
+prep_to(related-2, species-6)
+amod(species-6, as-7)
+amod(tests-13, double-10)
+amod(tests-13, immunodiffusion-11)
+nn(tests-13, precipitation-12)
+prep_by(shown-8, tests-13)
+nn(gel-16, agar-15)
+prep_in(tests-13, gel-16)
+

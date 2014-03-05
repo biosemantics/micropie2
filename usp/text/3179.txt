@@ -1,0 +1,1 @@
+Minimal NaCl concentration to prevent cell lysis in distilled water is 12% (w/v)_dot  Does not grow under anaerobic conditions with nitrate, arginine or DMSO.

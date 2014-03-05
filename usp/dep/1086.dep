@@ -1,0 +1,6 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(234T-6, strain-3)
+cop(234T-6, is-4)
+nn(234T-6, strain-5)
+

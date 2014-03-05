@@ -1,0 +1,6 @@
+nn(lactucae-2, Mesoplasma-1)
+dep(lactucae-2, 1ac-4)
+dep(1ac-4, tu.cae-6)
+nn(fem-9, L.-8)
+dep(lactucae-2, fem-9)
+

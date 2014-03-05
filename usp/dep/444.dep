@@ -1,0 +1,9 @@
+nsubjpass(required-9, Cholesterol-1)
+det(factor-4, a-3)
+conj_and(Cholesterol-1, factor-4)
+nsubjpass(required-9, factor-4)
+nn(Boivin-7, LPS-6)
+prep_in(factor-4, Boivin-7)
+auxpass(required-9, are-8)
+prep_for(required-9, growth-11)
+

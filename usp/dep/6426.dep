@@ -1,0 +1,6 @@
+num(.8-2, 6.0-8-1)
+nsubj(optimum-4, .8-2)
+cop(optimum-4, be-3)
+num(.6-6, 7.2-7-5)
+attr(optimum-4, .6-6)
+

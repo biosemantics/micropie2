@@ -1,0 +1,4 @@
+prep_to(Sensitive-1, tetracycline-3)
+prep_to(Sensitive-1, gentamicin-5)
+conj_and(tetracycline-3, gentamicin-5)
+

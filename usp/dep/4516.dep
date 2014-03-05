@@ -1,0 +1,12 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(CWT-6, strain-3)
+cop(CWT-6, is-4)
+nn(CWT-6, strain-5)
+amod(11995T-9, =-7)
+nn(11995T-9, DSM-8)
+dep(CWT-6, 11995T-9)
+amod(817T-12, =-10)
+nn(817T-12, OCM-11)
+dep(11995T-9, 817T-12)
+

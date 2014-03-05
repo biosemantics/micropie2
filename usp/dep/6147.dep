@@ -1,0 +1,12 @@
+nsubj(bodies-4, Cells-1)
+aux(bodies-4, are-2)
+amod(bodies-4, coccoid-3)
+number(±-6, 1.4-5)
+dobj(bodies-4, ±-6)
+num(µm-8, 0.2-7)
+dep(±-6, µm-8)
+prep_in(±-6, diameter-10)
+xcomp(bodies-4, occurring-11)
+amod(cells-14, individual-13)
+prep_as(occurring-11, cells-14)
+

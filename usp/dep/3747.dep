@@ -1,0 +1,7 @@
+nsubjpass(produced-5, Films-1)
+conj_and(Films-1, spots-3)
+nsubjpass(produced-5, spots-3)
+auxpass(produced-5, are-4)
+amod(media-8, serum-containing-7)
+prep_on(produced-5, media-8)
+

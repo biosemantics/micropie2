@@ -1,0 +1,9 @@
+amod(hoops-2, Annular-1)
+nsubjpass(stacked-4, hoops-2)
+auxpass(stacked-4, be-3)
+aux(form-6, to-5)
+xcomp(stacked-4, form-6)
+det(tube-9, the-7)
+nn(tube-9, sheath-8)
+dobj(form-6, tube-9)
+

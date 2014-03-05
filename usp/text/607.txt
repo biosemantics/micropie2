@@ -1,0 +1,1 @@
+Organotrophic sulfite respiration with formate, acetate, pyruvate, isopropanol, ethanol, fumarate, and glucose.

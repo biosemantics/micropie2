@@ -1,0 +1,11 @@
+nn(EC-l-2, Strain-1)
+nsubjpass(isolated-4, EC-l-2)
+auxpass(isolated-4, was-3)
+prep_from(isolated-4, gut-6)
+det(beetle-11, an-8)
+amod(beetle-11, adult-9)
+nn(beetle-11, lampyrid-10)
+prep_of(gut-6, beetle-11)
+nn(cormsca-14, Ellychnia-13)
+appos(beetle-11, cormsca-14)
+

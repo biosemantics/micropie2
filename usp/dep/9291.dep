@@ -1,0 +1,8 @@
+nsubjpass(observed-3, Growth-1)
+auxpass(observed-3, is-2)
+amod(0.5-5, between-4)
+num(%-8, 0.5-5)
+conj_and(0.5-5, 6.5-7)
+num(%-8, 6.5-7)
+dobj(observed-3, %-8)
+

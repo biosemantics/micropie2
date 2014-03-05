@@ -1,0 +1,11 @@
+nsubjpass(utilized-4, Carbohydrates-1)
+auxpass(utilized-4, are-2)
+neg(utilized-4, not-3)
+nsubjpass(observed-11, stimulation-7)
+prep_of(stimulation-7, growth-9)
+auxpass(observed-11, is-10)
+conj_but(utilized-4, observed-11)
+det(presence-14, the-13)
+prep_in(observed-11, presence-14)
+prep_of(presence-14, glycerol-16)
+

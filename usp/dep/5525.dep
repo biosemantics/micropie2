@@ -1,0 +1,13 @@
+amod(metabolism-2, Energy-yielding-1)
+nsubj(involves-3, metabolism-2)
+nn(production-7, methane-4)
+conj_and(methane-4, ammonia-6)
+nn(production-7, ammonia-6)
+dobj(involves-3, production-7)
+prep_from(involves-3, methylamines-9)
+nsubj(substrate-15, trimethylamine-11)
+cop(substrate-15, is-12)
+det(substrate-15, the-13)
+amod(substrate-15, preferred-14)
+parataxis(involves-3, substrate-15)
+

@@ -1,0 +1,10 @@
+nsubj(orange-3, Colonies-1)
+nsubj(red-5, Colonies-1)
+cop(orange-3, are-2)
+conj_or(orange-3, red-5)
+acomp(orange-3, smooth-7)
+acomp(orange-3, circular-9)
+conj_and(smooth-7, circular-9)
+acomp(orange-3, elevated-11)
+conj_and(smooth-7, elevated-11)
+

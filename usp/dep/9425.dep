@@ -1,0 +1,4 @@
+nn(acetate-2, H2-1)
+nsubj(CO2-4, acetate-2)
+cop(CO2-4, is-3)
+

@@ -1,0 +1,8 @@
+det(rRNA-3, The-1)
+nn(rRNA-3, 16S-2)
+nsubj(unique-8, rRNA-3)
+nn(sequence-6, gene-4)
+nn(sequence-6, nucleotide-5)
+dep(rRNA-3, sequence-6)
+cop(unique-8, is-7)
+

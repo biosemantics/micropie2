@@ -1,0 +1,10 @@
+amod(metabolites-3, Many-1)
+amod(metabolites-3, secondary-2)
+nsubjpass(isolated-9, metabolites-3)
+amod(structures-6, new-5)
+prep_with(metabolites-3, structures-6)
+aux(isolated-9, have-7)
+auxpass(isolated-9, been-8)
+det(organisms-12, these-11)
+prep_from(isolated-9, organisms-12)
+

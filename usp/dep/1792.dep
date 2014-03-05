@@ -1,0 +1,9 @@
+nsubjpass(used-4, Glucose-1)
+aux(used-4, can-2)
+auxpass(used-4, be-3)
+det(source-9, the-6)
+amod(source-9, sole-7)
+nn(source-9, carbon-8)
+prep_as(used-4, source-9)
+prep_for(source-9, growth-11)
+

@@ -1,0 +1,9 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(Tab4c-5, strain-3)
+cop(Tab4c-5, is-4)
+cop(70027l-9, is-6)
+amod(70027l-9, =-7)
+nn(70027l-9, ATCC-8)
+rcmod(Tab4c-5, 70027l-9)
+

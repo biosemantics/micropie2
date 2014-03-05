@@ -1,0 +1,6 @@
+nsubjpass(required-6, Tungsten-1)
+conj_and(Tungsten-1, selenium-3)
+nsubjpass(required-6, selenium-3)
+auxpass(required-6, are-4)
+neg(required-6, not-5)
+

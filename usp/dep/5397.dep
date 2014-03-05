@@ -1,0 +1,11 @@
+nsubjpass(required-10, Acetate-1)
+prep(Acetate-1, plus-2)
+preconj(extract-5, either-3)
+nn(extract-5, yeast-4)
+dep(plus-2, extract-5)
+nn(peptone-8, Trypticase-7)
+dep(plus-2, peptone-8)
+conj_or(extract-5, peptone-8)
+auxpass(required-10, is-9)
+prep_for(required-10, growth-12)
+

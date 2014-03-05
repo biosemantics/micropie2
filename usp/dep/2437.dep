@@ -1,0 +1,11 @@
+det(properties-4, the-2)
+amod(properties-4, following-3)
+dobj(Displays-1, properties-4)
+prep_in(properties-4, addition-6)
+prep_to(properties-4, those-8)
+prep(those-8, given-9)
+pcomp(given-9, in-10)
+det(description-13, the-11)
+nn(description-13, genus-12)
+pobj(in-10, description-13)
+

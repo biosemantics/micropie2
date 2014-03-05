@@ -1,0 +1,13 @@
+det(growth-2, No-1)
+prep(growth-2, on-3)
+nn(phosphate-12, 2-aminoethanol-5)
+dep(phosphate-12, 2,3-butanediol-7)
+dep(phosphate-12, glycerol-9)
+amod(phosphate-12, l-a-glycerol-11)
+dep(growth-2, phosphate-12)
+appos(phosphate-12, adonitol-14)
+appos(phosphate-12, d-arabitol-16)
+conj_and(adonitol-14, d-arabitol-16)
+appos(phosphate-12, i-erythritol-18)
+conj_and(adonitol-14, i-erythritol-18)
+

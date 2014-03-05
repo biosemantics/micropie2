@@ -1,0 +1,6 @@
+nsubj(supported-4, Pyruvate-1)
+conj_and(Pyruvate-1, propionate-3)
+nsubj(supported-4, propionate-3)
+amod(growth-6, poor-5)
+dobj(supported-4, growth-6)
+

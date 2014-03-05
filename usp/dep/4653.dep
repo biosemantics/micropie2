@@ -1,0 +1,8 @@
+nn(colonies-2, Round-1)
+num(mm-5, 1-4)
+prep_about(colonies-2, mm-5)
+nn(form-8, diameter-7)
+prep_in(mm-5, form-8)
+nn(plates-11, Phytagel-10)
+prep_on(colonies-2, plates-11)
+

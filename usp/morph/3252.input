@@ -1,0 +1,17 @@
+The_DT
+type_NN
+strain_NN
+is_VBZ
+2_CD
+--_:
+9-1_CD
+-LRB-_-LRB-
+ATCC_NN
+BAA_NN
+75_CD
+;_:
+JCM_NNP
+11222_CD
+-RRB-_-RRB-
+._.
+

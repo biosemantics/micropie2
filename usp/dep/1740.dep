@@ -1,0 +1,4 @@
+det(description-2, The-1)
+nsubj(identical-4, description-2)
+cop(identical-4, is-3)
+

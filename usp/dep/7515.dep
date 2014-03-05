@@ -1,0 +1,7 @@
+det(lake-5, a-2)
+amod(lake-5, Kenyan-3)
+nn(lake-5, soda-4)
+nsubj(Inhabits-1, lake-5)
+nn(Magadi-8, Lake-7)
+appos(lake-5, Magadi-8)
+

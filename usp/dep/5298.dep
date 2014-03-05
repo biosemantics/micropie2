@@ -1,0 +1,9 @@
+nn(peptone-2, Trypticase-1)
+nsubj(stimulates-6, peptone-2)
+nn(extract-5, yeast-4)
+conj_or(peptone-2, extract-5)
+nsubj(stimulates-6, extract-5)
+dobj(stimulates-6, growth-7)
+det(strains-10, all-9)
+prep_in(growth-7, strains-10)
+

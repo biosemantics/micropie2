@@ -1,0 +1,10 @@
+det(species-2, The-1)
+nsubj(distinct-5, species-2)
+cop(distinct-5, is-3)
+advmod(distinct-5, serologically-4)
+amod(Mesoplasma-8, other-7)
+prep_from(distinct-5, Mesoplasma-8)
+nn(species-11, Acholeplasma-10)
+prep_from(distinct-5, species-11)
+conj_and(Mesoplasma-8, species-11)
+

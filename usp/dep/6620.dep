@@ -1,0 +1,8 @@
+nsubj(grow-4, It-1)
+aux(grow-4, does-2)
+neg(grow-4, not-3)
+advmod(grow-4, well-5)
+num(°-8, 30-7)
+prep_above(well-5, °-8)
+dobj(grow-4, C.-9)
+

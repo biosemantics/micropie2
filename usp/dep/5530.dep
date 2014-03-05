@@ -1,0 +1,6 @@
+nsubj(serves-2, Sulfide-1)
+prep(serves-2, as-3)
+pcomp(as-3, as-4)
+nn(source-6, sulfur-5)
+pobj(as-4, source-6)
+

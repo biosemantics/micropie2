@@ -1,0 +1,9 @@
+nn(starvation-2, Iron-1)
+nsubj(leads-3, starvation-2)
+amod(stress-6, oxidative-5)
+prep_to(leads-3, stress-6)
+prep_in(stress-6, Anabaena-8)
+punct(Anabaena-8, -LSB--9)
+num(Anabaena-8, 6-10)
+punct(Anabaena-8, -RSB--11)
+

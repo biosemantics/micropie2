@@ -1,0 +1,6 @@
+det(organisms-2, The-1)
+nsubj(grew-3, organisms-2)
+advmod(grew-3, only-4)
+prep_below(grew-3, pH-6)
+num(pH-6, 3.5-7)
+

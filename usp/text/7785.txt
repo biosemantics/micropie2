@@ -1,0 +1,1 @@
+Grows in the presence of 0.1 to 0.5% yeast extract and optimally in the presence of 0.2% yeast extract; a lag phase occurs in the presence of 0.5% yeast extract.

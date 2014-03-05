@@ -1,0 +1,7 @@
+det(content-4, The-1)
+nn(content-4, DNA-2)
+nn(content-4, G+C-3)
+nsubj(%-7, content-4)
+cop(%-7, is-5)
+num(%-7, 63-6)
+

@@ -1,0 +1,5 @@
+nsubj(grow-2, filaments-1)
+amod(densities-6, high-4)
+nn(densities-6, cell-5)
+prep_to(grow-2, densities-6)
+

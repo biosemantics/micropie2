@@ -1,0 +1,4 @@
+dep(Ureaplasma-1, parvum-2)
+dep(parvum-2, par-4)
+dep(par-4, vum-6)
+

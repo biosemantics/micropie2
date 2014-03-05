@@ -1,0 +1,5 @@
+det(organism-2, The-1)
+nsubjpass(isolated-4, organism-2)
+auxpass(isolated-4, was-3)
+prep_from(isolated-4, which-6)
+

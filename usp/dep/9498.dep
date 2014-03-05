@@ -1,0 +1,7 @@
+nsubj(irregular-3, Cells-1)
+cop(irregular-3, are-2)
+nsubj(motile-5, cocci-4)
+ccomp(irregular-3, motile-5)
+amod(flagella-8, polar-7)
+prep_with(motile-5, flagella-8)
+

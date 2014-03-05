@@ -1,0 +1,8 @@
+amod(cyanobacteria-3, unicellular-1)
+amod(cyanobacteria-3, nitrogen-fixing-2)
+amod(cyanobacteria-7, unicellular-5)
+amod(cyanobacteria-7, diazotrophic-6)
+appos(cyanobacteria-3, cyanobacteria-7)
+nn(sp-10, Cyanothece-9)
+appos(cyanobacteria-7, sp-10)
+

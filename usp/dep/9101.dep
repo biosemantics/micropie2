@@ -1,0 +1,9 @@
+amod(archaeon-6, Lobed-1)
+amod(archaeon-6, spherical-3)
+amod(archaeon-6, thermoacidophilic-5)
+det(diameter-10, a-8)
+nn(diameter-10, cell-9)
+prep_with(archaeon-6, diameter-10)
+num(µm-13, 1.1-12)
+prep_of(archaeon-6, µm-13)
+

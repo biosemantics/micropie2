@@ -1,0 +1,6 @@
+amod(concentration-3, Optimal-1)
+nn(concentration-3, NaCl-2)
+nsubj(%-6, concentration-3)
+cop(%-6, is-4)
+num(%-6, 2-5)
+

@@ -1,0 +1,6 @@
+nn(adj.-2, L.-1)
+dep(adj.-2, veloci-3)
+advmod(adj.-2, fast-5)
+dep(adj.-2, L.-7)
+dep(L.-7, part-8)
+

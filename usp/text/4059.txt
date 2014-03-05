@@ -1,0 +1,1 @@
+Utilizes H2/CO2 and formate for growth and methane generation, but not acetate, methanol, ethanol, 2-propanol, 2-butanol, methylamines, methanol/H2 or methylamine/H2.

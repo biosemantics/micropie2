@@ -1,0 +1,11 @@
+det(surface-5, the-3)
+nn(surface-5, flower-4)
+prep_from(Isolated-1, surface-5)
+det(plant-9, a-7)
+amod(plant-9, tropical-8)
+prep_of(surface-5, plant-9)
+nn(quinquenervia-12, Melaleuca-11)
+appos(plant-9, quinquenervia-12)
+amod(Florida-16, south-15)
+prep_in(Isolated-1, Florida-16)
+

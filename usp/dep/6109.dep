@@ -1,0 +1,4 @@
+nn(range-2, Temperature-1)
+num(˚C-4, 1-32-3)
+dep(range-2, ˚C-4)
+

@@ -1,0 +1,12 @@
+amod(acid-4, fusidic-3)
+prep_to(Sensitive-1, acid-4)
+appos(acid-4, bacitracin-6)
+appos(acid-4, nitrofurantoin-8)
+conj_and(bacitracin-6, nitrofurantoin-8)
+appos(acid-4, novobiocin-10)
+conj_and(bacitracin-6, novobiocin-10)
+appos(acid-4, anisomycin-12)
+conj_and(bacitracin-6, anisomycin-12)
+appos(acid-4, rifampicin-15)
+conj_and(bacitracin-6, rifampicin-15)
+

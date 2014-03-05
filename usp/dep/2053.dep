@@ -1,0 +1,13 @@
+nsubj(present-8, Lipids-1)
+dep(Lipids-1, S-DGA-1-2)
+dep(Lipids-1, PGP-Me-4)
+conj_and(S-DGA-1-2, PGP-Me-4)
+dep(Lipids-1, PG-6)
+conj_and(S-DGA-1-2, PG-6)
+cop(present-8, are-7)
+nn(sulfate-12, phosphatidylglycerol-11)
+nsubj(present-15, sulfate-12)
+cop(present-15, is-13)
+neg(present-15, not-14)
+conj_but(present-8, present-15)
+

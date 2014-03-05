@@ -1,0 +1,7 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(ATCC-6, strain-3)
+cop(ATCC-6, is-4)
+nn(ATCC-6, strain-5)
+num(ATCC-6, 43049-7)
+

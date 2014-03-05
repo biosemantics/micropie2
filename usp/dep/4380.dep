@@ -1,0 +1,6 @@
+prepc_by(Gram-positive-like-1, staining-3)
+nn(ultrastructure-8, cell-6)
+nn(ultrastructure-8, wall-7)
+prepc_by(Gram-positive-like-1, ultrastructure-8)
+conj_and(staining-3, ultrastructure-8)
+

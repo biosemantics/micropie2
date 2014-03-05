@@ -1,0 +1,13 @@
+nn(L1T-2, Strain-1)
+nsubj(capable-5, L1T-2)
+cop(capable-5, is-3)
+neg(capable-5, not-4)
+prep_of(capable-5, growth-7)
+det(substrates-11, the-9)
+amod(substrates-11, inorganic-10)
+prep_on(growth-7, substrates-11)
+amod(substrates-14, organic-13)
+prep_on(growth-7, substrates-14)
+conj_or(substrates-11, substrates-14)
+advmod(capable-5, alone-15)
+

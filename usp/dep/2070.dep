@@ -1,0 +1,11 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(grows-4, strain-3)
+number(50-7, 18-6)
+num(˚C-8, 50-7)
+prep_at(grows-4, ˚C-8)
+prep_at(grows-4, pH-11)
+conj_and(˚C-8, pH-11)
+num(9.0-13, 4.5-12)
+pobj(grows-4, 9.0-13)
+

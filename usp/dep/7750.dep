@@ -1,0 +1,9 @@
+det(constant-3, The-1)
+nn(constant-3, lattice-2)
+nsubj(nm-10, constant-3)
+det(layer-7, the-5)
+nn(layer-7, S-6)
+prep_of(constant-3, layer-7)
+cop(nm-10, is-8)
+num(nm-10, 20-9)
+

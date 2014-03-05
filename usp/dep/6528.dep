@@ -1,0 +1,8 @@
+nn(methanol-2, Acetate-1)
+nsubj(serve-7, methanol-2)
+conj_and(methanol-2, methylamines-4)
+nsubj(serve-7, methylamines-4)
+aux(serve-7, can-5)
+neg(serve-7, not-6)
+prep_as(serve-7, substrates-9)
+

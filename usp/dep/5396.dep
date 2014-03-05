@@ -1,0 +1,11 @@
+nsubjpass(metabolized-13, Acetate-1)
+appos(Acetate-1, methanol-3)
+appos(Acetate-1, monomethylamine-5)
+conj_and(methanol-3, monomethylamine-5)
+appos(Acetate-1, dimethylamine-7)
+conj_and(methanol-3, dimethylamine-7)
+appos(Acetate-1, trimethylamine-10)
+conj_and(methanol-3, trimethylamine-10)
+auxpass(metabolized-13, are-11)
+neg(metabolized-13, not-12)
+

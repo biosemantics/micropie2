@@ -1,0 +1,10 @@
+nsubj(optimum-8, C-1)
+conj_and(C-1, pH-3)
+nsubj(optimum-8, pH-3)
+dep(C-1, 1.0-4)
+dep(C-1, 4.5-6)
+conj_and(1.0-4, 4.5-6)
+cop(optimum-8, is-7)
+num(˚C-11, 75-10)
+prep_around(optimum-8, ˚C-11)
+

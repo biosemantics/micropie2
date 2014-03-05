@@ -1,0 +1,9 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(LL2-6, strain-3)
+cop(LL2-6, is-4)
+nn(LL2-6, strain-5)
+amod(NCTC-9, =-8)
+dep(LL2-6, NCTC-9)
+dep(NCTC-9, 11725-10)
+

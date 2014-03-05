@@ -1,0 +1,9 @@
+det(temperature-3, The-1)
+amod(temperature-3, optimum-2)
+nsubj(C.-9, temperature-3)
+cop(C.-9, is-4)
+number(°-8, 35-5)
+dep(°-8, to-6)
+number(°-8, 40-7)
+num(C.-9, °-8)
+

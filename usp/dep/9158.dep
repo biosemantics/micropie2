@@ -1,0 +1,12 @@
+dep(Isolate-1, obtained-2)
+amod(water-5, muddy-4)
+prep_from(obtained-2, water-5)
+det(spring-10, an-7)
+amod(spring-10, acidic-8)
+amod(spring-10, hot-9)
+prep_of(water-5, spring-10)
+nn(Valley-13, Ohwaku-12)
+prep_of(spring-10, Valley-13)
+nn(Japan-17, Hakone-15)
+appos(Valley-13, Japan-17)
+

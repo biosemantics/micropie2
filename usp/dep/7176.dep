@@ -1,0 +1,7 @@
+det(close-6, a-3)
+nn(close-6, salt-4)
+nn(close-6, soil-5)
+prep_from(Isolated-1, close-6)
+nn(Egypt-10, Aswan-8)
+prep_to(Isolated-1, Egypt-10)
+

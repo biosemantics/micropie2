@@ -1,0 +1,10 @@
+det(isolation-2, The-1)
+nsubjpass(performed-4, isolation-2)
+auxpass(performed-4, was-3)
+prep_after(performed-4, gamma-exposure-6)
+num(kGy-9, 20-8)
+prep_of(gamma-exposure-6, kGy-9)
+det(culture-13, the-11)
+nn(culture-13, enrichment-12)
+prep_of(kGy-9, culture-13)
+

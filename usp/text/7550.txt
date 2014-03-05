@@ -1,0 +1,1 @@
+Utilizes arabinose, galactose, glucose, glycerol, raffinose, sorbitol, acetate, citrate, fumarate, lactate, malate, propionate, and pyruvate.

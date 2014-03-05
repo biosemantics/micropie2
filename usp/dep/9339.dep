@@ -1,0 +1,9 @@
+det(system-7, a-3)
+amod(system-7, shallow-4)
+amod(system-7, marine-5)
+amod(system-7, hydrothermal-6)
+prep_from(Isolated-1, system-7)
+nn(Island-10, Vulcano-9)
+prep_at(system-7, Island-10)
+appos(Island-10, Italy-12)
+

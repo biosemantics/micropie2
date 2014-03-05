@@ -1,0 +1,7 @@
+nsubjpass(required-4, Acetate-1)
+auxpass(required-4, is-2)
+neg(required-4, not-3)
+det(factor-8, a-6)
+nn(factor-8, growth-7)
+prep_as(required-4, factor-8)
+

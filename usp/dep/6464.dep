@@ -1,0 +1,8 @@
+nn(range-2, Temperature-1)
+nsubj(˚C-5, range-2)
+cop(˚C-5, is-3)
+num(˚C-5, 37-74-4)
+amod(˚C-9, optimum-7)
+tmod(optimum-7, 55-65-8)
+appos(˚C-5, ˚C-9)
+

@@ -1,0 +1,12 @@
+nn(strain-2, Type-1)
+nsubj(Z-761-4, strain-2)
+cop(Z-761-4, is-3)
+appos(Z-761-4, DSM-6)
+num(DSM-6, 1232-7)
+partmod(Z-761-4, isolated-9)
+det(digestor-13, an-11)
+amod(digestor-13, anaerobic-12)
+prep_from(isolated-9, digestor-13)
+nn(USSR-17, Moscow-15)
+prep_in(digestor-13, USSR-17)
+

@@ -1,0 +1,12 @@
+nsubj(resistant-3, Cultures-1)
+cop(resistant-3, are-2)
+prep_to(resistant-3, penicillin-5)
+det(reversion-9, no-8)
+nsubj(occurs-13, reversion-9)
+amod(forms-12, walled-11)
+prep_to(reversion-9, forms-12)
+conj_and(resistant-3, occurs-13)
+det(absence-16, the-15)
+prep_in(occurs-13, absence-16)
+prep_of(absence-16, penicillin-18)
+

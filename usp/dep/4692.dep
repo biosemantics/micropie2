@@ -1,0 +1,8 @@
+nsubj(convex-2, Colonies-1)
+acomp(convex-2, yellowish-3)
+prep_in(yellowish-3, color-5)
+det(surface-10, a-7)
+amod(surface-10, smooth-8)
+amod(surface-10, shiny-9)
+prep_with(convex-2, surface-10)
+

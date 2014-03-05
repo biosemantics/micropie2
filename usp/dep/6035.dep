@@ -1,0 +1,5 @@
+nn(wall-2, Cell-1)
+nsubj(S-layer-5, wall-2)
+cop(S-layer-5, is-3)
+det(S-layer-5, an-4)
+

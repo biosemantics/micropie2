@@ -1,0 +1,7 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(JCM-7, strain-3)
+cop(JCM-7, is-4)
+nn(JCM-7, M6T-5)
+amod(JCM-7, =-6)
+

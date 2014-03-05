@@ -1,0 +1,5 @@
+det(growth-2, No-1)
+amod(reduction-6, anaerobic-4)
+nn(reduction-6, sulfur-5)
+prep_by(growth-2, reduction-6)
+

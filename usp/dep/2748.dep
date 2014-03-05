@@ -1,0 +1,10 @@
+det(growth-2, No-1)
+nsubj(occurs-3, growth-2)
+nn(acid-10, sucrose-5)
+prep_on(occurs-3, L-arginine-7)
+conj_or(acid-10, L-arginine-7)
+amod(acid-10, L-glutamic-9)
+prep_on(occurs-3, acid-10)
+prep_on(occurs-3, DL-phenylalanine-12)
+conj_or(acid-10, DL-phenylalanine-12)
+

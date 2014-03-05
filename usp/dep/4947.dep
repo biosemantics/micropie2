@@ -1,0 +1,4 @@
+det(strains-2, All-1)
+nsubj(grow-3, strains-2)
+advmod(grow-3, rapidly-4)
+

@@ -1,0 +1,9 @@
+prep_to(Resistant-1, chloramphenicol-3)
+nn(G-6, penicillin-5)
+prep_to(Resistant-1, G-6)
+conj_and(chloramphenicol-3, G-6)
+prep_to(Resistant-1, streptomycin-8)
+conj_and(chloramphenicol-3, streptomycin-8)
+prep_to(Resistant-1, vancomycin-11)
+conj_and(chloramphenicol-3, vancomycin-11)
+

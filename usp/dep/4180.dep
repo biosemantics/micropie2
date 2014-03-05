@@ -1,0 +1,13 @@
+conj_and(Grows-1, Grows-1)
+prep_at(Grows-1, 15-3)
+num(˚C-6, 45-5)
+dep(15-3, ˚C-6)
+prep_at(˚C-6, pH-9)
+num(pH-9, 6.5-10)
+tmod(Grows-1, 9.6-12)
+prep_with(Grows-1, 0-16)
+num(NaCl-20, 70-18)
+nn(NaCl-20, g-19)
+dobj(Grows-1, NaCl-20)
+prep_per(NaCl-20, liter-22)
+

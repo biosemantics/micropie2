@@ -1,0 +1,8 @@
+nsubj(sources-8, H2-1)
+conj_and(H2-1, CO2-3)
+nsubj(sources-8, CO2-3)
+cop(sources-8, are-4)
+det(sources-8, the-5)
+amod(sources-8, preferred-6)
+nn(sources-8, energy-7)
+

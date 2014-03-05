@@ -1,0 +1,6 @@
+nsubj(µm-4, Cells-1)
+cop(µm-4, are-2)
+num(µm-4, 1-3-3)
+amod(culture-7, liquid-6)
+prep_in(µm-4, culture-7)
+

@@ -1,0 +1,5 @@
+nn(n.-2, L.-1)
+nn(pig-5, cavia-3)
+nn(pig-5, guinea-4)
+dep(n.-2, pig-5)
+

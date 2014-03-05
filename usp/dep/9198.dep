@@ -1,0 +1,9 @@
+nsubj(use-3, WH7803-1)
+aux(use-3, could-2)
+preconj(ammonium-5, either-4)
+dobj(use-3, ammonium-5)
+dobj(use-3, nitrate-7)
+conj_or(ammonium-5, nitrate-7)
+dobj(use-3, urea-10)
+conj_negcc(ammonium-5, urea-10)
+

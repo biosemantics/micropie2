@@ -1,0 +1,11 @@
+amod(cocci-4, irregular-3)
+prep_to(Regular-1, cocci-4)
+num(µm-8, 1.5-7)
+prep_about(Regular-1, µm-8)
+prep_in(µm-8, diameter-10)
+dep(Regular-1, occurring-12)
+dep(occurring-12, singly-13)
+dep(occurring-12, in-15)
+conj_or(singly-13, in-15)
+pobj(in-15, pairs-16)
+

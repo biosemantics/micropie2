@@ -1,0 +1,6 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(So4a-6, strain-3)
+cop(So4a-6, is-4)
+nn(So4a-6, strain-5)
+

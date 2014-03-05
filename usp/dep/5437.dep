@@ -1,0 +1,11 @@
+amod(medium-4, mineral-3)
+prep_in(Grows-1, medium-4)
+partmod(medium-4, supplemented-5)
+prep_with(supplemented-5, acetate-7)
+nsubj(stimulatory-14, peptones-9)
+nn(extract-12, yeast-11)
+conj_and(peptones-9, extract-12)
+nsubj(stimulatory-14, extract-12)
+cop(stimulatory-14, are-13)
+parataxis(Grows-1, stimulatory-14)
+

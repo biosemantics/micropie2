@@ -1,0 +1,13 @@
+prep_of(Source-1, isolate-3)
+amod(fragment-8, active-5)
+nn(fragment-8, chimney-6)
+nn(fragment-8, wall-7)
+dep(Source-1, fragment-8)
+rcmod(fragment-8, recovered-9)
+det(site-13, a-11)
+amod(site-13, hydrothermal-12)
+prep_from(recovered-9, site-13)
+det(Ridge-17, the-15)
+nn(Ridge-17, Mid-Atlantic-16)
+prep_in(recovered-9, Ridge-17)
+

@@ -1,0 +1,7 @@
+nn(organophilum-2, Methanogenium-1)
+nsubjpass(isolated-5, organophilum-2)
+aux(isolated-5, has-3)
+auxpass(isolated-5, been-4)
+amod(mud-8, marine-7)
+prep_from(isolated-5, mud-8)
+

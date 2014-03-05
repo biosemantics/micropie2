@@ -1,0 +1,4 @@
+nn(reaction-4, spot-3)
+conj_and(Film-1, reaction-4)
+amod(Film-1, negative-5)
+

@@ -1,0 +1,11 @@
+nsubj(µm-8, It-1)
+cop(µm-8, is-2)
+det(µm-8, an-3)
+amod(µm-8, irregular-4)
+nn(µm-8, coccus-5)
+nn(µm-8, ~-6)
+num(µm-8, 1.0-7)
+prep_in(µm-8, diameter-10)
+amod(growth-13, balanced-12)
+prep_during(µm-8, growth-13)
+

@@ -1,0 +1,7 @@
+amod(motile-3, filamentous-2)
+dep(Cells-1, motile-3)
+partmod(Cells-1, lacking-4)
+amod(walls-7, true-5)
+nn(walls-7, cell-6)
+dobj(lacking-4, walls-7)
+

@@ -1,0 +1,9 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(F38-6, strain-3)
+cop(F38-6, is-4)
+nn(F38-6, strain-5)
+amod(NCTC-9, =-8)
+dep(F38-6, NCTC-9)
+dep(NCTC-9, 10192-10)
+

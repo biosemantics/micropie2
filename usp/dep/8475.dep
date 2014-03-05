@@ -1,0 +1,13 @@
+det(content-3, The-1)
+nn(content-3, G+C-2)
+nsubj(\-8, content-3)
+det(DNA-6, the-5)
+prep_of(content-3, DNA-6)
+cop(\-8, is-7)
+dep(mol-11, \-8)
+punct(mol-11, \/-9)
+num(mol-11, 1-10)
+dep(as-13, %-12)
+advmod(determined-14, as-13)
+dep(mol-11, determined-14)
+

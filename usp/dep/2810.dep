@@ -1,0 +1,9 @@
+nn(sulfate-2, Phosphatidylglycerol-1)
+nsubj(contains-8, sulfate-2)
+det(diether-7, a-4)
+amod(diether-7, sulfated-5)
+nn(diether-7, diglycosyl-6)
+conj_and(sulfate-2, diether-7)
+nsubj(contains-8, diether-7)
+advmod(contains-8, Also-9)
+

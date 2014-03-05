@@ -1,0 +1,10 @@
+amod(NaCl-7, medium-3)
+dep(medium-3, containing-4)
+num(%-6, 1.0-5)
+dobj(containing-4, %-6)
+prep_in(Grows-1, NaCl-7)
+num(NaCl-12, 1.5-10)
+nn(NaCl-12, %-11)
+prep_in(Grows-1, NaCl-12)
+conj_negcc(NaCl-7, NaCl-12)
+

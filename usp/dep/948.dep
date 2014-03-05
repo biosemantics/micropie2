@@ -1,0 +1,8 @@
+amod(forms-2, Coccoidal-1)
+amod(nm-7, average-3)
+number(300-6, 250-4)
+dep(300-6, to-5)
+dep(average-3, 300-6)
+dep(forms-2, nm-7)
+prep_in(nm-7, diameter-9)
+

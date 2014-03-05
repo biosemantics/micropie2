@@ -1,0 +1,10 @@
+det(growth-2, No-1)
+det(absence-5, the-4)
+prep_in(growth-2, absence-5)
+amod(sulfur-8, elemental-7)
+prep_of(growth-2, sulfur-8)
+prep_of(growth-2, cystine-10)
+conj_or(sulfur-8, cystine-10)
+prep_of(growth-2, thioglycollate-13)
+conj_or(sulfur-8, thioglycollate-13)
+

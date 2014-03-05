@@ -1,0 +1,5 @@
+amod(solution-2, Hypotonic-1)
+nsubj(water-5, solution-2)
+cop(water-5, is-3)
+amod(water-5, distilled-4)
+

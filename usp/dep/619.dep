@@ -1,0 +1,6 @@
+nn(sp-2, Arthrospira-1)
+dep(sp-2, In-3)
+poss(environment-6, its-4)
+amod(environment-6, natural-5)
+pobj(In-3, environment-6)
+

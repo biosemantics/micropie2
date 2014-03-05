@@ -1,0 +1,5 @@
+nn(streptolydigin-9, ampicillin-3)
+dep(streptolydigin-9, vancomycin-5)
+dep(streptolydigin-9, rifampicin-7)
+prep_to(Resistant-1, streptolydigin-9)
+

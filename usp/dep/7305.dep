@@ -1,0 +1,10 @@
+nn(gelatin-2, Liquefies-1)
+nsubj(produce-5, gelatin-2)
+aux(produce-5, does-3)
+neg(produce-5, not-4)
+dobj(produce-5, sulphide-6)
+nn(indole-9, cysteine-8)
+prep_from(produce-5, indole-9)
+prep_from(produce-5, amylase-11)
+conj_or(indole-9, amylase-11)
+

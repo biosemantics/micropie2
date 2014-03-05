@@ -1,0 +1,4 @@
+prep_to(Resistant-1, rifampicin-3)
+prep_to(Resistant-1, streptolydigin-5)
+conj_and(rifampicin-3, streptolydigin-5)
+

@@ -1,0 +1,5 @@
+nsubj(hydrolyze-4, Catabolizes-1)
+aux(hydrolyze-4, does-2)
+neg(hydrolyze-4, not-3)
+dobj(hydrolyze-4, urea-5)
+

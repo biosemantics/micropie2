@@ -1,0 +1,10 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(234T-6, strain-3)
+cop(234T-6, is-4)
+nn(234T-6, strain-5)
+cop(BAA-425T-10, is-7)
+amod(BAA-425T-10, =-8)
+nn(BAA-425T-10, ATCC-9)
+rcmod(234T-6, BAA-425T-10)
+

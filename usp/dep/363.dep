@@ -1,0 +1,10 @@
+nsubj(stain-2, The-1)
+ccomp(stain-2, reduces-3)
+det(aerobe-6, A-4)
+amod(aerobe-6, facultative-5)
+iobj(reduces-3, aerobe-6)
+amod(iron-8, ferric-7)
+dobj(reduces-3, iron-8)
+amod(conditions-11, anaerobic-10)
+prep_under(iron-8, conditions-11)
+

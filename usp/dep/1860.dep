@@ -1,0 +1,7 @@
+nn(dihydroxylase-2, Arginine-1)
+nsubj(negative-7, dihydroxylase-2)
+nn(tests-5, urease-4)
+conj_and(dihydroxylase-2, tests-5)
+nsubj(negative-7, tests-5)
+cop(negative-7, are-6)
+

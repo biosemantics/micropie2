@@ -1,0 +1,7 @@
+det(fraction-4, The-1)
+nn(fraction-4, core-2)
+nn(fraction-4, lipid-3)
+nsubj(consists-5, fraction-4)
+prep_of(consists-5, GDGTs-7)
+prep_with(GDGTs-7, zero-9)
+

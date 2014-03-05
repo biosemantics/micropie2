@@ -1,0 +1,13 @@
+det(G+C-2, The-1)
+attr(is-7, G+C-2)
+dep(G+C-2, content-3)
+det(DNA-6, the-5)
+prep_of(content-3, DNA-6)
+nsubj(is-7, 25-8)
+cc(25-8, +-9)
+dep(25-8, \-10)
+punct(\-10, \/-11)
+num(mol-13, 1-12)
+dep(\-10, mol-13)
+dep(mol-13, %-14)
+

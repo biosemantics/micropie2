@@ -1,0 +1,7 @@
+det(nasopharynx-5, a-3)
+nn(nasopharynx-5, horse-4)
+prep_from(Isolated-1, nasopharynx-5)
+nn(feces-8, rabbit-7)
+prep_from(Isolated-1, feces-8)
+conj_and(nasopharynx-5, feces-8)
+

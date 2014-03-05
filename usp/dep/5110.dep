@@ -1,0 +1,9 @@
+nn(subunits-2, Glycoprotein-1)
+nsubjpass(found-11, subunits-2)
+det(weight-7, an-4)
+amod(weight-7, apparent-5)
+amod(weight-7, molecular-6)
+prep_with(subunits-2, weight-7)
+prep_of(weight-7, 94000-9)
+auxpass(found-11, are-10)
+

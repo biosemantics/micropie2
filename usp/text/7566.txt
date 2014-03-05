@@ -1,0 +1,1 @@
+Strain 4.03.5 can reduce nitrate to nitrite, but cannot utilize DMSO as an alternative electron acceptor, while strain 8.8.11T cannot utilize either nitrate or DMSO as alternative electron acceptors.

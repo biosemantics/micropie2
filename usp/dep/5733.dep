@@ -1,0 +1,6 @@
+aux(grow-3, to-2)
+dep(Unable-1, grow-3)
+det(absence-6, the-5)
+prep_in(grow-3, absence-6)
+prep_of(absence-6, NaCl-8)
+

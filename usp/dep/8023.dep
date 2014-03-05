@@ -1,0 +1,8 @@
+dep(Ferments-1, protein-2)
+amod(products-5, proteolytic-4)
+dep(Ferments-1, products-5)
+conj_and(protein-2, products-5)
+nn(glucose-8, carbohydrates-7)
+conj_and(protein-2, glucose-8)
+conj_and(products-5, glucose-8)
+

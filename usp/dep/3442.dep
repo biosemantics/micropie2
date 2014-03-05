@@ -1,0 +1,6 @@
+nn(source-4, Nitrogen-1)
+conj_and(Nitrogen-1, carbon-3)
+nn(source-4, carbon-3)
+nn(acids-7, Casamino-6)
+dep(source-4, acids-7)
+

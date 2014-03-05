@@ -1,0 +1,13 @@
+aux(form-3, Does-1)
+neg(form-3, not-2)
+dobj(form-3, indole-4)
+conj_or(form-3, hydrolyse-6)
+dobj(hydrolyse-6, starch-7)
+dobj(hydrolyse-6, gelatin-9)
+conj_or(starch-7, gelatin-9)
+dobj(hydrolyse-6, Tween-11)
+conj_or(starch-7, Tween-11)
+num(Tween-11, 80-12)
+dobj(hydrolyse-6, casein-14)
+conj_or(starch-7, casein-14)
+

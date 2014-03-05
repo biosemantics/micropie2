@@ -1,0 +1,9 @@
+prep_to(Attaches-1, substrate-3)
+amod(pad-7, colorless-5)
+amod(pad-7, mucilaginous-6)
+prep_with(Attaches-1, pad-7)
+det(base-10, the-9)
+prep_at(pad-7, base-10)
+amod(filaments-13, mature-12)
+prep_of(base-10, filaments-13)
+

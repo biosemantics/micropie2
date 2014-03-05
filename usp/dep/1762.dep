@@ -1,0 +1,11 @@
+amod(proteins-2, Wholecell-1)
+nsubj(acidic-4, proteins-2)
+cop(acidic-4, are-3)
+amod(points-7, isoelectric-6)
+prep_with(acidic-4, points-7)
+advmod(points-7, predominantly-8)
+prep_between(points-7, pH-10)
+tmod(acidic-4, 4.2-11)
+tmod(acidic-4, 5.2-13)
+conj_and(4.2-11, 5.2-13)
+

@@ -1,0 +1,7 @@
+nsubj(able-3, Cystine-1)
+cop(able-3, is-2)
+aux(substitute-5, to-4)
+xcomp(able-3, substitute-5)
+amod(sulfur-7, elemental-6)
+dobj(substitute-5, sulfur-7)
+

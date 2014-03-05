@@ -1,0 +1,7 @@
+dobj(Possesses-1, phospholipids-2)
+dep(phospholipids-2, PG-4)
+dep(phospholipids-2, PGP-Me-6)
+conj_and(PG-4, PGP-Me-6)
+dep(phospholipids-2, PGS-8)
+conj_and(PG-4, PGS-8)
+

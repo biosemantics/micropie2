@@ -1,0 +1,12 @@
+amod(lipids-3, Major-1)
+amod(lipids-3, polar-2)
+nsubj(derivatives-8, lipids-3)
+cop(derivatives-8, are-4)
+nn(derivatives-8, C20C20-5)
+conj_and(C20C20-5, C20C25-7)
+nn(derivatives-8, C20C25-7)
+nn(PGP-Me-11, PG-10)
+prep_of(derivatives-8, PGP-Me-11)
+prep_of(derivatives-8, S-DGD-13)
+conj_and(PGP-Me-11, S-DGD-13)
+

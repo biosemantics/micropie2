@@ -1,0 +1,10 @@
+nsubjpass(required-3, Tungsten-1)
+auxpass(required-3, is-2)
+nsubj(serve-8, Formate-4)
+conj_or(Formate-4, hydrogen-6)
+nsubj(serve-8, hydrogen-6)
+aux(serve-8, can-7)
+ccomp(required-3, serve-8)
+nn(substrate-11, growth-10)
+prep_as(serve-8, substrate-11)
+

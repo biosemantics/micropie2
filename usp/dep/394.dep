@@ -1,0 +1,11 @@
+prep_during(produced-7, growth-2)
+nsubjpass(produced-7, H2S-4)
+auxpass(produced-7, is-5)
+neg(produced-7, not-6)
+preconj(presence-11, either-9)
+det(presence-11, the-10)
+prep_in(produced-7, presence-11)
+prep_in(produced-7, absence-13)
+conj_or(presence-11, absence-13)
+prep_of(presence-11, thiosulfate-15)
+

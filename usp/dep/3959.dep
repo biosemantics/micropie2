@@ -1,0 +1,6 @@
+nn(membrane-2, Cell-1)
+nsubj(consists-3, membrane-2)
+nn(lipids-7, isopranyl-5)
+nn(lipids-7, ether-6)
+prep_of(consists-3, lipids-7)
+

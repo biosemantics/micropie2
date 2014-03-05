@@ -1,0 +1,7 @@
+advmod(irregular-2, Highly-1)
+amod(cocci-3, irregular-2)
+nn(width-6, cell-5)
+dep(cocci-3, width-6)
+num(µm-8, 2.6-7)
+dep(width-6, µm-8)
+

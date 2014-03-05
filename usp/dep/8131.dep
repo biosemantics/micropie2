@@ -1,0 +1,4 @@
+nsubj(tolerated-5, Pressure-1)
+num(MPa-4, 25-3)
+prep_of(Pressure-1, MPa-4)
+

@@ -1,0 +1,1 @@
+Metabolizes H2+CO2 to CH4 according to the following equation: 4 H2 + CO2 -> CH4 + 2 H2O.

@@ -1,0 +1,1 @@
+Contains the glycerol diether analogues of phosphatidylglycerol (PG), phosphatidylglycerophosphate (PGP) and a single glycolipid.

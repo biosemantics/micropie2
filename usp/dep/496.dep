@@ -1,0 +1,9 @@
+det(akinetes-2, The-1)
+nsubj(μm-5, akinetes-2)
+cop(μm-5, were-3)
+num(μm-5, 8-10-4)
+prep_in(μm-5, diameter-7)
+num(μm-10, 15-20-9)
+prep_in(μm-5, μm-10)
+conj_and(diameter-7, μm-10)
+

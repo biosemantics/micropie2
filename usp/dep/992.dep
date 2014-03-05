@@ -1,0 +1,7 @@
+nsubj(leads-9, Reduction-1)
+prep_of(Reduction-1, thiosulfate-3)
+det(presence-6, the-5)
+prep_in(thiosulfate-3, presence-6)
+prep_of(presence-6, H2-8)
+prep_to(leads-9, H2S-11)
+

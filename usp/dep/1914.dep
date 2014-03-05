@@ -1,0 +1,11 @@
+amod(growth-2, Anaerobic-1)
+nsubjpass(observed-5, growth-2)
+auxpass(observed-5, is-3)
+neg(observed-5, not-4)
+prep(observed-5, with-6)
+dep(observed-5, either-7)
+conj(observed-5, nitrate-8)
+dobj(nitrate-8, DMSO-10)
+dobj(nitrate-8, arginine-12)
+conj_or(DMSO-10, arginine-12)
+

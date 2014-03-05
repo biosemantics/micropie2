@@ -1,0 +1,12 @@
+nn(lipids-3, Main-1)
+amod(lipids-3, polar-2)
+nsubj(derivatives-8, lipids-3)
+cop(derivatives-8, are-4)
+nn(derivatives-8, C20C20-5)
+conj_and(C20C20-5, C20C25-7)
+nn(derivatives-8, C20C25-7)
+nn(phosphate-13, phosphatidylglycerol-10)
+conj_and(phosphatidylglycerol-10, phosphatidylglycerol-12)
+nn(phosphate-13, phosphatidylglycerol-12)
+prep_of(derivatives-8, phosphate-13)
+

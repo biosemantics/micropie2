@@ -1,0 +1,11 @@
+det(range-3, The-1)
+nn(range-3, pH-2)
+nsubj(7.8-6, range-3)
+cop(7.8-6, is-4)
+number(7.8-6, 6.5-5)
+amod(growth-8, optimum-7)
+nsubj(occurs-9, growth-8)
+rcmod(7.8-6, occurs-9)
+prep_at(occurs-9, pH-11)
+num(pH-11, 7.0-12)
+

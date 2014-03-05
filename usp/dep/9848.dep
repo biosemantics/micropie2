@@ -1,0 +1,13 @@
+aux(grow-3, Did-1)
+neg(grow-3, not-2)
+advmod(grow-3, anaerobically-4)
+advmod(grow-3, even-6)
+det(presence-9, the-8)
+prep_in(even-6, presence-9)
+prep_of(presence-9, sulfur-11)
+prep_in(even-6, nitrate-13)
+conj_or(presence-9, nitrate-13)
+amod(iron-17, ferric-16)
+prep_in(even-6, iron-17)
+conj_or(presence-9, iron-17)
+

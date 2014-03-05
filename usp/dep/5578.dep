@@ -1,0 +1,7 @@
+nsubj(occur-3, Coccoids-1)
+aux(occur-3, may-2)
+dep(occur-3, individually-4)
+dep(occur-3, in-6)
+conj_or(individually-4, in-6)
+pobj(in-6, aggregates-7)
+

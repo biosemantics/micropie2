@@ -1,0 +1,6 @@
+nsubj(starch-2, Hydrolyses-1)
+dobj(starch-2, gelatin-4)
+dobj(starch-2, Tween-6)
+conj_and(gelatin-4, Tween-6)
+num(Tween-6, 80-7)
+

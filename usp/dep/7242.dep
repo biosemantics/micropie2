@@ -1,0 +1,5 @@
+advmod(halophilic-2, Extremely-1)
+dep(lyse-5, halophilic-2)
+nsubj(lyse-5, cells-4)
+prep_in(lyse-5, water-7)
+

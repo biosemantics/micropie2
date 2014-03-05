@@ -1,0 +1,12 @@
+amod(sulfite-8, Elemental-1)
+nn(sulfite-8, sulfur-2)
+dep(sulfite-8, thiosulfate-4)
+dep(sulfite-8, sulfate-6)
+nsubj(support-15, sulfite-8)
+amod(iron-12, ferric-11)
+conj_and(sulfite-8, iron-12)
+nsubj(support-15, iron-12)
+aux(support-15, did-13)
+neg(support-15, not-14)
+dobj(support-15, growth-16)
+

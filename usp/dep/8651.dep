@@ -1,0 +1,10 @@
+amod(filaments-2, Helical-1)
+nn(nm-5, measure-3)
+num(nm-5, 100-200-4)
+dep(filaments-2, nm-5)
+prep_in(nm-5, diameter-7)
+num(um-10, 3-8-9)
+dep(filaments-2, um-10)
+conj_and(nm-5, um-10)
+prep_in(um-10, length-12)
+

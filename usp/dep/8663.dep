@@ -1,0 +1,7 @@
+advmod(pathogenic-2, Experimentally-1)
+det(moth-6, the-4)
+nn(moth-6, wax-5)
+prep_for(pathogenic-2, moth-6)
+nn(mellonella-9, Galleria-8)
+appos(moth-6, mellonella-9)
+

@@ -1,0 +1,8 @@
+nn(products-4, fermentation-3)
+prep_of(Production-1, products-4)
+prep_such_as(Production-1, acetate-7)
+prep_such_as(Production-1, isobutyrate-9)
+conj_and(acetate-7, isobutyrate-9)
+prep_such_as(Production-1, isovalerate-12)
+conj_and(acetate-7, isovalerate-12)
+

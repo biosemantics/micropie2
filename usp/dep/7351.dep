@@ -1,0 +1,12 @@
+nsubjpass(degraded-13, Gelatine-1)
+appos(Gelatine-1, starch-3)
+appos(Gelatine-1, casein-5)
+appos(Gelatine-1, arbutin-7)
+appos(Gelatine-1, esculin-9)
+appos(Gelatine-1, hippurate-11)
+auxpass(degraded-13, are-12)
+nsubjpass(degraded-18, DNA-15)
+auxpass(degraded-18, is-16)
+neg(degraded-18, not-17)
+parataxis(degraded-13, degraded-18)
+

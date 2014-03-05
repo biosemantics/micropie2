@@ -1,0 +1,12 @@
+nsubj(circular-3, Colonies-1)
+cop(circular-3, are-2)
+number(2-5, 1-4)
+num(mm-6, 2-5)
+dep(circular-3, mm-6)
+prep_in(circular-3, diameter-8)
+prep_after(circular-3, incubation-10)
+num(days-13, 10-12)
+prep_for(incubation-10, days-13)
+num(˚C-16, 37-15)
+prep_at(days-13, ˚C-16)
+

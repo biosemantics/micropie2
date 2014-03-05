@@ -1,0 +1,8 @@
+nsubjpass(produced-5, Film-1)
+conj_and(Film-1, spots-3)
+nsubjpass(produced-5, spots-3)
+auxpass(produced-5, are-4)
+nn(agar-9, horse-7)
+nn(agar-9, serum-8)
+prep_on(produced-5, agar-9)
+

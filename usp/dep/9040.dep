@@ -1,0 +1,5 @@
+nn(growth-2, Poor-1)
+prep_by(growth-2, oxidation-4)
+amod(hydrogen-7, molecular-6)
+prep_of(growth-2, hydrogen-7)
+

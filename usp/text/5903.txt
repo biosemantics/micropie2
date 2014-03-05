@@ -1,0 +1,1 @@
+String-like aggregates formed under shaking.

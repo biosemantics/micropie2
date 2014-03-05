@@ -1,0 +1,6 @@
+amod(colonies-4, Typical-1)
+amod(colonies-4, fried-2)
+nn(colonies-4, egg-3)
+nsubjpass(produced-6, colonies-4)
+auxpass(produced-6, are-5)
+

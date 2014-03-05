@@ -1,0 +1,5 @@
+nsubj(produced-2, Acid-1)
+prep_from(produced-2, glucose-4)
+prep_from(produced-2, mannose-6)
+conj_and(glucose-4, mannose-6)
+

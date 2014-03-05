@@ -1,0 +1,7 @@
+nn(gas-2, H2-CO2-1)
+nsubj(support-5, gas-2)
+aux(support-5, did-3)
+neg(support-5, not-4)
+amod(growth-7, autotrophic-6)
+dobj(support-5, growth-7)
+

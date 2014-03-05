@@ -1,0 +1,9 @@
+det(tetraetherlipids-3, The-1)
+amod(tetraetherlipids-3, bis-phytanyl-2)
+nsubjpass(dominated-5, tetraetherlipids-3)
+auxpass(dominated-5, are-4)
+det(component-10, a-7)
+amod(component-10, single-8)
+nn(component-10, phosphoglycolipid-9)
+agent(dominated-5, component-10)
+

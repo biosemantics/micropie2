@@ -1,0 +1,6 @@
+prep_in(Grows-1, pH-3)
+cop(optimum-5, be-4)
+ccomp(Grows-1, optimum-5)
+num(.6-7, 7.2-7-6)
+attr(optimum-5, .6-7)
+

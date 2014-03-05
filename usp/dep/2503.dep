@@ -1,0 +1,10 @@
+amod(conditions-6, anaerobic-3)
+conj_and(anaerobic-3, microaerophilic-5)
+amod(conditions-6, microaerophilic-5)
+prep_under(shows-8, conditions-6)
+ccomp(Grows-1, shows-8)
+advmod(poor-10, extremely-9)
+amod(growth-12, poor-10)
+amod(growth-12, aerobic-11)
+dobj(shows-8, growth-12)
+

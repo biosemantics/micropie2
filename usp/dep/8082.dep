@@ -1,0 +1,9 @@
+advmod(considered-6, Thus-1)
+nn(strain-3, CH1-2)
+nsubjpass(considered-6, strain-3)
+aux(considered-6, should-4)
+auxpass(considered-6, be-5)
+det(piezophile-10, an-8)
+amod(piezophile-10, obligate-9)
+prep_as(considered-6, piezophile-10)
+

@@ -1,0 +1,5 @@
+det(isolates-2, All-1)
+nsubj(anaerobes-5, isolates-2)
+cop(anaerobes-5, were-3)
+amod(anaerobes-5, strict-4)
+

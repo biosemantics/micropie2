@@ -1,0 +1,8 @@
+aux(grow-3, to-2)
+dep(Able-1, grow-3)
+nn(pH-6, pH-5)
+prep_between(grow-3, pH-6)
+dobj(grow-3, 6-7)
+dobj(grow-3, 8-9)
+conj_and(6-7, 8-9)
+

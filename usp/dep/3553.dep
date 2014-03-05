@@ -1,0 +1,7 @@
+det(evidence-2, No-1)
+det(protein-8, a-4)
+amod(protein-8, regular-5)
+amod(protein-8, arrayed-6)
+nn(protein-8, surface-7)
+prep_for(evidence-2, protein-8)
+

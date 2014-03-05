@@ -1,0 +1,7 @@
+nn(colonies-2, Young-1)
+nsubj(convex-5, colonies-2)
+nsubj(white-7, colonies-2)
+cop(convex-5, are-3)
+amod(convex-5, circular-4)
+conj_and(convex-5, white-7)
+

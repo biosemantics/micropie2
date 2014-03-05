@@ -1,0 +1,13 @@
+nsubj(substrates-11, Acetate-1)
+conj_and(Acetate-1, dimethylsulfide-3)
+nsubj(substrates-11, dimethylsulfide-3)
+conj_and(Acetate-1, formate-5)
+nsubj(substrates-11, formate-5)
+conj_and(Acetate-1, H2\/CO2-8)
+nsubj(substrates-11, H2\/CO2-8)
+cop(substrates-11, are-9)
+neg(substrates-11, not-10)
+prep_for(substrates-11, growth-13)
+prep_for(substrates-11, methanogenesis-15)
+conj_and(growth-13, methanogenesis-15)
+

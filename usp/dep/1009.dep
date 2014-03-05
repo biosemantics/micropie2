@@ -1,0 +1,8 @@
+amod(oxidation-4, Facultative-1)
+nn(oxidation-4, anaerobe-2)
+nn(oxidation-4, coupling-3)
+nn(extract-7, yeast-6)
+prep_of(oxidation-4, extract-7)
+nn(reduction-10, Fe-9)
+prep_to(oxidation-4, reduction-10)
+

@@ -1,0 +1,10 @@
+det(lipids-4, The-1)
+amod(lipids-4, major-2)
+amod(lipids-4, polar-3)
+nsubj(phosphatidylglycerol-6, lipids-4)
+cop(phosphatidylglycerol-6, are-5)
+nn(ester-10, phosphatidylglycerol-8)
+nn(ester-10, methyl-9)
+conj_and(phosphatidylglycerol-6, ester-10)
+conj_and(phosphatidylglycerol-6, S2-DGD-12)
+

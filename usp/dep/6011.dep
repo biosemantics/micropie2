@@ -1,0 +1,12 @@
+nsubj(nonmotile-3, Cells-1)
+nsubj(negative-14, Cells-1)
+cop(nonmotile-3, are-2)
+advmod(rods-7, strictly-5)
+amod(rods-7, anaerobic-6)
+conj_and(nonmotile-3, rods-7)
+amod(ends-10, flat-9)
+prep_with(rods-7, ends-10)
+cop(negative-14, are-12)
+npadvmod(negative-14, gram-13)
+conj_and(nonmotile-3, negative-14)
+

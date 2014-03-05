@@ -1,0 +1,7 @@
+nsubj(serve-6, Formate-1)
+conj_and(Formate-1, acetate-3)
+nsubj(serve-6, acetate-3)
+aux(serve-6, do-4)
+neg(serve-6, not-5)
+prep_as(serve-6, substrates-8)
+

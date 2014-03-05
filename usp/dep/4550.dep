@@ -1,0 +1,5 @@
+nsubj(resistant-3, Cells-1)
+cop(resistant-3, are-2)
+prep_to(resistant-3, lysis-5)
+prep_by(resistant-3, SDS-7)
+

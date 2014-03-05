@@ -1,0 +1,4 @@
+prep_to(Resistant-1, streptomycin-3)
+prep_to(Resistant-1, vancomycin-5)
+conj_and(streptomycin-3, vancomycin-5)
+

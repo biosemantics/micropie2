@@ -1,0 +1,12 @@
+det(growth-2, No-1)
+number(°-5, 80-4)
+prep_at(growth-2, °-5)
+nn(composition-9, C.-6)
+nn(composition-9, DNA-7)
+nn(composition-9, base-8)
+dep(growth-2, composition-9)
+number(mol-11, 60-10)
+num(%-12, mol-11)
+nn(GC-13, %-12)
+dep(composition-9, GC-13)
+

@@ -1,0 +1,13 @@
+num(isolation-2, One-1)
+nsubjpass(reported-10, isolation-2)
+det(serotype-7, a-4)
+nn(serotype-7, strain-5)
+nn(serotype-7, VIS-6)
+prep_of(isolation-2, serotype-7)
+aux(reported-10, has-8)
+auxpass(reported-10, been-9)
+det(sinuses-14, the-12)
+amod(sinuses-14, nasal-13)
+prep_from(reported-10, sinuses-14)
+prep_of(sinuses-14, goats-16)
+

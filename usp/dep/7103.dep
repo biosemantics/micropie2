@@ -1,0 +1,7 @@
+nsubj(have-5, Colonies-1)
+amod(medium-4, solid-3)
+prep_on(Colonies-1, medium-4)
+det(appearance-8, a-6)
+amod(appearance-8, fried-egg-7)
+dobj(have-5, appearance-8)
+

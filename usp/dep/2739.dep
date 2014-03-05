@@ -1,0 +1,5 @@
+nn(activity-2, A-galactosidase-1)
+nsubj(b-Galactosidase-positive-5, activity-2)
+cop(b-Galactosidase-positive-5, is-3)
+npadvmod(b-Galactosidase-positive-5, variable-4)
+

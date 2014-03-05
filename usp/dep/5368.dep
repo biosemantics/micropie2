@@ -1,0 +1,12 @@
+nsubjpass(utilized-10, Methanol-1)
+conj_and(Methanol-1, methylamines-3)
+nsubjpass(utilized-10, methylamines-3)
+conj_and(Methanol-1, ethanol-5)
+nsubjpass(utilized-10, ethanol-5)
+conj_and(Methanol-1, acetate-7)
+nsubjpass(utilized-10, acetate-7)
+auxpass(utilized-10, are-8)
+neg(utilized-10, not-9)
+amod(substrates-13, catabolic-12)
+prep_as(utilized-10, substrates-13)
+

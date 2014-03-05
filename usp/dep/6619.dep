@@ -1,0 +1,8 @@
+amod(isolation-2, Primary-1)
+nsubj(requires-3, isolation-2)
+num(±-5, 3-4)
+dobj(requires-3, ±-5)
+num(weeks-7, 6-6)
+tmod(±-5, weeks-7)
+prep_of(±-5, incubation-9)
+

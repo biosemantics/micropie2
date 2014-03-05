@@ -1,0 +1,7 @@
+amod(cocci-2, Irregular-1)
+nn(diameter-5, cell-4)
+appos(cocci-2, diameter-5)
+num(µm-8, 1.0-1-6)
+num(µm-8, .5-7)
+dep(diameter-5, µm-8)
+

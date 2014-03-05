@@ -1,0 +1,9 @@
+conj_and(Gram-negative-1, non-motile-3)
+conj_and(Gram-negative-1, short-rod-shaped-5)
+dep(short-rod-shaped-5, 1.80-7)
+dep(1.80-7, 2.25-9)
+dep(1.80-7, 2.25-11)
+conj_x(2.25-9, 2.25-11)
+num(µm-14, 2.80-13)
+dep(1.80-7, µm-14)
+

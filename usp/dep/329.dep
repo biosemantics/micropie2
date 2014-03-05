@@ -1,0 +1,4 @@
+nn(fraction-3, Core-1)
+nn(fraction-3, lipid-2)
+nsubj(contains-4, fraction-3)
+

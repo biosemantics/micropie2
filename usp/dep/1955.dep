@@ -1,0 +1,9 @@
+nsubj(convex-6, Colonies-1)
+cop(convex-6, are-2)
+amod(convex-6, pink-3)
+amod(convex-6, circular-4)
+amod(convex-6, opaque-5)
+det(margin-10, an-8)
+amod(margin-10, entire-9)
+prep_with(convex-6, margin-10)
+

@@ -1,0 +1,8 @@
+prep_to(Sensitive-1, rifampin-3)
+conj_and(Sensitive-1, insensitive-5)
+prep_to(insensitive-5, chloramphenicol-7)
+prep_to(insensitive-5, kanamycin-9)
+conj_and(chloramphenicol-7, kanamycin-9)
+prep_to(insensitive-5, penicillin-12)
+conj_and(chloramphenicol-7, penicillin-12)
+

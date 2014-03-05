@@ -1,0 +1,1 @@
+Cells lyse in medium with less than 1.5 M NaCl.

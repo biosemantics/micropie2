@@ -1,0 +1,12 @@
+nsubj(red-3, Colonies-1)
+nsubj(circular-5, Colonies-1)
+cop(red-3, are-2)
+conj_and(red-3, circular-5)
+det(margin-9, an-7)
+amod(margin-9, entire-8)
+prep_with(red-3, margin-9)
+det(surface-13, a-11)
+amod(surface-13, shiny-12)
+prep_with(red-3, surface-13)
+conj_and(margin-9, surface-13)
+

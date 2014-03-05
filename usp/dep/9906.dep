@@ -1,0 +1,5 @@
+det(hotspring-4, a-3)
+prep_from(Isolated-1, hotspring-4)
+nn(Iceland-8, Kerlingarfjoll-6)
+prep_in(hotspring-4, Iceland-8)
+

@@ -1,0 +1,7 @@
+det(range-3, The-1)
+nn(range-3, temperature-2)
+nsubj(C.-7, range-3)
+cop(C.-7, is-4)
+number(°-6, 20-55-5)
+num(C.-7, °-6)
+

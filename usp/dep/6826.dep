@@ -1,0 +1,6 @@
+nn(leocaptivus-3, M.L.-1)
+nn(leocaptivus-3, adj.-2)
+nsubj(lion-6, leocaptivus-3)
+cop(lion-6, is-4)
+amod(lion-6, captive-5)
+

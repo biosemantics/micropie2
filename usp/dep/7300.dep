@@ -1,0 +1,5 @@
+nn(sources-2, Carbon-1)
+nn(acids-4, Casamino-3)
+dep(sources-2, acids-4)
+dep(acids-4, lactose-5)
+

@@ -1,0 +1,7 @@
+amod(bodies-2, Coccoid-1)
+nsubj(be-3, bodies-2)
+xcomp(be-3, occurring-4)
+advmod(occurring-4, mostly-5)
+amod(aggregates-8, irregular-7)
+prep_in(occurring-4, aggregates-8)
+

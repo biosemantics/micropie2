@@ -1,0 +1,5 @@
+nsubj(has-2, Its-1)
+nn(sequence-5, 16S-3)
+nn(sequence-5, rRNA-4)
+dobj(has-2, sequence-5)
+

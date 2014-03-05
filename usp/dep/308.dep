@@ -1,0 +1,11 @@
+nn(product-2, Growth-1)
+nsubj(lactate-10, product-2)
+prep_from(product-2, sugars-4)
+cop(lactate-10, are-5)
+nn(lactate-10, acetate-6)
+dep(lactate-10, ethanol-8)
+det(presence-15, the-14)
+prep_in(lactate-10, presence-15)
+prep_of(presence-15, S˚-17)
+conj_and(lactate-10, H2S-19)
+

@@ -1,0 +1,6 @@
+nn(Methane-2, C.-1)
+nsubjpass(formed-4, Methane-2)
+auxpass(formed-4, is-3)
+num(°-6, 97-5)
+dobj(formed-4, °-6)
+

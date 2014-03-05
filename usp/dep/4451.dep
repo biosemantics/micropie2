@@ -1,0 +1,11 @@
+nn(OCP-3, Reference-1)
+nn(OCP-3, strains-2)
+nsubjpass(isolated-7, OCP-3)
+conj_and(OCP-3, AK-87-5)
+nsubjpass(isolated-7, AK-87-5)
+auxpass(isolated-7, were-6)
+prep_from(isolated-7, enrichments-9)
+amod(contents-13, bovine-11)
+nn(contents-13, rumen-12)
+prep_of(enrichments-9, contents-13)
+

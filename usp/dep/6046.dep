@@ -1,0 +1,9 @@
+nn(colonies-2, Surface-1)
+nsubj(yellow-5, colonies-2)
+cop(yellow-5, are-3)
+amod(yellow-5, pale-4)
+dep(yellow-5, circular-7)
+conj_and(yellow-5, convex-10)
+amod(edges-13, entire-12)
+prep_with(convex-10, edges-13)
+

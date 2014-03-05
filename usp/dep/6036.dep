@@ -1,0 +1,6 @@
+advmod(motile-2, Slowly-1)
+nn(flagella-7, one-4)
+conj_or(one-4, two-6)
+nn(flagella-7, two-6)
+prep_by(motile-2, flagella-7)
+

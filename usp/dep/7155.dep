@@ -1,0 +1,10 @@
+nn(erythrocytes-3, Guinea-1)
+nn(erythrocytes-3, pig-2)
+nsubjpass(hemadsorbed-5, erythrocytes-3)
+auxpass(hemadsorbed-5, are-4)
+nn(erythrocytes-9, chicken-8)
+nsubjpass(hemadsorbed-12, erythrocytes-9)
+auxpass(hemadsorbed-12, are-10)
+neg(hemadsorbed-12, not-11)
+conj_but(hemadsorbed-5, hemadsorbed-12)
+

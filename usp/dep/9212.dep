@@ -1,0 +1,8 @@
+nn(WH8103-2, Strain-1)
+dep(WH8103-2, μmax-4)
+amod(μmax-4, =-5)
+number(±-7, 1.0-6)
+dep(μmax-4, ±-7)
+num(d-1-9, 0.1-8)
+dep(±-7, d-1-9)
+

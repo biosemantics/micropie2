@@ -1,0 +1,7 @@
+nsubjpass(reduced-5, Nitrate-1)
+conj_and(Nitrate-1, nitrite-3)
+nsubjpass(reduced-5, nitrite-3)
+auxpass(reduced-5, are-4)
+nn(production-8, gas-7)
+prep_with(reduced-5, production-8)
+

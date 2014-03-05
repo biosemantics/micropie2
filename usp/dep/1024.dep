@@ -1,0 +1,13 @@
+advmod(chemolithoautotrophic-2, Strictly-1)
+dep(found-9, chemolithoautotrophic-2)
+det(compounds-6, no-4)
+amod(compounds-6, organic-5)
+nsubjpass(found-9, compounds-6)
+aux(found-9, have-7)
+auxpass(found-9, been-8)
+nsubjpass(used-12, that-10)
+auxpass(used-12, are-11)
+ccomp(found-9, used-12)
+nn(sources-15, carbon-14)
+prep_as(used-12, sources-15)
+

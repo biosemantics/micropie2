@@ -1,0 +1,8 @@
+aux(hydrolyze-3, Does-1)
+neg(hydrolyze-3, not-2)
+dobj(hydrolyze-3, arginine-4)
+dobj(hydrolyze-3, urea-6)
+conj_or(arginine-4, urea-6)
+dobj(hydrolyze-3, arbutin-9)
+conj_or(arginine-4, arbutin-9)
+

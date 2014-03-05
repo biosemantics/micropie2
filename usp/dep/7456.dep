@@ -1,0 +1,11 @@
+nsubj(mm-8, Colonies-1)
+cop(mm-8, are-2)
+amod(red-4, bright-3)
+amod(mm-8, red-4)
+amod(mm-8, circular-5)
+number(.0-7, 1.0-2-6)
+num(mm-8, .0-7)
+prep_in(mm-8, diameter-10)
+prep_in(mm-8, convex-12)
+conj_and(diameter-10, convex-12)
+

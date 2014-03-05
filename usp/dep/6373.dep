@@ -1,0 +1,8 @@
+nn(range-2, PH-1)
+nsubj(.0-5, range-2)
+cop(.0-5, is-3)
+num(.0-5, 5.0-8-4)
+prep(.0-5, optimum-6)
+num(.4-8, 6.8-7-7)
+dep(optimum-6, .4-8)
+

@@ -1,0 +1,9 @@
+aux(use-3, to-2)
+dep(Unable-1, use-3)
+dobj(use-3, fumarate-4)
+appos(fumarate-4, malate-6)
+dep(Unable-1, nitrate-8)
+conj_or(use-3, nitrate-8)
+nn(acceptors-11, electron-10)
+prep_as(nitrate-8, acceptors-11)
+

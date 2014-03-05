@@ -1,0 +1,11 @@
+amod(lipids-2, Non-hydrolyzed-1)
+nsubj(contain-3, lipids-2)
+det(spot-6, a-4)
+amod(spot-6, main-5)
+dobj(contain-3, spot-6)
+nn(blue-10, TLC-8)
+nn(blue-10, staining-9)
+prep_on(spot-6, blue-10)
+prep_instead_of(blue-10, violet-14)
+prep_by(contain-3, anisaldehyde-17)
+

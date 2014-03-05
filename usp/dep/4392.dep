@@ -1,0 +1,12 @@
+det(Zellkulturen-9, the-3)
+nn(Zellkulturen-9, Deutsche-4)
+nn(Zellkulturen-9, Sammlung-5)
+nn(Zellkulturen-9, von-6)
+nn(Zellkulturen-9, Mikroorganismen-7)
+nn(Zellkulturen-9, und-8)
+prep_in(Deposited-1, Zellkulturen-9)
+appos(Zellkulturen-9, Braunschweig-11)
+dep(Braunschweig-11, Germany-13)
+prep_under(Deposited-1, accession-16)
+dep(accession-16, no-17)
+

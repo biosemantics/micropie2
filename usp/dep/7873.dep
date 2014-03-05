@@ -1,0 +1,7 @@
+nsubj(serve-5, Oxygen-1)
+amod(anaerobic-4, nitrate-3)
+conj_and(Oxygen-1, anaerobic-4)
+nsubj(serve-5, anaerobic-4)
+nn(acceptors-8, electron-7)
+prep_as(serve-5, acceptors-8)
+

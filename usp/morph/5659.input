@@ -1,0 +1,16 @@
+Irregular_JJ
+cocci_NNS
+,_,
+1.0-1_CD
+.5_CD
+µm_NN
+in_IN
+diameter_NN
+,_,
+occurring_VBG
+individually_RB
+or_CC
+in_IN
+aggregates_NNS
+._.
+

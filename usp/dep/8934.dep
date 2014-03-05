@@ -1,0 +1,6 @@
+nsubj(are-2, Cells-1)
+ccomp(are-2, flagellate-3)
+det(flagellum-7, a-5)
+amod(flagellum-7, single-6)
+prep_with(flagellate-3, flagellum-7)
+

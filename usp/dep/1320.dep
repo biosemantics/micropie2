@@ -1,0 +1,5 @@
+nsubj(be-2, Media-1)
+xcomp(be-2, containing-3)
+num(.2-5, 2.5-5-4)
+dobj(containing-3, .2-5)
+

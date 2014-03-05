@@ -1,0 +1,8 @@
+amod(sulfur-2, Elemental-1)
+nsubj(stimulates-3, sulfur-2)
+amod(growth-5, fermentative-4)
+dobj(stimulates-3, growth-5)
+prep_on(stimulates-3, peptides-7)
+amod(vessels-10, closed-9)
+prep_in(peptides-7, vessels-10)
+

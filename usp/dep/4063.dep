@@ -1,0 +1,9 @@
+nsubj(rod-shaped-3, Cells-1)
+nsubj(non-motile-5, Cells-1)
+nsubj(stain-7, Cells-1)
+cop(rod-shaped-3, are-2)
+conj_and(rod-shaped-3, non-motile-5)
+conj_and(rod-shaped-3, stain-7)
+dobj(stain-7, Gram-8)
+amod(Gram-8, negative-9)
+

@@ -1,0 +1,1 @@
+Growth is most rapid in the presence of 0 to 0.04 M NaCl, and no growth occurs at NaCl concentrations higher than 0.4 M.  Optimal growth occurs at pH 6.5 to 7.0, and no growth occurs at pH values lower than 6.0 and higher than 8.0.

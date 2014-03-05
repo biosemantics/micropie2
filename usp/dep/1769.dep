@@ -1,0 +1,13 @@
+det(temperature-3, The-1)
+amod(temperature-3, optimum-2)
+nsubj(˚C-11, temperature-3)
+nn(range-6, pH-5)
+conj_and(temperature-3, range-6)
+nsubj(˚C-11, range-6)
+prep_for(temperature-3, growth-8)
+cop(˚C-11, are-9)
+num(˚C-11, 37-10)
+conj_and(˚C-11, pH-13)
+num(pH-13, 4-14)
+dep(˚C-11, 9-16)
+

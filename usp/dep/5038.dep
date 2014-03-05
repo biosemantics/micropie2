@@ -1,0 +1,11 @@
+nsubj(mesophile-4, It-1)
+cop(mesophile-4, is-2)
+det(mesophile-4, a-3)
+det(optima-8, a-6)
+nn(optima-8, temperature-7)
+prep_with(mesophile-4, optima-8)
+prep(optima-8, of-9)
+pcomp(of-9, about-10)
+num(˚C-12, 35-40-11)
+pobj(about-10, ˚C-12)
+

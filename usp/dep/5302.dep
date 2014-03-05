@@ -1,0 +1,10 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(2373T-6, strain-3)
+cop(2373T-6, is-4)
+nn(2373T-6, DSM-5)
+cop(174T-10, is-7)
+amod(174T-10, =-8)
+nn(174T-10, OCM-9)
+rcmod(2373T-6, 174T-10)
+

@@ -1,0 +1,11 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(9-1-7, strain-3)
+cop(9-1-7, is-4)
+num(9-1-7, 2-5)
+nn(BAA-10, ATCC-9)
+dep(9-1-7, BAA-10)
+dep(BAA-10, 75-11)
+dep(75-11, JCM-13)
+num(JCM-13, 11222-14)
+

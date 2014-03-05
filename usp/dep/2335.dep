@@ -1,0 +1,11 @@
+nsubjpass(hydrolysed-11, Tweens-1)
+num(Tweens-1, 20-2)
+conj_and(Tweens-1, 40-4)
+nsubjpass(hydrolysed-11, 40-4)
+conj_and(Tweens-1, 60-6)
+nsubjpass(hydrolysed-11, 60-6)
+conj_and(Tweens-1, 80-8)
+nsubjpass(hydrolysed-11, 80-8)
+auxpass(hydrolysed-11, are-9)
+neg(hydrolysed-11, not-10)
+

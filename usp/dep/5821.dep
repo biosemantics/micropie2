@@ -1,0 +1,12 @@
+nsubj(yellow-4, Colonies-1)
+nsubj(circular-8, Colonies-1)
+nsubj(shiny-13, Colonies-1)
+cop(yellow-4, are-2)
+amod(yellow-4, whitish-3)
+conj_and(yellow-4, convex-6)
+conj_and(yellow-4, circular-8)
+amod(margin-11, entire-10)
+prep_with(circular-8, margin-11)
+conj_and(yellow-4, shiny-13)
+dep(yellow-4, surface-14)
+

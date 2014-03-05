@@ -1,0 +1,13 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(4845T-6, strain-3)
+cop(4845T-6, is-4)
+nn(4845T-6, SEBR-5)
+partmod(4845T-6, deposited-7)
+nn(Collection-10, Oregon-9)
+prep_in(deposited-7, Collection-10)
+prep_of(Collection-10, Methanogens-12)
+amod(470T-16, =-14)
+nn(470T-16, OCM-15)
+appos(Methanogens-12, 470T-16)
+

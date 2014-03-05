@@ -1,0 +1,7 @@
+det(growth-3, No-1)
+amod(growth-3, autotrophic-2)
+nsubjpass(observed-5, growth-3)
+auxpass(observed-5, was-4)
+xcomp(observed-5, using-6)
+dobj(using-6, H2\/CO2-7)
+

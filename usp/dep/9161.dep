@@ -1,0 +1,9 @@
+nn(lipids-3, core-2)
+nsubj(calditoglycerocaldarchaeol-4, lipids-3)
+xcomp(Contained-1, calditoglycerocaldarchaeol-4)
+xcomp(Contained-1, caldarchaeol-6)
+conj_and(calditoglycerocaldarchaeol-4, caldarchaeol-6)
+det(ratio-9, a-8)
+prep_at(calditoglycerocaldarchaeol-4, ratio-9)
+prep_of(ratio-9, 8:2-11)
+

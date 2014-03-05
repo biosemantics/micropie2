@@ -1,0 +1,6 @@
+aux(use-3, Did-1)
+neg(use-3, not-2)
+dobj(use-3, acetate-4)
+amod(substrate-7, catabolic-6)
+prep_as(use-3, substrate-7)
+

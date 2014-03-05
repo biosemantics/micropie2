@@ -1,0 +1,6 @@
+det(cells-3, The-1)
+amod(cells-3, membrane-bound-2)
+nsubj(lack-4, cells-3)
+nn(walls-6, cell-5)
+dobj(lack-4, walls-6)
+

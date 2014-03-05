@@ -1,0 +1,5 @@
+amod(bacteria-2, Autotrophic-1)
+nsubj(perform-3, bacteria-2)
+amod(photosynthesis-5, oxygenic-4)
+dobj(perform-3, photosynthesis-5)
+

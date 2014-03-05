@@ -1,0 +1,12 @@
+prep_to(Sensitive-1, rifampicin-3)
+conj_but(Sensitive-1, resistant-6)
+prep_to(Sensitive-1, novobiocin-8)
+prep_to(Sensitive-1, chloramphenicol-10)
+conj_and(novobiocin-8, chloramphenicol-10)
+prep_to(Sensitive-1, streptomycin-12)
+conj_and(novobiocin-8, streptomycin-12)
+prep_to(Sensitive-1, tetracycline-14)
+conj_and(novobiocin-8, tetracycline-14)
+prep_to(Sensitive-1, ampicillin-16)
+conj_and(novobiocin-8, ampicillin-16)
+

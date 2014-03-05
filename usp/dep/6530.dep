@@ -1,0 +1,7 @@
+amod(coccus-2, Irregular-1)
+nsubj(mean-4, coccus-2)
+dobj(mean-4, diameter-5)
+prep_of(diameter-5, 0.8-7)
+num(µm-10, 1.5-9)
+dep(diameter-5, µm-10)
+

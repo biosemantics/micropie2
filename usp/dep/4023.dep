@@ -1,0 +1,4 @@
+dep(absent-4, Flagella-1)
+conj_and(Flagella-1, spores-3)
+dep(absent-4, spores-3)
+

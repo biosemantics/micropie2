@@ -1,0 +1,13 @@
+nsubjpass(used-6, Serine-1)
+conj_and(Serine-1, glycine-3)
+nsubjpass(used-6, glycine-3)
+auxpass(used-6, are-4)
+neg(used-6, not-5)
+amod(sources-14, sole-8)
+nn(sources-14, carbon-9)
+conj_or(carbon-9, nitrogen-11)
+nn(sources-14, nitrogen-11)
+conj_or(carbon-9, energy-13)
+nn(sources-14, energy-13)
+prep_as(used-6, sources-14)
+

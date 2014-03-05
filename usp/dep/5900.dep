@@ -1,0 +1,10 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(4847T-6, strain-3)
+cop(4847T-6, is-4)
+nn(4847T-6, SEBR-5)
+cop(=-8, is-7)
+rcmod(4847T-6, =-8)
+dep(=-8, OCM-9)
+num(OCM-9, 486-10)
+

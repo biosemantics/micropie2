@@ -1,0 +1,5 @@
+amod(Lake-3, Great-1)
+nn(Lake-3, Salt-2)
+nsubj(Utah-5, Lake-3)
+cop(Utah-5, is-4)
+

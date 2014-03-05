@@ -1,0 +1,6 @@
+advmod(non-motile-6, Irregularly-1)
+amod(cells-3, coccoid-2)
+nsubj(non-motile-6, cells-3)
+dep(cells-3, 1.5-4)
+cop(non-motile-6, is-5)
+

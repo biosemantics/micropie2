@@ -1,0 +1,13 @@
+det(colony-3, A-1)
+amod(colony-3, typical-2)
+nsubjpass(picked-5, colony-3)
+nsubjpass(inoculated-11, colony-3)
+auxpass(picked-5, was-4)
+det(needle-9, a-7)
+nn(needle-9, platinum-iridium-8)
+prep_with(picked-5, needle-9)
+conj_and(picked-5, inoculated-11)
+nn(medium-14, slant-13)
+prep_into(inoculated-11, medium-14)
+agent(picked-5, stabbing-16)
+

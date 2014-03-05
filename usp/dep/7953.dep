@@ -1,0 +1,8 @@
+amod(growth-2, Lithoautotrophic-1)
+nn(CO2-6, H2-4)
+nn(sulfur-9, CO2-6)
+conj_and(CO2-6, elemental-8)
+nn(sulfur-9, elemental-8)
+prep_on(growth-2, sulfur-9)
+prep_by(sulfur-9, H2\/S-autotrophy-11)
+

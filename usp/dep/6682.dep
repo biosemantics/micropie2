@@ -1,0 +1,11 @@
+amod(filters-4, 300-nm-pore-size-3)
+prep_through(Filterable-1, filters-4)
+det(loss-7, some-6)
+nn(filters-15, loss-7)
+prep_of(loss-7, viability-9)
+neg(filterable-12, not-11)
+conj_but(loss-7, filterable-12)
+nn(filters-15, filterable-12)
+prep_through(filterable-12, 220-nm-pore-size-14)
+prep_with(Filterable-1, filters-15)
+

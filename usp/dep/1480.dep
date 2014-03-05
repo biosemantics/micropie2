@@ -1,0 +1,9 @@
+advmod(Grows-1, anaerobically-2)
+det(presence-5, the-4)
+prep_in(Grows-1, presence-5)
+prep_of(presence-5, L-arginine-7)
+prep_of(presence-5, nitrate-9)
+conj_and(L-arginine-7, nitrate-9)
+prep_of(presence-5, DMSO-11)
+conj_and(L-arginine-7, DMSO-11)
+

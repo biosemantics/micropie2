@@ -1,0 +1,17 @@
+Growth_NN
+conditions_NNS
+:_:
+temperature_NN
+36-45_CD
+˚C_NN
+,_,
+pH_NN
+6.5-9_CD
+.2_NN
+,_,
+salinity_NN
+0.2-1-4_CD
+M_NN
+NaCl_NN
+._.
+

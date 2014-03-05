@@ -1,0 +1,5 @@
+nsubjpass(produced-5, H2S-1)
+conj_and(H2S-1, CO2-3)
+nsubjpass(produced-5, CO2-3)
+auxpass(produced-5, are-4)
+

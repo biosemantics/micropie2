@@ -1,0 +1,5 @@
+nn(lysis-2, Cell-1)
+nsubj(occurs-3, lysis-2)
+amod(treatment-6, hypotonic-5)
+prep_upon(occurs-3, treatment-6)
+

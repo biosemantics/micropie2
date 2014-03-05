@@ -1,0 +1,12 @@
+nsubj(be-2, Media-1)
+xcomp(be-2, containing-3)
+number(%-6, 10-4)
+number(%-6, 30-5)
+amod(NaCl-7, %-6)
+dobj(containing-3, NaCl-7)
+det(optimum-10, an-9)
+prep_with(containing-3, optimum-10)
+number(%-13, 25-12)
+amod(NaCl-14, %-13)
+prep_at(optimum-10, NaCl-14)
+

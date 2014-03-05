@@ -1,0 +1,8 @@
+nn(S-DGA-1-2, Lipids-1)
+nsubj(present-8, S-DGA-1-2)
+nn(PGP-Me-4, DGA-1-3)
+dep(S-DGA-1-2, PGP-Me-4)
+dep(S-DGA-1-2, PG-6)
+conj_and(PGP-Me-4, PG-6)
+cop(present-8, are-7)
+

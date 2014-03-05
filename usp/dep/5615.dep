@@ -1,0 +1,13 @@
+det(organism-2, The-1)
+nsubj(require-5, organism-2)
+nsubj(does-12, organism-2)
+aux(require-5, does-3)
+neg(require-5, not-4)
+nn(extract-7, yeast-6)
+dobj(require-5, extract-7)
+dobj(require-5, Trypticase-9)
+conj_or(extract-7, Trypticase-9)
+conj_but(require-5, does-12)
+ccomp(does-12, require-13)
+dobj(require-13, acetate-14)
+

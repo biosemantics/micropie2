@@ -1,0 +1,5 @@
+nsubj(pigmented-5, Colonies-1)
+cop(pigmented-5, are-2)
+amod(red-4, orange-3)
+dep(pigmented-5, red-4)
+

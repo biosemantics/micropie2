@@ -1,0 +1,9 @@
+det(spring-5, a-3)
+amod(spring-5, hot-4)
+prep_from(Isolated-1, spring-5)
+nn(Maquiling-8, Mt-7)
+prep_on(Isolated-1, Maquiling-8)
+appos(Maquiling-8, Laguna-10)
+det(Philippines-13, the-12)
+dep(Isolated-1, Philippines-13)
+

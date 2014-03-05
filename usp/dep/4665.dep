@@ -1,0 +1,8 @@
+amod(strains-5, other-3)
+nn(strains-5, Methanocaldococcus-4)
+prep_from(Distinguished-1, strains-5)
+prep_by(Distinguished-1, comparison-7)
+amod(patterns-11, whole-cell-9)
+nn(patterns-11, protein-10)
+prep_of(comparison-7, patterns-11)
+

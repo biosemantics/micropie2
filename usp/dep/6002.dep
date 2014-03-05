@@ -1,0 +1,6 @@
+nsubj(exclusive-4, Acetate-1)
+cop(exclusive-4, is-2)
+det(exclusive-4, the-3)
+partmod(exclusive-4, tested-5)
+dobj(tested-5, substrate-6)
+

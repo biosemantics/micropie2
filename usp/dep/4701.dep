@@ -1,0 +1,4 @@
+advmod(defined-3, autotrophically-2)
+dep(Grows-1, defined-3)
+dep(defined-3, medium-4)
+

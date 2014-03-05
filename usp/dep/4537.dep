@@ -1,0 +1,7 @@
+amod(water-10, medium-3)
+nn(concentrations-6, salt-5)
+prep_with(medium-3, concentrations-6)
+amod(water-10, similar-7)
+prep_to(similar-7, sea-9)
+prep_in(Grows-1, water-10)
+

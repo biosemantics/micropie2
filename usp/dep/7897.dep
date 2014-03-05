@@ -1,0 +1,9 @@
+nsubjpass(obtained-3, Isolates-1)
+auxpass(obtained-3, were-2)
+prepc_from(obtained-3, boiling-5)
+amod(waters-9, solfataric-6)
+conj_and(solfataric-6, geothermal-8)
+amod(waters-9, geothermal-8)
+dobj(boiling-5, waters-9)
+prep_in(boiling-5, Iceland-11)
+

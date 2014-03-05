@@ -1,0 +1,12 @@
+nn(turonicum-2, adj.-1)
+nsubjpass(isolated-16, turonicum-2)
+prep_of(turonicum-2, Touraine-4)
+det(province-7, the-6)
+rcmod(turonicum-2, province-7)
+prep_in(province-7, France-9)
+prep_from(province-7, which-11)
+det(organism-13, the-12)
+dep(turonicum-2, organism-13)
+auxpass(isolated-16, was-14)
+advmod(isolated-16, first-15)
+

@@ -1,0 +1,8 @@
+det(source-2, The-1)
+nsubj(Spring-7, source-2)
+prep_of(source-2, isolation-4)
+cop(Spring-7, was-5)
+nn(Spring-7, Dragon-6)
+cop(WY-9, is-8)
+rcmod(Spring-7, WY-9)
+

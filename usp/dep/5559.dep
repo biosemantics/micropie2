@@ -1,0 +1,8 @@
+nn(H2-CO2-2, Acetate-1)
+nsubjpass(utilized-8, H2-CO2-2)
+amod(alcohols-5, secondary-4)
+conj_and(H2-CO2-2, alcohols-5)
+nsubjpass(utilized-8, alcohols-5)
+auxpass(utilized-8, are-6)
+neg(utilized-8, not-7)
+

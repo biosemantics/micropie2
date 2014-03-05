@@ -1,0 +1,6 @@
+det(rate-4, The-1)
+nn(rate-4, maximum-2)
+nn(rate-4, growth-3)
+nn(sp-7, Synechococcus-6)
+prep_of(rate-4, sp-7)
+

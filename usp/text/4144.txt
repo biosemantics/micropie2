@@ -1,0 +1,1 @@
+Utilizes both H2/CO2 and formate for methane production.

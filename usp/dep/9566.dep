@@ -1,0 +1,9 @@
+nn(cells-2, KOD1-1)
+nsubj(cocci-5, cells-2)
+cop(cocci-5, are-3)
+amod(cocci-5, irregular-4)
+det(diameter-8, a-7)
+prep_with(cocci-5, diameter-8)
+quantmod(1mm-11, approximately-10)
+prep_of(diameter-8, 1mm-11)
+

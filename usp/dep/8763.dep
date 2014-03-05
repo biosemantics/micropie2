@@ -1,0 +1,8 @@
+nsubj(filaments-5, Cells-1)
+cop(filaments-5, are-2)
+amod(filaments-5, motile-3)
+amod(filaments-5, helical-4)
+num(nm-7, 200-250-6)
+dep(filaments-5, nm-7)
+prep_in(nm-7, diameter-9)
+

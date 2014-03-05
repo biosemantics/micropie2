@@ -1,0 +1,6 @@
+nsubj(serve-3, Sulfide-1)
+aux(serve-3, may-2)
+det(source-7, the-5)
+nn(source-7, sulfur-6)
+prep_as(serve-3, source-7)
+

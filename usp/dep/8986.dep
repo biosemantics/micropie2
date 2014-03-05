@@ -1,0 +1,6 @@
+nsubj(have-2, Cells-1)
+amod(edges-4, sharp-3)
+dobj(have-2, edges-4)
+dobj(have-2, bends-6)
+conj_and(edges-4, bends-6)
+

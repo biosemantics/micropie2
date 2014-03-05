@@ -1,0 +1,7 @@
+nn(range-2, PH-1)
+prep_of(range-2, growth-4)
+prep_from(range-2, pH-6)
+number(8-9, 3-7)
+dep(8-9, to-8)
+num(pH-6, 8-9)
+

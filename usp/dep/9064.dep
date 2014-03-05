@@ -1,0 +1,9 @@
+nsubj(irregular-3, Cells-1)
+cop(irregular-3, are-2)
+nn(µm-6, cocci-4)
+num(µm-6, 1.2-5)
+dep(irregular-3, µm-6)
+det(diameter-9, a-8)
+prep_with(µm-6, diameter-9)
+prep_of(diameter-9, 1.0-11)
+

@@ -1,0 +1,1 @@
+Cells lyse at NaCl concentrations less than 1.5 M.  Growth occurs between 1.5 M and at least 4.5 M NaCl.

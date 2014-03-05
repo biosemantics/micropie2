@@ -1,0 +1,9 @@
+nn(strain-2, Type-1)
+dep(strain-2, CR-1-4)
+amod(ATCC-7, =-6)
+dep(CR-1-4, ATCC-7)
+npadvmod(=-9, 33837-8)
+amod(ATCC-7, =-9)
+dep(ATCC-7, DSM-10)
+num(DSM-10, 2373-11)
+

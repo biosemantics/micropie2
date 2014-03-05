@@ -1,0 +1,6 @@
+quantmod(1-3, Up-1)
+dep(1-3, to-2)
+num(mm-4, 1-3)
+dep(diameter-6, in-5)
+amod(mm-4, diameter-6)
+

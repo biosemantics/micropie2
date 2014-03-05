@@ -1,0 +1,7 @@
+nsubj(form-2, Cells-1)
+dobj(form-2, aggregates-3)
+quantmod(ten-7, up-5)
+dep(ten-7, to-6)
+num(cells-8, ten-7)
+prep_of(aggregates-3, cells-8)
+

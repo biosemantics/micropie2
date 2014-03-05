@@ -1,0 +1,11 @@
+nsubj(suspect-2, We-1)
+dobj(suspect-2, carbon-3)
+aux(factor-8, to-4)
+cop(factor-8, be-5)
+det(factor-8, the-6)
+amod(factor-8, controlling-7)
+xcomp(suspect-2, factor-8)
+nn(development-11, UCYN-A-10)
+xcomp(suspect-2, development-11)
+conj_or(factor-8, development-11)
+

@@ -1,0 +1,7 @@
+nn(genitalia-2, n.-1)
+det(genitals-5, the-4)
+appos(genitalia-2, genitals-5)
+nn(L.-8, M.-7)
+dep(genitalia-2, L.-8)
+dep(L.-8, pl-9)
+

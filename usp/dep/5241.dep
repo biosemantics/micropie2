@@ -1,0 +1,10 @@
+nn(morphology-2, Colonial-1)
+dep(morphology-2, Circular-4)
+amod(Circular-4, mucoid-6)
+amod(Circular-4, yellow-8)
+conj_and(mucoid-6, yellow-8)
+amod(Circular-4, shiny-10)
+conj_and(mucoid-6, shiny-10)
+amod(Circular-4, convex-13)
+conj_and(mucoid-6, convex-13)
+

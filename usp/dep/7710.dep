@@ -1,0 +1,6 @@
+amod(cocci-2, Irregular-1)
+num(µm-6, 0.5-2-4)
+num(µm-6, .0-5)
+appos(cocci-2, µm-6)
+prep_in(µm-6, diameter-8)
+

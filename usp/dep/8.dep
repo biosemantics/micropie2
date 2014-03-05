@@ -1,0 +1,9 @@
+det(n'thum-4, a-1)
+nn(n'thum-4, xa-3)
+amod(a-7, Greek-6)
+dep(n'thum-4, a-7)
+dep(axanthus-15, xanthus-11)
+appos(xanthus-11, yellow-13)
+prep_without(n'thum-4, axanthus-15)
+prep_without(n'thum-4, yellow-18)
+

@@ -1,0 +1,10 @@
+nn(deminuere-3, L.-1)
+nn(deminuere-3, verb-2)
+nsubj(make-9, deminuere-3)
+aux(make-6, to-5)
+dep(make-9, make-6)
+dobj(make-6, pieces-7)
+acomp(make-9, smaller-10)
+nn(neut-13, L.-12)
+dobj(make-9, neut-13)
+

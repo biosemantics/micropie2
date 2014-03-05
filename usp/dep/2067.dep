@@ -1,0 +1,12 @@
+quantmod(1-3, At-1)
+mwe(At-1, least-2)
+num(Mg2-5, 1-3)
+nn(Mg2-5, mM-4)
+nsubj(grows-6, Mg2-5)
+dobj(grows-6, best-7)
+num(Mg2-11, 30-9)
+nn(Mg2-11, mM-10)
+prep_at(best-7, Mg2-11)
+conj_+(grows-6, and-13)
+prep(and-13, above-14)
+

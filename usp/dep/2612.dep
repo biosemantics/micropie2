@@ -1,0 +1,11 @@
+nsubj(motile-3, Cells-1)
+cop(motile-3, are-2)
+dep(shaped-6, pleomorphic-5)
+dep(motile-3, shaped-6)
+amod(conditions-10, optimal-8)
+nn(conditions-10, growth-9)
+prep_under(shaped-6, conditions-10)
+dep(motile-3, stain-12)
+conj_and(shaped-6, stain-12)
+acomp(stain-12, Gram-negative-13)
+

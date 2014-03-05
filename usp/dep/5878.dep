@@ -1,0 +1,6 @@
+nsubj(kanamycin-5, Cells-1)
+cop(kanamycin-5, are-2)
+dep(penicillin-4, resistant-3)
+amod(kanamycin-5, penicillin-4)
+conj_and(kanamycin-5, tetracycline-7)
+

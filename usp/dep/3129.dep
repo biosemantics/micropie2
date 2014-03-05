@@ -1,0 +1,12 @@
+nsubj(rods-4, Cells-1)
+cop(rods-4, are-2)
+amod(rods-4, short-3)
+dep(rods-4, 0.8-6)
+dep(0.8-6, 1.2-8)
+dep(0.8-6, 1.8-10)
+conj_x(1.2-8, 1.8-10)
+num(µm-13, 2.6-12)
+dep(0.8-6, µm-13)
+conj_and(rods-4, Gram-16)
+amod(Gram-16, negative-17)
+

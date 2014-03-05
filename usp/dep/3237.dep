@@ -1,0 +1,9 @@
+nn(arginine-4, ferment-3)
+prep_to(Unable-1, arginine-4)
+aux(grow-7, to-6)
+prep_to(Unable-1, grow-7)
+conj_or(arginine-4, grow-7)
+advmod(grow-7, autotrophically-8)
+det(light-11, the-10)
+prep_in(grow-7, light-11)
+

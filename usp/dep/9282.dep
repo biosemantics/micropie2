@@ -1,0 +1,6 @@
+det(pattern-3, The-1)
+nn(pattern-3, lipid-2)
+nsubj(showed-4, pattern-3)
+advmod(phosphoglycolipids-6, only-5)
+dobj(showed-4, phosphoglycolipids-6)
+

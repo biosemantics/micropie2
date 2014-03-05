@@ -1,0 +1,7 @@
+det(species-2, The-1)
+nsubj(distinct-4, species-2)
+cop(distinct-4, is-3)
+amod(species-8, other-6)
+nn(species-8, Mycoplasma-7)
+prep_from(distinct-4, species-8)
+

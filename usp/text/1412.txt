@@ -1,0 +1,1 @@
+Produces acids from raffinose, but not from cellobiose, glycerol, D-glucose, D-sorbitol, or trehalose.

@@ -1,0 +1,11 @@
+det(growth-2, No-1)
+prep_on(growth-2, H2\/CO2-4)
+prep_on(growth-2, formate-6)
+conj_or(H2\/CO2-4, formate-6)
+prep_on(growth-2, acetate-8)
+conj_or(H2\/CO2-4, acetate-8)
+prep_on(growth-2, alcohols-11)
+conj_or(H2\/CO2-4, alcohols-11)
+advmod(growth-2, other-12)
+prep_than(other-12, methanol-14)
+

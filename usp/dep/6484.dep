@@ -1,0 +1,10 @@
+nsubj(susceptible-3, Cells-1)
+cop(susceptible-3, are-2)
+prep_to(susceptible-3, lysis-5)
+number(%-8, 0.1-7)
+amod(SDS-9, %-8)
+prep_by(susceptible-3, SDS-9)
+amod(solutions-12, hypotonic-11)
+prep_by(susceptible-3, solutions-12)
+conj_and(SDS-9, solutions-12)
+

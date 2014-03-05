@@ -1,0 +1,6 @@
+nsubj(support-4, Acetate-1)
+aux(support-4, does-2)
+neg(support-4, not-3)
+nn(production-6, methane-5)
+dobj(support-4, production-6)
+

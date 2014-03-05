@@ -1,0 +1,5 @@
+nsubj(stain-2, Gram-1)
+nsubj(negative-5, results-3)
+cop(negative-5, are-4)
+ccomp(stain-2, negative-5)
+

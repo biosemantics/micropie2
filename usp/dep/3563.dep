@@ -1,0 +1,7 @@
+det(lipids-4, The-1)
+amod(lipids-4, main-2)
+nn(lipids-4, core-3)
+nsubj(archaeol-6, lipids-4)
+cop(archaeol-6, are-5)
+conj_and(archaeol-6, caldarchaeol-8)
+

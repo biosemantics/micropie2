@@ -1,0 +1,6 @@
+nn(lipids-3, Main-1)
+amod(lipids-3, polar-2)
+nsubj(derivatives-6, lipids-3)
+cop(derivatives-6, are-4)
+nn(derivatives-6, C20C20-5)
+

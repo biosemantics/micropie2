@@ -1,0 +1,13 @@
+nn(lipids-7, C20C20-2)
+conj_and(C20C20-2, C20C25-4)
+nn(lipids-7, C20C25-4)
+nn(lipids-7, diether-5)
+nn(lipids-7, core-6)
+nsubj(MK-8-10, lipids-7)
+conj_and(lipids-7, menaquinones-9)
+nsubj(MK-8-10, menaquinones-9)
+xcomp(Possesses-1, MK-8-10)
+xcomp(Possesses-1, MK-8-12)
+conj_and(MK-8-10, MK-8-12)
+appos(MK-8-10, H2-14)
+

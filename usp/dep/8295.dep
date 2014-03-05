@@ -1,0 +1,6 @@
+det(temperature-2, The-1)
+nsubj(32C-7, temperature-2)
+amod(growth-5, optimal-4)
+prep_for(temperature-2, growth-5)
+cop(32C-7, was-6)
+

@@ -1,0 +1,6 @@
+neg(hemadsorb-3, not-2)
+amod(erythrocytes-6, hemadsorb-3)
+nn(erythrocytes-6, guinea-4)
+nn(erythrocytes-6, pig-5)
+dobj(Does-1, erythrocytes-6)
+

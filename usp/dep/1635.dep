@@ -1,0 +1,4 @@
+det(Sea-5, The-3)
+amod(Sea-5, Dead-4)
+dep(Habitat-1, Sea-5)
+

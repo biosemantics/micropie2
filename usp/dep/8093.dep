@@ -1,0 +1,8 @@
+nsubj(cocci-4, Cells-1)
+cop(cocci-4, are-2)
+amod(cocci-4, motile-3)
+number(1.5-6, 1-5)
+num(µm-7, 1.5-6)
+dep(cocci-4, µm-7)
+prep_in(cocci-4, diameter-9)
+

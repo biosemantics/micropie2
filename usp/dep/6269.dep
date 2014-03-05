@@ -1,0 +1,6 @@
+nsubj(be-4, Growth-1)
+num(˚C-3, 35-2)
+dep(Growth-1, ˚C-3)
+xcomp(be-4, occurring-5)
+prep_at(occurring-5, 14-7)
+

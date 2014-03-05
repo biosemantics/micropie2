@@ -1,0 +1,6 @@
+nn(substrates-2, Growth-1)
+nsubj(include-3, substrates-2)
+dobj(include-3, H2\/CO2-4)
+dobj(include-3, formate-6)
+conj_and(H2\/CO2-4, formate-6)
+

@@ -1,0 +1,12 @@
+det(content-5, The-1)
+nn(content-5, mean-2)
+nn(content-5, DNA-3)
+nn(content-5, G+C-4)
+nsubj(%-9, content-5)
+cop(%-9, is-6)
+number(mol-8, 31-7)
+num(%-9, mol-8)
+mark(determined-12, as-11)
+dep(%-9, determined-12)
+prep_by(determined-12, HPLC-14)
+

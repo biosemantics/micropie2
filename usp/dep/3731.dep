@@ -1,0 +1,6 @@
+nn(colonies-2, Agar-1)
+nn(erythrocytes-6, hemadsorb-3)
+nn(erythrocytes-6, guinea-4)
+nn(erythrocytes-6, pig-5)
+dep(colonies-2, erythrocytes-6)
+

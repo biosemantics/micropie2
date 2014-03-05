@@ -1,0 +1,6 @@
+nsubj(lack-2, Lipids-1)
+amod(residues-6, fatty-3)
+nn(residues-6, acid-4)
+nn(residues-6, ester-5)
+dobj(lack-2, residues-6)
+

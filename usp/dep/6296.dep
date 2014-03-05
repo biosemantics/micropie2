@@ -1,0 +1,8 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(JF-1T-5, strain-3)
+cop(JF-1T-5, is-4)
+amod(100397T-8, =-6)
+nn(100397T-8, NBRC-7)
+dep(JF-1T-5, 100397T-8)
+

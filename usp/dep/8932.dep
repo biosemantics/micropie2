@@ -1,0 +1,5 @@
+nsubj(cocci-5, Cells-1)
+cop(cocci-5, are-2)
+amod(cocci-5, gram-negative-3)
+amod(cocci-5, irregular-4)
+

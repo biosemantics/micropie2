@@ -1,0 +1,9 @@
+nsubj(lipoquinones-8, 8-1)
+conj_and(8-1, MK-8-3)
+nsubj(lipoquinones-8, MK-8-3)
+cop(lipoquinones-8, are-4)
+det(lipoquinones-8, the-5)
+amod(lipoquinones-8, only-6)
+amod(lipoquinones-8, respiratory-7)
+amod(lipoquinones-8, present-9)
+

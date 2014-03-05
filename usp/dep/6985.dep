@@ -1,0 +1,4 @@
+amod(growth-2, Optimal-1)
+nsubj(occurs-3, growth-2)
+prep_at(occurs-3, 37C-5)
+

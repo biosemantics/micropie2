@@ -1,0 +1,1 @@
+Cells are not susceptible to lysis by SDS or hypotonic conditions at room temperature, but cells are lysed by SDS at 60°C.  The optimum temperature for growth and methanogenesis is 55 to 60˚C, depending on the strain.

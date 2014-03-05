@@ -1,0 +1,7 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubjpass(isolated-5, strain-3)
+auxpass(isolated-5, be-4)
+nn(rectums-8, rabbit-7)
+prep_from(isolated-5, rectums-8)
+

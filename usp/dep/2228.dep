@@ -1,0 +1,12 @@
+prep_to(Resistant-1, novobiocin-3)
+prep_to(Resistant-1, erythromycin-5)
+conj_and(novobiocin-3, erythromycin-5)
+prep_to(Resistant-1, penicillin-7)
+conj_and(novobiocin-3, penicillin-7)
+prep_to(Resistant-1, ampicillin-9)
+conj_and(novobiocin-3, ampicillin-9)
+prep_to(Resistant-1, chloramphenicol-11)
+conj_and(novobiocin-3, chloramphenicol-11)
+prep_to(Resistant-1, neomycin-13)
+conj_and(novobiocin-3, neomycin-13)
+

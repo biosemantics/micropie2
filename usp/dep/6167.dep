@@ -1,0 +1,11 @@
+prep_in(forms-6, addition-2)
+nn(forms-6, strain-4)
+nn(forms-6, C2J-5)
+amod(aggregates-9, large-7)
+amod(aggregates-9, multicellular-8)
+dep(forms-6, aggregates-9)
+advmod(aggregates-9, up-10)
+num(mm-13, 1-12)
+prep_to(up-10, mm-13)
+prep_in(mm-13, diameter-15)
+

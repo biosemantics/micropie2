@@ -1,0 +1,6 @@
+prep_to(Resistant-1, chloramphenicol-3)
+prep_to(Resistant-1, streptomycin-5)
+conj_and(chloramphenicol-3, streptomycin-5)
+prep_to(Resistant-1, rifampin-7)
+conj_and(chloramphenicol-3, rifampin-7)
+

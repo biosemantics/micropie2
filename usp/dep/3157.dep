@@ -1,0 +1,7 @@
+nsubj(is-2, H2S-1)
+dep(is-2, produced-3)
+nn(thiosulfate-6, sodium-5)
+prep_from(produced-3, thiosulfate-6)
+dep(is-2, positive-8)
+conj_and(produced-3, positive-8)
+

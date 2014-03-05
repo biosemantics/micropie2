@@ -1,0 +1,7 @@
+nn(extract-2, Yeast-1)
+nsubjpass(required-6, extract-2)
+conj_and(extract-2, tungsten-4)
+nsubjpass(required-6, tungsten-4)
+auxpass(required-6, are-5)
+prep_for(required-6, growth-8)
+

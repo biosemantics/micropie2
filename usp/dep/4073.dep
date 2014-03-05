@@ -1,0 +1,12 @@
+det(temperature-2, The-1)
+nn(ranges-5, growth-4)
+prep_for(temperature-2, ranges-5)
+number(50-9, 25-7)
+dep(50-9, to-8)
+num(˚C-10, 50-9)
+prep_from(temperature-2, ˚C-10)
+amod(growth-14, optimal-13)
+prep_with(temperature-2, growth-14)
+num(˚C-17, 37-16)
+prep_at(growth-14, ˚C-17)
+

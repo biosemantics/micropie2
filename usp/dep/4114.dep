@@ -1,0 +1,12 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(CT-6, strain-3)
+cop(CT-6, is-4)
+nn(CT-6, strain-5)
+amod(7095T-9, =-7)
+nn(7095T-9, DSM-8)
+dep(CT-6, 7095T-9)
+amod(779T-12, =-10)
+nn(779T-12, OCM-11)
+dep(7095T-9, 779T-12)
+

@@ -1,0 +1,8 @@
+det(solution-3, A-1)
+nn(solution-3, vitamin-2)
+nsubjpass(substituted-6, solution-3)
+aux(substituted-6, could-4)
+auxpass(substituted-6, be-5)
+nn(extract-9, yeast-8)
+prep_for(substituted-6, extract-9)
+

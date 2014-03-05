@@ -1,0 +1,6 @@
+cop(capable-2, Is-1)
+prep_of(capable-2, growth-4)
+prep_between(growth-4, pH-6)
+num(pH-6, 5.0-7-7)
+tmod(capable-2, .5-8)
+

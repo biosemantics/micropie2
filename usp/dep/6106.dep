@@ -1,0 +1,11 @@
+csubj(metabolize-3, Did-1)
+neg(Did-1, not-2)
+nn(methanethiol-12, acetate-4)
+dep(methanethiol-12, formate-6)
+dep(methanethiol-12, 2-propanol\/CO2-8)
+dep(methanethiol-12, 2-butanol\/CO2-10)
+dobj(metabolize-3, methanethiol-12)
+amod(sulfide-16, dimethyl-15)
+dobj(metabolize-3, sulfide-16)
+conj_or(methanethiol-12, sulfide-16)
+

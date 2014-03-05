@@ -1,0 +1,12 @@
+nsubj(absent-3, Galactosamine-1)
+nsubj(present-5, Galactosamine-1)
+cop(absent-3, is-2)
+conj_or(absent-3, present-5)
+amod(concentrations-8, low-7)
+prep_at(absent-3, concentrations-8)
+nsubj(present-12, glucosamine-10)
+cop(present-12, is-11)
+conj_and(absent-3, present-12)
+nn(hydrolysates-15, cellwall-14)
+prep_in(present-12, hydrolysates-15)
+

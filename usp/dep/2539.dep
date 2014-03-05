@@ -1,0 +1,13 @@
+prep_between(Grows-1, 0.05-3)
+number(%-6, 20-5)
+amod(MgSO4-7, %-6)
+prep_between(Grows-1, MgSO4-7)
+conj_and(0.05-3, MgSO4-7)
+num(mM-10, 2-800-9)
+appos(MgSO4-7, mM-10)
+det(presence-14, the-13)
+prep_in(MgSO4-7, presence-14)
+number(%-17, 27-16)
+amod(NaCl-18, %-17)
+prep_of(MgSO4-7, NaCl-18)
+

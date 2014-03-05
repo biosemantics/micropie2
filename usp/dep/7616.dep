@@ -1,0 +1,12 @@
+nsubjpass(stimulated-3, Growth-1)
+auxpass(stimulated-3, is-2)
+agent(stimulated-3, glucose-5)
+agent(stimulated-3, fructose-7)
+conj_and(glucose-5, fructose-7)
+agent(stimulated-3, maltose-9)
+conj_and(glucose-5, maltose-9)
+agent(stimulated-3, sucrose-11)
+conj_and(glucose-5, sucrose-11)
+agent(stimulated-3, lactose-13)
+conj_and(glucose-5, lactose-13)
+

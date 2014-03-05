@@ -1,0 +1,6 @@
+nsubj(be-2, Diminutum-1)
+xcomp(be-2, reflecting-3)
+det(size-6, a-4)
+amod(size-6, smaller-5)
+dobj(reflecting-3, size-6)
+

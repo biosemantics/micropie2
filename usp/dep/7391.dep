@@ -1,0 +1,8 @@
+det(lipids-3, The-1)
+nn(lipids-3, core-2)
+nsubj(diethers-8, lipids-3)
+cop(diethers-8, were-4)
+nn(diethers-8, C20C20-5)
+conj_and(C20C20-5, C20C25-7)
+nn(diethers-8, C20C25-7)
+

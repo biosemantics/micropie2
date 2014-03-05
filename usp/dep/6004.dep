@@ -1,0 +1,8 @@
+nsubjpass(cleaved-4, Formate-1)
+auxpass(cleaved-4, is-2)
+neg(cleaved-4, not-3)
+nn(dioxide-9, hydrogen-6)
+conj_and(hydrogen-6, carbon-8)
+nn(dioxide-9, carbon-8)
+prep_to(cleaved-4, dioxide-9)
+

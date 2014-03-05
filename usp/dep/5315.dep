@@ -1,0 +1,10 @@
+det(habitat-2, The-1)
+nsubj(pond-8, habitat-2)
+cop(pond-8, is-3)
+det(pond-8, a-4)
+amod(pond-8, marine-water-5)
+nn(pond-8, aquaculture-6)
+nn(pond-8, fish-7)
+nn(Taiwan-11, Wong-Kong-10)
+prep_near(pond-8, Taiwan-11)
+

@@ -1,0 +1,9 @@
+prep_at(Growth-1, low-3)
+num(kPa-6, 300-5)
+appos(low-3, kPa-6)
+amod(pressure-10, high-9)
+prep_at(Growth-1, pressure-10)
+conj_and(low-3, pressure-10)
+num(kPa-13, 23,000-12)
+appos(low-3, kPa-13)
+

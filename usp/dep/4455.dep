@@ -1,0 +1,6 @@
+det(organism-2, The-1)
+nsubj(anaerobe-6, organism-2)
+cop(anaerobe-6, is-3)
+det(anaerobe-6, a-4)
+amod(anaerobe-6, strict-5)
+

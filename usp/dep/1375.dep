@@ -1,0 +1,4 @@
+amod(phosphoglyceride-3, Nonsaponifiable-1)
+amod(phosphoglyceride-3, ether-linked-2)
+dep(phosphoglyceride-3, lipid-4)
+

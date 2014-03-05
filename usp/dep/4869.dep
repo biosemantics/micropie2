@@ -1,0 +1,8 @@
+nn(chloride-2, Sodium-1)
+nsubjpass(required-4, chloride-2)
+auxpass(required-4, is-3)
+dep(g\/liter-9, at-6)
+pobj(at-6, least-7)
+num(g\/liter-9, 20-8)
+dep(required-4, g\/liter-9)
+

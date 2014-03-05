@@ -1,0 +1,8 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(organotrophum-6, strain-3)
+cop(organotrophum-6, is-4)
+nn(organotrophum-6, Pyrobaculum-5)
+prep(organotrophum-6, is-7)
+dep(is-7, Gottingen-8)
+

@@ -1,0 +1,7 @@
+det(time-4, The-1)
+amod(time-4, shortest-2)
+nn(time-4, doubling-3)
+nsubj(min-7, time-4)
+cop(min-7, is-5)
+num(min-7, 20-6)
+

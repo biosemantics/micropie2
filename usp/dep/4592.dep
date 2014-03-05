@@ -1,0 +1,5 @@
+nn(diameter-3, Round-1)
+nn(diameter-3, colonies-2)
+nsubj(present-5, diameter-3)
+cop(present-5, are-4)
+

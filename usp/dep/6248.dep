@@ -1,0 +1,6 @@
+advmod(visible-2, Easily-1)
+amod(pigments-3, visible-2)
+nsubjpass(produced-6, pigments-3)
+auxpass(produced-6, are-4)
+neg(produced-6, not-5)
+

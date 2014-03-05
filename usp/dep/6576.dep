@@ -1,0 +1,7 @@
+nsubj(cocci-5, Cells-1)
+cop(cocci-5, are-2)
+amod(cocci-5, small-3)
+amod(cocci-5, motile-4)
+num(µm-7, 1.0-6)
+attr(cocci-5, µm-7)
+

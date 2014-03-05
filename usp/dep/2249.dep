@@ -1,0 +1,7 @@
+nsubj(inserted-6, Motile-1)
+prep_by_means_of(Motile-1, flagella-5)
+dobj(inserted-6, peritrichously-7)
+amod(tufts-10, in-9)
+dobj(inserted-6, tufts-10)
+conj_and\/or(peritrichously-7, tufts-10)
+

@@ -1,0 +1,4 @@
+conj_and(Arginine-1, urea-3)
+neg(hydrolyzed-5, not-4)
+partmod(Arginine-1, hydrolyzed-5)
+

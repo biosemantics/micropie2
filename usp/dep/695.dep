@@ -1,0 +1,8 @@
+nn(fractions-3, Core-1)
+nn(fractions-3, lipid-2)
+nsubj(contained-4, fractions-3)
+amod(tetraethers-8, cyclic-5)
+conj_and(cyclic-5, acyclic-7)
+amod(tetraethers-8, acyclic-7)
+dobj(contained-4, tetraethers-8)
+

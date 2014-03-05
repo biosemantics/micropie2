@@ -1,0 +1,5 @@
+nn(fields-4, rice-3)
+prep_from(isolated-1, fields-4)
+nn(sp-6, Cyanothece-5)
+dep(fields-4, sp-6)
+

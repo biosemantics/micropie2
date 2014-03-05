@@ -1,0 +1,6 @@
+det(range-2, The-1)
+nsubj(Tm-7, range-2)
+nn(%-5, mol-4)
+prep_of(range-2, %-5)
+cop(Tm-7, is-6)
+

@@ -1,0 +1,12 @@
+nn(extract-2, Yeast-1)
+nsubj(sources-11, extract-2)
+nn(Acids-5, Casamino-4)
+conj_and(extract-2, Acids-5)
+nsubj(sources-11, Acids-5)
+amod(concentrations-8, low-7)
+prep_at(extract-2, concentrations-8)
+cop(sources-11, are-9)
+amod(sources-11, good-10)
+amod(nutrients-14, organic-13)
+prep_of(sources-11, nutrients-14)
+

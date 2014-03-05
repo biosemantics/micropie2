@@ -1,0 +1,8 @@
+det(cyanobacterium-4, A-1)
+amod(cyanobacterium-4, filamentous-2)
+amod(cyanobacterium-4, nitrogen-fixing-3)
+nsubj(grow-6, cyanobacterium-4)
+aux(grow-6, can-5)
+det(dark-9, the-8)
+prep_in(grow-6, dark-9)
+

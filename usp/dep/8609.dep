@@ -1,0 +1,5 @@
+dep(arginine-3, neither-2)
+dep(Hydrolyzes-1, arginine-3)
+dep(Hydrolyzes-1, urea-5)
+conj_nor(arginine-3, urea-5)
+

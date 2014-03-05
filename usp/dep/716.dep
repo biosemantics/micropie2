@@ -1,0 +1,11 @@
+det(fractions-4, The-1)
+nn(fractions-4, core-2)
+nn(fractions-4, lipid-3)
+nsubj(contained-5, fractions-4)
+quantmod(5-8, at-6)
+mwe(at-6, least-7)
+num(tetraethers-11, 5-8)
+amod(tetraethers-11, cyclized-9)
+nn(tetraethers-11, glycerol-bisphytanyl-glycerol-10)
+dobj(contained-5, tetraethers-11)
+

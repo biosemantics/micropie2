@@ -1,0 +1,5 @@
+nn(digestor-4, Biogas-3)
+dep(Source-1, digestor-4)
+nn(manure-7, cattle-6)
+prep_of(digestor-4, manure-7)
+

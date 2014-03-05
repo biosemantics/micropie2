@@ -1,0 +1,12 @@
+nn(pyruvate-9, Acetate-1)
+dep(pyruvate-9, formate-3)
+dep(pyruvate-9, H2\/CO2-5)
+dep(pyruvate-9, tetramethylammonium-7)
+nsubjpass(used-18, pyruvate-9)
+conj_and(pyruvate-9, alcohols-12)
+nsubjpass(used-18, alcohols-12)
+advmod(used-18, other-13)
+prep_than(other-13, methanol-15)
+auxpass(used-18, are-16)
+neg(used-18, not-17)
+

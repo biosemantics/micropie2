@@ -1,0 +1,5 @@
+nsubj(exhibit-2, Cells-1)
+det(motility-5, a-3)
+amod(motility-5, tumbling-4)
+dobj(exhibit-2, motility-5)
+

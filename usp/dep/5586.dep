@@ -1,0 +1,7 @@
+det(growth-2, No-1)
+nsubj(occurs-3, growth-2)
+num(Na-7, 1.75-5)
+nn(Na-7, M-6)
+prep_at(occurs-3, Na-7)
+rcmod(Na-7, +-8)
+

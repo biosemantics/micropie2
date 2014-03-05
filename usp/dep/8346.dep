@@ -1,0 +1,5 @@
+nsubjpass(known-6, Pathogenicity-1)
+prep_for(Pathogenicity-1, insects-3)
+auxpass(known-6, is-4)
+neg(known-6, not-5)
+

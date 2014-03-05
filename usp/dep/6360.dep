@@ -1,0 +1,5 @@
+amod(digestors-6, anaerobic-3)
+nn(digestors-6, sewage-4)
+nn(digestors-6, sludge-5)
+dep(Habitat-1, digestors-6)
+

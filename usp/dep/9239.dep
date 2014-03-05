@@ -1,0 +1,4 @@
+nn(optimum-2, Growth-1)
+nn(daylight-5, 15ºC-4)
+prep_at(optimum-2, daylight-5)
+

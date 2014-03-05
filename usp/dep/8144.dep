@@ -1,0 +1,7 @@
+det(growth-2, No-1)
+nsubjpass(observed-4, growth-2)
+auxpass(observed-4, was-3)
+det(absence-7, the-6)
+prep_in(observed-4, absence-7)
+prep_of(absence-7, H2-9)
+

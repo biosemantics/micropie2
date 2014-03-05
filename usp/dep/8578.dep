@@ -1,0 +1,4 @@
+nn(NBRC-3, ATCC-1)
+nn(NBRC-3, BAA-521-2)
+dep(NBRC-3, 100392-4)
+

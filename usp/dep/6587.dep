@@ -1,0 +1,13 @@
+amod(cyanobacterium-2, filamentous-1)
+appos(cyanobacterium-2, help-4)
+dep(help-4, stabilize-5)
+det(surface-8, the-6)
+nn(surface-8, soil-7)
+dobj(stabilize-5, surface-8)
+dep(help-4, contribute-10)
+conj_and(stabilize-5, contribute-10)
+advmod(contribute-10, significantly-11)
+nn(inputs-15, soil-13)
+nn(inputs-15, carbon-14)
+prep_to(contribute-10, inputs-15)
+

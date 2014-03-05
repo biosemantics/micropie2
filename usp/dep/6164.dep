@@ -1,0 +1,11 @@
+amod(cells-2, Single-1)
+nsubjpass(lysed-6, cells-2)
+conj_and(cells-2, aggregates-4)
+nsubjpass(lysed-6, aggregates-4)
+auxpass(lysed-6, were-5)
+num(%-9, 0.005-8)
+prep_with(lysed-6, %-9)
+nn(sulfate-12, sodium-10)
+nn(sulfate-12, dodecyl-11)
+dep(%-9, sulfate-12)
+

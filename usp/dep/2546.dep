@@ -1,0 +1,5 @@
+nn(acids-2, Amino-1)
+nsubjpass(decarboxylated-5, acids-2)
+auxpass(decarboxylated-5, are-3)
+neg(decarboxylated-5, not-4)
+

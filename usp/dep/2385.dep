@@ -1,0 +1,11 @@
+nsubj(wide-6, Cells-1)
+cop(wide-6, are-2)
+number(1.0-4, 0.5-3)
+num(mm-5, 1.0-4)
+npadvmod(wide-6, mm-5)
+cc(wide-6, and-7)
+number(13.0-9, 3.0-8)
+num(µm-10, 13.0-9)
+npadvmod(long-11, µm-10)
+advmod(wide-6, long-11)
+

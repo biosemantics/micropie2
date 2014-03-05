@@ -1,0 +1,7 @@
+prep_with(Grows-1, ammonia-3)
+prep_with(Grows-1, dinitrogen-5)
+conj_or(ammonia-3, dinitrogen-5)
+det(source-9, a-7)
+nn(source-9, nitrogen-8)
+prep_as(Grows-1, source-9)
+

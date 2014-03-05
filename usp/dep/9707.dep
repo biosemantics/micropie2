@@ -1,0 +1,9 @@
+nn(water-4, formation-3)
+prep_from(Isolated-1, water-4)
+amod(reservoir-9, high-temperature-6)
+nn(reservoir-9, Samotlor-7)
+nn(reservoir-9, oil-8)
+prep_of(water-4, reservoir-9)
+amod(Siberia-12, Western-11)
+appos(water-4, Siberia-12)
+

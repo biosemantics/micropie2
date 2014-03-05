@@ -1,0 +1,8 @@
+nsubjpass(surrounded-3, Cells-1)
+auxpass(surrounded-3, are-2)
+nn(appendages-8, pilus-5)
+conj_or(pilus-5, fimbria-like-7)
+nn(appendages-8, fimbria-like-7)
+agent(surrounded-3, appendages-8)
+advmod(surrounded-3, frequently-9)
+

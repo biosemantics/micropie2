@@ -1,0 +1,5 @@
+amod(growth-2, Chemolithoautotrophic-1)
+det(presence-5, the-4)
+prep_in(growth-2, presence-5)
+prep_of(growth-2, H2\/CO2-7)
+

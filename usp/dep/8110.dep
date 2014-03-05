@@ -1,0 +1,13 @@
+aux(utilize-3, to-2)
+dep(Unable-1, utilize-3)
+nn(acids-7, maltose-4)
+dobj(utilize-3, casamino-6)
+conj_and(acids-7, casamino-6)
+dobj(utilize-3, acids-7)
+dobj(utilize-3, tryptophan-9)
+conj_and(acids-7, tryptophan-9)
+nn(sources-14, carbon-11)
+conj_and(carbon-11, energy-13)
+nn(sources-14, energy-13)
+prep_as(utilize-3, sources-14)
+

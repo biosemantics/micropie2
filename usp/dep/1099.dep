@@ -1,0 +1,7 @@
+amod(Cells-1, spherical-2)
+appos(Cells-1, irregular-spherical-4)
+prep_to(irregular-spherical-4, semi-globose-6)
+advmod(granulated-9, slightly-8)
+amod(content-10, granulated-9)
+prep_with(semi-globose-6, content-10)
+

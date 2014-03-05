@@ -1,0 +1,13 @@
+amod(cells-4, Maroon-1)
+amod(cells-4, colored-2)
+amod(cells-4, rod-shaped-3)
+number(.7-6, 2.5-4-5)
+num(µm-7, .7-6)
+npadvmod(cells-4, µm-7)
+prep_in(cells-4, length-9)
+num(µm-13, 0.9-1-11)
+num(µm-13, .5-12)
+prep_in(cells-4, µm-13)
+conj_and(length-9, µm-13)
+prep_in(µm-13, width-15)
+

@@ -1,0 +1,8 @@
+det(description-2, The-1)
+nsubj(same-9, description-2)
+det(strain-6, the-4)
+nn(strain-6, type-5)
+prep_of(description-2, strain-6)
+cop(same-9, is-7)
+det(same-9, the-8)
+

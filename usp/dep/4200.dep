@@ -1,0 +1,5 @@
+dobj(Uses-1, H2\/CO2-2)
+nn(production-5, methane-4)
+prep_for(H2\/CO2-2, production-5)
+advmod(Uses-1, only-6)
+

@@ -1,0 +1,5 @@
+nn(Isolated-2, Guaymas-1)
+det(sea-6, the-4)
+amod(sea-6, deep-5)
+prep_from(Isolated-2, sea-6)
+

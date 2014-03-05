@@ -1,0 +1,10 @@
+advmod(Grows-1, anaerobically-2)
+det(presence-5, the-4)
+prep_in(Grows-1, presence-5)
+prep_of(presence-5, nitrate-7)
+prep_of(presence-5, DMSO-9)
+conj_or(nitrate-7, DMSO-9)
+prep_of(presence-5, TMAO-11)
+conj_or(nitrate-7, TMAO-11)
+conj_or(Grows-1, aerobically-13)
+

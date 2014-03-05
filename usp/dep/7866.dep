@@ -1,0 +1,10 @@
+amod(cells-2, Rod-shaped-1)
+nsubj(long-4, cells-2)
+nsubj(wide-10, cells-2)
+cop(long-4, are-3)
+number(1.0-8, 0.5-6)
+dep(1.0-8, to-7)
+num(µm-9, 1.0-8)
+npadvmod(wide-10, µm-9)
+conj_and(long-4, wide-10)
+

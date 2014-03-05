@@ -1,0 +1,12 @@
+nn(growth-7, Glucose-1)
+conj_and(Glucose-1, ribose-3)
+nn(growth-7, ribose-3)
+conj_and(Glucose-1, acetate-5)
+nn(growth-7, acetate-5)
+nn(growth-7, support-6)
+amod(carbon-10, single-9)
+prep_as(growth-7, carbon-10)
+nn(sources-13, energy-12)
+prep_as(growth-7, sources-13)
+conj_and(carbon-10, sources-13)
+

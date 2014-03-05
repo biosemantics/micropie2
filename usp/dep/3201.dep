@@ -1,0 +1,11 @@
+num(glycolipids-2, Two-1)
+nsubj(present-4, glycolipids-2)
+cop(present-4, are-3)
+nsubj(identical-8, that-5)
+cop(identical-8, are-6)
+advmod(identical-8, chromatographically-7)
+ccomp(present-4, identical-8)
+prep_to(identical-8, S-DGD-1-10)
+prep_to(identical-8, DGD-1-12)
+conj_and(S-DGD-1-10, DGD-1-12)
+

@@ -1,0 +1,9 @@
+amod(species-3, Possible-1)
+amod(species-3, more-2)
+nsubj(exist-4, species-3)
+nn(America-7, North-6)
+prep_in(exist-4, America-7)
+appos(America-7, plasticity-9)
+prep_within(plasticity-9, populations-11)
+partmod(populations-11, observed-12)
+

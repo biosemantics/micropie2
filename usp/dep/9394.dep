@@ -1,0 +1,13 @@
+det(isolate-3, The-1)
+amod(isolate-3, new-2)
+nsubj(insensitive-5, isolate-3)
+nsubj(sensitive-12, isolate-3)
+cop(insensitive-5, was-4)
+prep_to(insensitive-5, penicillin-7)
+prep_to(insensitive-5, streptomycin-9)
+conj_and(penicillin-7, streptomycin-9)
+conj_but(insensitive-5, sensitive-12)
+prep_to(sensitive-12, chloramphenicol-14)
+prep_to(sensitive-12, rifampicin-16)
+conj_and(chloramphenicol-14, rifampicin-16)
+

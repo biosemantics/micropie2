@@ -1,0 +1,6 @@
+nsubj(anaerobic-6, It-1)
+cop(anaerobic-6, is-2)
+amod(anaerobic-6, motile-3)
+conj_and(motile-3, obligately-5)
+amod(anaerobic-6, obligately-5)
+

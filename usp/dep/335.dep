@@ -1,0 +1,8 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(is-4, strain-3)
+nn(sulfurireducens-6, Acidilobus-5)
+nsubj(strain-7, sulfurireducens-6)
+ccomp(is-4, strain-7)
+dobj(strain-7, 18D70-8)
+

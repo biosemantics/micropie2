@@ -1,0 +1,7 @@
+nn(vesicles-2, Gas-1)
+nsubj(creating-4, vesicles-2)
+aux(creating-4, are-3)
+det(appearance-7, a-5)
+amod(appearance-7, milky-6)
+dobj(creating-4, appearance-7)
+

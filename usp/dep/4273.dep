@@ -1,0 +1,8 @@
+nn(relationship-2, pH-1)
+dep(relationship-2, Optimum-4)
+num(8.5-8, 7.5-6)
+appos(Optimum-4, 8.5-8)
+dep(relationship-2, range-10)
+dep(relationship-2, 6,5-12)
+dep(6,5-12, 10.0-14)
+

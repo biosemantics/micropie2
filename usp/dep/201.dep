@@ -1,0 +1,4 @@
+nn(erythrocytes-2, Sheep-1)
+nsubjpass(haemagglutinated-4, erythrocytes-2)
+auxpass(haemagglutinated-4, are-3)
+

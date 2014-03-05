@@ -1,0 +1,11 @@
+det(aldolase-5, The-1)
+nn(aldolase-5, fructose-1-2)
+num(aldolase-5, 6-3)
+nn(aldolase-5, bisphosphate-4)
+nsubj(class-7, aldolase-5)
+cop(class-7, is-6)
+num(class-7, I-8)
+cop(insensitive-11, is-9)
+npadvmod(insensitive-11, EDTA-10)
+rcmod(class-7, insensitive-11)
+

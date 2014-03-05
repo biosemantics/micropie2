@@ -1,0 +1,9 @@
+nsubj(occurs-2, Growth-1)
+prep_at(occurs-2, 60-4)
+num(˚C-7, 90-6)
+dobj(occurs-2, ˚C-7)
+dobj(occurs-2, pH-9)
+conj_and(˚C-7, pH-9)
+num(pH-9, 1.0-10)
+dep(˚C-7, 5.0-12)
+

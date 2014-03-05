@@ -1,0 +1,12 @@
+nsubj(form-3, Cells-1)
+advmod(form-3, often-2)
+amod(filaments-5, multicellular-4)
+npadvmod(longer-6, filaments-5)
+advmod(form-3, longer-6)
+num(µm-9, 8-8)
+prep_than(form-3, µm-9)
+amod(culture-14, syntrophic-11)
+nn(culture-14, propionate-degrading-12)
+nn(culture-14, enrichment-13)
+prep_in(µm-9, culture-14)
+

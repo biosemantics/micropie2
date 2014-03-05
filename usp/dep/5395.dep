@@ -1,0 +1,5 @@
+nsubj(substrates-5, H2-CO2-1)
+conj_and(H2-CO2-1, formate-3)
+nsubj(substrates-5, formate-3)
+cop(substrates-5, are-4)
+

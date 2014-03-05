@@ -1,0 +1,7 @@
+dep(exhibit-4, Packed-1)
+nn(masses-3, cell-2)
+nsubj(exhibit-4, masses-3)
+det(color-7, a-5)
+amod(color-7, greyish-black-6)
+dobj(exhibit-4, color-7)
+

@@ -1,0 +1,11 @@
+amod(10-3, between-2)
+num(˚C-6, 10-3)
+conj_and(10-3, 40-5)
+num(˚C-6, 40-5)
+dobj(Grows-1, ˚C-6)
+det(optimum-9, an-8)
+prep_with(˚C-6, optimum-9)
+number(37-12, 35-11)
+num(˚C-13, 37-12)
+prep_near(optimum-9, ˚C-13)
+

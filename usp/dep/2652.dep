@@ -1,0 +1,7 @@
+amod(diether-4, Sulfated-1)
+nn(diether-4, mannosyl-glucosyl-2)
+nn(diether-4, glycerol-3)
+nsubjpass(detected-7, diether-4)
+auxpass(detected-7, was-5)
+neg(detected-7, not-6)
+

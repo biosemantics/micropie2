@@ -1,0 +1,13 @@
+amod(Cells-1, devoid-2)
+prep_of(devoid-2, peptidoglycan-4)
+partmod(peptidoglycan-4, surrounded-6)
+amod(layer-10, regular-8)
+nn(layer-10, protein-9)
+agent(surrounded-6, layer-10)
+amod(structure-14, periodic-12)
+amod(structure-14, hexagonal-13)
+dep(Cells-1, structure-14)
+amod(structure-14, visible-15)
+nn(microscope-18, electron-17)
+prep_in(visible-15, microscope-18)
+

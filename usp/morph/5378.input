@@ -1,0 +1,16 @@
+Methanol_NNP
+,_,
+methylamines_NNS
+,_,
+ethanol_NN
+,_,
+2-propanol\/CO2_NN
+,_,
+2-butanol\/CO2_NN
+and_CC
+cyclopentanol\/CO2_NN
+are_VBP
+not_RB
+utilized_VBN
+._.
+

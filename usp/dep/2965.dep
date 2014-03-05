@@ -1,0 +1,5 @@
+nn(vacuoles-2, Gas-1)
+nsubj(present-5, vacuoles-2)
+cop(present-5, are-3)
+neg(present-5, not-4)
+

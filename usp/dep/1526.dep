@@ -1,0 +1,11 @@
+conj_or(Displaying-1, Displaying-1)
+det(multitude-3, a-2)
+dobj(Displaying-1, multitude-3)
+amod(forms-6, pleomorphic-5)
+prep_of(Displaying-1, forms-6)
+conj(Displaying-1, especially-8)
+amod(media-11, deficient-10)
+prep_in(Displaying-1, media-11)
+amod(temperatures-15, elevated-14)
+prep_at(Displaying-1, temperatures-15)
+

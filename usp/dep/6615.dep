@@ -1,0 +1,9 @@
+nsubj(variable-5, Colonies-1)
+prep_on(Colonies-1, agar-3)
+cop(variable-5, are-4)
+preconj(mulberry-8, both-7)
+amod(characteristics-11, mulberry-8)
+conj_and(mulberry-8, fried-egg-10)
+amod(characteristics-11, fried-egg-10)
+prep_with(variable-5, characteristics-11)
+

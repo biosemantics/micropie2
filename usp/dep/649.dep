@@ -1,0 +1,6 @@
+nn(something-3, N.-1)
+nn(something-3, plasma-2)
+nsubj(molded-4, something-3)
+det(form-6, a-5)
+dobj(molded-4, form-6)
+

@@ -1,0 +1,9 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(strain-5, strain-3)
+cop(strain-5, is-4)
+num(strain-5, 105-6)
+amod(ATCC-9, =-8)
+dep(strain-5, ATCC-9)
+dep(ATCC-9, 33657-10)
+

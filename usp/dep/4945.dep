@@ -1,0 +1,9 @@
+det(strains-2, All-1)
+nsubj(grow-3, strains-2)
+advmod(grow-3, rapidly-4)
+prep_on(grow-3, H2-6)
+prep_on(grow-3, CO2-8)
+conj_+(H2-6, CO2-8)
+conj_+(H2-6, formate-10)
+conj_or(CO2-8, formate-10)
+

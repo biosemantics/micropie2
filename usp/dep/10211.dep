@@ -1,0 +1,5 @@
+nn(lipids-5, tetra-2)
+nn(lipids-5, ether-3)
+nn(lipids-5, core-4)
+dobj(Had-1, lipids-5)
+

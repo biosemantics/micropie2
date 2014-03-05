@@ -1,0 +1,10 @@
+amod(growth-2, Chemolithoautotrophic-1)
+det(presence-5, the-4)
+prep_in(growth-2, presence-5)
+prep_of(presence-5, H2-7)
+prep_of(presence-5, CO2-9)
+conj_and(H2-7, CO2-9)
+prep_with(growth-2, sulfur-11)
+nn(acceptor-14, electron-13)
+prep_as(growth-2, acceptor-14)
+

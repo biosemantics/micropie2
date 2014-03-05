@@ -1,0 +1,8 @@
+det(envelope-3, The-1)
+nn(envelope-3, cell-2)
+nsubjpass(composed-5, envelope-3)
+auxpass(composed-5, is-4)
+det(S-layer-9, an-7)
+amod(S-layer-9, SDS-sensitive-8)
+prep_of(composed-5, S-layer-9)
+

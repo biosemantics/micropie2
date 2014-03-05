@@ -1,0 +1,13 @@
+nsubjpass(observed-3, Growth-1)
+auxpass(observed-3, was-2)
+prep_in(observed-3, medium-5)
+partmod(medium-5, containing-6)
+mwe(than-8, less-7)
+quantmod(1-9, than-8)
+num(NaCl-11, 1-9)
+nn(NaCl-11, g-10)
+dobj(containing-6, NaCl-11)
+nn(mM-15, liter-13)
+num(mM-15, 17-14)
+prep_per(NaCl-11, mM-15)
+

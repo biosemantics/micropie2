@@ -1,0 +1,1 @@
+Produces acids from L-arabinose, cellobiose, D-glucose, lactose, D-mannitol, melibiose, sucrose and trehalose.

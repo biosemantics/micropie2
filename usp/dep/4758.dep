@@ -1,0 +1,6 @@
+nsubjpass(required-3, Acetate-1)
+auxpass(required-3, is-2)
+nsubj(enhances-5, extract-4)
+ccomp(required-3, enhances-5)
+dobj(enhances-5, growth-6)
+

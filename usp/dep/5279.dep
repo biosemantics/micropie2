@@ -1,0 +1,7 @@
+det(factor-3, A-1)
+nn(factor-3, growth-2)
+nsubjpass(required-5, factor-3)
+auxpass(required-5, be-4)
+nn(ZC-2T-8, strain-7)
+prep_for(required-5, ZC-2T-8)
+

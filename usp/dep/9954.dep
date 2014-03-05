@@ -1,0 +1,10 @@
+nsubjpass(stimulated-10, Capable-1)
+prep_of(Capable-1, growth-3)
+prep_without(growth-3, sulfur-5)
+advmod(stimulated-10, however-7)
+nsubjpass(stimulated-10, growth-8)
+auxpass(stimulated-10, is-9)
+det(presence-13, the-12)
+agent(stimulated-10, presence-13)
+prep_of(presence-13, sulfur-15)
+

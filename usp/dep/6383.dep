@@ -1,0 +1,5 @@
+nsubj(possible-6, Growth-1)
+prep_on(Growth-1, formate-3)
+cop(possible-6, is-4)
+neg(possible-6, not-5)
+

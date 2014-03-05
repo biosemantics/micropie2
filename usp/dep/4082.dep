@@ -1,0 +1,5 @@
+nsubj(long-5, Chains-1)
+conj_and(Chains-1, filaments-3)
+nsubj(long-5, filaments-3)
+cop(long-5, are-4)
+

@@ -1,0 +1,6 @@
+amod(1.7-3, between-2)
+num(˚C-6, 1.7-3)
+conj_and(1.7-3, 29.5-5)
+num(˚C-6, 29.5-5)
+dobj(Grows-1, ˚C-6)
+

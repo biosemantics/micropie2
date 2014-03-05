@@ -1,0 +1,13 @@
+amod(rods-2, Short-1)
+dep(rods-2, ca.-4)
+dep(ca.-4, 2.0-5)
+num(µm-8, 0.5-7)
+prep_by(2.0-5, µm-8)
+advmod(growing-12, actively-11)
+amod(cultures-13, growing-12)
+prep_in(rods-2, cultures-13)
+prep_in(rods-2, pleiomorphic-15)
+conj_and(cultures-13, pleiomorphic-15)
+amod(cultures-18, stationary-17)
+prep_in(pleiomorphic-15, cultures-18)
+

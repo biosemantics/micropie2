@@ -1,0 +1,9 @@
+advmod(CO2-3, solely-2)
+dobj(Uses-1, CO2-3)
+dobj(Uses-1, H2-5)
+conj_and(CO2-3, H2-5)
+nn(sources-10, carbon-7)
+conj_and(carbon-7, energy-9)
+nn(sources-10, energy-9)
+prep_as(CO2-3, sources-10)
+

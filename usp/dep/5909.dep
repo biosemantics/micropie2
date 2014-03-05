@@ -1,0 +1,13 @@
+nsubj(composed-2, Pseudomurein-1)
+amod(acid-5, L-glutamic-4)
+prep_of(composed-2, acid-5)
+nn(N-acetylgalactosamine-13, L-alanine-7)
+conj_and(N-acetylgalactosamine-13, L-lysine-9)
+nn(acid-16, L-lysine-9)
+conj_and(N-acetylgalactosamine-13, L-ornithine-11)
+nn(acid-16, L-ornithine-11)
+nn(acid-16, N-acetylgalactosamine-13)
+conj_and(N-acetylgalactosamine-13, talosaminuronic-15)
+nn(acid-16, talosaminuronic-15)
+appos(acid-5, acid-16)
+

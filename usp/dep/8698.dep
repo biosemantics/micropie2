@@ -1,0 +1,7 @@
+amod(filaments-3, Helical-1)
+nn(filaments-3, motile-2)
+nsubj(lack-4, filaments-3)
+det(wall-7, a-5)
+nn(wall-7, cell-6)
+dobj(lack-4, wall-7)
+

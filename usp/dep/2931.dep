@@ -1,0 +1,13 @@
+nsubjpass(hydrolysed-6, Tween-1)
+num(Tween-1, 80-2)
+conj_and(Tween-1, urea-4)
+nsubjpass(hydrolysed-6, urea-4)
+auxpass(hydrolysed-6, are-5)
+mark(are-12, whereas-7)
+nn(casein-9, starch-8)
+nsubj(are-12, casein-9)
+conj_and(casein-9, gelatin-11)
+nsubj(are-12, gelatin-11)
+advcl(hydrolysed-6, are-12)
+neg(are-12, not-13)
+

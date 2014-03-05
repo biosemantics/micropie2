@@ -1,0 +1,8 @@
+amod(cells-2, Rod-shaped-1)
+nsubj(µm-7, cells-2)
+cop(µm-7, are-3)
+amod(µm-7, wide-4)
+conj_and(wide-4, 2-10-6)
+amod(µm-7, 2-10-6)
+advmod(µm-7, long-8)
+

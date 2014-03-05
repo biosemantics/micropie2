@@ -1,0 +1,6 @@
+amod(sources-3, Complex-1)
+nn(sources-3, carbon-2)
+nsubj(stimulatory-6, sources-3)
+cop(stimulatory-6, are-4)
+neg(stimulatory-6, not-5)
+

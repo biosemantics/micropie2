@@ -1,0 +1,11 @@
+det(growth-2, No-1)
+conj_or(growth-2, growth-2)
+num(˚C-5, 74-4)
+prep_at(growth-2, ˚C-5)
+det(presence-9, the-8)
+prep_in(growth-2, presence-9)
+num(%-12, 0.8-11)
+prep_of(presence-9, %-12)
+appos(%-12, w\/v-14)
+pobj(growth-2, NaC1-16)
+

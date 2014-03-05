@@ -1,0 +1,11 @@
+nsubjpass(obtained-3, Isolates-1)
+auxpass(obtained-3, were-2)
+prepc_from(obtained-3, boiling-5)
+amod(waters-7, solfataric-6)
+dobj(boiling-5, waters-7)
+nn(Italy-11, Iceland-9)
+nn(Azores-14, Italy-11)
+conj_and(Italy-11, the-13)
+nn(Azores-14, the-13)
+prep_in(boiling-5, Azores-14)
+

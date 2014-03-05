@@ -1,0 +1,6 @@
+csubj(grows-2, Grows-1)
+advmod(up-4, even-3)
+advmod(grows-2, up-4)
+num(˚C-7, 96-6)
+prep_to(grows-2, ˚C-7)
+

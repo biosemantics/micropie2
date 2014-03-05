@@ -1,0 +1,8 @@
+amod(growth-4, anaerobic-3)
+prep_of(Incapable-1, growth-4)
+prep_with(growth-4, nitrate-6)
+prep_with(growth-4, DMSO-8)
+conj_or(nitrate-6, DMSO-8)
+prep_with(growth-4, l-arginine-10)
+conj_or(nitrate-6, l-arginine-10)
+

@@ -1,0 +1,11 @@
+nsubj(grow-3, It-1)
+aux(grow-3, did-2)
+advmod(grow-3, anaerobically-4)
+advmod(added-8, when-5)
+nsubjpass(added-8, sulfur-6)
+auxpass(added-8, was-7)
+advcl(grow-3, added-8)
+det(Allen-11, the-10)
+poss(medium-13, Allen-11)
+prep_to(added-8, medium-13)
+

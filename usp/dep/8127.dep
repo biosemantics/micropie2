@@ -1,0 +1,6 @@
+nn(colonies-2, White-1)
+nsubj(is-3, colonies-2)
+num(mm-6, 1-5)
+prep_about(is-3, mm-6)
+prep_in(mm-6, diameter-8)
+

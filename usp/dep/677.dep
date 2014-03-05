@@ -1,0 +1,10 @@
+advmod(Grows-1, anaerobically-2)
+conj_and(Grows-1, tolerates-4)
+amod(levels-6, low-5)
+dobj(tolerates-4, levels-6)
+prep_of(levels-6, oxygen-8)
+quantmod(2-12, up-10)
+dep(2-12, to-11)
+num(%-13, 2-12)
+appos(oxygen-8, %-13)
+

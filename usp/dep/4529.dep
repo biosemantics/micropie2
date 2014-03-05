@@ -1,0 +1,8 @@
+nsubj(catalase-negative-9, Cells-1)
+partmod(Cells-1, grown-2)
+prep_in(grown-2, rumen-4)
+num(rumen-4, ¯-5)
+dep(medium-7, uid-6)
+amod(rumen-4, medium-7)
+cop(catalase-negative-9, are-8)
+

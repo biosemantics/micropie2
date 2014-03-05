@@ -1,0 +1,8 @@
+amod(iron-3, ferric-2)
+dobj(Used-1, iron-3)
+dobj(Used-1, S˚-5)
+conj_or(iron-3, S˚-5)
+det(acceptor-9, an-7)
+nn(acceptor-9, electron-8)
+prep_as(Used-1, acceptor-9)
+

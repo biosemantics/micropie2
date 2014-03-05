@@ -1,0 +1,8 @@
+cc(Amylolytic-1, but-3)
+nsubjpass(hydrolysed-9, casein-4)
+conj_and(casein-4, gelatin-6)
+nsubjpass(hydrolysed-9, gelatin-6)
+auxpass(hydrolysed-9, are-7)
+neg(hydrolysed-9, not-8)
+dep(Amylolytic-1, hydrolysed-9)
+

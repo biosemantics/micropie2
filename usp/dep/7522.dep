@@ -1,0 +1,12 @@
+nsubj(mm-12, Colonies-1)
+cop(mm-12, are-2)
+amod(mm-12, bright-3)
+amod(mm-12, red-4)
+amod(mm-12, translucent-6)
+amod(mm-12, circular-8)
+amod(mm-12, 0.3-0-10)
+num(mm-12, .5-11)
+prep_in(mm-12, diameter-14)
+rcmod(mm-12, raised-16)
+conj_or(mm-12, convex-18)
+

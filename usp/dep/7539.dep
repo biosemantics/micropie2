@@ -1,0 +1,8 @@
+nsubj(Gram-negative-3, Cells-1)
+nsubj(flat-shaped-6, Cells-1)
+nsubj(non-motile-9, Cells-1)
+cop(Gram-negative-3, are-2)
+amod(flat-shaped-6, pleomorphic-5)
+conj_and(Gram-negative-3, flat-shaped-6)
+conj_and(Gram-negative-3, non-motile-9)
+

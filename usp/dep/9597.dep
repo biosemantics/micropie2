@@ -1,0 +1,11 @@
+det(presence-3, the-2)
+prep_in(observed-11, presence-3)
+prep_of(presence-3, sulfur-5)
+amod(yields-9, higher-7)
+nn(yields-9, growth-8)
+nsubj(observed-11, yields-9)
+aux(observed-11, were-10)
+dep(observed-11, accompanied-13)
+nn(production-16, H2S-15)
+prep_by(accompanied-13, production-16)
+

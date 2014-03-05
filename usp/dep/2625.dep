@@ -1,0 +1,11 @@
+nsubjpass(utilized-3, l-Lysine-1)
+auxpass(utilized-3, is-2)
+amod(source-11, single-5)
+nn(source-11, carbon-6)
+conj_or(carbon-6, nitrogen-8)
+nn(source-11, nitrogen-8)
+conj_or(carbon-6, energy-10)
+nn(source-11, energy-10)
+prep_as(utilized-3, source-11)
+prep_for(source-11, growth-13)
+

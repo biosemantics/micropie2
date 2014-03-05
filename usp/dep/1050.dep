@@ -1,0 +1,5 @@
+nsubj(grows-2, It-1)
+prep_at(grows-2, pH-4)
+number(2.5-6, 0.2-5)
+amod(pH-4, 2.5-6)
+

@@ -1,0 +1,7 @@
+nsubj(pH-6, 7.8-1)
+det(optimum-4, the-3)
+conj_and(7.8-1, optimum-4)
+nsubj(pH-6, optimum-4)
+cop(pH-6, is-5)
+num(pH-6, 6.5-7)
+

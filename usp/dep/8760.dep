@@ -1,0 +1,8 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(PALS-1-5, strain-3)
+cop(PALS-1-5, is-4)
+amod(ATCC-8, =-7)
+dep(PALS-1-5, ATCC-8)
+dep(ATCC-8, 51748-9)
+

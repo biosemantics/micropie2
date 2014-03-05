@@ -1,0 +1,5 @@
+prep_at(Swollen-1, base-3)
+conj_and(Swollen-1, tapered-5)
+prep_at(tapered-5, ends-7)
+prep_of(ends-7, filaments-9)
+

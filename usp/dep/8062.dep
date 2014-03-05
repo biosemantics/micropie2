@@ -1,0 +1,10 @@
+dep(amoxicillin-5, Resistant-1)
+prep_to(Resistant-1, ampicillin-3)
+appos(amoxicillin-5, cephalosphorin-7)
+appos(amoxicillin-5, gentamycin-9)
+conj_and(cephalosphorin-7, gentamycin-9)
+appos(amoxicillin-5, rifampicin-11)
+conj_and(cephalosphorin-7, rifampicin-11)
+appos(amoxicillin-5, oxacillin-14)
+conj_and(cephalosphorin-7, oxacillin-14)
+

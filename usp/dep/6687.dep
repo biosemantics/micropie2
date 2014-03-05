@@ -1,0 +1,10 @@
+det(organism-2, The-1)
+nsubjpass(recovered-5, organism-2)
+aux(recovered-5, has-3)
+auxpass(recovered-5, been-4)
+advmod(once-7, only-6)
+advmod(recovered-5, once-7)
+det(States-11, the-9)
+nn(States-11, United-10)
+prep_in(recovered-5, States-11)
+

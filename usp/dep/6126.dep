@@ -1,0 +1,10 @@
+nsubjpass(converted-10, Methanol-1)
+conj_and(Methanol-1, methylamine-3)
+nsubjpass(converted-10, methylamine-3)
+conj_and(Methanol-1, dimethylamine-5)
+nsubjpass(converted-10, dimethylamine-5)
+conj_and(Methanol-1, trimethylamine-8)
+nsubjpass(converted-10, trimethylamine-8)
+auxpass(converted-10, are-9)
+prep_to(converted-10, methane-12)
+

@@ -1,0 +1,4 @@
+conj_and(Gelatin-1, starch-3)
+neg(hydrolyzed-5, not-4)
+partmod(Gelatin-1, hydrolyzed-5)
+

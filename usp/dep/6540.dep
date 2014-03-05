@@ -1,0 +1,12 @@
+nsubj(stimulate-15, Vitamins-1)
+nn(Fe3O4-9, selenium-3)
+dep(Fe3O4-9, tungsten-5)
+dep(Fe3O4-9, magnetite-7)
+conj_and(Vitamins-1, Fe3O4-9)
+nsubj(stimulate-15, Fe3O4-9)
+conj_and(Vitamins-1, thiosulfate-12)
+nsubj(stimulate-15, thiosulfate-12)
+aux(stimulate-15, do-13)
+neg(stimulate-15, not-14)
+dobj(stimulate-15, growth-16)
+

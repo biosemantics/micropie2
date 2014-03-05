@@ -1,0 +1,7 @@
+nsubj(lyse-2, Cells-1)
+mwe(than-5, less-4)
+quantmod(1.5-6, than-5)
+num(NaCl-8, 1.5-6)
+nn(NaCl-8, M-7)
+prep_in(lyse-2, NaCl-8)
+

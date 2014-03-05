@@ -1,0 +1,6 @@
+nn(wall-2, Cell-1)
+nsubj(absent-6, wall-2)
+conj_and(wall-2, S-layer-4)
+nsubj(absent-6, S-layer-4)
+cop(absent-6, are-5)
+

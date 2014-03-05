@@ -1,0 +1,4 @@
+nn(growth-2, Poor-1)
+nsubj(occurred-3, growth-2)
+prep_on(occurred-3, tryptone-5)
+

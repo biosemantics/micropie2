@@ -1,0 +1,8 @@
+amod(rods-2, Curved-1)
+nsubj(be-3, rods-2)
+xcomp(be-3, measuring-4)
+num(µm-6, 7.4-5)
+npadvmod(long-7, µm-6)
+advmod(measuring-4, long-7)
+prep_by(measuring-4, 0.5-9)
+

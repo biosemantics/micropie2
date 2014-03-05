@@ -1,0 +1,9 @@
+nsubj(µm-9, Cells-1)
+cop(µm-9, are-2)
+amod(µm-9, nonmotile-3)
+amod(µm-9, irregular-4)
+dep(µm-9, cocci-5)
+num(cocci-5, 0.5-6)
+num(µm-9, 1.0-8)
+prep_in(µm-9, diameter-11)
+

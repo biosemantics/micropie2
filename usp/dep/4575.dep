@@ -1,0 +1,6 @@
+nsubj(grow-2, Cells-1)
+det(range-7, a-4)
+amod(range-7, wide-5)
+nn(range-7, pH-6)
+prep_over(grow-2, range-7)
+

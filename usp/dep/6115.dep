@@ -1,0 +1,6 @@
+det(aggregates-2, The-1)
+nsubj(smaller-7, aggregates-2)
+partmod(aggregates-2, formed-3)
+agent(formed-3, cells-5)
+cop(smaller-7, were-6)
+

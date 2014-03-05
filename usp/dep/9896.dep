@@ -1,0 +1,11 @@
+advmod(Grows-1, optimally-2)
+prep_at(Grows-1, pH-4)
+num(pH-4, 6.5-5)
+det(pH-10, a-9)
+prep_at(Grows-1, pH-10)
+conj_and(pH-4, pH-10)
+advmod(high-12, as-11)
+advmod(Grows-1, high-12)
+prep_as(high-12, pH-14)
+num(pH-14, 7.0-15)
+

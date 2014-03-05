@@ -1,0 +1,12 @@
+nsubj(are-2, They-1)
+number(1.5-6, 0.8-4)
+dep(1.5-6, to-5)
+num(µm-7, 1.5-6)
+prep_from(are-2, µm-7)
+amod(µm-7, wide-8)
+number(3.0-12, 2.0-10)
+dep(3.0-12, to-11)
+num(µm-13, 3.0-12)
+prep_from(are-2, µm-13)
+conj_and(µm-7, µm-13)
+

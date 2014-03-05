@@ -1,0 +1,7 @@
+nsubjpass(split-4, Formate-1)
+auxpass(split-4, is-2)
+neg(split-4, not-3)
+prep_into(split-4, H2-6)
+prep_into(split-4, CO2-8)
+conj_and(H2-6, CO2-8)
+

@@ -1,0 +1,5 @@
+amod(temperature-3, Optimal-1)
+nn(temperature-3, growth-2)
+num(˚C-6, 105-5)
+prep_around(temperature-3, ˚C-6)
+

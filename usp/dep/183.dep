@@ -1,0 +1,9 @@
+nsubj(coccoid-2, Cells-1)
+prep_in(coccoid-2, shape-4)
+amod(diameter-7, mean-6)
+prep_with(coccoid-2, diameter-7)
+prep(diameter-7, of-8)
+pcomp(of-8, about-9)
+num(nm-11, 700-10)
+pobj(about-9, nm-11)
+

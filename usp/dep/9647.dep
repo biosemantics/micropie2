@@ -1,0 +1,9 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(P-4-6, strain-3)
+cop(P-4-6, is-4)
+nn(P-4-6, strain-5)
+amod(DSM-9, =-8)
+appos(P-4-6, DSM-9)
+dep(DSM-9, 10394T-10)
+

@@ -1,0 +1,11 @@
+dep(Chemo-organotrophic-1, growing-3)
+det(range-7, a-5)
+amod(range-7, wide-6)
+prep_on(growing-3, range-7)
+prep_of(range-7, substrates-9)
+amod(sources-16, single-12)
+conj_and(single-12, complex-14)
+amod(sources-16, complex-14)
+nn(sources-16, carbon-15)
+prep_including(range-7, sources-16)
+

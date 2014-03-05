@@ -1,0 +1,12 @@
+nsubj(shaped-9, Cells-1)
+advmod(pleomorphic-3, extremely-2)
+amod(Cells-1, pleomorphic-3)
+advmod(flat-6, frequently-5)
+advmod(shaped-9, flat-6)
+nsubj(shaped-9, disk-8)
+nsubj(shaped-13, cup-12)
+conj_or(shaped-9, shaped-13)
+advmod(shaped-13, even-14)
+amod(conditions-17, optimal-16)
+prep_under(shaped-13, conditions-17)
+

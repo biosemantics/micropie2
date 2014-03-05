@@ -1,0 +1,9 @@
+nsubj(pass-2, Cells-1)
+amod(filters-5, 450-nm-pore-size-4)
+prep_through(pass-2, filters-5)
+amod(filters-9, 220-nm-pore-size-8)
+prep_through(pass-2, filters-9)
+conj_and(filters-5, filters-9)
+det(loss-12, some-11)
+prep_with(pass-2, loss-12)
+

@@ -1,0 +1,13 @@
+nn(extract-2, Yeast-1)
+nsubjpass(stimulatory-11, extract-2)
+nsubjpass(required-14, extract-2)
+nn(peptone-5, Trypticase-4)
+conj_and(extract-2, peptone-5)
+nsubjpass(stimulatory-11, peptone-5)
+nn(fluid-9, rumen-8)
+conj_and(extract-2, fluid-9)
+nsubjpass(stimulatory-11, fluid-9)
+auxpass(stimulatory-11, are-10)
+neg(required-14, not-13)
+conj_but(stimulatory-11, required-14)
+

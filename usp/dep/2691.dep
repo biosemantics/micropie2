@@ -1,0 +1,7 @@
+amod(Methyl-1, red-2)
+conj_and(Methyl-1, Voges-4)
+nn(tests-7, Proskauer-6)
+nsubj(negative-9, tests-7)
+cop(negative-9, are-8)
+dep(Methyl-1, negative-9)
+

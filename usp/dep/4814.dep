@@ -1,0 +1,8 @@
+dep(mineralized-3, Habitat-1)
+amod(waters-5, stratal-4)
+dobj(mineralized-3, waters-5)
+nn(deposits-8, oil-7)
+prep_of(waters-5, deposits-8)
+appos(deposits-8, Tataria-10)
+dep(Tataria-10, Russia-12)
+

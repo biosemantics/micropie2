@@ -1,0 +1,12 @@
+nsubj(occurs-2, Growth-1)
+num(˚C-5, 50-4)
+prep_between(occurs-2, ˚C-5)
+num(˚C-8, 93-7)
+prep_between(occurs-2, ˚C-8)
+conj_and(˚C-5, ˚C-8)
+det(temperature-12, an-10)
+amod(temperature-12, optimum-11)
+prep_with(occurs-2, temperature-12)
+num(˚C-15, 85-14)
+prep_of(temperature-12, ˚C-15)
+

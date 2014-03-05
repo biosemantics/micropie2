@@ -1,0 +1,7 @@
+aux(grow-3, Could-1)
+neg(grow-3, not-2)
+conj_or(grow-3, grow-3)
+advmod(grow-3, autotrophically-4)
+prep_with(grow-3, sulfur-8)
+prep_without(grow-3, sulfur-8)
+

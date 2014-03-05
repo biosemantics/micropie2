@@ -1,0 +1,10 @@
+dobj(Requires-1, sulfur-2)
+dobj(Requires-1, thiosulfate-4)
+conj_or(sulfur-2, thiosulfate-4)
+dobj(Requires-1, L-cystine-6)
+conj_or(sulfur-2, L-cystine-6)
+dobj(Requires-1, sulfate-8)
+conj_or(sulfur-2, sulfate-8)
+nn(acceptors-11, electron-10)
+prep_as(Requires-1, acceptors-11)
+

@@ -1,0 +1,8 @@
+nsubj(acceptors-10, Oxygen-1)
+dep(Oxygen-1, nitrate-3)
+conj_and(Oxygen-1, nitrite-6)
+nsubj(acceptors-10, nitrite-6)
+cop(acceptors-10, are-7)
+amod(acceptors-10, possible-8)
+nn(acceptors-10, electron-9)
+

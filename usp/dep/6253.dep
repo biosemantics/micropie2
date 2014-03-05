@@ -1,0 +1,9 @@
+nsubjpass(required-8, One-1)
+amod(vitamin-5, more-3)
+nn(vitamin-5, B-4)
+conj_or(One-1, vitamin-5)
+nsubjpass(required-8, vitamin-5)
+aux(required-8, may-6)
+auxpass(required-8, be-7)
+prep(required-8, for-9)
+

@@ -1,0 +1,7 @@
+prep(Guanine-1, plus-2)
+nn(content-4, cytosine-3)
+dep(plus-2, content-4)
+number(%-7, 64.4-5)
+dep(%-7, mol-6)
+amod(Guanine-1, %-7)
+

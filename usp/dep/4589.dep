@@ -1,0 +1,5 @@
+nn(strains-2, Reference-1)
+nsubj(K1F9705c-4, strains-2)
+cop(K1F9705c-4, are-3)
+conj_and(K1F9705c-4, O1F9704a-6)
+

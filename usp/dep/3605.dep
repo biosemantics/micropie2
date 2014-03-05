@@ -1,0 +1,7 @@
+nsubj(µm-6, Cells-1)
+cop(µm-6, are-2)
+quantmod(1.5-5, approximately-3)
+number(1.5-5, 1-4)
+num(µm-6, 1.5-5)
+prep_in(µm-6, size-8)
+

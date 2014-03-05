@@ -1,0 +1,13 @@
+nsubj(light-3, Colonies-1)
+cop(light-3, are-2)
+dobj(raised-17, red-4)
+appos(red-4, translucent-6)
+nsubj(raised-17, circular-8)
+appos(circular-8, 0.6-10)
+num(mm-13, 0.7-12)
+dep(0.6-10, mm-13)
+prep_in(mm-13, diameter-15)
+dep(light-3, raised-17)
+dep(light-3, convex-19)
+conj_or(raised-17, convex-19)
+

@@ -1,0 +1,1 @@
+Utilizes L-arabinose, D-fructose, D-glucose, D-xylose and glutamic acid, but not D-galactose or serine as the sole energy source.

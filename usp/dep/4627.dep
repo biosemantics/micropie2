@@ -1,0 +1,5 @@
+num(SDS-5, 0.1-3)
+nn(SDS-5, g-4)
+prep_by(Lysed-1, SDS-5)
+prep_per(SDS-5, liter-7)
+

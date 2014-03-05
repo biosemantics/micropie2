@@ -1,0 +1,9 @@
+nsubjpass(formed-3, H2S-1)
+auxpass(formed-3, is-2)
+amod(sulfur-6, elemental-5)
+prep_from(formed-3, sulfur-6)
+nn(arsenite-9, thiosulfate-8)
+prep_from(formed-3, arsenite-9)
+conj_or(sulfur-6, arsenite-9)
+prep_from(sulfur-6, arsenate-11)
+

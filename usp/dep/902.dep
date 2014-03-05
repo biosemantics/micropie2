@@ -1,0 +1,4 @@
+nn(vorax-2, Adj.-1)
+nsubj(gluttonous-4, vorax-2)
+cop(gluttonous-4, is-3)
+

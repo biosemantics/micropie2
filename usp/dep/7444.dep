@@ -1,0 +1,6 @@
+prep_to(Resistant-1, ampicillin-3)
+prep_to(Resistant-1, carbenicillin-5)
+conj_and(ampicillin-3, carbenicillin-5)
+prep_to(Resistant-1, tetracycline-8)
+conj_and(ampicillin-3, tetracycline-8)
+

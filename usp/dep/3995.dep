@@ -1,0 +1,9 @@
+det(growth-2, Neither-1)
+nsubjpass(observed-7, growth-2)
+nn(production-5, methane-4)
+conj_nor(growth-2, production-5)
+nsubjpass(observed-7, production-5)
+auxpass(observed-7, is-6)
+num(˚C-10, 48-9)
+prep_at(observed-7, ˚C-10)
+

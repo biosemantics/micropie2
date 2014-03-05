@@ -1,0 +1,6 @@
+nsubjpass(degraded-3, Chitin-1)
+auxpass(degraded-3, is-2)
+conj_and(degraded-3, formate-5)
+nn(acetate-8, H2-7)
+prep_to(formate-5, acetate-8)
+

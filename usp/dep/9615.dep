@@ -1,0 +1,11 @@
+det(growth-2, No-1)
+nsubjpass(detected-4, growth-2)
+auxpass(detected-4, was-3)
+nn(concentrations-7, NaCl-6)
+prep_at(detected-4, concentrations-7)
+prep_of(concentrations-7, 0-9)
+num(g-12, 40-11)
+prep_at(detected-4, g-12)
+conj_and(concentrations-7, g-12)
+prep_per(g-12, liter-14)
+

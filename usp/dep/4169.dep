@@ -1,0 +1,9 @@
+nsubj(serves-7, Sulfide-1)
+conj_or(Sulfide-1, cysteine-3)
+nsubj(serves-7, cysteine-3)
+conj_or(Sulfide-1, methionine-6)
+nsubj(serves-7, methionine-6)
+det(source-11, a-9)
+nn(source-11, sulfur-10)
+prep_as(serves-7, source-11)
+

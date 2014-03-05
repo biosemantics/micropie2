@@ -1,0 +1,6 @@
+prep_to(Insensitive-1, ampicillin-3)
+prep_to(Insensitive-1, vancomycin-5)
+conj_and(ampicillin-3, vancomycin-5)
+prep_to(Insensitive-1, cycloserine-8)
+conj_and(ampicillin-3, cycloserine-8)
+

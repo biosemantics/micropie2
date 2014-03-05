@@ -1,0 +1,5 @@
+nn(adj.-2, M.L.-1)
+nsubj(anaerobius-3, adj.-2)
+neg(living-5, not-4)
+xcomp(anaerobius-3, living-5)
+

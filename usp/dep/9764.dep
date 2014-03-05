@@ -1,0 +1,8 @@
+nsubjpass(utilized-9, Starch-1)
+conj_and(Starch-1, maltose-3)
+nsubjpass(utilized-9, maltose-3)
+conj_and(Starch-1, pyruvate-6)
+nsubjpass(utilized-9, pyruvate-6)
+aux(utilized-9, can-7)
+auxpass(utilized-9, be-8)
+

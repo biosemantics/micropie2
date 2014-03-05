@@ -1,0 +1,4 @@
+nn(acetate-2, H2-1)
+nsubj(NH3-4, acetate-2)
+cop(NH3-4, is-3)
+

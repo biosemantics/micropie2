@@ -1,0 +1,13 @@
+advmod(chemolithoautotrophic-4, facultatively-3)
+amod(growth-5, chemolithoautotrophic-4)
+appos(Aerobic-1, growth-5)
+amod(sulfur-8, elemental-7)
+prep_on(growth-5, sulfur-8)
+appos(Aerobic-1, K2S4O6-10)
+appos(Aerobic-1, FeSO4-12)
+appos(Aerobic-1, pyrite-14)
+prep(pyrite-14, or-16)
+dep(or-16, FeS-17)
+appos(Aerobic-1, chalcopyrite-20)
+conj_and(pyrite-14, chalcopyrite-20)
+

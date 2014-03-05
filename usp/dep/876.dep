@@ -1,0 +1,12 @@
+nsubj(named-2, freundtii-1)
+nn(Freundt-5, Eyvind-4)
+prep_after(named-2, Freundt-5)
+det(pioneer-9, a-7)
+amod(pioneer-9, Danish-8)
+appos(Freundt-5, pioneer-9)
+det(taxonomy-12, the-11)
+prep_in(pioneer-9, taxonomy-12)
+prep_in(pioneer-9, classification-14)
+conj_and(taxonomy-12, classification-14)
+prep_of(taxonomy-12, mollicutes-16)
+

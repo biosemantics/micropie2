@@ -1,0 +1,13 @@
+nn(LD-1-2, Strain-1)
+nsubjpass(isolated-4, LD-1-2)
+auxpass(isolated-4, was-3)
+det(gut-7, the-6)
+prep_from(isolated-4, gut-7)
+det(beetle-12, a-9)
+nn(beetle-12, Colorado-10)
+nn(beetle-12, potato-11)
+prep_of(gut-7, beetle-12)
+nn(decemlineata-15, L.-14)
+dep(beetle-12, decemlineata-15)
+dep(beetle-12, larva-17)
+

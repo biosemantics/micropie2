@@ -1,0 +1,4 @@
+dep(M24662-7, 16S-2)
+prep(16S-2, rRNA-3)
+dep(rRNA-3, gene-4)
+

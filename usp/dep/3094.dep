@@ -1,0 +1,12 @@
+nsubj(0.5-3, Colonies-1)
+cop(0.5-3, are-2)
+num(mm-6, 1-5)
+dep(0.5-3, mm-6)
+prep_in(mm-6, diameter-8)
+amod(smooth-12, red-pigmented-10)
+amod(mm-6, smooth-12)
+dep(0.5-3, circular-14)
+conj_and(mm-6, circular-14)
+dep(0.5-3, convex-16)
+conj_and(mm-6, convex-16)
+

@@ -1,0 +1,4 @@
+nn(sulfide-2, Hydrogen-1)
+nsubjpass(produced-4, sulfide-2)
+auxpass(produced-4, is-3)
+

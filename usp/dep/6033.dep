@@ -1,0 +1,10 @@
+amod(cocci-4, Irregular-1)
+amod(cocci-4, angular-3)
+partmod(cocci-4, occurring-5)
+advmod(occurring-5, individually-6)
+advmod(occurring-5, occasionally-8)
+conj_or(individually-6, occasionally-8)
+prep_in(occurring-5, clumps-10)
+prep_in(occurring-5, tetras-12)
+conj_or(clumps-10, tetras-12)
+

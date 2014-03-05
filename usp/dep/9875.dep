@@ -1,0 +1,7 @@
+appos(Pleomorphic-1, varying-3)
+prep_in(varying-3, shape-5)
+amod(filamentous-9, spherical-7)
+dep(filamentous-9, to-8)
+amod(structures-10, filamentous-9)
+prep_from(varying-3, structures-10)
+

@@ -1,0 +1,11 @@
+nsubj(depending-7, Regular-1)
+advmod(irregular-4, highly-3)
+amod(cells-5, irregular-4)
+conj_or(Regular-1, cells-5)
+nsubj(depending-7, cells-5)
+det(concentration-11, the-9)
+nn(concentration-11, salt-10)
+prep_on(depending-7, concentration-11)
+det(medium-14, the-13)
+prep_in(concentration-11, medium-14)
+

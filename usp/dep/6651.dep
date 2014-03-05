@@ -1,0 +1,6 @@
+aux(hydrolyse-3, Does-1)
+neg(hydrolyse-3, not-2)
+dobj(hydrolyse-3, arginine-4)
+dobj(hydrolyse-3, urea-6)
+conj_nor(arginine-4, urea-6)
+

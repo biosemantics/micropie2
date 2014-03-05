@@ -1,0 +1,7 @@
+aux(grow-3, to-2)
+dep(Unable-1, grow-3)
+advmod(grow-3, autotrophically-4)
+det(absence-7, the-6)
+prep_in(grow-3, absence-7)
+prep_of(absence-7, peptides-9)
+

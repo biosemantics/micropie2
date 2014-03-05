@@ -1,0 +1,5 @@
+amod(time-3, Optimal-1)
+amod(time-3, doubling-2)
+num(min-5, 110-4)
+dep(time-3, min-5)
+

@@ -1,0 +1,7 @@
+prep_to(Resistant-1, vancomycin-3)
+appos(vancomycin-3, streptomycin-5)
+appos(vancomycin-3, chloramphenicol-7)
+conj_and(streptomycin-5, chloramphenicol-7)
+appos(vancomycin-3, rifampicin-10)
+conj_and(streptomycin-5, rifampicin-10)
+

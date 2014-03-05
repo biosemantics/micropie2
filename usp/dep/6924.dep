@@ -1,0 +1,11 @@
+amod(plaques-4, Small-1)
+amod(plaques-4, variable-3)
+nsubjpass(produced-6, plaques-4)
+auxpass(produced-6, are-5)
+nn(overlays-9, agar-8)
+prep_in(produced-6, overlays-9)
+prep_of(overlays-9, guinea-pig-11)
+nn(erythrocytes-15, sheep-14)
+prep_of(overlays-9, erythrocytes-15)
+conj_negcc(guinea-pig-11, erythrocytes-15)
+

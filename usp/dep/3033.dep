@@ -1,0 +1,9 @@
+csubj(situated-6, Isolated-1)
+nn(Tebenquiche-5, hypersaline-3)
+nn(Tebenquiche-5, Lake-4)
+prep_from(Isolated-1, Tebenquiche-5)
+det(Chile-12, the-8)
+nn(Chile-12, Atacama-9)
+nn(Chile-12, Saltern-10)
+prep_in(situated-6, Chile-12)
+

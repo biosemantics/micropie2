@@ -1,0 +1,9 @@
+nsubj(pleomorphic-3, Cells-1)
+cop(pleomorphic-3, are-2)
+number(2-5, 1.5-4)
+num(µm-6, 2-5)
+dep(pleomorphic-3, µm-6)
+prep_in(pleomorphic-3, size-8)
+prep_in(pleomorphic-3, motile-10)
+conj_and(size-8, motile-10)
+

@@ -1,0 +1,10 @@
+nsubjpass(required-4, Mg2-1)
+cc(required-4, +-2)
+auxpass(required-4, is-3)
+amod(growth-7, maximum-6)
+prep_with(required-4, growth-7)
+partmod(growth-7, occurring-8)
+number(300-11, 200-10)
+num(mM-12, 300-11)
+prep_at(occurring-8, mM-12)
+

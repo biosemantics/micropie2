@@ -1,0 +1,9 @@
+nsubj(mm-8, Colonies-1)
+cop(mm-8, are-2)
+amod(mm-8, circular-3)
+amod(mm-8, entire-4)
+nn(mm-8, convex-5)
+amod(mm-8, translucent-6)
+tmod(translucent-6, 1-2-7)
+prep_in(mm-8, diameter-10)
+

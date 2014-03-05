@@ -1,0 +1,1 @@
+Optimal salt concentration: 0.1 M NaCl.

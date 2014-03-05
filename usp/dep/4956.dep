@@ -1,0 +1,8 @@
+nsubj(substitute-6, Dithiothreitol-1)
+conj_and(Dithiothreitol-1, sulfate-3)
+nsubj(substitute-6, sulfate-3)
+aux(substitute-6, do-4)
+neg(substitute-6, not-5)
+nn(Cysteine-9, sulfide-8)
+prep_for(substitute-6, Cysteine-9)
+

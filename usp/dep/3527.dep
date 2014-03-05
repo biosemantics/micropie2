@@ -1,0 +1,10 @@
+nsubj(extend-9, Projections-1)
+advmod(Projections-1, probably-3)
+dep(Projections-1, pili-4)
+neg(flagella-7, not-6)
+dep(Projections-1, flagella-7)
+conj_and(pili-4, flagella-7)
+det(surface-13, the-11)
+amod(surface-13, whole-12)
+prep_from(extend-9, surface-13)
+

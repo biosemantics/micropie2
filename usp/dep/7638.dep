@@ -1,0 +1,6 @@
+nsubj(occurs-2, Growth-1)
+number(5.0-5, 2.5-4)
+num(NaCl-7, 5.0-5)
+nn(NaCl-7, M-6)
+prep_in(occurs-2, NaCl-7)
+

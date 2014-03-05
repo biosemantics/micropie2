@@ -1,0 +1,4 @@
+prep_from(Isolated-1, sediment-3)
+nn(Trench-6, Cariaco-5)
+prep_from(Isolated-1, Trench-6)
+

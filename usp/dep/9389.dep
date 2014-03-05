@@ -1,0 +1,12 @@
+det(growth-2, No-1)
+nsubjpass(detected-4, growth-2)
+auxpass(detected-4, was-3)
+amod(medium-7, minimal-6)
+prep_in(detected-4, medium-7)
+amod(medium-7, amended-8)
+prep_with(amended-8, vitamins-10)
+det(headspace-15, a-13)
+nn(headspace-15, H2\/CO2-14)
+prep_with(amended-8, headspace-15)
+conj_and(vitamins-10, headspace-15)
+

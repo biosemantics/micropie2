@@ -1,0 +1,8 @@
+det(peptide-2, The-1)
+nsubj(contains-3, peptide-2)
+amod(alanine-5, glutamate-4)
+dobj(contains-3, alanine-5)
+nn(moiety-8, lysine-7)
+dobj(contains-3, moiety-8)
+conj_and(alanine-5, moiety-8)
+

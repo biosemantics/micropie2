@@ -1,0 +1,11 @@
+aux(utilize-3, Can-1)
+neg(utilize-3, not-2)
+dobj(utilize-3, SO42-4)
+dep(utilize-3, S2O32-7)
+dep(S2O32-7, NO3-10)
+dobj(utilize-3, DMSO-13)
+dobj(utilize-3, TMAO-15)
+conj_or(DMSO-13, TMAO-15)
+nn(acceptors-18, electron-17)
+prep_as(DMSO-13, acceptors-18)
+

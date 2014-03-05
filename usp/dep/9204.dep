@@ -1,0 +1,6 @@
+nsubj(possesses-2, WH7805-1)
+det(system-6, a-3)
+amod(system-6, high-affinity-4)
+nn(system-6, urea-transport-5)
+dobj(possesses-2, system-6)
+

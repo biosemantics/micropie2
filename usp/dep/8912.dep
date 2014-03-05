@@ -1,0 +1,5 @@
+nn(growth-2, Poor-1)
+nsubjpass(observed-4, growth-2)
+auxpass(observed-4, was-3)
+prep_on(observed-4, peptone-6)
+

@@ -1,0 +1,7 @@
+det(cyanobacterium-3, a-1)
+amod(cyanobacterium-3, benthic-2)
+nsubj(produces-4, cyanobacterium-3)
+det(neurotoxins-7, these-5)
+amod(neurotoxins-7, deadly-6)
+dobj(produces-4, neurotoxins-7)
+

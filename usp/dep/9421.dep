@@ -1,0 +1,4 @@
+amod(hydrogen-2, Molecular-1)
+nsubj(inhibits-3, hydrogen-2)
+dobj(inhibits-3, growth-4)
+

@@ -1,0 +1,11 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(K1F9705bT-5, strain-3)
+cop(K1F9705bT-5, is-4)
+amod(772T-8, =-6)
+nn(772T-8, OCM-7)
+dep(K1F9705bT-5, 772T-8)
+amod(14646T-11, =-9)
+nn(14646T-11, DSM-10)
+dep(772T-8, 14646T-11)
+

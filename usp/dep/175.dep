@@ -1,0 +1,13 @@
+det(tissues-5, the-3)
+nn(tissues-5, crown-4)
+prep_from(Isolated-1, tissues-5)
+det(tree-13, a-7)
+nn(tree-13, palm-8)
+nn(nucifera-11, Cocos-10)
+appos(tree-13, nucifera-11)
+prep_of(tissues-5, tree-13)
+amod(disease-17, lethal-15)
+amod(disease-17, yellowing-16)
+prep_with(Isolated-1, disease-17)
+prep_in(Isolated-1, Jamaica-19)
+

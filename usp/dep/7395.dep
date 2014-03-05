@@ -1,0 +1,13 @@
+nsubj(requiring-10, Chemo-organotrophic-1)
+appos(Chemo-organotrophic-1, aerobic-3)
+amod(Chemo-organotrophic-1, halophilic-5)
+advmod(alkaliphilic-8, slightly-7)
+amod(Chemo-organotrophic-1, alkaliphilic-8)
+conj_and(halophilic-5, alkaliphilic-8)
+quantmod(2-13, at-11)
+mwe(at-11, least-12)
+num(NaCl-15, 2-13)
+nn(NaCl-15, M-14)
+dobj(requiring-10, NaCl-15)
+prep_for(requiring-10, growth-17)
+

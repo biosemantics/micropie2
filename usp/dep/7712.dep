@@ -1,0 +1,5 @@
+amod(motility-3, high-2)
+dep(Exhibits-1, motility-3)
+amod(flagella-6, multiple-5)
+prep_with(motility-3, flagella-6)
+

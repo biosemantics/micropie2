@@ -1,0 +1,4 @@
+nn(extract-2, Yeast-1)
+nsubj(required-3, extract-2)
+prep_for(required-3, growth-5)
+

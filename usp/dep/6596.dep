@@ -1,0 +1,12 @@
+nsubjpass(synthesized-3, Microcystin-1)
+auxpass(synthesized-3, is-2)
+advmod(synthesized-3, nonribosomally-4)
+det(function-8, the-6)
+amod(function-8, thiotemplate-7)
+agent(synthesized-3, function-8)
+det(complex-15, a-10)
+amod(complex-15, large-11)
+amod(complex-15, modular-13)
+nn(complex-15, enzyme-14)
+prep_of(function-8, complex-15)
+

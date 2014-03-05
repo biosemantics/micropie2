@@ -1,0 +1,5 @@
+nn(envelope-2, Cell-1)
+nsubj(lacks-3, envelope-2)
+amod(acid-5, muramic-4)
+dobj(lacks-3, acid-5)
+

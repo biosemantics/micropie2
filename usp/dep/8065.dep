@@ -1,0 +1,6 @@
+nsubj(present-5, Oxygen-1)
+conj_or(Oxygen-1, air-3)
+nsubj(present-5, air-3)
+cop(present-5, was-4)
+dep(present-5, when-6)
+

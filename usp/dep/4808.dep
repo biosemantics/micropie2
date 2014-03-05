@@ -1,0 +1,5 @@
+nsubj(occurs-2, Growth-1)
+det(range-6, the-4)
+nn(range-6, pH-5)
+prep_at(occurs-2, range-6)
+

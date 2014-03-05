@@ -1,0 +1,5 @@
+nsubj(red-6, Colonies-1)
+nn(medium-4, agar-3)
+prep_on(Colonies-1, medium-4)
+cop(red-6, are-5)
+

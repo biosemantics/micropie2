@@ -1,0 +1,12 @@
+det(growth-2, No-1)
+nsubj(occurred-3, growth-2)
+amod(coal-6, brown-5)
+prep_on(occurred-3, coal-6)
+prep_on(occurred-3, lignite-8)
+conj_and(coal-6, lignite-8)
+amod(coal-11, hard-10)
+prep_on(occurred-3, coal-11)
+conj_and(coal-6, coal-11)
+prep_on(occurred-3, anthracite-14)
+conj_and(coal-6, anthracite-14)
+

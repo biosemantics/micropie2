@@ -1,0 +1,9 @@
+aux(grow-3, Can-1)
+neg(grow-3, not-2)
+prep_with(grow-3, N2-5)
+partmod(N2-5, serving-6)
+det(source-11, the-8)
+amod(source-11, sole-9)
+nn(source-11, nitrogen-10)
+prep_as(serving-6, source-11)
+

@@ -1,0 +1,4 @@
+nsubj(reduced-4, Phenol-1)
+amod(Phenol-1, red-2)
+neg(red-2, not-3)
+

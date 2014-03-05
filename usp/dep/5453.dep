@@ -1,0 +1,5 @@
+prep_from(Isolated-1, sediment-3)
+det(Sea-7, the-5)
+nn(Sea-7, Black-6)
+prep_from(Isolated-1, Sea-7)
+

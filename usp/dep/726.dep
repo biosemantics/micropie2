@@ -1,0 +1,5 @@
+amod(N2-2, unicellular-1)
+dep(N2-2, fixing-4)
+amod(cyanobacterium-6, marine-5)
+dobj(fixing-4, cyanobacterium-6)
+

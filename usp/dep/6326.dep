@@ -1,0 +1,13 @@
+nn(G-7, DNA-1)
+nn(G-7, base-2)
+nn(G-7, composition-3)
+num(G-7, 45-4)
+nn(G-7, mol-5)
+nn(G-7, %-6)
+nn(Temperature-10, C.-9)
+conj_+(G-7, Temperature-10)
+amod(G-7, optimum-11)
+tmod(optimum-11, 30-12)
+num(˚C-15, 37-14)
+prep_to(optimum-11, ˚C-15)
+

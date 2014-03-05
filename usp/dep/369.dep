@@ -1,0 +1,9 @@
+amod(sulphur-3, Anaerobic-1)
+amod(sulphur-3, heterotrophic-2)
+amod(thermoacidophile-7, iron-reducing-6)
+conj_and(sulphur-3, thermoacidophile-7)
+partmod(thermoacidophile-7, belonging-8)
+det(Euryarchaeota-12, the-10)
+nn(Euryarchaeota-12, kingdom-11)
+prep_to(belonging-8, Euryarchaeota-12)
+

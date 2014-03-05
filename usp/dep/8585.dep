@@ -1,0 +1,9 @@
+amod(filaments-3, Helical-1)
+nn(filaments-3, motile-2)
+nsubj(vary-4, filaments-3)
+number(300-8, 200-6)
+dep(300-8, to-7)
+num(nm-9, 300-8)
+prep_from(vary-4, nm-9)
+prep_in(nm-9, diameter-11)
+

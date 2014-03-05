@@ -1,0 +1,9 @@
+amod(cyanobacterium-3, Unicellular-1)
+amod(cyanobacterium-3, marine-2)
+nsubj(isolated-4, cyanobacterium-3)
+nn(seawater-7, surface-6)
+prep_from(isolated-4, seawater-7)
+nn(Lagoon-10, Chuuk-9)
+prep_in(seawater-7, Lagoon-10)
+appos(Lagoon-10, Micronesia-12)
+

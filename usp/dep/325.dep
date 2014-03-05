@@ -1,0 +1,5 @@
+nsubjpass(produced-3, Ammonia-1)
+auxpass(produced-3, is-2)
+nn(medium-6, culture-5)
+prep_into(produced-3, medium-6)
+

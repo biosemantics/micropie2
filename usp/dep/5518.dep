@@ -1,0 +1,8 @@
+nsubjpass(influenced-3, Cell-1)
+auxpass(influenced-3, is-2)
+det(concentration-6, the-5)
+agent(influenced-3, concentration-6)
+amod(cations-9, divalent-8)
+prep_of(concentration-6, cations-9)
+advmod(influenced-3, strongly-10)
+

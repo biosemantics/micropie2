@@ -1,0 +1,9 @@
+num(˚C-5, 3-2)
+amod(˚C-5, maximal-3)
+tmod(maximal-3, 86-4)
+dep(PH-1, ˚C-5)
+number(%-8, 0.2-7)
+amod(extract-10, %-8)
+nn(extract-10, yeast-9)
+prep_in(˚C-5, extract-10)
+

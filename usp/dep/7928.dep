@@ -1,0 +1,6 @@
+nsubj(inhibited-4, Na2SO3-1)
+conj_and(Na2SO3-1, S˚-3)
+nsubj(inhibited-4, S˚-3)
+amod(growth-6, aerobic-5)
+dobj(inhibited-4, growth-6)
+

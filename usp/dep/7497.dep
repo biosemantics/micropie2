@@ -1,0 +1,7 @@
+nn(Habitat-3, dot-2)
+dep(_-1, Habitat-3)
+advmod(saline-5, highly-4)
+amod(lakes-7, saline-5)
+nn(lakes-7, soda-6)
+dep(Habitat-3, lakes-7)
+

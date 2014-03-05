@@ -1,0 +1,8 @@
+nn(sacculi-2, Pseudomurein-1)
+amod(sacculi-2, present-3)
+dep(present-3, containing-4)
+prep(containing-4, both-5)
+dep(both-5, GlcN-6)
+dep(both-5, GalN-8)
+conj_and(GlcN-6, GalN-8)
+

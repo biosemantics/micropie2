@@ -1,0 +1,7 @@
+amod(cells-3, Irregular-1)
+nn(cells-3, coccoid-2)
+nsubj(be-4, cells-3)
+xcomp(be-4, occurring-5)
+advmod(occurring-5, usually-6)
+advmod(occurring-5, singly-7)
+

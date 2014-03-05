@@ -1,0 +1,5 @@
+nsubj(were-4, Acetate-1)
+conj_and(Acetate-1, cysteine-3)
+nsubj(were-4, cysteine-3)
+neg(were-4, not-5)
+

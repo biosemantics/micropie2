@@ -1,0 +1,4 @@
+dep(positive-4, Oxidase-1)
+conj_and(Oxidase-1, catalase-3)
+dep(positive-4, catalase-3)
+

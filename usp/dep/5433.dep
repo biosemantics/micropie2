@@ -1,0 +1,6 @@
+nsubj(fastest-3, Growth-1)
+cop(fastest-3, is-2)
+prep_on(fastest-3, H2-5)
+prep(H2-5, plus-6)
+dep(plus-6, CO2-7)
+

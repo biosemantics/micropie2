@@ -1,0 +1,12 @@
+nn(reaction-6, Phosphatase-1)
+conj_and(Phosphatase-1, film-3)
+nn(reaction-6, film-3)
+conj_and(Phosphatase-1, spot-5)
+nn(reaction-6, spot-5)
+nsubj(negative-13, reaction-6)
+nn(tests-11, gel-9)
+nn(tests-11, liquefaction-10)
+conj_and(reaction-6, tests-11)
+nsubj(negative-13, tests-11)
+cop(negative-13, are-12)
+

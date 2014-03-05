@@ -1,0 +1,7 @@
+partmod(Halophilic-1, requiring-2)
+quantmod(2-5, at-3)
+mwe(at-3, least-4)
+num(NaCl-7, 2-5)
+nn(NaCl-7, M-6)
+dobj(requiring-2, NaCl-7)
+

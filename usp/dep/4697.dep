@@ -1,0 +1,7 @@
+nsubj(serve-2, H2\/CO2-1)
+prep_as(serve-2, substrate-4)
+nn(formation-9, growth-6)
+conj_and(growth-6, CH4-8)
+nn(formation-9, CH4-8)
+prep_for(substrate-4, formation-9)
+

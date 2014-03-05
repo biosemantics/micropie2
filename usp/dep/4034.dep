@@ -1,0 +1,7 @@
+nsubj(requires-2, Chemolithotrophic-1)
+preconj(H2-4, both-3)
+dobj(requires-2, H2-4)
+dobj(requires-2, CO2-6)
+conj_and(H2-4, CO2-6)
+prep_for(H2-4, growth-8)
+

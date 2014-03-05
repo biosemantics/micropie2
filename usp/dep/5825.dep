@@ -1,0 +1,10 @@
+nn(broth-5, Yeast-1)
+nn(broth-5, extract-2)
+nn(broth-5, tryptone-3)
+nn(broth-5, soya-4)
+nsubj(growth-10, broth-5)
+nn(fluid-8, rumen-7)
+conj_or(broth-5, fluid-8)
+nsubj(growth-10, fluid-8)
+cop(growth-10, are-9)
+

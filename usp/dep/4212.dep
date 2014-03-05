@@ -1,0 +1,11 @@
+nsubj(halotolerant-3, Cells-1)
+cop(halotolerant-3, are-2)
+nsubj(occurs-6, growth-5)
+conj_and(halotolerant-3, occurs-6)
+prep_in(occurs-6, medium-8)
+partmod(medium-8, containing-9)
+num(grams-11, 0-25-10)
+dobj(containing-9, grams-11)
+nn(NaCl-14, liter-13)
+prep_per(grams-11, NaCl-14)
+

@@ -1,0 +1,7 @@
+nsubjpass(known-8, Pathogenicity-1)
+det(larvae-5, these-3)
+nn(larvae-5, moth-4)
+prep_for(Pathogenicity-1, larvae-5)
+auxpass(known-8, is-6)
+neg(known-8, not-7)
+

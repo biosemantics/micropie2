@@ -1,0 +1,4 @@
+nn(extract-2, Yeast-1)
+nsubj(necessary-4, extract-2)
+cop(necessary-4, was-3)
+

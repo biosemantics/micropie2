@@ -1,0 +1,6 @@
+nsubj(pH-5, Growth-1)
+num(%-4, 0.2-12-3)
+prep_between(Growth-1, %-4)
+num(.2-7, 4.5-7-6)
+dobj(pH-5, .2-7)
+

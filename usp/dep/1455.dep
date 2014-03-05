@@ -1,0 +1,5 @@
+nn(lipids-2, Polar-1)
+nsubj(derivatives-5, lipids-2)
+cop(derivatives-5, are-3)
+amod(derivatives-5, diphytanyl-glycerol-ether-4)
+

@@ -1,0 +1,5 @@
+nsubj(are-4, DNA-1)
+conj_and(DNA-1, casein-3)
+nsubj(are-4, casein-3)
+neg(are-4, not-5)
+

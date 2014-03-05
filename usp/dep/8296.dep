@@ -1,0 +1,5 @@
+det(organisms-2, The-1)
+nsubj(passed-3, organisms-2)
+amod(filters-6, 220-nm-5)
+prep_through(passed-3, filters-6)
+

@@ -1,0 +1,8 @@
+nn(acidaminovorans-4, Type-1)
+nn(acidaminovorans-4, Strain-2)
+nn(acidaminovorans-4, Thermococcus-3)
+dep(acidaminovorans-4, AEDII10-5)
+amod(AEDII10-5, =-6)
+dep(=-6, DSM-7)
+num(DSM-7, 11906-8)
+

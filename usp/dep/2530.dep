@@ -1,0 +1,7 @@
+nsubj(pleomorphic-3, Cells-1)
+cop(pleomorphic-3, are-2)
+mark(rod-shaped-7, although-4)
+nsubj(rod-shaped-7, most-5)
+cop(rod-shaped-7, are-6)
+ccomp(pleomorphic-3, rod-shaped-7)
+

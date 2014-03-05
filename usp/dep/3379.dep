@@ -1,0 +1,13 @@
+nsubj(is-12, Tweens-1)
+nsubjpass(hydrolysed-8, 20-2)
+conj_and(20-2, 40-4)
+nsubjpass(hydrolysed-8, 40-4)
+conj_and(20-2, 60-6)
+nsubjpass(hydrolysed-8, 60-6)
+auxpass(hydrolysed-8, are-7)
+rcmod(Tweens-1, hydrolysed-8)
+prep(hydrolysed-8, but-9)
+dep(but-9, Tween-10)
+num(Tween-10, 80-11)
+neg(is-12, not-13)
+

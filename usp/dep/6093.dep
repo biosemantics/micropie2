@@ -1,0 +1,6 @@
+nn(TMA-2, H2\/CO2-1)
+nsubj(DMA-7, TMA-2)
+nn(production-5, methane-4)
+prep_with(TMA-2, production-5)
+cop(DMA-7, is-6)
+

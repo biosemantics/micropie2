@@ -1,0 +1,10 @@
+nsubj(exhibit-9, Colonies-1)
+amod(medium-4, solid-3)
+prep_on(Colonies-1, medium-4)
+number(%-7, 0.8-6)
+amod(agar-8, %-7)
+prep_with(medium-4, agar-8)
+amod(forms-12, typical-10)
+amod(forms-12, fried-egg-11)
+dobj(exhibit-9, forms-12)
+

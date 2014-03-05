@@ -1,0 +1,9 @@
+nsubj(contain-2, Cells-1)
+dobj(contain-2, carotenoids-3)
+partmod(carotenoids-3, making-4)
+dobj(making-4, colonies-5)
+amod(red-7, light-6)
+amod(colonies-5, red-7)
+dobj(making-4, orange-9)
+conj_or(colonies-5, orange-9)
+

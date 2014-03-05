@@ -1,0 +1,12 @@
+nsubj(appeared-8, H2-1)
+amod(H2-1, inhibitory-2)
+nn(reduction-7, growth-4)
+conj_and(growth-4, sulfur-6)
+nn(reduction-7, sulfur-6)
+prep_to(inhibitory-2, reduction-7)
+aux(serve-10, to-9)
+xcomp(appeared-8, serve-10)
+det(sink-14, a-12)
+nn(sink-14, hydrogen-13)
+prep_as(serve-10, sink-14)
+

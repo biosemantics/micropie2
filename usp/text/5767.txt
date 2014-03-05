@@ -1,0 +1,1 @@
+Produces methane by reducingethanol with hydrogen as the electron donor, although it cannot produce methane when hydrogen or methanol is the sole energy source.

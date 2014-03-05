@@ -1,0 +1,11 @@
+det(content-3, The-1)
+nn(content-3, G+C-2)
+nsubjpass(determined-5, content-3)
+auxpass(determined-5, was-4)
+amod(denaturation-8, thermal-7)
+agent(determined-5, denaturation-8)
+number(mol-10, 26.6-9)
+num(%-11, mol-10)
+npadvmod(as-12, %-11)
+advmod(determined-5, as-12)
+

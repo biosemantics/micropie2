@@ -1,0 +1,7 @@
+dep(Fastest-1, growth-2)
+num(˚C-5, 55-4)
+prep_between(growth-2, ˚C-5)
+num(˚C-8, 65-7)
+prep_between(growth-2, ˚C-8)
+conj_and(˚C-5, ˚C-8)
+

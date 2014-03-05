@@ -1,0 +1,7 @@
+nn(PG-2, Strain-1)
+nsubjpass(isolated-4, PG-2)
+auxpass(isolated-4, was-3)
+prep_from(isolated-4, enrichments-6)
+nn(faeces-9, pig-8)
+prep_of(enrichments-6, faeces-9)
+

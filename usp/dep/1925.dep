@@ -1,0 +1,12 @@
+dep(pleomorphic-2, Extremely-1)
+appos(pleomorphic-2, motile-4)
+partmod(motile-4, occurring-6)
+advmod(occurring-6, mainly-7)
+amod(shaped-10, irregularly-9)
+amod(cells-11, shaped-10)
+prep_as(occurring-6, cells-11)
+dep(cells-11, 0.8-13)
+num(µm-16, 1.5-15)
+dep(0.8-13, µm-16)
+prep_in(µm-16, diameter-18)
+

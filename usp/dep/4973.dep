@@ -1,0 +1,7 @@
+nn(acids-2, Amino-1)
+nsubj(stimulatory-6, acids-2)
+conj_and(acids-2, acetate-4)
+nsubj(stimulatory-6, acetate-4)
+cop(stimulatory-6, are-5)
+advmod(stimulatory-6, frequently-7)
+

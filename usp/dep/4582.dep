@@ -1,0 +1,5 @@
+nsubj(stimulatory-3, Tungsten-1)
+cop(stimulatory-3, is-2)
+det(strains-6, some-5)
+prep_for(stimulatory-3, strains-6)
+

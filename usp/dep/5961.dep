@@ -1,0 +1,13 @@
+nsubj(break-5, Filaments-1)
+aux(break-5, do-2)
+neg(break-5, not-3)
+advmod(break-5, easily-4)
+amod(fragments-8, smaller-7)
+prep_into(break-5, fragments-8)
+advmod(subjected-12, when-9)
+nsubjpass(subjected-12, they-10)
+auxpass(subjected-12, are-11)
+advcl(break-5, subjected-12)
+prep_to(subjected-12, vigorous-14)
+amod(vigorous-14, shaking-15)
+

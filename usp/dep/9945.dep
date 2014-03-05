@@ -1,0 +1,10 @@
+nsubj(%-11, G-1)
+nn(content-4, C-3)
+conj_+(G-1, content-4)
+nsubj(%-11, content-4)
+nn(isolate-7, Z-605-6)
+prep_of(G-1, isolate-7)
+cop(%-11, is-8)
+number(mol-10, 56.5-9)
+num(%-11, mol-10)
+

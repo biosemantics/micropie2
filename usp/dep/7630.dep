@@ -1,0 +1,5 @@
+nsubj(fructose-4, Acetate-1)
+cop(fructose-4, is-2)
+nn(fructose-4, glucose-3)
+conj_and(fructose-4, sucrose-6)
+

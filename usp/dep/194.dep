@@ -1,0 +1,7 @@
+nsubjpass(reduced-7, Methylene-1)
+amod(Methylene-1, blue-2)
+amod(Methylene-1, tetrazolium-4)
+conj_and(blue-2, tetrazolium-4)
+auxpass(reduced-7, are-5)
+neg(reduced-7, not-6)
+

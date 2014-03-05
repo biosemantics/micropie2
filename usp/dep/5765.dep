@@ -1,0 +1,7 @@
+nsubj(lyse-2, Cells-1)
+dobj(lyse-2, SDS-3)
+amod(water-7, hypotonic-5)
+amod(water-7, distilled-6)
+dobj(lyse-2, water-7)
+conj_or(SDS-3, water-7)
+

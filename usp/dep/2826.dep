@@ -1,0 +1,5 @@
+nn(produce-3, Methyl-1)
+amod(produce-3, red-2)
+amod(results-5, negative-4)
+dep(produce-3, results-5)
+

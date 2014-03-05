@@ -1,0 +1,8 @@
+prep_at(Grows-1, 55-3)
+num(˚C-6, 85-5)
+dobj(Grows-1, ˚C-6)
+dobj(Grows-1, pH-8)
+conj_and(˚C-6, pH-8)
+num(pH-8, 4.5-9)
+dep(˚C-6, 7.0-11)
+

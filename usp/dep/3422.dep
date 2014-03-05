@@ -1,0 +1,11 @@
+nsubjpass(hydrolysed-12, Starch-1)
+appos(Starch-1, gelatin-3)
+appos(Starch-1, DNA-5)
+conj_and(gelatin-3, DNA-5)
+appos(Starch-1, urea-7)
+conj_and(gelatin-3, urea-7)
+appos(Starch-1, casein-9)
+conj_and(gelatin-3, casein-9)
+auxpass(hydrolysed-12, are-10)
+neg(hydrolysed-12, not-11)
+

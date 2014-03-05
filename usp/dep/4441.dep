@@ -1,0 +1,9 @@
+csubj(require-4, Requires-1)
+aux(require-4, does-2)
+neg(require-4, not-3)
+nn(M-6, co-enzyme-5)
+dobj(require-4, M-6)
+amod(acids-9, fatty-8)
+dobj(require-4, acids-9)
+conj_or(M-6, acids-9)
+

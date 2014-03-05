@@ -1,0 +1,8 @@
+nn(dot-2, _-1)
+dep(Sensitive-3, dot-2)
+nn(novobiocin-7, anisomycin-5)
+nn(novobiocin-7, bacitracin-6)
+prep_to(Sensitive-3, novobiocin-7)
+prep_to(Sensitive-3, vibriostat-9)
+conj_and(novobiocin-7, vibriostat-9)
+

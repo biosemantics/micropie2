@@ -1,0 +1,4 @@
+amod(sulfur-2, Elemental-1)
+nsubj(stimulates-3, sulfur-2)
+dobj(stimulates-3, growth-4)
+

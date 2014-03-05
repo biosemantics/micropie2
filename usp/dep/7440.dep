@@ -1,0 +1,13 @@
+nn(VIII-H2-6, MK-8-2)
+dep(VIII-H2-6, MK-8-4)
+dobj(Produce-1, VIII-H2-6)
+nn(VIII-H2-13, MMK-8-9)
+dep(VIII-H2-13, MMK-8-11)
+dobj(Produce-1, VIII-H2-13)
+conj_and(VIII-H2-6, VIII-H2-13)
+dobj(Produce-1, DMMK-8-16)
+conj_and(VIII-H2-6, DMMK-8-16)
+dobj(Produce-1, DMMK-19)
+conj_and(VIII-H2-6, DMMK-19)
+appos(VIII-H2-6, VIII-H2-22)
+

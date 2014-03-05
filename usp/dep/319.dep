@@ -1,0 +1,6 @@
+nsubj(coccoid-7, 0.4-1)
+num(Cells-5, 0.6-3)
+nn(Cells-5, µm-4)
+prep_to(0.4-1, Cells-5)
+cop(coccoid-7, are-6)
+

@@ -1,0 +1,8 @@
+nsubjpass(elongated-8, Cells-1)
+partmod(Cells-1, grown-2)
+det(salinities-6, the-4)
+amod(salinities-6, highest-5)
+prep_at(grown-2, salinities-6)
+auxpass(elongated-8, are-7)
+advmod(elongated-8, often-9)
+

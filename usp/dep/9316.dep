@@ -1,0 +1,12 @@
+det(range-3, The-1)
+nn(range-3, NaCl-2)
+nsubj(%-9, range-3)
+prep_for(range-3, growth-5)
+cop(%-9, is-6)
+num(%-9, 1-0-3-7)
+num(%-9, .0-8)
+det(optimum-12, the-11)
+prep_with(%-9, optimum-12)
+num(%-15, 2.5-14)
+prep_at(optimum-12, %-15)
+

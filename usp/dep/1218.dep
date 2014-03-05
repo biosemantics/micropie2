@@ -1,0 +1,11 @@
+nsubj(mm-5, Colonies-1)
+cop(mm-5, are-2)
+quantmod(1.0-4, approximately-3)
+num(mm-5, 1.0-4)
+prep_in(mm-5, diameter-7)
+amod(mm-5, circular-9)
+amod(mm-5, smooth-11)
+conj_and(circular-9, smooth-11)
+amod(mm-5, non-pigmented-13)
+conj_and(circular-9, non-pigmented-13)
+

@@ -1,0 +1,12 @@
+advmod(anaerobic-2, Obligately-1)
+ccomp(isolated-8, anaerobic-2)
+amod(microorganisms-5, filterable-4)
+nsubjpass(isolated-8, microorganisms-5)
+aux(isolated-8, have-6)
+auxpass(isolated-8, been-7)
+det(rumen-11, the-10)
+prep_from(isolated-8, rumen-11)
+prep_of(rumen-11, cattle-13)
+prep_of(rumen-11, sheep-15)
+conj_and(cattle-13, sheep-15)
+

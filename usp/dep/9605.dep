@@ -1,0 +1,12 @@
+nsubj(occurs-2, Growth-1)
+number(95-6, 55-4)
+dep(95-6, to-5)
+num(˚C-7, 95-6)
+prep_from(occurs-2, ˚C-7)
+det(temperature-11, an-9)
+amod(temperature-11, optimum-10)
+prep_with(occurs-2, temperature-11)
+quantmod(88-14, around-13)
+num(˚C-15, 88-14)
+prep_of(temperature-11, ˚C-15)
+

@@ -1,0 +1,9 @@
+amod(reduction-2, Nitrate-1)
+nsubj(formation-8, reduction-2)
+aux(nitrite-4, to-3)
+infmod(reduction-2, nitrite-4)
+cop(formation-8, is-5)
+det(formation-8, no-6)
+nn(formation-8, gas-7)
+prep_from(formation-8, nitrate-10)
+

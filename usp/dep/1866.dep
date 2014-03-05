@@ -1,0 +1,12 @@
+nn(hydrolysis-2, Acid-1)
+nsubj(releases-6, hydrolysis-2)
+amod(cells-5, whole-4)
+prep_of(hydrolysis-2, cells-5)
+det(component-10, a-7)
+amod(component-10, single-8)
+nn(component-10, diether-9)
+nsubj(identical-11, component-10)
+xcomp(releases-6, identical-11)
+prep_to(identical-11, 2,3-di-O-phytanyl-13)
+dep(2,3-di-O-phytanyl-13, sn-glycerol-15)
+

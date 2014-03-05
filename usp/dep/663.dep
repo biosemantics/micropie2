@@ -1,0 +1,5 @@
+amod(cell-3, Hot-1)
+amod(cell-3, spherical-2)
+nn(Spring-6, Dragon-5)
+prep_from(cell-3, Spring-6)
+

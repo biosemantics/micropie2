@@ -1,0 +1,10 @@
+nsubj(containing-5, Growth-1)
+amod(medium-4, solid-3)
+prep_on(Growth-1, medium-4)
+dep(diffuse-11, containing-5)
+num(%-7, 1.6-6)
+dobj(containing-5, %-7)
+nn(agar-9, Noble-8)
+nsubj(diffuse-11, agar-9)
+cop(diffuse-11, is-10)
+

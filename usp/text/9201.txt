@@ -1,0 +1,1 @@
+WH7805 requires urease (urea amidohydrolase, EC 3.5.1.5) to utilize urea as a nitrogen source.

@@ -1,0 +1,9 @@
+aux(use-3, to-2)
+xcomp(Able-1, use-3)
+dobj(use-3, cystine-4)
+conj_and(Able-1, oxidized-6)
+dobj(oxidized-6, glutathione-7)
+det(acceptor-11, an-9)
+nn(acceptor-11, electron-10)
+prep_as(oxidized-6, acceptor-11)
+

@@ -1,0 +1,11 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(ATCC-7, strain-3)
+cop(ATCC-7, is-4)
+nn(ATCC-7, G-2000-5)
+amod(ATCC-7, =-6)
+dep(ATCC-7, 33997-8)
+amod(ATCC-7, =-9)
+dep(=-9, DSM-10)
+num(DSM-10, 2545-11)
+

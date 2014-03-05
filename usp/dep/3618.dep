@@ -1,0 +1,12 @@
+det(strain-2, The-1)
+nsubj(grow-5, strain-2)
+aux(grow-5, could-3)
+advmod(grow-5, also-4)
+det(medium-10, the-7)
+amod(medium-10, standard-8)
+nn(medium-10, growth-9)
+prep_in(grow-5, medium-10)
+det(addition-13, the-12)
+prep_without(grow-5, addition-13)
+prep_of(addition-13, starch-15)
+

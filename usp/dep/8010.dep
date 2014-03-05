@@ -1,0 +1,6 @@
+nn(Vevante-3, Porto-1)
+nn(Vevante-3, di-2)
+nsubj(Island-6, Vevante-3)
+cop(Island-6, is-4)
+nn(Island-6, Vulcano-5)
+

@@ -1,0 +1,5 @@
+amod(fish-4, salted-3)
+prep_from(Isolated-1, fish-4)
+prep_from(Isolated-1, hides-6)
+conj_and(fish-4, hides-6)
+

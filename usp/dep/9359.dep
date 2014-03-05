@@ -1,0 +1,6 @@
+det(content-3, The-1)
+nn(content-3, G+C-2)
+nsubj(%-6, content-3)
+cop(%-6, is-4)
+num(%-6, 50-5)
+

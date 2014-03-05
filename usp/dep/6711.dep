@@ -1,0 +1,6 @@
+det(habitat-3, The-1)
+amod(habitat-3, main-2)
+nsubj(lungs-5, habitat-3)
+cop(lungs-5, is-4)
+prep_of(lungs-5, goats-7)
+

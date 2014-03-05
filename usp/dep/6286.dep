@@ -1,0 +1,10 @@
+det(properties-3, The-1)
+amod(properties-3, following-2)
+nsubj(additional-5, properties-3)
+cop(additional-5, are-4)
+prep_to(additional-5, those-7)
+prep(those-7, given-8)
+pcomp(given-8, for-9)
+det(genus-11, the-10)
+pobj(for-9, genus-11)
+

@@ -1,0 +1,6 @@
+nn(content-2, G+C-1)
+nsubj(%-6, content-2)
+cop(%-6, is-3)
+number(mol-5, 44-4)
+num(%-6, mol-5)
+

@@ -1,0 +1,10 @@
+advmod(aerobic-2, Strictly-1)
+dep(used-7, aerobic-2)
+advmod(oxygen-5, only-4)
+nsubjpass(used-7, oxygen-5)
+auxpass(used-7, is-6)
+det(acceptor-12, the-9)
+amod(acceptor-12, final-10)
+nn(acceptor-12, electron-11)
+prep_as(used-7, acceptor-12)
+

@@ -1,0 +1,5 @@
+nsubj(substrates-6, Alcohols-1)
+prep_including(Alcohols-1, isopropanol-3)
+cop(substrates-6, are-4)
+neg(substrates-6, not-5)
+

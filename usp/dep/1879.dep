@@ -1,0 +1,12 @@
+nsubj(occurs-2, Growth-1)
+prep_in(occurs-2, 1.7-4)
+num(NaCl-8, 5.1-6)
+nn(NaCl-8, M-7)
+dep(1.7-4, NaCl-8)
+amod(growth-12, optimum-11)
+prep_with(NaCl-8, growth-12)
+prep_at(growth-12, 2.6-14)
+num(NaCl-18, 3.4-16)
+nn(NaCl-18, M-17)
+dep(1.7-4, NaCl-18)
+

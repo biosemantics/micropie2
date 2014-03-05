@@ -1,0 +1,8 @@
+nn(hydrolysis-2, Starch-1)
+amod(hydrolysis-6, doubtful-3)
+conj_and(doubtful-3, weak-5)
+amod(hydrolysis-6, weak-5)
+dep(hydrolysis-2, hydrolysis-6)
+prep_of(hydrolysis-6, Tween-8)
+num(Tween-8, 80-9)
+

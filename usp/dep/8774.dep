@@ -1,0 +1,6 @@
+nsubj(lost-2, Vertical-1)
+nn(transmissibility-7, cultivation-4)
+conj_and(cultivation-4, cloning-6)
+nn(transmissibility-7, cloning-6)
+prep_after(lost-2, transmissibility-7)
+

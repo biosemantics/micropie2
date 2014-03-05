@@ -1,0 +1,9 @@
+det(organism-2, The-1)
+nsubj(tolerate-4, organism-2)
+aux(tolerate-4, can-3)
+det(variety-6, a-5)
+dobj(tolerate-4, variety-6)
+amod(buffers-10, organic-8)
+amod(buffers-10, secondary-9)
+prep_of(variety-6, buffers-10)
+

@@ -1,0 +1,13 @@
+nn(extract-2, Yeast-1)
+nsubj(inhibit-11, extract-2)
+conj_and(extract-2, Trypticase-4)
+nsubj(inhibit-11, Trypticase-4)
+det(concentration-7, a-6)
+prep_at(extract-2, concentration-7)
+num(%-10, 0.05-9)
+prep_of(concentration-7, %-10)
+dobj(inhibit-11, growth-12)
+det(strain-16, the-14)
+nn(strain-16, type-15)
+prep_of(growth-12, strain-16)
+

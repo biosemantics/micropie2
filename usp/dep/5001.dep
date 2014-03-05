@@ -1,0 +1,10 @@
+prep_in_addition_to(stimulatory-12, NaCl-4)
+amod(concentrations-7, high-6)
+nsubjpass(stimulatory-12, concentrations-7)
+nsubjpass(required-14, concentrations-7)
+nn(salts-10, magnesium-9)
+prep_of(concentrations-7, salts-10)
+auxpass(stimulatory-12, are-11)
+conj_or(stimulatory-12, required-14)
+prep_for(required-14, growth-16)
+

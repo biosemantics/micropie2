@@ -1,0 +1,6 @@
+nsubj(limit-6, PGS-1)
+amod(PGS-1, absent-2)
+amod(PGS-1, below-4)
+conj_or(absent-2, below-4)
+pobj(below-4, detection-5)
+

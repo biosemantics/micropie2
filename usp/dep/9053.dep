@@ -1,0 +1,5 @@
+nsubj(lyse-2, Cells-1)
+dep(>-5, pH-4)
+prep_at(lyse-2, >-5)
+amod(>-5, 7.5-6)
+

@@ -1,0 +1,10 @@
+amod(amounts-2, Large-1)
+nn(lipids-6, tetraether-4)
+nn(lipids-6, core-5)
+prep_of(amounts-2, lipids-6)
+nn(amounts-9, trace-8)
+appos(amounts-2, amounts-9)
+nn(lipids-13, diether-11)
+nn(lipids-13, core-12)
+prep_of(amounts-9, lipids-13)
+

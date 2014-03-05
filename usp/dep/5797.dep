@@ -1,0 +1,13 @@
+nsubj(catabolic-12, Methanol-1)
+conj_and(Methanol-1, monomethylamine-3)
+nsubj(catabolic-12, monomethylamine-3)
+conj_and(Methanol-1, dimethylamine-5)
+nsubj(catabolic-12, dimethylamine-5)
+conj_and(Methanol-1, trimethylamine-8)
+nsubj(catabolic-12, trimethylamine-8)
+cop(catabolic-12, are-9)
+det(catabolic-12, the-10)
+amod(catabolic-12, only-11)
+amod(substrates-15, methanogenic-14)
+conj_and(catabolic-12, substrates-15)
+

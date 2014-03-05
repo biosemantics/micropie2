@@ -1,0 +1,11 @@
+det(gut-4, the-3)
+prep_from(Isolated-1, gut-4)
+det(firefly-8, an-6)
+amod(firefly-8, adult-7)
+prep_of(gut-4, firefly-8)
+nn(corrusca-11, Ellychnia-10)
+appos(firefly-8, corrusca-11)
+dep(firefly-8, Coleoptera-14)
+dep(Coleoptera-14, Lampyridae-16)
+prep_in(Isolated-1, Maryland-19)
+

@@ -1,0 +1,6 @@
+nsubjpass(observed-7, Reduction-1)
+prep_of(Reduction-1, nitrate-3)
+aux(nitrite-5, to-4)
+xcomp(nitrate-3, nitrite-5)
+auxpass(observed-7, is-6)
+

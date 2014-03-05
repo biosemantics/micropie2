@@ -1,0 +1,4 @@
+advmod(Grows-1, anaerobically-2)
+advmod(Grows-1, microaerobically-4)
+conj_or(anaerobically-2, microaerobically-4)
+

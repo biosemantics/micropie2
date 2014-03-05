@@ -1,0 +1,7 @@
+num(µm-3, 1.3-1-1)
+num(µm-3, .8-2)
+prep_in(µm-3, diameter-5)
+amod(diameter-5, Regular-6)
+amod(coccus-9, irregular-8)
+prep_to(µm-3, coccus-9)
+

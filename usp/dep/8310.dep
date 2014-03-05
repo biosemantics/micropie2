@@ -1,0 +1,4 @@
+dep(Spiroplasma-1, clarkii-2)
+dep(clarkii-2, clar-4)
+dep(clar-4, ki.i-6)
+

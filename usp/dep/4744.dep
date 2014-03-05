@@ -1,0 +1,5 @@
+nsubjpass(reduced-3, Sulphur-1)
+auxpass(reduced-3, is-2)
+nn(sulphide-6, hydrogen-5)
+prep_to(reduced-3, sulphide-6)
+

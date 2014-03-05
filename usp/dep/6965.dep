@@ -1,0 +1,3 @@
+amod(Colony-3, Large-2)
+dep(mycoides-1, Colony-3)
+

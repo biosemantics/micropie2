@@ -1,0 +1,9 @@
+det(minimum-2, A-1)
+nsubj(Requires-10, minimum-2)
+num(Mg2-6, 1-4)
+nn(Mg2-6, mM-5)
+prep_of(minimum-2, Mg2-6)
+amod(growth-9, for-8)
+prep_of(minimum-2, growth-9)
+conj_+(Mg2-6, growth-9)
+

@@ -1,0 +1,12 @@
+nsubjpass(reduced-3, Resazurin-1)
+auxpass(reduced-3, is-2)
+nn(blue-7, methylene-6)
+nsubjpass(reduced-15, blue-7)
+conj_and(blue-7, tellurite-9)
+nsubjpass(reduced-15, tellurite-9)
+conj_and(blue-7, tetrazolium-12)
+nsubjpass(reduced-15, tetrazolium-12)
+auxpass(reduced-15, are-13)
+neg(reduced-15, not-14)
+conj_but(reduced-3, reduced-15)
+

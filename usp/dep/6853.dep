@@ -1,0 +1,6 @@
+nn(pharynx-4, L.n.-1)
+nn(pharynx-4, Zeo-2)
+nn(pharynx-4, L.n.-3)
+nsubj(lion-6, pharynx-4)
+cop(lion-6, is-5)
+

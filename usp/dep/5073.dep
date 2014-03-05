@@ -1,0 +1,5 @@
+nn(diameter-2, Cell-1)
+nsubj(µm-5, diameter-2)
+cop(µm-5, is-3)
+num(µm-5, 1.3-4)
+

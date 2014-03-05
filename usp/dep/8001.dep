@@ -1,0 +1,6 @@
+nn(factor-4, elongation-3)
+prep_of(ADP-ribosylation-1, factor-4)
+num(factor-4, 2-5)
+nn(toxin-8, diphtheria-7)
+prep_by(ADP-ribosylation-1, toxin-8)
+

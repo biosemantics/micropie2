@@ -1,0 +1,8 @@
+nn(range-2, Temperature-1)
+num(˚C-4, 5-40-3)
+dep(range-2, ˚C-4)
+nn(optimum-7, temperature-6)
+prep_with(˚C-4, optimum-7)
+num(˚C-10, 35-9)
+prep_of(optimum-7, ˚C-10)
+

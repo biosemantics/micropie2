@@ -1,0 +1,10 @@
+nsubjpass(used-6, H2\/CO2-1)
+conj_and(H2\/CO2-1, formate-3)
+nsubjpass(used-6, formate-3)
+aux(used-6, can-4)
+auxpass(used-6, be-5)
+nn(production-11, growth-8)
+conj_and(growth-8, methane-10)
+nn(production-11, methane-10)
+prep_for(used-6, production-11)
+

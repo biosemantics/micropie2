@@ -1,0 +1,5 @@
+det(product-3, The-1)
+nn(product-3, end-2)
+nsubj(methane-5, product-3)
+cop(methane-5, is-4)
+

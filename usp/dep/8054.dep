@@ -1,0 +1,5 @@
+det(cells-2, The-1)
+nsubj(motile-4, cells-2)
+cop(motile-4, were-3)
+advmod(motile-4, highly-5)
+

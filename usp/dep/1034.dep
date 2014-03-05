@@ -1,0 +1,12 @@
+nn(YT-4, Ferroplasma-1)
+nn(YT-4, acidiphilum-2)
+nn(YT-4, strain-3)
+nsubjpass(deposited-7, YT-4)
+aux(deposited-7, has-5)
+auxpass(deposited-7, been-6)
+det(DSMZ-10, the-9)
+prep_in(deposited-7, DSMZ-10)
+nn(12658T-14, strain-12)
+nn(12658T-14, DSM-13)
+prep_as(DSMZ-10, 12658T-14)
+

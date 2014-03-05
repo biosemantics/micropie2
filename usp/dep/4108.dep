@@ -1,0 +1,9 @@
+nsubjpass(produced-3, Methane-1)
+auxpass(produced-3, is-2)
+prep_from(produced-3, 2-propanol\/CO2-5)
+prep_from(produced-3, 2-butanol\/CO2-7)
+conj_and(2-propanol\/CO2-5, 2-butanol\/CO2-7)
+prep_from(produced-3, cyclopentanol\/CO2-10)
+conj_and(2-propanol\/CO2-5, cyclopentanol\/CO2-10)
+prep_without(2-propanol\/CO2-5, growth-12)
+

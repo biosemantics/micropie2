@@ -1,0 +1,11 @@
+nsubj(was-2, Growth-1)
+advmod(was-2, better-3)
+prep_on(was-2, sulfur-5)
+prep(sulfur-5, plus-6)
+nn(extract-8, yeast-7)
+dep(plus-6, extract-8)
+prep(was-2, than-9)
+pcomp(than-9, on-10)
+pobj(on-10, sulfur-11)
+advmod(on-10, alone-12)
+

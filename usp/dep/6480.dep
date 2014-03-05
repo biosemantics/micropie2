@@ -1,0 +1,5 @@
+nsubj(Fe2O3-5, Selenium-1)
+conj_and(Selenium-1, magnetite-3)
+nsubj(Fe2O3-5, magnetite-3)
+cop(Fe2O3-5, is-4)
+

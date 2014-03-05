@@ -1,0 +1,12 @@
+aux(grow-3, Did-1)
+neg(grow-3, not-2)
+det(medium-7, the-5)
+amod(medium-7, same-6)
+prep_in(grow-3, medium-7)
+advmod(supplied-9, when-8)
+advcl(grow-3, supplied-9)
+det(mixture-14, an-11)
+nn(mixture-14, H2\/CO2-12)
+nn(mixture-14, gas-13)
+prep_with(supplied-9, mixture-14)
+

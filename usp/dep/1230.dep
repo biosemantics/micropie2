@@ -1,0 +1,8 @@
+aux(utilize-3, to-2)
+dep(Able-1, utilize-3)
+amod(sources-6, complex-4)
+nn(sources-6, carbon-5)
+dobj(utilize-3, sources-6)
+nn(extract-10, yeast-9)
+prep_such_as(sources-6, extract-10)
+

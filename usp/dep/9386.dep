@@ -1,0 +1,9 @@
+det(G-2, The-1)
+nsubj(%-9, G-2)
+nn(content-5, C-4)
+conj_+(G-2, content-5)
+nsubj(%-9, content-5)
+cop(%-9, is-6)
+number(mol-8, 37.1-7)
+num(%-9, mol-8)
+

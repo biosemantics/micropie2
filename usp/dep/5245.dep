@@ -1,0 +1,5 @@
+nn(sediment-3, Source-1)
+nn(sediment-3, Freshwater-2)
+nsubj(Ohio-5, sediment-3)
+cop(Ohio-5, is-4)
+

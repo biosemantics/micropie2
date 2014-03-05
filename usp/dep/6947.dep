@@ -1,0 +1,10 @@
+nsubj(able-3, They-1)
+cop(able-3, are-2)
+aux(attach-5, to-4)
+xcomp(able-3, attach-5)
+amod(surfaces-8, inert-7)
+prep_to(attach-5, surfaces-8)
+nn(cells-11, living-10)
+prep_to(attach-5, cells-11)
+conj_and(surfaces-8, cells-11)
+

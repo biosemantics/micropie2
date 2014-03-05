@@ -1,0 +1,9 @@
+nsubj(lyse-2, Cells-1)
+number(%-5, 0.1-4)
+amod(SDS-6, %-5)
+prep_in(lyse-2, SDS-6)
+amod(water-10, hypotonic-8)
+amod(water-10, distilled-9)
+prep_in(lyse-2, water-10)
+conj_or(SDS-6, water-10)
+

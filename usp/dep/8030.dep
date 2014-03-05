@@ -1,0 +1,12 @@
+aux(grow-3, to-2)
+dep(Able-1, grow-3)
+advmod(efficiently-5, equally-4)
+advmod(grow-3, efficiently-5)
+prep_with(grow-3, peptone-7)
+prep_with(grow-3, glucose-9)
+conj_or(peptone-7, glucose-9)
+nn(sources-14, carbon-11)
+conj_and(carbon-11, energy-13)
+nn(sources-14, energy-13)
+prep_as(grow-3, sources-14)
+

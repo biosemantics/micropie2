@@ -1,0 +1,11 @@
+amod(conditions-4, similar-2)
+nn(conditions-4, growth-3)
+prep_under(aggregates-9, conditions-4)
+nn(aggregates-9, strain-6)
+nn(aggregates-9, C2J-7)
+nn(aggregates-9, forms-8)
+dep(aggregates-9, after-10)
+pcomp(after-10, achieving-11)
+amod(growth-13, stationary-12)
+dobj(achieving-11, growth-13)
+

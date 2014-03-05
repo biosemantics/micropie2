@@ -1,0 +1,6 @@
+nsubj(required-5, Serum-1)
+conj_or(Serum-1, cholesterol-3)
+nsubj(required-5, cholesterol-3)
+neg(required-5, not-4)
+prep_for(required-5, growth-7)
+

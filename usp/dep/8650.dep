@@ -1,0 +1,6 @@
+det(morphology-2, The-1)
+nsubjpass(described-4, morphology-2)
+auxpass(described-4, is-3)
+det(genus-7, the-6)
+prep_for(described-4, genus-7)
+

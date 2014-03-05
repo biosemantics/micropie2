@@ -1,0 +1,7 @@
+nsubj(be-2, Rods-1)
+xcomp(be-2, occurring-3)
+advmod(occurring-3, singly-4)
+prep_in(occurring-3, pairs-6)
+prep_in(occurring-3, chains-8)
+conj_or(pairs-6, chains-8)
+

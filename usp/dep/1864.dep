@@ -1,0 +1,11 @@
+det(strain-2, The-1)
+nsubj(unable-4, strain-2)
+cop(unable-4, is-3)
+aux(utilize-6, to-5)
+xcomp(unable-4, utilize-6)
+dobj(utilize-6, peptone-7)
+dobj(utilize-6, casein-9)
+conj_or(peptone-7, casein-9)
+dobj(utilize-6, starch-11)
+conj_or(peptone-7, starch-11)
+

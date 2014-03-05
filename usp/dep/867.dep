@@ -1,0 +1,6 @@
+nsubjpass(required-5, Cholesterol-1)
+conj_or(Cholesterol-1, serum-3)
+nsubjpass(required-5, serum-3)
+auxpass(required-5, is-4)
+prep_for(required-5, growth-7)
+

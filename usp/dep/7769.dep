@@ -1,0 +1,8 @@
+amod(45-3, between-2)
+num(˚C-6, 45-3)
+conj_and(45-3, 65-5)
+num(˚C-6, 65-5)
+dobj(Grew-1, ˚C-6)
+det(optimum-9, an-8)
+prep_with(Grew-1, optimum-9)
+

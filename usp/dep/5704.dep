@@ -1,0 +1,9 @@
+nsubjpass(lysed-3, They-1)
+auxpass(lysed-3, are-2)
+num(g-6, 1-5)
+agent(lysed-3, g-6)
+nn(sulfate-10, sodium-8)
+nn(sulfate-10, dodecyl-9)
+prep_of(g-6, sulfate-10)
+prep_per(sulfate-10, liter-12)
+

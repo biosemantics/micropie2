@@ -1,0 +1,8 @@
+nsubj(grow-2, Cells-1)
+advmod(grow-2, well-3)
+amod(growth-6, optimal-5)
+prep_with(grow-2, growth-6)
+number(%-9, 3-8)
+amod(NaCl-10, %-9)
+prep_at(growth-6, NaCl-10)
+

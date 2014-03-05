@@ -1,0 +1,6 @@
+det(envelope-3, The-1)
+nn(envelope-3, cell-2)
+nsubj(consists-4, envelope-3)
+num(layers-7, two-6)
+prep_of(consists-4, layers-7)
+

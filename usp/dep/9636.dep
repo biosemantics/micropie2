@@ -1,0 +1,11 @@
+nsubj(cocci-4, Cells-1)
+cop(cocci-4, are-2)
+amod(cocci-4, irregular-3)
+num(µm-7, 0.7-1-0-6)
+appos(cocci-4, µm-7)
+prep_in(µm-7, diameter-9)
+appos(diameter-9, motile-11)
+det(bundle-14, a-13)
+prep_with(motile-11, bundle-14)
+prep_of(bundle-14, flagella-16)
+

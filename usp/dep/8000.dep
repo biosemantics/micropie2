@@ -1,0 +1,6 @@
+nn(envelope-2, Cell-1)
+nsubj(contains-3, envelope-2)
+dobj(contains-3, periodate-4)
+amod(polypeptides-7, Schiff-positive-6)
+dep(periodate-4, polypeptides-7)
+

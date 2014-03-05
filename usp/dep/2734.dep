@@ -1,0 +1,11 @@
+amod(growth-2, Optimal-1)
+nsubj(occurs-3, growth-2)
+prep_at(occurs-3, pH-5)
+number(37-7, 7.4-6)
+num(˚C-8, 37-7)
+dobj(occurs-3, ˚C-8)
+num(NaCl-12, 4.3-10)
+nn(NaCl-12, M-11)
+dobj(occurs-3, NaCl-12)
+conj_and(˚C-8, NaCl-12)
+

@@ -1,0 +1,9 @@
+nsubjpass(grown-3, It-1)
+auxpass(grown-3, is-2)
+det(presence-6, the-5)
+prep_in(grown-3, presence-6)
+number(%-9, 0.1-8)
+amod(nitrate-10, %-9)
+prep_of(presence-6, nitrate-10)
+dep(grown-3, when-11)
+

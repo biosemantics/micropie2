@@ -1,0 +1,10 @@
+det(habitat-2, The-1)
+nsubj(prepuces-5, habitat-2)
+cop(prepuces-5, is-3)
+amod(prepuces-5, canine-4)
+conj_and(prepuces-5, vaginas-7)
+amod(cavities-13, oral-10)
+conj_and(oral-10, nasal-12)
+amod(cavities-13, nasal-12)
+conj_and(prepuces-5, cavities-13)
+

@@ -1,0 +1,8 @@
+prep_at(Grows-1, pH-3)
+nsubj(Grows-1, 4.5-4)
+dep(4.5-4, 5.5-6)
+amod(growth-10, optimum-9)
+prep_with(5.5-6, growth-10)
+prep_near(growth-10, pH-12)
+num(pH-12, 5.1-13)
+

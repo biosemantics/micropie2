@@ -1,0 +1,9 @@
+nsubj(serve-3, Trimethylamine-1)
+aux(serve-3, may-2)
+det(carbon-7, a-5)
+amod(carbon-7, sole-6)
+prep_as(serve-3, carbon-7)
+nn(source-10, energy-9)
+prep_as(serve-3, source-10)
+conj_and(carbon-7, source-10)
+

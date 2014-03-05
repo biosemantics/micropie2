@@ -1,0 +1,10 @@
+det(hemolymph-4, the-3)
+prep_from(Isolated-1, hemolymph-4)
+det(beetle-9, an-6)
+amod(beetle-9, adult-7)
+nn(beetle-9, chrysomelid-8)
+prep_of(hemolymph-4, beetle-9)
+nn(howardii-13, D.-11)
+amod(howardii-13, undecimpunctata-12)
+appos(beetle-9, howardii-13)
+

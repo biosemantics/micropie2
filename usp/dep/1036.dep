@@ -1,0 +1,8 @@
+nsubjpass(observed-6, Addition-1)
+nn(extract-4, yeast-3)
+prep_on(Addition-1, extract-4)
+auxpass(observed-6, was-5)
+aux(essential-9, to-7)
+cop(essential-9, be-8)
+xcomp(observed-6, essential-9)
+

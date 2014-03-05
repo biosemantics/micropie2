@@ -1,0 +1,10 @@
+det(sheath-3, A-1)
+amod(sheath-3, mucilaginous-2)
+nsubjpass(seen-6, sheath-3)
+auxpass(seen-6, is-4)
+neg(seen-6, not-5)
+acomp(seen-6, external-7)
+det(wall-11, the-9)
+nn(wall-11, cell-10)
+prep_to(external-7, wall-11)
+

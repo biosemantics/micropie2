@@ -1,0 +1,6 @@
+nsubjpass(grown-3, Cells-1)
+auxpass(grown-3, be-2)
+nn(medium-7, rumen-5)
+nn(medium-7, fluid-6)
+prep_in(grown-3, medium-7)
+

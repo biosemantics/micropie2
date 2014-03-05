@@ -1,0 +1,5 @@
+amod(colonies-3, Classical-1)
+amod(colonies-3, fried-egg-2)
+nsubjpass(observed-5, colonies-3)
+auxpass(observed-5, were-4)
+

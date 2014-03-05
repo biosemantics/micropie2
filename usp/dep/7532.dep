@@ -1,0 +1,12 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(CGMCC-7, strain-3)
+cop(CGMCC-7, is-4)
+nn(CGMCC-7, IHC-005T-5)
+amod(CGMCC-7, =-6)
+num(T-9, 1.3597-8)
+dep(CGMCC-7, T-9)
+amod(12253T-12, =-10)
+nn(12253T-12, JCM-11)
+dep(T-9, 12253T-12)
+

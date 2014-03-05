@@ -1,0 +1,7 @@
+dobj(Requires-1, acetate-2)
+det(cource-6, a-4)
+amod(cource-6, major-5)
+prep_as(Requires-1, cource-6)
+nn(carbon-9, cell-8)
+prep_of(cource-6, carbon-9)
+

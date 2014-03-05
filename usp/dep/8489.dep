@@ -1,0 +1,11 @@
+nn(colonies-2, Agar-1)
+nn(pig-5, hemadsorb-3)
+nn(pig-5, guinea-4)
+dep(colonies-2, pig-5)
+dep(pig-5, erythrocytes-6)
+dep(pig-5, erythrocytes-9)
+conj_negcc(erythrocytes-6, erythrocytes-9)
+amod(species-13, other-11)
+amod(species-13, mammalian-12)
+prep_of(colonies-2, species-13)
+

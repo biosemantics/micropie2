@@ -1,0 +1,8 @@
+nn(strain-2, Type-1)
+nsubj(BARC-4, strain-2)
+cop(BARC-4, is-3)
+num(BARC-4, 318-5)
+amod(51999T-9, =-7)
+nn(51999T-9, ATCC-8)
+appos(BARC-4, 51999T-9)
+

@@ -1,0 +1,12 @@
+nsubj(contain-4, Cells-1)
+prep_of(Cells-1, GKZPZT-3)
+det(dehydrogenase-8, a-5)
+amod(dehydrogenase-8, secondary-6)
+nn(dehydrogenase-8, alcohol-7)
+dobj(contain-4, dehydrogenase-8)
+amod(dehydrogenase-8, dependent-9)
+prep_on(dependent-9, F420-11)
+amod(dehydrogenase-8, devoid-13)
+conj_and(dependent-9, devoid-13)
+prep_of(dehydrogenase-8, Zn-15)
+

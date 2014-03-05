@@ -1,0 +1,10 @@
+nn(G-4, penicillin-3)
+prep_to(Resistant-1, G-4)
+appos(G-4, rifampicin-6)
+appos(G-4, chloramphenicol-8)
+conj_and(rifampicin-6, chloramphenicol-8)
+appos(G-4, neomycin-10)
+conj_and(rifampicin-6, neomycin-10)
+appos(G-4, bacitracin-12)
+conj_and(rifampicin-6, bacitracin-12)
+

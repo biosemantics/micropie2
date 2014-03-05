@@ -1,0 +1,10 @@
+det(strains-4, All-1)
+num(strains-4, four-2)
+amod(strains-4, known-3)
+nsubjpass(isolated-6, strains-4)
+auxpass(isolated-6, were-5)
+amod(ponds-11, solar-8)
+nn(ponds-11, saltern-9)
+nn(ponds-11, crystallizer-10)
+prep_from(isolated-6, ponds-11)
+

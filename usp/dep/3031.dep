@@ -1,0 +1,8 @@
+det(glycolipid-3, The-1)
+amod(glycolipid-3, major-2)
+nsubj(S-DGD-3-5, glycolipid-3)
+cop(S-DGD-3-5, is-4)
+num(glycolipids-9, two-7)
+amod(glycolipids-9, minor-8)
+conj_and(S-DGD-3-5, glycolipids-9)
+

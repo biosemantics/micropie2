@@ -1,0 +1,8 @@
+nsubj(varying-3, Cells-1)
+aux(varying-3, are-2)
+prep_in(varying-3, diameter-5)
+number(500-9, 300-7)
+dep(500-9, to-8)
+num(nm-10, 500-9)
+prep_from(varying-3, nm-10)
+

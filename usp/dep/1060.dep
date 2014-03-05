@@ -1,0 +1,6 @@
+det(S-layer-2, An-1)
+partmod(S-layer-2, covering-3)
+det(membrane-6, the-4)
+amod(membrane-6, cytoplasmic-5)
+dobj(covering-3, membrane-6)
+

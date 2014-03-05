@@ -1,0 +1,5 @@
+dobj(Oxidizes-1, Mn2-2)
+dep(Oxidizes-1, be-3)
+dep(MnSO4-6, from-5)
+conj_+(Oxidizes-1, MnSO4-6)
+

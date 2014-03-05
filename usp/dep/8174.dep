@@ -1,0 +1,8 @@
+aux(hydrolyse-3, Does-1)
+neg(hydrolyse-3, not-2)
+dobj(hydrolyse-3, starch-4)
+dobj(hydrolyse-3, gelatin-6)
+conj_or(starch-4, gelatin-6)
+dobj(hydrolyse-3, casein-8)
+conj_or(starch-4, casein-8)
+

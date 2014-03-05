@@ -1,0 +1,12 @@
+nsubj(non-motile-3, Cells-1)
+nsubj(wide-9, Cells-1)
+cop(non-motile-3, are-2)
+acomp(non-motile-3, rod-shaped-5)
+num(µm-8, 0.3-7)
+dep(wide-9, µm-8)
+conj_and(non-motile-3, wide-9)
+dep(long-15, 2.0-11)
+num(µm-14, 6.5-13)
+dep(2.0-11, µm-14)
+conj_and(non-motile-3, long-15)
+

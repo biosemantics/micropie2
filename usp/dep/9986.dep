@@ -1,0 +1,12 @@
+advmod(present-4, When-1)
+nsubj(present-4, sulfur-2)
+cop(present-4, was-3)
+advcl(formed-8, present-4)
+nsubjpass(formed-8, H2S-6)
+auxpass(formed-8, was-7)
+amod(amounts-11, large-10)
+prep_in(formed-8, amounts-11)
+xcomp(formed-8, resulting-13)
+nn(inhibition-16, growth-15)
+prep_in(resulting-13, inhibition-16)
+

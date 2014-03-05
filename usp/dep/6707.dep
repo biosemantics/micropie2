@@ -1,0 +1,5 @@
+nsubj(requires-5, Susceptible-1)
+prep_to(Susceptible-1, digitonin-3)
+dobj(requires-5, sterol-6)
+prep_for(sterol-6, growth-8)
+

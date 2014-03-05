@@ -1,0 +1,1 @@
+Requires either casamino acids (Difco), tryptone (Difco), yeast extract (BBL), or vitamin mixture for growth.

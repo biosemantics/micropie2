@@ -1,0 +1,8 @@
+nn(agar-3, Horse-1)
+nn(agar-3, serum-2)
+amod(colonies-6, large-5)
+dep(agar-3, colonies-6)
+advmod(marked-9, clearly-8)
+amod(centers-10, marked-9)
+prep_with(colonies-6, centers-10)
+

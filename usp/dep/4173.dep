@@ -1,0 +1,5 @@
+det(substrates-3, The-1)
+amod(substrates-3, only-2)
+nsubj(support-4, substrates-3)
+dobj(support-4, growth-5)
+

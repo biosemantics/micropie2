@@ -1,0 +1,9 @@
+det(content-3, The-1)
+nn(content-3, G+C-2)
+nsubj(%-7, content-3)
+cop(%-7, was-4)
+number(mol-6, 52.3-5)
+num(%-7, mol-6)
+cop(Tm-9, is-8)
+rcmod(%-7, Tm-9)
+

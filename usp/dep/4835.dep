@@ -1,0 +1,7 @@
+nsubj(serve-5, H2S-1)
+conj_or(H2S-1, S˚-3)
+nsubj(serve-5, S˚-3)
+aux(serve-5, may-4)
+nn(source-8, sulfur-7)
+prep_as(serve-5, source-8)
+

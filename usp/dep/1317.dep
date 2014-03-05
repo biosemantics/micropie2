@@ -1,0 +1,10 @@
+nsubj(rods-4, Cells-1)
+cop(rods-4, are-2)
+amod(rods-4, pleomorphic-3)
+dep(0.5-1-6, rods-4)
+cop(0.5-1-6, is-5)
+num(µm-10, .0-7)
+nn(µm-10, x-8)
+num(µm-10, 0.3-9)
+nsubj(0.5-1-6, µm-10)
+

@@ -1,0 +1,4 @@
+prep_to(Resistant-1, benzylpenicillin-3)
+prep_to(Resistant-1, chloramphenicol-5)
+conj_and(benzylpenicillin-3, chloramphenicol-5)
+

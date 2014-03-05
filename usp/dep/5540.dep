@@ -1,0 +1,6 @@
+det(wall-3, The-1)
+nn(wall-3, cell-2)
+nsubj(consists-4, wall-3)
+nn(subunits-7, protein-6)
+prep_of(consists-4, subunits-7)
+

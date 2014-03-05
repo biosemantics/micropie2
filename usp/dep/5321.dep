@@ -1,0 +1,9 @@
+nsubjpass(required-3, Acetate-1)
+auxpass(required-3, is-2)
+nn(source-6, carbon-5)
+prep_as(required-3, source-6)
+prep_for(source-6, growth-8)
+prep_on(required-3, substrates-10)
+dep(substrates-10, other-11)
+prep_than(substrates-10, ethanol-13)
+

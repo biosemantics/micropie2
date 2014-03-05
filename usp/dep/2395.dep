@@ -1,0 +1,6 @@
+amod(growth-2, Anaerobic-1)
+nsubj(occur-7, growth-2)
+prep_with(growth-2, arginine-4)
+aux(occur-7, does-5)
+neg(occur-7, not-6)
+

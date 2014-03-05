@@ -1,0 +1,8 @@
+det(digestor-7, a-3)
+amod(digestor-7, domestic-4)
+nn(digestor-7, sewage-5)
+nn(digestor-7, sludge-6)
+prep_from(Isolated-1, digestor-7)
+nn(Ill.-11, Urbana-9)
+prep_in(digestor-7, Ill.-11)
+

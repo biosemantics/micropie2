@@ -1,0 +1,13 @@
+det(range-3, The-1)
+nn(range-3, temperature-2)
+nsubj(25-7, range-3)
+prep_for(range-3, growth-5)
+cop(25-7, is-6)
+num(˚C-10, 45-9)
+dep(25-7, ˚C-10)
+amod(growth-14, optimal-13)
+prep_with(˚C-10, growth-14)
+prep_at(growth-14, 34-16)
+num(˚C-19, 37-18)
+dep(25-7, ˚C-19)
+

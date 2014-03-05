@@ -1,0 +1,9 @@
+nn(colonies-3, Pale-1)
+amod(colonies-3, yellow-2)
+nsubj(formed-9, colonies-3)
+num(mm-6, 1-5)
+prep_about(colonies-3, mm-6)
+prep_in(mm-6, diameter-8)
+nn(plates-12, Phytagel-11)
+prep_on(formed-9, plates-12)
+

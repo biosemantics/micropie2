@@ -1,0 +1,5 @@
+nsubj(motile-3, Cells-1)
+nsubj(non-motile-5, Cells-1)
+cop(motile-3, are-2)
+conj_or(motile-3, non-motile-5)
+

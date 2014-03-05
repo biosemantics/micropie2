@@ -1,0 +1,11 @@
+amod(colonies-3, diffuse-2)
+dep(Form-1, colonies-3)
+amod(medium-6, solid-5)
+prep_on(colonies-3, medium-6)
+num(%-9, 0.8-8)
+prep_with(medium-6, %-9)
+dep(Form-1, Noble-10)
+dep(Noble-10, agar-11)
+amod(morphology-15, fried-egg-14)
+prep_without(Form-1, morphology-15)
+

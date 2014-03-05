@@ -1,0 +1,8 @@
+det(organisms-2, The-1)
+nsubj(hydrolyze-5, organisms-2)
+aux(hydrolyze-5, did-3)
+neg(hydrolyze-5, not-4)
+dobj(hydrolyze-5, urea-6)
+dobj(hydrolyze-5, arginine-8)
+conj_or(urea-6, arginine-8)
+

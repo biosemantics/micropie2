@@ -1,0 +1,13 @@
+amod(metabolism-2, Heterotrophic-1)
+partmod(metabolism-2, using-3)
+dobj(using-3, fermentation-4)
+det(variety-7, a-6)
+prep_of(fermentation-4, variety-7)
+amod(substrates-11, complex-9)
+amod(substrates-11, organic-10)
+prep_of(variety-7, substrates-11)
+aux(produce-13, to-12)
+xcomp(using-3, produce-13)
+amod(acids-15, organic-14)
+dobj(produce-13, acids-15)
+

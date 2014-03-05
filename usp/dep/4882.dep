@@ -1,0 +1,5 @@
+prep_of(Formation-1, methane-3)
+prep_from(Formation-1, H2-5)
+prep_from(Formation-1, CO2-7)
+conj_and(H2-5, CO2-7)
+

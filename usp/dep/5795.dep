@@ -1,0 +1,8 @@
+nn(range-2, Temperature-1)
+nsubj(is-5, range-2)
+prep_for(range-2, growth-4)
+number(58-9, 42-7)
+dep(58-9, to-8)
+num(˚C-10, 58-9)
+prep_from(is-5, ˚C-10)
+

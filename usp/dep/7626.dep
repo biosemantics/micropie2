@@ -1,0 +1,13 @@
+nn(Sinica-5, Academia-4)
+dep(AS-2, Sinica-5)
+nn(Microbiological-9, China-7)
+nn(Microbiological-9, General-8)
+appos(Sinica-5, Microbiological-9)
+prep(AS-2, Culture-10)
+nn(Centre-12, Collection-11)
+dep(Culture-10, Centre-12)
+appos(Centre-12, Zhong-guancun-14)
+appos(Zhong-guancun-14, Beijing-16)
+dep(Culture-10, 100080-17)
+appos(100080-17, China-19)
+

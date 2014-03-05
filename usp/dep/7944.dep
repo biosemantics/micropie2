@@ -1,0 +1,9 @@
+prep_during(serve-10, growth-2)
+appos(growth-2, S˚-4)
+appos(S˚-4, L-cystine-6)
+appos(S˚-4, oxidized-8)
+conj_and(L-cystine-6, oxidized-8)
+nsubj(serve-10, glutathione-9)
+nn(acceptors-13, electron-12)
+prep_as(serve-10, acceptors-13)
+

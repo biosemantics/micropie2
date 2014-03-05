@@ -1,0 +1,5 @@
+det(stimulation-2, No-1)
+prep_of(stimulation-2, growth-4)
+amod(compounds-7, organic-6)
+prep_by(stimulation-2, compounds-7)
+

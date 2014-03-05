@@ -1,0 +1,5 @@
+nn(sulfides-2, Forms-1)
+prep_from(sulfides-2, thiosulfate-4)
+prep_from(sulfides-2, sulfur-8)
+conj_negcc(thiosulfate-4, sulfur-8)
+

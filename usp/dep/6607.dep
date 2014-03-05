@@ -1,0 +1,11 @@
+det(organisms-2, The-1)
+nsubj(distinct-5, organisms-2)
+cop(distinct-5, were-3)
+advmod(distinct-5, serologically-4)
+num(serotypes-12, 82-7)
+nn(species-9, Mycoplasma-8)
+nn(serotypes-12, species-9)
+conj_and(species-9, unclassified-11)
+nn(serotypes-12, unclassified-11)
+prep_from(distinct-5, serotypes-12)
+

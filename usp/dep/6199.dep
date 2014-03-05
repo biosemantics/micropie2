@@ -1,0 +1,7 @@
+nsubj(source-4, Ammonium-1)
+cop(source-4, is-2)
+det(source-4, the-3)
+prep_of(source-4, nitrogen-6)
+prep_of(source-4, sulfide-8)
+conj_and(nitrogen-6, sulfide-8)
+

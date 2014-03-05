@@ -1,0 +1,6 @@
+nsubj(starch-2, Hydrolyzes-1)
+dobj(starch-2, casein-4)
+dobj(starch-2, Tween-7)
+conj_and(casein-4, Tween-7)
+num(Tween-7, 80-8)
+

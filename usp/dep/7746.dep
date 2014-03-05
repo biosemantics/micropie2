@@ -1,0 +1,7 @@
+det(diameter-2, The-1)
+nsubj(is-6, diameter-2)
+det(cells-5, the-4)
+prep_of(diameter-2, cells-5)
+num(µm-9, 1-8)
+prep_about(is-6, µm-9)
+

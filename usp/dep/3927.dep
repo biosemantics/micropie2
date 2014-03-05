@@ -1,0 +1,9 @@
+amod(cocci-3, Gram-negative-1)
+amod(cocci-3, irregular-2)
+det(diameter-6, a-5)
+prep_with(cocci-3, diameter-6)
+prep(cocci-3, of-7)
+pcomp(of-7, about-8)
+num(µm-10, 1-9)
+pobj(about-8, µm-10)
+

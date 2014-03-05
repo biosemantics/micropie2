@@ -1,0 +1,12 @@
+nn(gen.-2, L.-1)
+nsubj(n.-3, gen.-2)
+dobj(n.-3, clarkii-4)
+prep_of(clarkii-4, Clark-7)
+prep_in(n.-3, honor-10)
+nn(Clark-14, T.-12)
+nn(Clark-14, B.-13)
+prep_of(honor-10, Clark-14)
+nn(ecologist-18, pioneer-16)
+nn(ecologist-18, spiroplasma-17)
+appos(Clark-14, ecologist-18)
+

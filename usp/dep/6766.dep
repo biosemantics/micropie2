@@ -1,0 +1,4 @@
+det(organisms-2, The-1)
+amod(glucose-4, fermented-3)
+dep(organisms-2, glucose-4)
+

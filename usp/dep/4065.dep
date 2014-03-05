@@ -1,0 +1,8 @@
+nsubj(resistant-3, Cells-1)
+cop(resistant-3, are-2)
+nn(SDS-6, lysis-5)
+prep_to(resistant-3, SDS-6)
+amod(solution-9, hypotonic-8)
+prep_to(resistant-3, solution-9)
+conj_and(SDS-6, solution-9)
+

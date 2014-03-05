@@ -1,0 +1,5 @@
+dep(G+C-1, content-2)
+number(mol-4, 46-3)
+num(%-5, mol-4)
+dep(content-2, %-5)
+

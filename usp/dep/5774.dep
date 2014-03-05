@@ -1,0 +1,9 @@
+nsubj(sensitive-4, Cells-1)
+cop(sensitive-4, are-2)
+neg(sensitive-4, not-3)
+prep_to(sensitive-4, lysis-6)
+num(g-9, 1.0-8)
+prep_by(sensitive-4, g-9)
+prep_of(g-9, SDS-11)
+prep_per(SDS-11, liter-13)
+

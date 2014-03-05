@@ -1,0 +1,8 @@
+nn(hemolysis-4, beta-3)
+dep(Hemolysis-1, hemolysis-4)
+nn(erythrocytes-10, sheep-6)
+conj_and(sheep-6, guinea-8)
+nn(erythrocytes-10, guinea-8)
+nn(erythrocytes-10, pig-9)
+prep_with(hemolysis-4, erythrocytes-10)
+

@@ -1,0 +1,5 @@
+nn(content-2, G+C-1)
+number(mol-5, 36.8-4)
+num(%-6, mol-5)
+prep_of(content-2, %-6)
+

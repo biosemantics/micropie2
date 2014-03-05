@@ -1,0 +1,6 @@
+nsubjpass(formed-3, Methane-1)
+auxpass(formed-3, is-2)
+prep_from(formed-3, H2\/CO2-5)
+prep_from(formed-3, formate-8)
+conj_and(H2\/CO2-5, formate-8)
+

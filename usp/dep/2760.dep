@@ -1,0 +1,11 @@
+nn(gelatin-9, Casein-1)
+dep(gelatin-9, starch-3)
+dep(gelatin-9, urea-5)
+dep(gelatin-9, DNA-7)
+nsubjpass(hydrolysed-16, gelatin-9)
+conj_and(gelatin-9, Tween-12)
+nsubjpass(hydrolysed-16, Tween-12)
+num(Tween-12, 80-13)
+auxpass(hydrolysed-16, are-14)
+neg(hydrolysed-16, not-15)
+

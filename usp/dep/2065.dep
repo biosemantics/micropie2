@@ -1,0 +1,8 @@
+quantmod(1-3, At-1)
+mwe(At-1, least-2)
+num(mM-4, 1-3)
+dep(mM-4, Mg2-5)
+amod(growth-8, for-7)
+dep(mM-4, growth-8)
+conj_+(Mg2-5, growth-8)
+

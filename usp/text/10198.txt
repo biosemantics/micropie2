@@ -1,0 +1,1 @@
+Requires thiosulfate as an electron acceptor.

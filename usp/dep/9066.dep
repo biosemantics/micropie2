@@ -1,0 +1,10 @@
+amod(flagella-2, Peritrichous-1)
+nsubj(long-11, flagella-2)
+nsubj(curved-13, flagella-2)
+quantmod(10-5, approximately-4)
+num(nm-6, 10-5)
+dep(flagella-2, nm-6)
+prep_in(nm-6, diameter-8)
+cop(long-11, are-10)
+conj_and(long-11, curved-13)
+

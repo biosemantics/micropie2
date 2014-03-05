@@ -1,0 +1,11 @@
+amod(reactions-2, Positive-1)
+nsubjpass(obtained-12, reactions-2)
+nn(fermentation-7, glucose-4)
+conj_and(glucose-4, mannose-6)
+nn(fermentation-7, mannose-6)
+prep_for(reactions-2, fermentation-7)
+nn(activity-10, phosphatase-9)
+prep_for(reactions-2, activity-10)
+conj_and(fermentation-7, activity-10)
+auxpass(obtained-12, were-11)
+

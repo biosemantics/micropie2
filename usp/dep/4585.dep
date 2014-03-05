@@ -1,0 +1,8 @@
+nn(content-3, DNA-1)
+nn(content-3, G+C-2)
+nsubj(is-6, content-3)
+prep_of(content-3, cells-5)
+number(mol-9, 50.0-8)
+num(%-10, mol-9)
+prep_about(is-6, %-10)
+

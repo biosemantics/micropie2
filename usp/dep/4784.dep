@@ -1,0 +1,5 @@
+nsubj(serves-2, TMA-1)
+amod(substrate-6, sole-4)
+amod(substrate-6, organic-5)
+prep_as(serves-2, substrate-6)
+

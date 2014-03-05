@@ -1,0 +1,9 @@
+nsubj(flagellated-3, Coccoid-shaped-1)
+cc(flagellated-3, and-2)
+dobj(flagellated-3, cells-4)
+prep_between(cells-4, 0.7-6)
+num(µm-9, 1.5-8)
+dobj(flagellated-3, µm-9)
+conj_and(cells-4, µm-9)
+prep_in(µm-9, diameter-11)
+

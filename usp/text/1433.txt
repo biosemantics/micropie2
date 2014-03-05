@@ -1,0 +1,1 @@
+Utilizes cellobiose, glycerol, D-glucose, D-galactose, raffinose, D-sorbitol, glutamic acid, aspartic acid and lysine, but not trehalose as sole energy sources.

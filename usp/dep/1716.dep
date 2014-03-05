@@ -1,0 +1,11 @@
+quantmod(1.7-3, At-1)
+mwe(At-1, least-2)
+nsubj(2.6-11, 1.7-3)
+prep(1.7-3, M-4)
+nn(NaCl-8, NaCl-5)
+num(NaCl-8, 4.3-6)
+nn(NaCl-8, M-7)
+dep(M-4, NaCl-8)
+cop(2.6-11, is-9)
+advmod(2.6-11, optimally-10)
+

@@ -1,0 +1,8 @@
+nsubj(consume-2, Cells-1)
+nn(GlcNAc-4, N-acetylglucosamine-3)
+dobj(consume-2, GlcNAc-4)
+number(3-6, 2-5)
+dep(GlcNAc-4, 3-6)
+dobj(consume-2, pyruvate-8)
+conj_and(GlcNAc-4, pyruvate-8)
+

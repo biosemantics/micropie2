@@ -1,0 +1,6 @@
+nsubj(requires-2, It-1)
+quantmod(10-5, at-3)
+mwe(at-3, least-4)
+num(%-6, 10-5)
+dobj(requires-2, %-6)
+

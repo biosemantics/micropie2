@@ -1,0 +1,4 @@
+dobj(Utilizes-1, peptides-2)
+nn(respiration-5, sulfur-4)
+prep_by(Utilizes-1, respiration-5)
+

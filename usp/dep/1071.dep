@@ -1,0 +1,7 @@
+nsubj(inhibits-6, H2-1)
+det(phase-5, the-3)
+nn(phase-5, gas-4)
+prep_in(H2-1, phase-5)
+dobj(inhibits-6, growth-7)
+advmod(inhibits-6, completely-8)
+

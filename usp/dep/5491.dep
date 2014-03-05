@@ -1,0 +1,8 @@
+number(%-2, 0.5-1)
+amod(extract-4, %-2)
+nn(extract-4, yeast-3)
+nsubjpass(required-6, extract-4)
+auxpass(required-6, are-5)
+amod(growth-9, optimal-8)
+prep_for(required-6, growth-9)
+

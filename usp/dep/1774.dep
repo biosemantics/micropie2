@@ -1,0 +1,8 @@
+nn(reduction-4, sulphide-3)
+prep_for(Negative-1, reduction-4)
+prep_for(Negative-1, urease-6)
+conj_and(reduction-4, urease-6)
+nn(liquefaction-9, gelatin-8)
+prep_for(Negative-1, liquefaction-9)
+conj_and(reduction-4, liquefaction-9)
+

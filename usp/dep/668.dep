@@ -1,0 +1,10 @@
+nn(envelope-2, Cell-1)
+nsubj(contains-3, envelope-2)
+det(membrane-6, a-4)
+amod(membrane-6, cytoplasmic-5)
+dobj(contains-3, membrane-6)
+det(S-layer-10, an-8)
+amod(S-layer-10, outer-9)
+dobj(contains-3, S-layer-10)
+conj_and(membrane-6, S-layer-10)
+

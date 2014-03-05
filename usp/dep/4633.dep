@@ -1,0 +1,6 @@
+det(strain-3, The-1)
+nn(strain-3, reference-2)
+nsubj(P2F9705-6, strain-3)
+cop(P2F9705-6, is-4)
+nn(P2F9705-6, strain-5)
+

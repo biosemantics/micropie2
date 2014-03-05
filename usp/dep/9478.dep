@@ -1,0 +1,11 @@
+nsubj(products-12, Acetate-1)
+conj_and(Acetate-1, phenylacetate-3)
+nsubj(products-12, phenylacetate-3)
+conj_and(Acetate-1, lactate-5)
+nsubj(products-12, lactate-5)
+conj_and(Acetate-1, 2-methylpropionate-8)
+nsubj(products-12, 2-methylpropionate-8)
+cop(products-12, are-9)
+amod(products-12, major-10)
+nn(products-12, fermentation-11)
+

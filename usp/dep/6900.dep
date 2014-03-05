@@ -1,0 +1,10 @@
+nn(strain-2, Type-1)
+nn(R171-5, strain-4)
+dep(strain-2, R171-5)
+amod(ATCC-8, =-7)
+dep(R171-5, ATCC-8)
+num(NCTC-11, 35015-9)
+amod(NCTC-11, =-10)
+dep(ATCC-8, NCTC-11)
+dep(NCTC-11, 10191-12)
+

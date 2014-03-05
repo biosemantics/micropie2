@@ -1,0 +1,8 @@
+det(optimum-3, The-1)
+nn(optimum-3, pH-2)
+nsubj(6-8, optimum-3)
+prep_for(optimum-3, growth-5)
+cop(6-8, is-6)
+amod(6-8, between-7)
+conj_and(6-8, 8-10)
+

@@ -1,0 +1,12 @@
+nsubj(described-13, capricolum-1)
+dep(capricolum-5, formerly-3)
+nn(capricolum-5, M.-4)
+appos(capricolum-1, capricolum-5)
+cc(distinguishable-10, but-8)
+advmod(distinguishable-10, otherwise-9)
+amod(capricolum-1, distinguishable-10)
+prep(distinguishable-10, from-11)
+advmod(distinguishable-10, previously-12)
+nn(species-15, Mycoplasma-14)
+dobj(described-13, species-15)
+

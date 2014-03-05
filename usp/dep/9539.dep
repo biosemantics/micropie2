@@ -1,0 +1,13 @@
+nsubj(cocci-3, Cells-1)
+cop(cocci-3, are-2)
+dep(cocci-3, diameter-5)
+number(2-9, 0.8-7)
+dep(2-9, to-8)
+appos(diameter-5, 2-9)
+dep(diameter-5, µm-10)
+nsubj(motile-14, that-12)
+cop(motile-14, are-13)
+rcmod(cocci-3, motile-14)
+amod(flagella-19, polar-18)
+prep_by_means_of(motile-14, flagella-19)
+

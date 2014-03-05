@@ -1,0 +1,9 @@
+num(.0-2, 0.5-1-1)
+nsubj(x-3, .0-2)
+num(µm-6, 1.0-6-4)
+num(µm-6, .0-5)
+dobj(x-3, µm-6)
+dobj(x-3, more-8)
+conj_or(µm-6, more-8)
+prep_in(x-3, length-10)
+

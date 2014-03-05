@@ -1,0 +1,10 @@
+nn(fractions-3, Core-1)
+nn(fractions-3, lipid-2)
+nsubj(contained-4, fractions-3)
+dobj(contained-4, acyclic-5)
+amod(tetraethers-10, various-7)
+amod(tetraethers-10, cyclized-8)
+nn(tetraethers-10, glycerol-bisphytanyl-glycerol-9)
+dobj(contained-4, tetraethers-10)
+conj_or(acyclic-5, tetraethers-10)
+

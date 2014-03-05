@@ -1,0 +1,9 @@
+nsubjpass(inhibited-4, Growth-1)
+auxpass(inhibited-4, is-2)
+neg(inhibited-4, not-3)
+num(blue-9, 0.002-6)
+nn(blue-9, %-7)
+nn(blue-9, methylene-8)
+agent(inhibited-4, blue-9)
+prep_in(blue-9, agar-11)
+

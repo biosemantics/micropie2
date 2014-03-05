@@ -1,0 +1,13 @@
+amod(strains-2, Most-1)
+nsubj(require-3, strains-2)
+dobj(require-3, acetate-4)
+det(source-8, a-6)
+nn(source-8, carbon-7)
+prep_as(require-3, source-8)
+prep_for(source-8, growth-10)
+amod(strains-14, single-13)
+nsubj(autotrophic-17, strains-14)
+aux(autotrophic-17, might-15)
+cop(autotrophic-17, be-16)
+conj_but(require-3, autotrophic-17)
+

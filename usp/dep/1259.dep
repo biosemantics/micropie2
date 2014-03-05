@@ -1,0 +1,8 @@
+nsubj(small-3, Colonies-1)
+cop(small-3, are-2)
+dep(small-3, about-5)
+dep(about-5, 1.0-6)
+num(diameter-10, 2.0-8)
+nn(diameter-10, mm-9)
+dep(1.0-6, diameter-10)
+

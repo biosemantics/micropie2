@@ -1,0 +1,6 @@
+nsubj(motile-2, Rods-1)
+det(tuft-5, a-4)
+prep_by(motile-2, tuft-5)
+amod(flagella-8, polar-7)
+prep_of(tuft-5, flagella-8)
+

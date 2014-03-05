@@ -1,0 +1,6 @@
+aux(grow-3, to-2)
+dep(Unable-1, grow-3)
+advmod(grow-3, autotrophically-4)
+xcomp(grow-3, using-5)
+dobj(using-5, H2\/CO2-6)
+

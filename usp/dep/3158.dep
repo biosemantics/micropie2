@@ -1,0 +1,7 @@
+nn(casein-3, Tween-1)
+num(casein-3, 80-2)
+nsubjpass(hydrolyzed-7, casein-3)
+conj_and(casein-3, gelatin-5)
+nsubjpass(hydrolyzed-7, gelatin-5)
+auxpass(hydrolyzed-7, are-6)
+

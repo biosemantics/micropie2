@@ -1,0 +1,11 @@
+amod(temperature-2, Optimal-1)
+nsubj(˚C-12, temperature-2)
+prep_for(temperature-2, growth-4)
+cop(˚C-12, is-5)
+number(30-7, 25-6)
+nn(˚C-12, 30-7)
+nn(range-9, ˚C-8)
+dep(30-7, range-9)
+number(45-11, 25-10)
+amod(˚C-12, 45-11)
+

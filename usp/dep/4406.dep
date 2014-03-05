@@ -1,0 +1,10 @@
+aux(require-3, Does-1)
+neg(require-3, not-2)
+nn(M-5, coenzyme-4)
+dobj(require-3, M-5)
+amod(acids-9, branched-chain-7)
+amod(acids-9, fatty-8)
+dobj(require-3, acids-9)
+conj_or(M-5, acids-9)
+prep_for(require-3, growth-11)
+

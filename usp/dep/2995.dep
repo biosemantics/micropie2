@@ -1,0 +1,13 @@
+det(presence-2, The-1)
+nsubj(essential-17, presence-2)
+nn(minerals-7, starch-4)
+conj_or(starch-4, clay-6)
+nn(minerals-7, clay-6)
+prep_of(presence-2, minerals-7)
+dep(minerals-7, bentonite-9)
+appos(bentonite-9, kaolin-11)
+det(medium-15, the-14)
+prep_in(minerals-7, medium-15)
+cop(essential-17, is-16)
+prep_for(essential-17, growth-19)
+

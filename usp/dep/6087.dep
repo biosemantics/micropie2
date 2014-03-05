@@ -1,0 +1,9 @@
+nsubj(cocci-6, Cells-1)
+cop(cocci-6, are-2)
+amod(cocci-6, Gram-positive-3)
+amod(cocci-6, irregular-5)
+dep(cocci-6, 1.5-7)
+num(µm-10, 3.5-9)
+dep(cocci-6, µm-10)
+prep_in(µm-10, diameter-12)
+

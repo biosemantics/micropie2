@@ -1,0 +1,12 @@
+nsubj(coccoid-2, Cells-1)
+nsubj(have-5, Cells-1)
+aux(have-5, may-4)
+conj_but(coccoid-2, have-5)
+amod(faces-10, several-6)
+amod(faces-10, flattened-to-7)
+advmod(indented-9, deeply-8)
+amod(faces-10, indented-9)
+xcomp(have-5, faces-10)
+parataxis(coccoid-2, occur-12)
+advmod(occur-12, singly-13)
+

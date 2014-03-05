@@ -1,0 +1,6 @@
+nsubjpass(digested-6, Serum-1)
+conj_and(Serum-1, casein-3)
+nsubjpass(digested-6, casein-3)
+auxpass(digested-6, are-4)
+neg(digested-6, not-5)
+

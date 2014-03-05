@@ -1,0 +1,6 @@
+nsubj(enhances-5, Addition-1)
+amod(sulfur-4, elemental-3)
+prep_of(Addition-1, sulfur-4)
+nn(rates-7, growth-6)
+dobj(enhances-5, rates-7)
+

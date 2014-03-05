@@ -1,0 +1,8 @@
+nn(range-4, pH-3)
+prep_in(Grows-1, range-4)
+num(.4-6, 6.0-8-5)
+dep(range-4, .4-6)
+amod(.6-9, optimum-7)
+number(.6-9, 7.2-7-8)
+dep(.4-6, .6-9)
+

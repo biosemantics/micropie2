@@ -1,0 +1,6 @@
+nsubj(necessary-5, Sulfur-1)
+conj_or(Sulfur-1, cystine-3)
+nsubj(necessary-5, cystine-3)
+cop(necessary-5, are-4)
+prep_for(necessary-5, growth-7)
+

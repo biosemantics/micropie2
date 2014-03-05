@@ -1,0 +1,9 @@
+det(strains-2, Some-1)
+nsubj(appear-3, strains-2)
+aux(possess-5, to-4)
+xcomp(appear-3, possess-5)
+det(structure-9, a-6)
+amod(structure-9, rudimentary-7)
+nn(structure-9, tip-8)
+dobj(possess-5, structure-9)
+

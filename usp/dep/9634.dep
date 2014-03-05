@@ -1,0 +1,9 @@
+nsubjpass(supported-3, Growth-1)
+auxpass(supported-3, was-2)
+det(range-7, a-5)
+nn(range-7, pH-6)
+prep_within(supported-3, range-7)
+num(9.0-11, 5.0-9)
+dep(9.0-11, to-10)
+prep_of(range-7, 9.0-11)
+

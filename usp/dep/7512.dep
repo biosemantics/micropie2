@@ -1,0 +1,9 @@
+prep_to(Susceptible-1, anisomycin-3)
+appos(anisomycin-3, bacitracin-5)
+appos(anisomycin-3, erythromycin-7)
+conj_and(bacitracin-5, erythromycin-7)
+appos(anisomycin-3, novobiocin-9)
+conj_and(bacitracin-5, novobiocin-9)
+appos(anisomycin-3, tetracycline-12)
+conj_and(bacitracin-5, tetracycline-12)
+

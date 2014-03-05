@@ -1,0 +1,6 @@
+dep(medium-2, Solid-1)
+dep(medium-2, be-3)
+xcomp(be-3, containing-4)
+num(%-6, 1-5)
+dobj(containing-4, %-6)
+

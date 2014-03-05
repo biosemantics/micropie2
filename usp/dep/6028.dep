@@ -1,0 +1,13 @@
+nn(M-2, Coenzyme-1)
+nsubj(stimulates-16, M-2)
+nn(sulfonate-5, mercaptoethane-4)
+appos(M-2, sulfonate-5)
+appos(M-2, vitamins-8)
+nn(extract-11, manure-10)
+appos(M-2, extract-11)
+conj_or(vitamins-8, extract-11)
+nn(fluid-15, sludge-14)
+appos(M-2, fluid-15)
+conj_or(vitamins-8, fluid-15)
+dobj(stimulates-16, growth-17)
+

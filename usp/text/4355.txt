@@ -1,0 +1,1 @@
+Metabolizes H2 plus CO2, yielding CH4 as the sole product.

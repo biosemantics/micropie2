@@ -1,0 +1,4 @@
+nn(erythrocytes-4, guinea-2)
+nn(erythrocytes-4, pig-3)
+dep(Haemadsorbs-1, erythrocytes-4)
+

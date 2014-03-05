@@ -1,0 +1,1 @@
+Strain BMl (= DSM 10196) is a reference strain, isolated from a methane-producing fluidized bed reactor operated with synthetic wastewater containing butyrate and present in a full-scale UASB reactor treating sugar refinery wastewater anaerobically in Bruhl, Germany.

@@ -1,0 +1,8 @@
+dep(described-5, size-3)
+mark(described-5, as-4)
+conj_and(Shape-1, described-5)
+prep(described-5, above-6)
+pcomp(above-6, for-7)
+det(genus-9, the-8)
+pobj(for-7, genus-9)
+

@@ -1,0 +1,8 @@
+nsubjpass(required-3, Acetate-1)
+auxpass(required-3, is-2)
+prep_for(required-3, growth-5)
+nn(extract-8, yeast-7)
+nsubj(enhances-9, extract-8)
+conj_and(required-3, enhances-9)
+dobj(enhances-9, growth-10)
+

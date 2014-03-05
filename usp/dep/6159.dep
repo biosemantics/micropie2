@@ -1,0 +1,9 @@
+nsubjpass(deposited-5, Semesiae-1)
+nn(MD1T-3, strain-2)
+dep(Semesiae-1, MD1T-3)
+auxpass(deposited-5, is-4)
+det(collection-10, the-7)
+nn(collection-10, DSM-8)
+nn(collection-10, culture-9)
+prep_in(deposited-5, collection-10)
+

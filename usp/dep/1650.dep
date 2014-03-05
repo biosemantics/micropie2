@@ -1,0 +1,5 @@
+nn(membrane-2, Purple-1)
+nsubjpass(produced-5, membrane-2)
+auxpass(produced-5, is-3)
+neg(produced-5, not-4)
+

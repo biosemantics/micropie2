@@ -1,0 +1,13 @@
+nsubjpass(obtained-16, Presence-1)
+amod(lipids-5, diether-linked-3)
+nn(lipids-5, isoprenoid-4)
+prep_of(Presence-1, lipids-5)
+det(evidence-8, no-7)
+conj_and(Presence-1, evidence-8)
+nsubjpass(obtained-16, evidence-8)
+det(presence-11, the-10)
+prep_for(evidence-8, presence-11)
+amod(acids-14, fatty-13)
+prep_of(presence-11, acids-14)
+auxpass(obtained-16, was-15)
+

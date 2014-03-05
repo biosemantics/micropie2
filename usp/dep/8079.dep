@@ -1,0 +1,11 @@
+advmod(cocci-4, Highly-1)
+amod(cocci-4, motile-2)
+amod(cocci-4, irregular-3)
+det(µm-12, a-6)
+amod(µm-12, diameter-7)
+prep(diameter-7, of-8)
+pcomp(of-8, about-9)
+num(.5-11, 1-1-10)
+pobj(about-9, .5-11)
+prep_with(cocci-4, µm-12)
+

@@ -1,0 +1,13 @@
+nsubj(grow-2, Cells-1)
+det(range-5, a-4)
+prep_over(grow-2, range-5)
+prep_of(range-5, temperatures-7)
+number(83-11, 45-9)
+dep(83-11, to-10)
+num(˚C-12, 83-11)
+prep_from(grow-2, ˚C-12)
+amod(growth-16, optimum-15)
+prep_with(grow-2, growth-16)
+num(˚C-19, 74-18)
+prep_at(growth-16, ˚C-19)
+

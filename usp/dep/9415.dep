@@ -1,0 +1,5 @@
+partmod(Shortest-1, doubling-2)
+dobj(doubling-2, time-3)
+num(min-6, 75-5)
+dep(time-3, min-6)
+

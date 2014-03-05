@@ -1,0 +1,5 @@
+amod(coccus-2, Acidiphilic-1)
+nsubj(reduces-4, that-3)
+rcmod(coccus-2, reduces-4)
+dobj(reduces-4, sulfur-5)
+

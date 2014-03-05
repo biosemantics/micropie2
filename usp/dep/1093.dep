@@ -1,0 +1,6 @@
+amod(compound-3, screening-2)
+dep(Color-1, compound-3)
+amod(exposure-7, high-5)
+amod(exposure-7, solar-6)
+prep_for(compound-3, exposure-7)
+

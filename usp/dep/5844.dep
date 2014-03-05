@@ -1,0 +1,9 @@
+num(˚C-4, 17-3)
+prep_between(Growth-1, ˚C-4)
+num(˚C-7, 41-6)
+prep_between(Growth-1, ˚C-7)
+conj_and(˚C-4, ˚C-7)
+appos(Growth-1, optimum-9)
+num(˚C-11, 40-10)
+dep(optimum-9, ˚C-11)
+

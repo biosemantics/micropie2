@@ -1,0 +1,8 @@
+det(size-3, The-1)
+nn(size-3, genome-2)
+nsubjpass(determined-8, size-3)
+auxpass(determined-8, is-4)
+num(kbp-6, 2040-5)
+npadvmod(as-7, kbp-6)
+advmod(determined-8, as-7)
+

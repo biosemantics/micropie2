@@ -1,0 +1,8 @@
+advmod(thermophilic-7, Obligately-1)
+amod(thermophilic-7, aerobic-2)
+amod(thermophilic-7, heterotrophic-4)
+advmod(thermophilic-7, moderately-6)
+amod(thermophilic-7, hyperacidophilic-9)
+amod(cocci-12, irregular-11)
+appos(thermophilic-7, cocci-12)
+

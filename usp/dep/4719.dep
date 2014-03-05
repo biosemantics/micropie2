@@ -1,0 +1,10 @@
+det(growth-2, No-1)
+nsubj(occurred-3, growth-2)
+nn(pyruvate-11, acetate-5)
+dep(pyruvate-11, formate-7)
+dep(pyruvate-11, methanol-9)
+prep_on(occurred-3, pyruvate-11)
+nn(extract-15, yeast-14)
+prep_on(occurred-3, extract-15)
+conj_and(pyruvate-11, extract-15)
+

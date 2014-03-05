@@ -1,0 +1,1 @@
+Grows between 0.05 and 20% MgSO4 (2-800 mM) in the presence of 27% NaCl.

@@ -1,0 +1,7 @@
+nsubj(occur-5, Cells-1)
+amod(spheres-4, terminal-3)
+prep_with(Cells-1, spheres-4)
+det(phase-9, the-7)
+amod(phase-9, stationary-8)
+prep_in(occur-5, phase-9)
+

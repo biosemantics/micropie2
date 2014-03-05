@@ -1,0 +1,4 @@
+nn(NaCl-2, 5M-1)
+nsubj(inhibitory-4, NaCl-2)
+cop(inhibitory-4, is-3)
+

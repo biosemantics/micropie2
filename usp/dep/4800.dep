@@ -1,0 +1,13 @@
+amod(cocci-3, Irregular-1)
+amod(cocci-3, non-motile-2)
+number(2.5-7, 1.0-5)
+dep(2.5-7, to-6)
+num(diameter-9, 2.5-7)
+nn(diameter-9, µm-8)
+appos(cocci-3, diameter-9)
+partmod(diameter-9, occurring-10)
+acomp(occurring-10, single-11)
+acomp(occurring-10, in-13)
+conj_or(single-11, in-13)
+pobj(in-13, aggregates-14)
+

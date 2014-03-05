@@ -1,0 +1,8 @@
+amod(growth-2, Optimal-1)
+nsubj(occurs-3, growth-2)
+advmod(occurs-3, at-4)
+advmod(at-4, up-5)
+number(%-8, 0.5-7)
+amod(NaCl-9, %-8)
+prep_to(occurs-3, NaCl-9)
+

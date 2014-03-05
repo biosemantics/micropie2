@@ -1,0 +1,13 @@
+conj_or(Regular-1, Regular-1)
+advmod(irregular-4, slightly-3)
+amod(cocci-5, irregular-4)
+prep_to(Regular-1, cocci-5)
+partmod(cocci-5, growing-6)
+advmod(growing-6, singularly-7)
+prep_in(Regular-1, pairs-10)
+prep_with(Regular-1, vacuoles-12)
+prep_with(Regular-1, tetragonal-14)
+conj_and(vacuoles-12, tetragonal-14)
+partmod(Regular-1, patterned-15)
+dobj(patterned-15, S-layer-16)
+

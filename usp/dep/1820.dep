@@ -1,0 +1,10 @@
+advmod(Grows-1, aerobically-2)
+neg(even-6, not-4)
+advmod(even-6, anaerobically-5)
+conj_but(Grows-1, even-6)
+det(presence-9, the-8)
+prep_in(even-6, presence-9)
+prep_of(presence-9, nitrate-11)
+prep_of(presence-9, arginine-13)
+conj_or(nitrate-11, arginine-13)
+

@@ -1,0 +1,11 @@
+nsubj(contribute-2, They-1)
+advmod(contribute-2, significantly-3)
+det(production-8, the-5)
+amod(production-8, overall-6)
+amod(production-8, primary-7)
+prep_to(contribute-2, production-8)
+prep_in(production-8, ecosystems-10)
+det(zones-14, all-12)
+amod(zones-14, climatic-13)
+prep_of(ecosystems-10, zones-14)
+

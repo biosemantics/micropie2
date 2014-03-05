@@ -1,0 +1,10 @@
+nsubj(produce-5, Members-1)
+det(species-4, this-3)
+prep_of(Members-1, species-4)
+amod(crossreactivity-8, strong-6)
+amod(crossreactivity-8, serological-7)
+dobj(produce-5, crossreactivity-8)
+nn(subsp-12, M.-10)
+nn(subsp-12, capricolum-11)
+prep_with(produce-5, subsp-12)
+

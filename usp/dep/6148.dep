@@ -1,0 +1,5 @@
+nsubj(be-2, Diameter-1)
+xcomp(be-2, occurring-3)
+amod(cells-6, individual-5)
+prep_as(occurring-3, cells-6)
+

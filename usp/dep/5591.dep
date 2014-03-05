@@ -1,0 +1,13 @@
+det(cells-3, The-1)
+amod(cells-3, coccoid-2)
+nsubj(occur-4, cells-3)
+advmod(occur-4, singly-5)
+dep(occur-4, in-7)
+pobj(in-7, pairs-8)
+dep(in-7, less-12)
+advmod(less-12, commonly-13)
+dep(occur-4, in-15)
+conj_or(in-7, in-15)
+amod(aggregates-17, small-16)
+pobj(in-15, aggregates-17)
+

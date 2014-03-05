@@ -1,0 +1,9 @@
+amod(growth-2, Optimal-1)
+nsubj(occurs-3, growth-2)
+amod(salinity-13, neutrophilic-5)
+amod(conditions-8, alkaliphilic-7)
+prep_to(neutrophilic-5, conditions-8)
+num(%-12, 18-11)
+prep_above(neutrophilic-5, %-12)
+prep_under(occurs-3, salinity-13)
+

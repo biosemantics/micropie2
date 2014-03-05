@@ -1,0 +1,6 @@
+nsubj(occur-2, Cells-1)
+advmod(occur-2, singly-3)
+prep_in(occur-2, pairs-5)
+prep_in(occur-2, chains-8)
+conj_or(pairs-5, chains-8)
+

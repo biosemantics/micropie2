@@ -1,0 +1,1 @@
+Psychrotolerant, optimal growth temperature is 25 °C.  Maximum temperature for growth is 35 °C, minimum 1 °C.  pH range for growth is 4.5–8.5, optimum 7.0.

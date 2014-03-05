@@ -1,0 +1,6 @@
+nsubj(non-motile-3, Cells-1)
+nsubj(rod-shaped-5, Cells-1)
+cop(non-motile-3, are-2)
+conj_and(non-motile-3, rod-shaped-5)
+tmod(non-motile-3, 0.7-6)
+

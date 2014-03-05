@@ -1,0 +1,8 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(GP9-9, strain-3)
+nn(espanolae-6, Methanobacterium-5)
+prep_of(strain-3, espanolae-6)
+cop(GP9-9, is-7)
+nn(GP9-9, strain-8)
+

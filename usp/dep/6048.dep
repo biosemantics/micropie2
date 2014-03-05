@@ -1,0 +1,8 @@
+nsubj(possess-2, Cells-1)
+det(wall-8, a-3)
+amod(10-nm-5, thin-4)
+amod(wall-8, 10-nm-5)
+amod(wall-8, gram-negative-6)
+nn(wall-8, cell-7)
+dobj(possess-2, wall-8)
+

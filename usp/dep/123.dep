@@ -1,0 +1,5 @@
+amod(contaminant-2, Frequent-1)
+amod(cultures-6, eukaryotic-4)
+nn(cultures-6, cell-5)
+prep_of(contaminant-2, cultures-6)
+

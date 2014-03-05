@@ -1,0 +1,7 @@
+num(g-4, 0.1-3)
+prep_by(Lysed-1, g-4)
+nn(sulfate-8, sodium-6)
+nn(sulfate-8, dodecyl-7)
+prep_of(g-4, sulfate-8)
+prep_per(sulfate-8, liter-10)
+

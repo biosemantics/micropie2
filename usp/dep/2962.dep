@@ -1,0 +1,8 @@
+nn(strain-2, Type-1)
+dep(strain-2, ATCC-4)
+num(ATCC-4, 29252-5)
+dep(ATCC-4, NCIMB-7)
+num(NCIMB-7, 2081-8)
+dep(NCIMB-7, DSM-10)
+num(DSM-10, 1137-11)
+

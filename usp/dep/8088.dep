@@ -1,0 +1,8 @@
+nsubjpass(stimulated-3, Growth-1)
+auxpass(stimulated-3, was-2)
+amod(sulphur-6, elemental-5)
+agent(stimulated-3, sulphur-6)
+amod(sources-10, appropriate-8)
+nn(sources-10, carbon-9)
+prep_with(sulphur-6, sources-10)
+

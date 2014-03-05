@@ -1,0 +1,6 @@
+nsubjpass(formed-5, H2S-1)
+conj_and(H2S-1, methane-3)
+nsubjpass(formed-5, methane-3)
+auxpass(formed-5, are-4)
+prep_during(formed-5, growth-7)
+

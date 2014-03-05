@@ -1,0 +1,10 @@
+nn(lipids-2, Polar-1)
+nsubj(PGP-Me-5, lipids-2)
+cop(PGP-Me-5, are-3)
+nn(PGP-Me-5, PG-4)
+conj_and(PGP-Me-5, S2-DGD-1-7)
+amod(glycolipid-12, sole-9)
+conj_or(sole-9, main-11)
+amod(glycolipid-12, main-11)
+prep_as(PGP-Me-5, glycolipid-12)
+

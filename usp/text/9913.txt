@@ -1,0 +1,1 @@
+Grows chemoautotrophically with H2 and Sulfur as energy sources and CO2 as carbon source, or by sulfur respiration of different compounds serving as carbon sources.

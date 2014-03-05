@@ -1,0 +1,11 @@
+nn(cells-4, phase-3)
+nsubj(pleomorphic-10, cells-4)
+amod(cultures-7, liquid-6)
+prep_from(cells-4, cultures-7)
+cop(pleomorphic-10, are-8)
+advmod(pleomorphic-10, highly-9)
+dep(Exponential-1, pleomorphic-10)
+dep(Exponential-1, disk-12)
+conj_and(pleomorphic-10, disk-12)
+partmod(disk-12, shaped-13)
+

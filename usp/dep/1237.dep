@@ -1,0 +1,6 @@
+aux(reduce-3, Does-1)
+neg(reduce-3, not-2)
+dobj(reduce-3, nitrate-4)
+amod(conditions-7, aerobic-6)
+prep_under(reduce-3, conditions-7)
+

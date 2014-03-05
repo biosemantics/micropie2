@@ -1,0 +1,10 @@
+amod(growth-2, Anaerobic-1)
+nsubj(occur-11, growth-2)
+prep_with(growth-2, nitrate-4)
+prep_with(growth-2, arginine-6)
+conj_or(nitrate-4, arginine-6)
+prep_with(growth-2, DMSO-8)
+conj_or(nitrate-4, DMSO-8)
+aux(occur-11, does-9)
+neg(occur-11, not-10)
+

@@ -1,0 +1,8 @@
+det(gut-4, the-3)
+prep_from(Isolated-1, gut-4)
+det(marginata-10, the-6)
+amod(marginata-10, firefly-7)
+nn(marginata-10, beetle-8)
+nn(marginata-10, Photinus-9)
+prep_of(gut-4, marginata-10)
+

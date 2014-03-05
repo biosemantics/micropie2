@@ -1,0 +1,9 @@
+nn(metabolism-2, Energy-1)
+det(reduction-5, the-4)
+prep_by(metabolism-2, reduction-5)
+prep_of(reduction-5, CO2-7)
+prep_to(metabolism-2, CH4-9)
+det(donor-13, the-11)
+nn(donor-13, electron-12)
+prep_as(metabolism-2, donor-13)
+

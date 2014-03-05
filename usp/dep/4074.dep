@@ -1,0 +1,7 @@
+det(range-4, The-1)
+nn(range-4, pH-2)
+nn(range-4, value-3)
+nsubj(6.5-8, range-4)
+prep_for(range-4, growth-6)
+cop(6.5-8, is-7)
+

@@ -1,0 +1,6 @@
+nsubjpass(detected-7, Traces-1)
+nn(diethers-5, glycerol-3)
+nn(diethers-5, diphytanyl-4)
+prep_of(Traces-1, diethers-5)
+auxpass(detected-7, were-6)
+

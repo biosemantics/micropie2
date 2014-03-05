@@ -1,0 +1,7 @@
+nsubj(extract-4, Growth-1)
+cop(extract-4, was-2)
+amod(extract-4, better-3)
+advmod(extract-4, than-5)
+prep_on(than-5, sulfur-7)
+advmod(than-5, alone-8)
+

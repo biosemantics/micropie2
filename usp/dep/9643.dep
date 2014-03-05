@@ -1,0 +1,13 @@
+amod(vessels-3, closed-2)
+prep_in(dependent-7, vessels-3)
+nsubj(dependent-7, growth-5)
+cop(dependent-7, is-6)
+det(presence-10, the-9)
+prep_on(dependent-7, presence-10)
+amod(sulfur-13, elemental-12)
+prep_of(presence-10, sulfur-13)
+nsubjpass(reduced-16, which-14)
+auxpass(reduced-16, is-15)
+rcmod(presence-10, reduced-16)
+prep_to(reduced-16, H2S-18)
+

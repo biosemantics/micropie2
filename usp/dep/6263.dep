@@ -1,0 +1,7 @@
+nsubj(lyse-4, Cells-1)
+aux(lyse-4, do-2)
+neg(lyse-4, not-3)
+number(%-7, 0.1-6)
+amod(SDS-8, %-7)
+prep_with(lyse-4, SDS-8)
+

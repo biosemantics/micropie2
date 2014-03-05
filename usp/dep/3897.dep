@@ -1,0 +1,13 @@
+csubj(collected-19, Isolated-1)
+det(gut-4, the-3)
+prep_from(Isolated-1, gut-4)
+det(fly-9, an-6)
+amod(fly-9, adult-7)
+nn(fly-9, horse-8)
+prep_of(gut-4, fly-9)
+nn(abactur-12, Tabanus-11)
+appos(fly-9, abactur-12)
+dep(fly-9, Diptera-15)
+dep(Diptera-15, Tabanidae-17)
+prep_in(collected-19, Texas-21)
+

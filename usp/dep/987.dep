@@ -1,0 +1,4 @@
+advmod(lithotrophic-2, Strictly-1)
+dep(anaerobic-5, lithotrophic-2)
+advmod(anaerobic-5, strictly-4)
+

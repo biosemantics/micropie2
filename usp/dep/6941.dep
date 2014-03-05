@@ -1,0 +1,13 @@
+nn(techniques-3, immunodiffusion-2)
+agent(observed-17, techniques-3)
+amod(sharing-6, major-5)
+nsubjpass(observed-17, sharing-6)
+amod(determinants-9, antigenic-8)
+prep_of(sharing-6, determinants-9)
+det(strains-14, the-11)
+amod(strains-14, human-12)
+nn(strains-14, Mycoplasma-13)
+prep_with(determinants-9, strains-14)
+auxpass(observed-17, was-15)
+neg(observed-17, not-16)
+

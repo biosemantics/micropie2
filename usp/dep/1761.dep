@@ -1,0 +1,6 @@
+nn(MK-7-2, Menaquinones-1)
+nsubj(present-6, MK-7-2)
+conj_and(MK-7-2, MK-8-4)
+nsubj(present-6, MK-8-4)
+cop(present-6, are-5)
+

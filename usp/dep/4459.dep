@@ -1,0 +1,9 @@
+nsubjpass(required-9, Formate-1)
+conj_and(Formate-1, acetate-3)
+nsubjpass(required-9, acetate-3)
+conj_and(Formate-1, methanol-6)
+nsubjpass(required-9, methanol-6)
+auxpass(required-9, are-7)
+neg(required-9, not-8)
+prep_for(required-9, growth-11)
+

@@ -1,0 +1,11 @@
+aux(form-3, to-2)
+xcomp(Tends-1, form-3)
+amod(aggregates-5, higher-4)
+dobj(form-3, aggregates-5)
+dobj(form-3, adsorb-7)
+conj_and(aggregates-5, adsorb-7)
+amod(particles-10, amorphous-9)
+prep_to(form-3, particles-10)
+det(medium-13, the-12)
+prep_in(particles-10, medium-13)
+

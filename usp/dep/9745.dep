@@ -1,0 +1,4 @@
+advmod(dependent-2, Obligately-1)
+amod(sulfur-5, elemental-4)
+prep_upon(dependent-2, sulfur-5)
+

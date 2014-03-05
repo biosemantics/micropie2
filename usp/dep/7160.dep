@@ -1,0 +1,4 @@
+num(ATCC-1, 51346-2)
+dep(ATCC-1, NCTC-3)
+num(NCTC-3, 11730-4)
+

@@ -1,0 +1,4 @@
+dep(Entomoplasma-1, melaleucae-2)
+dep(melaleucae-2, mel.a-4)
+dep(mel.a-4, leu.cae-6)
+

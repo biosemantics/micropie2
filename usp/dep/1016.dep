@@ -1,0 +1,5 @@
+advmod(inhibited-2, Strongly-1)
+prep_by(inhibited-2, rifampin-4)
+prep_by(inhibited-2, tetracycline-6)
+conj_and(rifampin-4, tetracycline-6)
+

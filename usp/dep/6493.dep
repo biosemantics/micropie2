@@ -1,0 +1,7 @@
+nsubj(takes-2, Growth-1)
+dobj(takes-2, place-3)
+prep_between(place-3, 30-5)
+num(˚C-8, 70-7)
+prep_between(place-3, ˚C-8)
+conj_and(30-5, ˚C-8)
+

@@ -1,0 +1,10 @@
+nn(hydrolysis-2, Starch-1)
+nsubj(variable-9, hydrolysis-2)
+amod(reduction-5, nitrate-4)
+conj_and(hydrolysis-2, reduction-5)
+nsubj(variable-9, reduction-5)
+aux(nitrite-7, to-6)
+infmod(hydrolysis-2, nitrite-7)
+cop(variable-9, are-8)
+prep_among(variable-9, strains-11)
+

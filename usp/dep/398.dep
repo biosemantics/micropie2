@@ -1,0 +1,9 @@
+amod(DNA-2, Genomic-1)
+nsubj(has-3, DNA-2)
+det(content-6, a-4)
+nn(content-6, G+C-5)
+dobj(has-3, content-6)
+number(mol-9, 67-8)
+num(%-10, mol-9)
+prep_of(content-6, %-10)
+

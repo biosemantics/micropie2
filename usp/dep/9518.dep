@@ -1,0 +1,6 @@
+amod(archaeon-2, Coccoid-1)
+nn(diameters-5, cell-4)
+prep_with(archaeon-2, diameters-5)
+num(µm-8, 1.0-3-0-7)
+prep_of(archaeon-2, µm-8)
+

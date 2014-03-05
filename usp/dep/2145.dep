@@ -1,0 +1,6 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(700274T-6, strain-3)
+cop(700274T-6, is-4)
+nn(700274T-6, ATCC-5)
+

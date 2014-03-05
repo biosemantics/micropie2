@@ -1,0 +1,10 @@
+nsubj(filterable-3, Organisms-1)
+nsubj(resistant-10, Organisms-1)
+cop(filterable-3, are-2)
+amod(filters-7, 450-nm-pore-size-5)
+nn(filters-7, membrane-6)
+prep_through(filterable-3, filters-7)
+cop(resistant-10, are-9)
+conj_and(filterable-3, resistant-10)
+prep_to(resistant-10, penicillin-12)
+

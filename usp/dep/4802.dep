@@ -1,0 +1,13 @@
+amod(colonies-4, Circular-1)
+amod(colonies-4, pale-2)
+amod(colonies-4, yellow-3)
+nsubj(mm-10, colonies-4)
+amod(margins-7, entire-6)
+prep_with(colonies-4, margins-7)
+cop(mm-10, are-8)
+num(mm-10, 1-9)
+prep_in(mm-10, diameter-12)
+num(days-15, 14-14)
+prep_after(mm-10, days-15)
+prep_of(days-15, growth-17)
+

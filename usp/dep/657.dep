@@ -1,0 +1,4 @@
+nn(air-3, n.-1)
+nn(air-3, aer-2)
+dep(air-3, Gr-5)
+

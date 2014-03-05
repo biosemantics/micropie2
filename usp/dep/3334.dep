@@ -1,0 +1,4 @@
+amod(reduction-2, Nitrate-1)
+nsubjpass(observed-4, reduction-2)
+auxpass(observed-4, is-3)
+

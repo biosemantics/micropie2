@@ -1,0 +1,11 @@
+nn(lipids-2, Membrane-1)
+nsubjpass(composed-4, lipids-2)
+auxpass(composed-4, are-3)
+num(phospholipid-8, one-6)
+amod(phospholipid-8, major-7)
+prep_of(composed-4, phospholipid-8)
+det(component-12, an-10)
+nn(component-12, archaeol-11)
+prep_of(composed-4, component-12)
+conj_and(phospholipid-8, component-12)
+

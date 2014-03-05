@@ -1,0 +1,11 @@
+nn(lipids-2, Core-1)
+nsubj(consist-3, lipids-2)
+prep_of(consist-3, archaeol-5)
+prep_of(consist-3, trialkyl-caldarchaeol-7)
+conj_and(archaeol-5, trialkyl-caldarchaeol-7)
+prep_of(consist-3, caldarchaeol-9)
+conj_and(archaeol-5, caldarchaeol-9)
+det(ring-14, a-12)
+nn(ring-14, cyclopentane-13)
+prep_without(consist-3, ring-14)
+

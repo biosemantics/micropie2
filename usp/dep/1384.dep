@@ -1,0 +1,8 @@
+nsubj(occurs-2, Growth-1)
+det(presence-5, the-4)
+prep_in(occurs-2, presence-5)
+num(NaCl-10, 2.7-4-7)
+nn(NaCl-10, .3-8)
+nn(NaCl-10, M-9)
+prep_of(presence-5, NaCl-10)
+

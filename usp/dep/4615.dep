@@ -1,0 +1,12 @@
+conj_and(Susceptibility-1, Susceptibility-1)
+nsubjpass(observed-17, Susceptibility-1)
+nsubjpass(observed-17, Susceptibility-1)
+prep_to(Susceptibility-1, lysis-3)
+prep_by(lysis-3, SDS-5)
+num(g-8, 0.1-7)
+dep(SDS-5, g-8)
+prep_per(g-8, liter-10)
+amod(conditions-15, hypotonic-14)
+prep_by(Susceptibility-1, conditions-15)
+auxpass(observed-17, is-16)
+

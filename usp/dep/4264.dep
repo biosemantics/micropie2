@@ -1,0 +1,4 @@
+nsubj(inhibits-4, Addition-1)
+prep_of(Addition-1, NaCl-3)
+dobj(inhibits-4, growth-5)
+

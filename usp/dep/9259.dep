@@ -1,0 +1,4 @@
+nn(County-2, Texas-1)
+nsubj(Missouri-4, County-2)
+cop(Missouri-4, is-3)
+

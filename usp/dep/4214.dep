@@ -1,0 +1,5 @@
+det(growth-2, No-1)
+prep_on(growth-2, 2-propanol-4)
+prep_on(growth-2, isobutanol-6)
+conj_or(2-propanol-4, isobutanol-6)
+

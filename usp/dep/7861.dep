@@ -1,0 +1,7 @@
+nn(composition-3, DNA-1)
+nn(composition-3, base-2)
+nsubj(%-7, composition-3)
+cop(%-7, is-4)
+number(mol-6, 58.3-5)
+num(%-7, mol-6)
+

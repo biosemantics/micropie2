@@ -1,0 +1,6 @@
+amod(Both-1, natural-2)
+amod(Both-1, cultured-4)
+conj_and(natural-2, cultured-4)
+nn(spp-6, Trichodesmium-5)
+dobj(cultured-4, spp-6)
+

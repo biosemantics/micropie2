@@ -1,0 +1,12 @@
+nsubj(flask-4, Cells-1)
+cop(flask-4, are-2)
+advmod(flask-4, predominantly-3)
+conj_or(flask-4, pear-6)
+amod(flask-4, shaped-7)
+amod(flask-4, possess-9)
+conj_and(shaped-7, possess-9)
+det(structure-13, an-10)
+amod(structure-13, organized-11)
+amod(structure-13, terminal-12)
+dobj(possess-9, structure-13)
+

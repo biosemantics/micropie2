@@ -1,0 +1,11 @@
+nn(simba-2, L.n.-1)
+appos(simba-2, lion-4)
+nn(simbae-9, L.-6)
+nn(simbae-9, gen.-7)
+nn(simbae-9, n.-8)
+dep(lion-4, simbae-9)
+prep_of(simba-2, lion-12)
+punct(lion-12, -LSB--13)
+prep_in(lion-12, Swahili-15)
+punct(Swahili-15, -RSB--16)
+

@@ -1,0 +1,9 @@
+amod(cyanobacterium-4, marine-1)
+amod(cyanobacterium-4, nonheterocystous-2)
+amod(cyanobacterium-4, diazotrophic-3)
+det(cyanobacterium-10, The-6)
+amod(cyanobacterium-10, marine-7)
+amod(cyanobacterium-10, nonheterocystous-8)
+amod(cyanobacterium-10, diazotrophic-9)
+appos(cyanobacterium-4, cyanobacterium-10)
+

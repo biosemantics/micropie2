@@ -1,0 +1,12 @@
+nsubj(lyse-2, Cells-1)
+advmod(lyse-2, immediately-3)
+amod(water-6, distilled-5)
+prep_in(lyse-2, water-6)
+num(h-9, 2-8)
+prep_after(lyse-2, h-9)
+number(20-12, 10-11)
+num(NaCl-14, 20-12)
+nn(NaCl-14, g-13)
+prep_with(h-9, NaCl-14)
+prep_per(NaCl-14, liter-16)
+

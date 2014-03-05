@@ -1,0 +1,7 @@
+det(kb-5, A-1)
+amod(kb-5, large-2)
+nn(kb-5, plasmid-3)
+num(kb-5, 144-4)
+nsubj(present-7, kb-5)
+cop(present-7, is-6)
+

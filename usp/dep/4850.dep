@@ -1,0 +1,9 @@
+nn(optimum-3, Growth-1)
+nn(optimum-3, temperature-2)
+num(˚C-6, 37-5)
+dep(optimum-3, ˚C-6)
+appos(˚C-6, range-8)
+num(range-8, 30-9)
+num(˚C-12, 45-11)
+dep(˚C-6, ˚C-12)
+

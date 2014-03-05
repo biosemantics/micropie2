@@ -1,0 +1,7 @@
+nn(strain-2, Type-1)
+nn(P40-5, strain-4)
+dep(strain-2, P40-5)
+amod(ATCC-8, =-7)
+dep(P40-5, ATCC-8)
+dep(ATCC-8, 43115-9)
+

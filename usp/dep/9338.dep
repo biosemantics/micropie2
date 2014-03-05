@@ -1,0 +1,6 @@
+nn(lipids-2, Core-1)
+nsubj(consist-3, lipids-2)
+prep_of(consist-3, tetraether-5)
+prep_of(consist-3, diphytanyl-7)
+conj_and(tetraether-5, diphytanyl-7)
+

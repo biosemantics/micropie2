@@ -1,0 +1,4 @@
+nn(M-2, Coenzyme-1)
+nsubj(stimulates-3, M-2)
+dobj(stimulates-3, growth-4)
+

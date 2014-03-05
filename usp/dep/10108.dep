@@ -1,0 +1,13 @@
+nsubj(propose-2, We-1)
+mark(named-11, that-3)
+nsubjpass(named-11, strains-4)
+partmod(strains-4, belonging-5)
+amod(SII-9, feline-7)
+nn(SII-9, serogroup-8)
+prep_to(belonging-5, SII-9)
+auxpass(named-11, be-10)
+ccomp(propose-2, named-11)
+nn(sp-14, Ureaplasma-12)
+nn(sp-14, cati-13)
+dobj(named-11, sp-14)
+

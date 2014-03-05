@@ -1,0 +1,4 @@
+det(strains-2, All-1)
+nsubj(hydrolyze-3, strains-2)
+dobj(hydrolyze-3, urea-4)
+

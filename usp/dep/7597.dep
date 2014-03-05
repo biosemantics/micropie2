@@ -1,0 +1,5 @@
+nsubj(hydrolyzed-5, Starch-1)
+conj_and(Starch-1, casein-3)
+nsubj(hydrolyzed-5, casein-3)
+neg(casein-3, not-4)
+

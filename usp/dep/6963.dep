@@ -1,0 +1,6 @@
+nsubjpass(represented-5, Mycoides-1)
+amod(Colony-3, Large-2)
+tmod(represented-5, Colony-3)
+auxpass(represented-5, are-4)
+agent(represented-5, strain-7)
+

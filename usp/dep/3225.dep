@@ -1,0 +1,8 @@
+nsubjpass(used-3, Oxygen-1)
+auxpass(used-3, is-2)
+det(Aerobic-9, the-5)
+amod(Aerobic-9, final-6)
+nn(Aerobic-9, electron-7)
+nn(Aerobic-9, acceptor-8)
+prep_as(used-3, Aerobic-9)
+

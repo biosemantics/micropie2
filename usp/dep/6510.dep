@@ -1,0 +1,7 @@
+nn(extract-2, Yeast-1)
+nsubjpass(required-4, extract-2)
+auxpass(required-4, is-3)
+prep_for(required-4, growth-6)
+amod(medium-9, artificial-8)
+prep_in(growth-6, medium-9)
+

@@ -1,0 +1,10 @@
+nsubj(collected-9, Holotype-1)
+advmod(designated-3, here-2)
+partmod(Holotype-1, designated-3)
+dep(Holotype-1, ANSP-5)
+nn(GS162709-7, sample-6)
+dep(ANSP-5, GS162709-7)
+dobj(collected-9, 26-10)
+tmod(collected-9, July-11)
+num(July-11, 2006-12)
+

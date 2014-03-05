@@ -1,0 +1,11 @@
+amod(colonies-4, star-like-3)
+prep_of(Formation-1, colonies-4)
+prep_due_to(Formation-1, fragmentation-7)
+prep_at(fragmentation-7, maturity-9)
+amod(cells-13, basal-12)
+prep_with(Formation-1, cells-13)
+partmod(Formation-1, attached-14)
+advmod(attached-14, collectively-15)
+amod(pad-18, mucilaginous-17)
+prep_at(attached-14, pad-18)
+

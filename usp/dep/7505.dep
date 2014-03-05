@@ -1,0 +1,11 @@
+det(lipids-3, The-1)
+amod(lipids-3, polar-2)
+nsubj(consist-4, lipids-3)
+nn(derivatives-9, C20C20-6)
+conj_and(C20C20-6, C20C25-8)
+nn(derivatives-9, C20C25-8)
+prep_of(consist-4, derivatives-9)
+prep_of(derivatives-9, phosphatidylglycerol-11)
+prep_of(derivatives-9, phosphatidylglycerophosphate-13)
+conj_and(phosphatidylglycerol-11, phosphatidylglycerophosphate-13)
+

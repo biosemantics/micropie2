@@ -1,0 +1,13 @@
+nsubj(motile-3, Cells-1)
+nsubj(rod-shaped-5, Cells-1)
+nsubj(Gram-negative-17, Cells-1)
+cop(motile-3, are-2)
+conj_and(motile-3, rod-shaped-5)
+dep(rod-shaped-5, 0.9-7)
+dep(0.9-7, 1.2-9)
+dep(0.9-7, 1.8-11)
+conj_x(1.2-9, 1.8-11)
+num(µm-14, 5.5-13)
+dep(0.9-7, µm-14)
+conj_and(motile-3, Gram-negative-17)
+

@@ -1,0 +1,5 @@
+nn(optimum-2, NaCl-1)
+nsubj(%-5, optimum-2)
+cop(%-5, is-3)
+num(%-5, 1.8-4)
+

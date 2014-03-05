@@ -1,0 +1,12 @@
+nsubj(occurs-2, Growth-1)
+amod(25-4, between-3)
+num(˚C-7, 25-4)
+conj_and(25-4, 40-6)
+num(˚C-7, 40-6)
+dobj(occurs-2, ˚C-7)
+det(optimum-10, the-9)
+prep_with(˚C-7, optimum-10)
+prep_at(optimum-10, 35-12)
+num(˚C-15, 37-14)
+dep(˚C-7, ˚C-15)
+

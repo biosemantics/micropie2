@@ -1,0 +1,8 @@
+nsubj(rods-6, Cells-1)
+cop(rods-6, are-2)
+num(rods-6, 1-3-3)
+nn(rods-6, µm-4)
+amod(rods-6, short-5)
+num(x.-8, 0.8-7)
+dep(rods-6, x.-8)
+

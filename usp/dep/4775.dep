@@ -1,0 +1,11 @@
+nsubj(be-2, Medium-1)
+xcomp(be-2, containing-3)
+mwe(than-5, less-4)
+quantmod(1-6, than-5)
+num(NaCl-8, 1-6)
+nn(NaCl-8, g-7)
+dobj(containing-3, NaCl-8)
+nn(mM-12, liter-10)
+num(mM-12, 17-11)
+prep_per(NaCl-8, mM-12)
+

@@ -1,0 +1,11 @@
+poss(content-4, Its-1)
+nn(content-4, DNA-2)
+nn(content-4, G+C-3)
+nsubjpass(determined-6, content-4)
+auxpass(determined-6, is-5)
+agent(determined-6, HPLC-8)
+number(mol-10, 64-9)
+num(%-11, mol-10)
+npadvmod(as-12, %-11)
+advmod(determined-6, as-12)
+

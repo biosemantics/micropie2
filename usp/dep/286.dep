@@ -1,0 +1,8 @@
+aux(grow-3, Did-1)
+neg(grow-3, not-2)
+prepc_by(grow-3, oxidizing-5)
+dobj(oxidizing-5, H2-6)
+prepc_by(grow-3, reducing-9)
+conj_or(oxidizing-5, reducing-9)
+dobj(reducing-9, S˚-10)
+

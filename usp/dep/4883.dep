@@ -1,0 +1,7 @@
+det(stimulation-2, No-1)
+prep_of(stimulation-2, growth-4)
+prep_by(stimulation-2, Na2SeO4-6)
+nn(extract-10, yeast-9)
+prep_by(stimulation-2, extract-10)
+conj_or(Na2SeO4-6, extract-10)
+

@@ -1,0 +1,6 @@
+nn(oxidation-2, Coupling-1)
+nn(extract-5, yeast-4)
+prep_of(oxidation-2, extract-5)
+nn(reduction-8, Fe-7)
+prep_to(oxidation-2, reduction-8)
+

@@ -1,0 +1,1 @@
+Cells pass through 0.45 um filters and some, but not all strains also pass through 0.22 um filters.

@@ -1,0 +1,13 @@
+det(growth-2, No-1)
+nsubjpass(obtained-4, growth-2)
+auxpass(obtained-4, was-3)
+amod(cultures-7, aerobic-6)
+prep_from(obtained-4, cultures-7)
+partmod(cultures-7, containing-8)
+amod(sulfur-10, elemental-9)
+dobj(containing-8, sulfur-10)
+dobj(containing-8, tetrathionate-12)
+conj_and(sulfur-10, tetrathionate-12)
+conj_and(sulfur-10, thiosulfate-14)
+conj_and(tetrathionate-12, thiosulfate-14)
+

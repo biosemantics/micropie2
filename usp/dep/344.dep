@@ -1,0 +1,8 @@
+nn(lipids-3, Principal-1)
+nn(lipids-3, membrane-2)
+nsubj(dibiphytanyl-5, lipids-3)
+cop(dibiphytanyl-5, are-4)
+prep(dibiphytanyl-5, based-6)
+nn(lipids-8, tetraether-7)
+dep(based-6, lipids-8)
+

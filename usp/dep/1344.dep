@@ -1,0 +1,9 @@
+amod(temperature-2, Optimum-1)
+nsubj(°-7, temperature-2)
+cop(°-7, is-3)
+number(°-7, 40-4)
+dep(°-7, to-5)
+number(°-7, 50-6)
+nn(Aerobic-9, C.-8)
+dep(°-7, Aerobic-9)
+

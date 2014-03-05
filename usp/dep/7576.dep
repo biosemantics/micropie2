@@ -1,0 +1,4 @@
+nn(vesicles-2, Gas-1)
+det(cells-5, some-4)
+prep_in(vesicles-2, cells-5)
+

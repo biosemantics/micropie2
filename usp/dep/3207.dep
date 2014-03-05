@@ -1,0 +1,12 @@
+nn(values-4, pH-3)
+nsubj(ranging-5, values-4)
+prepc_at(Grows-1, ranging-5)
+prep_from(ranging-5, 5-7)
+quantmod(8.5-11, at-9)
+mwe(at-9, least-10)
+prep_to(ranging-5, 8.5-11)
+amod(growth-15, optimum-14)
+prep_with(ranging-5, growth-15)
+prep_at(growth-15, pH-17)
+num(pH-17, 6.5-18)
+

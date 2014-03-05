@@ -1,0 +1,6 @@
+nn(pH-2, Optimum-1)
+nsubj(7.5-5, pH-2)
+cop(7.5-5, is-3)
+amod(7.5-5, between-4)
+conj_and(7.5-5, 8-7)
+

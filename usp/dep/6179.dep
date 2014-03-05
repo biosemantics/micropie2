@@ -1,0 +1,12 @@
+nsubj(occurs-2, Growth-1)
+nsubj(methylated-9, Growth-1)
+nsubj(occur-13, Growth-1)
+prep_on(occurs-2, acetate-4)
+appos(acetate-4, methanol-6)
+conj_or(occurs-2, methylated-9)
+dobj(methylated-9, amines-10)
+aux(occur-13, may-12)
+conj_and(occurs-2, occur-13)
+advmod(occur-13, slowly-14)
+prep_on(occur-13, H2-CO2-16)
+

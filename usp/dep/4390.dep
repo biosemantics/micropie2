@@ -1,0 +1,13 @@
+nn(contents-4, hindgut-3)
+dep(Source-1, contents-4)
+det(flavipes-9, the-6)
+amod(flavipes-9, termite-7)
+nn(flavipes-9, R.-8)
+prep_of(contents-4, flavipes-9)
+appos(flavipes-9, Rhinotermitidae-11)
+partmod(flavipes-9, collected-13)
+nn(Hole-16, Woods-15)
+prep_in(collected-13, Hole-16)
+appos(Hole-16, Mass.-18)
+dep(Mass.-18, USA-20)
+

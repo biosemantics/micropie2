@@ -1,0 +1,8 @@
+det(number-3, A-1)
+amod(number-3, limited-2)
+nsubjpass(used-8, number-3)
+amod(substrates-6, organic-5)
+prep_of(number-3, substrates-6)
+auxpass(used-8, are-7)
+prep_for(used-8, growth-10)
+

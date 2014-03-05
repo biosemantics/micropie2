@@ -1,0 +1,13 @@
+dobj(Produces-1, acid-2)
+advmod(grown-4, when-3)
+advcl(Produces-1, grown-4)
+prep_on(grown-4, D-glucose-6)
+prep_on(grown-4, D-galactose-8)
+conj_and(D-glucose-6, D-galactose-8)
+prep_on(grown-4, maltose-10)
+conj_and(D-glucose-6, maltose-10)
+prep_on(grown-4, sucrose-12)
+conj_and(D-glucose-6, sucrose-12)
+prep_on(grown-4, glycerol-14)
+conj_and(D-glucose-6, glycerol-14)
+

@@ -1,0 +1,8 @@
+nn(chloride-3, Triphenyl-1)
+nn(chloride-3, tetrazolium-2)
+nsubjpass(reduced-5, chloride-3)
+auxpass(reduced-5, is-4)
+advmod(reduced-5, aerobically-6)
+advmod(reduced-5, anaerobically-8)
+conj_and(aerobically-6, anaerobically-8)
+

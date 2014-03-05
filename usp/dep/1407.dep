@@ -1,0 +1,10 @@
+advmod(Grows-1, aerobically-2)
+aux(grow-6, does-4)
+neg(grow-6, not-5)
+conj_but(Grows-1, grow-6)
+advmod(grow-6, anaerobically-7)
+advmod(grow-6, even-9)
+det(presence-12, the-11)
+prep_in(grow-6, presence-12)
+prep_of(presence-12, nitrate-14)
+

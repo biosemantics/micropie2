@@ -1,0 +1,6 @@
+nn(activity-4, b-galactosidase-3)
+prep_for(Negative-1, activity-4)
+nn(production-7, indole-6)
+prep_for(Negative-1, production-7)
+conj_and(activity-4, production-7)
+

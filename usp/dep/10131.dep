@@ -1,0 +1,4 @@
+nsubj(has-2, Its-1)
+nn(size-4, genome-3)
+dobj(has-2, size-4)
+

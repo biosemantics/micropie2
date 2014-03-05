@@ -1,0 +1,7 @@
+advmod(packets-2, Only-1)
+prep_of(packets-2, 3-4)
+num(cells-7, 4-6)
+dep(packets-2, cells-7)
+auxpass(observed-9, were-8)
+rcmod(cells-7, observed-9)
+

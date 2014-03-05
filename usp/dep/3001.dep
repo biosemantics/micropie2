@@ -1,0 +1,4 @@
+amod(red-2, Pigmented-1)
+dep(due-3, red-2)
+prep_to(due-3, carotenoids-5)
+

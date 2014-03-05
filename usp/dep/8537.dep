@@ -1,0 +1,8 @@
+det(pathogenicity-2, The-1)
+nsubjpass(determined-9, pathogenicity-2)
+amod(hosts-5, insect-4)
+prep_for(pathogenicity-2, hosts-5)
+aux(determined-9, has-6)
+neg(determined-9, not-7)
+auxpass(determined-9, been-8)
+

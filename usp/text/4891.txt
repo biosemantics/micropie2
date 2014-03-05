@@ -1,0 +1,1 @@
+Cells lose integrity during Gram staining and lyse completely within 10 s when suspended in either distilled water or 0.01% SDS.

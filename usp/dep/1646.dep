@@ -1,0 +1,12 @@
+quantmod(1-4, at-2)
+mwe(at-2, least-3)
+num(NaCl-6, 1-4)
+nn(NaCl-6, M-5)
+dobj(Requires-1, NaCl-6)
+prep_for(NaCl-6, growth-8)
+det(presence-12, the-11)
+prep_in(growth-8, presence-12)
+num(MgCl2-16, 0.8-14)
+nn(MgCl2-16, M-15)
+prep_of(presence-12, MgCl2-16)
+

@@ -1,0 +1,4 @@
+nn(MF-2, Strain-1)
+nsubj(produced-3, MF-2)
+dobj(produced-3, CH4-4)
+

@@ -1,0 +1,7 @@
+nsubj(beige-6, Colonies-1)
+nsubj(circular-8, Colonies-1)
+nn(tubes-4, agar-3)
+prep_in(Colonies-1, tubes-4)
+cop(beige-6, are-5)
+conj_and(beige-6, circular-8)
+

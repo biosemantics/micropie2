@@ -1,0 +1,13 @@
+amod(lipids-3, tetraether-type-2)
+dobj(Contains-1, lipids-3)
+amod(lipids-6, diether-type-5)
+dobj(Contains-1, lipids-6)
+conj_and(lipids-3, lipids-6)
+det(esters-11, some-9)
+amod(esters-11, other-10)
+dobj(Contains-1, esters-11)
+conj_and(lipids-3, esters-11)
+amod(acids-14, fatty-13)
+conj_and(lipids-3, acids-14)
+conj_or(esters-11, acids-14)
+

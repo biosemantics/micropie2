@@ -1,0 +1,11 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(KCTC-7, strain-3)
+cop(KCTC-7, is-4)
+nn(KCTC-7, NA1T-5)
+amod(KCTC-7, =-6)
+num(JCM-10, 10859-8)
+amod(JCM-10, =-9)
+dep(KCTC-7, JCM-10)
+dep(JCM-10, 13517-11)
+

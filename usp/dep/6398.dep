@@ -1,0 +1,3 @@
+nn(reaction-2, Gram-1)
+dep(positive-3, reaction-2)
+

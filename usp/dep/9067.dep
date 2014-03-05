@@ -1,0 +1,8 @@
+nsubj(yellow-4, Colonies-1)
+nsubj(smooth-6, Colonies-1)
+nsubj(flat-8, Colonies-1)
+cop(yellow-4, are-2)
+amod(yellow-4, dark-3)
+conj_and(yellow-4, smooth-6)
+conj_and(yellow-4, flat-8)
+

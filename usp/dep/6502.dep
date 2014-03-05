@@ -1,0 +1,11 @@
+det(growth-2, No-1)
+nsubjpass(detected-5, growth-2)
+nsubjpass(detected-5, growth-2)
+aux(detected-5, can-3)
+auxpass(detected-5, be-4)
+conj_or(detected-5, detected-5)
+number(°-8, 60-7)
+num(C-9, °-8)
+prep_at(detected-5, C-9)
+prep_below(detected-5, C-9)
+

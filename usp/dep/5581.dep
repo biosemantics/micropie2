@@ -1,0 +1,13 @@
+nsubj(rapid-4, Growth-1)
+cop(rapid-4, is-2)
+advmod(rapid-4, most-3)
+nn(extract-7, yeast-6)
+prep_with(rapid-4, extract-7)
+det(medium-10, the-9)
+prep_in(extract-7, medium-10)
+nsubj(support-16, vitamins-13)
+conj_or(vitamins-13, peptones-15)
+nsubj(support-16, peptones-15)
+conj_but(rapid-4, support-16)
+dobj(support-16, growth-17)
+

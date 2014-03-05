@@ -1,0 +1,7 @@
+preconj(H2\/CO2-3, both-2)
+dobj(Utilizes-1, H2\/CO2-3)
+dobj(Utilizes-1, formate-5)
+conj_and(H2\/CO2-3, formate-5)
+nn(production-8, methane-7)
+prep_for(H2\/CO2-3, production-8)
+

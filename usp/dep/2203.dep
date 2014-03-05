@@ -1,0 +1,9 @@
+nsubj(hydrolyse-4, Hydrolyses-1)
+aux(hydrolyse-4, does-2)
+neg(hydrolyse-4, not-3)
+nn(casein-6, gelatin-5)
+dobj(hydrolyse-4, casein-6)
+dobj(hydrolyse-4, Tween-8)
+conj_or(casein-6, Tween-8)
+num(Tween-8, 80-9)
+

@@ -1,0 +1,6 @@
+nsubjpass(required-4, Mg2-1)
+cc(required-4, +-2)
+auxpass(required-4, is-3)
+num(mM-6, 300-5)
+dobj(required-4, mM-6)
+

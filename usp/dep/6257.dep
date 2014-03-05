@@ -1,0 +1,13 @@
+det(dot-4, The-1)
+amod(dot-4, mol-2)
+nn(dot-4, %-3)
+nsubj(=-10, dot-4)
+det(strain-7, The-5)
+nn(strain-7, type-6)
+nsubj(MCB-3-9, strain-7)
+cop(MCB-3-9, is-8)
+rcmod(dot-4, MCB-3-9)
+iobj(=-10, DSM-11)
+num(DSM-11, 3091-12)
+dobj(=-10, _-13)
+

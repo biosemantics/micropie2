@@ -1,0 +1,11 @@
+amod(crenarchaeon-3, Thermophilic-1)
+amod(crenarchaeon-3, anaerobic-2)
+nsubj(isolated-4, crenarchaeon-3)
+det(field-8, a-6)
+amod(field-8, solfataric-7)
+prep_from(isolated-4, field-8)
+nn(volcano-11, Moutnovsky-10)
+prep_in(field-8, volcano-11)
+nn(Russia-15, Kamchatka-13)
+appos(volcano-11, Russia-15)
+

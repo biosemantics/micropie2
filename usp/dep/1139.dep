@@ -1,0 +1,6 @@
+prep_for(Positive-1, caseinase-3)
+prep_for(Positive-1, amylase-5)
+conj_and(caseinase-3, amylase-5)
+prep_for(Positive-1, gelatinase-7)
+conj_and(caseinase-3, gelatinase-7)
+

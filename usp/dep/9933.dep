@@ -1,0 +1,5 @@
+nn(hole-4, mud-3)
+prep_from(Isolated-1, hole-4)
+nn(Iceland-8, Krafla-6)
+prep_in(hole-4, Iceland-8)
+

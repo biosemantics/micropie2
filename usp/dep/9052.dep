@@ -1,0 +1,8 @@
+det(pH-2, The-1)
+prep_for(pH-2, growth-4)
+number(.5-7, 2-5-6)
+dep(pH-2, .5-7)
+amod(pH-10, optimum-9)
+dep(.5-7, pH-10)
+dep(pH-10, 4.5-11)
+

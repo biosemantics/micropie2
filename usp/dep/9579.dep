@@ -1,0 +1,7 @@
+nn(reduction-2, Sulfur-1)
+nsubj(occurred-5, reduction-2)
+prep_to(reduction-2, H2S-4)
+det(medium-9, the-7)
+amod(medium-9, liquid-8)
+prep_in(occurred-5, medium-9)
+

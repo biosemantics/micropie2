@@ -1,0 +1,8 @@
+nn(colonies-2, Agar-1)
+nsubj(do-3, colonies-2)
+neg(hemadsorb-5, not-4)
+amod(erythrocytes-8, hemadsorb-5)
+nn(erythrocytes-8, guinea-6)
+nn(erythrocytes-8, pig-7)
+dobj(do-3, erythrocytes-8)
+

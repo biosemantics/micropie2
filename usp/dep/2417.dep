@@ -1,0 +1,7 @@
+aux(grow-3, Does-1)
+neg(grow-3, not-2)
+advmod(grow-3, anaerobically-4)
+det(presence-7, the-6)
+prep_in(grow-3, presence-7)
+prep_of(presence-7, L-arginine-9)
+

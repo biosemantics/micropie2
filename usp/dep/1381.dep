@@ -1,0 +1,12 @@
+advmod(flat-6, Predominantly-1)
+amod(flat-6, square-shaped-2)
+amod(flat-6, pleomorphic-4)
+amod(cells-7, flat-6)
+num(µm-10, 2-3-9)
+appos(cells-7, µm-10)
+dep(cells-7, motile-12)
+num(flagella-19, one-16)
+conj_or(one-16, more-18)
+num(flagella-19, more-18)
+prep_by_means_of(motile-12, flagella-19)
+

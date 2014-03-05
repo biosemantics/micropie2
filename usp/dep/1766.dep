@@ -1,0 +1,7 @@
+amod(Gram-1, negative-2)
+amod(Gram-1, non-motile-4)
+conj_and(negative-2, non-motile-4)
+advmod(aerobic-7, strictly-6)
+amod(Gram-1, aerobic-7)
+conj_and(negative-2, aerobic-7)
+

@@ -1,0 +1,7 @@
+nn(lipids-2, Principal-1)
+nsubj(acid-5, lipids-2)
+cop(acid-5, are-3)
+amod(acid-5, archaetidic-4)
+nn(glycerol-8, archaetidyl-7)
+conj_and(acid-5, glycerol-8)
+

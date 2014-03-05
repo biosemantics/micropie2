@@ -1,0 +1,9 @@
+nn(extract-2, Yeast-1)
+nsubjpass(enhanced-8, extract-2)
+nn(M-5, coenzyme-4)
+conj_and(extract-2, M-5)
+nsubjpass(enhanced-8, M-5)
+auxpass(enhanced-8, were-6)
+neg(enhanced-8, not-7)
+dobj(enhanced-8, growth-9)
+

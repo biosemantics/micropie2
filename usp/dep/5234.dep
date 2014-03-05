@@ -1,0 +1,11 @@
+det(pattern-4, The-1)
+amod(pattern-4, polar-2)
+nn(pattern-4, lipid-3)
+nsubj(similar-6, pattern-4)
+cop(similar-6, is-5)
+det(one-9, the-8)
+prep_to(similar-6, one-9)
+det(species-13, the-11)
+nn(species-13, Methanoculleus-12)
+prep_of(one-9, species-13)
+

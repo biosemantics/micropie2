@@ -1,0 +1,1 @@
+Produces acid when grown on sucrose, glucose, starch, fructose, lactose, galactose, sorbitol and glycerol, but not L-arginine, L-alanine, L-glutamic acid, DL-aspartic acid, glycine, acetate, lactate, malic acid, fumaric acid, citrate, succinate or pyruvate.

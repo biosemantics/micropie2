@@ -1,0 +1,8 @@
+nn(red-2, Methyl-1)
+nsubj(reaction-6, red-2)
+cop(reaction-6, is-3)
+nn(reaction-6, Voges-4)
+nn(reaction-6, Proskauer-5)
+nn(production-9, indole-8)
+conj_and(reaction-6, production-9)
+

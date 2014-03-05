@@ -1,0 +1,7 @@
+nsubjpass(required-4, Mg2-1)
+cc(required-4, +-2)
+auxpass(required-4, is-3)
+nn(mM-8, growth-6)
+num(mM-8, 300-7)
+prep_for(required-4, mM-8)
+

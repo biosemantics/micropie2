@@ -1,0 +1,6 @@
+num(genes-6, three-2)
+amod(genes-6, divergent-3)
+nn(genes-6, 16S-4)
+nn(genes-6, rRNA-5)
+dobj(Possesses-1, genes-6)
+

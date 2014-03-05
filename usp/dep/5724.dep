@@ -1,0 +1,11 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(OCM-7, strain-3)
+cop(OCM-7, is-4)
+nn(OCM-7, GS-16-5)
+amod(OCM-7, =-6)
+number(=-9, 58-8)
+amod(OCM-7, =-9)
+dep(OCM-7, DSM-10)
+num(DSM-10, 9005-11)
+

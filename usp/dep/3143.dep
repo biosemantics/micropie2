@@ -1,0 +1,5 @@
+nn(acids-2, Organic-1)
+nsubjpass(utilized-5, acids-2)
+auxpass(utilized-5, are-3)
+neg(utilized-5, not-4)
+

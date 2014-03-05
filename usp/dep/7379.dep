@@ -1,0 +1,8 @@
+prep_to(Sensitive-1, anisomycin-3)
+prep_to(Sensitive-1, bacitracin-5)
+conj_and(anisomycin-3, bacitracin-5)
+prep_to(Sensitive-1, novobiocin-7)
+conj_and(anisomycin-3, novobiocin-7)
+prep_to(Sensitive-1, rifampicin-9)
+conj_and(anisomycin-3, rifampicin-9)
+

@@ -1,0 +1,7 @@
+csubj(TMA-5, Utilizes-1)
+dobj(Utilizes-1, methanol-2)
+cop(TMA-5, is-3)
+nn(TMA-5, H2\/CO2-4)
+nn(production-8, methane-7)
+prep_with(TMA-5, production-8)
+

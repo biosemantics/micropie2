@@ -1,0 +1,10 @@
+amod(growth-2, Optimal-1)
+nsubj(is-3, growth-2)
+num(˚C-6, 65-5)
+prep_at(is-3, ˚C-6)
+det(time-10, a-8)
+amod(time-10, doubling-9)
+prep_with(˚C-6, time-10)
+num(min-13, 55-12)
+prep_of(time-10, min-13)
+

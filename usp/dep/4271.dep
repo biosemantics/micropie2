@@ -1,0 +1,8 @@
+nn(characteristics-2, Colony-1)
+dep(characteristics-2, Circular-4)
+amod(yellow-7, pale-6)
+amod(Circular-4, yellow-7)
+prep_in(Circular-4, color-9)
+amod(edges-12, entire-11)
+prep_with(color-9, edges-12)
+

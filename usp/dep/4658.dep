@@ -1,0 +1,11 @@
+det(growth-2, No-1)
+nsubjpass(observed-4, growth-2)
+auxpass(observed-4, was-3)
+nn(monomethylamine-12, acetate-6)
+dep(monomethylamine-12, formate-8)
+dep(monomethylamine-12, methanol-10)
+prep_on(observed-4, monomethylamine-12)
+nn(extract-16, yeast-15)
+prep_on(observed-4, extract-16)
+conj_or(monomethylamine-12, extract-16)
+

@@ -1,0 +1,4 @@
+dep(devoid-2, Cells-1)
+nn(wall-5, cell-4)
+prep_of(devoid-2, wall-5)
+

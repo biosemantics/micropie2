@@ -1,0 +1,8 @@
+nsubj(stimulatory-7, One-1)
+amod(vitamin-5, more-3)
+nn(vitamin-5, B-4)
+conj_or(One-1, vitamin-5)
+nsubj(stimulatory-7, vitamin-5)
+aux(stimulatory-7, may-6)
+prep_to(stimulatory-7, growth-9)
+

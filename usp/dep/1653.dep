@@ -1,0 +1,11 @@
+nn(agent-10, novobiocin-3)
+dep(agent-10, bacitracin-5)
+dep(agent-10, anisomycin-7)
+amod(agent-10, vibriostatic-9)
+prep_to(Susceptible-1, agent-10)
+dep(agent-10, 0\/129-11)
+dep(agent-10, taurocholate-13)
+conj_and(0\/129-11, taurocholate-13)
+dep(agent-10, deoxycholate-16)
+conj_and(0\/129-11, deoxycholate-16)
+

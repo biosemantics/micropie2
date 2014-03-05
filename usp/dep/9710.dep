@@ -1,0 +1,7 @@
+det(presence-2, The-1)
+nsubj(growth-8, presence-2)
+prep_of(presence-2, sulfur-4)
+cop(growth-8, was-5)
+neg(growth-8, not-6)
+amod(growth-8, obligatory-7)
+

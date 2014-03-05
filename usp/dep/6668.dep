@@ -1,0 +1,8 @@
+nn(auris-2, M.-1)
+nsubj(does-3, auris-2)
+neg(catabolize-5, not-4)
+amod(glucose-6, catabolize-5)
+dobj(does-3, glucose-6)
+dobj(does-3, mannose-8)
+conj_or(glucose-6, mannose-8)
+

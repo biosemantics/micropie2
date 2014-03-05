@@ -1,0 +1,5 @@
+number(%-2, 0.5-1)
+amod(NaCl-3, %-2)
+nsubj(w\/v-5, NaCl-3)
+cop(w\/v-5, is-4)
+

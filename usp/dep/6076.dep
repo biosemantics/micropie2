@@ -1,0 +1,6 @@
+nsubjpass(preferred-7, Growth-1)
+prep_on(Growth-1, H2\/CO2-3)
+prep_on(Growth-1, methanol-5)
+conj_or(H2\/CO2-3, methanol-5)
+auxpass(preferred-7, is-6)
+

@@ -1,0 +1,6 @@
+nn(No-2, C.-1)
+dep(No-2, growth-3)
+number(%-6, 3.3-5)
+amod(NaCl-7, %-6)
+prep_at(growth-3, NaCl-7)
+

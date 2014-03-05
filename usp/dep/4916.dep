@@ -1,0 +1,6 @@
+nsubj(serve-4, H2-1)
+conj_and(H2-1, formate-3)
+nsubj(serve-4, formate-3)
+nn(donors-7, electron-6)
+prep_as(serve-4, donors-7)
+

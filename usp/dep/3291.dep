@@ -1,0 +1,12 @@
+conj_and(Negative-1, Negative-1)
+amod(production-4, indole-3)
+prep_for(Negative-1, production-4)
+nn(red-8, methyl-7)
+prep_in(Negative-1, red-8)
+appos(red-8, Voges-10)
+dep(Negative-1, Proskauer-12)
+poss(tests-17, Simmons-14)
+nn(tests-17, citrate-16)
+dep(Negative-1, tests-17)
+conj_and(Proskauer-12, tests-17)
+

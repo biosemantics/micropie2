@@ -1,0 +1,7 @@
+det(plasmid-4, a-2)
+amod(plasmid-4, large-3)
+dobj(Possesses-1, plasmid-4)
+prep(plasmid-4, of-5)
+pcomp(of-5, about-6)
+pobj(about-6, 144kbp-7)
+

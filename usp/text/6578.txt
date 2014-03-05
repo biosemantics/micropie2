@@ -1,0 +1,1 @@
+Cells are lysed in SDS (0.01 %, w/v) and H2O, but not in PBS (0.2 M) or NaCl solution (0.9 %, w/v).

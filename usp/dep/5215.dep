@@ -1,0 +1,9 @@
+det(characteristics-3, The-1)
+amod(characteristics-3, physiological-2)
+nsubjpass(described-8, characteristics-3)
+nn(marisnigri-6, M.-5)
+prep_of(characteristics-3, marisnigri-6)
+auxpass(described-8, were-7)
+mark(follows-10, as-9)
+advcl(described-8, follows-10)
+

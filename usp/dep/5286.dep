@@ -1,0 +1,9 @@
+nsubj(serves-6, H2-1)
+prep(H2-1, plus-2)
+dep(plus-2, CO2-3)
+dep(plus-2, formate-5)
+conj_or(CO2-3, formate-5)
+det(substrate-10, a-8)
+amod(substrate-10, catabolic-9)
+prep_as(serves-6, substrate-10)
+

@@ -1,0 +1,11 @@
+nsubj(occur-2, Cells-1)
+dep(cells-12, singly-3)
+advmod(in-6, sometimes-5)
+conj_and(singly-3, in-6)
+dep(cells-12, in-6)
+pobj(in-6, clusters-7)
+prep_of(clusters-7, two-9)
+prep_of(clusters-7, four-11)
+conj_or(two-9, four-11)
+dobj(occur-2, cells-12)
+

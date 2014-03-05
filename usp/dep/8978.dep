@@ -1,0 +1,7 @@
+nsubj(Fe-8, Nitrate-1)
+conj_or(Nitrate-1, KH2PO4-3)
+nsubj(Fe-8, KH2PO4-3)
+nn(acceptors-6, electron-5)
+prep_as(Nitrate-1, acceptors-6)
+cop(Fe-8, is-7)
+

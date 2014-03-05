@@ -1,0 +1,4 @@
+nn(grammopterae-2, Mesoplasma-1)
+dep(grammopterae-2, gramm.op-4)
+dep(gramm.op-4, ter.i.ae-6)
+

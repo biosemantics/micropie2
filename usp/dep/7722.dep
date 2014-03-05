@@ -1,0 +1,7 @@
+amod(reduction-2, Nitrate-1)
+nsubjpass(associated-5, reduction-2)
+auxpass(associated-5, was-3)
+neg(associated-5, not-4)
+nn(oxidation-8, iron-7)
+prep_with(associated-5, oxidation-8)
+

@@ -25,6 +25,8 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
+import usp.semantic.Parse;
+
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
@@ -142,14 +144,16 @@ public class TrainTestRun implements IRun {
 		long startTime = System.currentTimeMillis();
 		try {
 
+			Parse uspParse = new Parse();
+			uspParse.runParse("123", "456");
 			// sentenceReader.setInputStream(new FileInputStream(trainingFile));
 			// List<Sentence> trainingSentences = sentenceReader.read();
 			// nFolderCrossValidation(10, trainingSentences);
 
 			// List<Sentence> testSentences = createTestSentences();
-			// createUSPInputs(testSentences, sentenceMetadataMap);
+			// createUSPInputs(testSentences);
 
-			
+			/*
 			sentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = sentenceReader.read();
 			classifier.train(trainingSentences);
@@ -173,6 +177,8 @@ public class TrainTestRun implements IRun {
 			TaxonCharacterMatrix matrix = matrixCreator.create();
 			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
 			matrixWriter.write(matrix);
+			*/
+			
 			
 		} catch (Exception e) {
 			log(LogLevel.ERROR, "Could not run Main", e);
@@ -568,8 +574,7 @@ public class TrainTestRun implements IRun {
 		}
 	}
 
-	private void createUSPInputs(List<Sentence> sentenceList,
-			Map<Sentence, SentenceMetadata> sentenceMetadataMap)
+	private void createUSPInputs(List<Sentence> sentenceList)
 			throws IOException, InterruptedException, ExecutionException {
 
 		int counter = 1;
@@ -580,17 +585,9 @@ public class TrainTestRun implements IRun {
 			StringBuilder morphStringBuilder = new StringBuilder();
 			StringBuilder textStringBuilder = new StringBuilder();
 
-			// SentenceMetadata sentenceMetadata =
-			// sentenceMetadataMap.get(sentence);
-			// System.out.println(sentenceMetadata.getTaxonTextFile());
-			// System.out.println(sentenceMetadata.getSourceId());
-
-			// sentence.getText()
-			String text = sentence.getText();
+			String text = sentence.getText(); // it is sentence based not text based anymore
 			log(LogLevel.INFO,
-					"split text to sentences using stanford corenlp pipeline...");
-
-			// List<String> result = new LinkedList<String>();
+					"build pos tagger and dependency as USP inputs using stanford corenlp pipeline...");
 
 			Annotation annotation = new Annotation(text);
 			this.tokenizeSSplitPosParse.annotate(annotation);
@@ -695,41 +692,44 @@ public class TrainTestRun implements IRun {
 				textStringBuilder.append(sentence.getText());
 
 			}
-			// log(LogLevel.INFO,
-			// "done splitting text to sentences using stanford corenlp pipeline. Created "
-			// + result.size() + " sentences");
 
 			new File("usp").mkdirs();
 			new File("usp/dep").mkdirs();
+			new File("usp/dep/0").mkdirs();
 			new File("usp/morph").mkdirs();
+			new File("usp/morph/0").mkdirs();
 			new File("usp/text").mkdirs();
+			new File("usp/text/0").mkdirs();
 
 			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("usp/dep/" + counter + ".dep", false)))) {
+					new FileWriter("usp/dep/0/" + counter + ".dep", false)))) {
 				out.println(depStringBuilder);
 			} catch (IOException e) {
 				// exception handling left as an exercise for the reader
 			}
 			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("usp/morph/" + counter + ".input", false)))) {
+					new FileWriter("usp/morph/0/" + counter + ".input", false)))) {
 				out.println(inputStringBuilder);
 			} catch (IOException e) {
 				// exception handling left as an exercise for the reader
 			}
 			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("usp/morph/" + counter + ".morph", false)))) {
+					new FileWriter("usp/morph/0/" + counter + ".morph", false)))) {
 				out.println(morphStringBuilder);
 			} catch (IOException e) {
 				// exception handling left as an exercise for the reader
 			}
 			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("usp/text/" + counter + ".txt", false)))) {
+					new FileWriter("usp/text/0/" + counter + ".txt", false)))) {
 				out.println(textStringBuilder);
 			} catch (IOException e) {
 				// exception handling left as an exercise for the reader
 			}
 
 			counter++;
+			log(LogLevel.INFO,
+				"done building pos tagger and dependency as USP inputs using stanford corenlp pipeline...");
+
 		}
 	}
 

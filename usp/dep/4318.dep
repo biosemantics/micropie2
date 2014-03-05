@@ -1,0 +1,6 @@
+nn(acids-4, Acetate-1)
+conj_and(Acetate-1, amino-3)
+nn(acids-4, amino-3)
+nsubjpass(required-6, acids-4)
+auxpass(required-6, are-5)
+

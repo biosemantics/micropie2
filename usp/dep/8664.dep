@@ -1,0 +1,13 @@
+det(strain-5, the-3)
+nn(strain-5, type-4)
+nsubjpass(isolated-7, strain-5)
+auxpass(isolated-7, was-6)
+dep(Source-1, isolated-7)
+nn(ticks-10, rabbit-9)
+prep_from(isolated-7, ticks-10)
+nn(leporispalustris-13, Haemaphysalis-12)
+appos(ticks-10, leporispalustris-13)
+partmod(ticks-10, collected-15)
+nn(USA-19, Georgia-17)
+prep_in(collected-15, USA-19)
+

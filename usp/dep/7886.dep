@@ -1,0 +1,4 @@
+det(formation-3, No-1)
+nn(formation-3, septa-2)
+nsubj(observed-4, formation-3)
+

@@ -1,0 +1,11 @@
+amod(70-3, between-2)
+dep(Growth-1, 70-3)
+dep(Growth-1, 103-5)
+conj_and(70-3, 103-5)
+nn(pH-7, ˚C-6)
+dep(70-3, pH-7)
+num(%-10, 5-9-8)
+num(%-10, 0.5-5-9)
+dep(Growth-1, %-10)
+dep(%-10, NaCl-11)
+

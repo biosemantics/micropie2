@@ -1,0 +1,5 @@
+nsubj(circular-3, Colonies-1)
+nsubj(orange-red-5, Colonies-1)
+cop(circular-3, are-2)
+conj_and(circular-3, orange-red-5)
+

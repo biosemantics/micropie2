@@ -1,0 +1,4 @@
+nn(acids-2, Amino-1)
+neg(required-4, not-3)
+partmod(acids-2, required-4)
+

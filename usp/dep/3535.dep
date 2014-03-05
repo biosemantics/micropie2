@@ -1,0 +1,7 @@
+amod(cells-2, Late-log-phase-1)
+nsubjpass(grown-4, cells-2)
+auxpass(grown-4, be-3)
+number(108-8, 107-6)
+dep(108-8, to-7)
+prep_at(grown-4, 108-8)
+

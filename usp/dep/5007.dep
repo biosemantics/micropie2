@@ -1,0 +1,5 @@
+det(strains-2, Some-1)
+nsubj(utilize-3, strains-2)
+dobj(utilize-3, thiosulfate-4)
+advmod(utilize-3, also-5)
+

@@ -1,0 +1,12 @@
+advmod(Grows-1, aerobically-2)
+advmod(Grows-1, anaerobically-4)
+conj_or(aerobically-2, anaerobically-4)
+det(presence-7, the-6)
+prep_in(Grows-1, presence-7)
+prep_of(presence-7, nitrate-9)
+det(formation-13, the-12)
+prep_with(Grows-1, formation-13)
+prep_of(formation-13, nitrite-15)
+prep_of(formation-13, gas-17)
+conj_and(nitrite-15, gas-17)
+

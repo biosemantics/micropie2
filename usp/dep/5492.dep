@@ -1,0 +1,12 @@
+nn(extract-2, Yeast-1)
+nsubjpass(replaced-7, extract-2)
+conj_and(extract-2, peptone-4)
+nsubjpass(replaced-7, peptone-4)
+aux(replaced-7, can-5)
+auxpass(replaced-7, be-6)
+det(solution-12, a-9)
+amod(solution-12, heavy-10)
+nn(solution-12, metal-11)
+agent(replaced-7, solution-12)
+advmod(replaced-7, partially-13)
+

@@ -1,0 +1,8 @@
+nsubjpass(stimulated-4, Growth-1)
+auxpass(stimulated-4, is-2)
+neg(stimulated-4, not-3)
+nn(extract-9, acetate-6)
+conj_or(acetate-6, yeast-8)
+nn(extract-9, yeast-8)
+agent(stimulated-4, extract-9)
+

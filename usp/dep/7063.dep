@@ -1,0 +1,8 @@
+det(strains-2, All-1)
+nsubj(come-7, strains-2)
+det(organism-5, the-4)
+prep_of(strains-2, organism-5)
+aux(come-7, have-6)
+nn(cultures-10, cell-9)
+prep_from(come-7, cultures-10)
+

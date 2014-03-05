@@ -1,0 +1,5 @@
+nsubj(occurs-2, Growth-1)
+number(95-5, 55-4)
+num(˚C-6, 95-5)
+prep_at(occurs-2, ˚C-6)
+

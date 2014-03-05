@@ -1,0 +1,8 @@
+det(arrangement-6, a-2)
+amod(arrangement-6, characteristic-3)
+amod(arrangement-6, sarcina-like-4)
+nn(arrangement-6, cell-5)
+dobj(Had-1, arrangement-6)
+dobj(Had-1, morphology-8)
+conj_and(arrangement-6, morphology-8)
+

@@ -1,0 +1,12 @@
+nsubjpass(formed-11, Isovalerate-1)
+appos(Isovalerate-1, isobutyrate-3)
+appos(Isovalerate-1, propionate-5)
+conj_and(isobutyrate-3, propionate-5)
+appos(Isovalerate-1, acetate-7)
+conj_and(isobutyrate-3, acetate-7)
+appos(Isovalerate-1, H2S-9)
+conj_and(isobutyrate-3, H2S-9)
+auxpass(formed-11, were-10)
+amod(products-14, metabolic-13)
+prep_as(formed-11, products-14)
+

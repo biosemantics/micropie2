@@ -1,0 +1,8 @@
+nsubjpass(formed-8, Acetate-1)
+conj_and(Acetate-1, CO2-3)
+nsubjpass(formed-8, CO2-3)
+conj_and(Acetate-1, NH3-6)
+nsubjpass(formed-8, NH3-6)
+auxpass(formed-8, are-7)
+prep_from(formed-8, N-acetylglucosamine-10)
+

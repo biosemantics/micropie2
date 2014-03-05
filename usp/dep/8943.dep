@@ -1,0 +1,5 @@
+det(presence-2, The-1)
+nsubj(stimulates-5, presence-2)
+prep_of(presence-2, CO2-4)
+dobj(stimulates-5, growth-6)
+

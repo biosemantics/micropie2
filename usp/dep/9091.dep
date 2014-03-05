@@ -1,0 +1,5 @@
+det(headspace-3, A-1)
+nn(headspace-3, H2\/CO2-2)
+nsubj(90:10-5, headspace-3)
+cop(90:10-5, is-4)
+

@@ -1,0 +1,4 @@
+dep(Mycoplasma-1, testudineum-2)
+dep(testudineum-2, tes.tu.din-4)
+dep(tes.tu.din-4, e.um-6)
+

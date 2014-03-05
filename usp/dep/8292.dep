@@ -1,0 +1,11 @@
+det(C02-6, An-1)
+amod(C02-6, anaerobic-2)
+nn(C02-6, environment-3)
+num(C02-6, 5-4)
+nn(C02-6, %-5)
+nsubj(favored-9, C02-6)
+prep_in(C02-6, nitrogen-8)
+dobj(favored-9, growth-10)
+amod(medium-13, solid-12)
+prep_on(favored-9, medium-13)
+

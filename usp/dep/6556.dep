@@ -1,0 +1,5 @@
+nsubj(optimum-4, Hyperthermophilic-1)
+prep_with(Hyperthermophilic-1, temperature-3)
+num(˚C-6, 88-5)
+dobj(optimum-4, ˚C-6)
+

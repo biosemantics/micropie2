@@ -1,0 +1,1 @@
+Grows in medium containing 1.0% NaCl but not 1.5% NaCl.

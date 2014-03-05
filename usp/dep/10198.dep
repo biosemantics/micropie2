@@ -1,0 +1,5 @@
+dobj(Requires-1, thiosulfate-2)
+det(acceptor-6, an-4)
+nn(acceptor-6, electron-5)
+prep_as(Requires-1, acceptor-6)
+

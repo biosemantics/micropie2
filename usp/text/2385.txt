@@ -1,0 +1,1 @@
+Cells are 0.5 1.0 mm wide and 3.0 13.0 µm long.

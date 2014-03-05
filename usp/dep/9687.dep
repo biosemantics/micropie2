@@ -1,0 +1,6 @@
+det(growth-2, No-1)
+nsubj(occurred-3, growth-2)
+prep_at(occurred-3, pH-5)
+num(pH-5, 3.0-6)
+prep_to(occurred-3, 9.0-8)
+

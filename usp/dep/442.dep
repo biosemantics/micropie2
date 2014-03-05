@@ -1,0 +1,12 @@
+nsubj(fermented-3, Starch-1)
+cop(fermented-3, is-2)
+expl(is-7, there-6)
+conj_but(fermented-3, is-7)
+det(variation-9, some-8)
+nsubj(is-7, variation-9)
+det(species-12, the-11)
+prep_within(variation-9, species-12)
+prep_regarding(species-12, fermentation-14)
+amod(carbohydrates-17, other-16)
+prep_of(fermentation-14, carbohydrates-17)
+

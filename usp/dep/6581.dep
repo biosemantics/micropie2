@@ -1,0 +1,10 @@
+advmod(used-8, Only-1)
+nsubjpass(used-8, methanol-2)
+conj_and(methanol-2, methylamine-4)
+nsubjpass(used-8, methylamine-4)
+conj_and(methanol-2, trimethylamine-6)
+nsubjpass(used-8, trimethylamine-6)
+auxpass(used-8, are-7)
+prep_as(used-8, substrates-10)
+prep_for(substrates-10, methanogenesis-12)
+

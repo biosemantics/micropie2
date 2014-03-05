@@ -1,0 +1,9 @@
+dobj(Metabolizes-1, H2-2)
+prep(H2-2, plus-3)
+dep(plus-3, CO2-4)
+partmod(Metabolizes-1, yielding-6)
+dobj(yielding-6, CH4-7)
+det(product-11, the-9)
+amod(product-11, sole-10)
+prep_as(yielding-6, product-11)
+

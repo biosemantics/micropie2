@@ -1,0 +1,8 @@
+number(°-2, 1-1)
+nsubj(6.0-7, °-2)
+dep(°-2, C.-3)
+amod(pH-5, Optimal-4)
+dep(°-2, pH-5)
+cop(6.0-7, is-6)
+prep_to(6.0-7, 7.0-9)
+

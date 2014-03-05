@@ -1,0 +1,9 @@
+nsubj(%-10, G-1)
+nn(content-4, C-3)
+conj_+(G-1, content-4)
+nsubj(%-10, content-4)
+prep_of(G-1, DNA-6)
+cop(%-10, is-7)
+number(mol-9, 53.3-8)
+num(%-10, mol-9)
+

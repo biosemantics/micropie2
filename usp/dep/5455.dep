@@ -1,0 +1,9 @@
+amod(growth-2, Optimal-1)
+num(Na-6, 0.19-4)
+nn(Na-6, M-5)
+prep_at(growth-2, Na-6)
+rcmod(Na-6, +-7)
+dep(growth-2, Trypticase-9)
+partmod(Trypticase-9, required-10)
+prep_for(required-10, growth-12)
+

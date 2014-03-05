@@ -1,0 +1,11 @@
+nn(production-2, Methane-1)
+nsubjpass(observed-6, production-2)
+conj_and(production-2, growth-4)
+nsubjpass(observed-6, growth-4)
+auxpass(observed-6, were-5)
+num(˚C-9, 38-8)
+prep_between(observed-6, ˚C-9)
+num(˚C-12, 70-11)
+prep_between(observed-6, ˚C-12)
+conj_and(˚C-9, ˚C-12)
+

@@ -1,0 +1,4 @@
+amod(pleomorphic-3, Non-helical-1)
+dep(anaerobe-6, pleomorphic-3)
+amod(anaerobe-6, facultative-5)
+

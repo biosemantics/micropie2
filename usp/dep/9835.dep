@@ -1,0 +1,10 @@
+amod(medium-3, solid-2)
+prep_on(formed-15, medium-3)
+amod(colonies-7, small-5)
+amod(colonies-7, colourless-6)
+nsubjpass(formed-15, colonies-7)
+det(appearance-13, a-9)
+nn(appearance-13, fried-egg-11)
+prep_with(colonies-7, appearance-13)
+auxpass(formed-15, are-14)
+

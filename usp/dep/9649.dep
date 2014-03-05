@@ -1,0 +1,9 @@
+num(%-5, 1.0-6-3)
+num(%-5, .0-4)
+prep_between(Grows-1, %-5)
+dep(%-5, NaCl-6)
+amod(2-3-9, optimal-8)
+appos(%-5, 2-3-9)
+num(%-11, .5-10)
+dep(2-3-9, %-11)
+

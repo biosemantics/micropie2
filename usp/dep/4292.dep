@@ -1,0 +1,13 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(P2St-6, strain-3)
+cop(P2St-6, is-4)
+nn(P2St-6, strain-5)
+nn(Gottingen-9, DSM-7)
+num(Gottingen-9, 2956-8)
+nsubj(Republic-12, Gottingen-9)
+cop(Republic-12, is-10)
+nn(Republic-12, Federal-11)
+rcmod(P2St-6, Republic-12)
+prep_of(Republic-12, Germany-14)
+

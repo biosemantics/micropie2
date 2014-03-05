@@ -1,0 +1,17 @@
+Polar_NNP
+lipids_NNS
+include_VBP
+phosphatidylglycerol_NN
+,_,
+Mephosphatidylglycerophosphate_NN
+,_,
+phosphatidylglycerosulfate_NN
+and_CC
+an_DT
+unidentified_JJ
+monosulfated_JJ
+diglycosyl_NN
+diether_NN
+lipid_NN
+._.
+

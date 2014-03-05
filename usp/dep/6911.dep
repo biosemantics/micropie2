@@ -1,0 +1,9 @@
+amod(production-2, Heavy-1)
+prep_of(production-2, film-4)
+prep_of(production-2, spots-6)
+conj_and(film-4, spots-6)
+prep_in(production-2, liquid-8)
+amod(media-13, solid-12)
+prep_in(production-2, media-13)
+conj_and(liquid-8, media-13)
+

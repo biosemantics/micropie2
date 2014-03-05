@@ -1,0 +1,12 @@
+amod(cross-reactivity-4, strong-2)
+amod(cross-reactivity-4, serological-3)
+dobj(Shows-1, cross-reactivity-4)
+prep_with(cross-reactivity-4, members-6)
+det(M.-12, the-8)
+advmod(designated-10, newly-9)
+amod(M.-12, designated-10)
+nn(M.-12, taxon-11)
+prep_of(members-6, M.-12)
+nn(subsp-14, capricolum-13)
+dep(cross-reactivity-4, subsp-14)
+

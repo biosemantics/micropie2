@@ -1,0 +1,10 @@
+nn(substrates-2, Organic-1)
+nsubj(include-3, substrates-2)
+dobj(include-3, glucose-4)
+dobj(include-3, ethanol-6)
+conj_and(glucose-4, ethanol-6)
+dobj(include-3, malate-8)
+conj_and(glucose-4, malate-8)
+dobj(include-3, formamide-11)
+conj_and(glucose-4, formamide-11)
+

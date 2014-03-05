@@ -1,0 +1,13 @@
+nsubj(occurs-2, Growth-1)
+number(%-5, 1-4)
+amod(NaCl-6, %-5)
+prep_below(occurs-2, NaCl-6)
+appos(NaCl-6, w\/v-8)
+amod(growth-13, optimum-12)
+prep_with(occurs-2, growth-13)
+amod(medium-16, basal-15)
+prep_in(growth-13, medium-16)
+det(addition-19, the-18)
+prep_without(medium-16, addition-19)
+prep_of(addition-19, NaCl-21)
+

@@ -1,0 +1,5 @@
+nn(n.-3, L.-1)
+nn(n.-3, fem-2)
+nsubj(somnus-4, n.-3)
+dobj(somnus-4, sleep-5)
+

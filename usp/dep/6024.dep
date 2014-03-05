@@ -1,0 +1,8 @@
+det(substrate-3, The-1)
+amod(substrate-3, only-2)
+nsubjpass(used-5, substrate-3)
+auxpass(used-5, be-4)
+prep_for(used-5, growth-7)
+prep_for(used-5, methanogenesis-9)
+conj_and(growth-7, methanogenesis-9)
+

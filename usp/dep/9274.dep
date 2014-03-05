@@ -1,0 +1,7 @@
+nn(lipids-2, Core-1)
+nsubj(consist-3, lipids-2)
+nn(tetraethers-8, 2,3-di-O-phytanyl-sn-glycerol-5)
+conj_and(2,3-di-O-phytanyl-sn-glycerol-5, glycerol-dialkyl-glycerol-7)
+nn(tetraethers-8, glycerol-dialkyl-glycerol-7)
+prep_of(consist-3, tetraethers-8)
+

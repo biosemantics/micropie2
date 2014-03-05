@@ -1,0 +1,6 @@
+nn(casein-2, Starch-1)
+conj_and(casein-2, gelatin-4)
+mark(are-6, whereas-5)
+dep(casein-2, are-6)
+neg(are-6, not-7)
+

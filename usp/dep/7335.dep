@@ -1,0 +1,9 @@
+nn(agent-10, anisomycin-3)
+dep(agent-10, bacitracin-5)
+dep(agent-10, novobiocin-7)
+amod(agent-10, vibriostatic-9)
+prep_to(Sensitive-1, agent-10)
+appos(agent-10, 0\/129-12)
+prep_to(Sensitive-1, sulphamethoxazole\/trimethoprim-15)
+conj_and(agent-10, sulphamethoxazole\/trimethoprim-15)
+

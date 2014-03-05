@@ -1,0 +1,6 @@
+nn(range-2, PH-1)
+nsubj(.0-7, range-2)
+prep_for(range-2, growth-4)
+cop(.0-7, is-5)
+num(.0-7, 5.8-8-6)
+

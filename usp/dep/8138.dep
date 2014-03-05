@@ -1,0 +1,4 @@
+nn(lipids-2, Core-1)
+advmod(glycerol-dialkyl-glycerol-tetraether-4, mainly-3)
+dep(lipids-2, glycerol-dialkyl-glycerol-tetraether-4)
+

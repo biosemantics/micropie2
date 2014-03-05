@@ -1,0 +1,3 @@
+nn(bios-2, N.-1)
+dep(bios-2, life-3)
+

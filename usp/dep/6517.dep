@@ -1,0 +1,11 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(DSM-5, strain-3)
+cop(DSM-5, is-4)
+num(DSM-5, 2088-6)
+dep(DSM-5, isolated-8)
+det(spring-13, an-10)
+amod(spring-13, Icelandic-11)
+amod(spring-13, hot-12)
+prep_from(isolated-8, spring-13)
+

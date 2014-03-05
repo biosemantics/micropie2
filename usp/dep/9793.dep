@@ -1,0 +1,4 @@
+prep_to(Sensitive-1, mevinolin-3)
+prep_to(Sensitive-1, monensin-5)
+conj_and(mevinolin-3, monensin-5)
+

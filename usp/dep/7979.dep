@@ -1,0 +1,9 @@
+nsubj(serve-7, Nitrite-1)
+amod(iron-4, ferric-3)
+conj_and(Nitrite-1, iron-4)
+nsubj(serve-7, iron-4)
+aux(serve-7, could-5)
+neg(serve-7, not-6)
+nn(acceptors-10, electron-9)
+prep_as(serve-7, acceptors-10)
+

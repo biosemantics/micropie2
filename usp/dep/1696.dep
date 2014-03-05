@@ -1,0 +1,13 @@
+det(range-3, The-1)
+nn(range-3, NaCl-2)
+nsubj(M-8, range-3)
+prep_for(range-3, growth-5)
+cop(M-8, is-6)
+num(M-8, 2.2-7)
+prep_to(M-8, saturation-10)
+det(optimum-13, an-12)
+prep_with(saturation-10, optimum-13)
+num(NaCl-17, 3.4-15)
+nn(NaCl-17, M-16)
+prep_of(optimum-13, NaCl-17)
+

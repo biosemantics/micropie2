@@ -1,0 +1,11 @@
+amod(selenium-4, elemental-3)
+prep_of(Formation-1, selenium-4)
+amod(growth-7, organotrophic-6)
+prep_during(Formation-1, growth-7)
+prep_on(Formation-1, selenate-9)
+dep(selenate-9, H2-CO2-11)
+nn(phase-15, N2-CO2-13)
+nn(phase-15, gas-14)
+dep(selenate-9, phase-15)
+conj_or(H2-CO2-11, phase-15)
+

@@ -1,0 +1,6 @@
+nn(colonies-2, White-1)
+nsubj(formed-3, colonies-2)
+prep_on(formed-3, plates-5)
+partmod(plates-5, solidified-6)
+agent(solidified-6, Gelrite-8)
+

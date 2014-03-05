@@ -1,0 +1,5 @@
+det(strains-2, Some-1)
+nsubj(contain-3, strains-2)
+nn(vacuoles-5, gas-4)
+dobj(contain-3, vacuoles-5)
+

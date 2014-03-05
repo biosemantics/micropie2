@@ -1,0 +1,5 @@
+amod(production-2, Indole-1)
+nsubj(positive-6, production-2)
+prep_from(production-2, tryptophan-4)
+cop(positive-6, is-5)
+

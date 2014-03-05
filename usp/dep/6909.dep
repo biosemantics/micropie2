@@ -1,0 +1,11 @@
+amod(turbidity-2, Slight-1)
+nsubjpass(formed-15, microcolonies-4)
+preconj(free-7, both-6)
+amod(microcolonies-4, free-7)
+amod(microcolonies-4, adherent-9)
+conj_and(free-7, adherent-9)
+det(glass-12, the-11)
+prep_to(adherent-9, glass-12)
+auxpass(formed-15, are-14)
+dep(turbidity-2, formed-15)
+

@@ -1,0 +1,7 @@
+nn(sources-2, Sulfur-1)
+nsubj(include-3, sources-2)
+dobj(include-3, sulfide-4)
+amod(sulfur-7, elemental-6)
+dobj(include-3, sulfur-7)
+conj_and(sulfide-4, sulfur-7)
+

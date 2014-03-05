@@ -1,0 +1,6 @@
+det(organism-2, The-1)
+nsubj(pathogen-6, organism-2)
+cop(pathogen-6, is-3)
+det(pathogen-6, a-4)
+amod(pathogen-6, lethal-5)
+

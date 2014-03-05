@@ -1,0 +1,12 @@
+nn(glycolipid-2, Membrane-1)
+nsubj(S2-DGD-4, glycolipid-2)
+cop(S2-DGD-4, is-3)
+dep(S2-DGD-4, mannose-2-6)
+num(mannose-2-6, ,6-7)
+dep(mannose-2-6, disulfate-8)
+num(disulfate-8, 1-9)
+num(diether-13, 2-11)
+nn(diether-13, glucose-glycerol-12)
+dep(mannose-2-6, diether-13)
+conj_+(disulfate-8, diether-13)
+

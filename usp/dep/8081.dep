@@ -1,0 +1,11 @@
+det(growth-2, No-1)
+amod(pressure-5, atmospheric-4)
+prep_under(growth-2, pressure-5)
+amod(temperatures-8, various-7)
+prep_at(pressure-5, temperatures-8)
+partmod(growth-2, ranging-9)
+number(110-13, 60-11)
+dep(110-13, to-12)
+num(˚C-14, 110-13)
+prep_from(ranging-9, ˚C-14)
+

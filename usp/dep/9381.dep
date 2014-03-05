@@ -1,0 +1,13 @@
+advmod(barophilic-2, Obligately-1)
+num(˚C-7, 95-4)
+conj_and(95-4, 100-6)
+num(˚C-7, 100-6)
+prep_between(barophilic-2, ˚C-7)
+conj_and(barophilic-2, requires-9)
+num(MPa-11, 15.0-175-10)
+nsubj(grow-13, MPa-11)
+aux(grow-13, to-12)
+xcomp(requires-9, grow-13)
+det(temperatures-16, these-15)
+prep_at(grow-13, temperatures-16)
+

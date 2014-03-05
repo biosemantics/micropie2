@@ -1,0 +1,7 @@
+nsubj(made-2, Diminutum-1)
+dobj(made-2, smaller-3)
+xcomp(made-2, reflecting-4)
+det(size-7, a-5)
+amod(size-7, smaller-6)
+dobj(reflecting-4, size-7)
+

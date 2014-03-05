@@ -1,0 +1,12 @@
+det(acid-3, Neither-1)
+amod(acid-3, muramic-2)
+nsubj(present-8, acid-3)
+amod(acid-6, rneso-diaminopimelic-5)
+conj_nor(acid-3, acid-6)
+nsubj(present-8, acid-6)
+cop(present-8, is-7)
+dep(present-8, indicating-10)
+det(absence-12, the-11)
+dobj(indicating-10, absence-12)
+prep_of(absence-12, murein-14)
+

@@ -1,0 +1,5 @@
+det(acids-3, No-1)
+amod(acids-3, fatty-2)
+amod(quantities-6, significant-5)
+prep_in(acids-3, quantities-6)
+

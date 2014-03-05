@@ -1,0 +1,13 @@
+det(cells-2, The-1)
+nsubj(cocci-9, cells-2)
+det(packets-5, the-4)
+prep_in(cells-2, packets-5)
+cop(cocci-9, were-6)
+amod(cocci-9, nonmotile-7)
+amod(cocci-9, irregular-8)
+det(diameter-12, a-11)
+prep_with(cocci-9, diameter-12)
+prep_of(diameter-12, 1.0-14)
+num(µm-17, 1.7-16)
+dep(cocci-9, µm-17)
+

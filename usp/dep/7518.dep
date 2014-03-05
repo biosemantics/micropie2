@@ -1,0 +1,6 @@
+nsubj(Gram-negative-3, Cells-1)
+nsubj(rod-shaped-5, Cells-1)
+cop(Gram-negative-3, are-2)
+conj_and(Gram-negative-3, rod-shaped-5)
+conj_and(Gram-negative-3, motile-8)
+

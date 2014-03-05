@@ -1,0 +1,13 @@
+nsubj(yellowish-3, Colonies-1)
+cop(yellowish-3, are-2)
+prep_to(yellowish-3, cream-5)
+dep(cream-5, colored-6)
+ccomp(colored-6, smooth-8)
+nsubj(convex-14, opaque-10)
+partmod(opaque-10, raised-12)
+xcomp(smooth-8, convex-14)
+dep(cream-5, circular-17)
+conj_and(colored-6, circular-17)
+amod(margins-20, entire-19)
+prep_with(circular-17, margins-20)
+

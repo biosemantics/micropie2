@@ -1,0 +1,9 @@
+nsubjpass(hydrolysed-9, Tween-1)
+num(Tween-1, 80-2)
+conj_and(Tween-1, aesculin-4)
+nsubjpass(hydrolysed-9, aesculin-4)
+conj_and(Tween-1, gelatin-6)
+nsubjpass(hydrolysed-9, gelatin-6)
+auxpass(hydrolysed-9, are-7)
+neg(hydrolysed-9, not-8)
+

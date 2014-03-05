@@ -1,0 +1,9 @@
+num(µm-2, 2.0-1)
+nsubj(growing-6, µm-2)
+prep_in(µm-2, length-4)
+cop(growing-6, be-5)
+amod(media-9, liquid-8)
+prep_in(growing-6, media-9)
+amod(cells-12, single-11)
+prep_as(media-9, cells-12)
+

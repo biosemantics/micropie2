@@ -1,0 +1,5 @@
+nsubj(cocci-4, Cells-1)
+cop(cocci-4, are-2)
+amod(cocci-4, irregular-3)
+conj_or(cocci-4, discs-6)
+

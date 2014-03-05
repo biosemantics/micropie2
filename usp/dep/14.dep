@@ -1,0 +1,10 @@
+conj_and(Hemadsorption-1, hemagglutination-3)
+det(adsorption-6, no-5)
+dep(Hemadsorption-1, adsorption-6)
+dep(Hemadsorption-1, agglutination-8)
+conj_or(adsorption-6, agglutination-8)
+nn(erythrocytes-13, sheep-10)
+conj_and(sheep-10, human-12)
+nn(erythrocytes-13, human-12)
+prep_of(adsorption-6, erythrocytes-13)
+

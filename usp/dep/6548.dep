@@ -1,0 +1,6 @@
+nsubj(has-2, Its-1)
+amod(content-6, genomic-3)
+nn(content-6, DNA-4)
+nn(content-6, G+C-5)
+dobj(has-2, content-6)
+

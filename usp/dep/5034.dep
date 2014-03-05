@@ -1,0 +1,7 @@
+nsubj(irregular-8, Cells-1)
+amod(cultures-4, older-3)
+prep_from(Cells-1, cultures-4)
+prep_from(Cells-1, colonies-6)
+conj_or(cultures-4, colonies-6)
+cop(irregular-8, are-7)
+

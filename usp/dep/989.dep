@@ -1,0 +1,5 @@
+nsubj(H2-5, Fe-1)
+conj_and(Fe-1, sulfide-3)
+nsubj(H2-5, sulfide-3)
+cop(H2-5, is-4)
+

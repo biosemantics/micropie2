@@ -1,0 +1,5 @@
+advmod(resistant-2, Highly-1)
+prep_to(resistant-2, ristocentin-4)
+prep_to(resistant-2, vanomycin-6)
+conj_and(ristocentin-4, vanomycin-6)
+

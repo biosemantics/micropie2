@@ -1,0 +1,7 @@
+amod(cocci-2, Irregular-1)
+nsubj(be-3, cocci-2)
+xcomp(be-3, measuring-4)
+num(µm-6, 1.5-5)
+dobj(measuring-4, µm-6)
+prep_in(µm-6, diameter-8)
+

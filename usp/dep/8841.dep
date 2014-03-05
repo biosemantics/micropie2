@@ -1,0 +1,13 @@
+nn(CT-l-2, Strain-1)
+nsubjpass(deposited-5, CT-l-2)
+aux(deposited-5, has-3)
+auxpass(deposited-5, been-4)
+det(Collection-11, the-7)
+amod(Collection-11, American-8)
+nn(Collection-11, Type-9)
+nn(Collection-11, Culture-10)
+prep_in(deposited-5, Collection-11)
+nn(ATCC-14, strain-13)
+prep_as(Collection-11, ATCC-14)
+num(ATCC-14, 43302-15)
+

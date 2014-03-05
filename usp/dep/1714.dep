@@ -1,0 +1,9 @@
+nsubj(reddish-3, Colonies-1)
+nsubj(smooth-5, Colonies-1)
+nsubj(circular-7, Colonies-1)
+nsubj(elevated-9, Colonies-1)
+cop(reddish-3, are-2)
+conj_and(reddish-3, smooth-5)
+conj_and(reddish-3, circular-7)
+conj_and(reddish-3, elevated-9)
+

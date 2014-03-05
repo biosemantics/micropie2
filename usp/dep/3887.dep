@@ -1,0 +1,5 @@
+nsubj(coccoid-3, Cells-1)
+cop(coccoid-3, are-2)
+dep(coccoid-3, ranging-4)
+prep_in(ranging-4, diameter-6)
+

@@ -1,0 +1,5 @@
+det(cells-2, The-1)
+nsubj(form-3, cells-2)
+amod(aggregates-5, irregular-4)
+dobj(form-3, aggregates-5)
+

@@ -1,0 +1,8 @@
+aux(grow-3, to-2)
+dep(Able-1, grow-3)
+advmod(grow-3, organoheterotrophically-4)
+nn(extract-7, yeast-6)
+prep_with(grow-3, extract-7)
+prep_with(grow-3, glucose-9)
+conj_and(extract-7, glucose-9)
+

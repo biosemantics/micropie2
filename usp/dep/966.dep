@@ -1,0 +1,4 @@
+dep(Entomoplasma-1, somnilux-2)
+dep(somnilux-2, som.ni-4)
+dep(som.ni-4, lux-6)
+

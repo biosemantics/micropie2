@@ -1,0 +1,8 @@
+det(gut-4, the-3)
+prep_from(Isolated-1, gut-4)
+det(quadridens-10, the-6)
+nn(quadridens-10, vespid-7)
+nn(quadridens-10, wasp-8)
+nn(quadridens-10, M.-9)
+prep_of(gut-4, quadridens-10)
+

@@ -1,0 +1,12 @@
+nsubj(substrates-10, Trimethylamine-1)
+conj_and(Trimethylamine-1, dimethylamine-3)
+nsubj(substrates-10, dimethylamine-3)
+conj_and(Trimethylamine-1, methylamine-5)
+nsubj(substrates-10, methylamine-5)
+conj_and(Trimethylamine-1, methanol-8)
+nsubj(substrates-10, methanol-8)
+cop(substrates-10, are-9)
+prep_for(substrates-10, growth-12)
+prep_for(substrates-10, methanogenesis-14)
+conj_and(growth-12, methanogenesis-14)
+

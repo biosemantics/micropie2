@@ -1,0 +1,4 @@
+dep(Entomoplasma-1, luminosum-2)
+dep(luminosum-2, lu.min.o-4)
+dep(lu.min.o-4, sum-6)
+

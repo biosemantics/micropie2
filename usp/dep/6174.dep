@@ -1,0 +1,10 @@
+prep_on(Growth-1, methanol-3)
+prep_on(Growth-1, trimethylamine-5)
+conj_and(methanol-3, trimethylamine-5)
+prep_on(Growth-1, dimethylsulfide-8)
+conj_and(methanol-3, dimethylsulfide-8)
+prep_on(Growth-1, acetate-10)
+conj_and(methanol-3, acetate-10)
+amod(substrates-13, catabolic-12)
+prep_as(Growth-1, substrates-13)
+

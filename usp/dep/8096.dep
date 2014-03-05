@@ -1,0 +1,6 @@
+det(growth-2, No-1)
+nsubj(occurs-3, growth-2)
+det(temperature-6, any-5)
+prep_at(occurs-3, temperature-6)
+prep_at(temperature-6, pressures-8)
+

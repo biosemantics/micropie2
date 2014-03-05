@@ -1,0 +1,7 @@
+nn(streptomycin-3, Vancomycin-1)
+nsubj(inhibited-8, streptomycin-3)
+conj_and(streptomycin-3, rifampicin-6)
+nsubj(inhibited-8, rifampicin-6)
+advmod(inhibited-8, slightly-7)
+dobj(inhibited-8, growth-9)
+

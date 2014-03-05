@@ -1,0 +1,5 @@
+nn(range-2, pH-1)
+nsubj(5-8-6, range-2)
+prep_for(range-2, growth-4)
+cop(5-8-6, is-5)
+

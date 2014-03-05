@@ -1,0 +1,7 @@
+dobj(Stain-1, Gram-negative-2)
+det(cells-5, some-4)
+prep_with(Gram-negative-2, cells-5)
+amod(Gram-negative-2, Gram-positive-6)
+amod(cultures-9, young-8)
+prep_in(Gram-negative-2, cultures-9)
+

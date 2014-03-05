@@ -1,0 +1,7 @@
+nn(strain-2, Type-1)
+nn(TM-1-5, strain-4)
+dep(strain-2, TM-1-5)
+dep(TM-1-5, =-7)
+tmod(=-7, DSM-8)
+num(DSM-8, 1825-9)
+

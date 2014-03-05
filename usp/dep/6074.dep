@@ -1,0 +1,13 @@
+nsubjpass(fermented-16, Carbohydrates-1)
+nn(acids-4, amino-3)
+appos(Carbohydrates-1, acids-4)
+appos(acids-4, fromate-6)
+appos(acids-4, ethanol-8)
+conj_and(fromate-6, ethanol-8)
+appos(acids-4, propionate-10)
+conj_and(fromate-6, propionate-10)
+appos(acids-4, butyrate-13)
+conj_and(fromate-6, butyrate-13)
+auxpass(fermented-16, are-14)
+neg(fermented-16, not-15)
+

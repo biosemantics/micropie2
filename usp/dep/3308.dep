@@ -1,0 +1,9 @@
+dep(Non-motile-1, occurring-3)
+dep(occurring-3, singly-4)
+dep(occurring-3, in-6)
+conj_or(singly-4, in-6)
+pobj(in-6, pairs-7)
+amod(clusters-10, irregular-9)
+pobj(in-6, clusters-10)
+conj_or(pairs-7, clusters-10)
+

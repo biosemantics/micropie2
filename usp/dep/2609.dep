@@ -1,0 +1,6 @@
+nsubjpass(produced-3, Acid-1)
+auxpass(produced-3, is-2)
+prep_from(produced-3, d-galactose-5)
+prep_from(produced-3, sucrose-7)
+conj_and(d-galactose-5, sucrose-7)
+

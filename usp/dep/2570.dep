@@ -1,0 +1,5 @@
+det(hydrolysis-2, No-1)
+prep_of(hydrolysis-2, gelatin-4)
+prep_of(hydrolysis-2, starch-6)
+conj_or(gelatin-4, starch-6)
+

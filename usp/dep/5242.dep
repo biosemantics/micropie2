@@ -1,0 +1,7 @@
+nn(G-2, DNA-1)
+nn(content-5, C-4)
+conj_+(G-2, content-5)
+num(%-9, 54.4-7)
+num(%-9, mo1-8)
+dep(G-2, %-9)
+

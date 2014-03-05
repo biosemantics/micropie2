@@ -1,0 +1,11 @@
+nsubjpass(inhibited-4, Growth-1)
+nsubjpass(inhibited-10, Growth-1)
+auxpass(inhibited-4, is-2)
+neg(inhibited-4, not-3)
+agent(inhibited-4, rifampicin-6)
+auxpass(inhibited-10, is-9)
+conj_but(inhibited-4, inhibited-10)
+agent(inhibited-10, mevinolin-12)
+agent(inhibited-10, monensin-14)
+conj_and(mevinolin-12, monensin-14)
+

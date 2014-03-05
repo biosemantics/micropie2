@@ -1,0 +1,8 @@
+nsubj(lack-2, Cells-1)
+amod(walls-5, true-3)
+nn(walls-5, cell-4)
+dobj(lack-2, walls-5)
+amod(fibrils-8, periplasmic-7)
+dobj(lack-2, fibrils-8)
+conj_and(walls-5, fibrils-8)
+

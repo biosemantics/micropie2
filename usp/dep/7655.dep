@@ -1,0 +1,12 @@
+dobj(Utilizes-1, D-glucose-2)
+dobj(Utilizes-1, D-fructose-4)
+conj_and(D-glucose-2, D-fructose-4)
+dobj(Utilizes-1, D-xylose-6)
+conj_and(D-glucose-2, D-xylose-6)
+dobj(Utilizes-1, D-arabinose-8)
+conj_and(D-glucose-2, D-arabinose-8)
+dobj(Utilizes-1, D-mannose-10)
+conj_and(D-glucose-2, D-mannose-10)
+dobj(Utilizes-1, L-asparagine-12)
+conj_and(D-glucose-2, L-asparagine-12)
+

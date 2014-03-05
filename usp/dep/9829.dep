@@ -1,0 +1,3 @@
+dep(10-1, nm-2)
+dep(nm-2, thick-3)
+

@@ -1,0 +1,11 @@
+aux(grow-3, to-2)
+dep(Unable-1, grow-3)
+xcomp(grow-3, using-4)
+dobj(using-4, galactose-5)
+dobj(using-4, glucose-7)
+conj_or(galactose-5, glucose-7)
+dobj(using-4, mannose-9)
+conj_or(galactose-5, mannose-9)
+dobj(using-4, citrate-12)
+conj_or(galactose-5, citrate-12)
+

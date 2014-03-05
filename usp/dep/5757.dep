@@ -1,0 +1,6 @@
+det(compounds-3, No-1)
+amod(compounds-3, organic-2)
+nsubjpass(required-5, compounds-3)
+auxpass(required-5, are-4)
+prep_for(required-5, growth-7)
+

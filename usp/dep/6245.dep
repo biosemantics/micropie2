@@ -1,0 +1,13 @@
+nn(dioxide-2, Carbon-1)
+nsubj(substitute-16, dioxide-2)
+nn(monoxide-5, carbon-4)
+appos(dioxide-2, monoxide-5)
+appos(monoxide-5, sulfate-7)
+appos(monoxide-5, fumarate-9)
+appos(fumarate-9, choline-11)
+appos(fumarate-9, nitrate-13)
+conj_or(choline-11, nitrate-13)
+aux(substitute-16, do-14)
+neg(substitute-16, not-15)
+prep_for(substitute-16, methanol-18)
+

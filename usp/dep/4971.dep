@@ -1,0 +1,6 @@
+det(strains-2, All-1)
+nsubj(grow-3, strains-2)
+advmod(grow-3, autotrophically-4)
+amod(medium-7, mineral-6)
+prep_in(grow-3, medium-7)
+

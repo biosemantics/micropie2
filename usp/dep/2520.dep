@@ -1,0 +1,9 @@
+amod(reactions-2, Weak-1)
+nsubj(detected-4, reactions-2)
+advmod(detected-4, also-3)
+prep_for(detected-4, a-galactosidase-6)
+prep_for(detected-4, b-galactosidase-8)
+conj_and(a-galactosidase-6, b-galactosidase-8)
+prep_for(detected-4, b-glucuronidase-10)
+conj_and(a-galactosidase-6, b-glucuronidase-10)
+

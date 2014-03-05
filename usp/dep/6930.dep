@@ -1,0 +1,4 @@
+amod(Habitat-5, human-3)
+amod(Habitat-5, respiratory-4)
+prep_from(Isolated-1, Habitat-5)
+

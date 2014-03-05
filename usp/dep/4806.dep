@@ -1,0 +1,7 @@
+det(optimum-3, The-1)
+nn(optimum-3, pH-2)
+nsubj(6.8-6, optimum-3)
+cop(6.8-6, is-4)
+amod(6.8-6, between-5)
+conj_and(6.8-6, 7.3-8)
+

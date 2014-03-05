@@ -1,0 +1,4 @@
+nn(Island-2, Vulcano-1)
+nsubj(Italy-4, Island-2)
+cop(Italy-4, is-3)
+

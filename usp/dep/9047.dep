@@ -1,0 +1,12 @@
+nn(membrane-2, Cell-1)
+nsubj(consists-3, membrane-2)
+nn(lipids-7, isopranyl-5)
+nn(lipids-7, ether-6)
+prep_of(consists-3, lipids-7)
+prep_of(consists-3, tetraethers-9)
+conj_and(lipids-7, tetraethers-9)
+nn(rings-12, cyclopentane-11)
+prep_with(tetraethers-9, rings-12)
+prep_of(consists-3, diethers-15)
+conj_and(lipids-7, diethers-15)
+

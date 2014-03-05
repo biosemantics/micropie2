@@ -1,0 +1,12 @@
+nsubj(supplemented-5, Colonies-1)
+amod(medium-4, solid-3)
+prep_on(Colonies-1, medium-4)
+number(%-8, 0.8-7)
+amod(agar-10, %-8)
+nn(agar-10, Noble-9)
+prep_with(supplemented-5, agar-10)
+cop(diffuse-12, are-11)
+rcmod(agar-10, diffuse-12)
+amod(morphology-16, fried-egg-15)
+prep_without(supplemented-5, morphology-16)
+

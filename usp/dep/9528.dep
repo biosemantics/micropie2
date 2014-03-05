@@ -1,0 +1,11 @@
+amod(56-3, between-2)
+num(˚C-6, 56-3)
+conj_and(56-3, 90-5)
+num(˚C-6, 90-5)
+dobj(Grows-1, ˚C-6)
+det(growth-10, no-9)
+prep_with(˚C-6, growth-10)
+partmod(growth-10, occurring-11)
+num(˚C-14, 95-13)
+prep_at(occurring-11, ˚C-14)
+

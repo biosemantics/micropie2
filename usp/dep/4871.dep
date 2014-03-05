@@ -1,0 +1,6 @@
+det(habitat-2, The-1)
+nsubj(mud-6, habitat-2)
+cop(mud-6, is-3)
+det(mud-6, the-4)
+amod(mud-6, shoal-5)
+

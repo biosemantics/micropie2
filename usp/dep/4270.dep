@@ -1,0 +1,9 @@
+prep_to(Insensitive-1, antibiotics-3)
+dep(Insensitive-1, inhibiting-4)
+nn(synthesis-6, peptidoglycan-5)
+dobj(inhibiting-4, synthesis-6)
+dep(synthesis-6, penicillin-8)
+appos(penicillin-8, ampicillin-10)
+appos(penicillin-8, vancomycin-12)
+conj_and(ampicillin-10, vancomycin-12)
+

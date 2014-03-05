@@ -1,0 +1,8 @@
+det(wall-4, A-1)
+amod(wall-4, black-2)
+nn(wall-4, smoker-3)
+nsubj(site-8, wall-4)
+cop(site-8, is-5)
+nn(site-8, Snake-6)
+nn(site-8, Pit-7)
+

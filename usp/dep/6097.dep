@@ -1,0 +1,8 @@
+det(content-3, The-1)
+nn(content-3, G+C-2)
+nsubj(%-9, content-3)
+prep_of(content-3, DNA-5)
+cop(%-9, is-6)
+number(mol-8, 43.4-7)
+num(%-9, mol-8)
+

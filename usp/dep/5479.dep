@@ -1,0 +1,9 @@
+det(composition-4, The-1)
+nn(composition-4, DNA-2)
+nn(composition-4, base-3)
+nsubj(G+C-9, composition-4)
+cop(G+C-9, is-5)
+num(G+C-9, 46.7-6)
+nn(G+C-9, mol-7)
+nn(G+C-9, %-8)
+

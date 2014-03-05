@@ -1,0 +1,7 @@
+nn(red-2, Methyl-1)
+nsubj(negative-7, red-2)
+nn(tests-5, Voges-Proskauer-4)
+conj_and(red-2, tests-5)
+nsubj(negative-7, tests-5)
+cop(negative-7, are-6)
+

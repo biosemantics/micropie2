@@ -1,0 +1,10 @@
+nsubj(has-2, It-1)
+det(oxidase-4, no-3)
+dobj(has-2, oxidase-4)
+nn(dihydrolase-7, arginine-6)
+dobj(has-2, dihydrolase-7)
+conj_or(oxidase-4, dihydrolase-7)
+nn(activity-10, urease-9)
+dobj(has-2, activity-10)
+conj_or(oxidase-4, activity-10)
+

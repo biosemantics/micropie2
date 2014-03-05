@@ -1,0 +1,6 @@
+nsubj(require-2, May-1)
+advmod(require-2, either-3)
+conj_or(require-2, both-5)
+det(nutrients-8, the-7)
+prep_of(both-5, nutrients-8)
+

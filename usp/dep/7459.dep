@@ -1,0 +1,6 @@
+nn(range-2, Temperature-1)
+prep_for(range-2, growth-4)
+number(°-6, 26-44-5)
+dep(range-2, °-6)
+dep(°-6, C.-7)
+

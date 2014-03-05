@@ -1,0 +1,13 @@
+nn(characteristics-2, Colony-1)
+dep(characteristics-2, Circular-4)
+dep(characteristics-2, umbonate-6)
+conj_and(Circular-4, umbonate-6)
+dep(characteristics-2, greenish-yellow-8)
+conj_and(Circular-4, greenish-yellow-8)
+amod(edges-11, entire-10)
+prep_with(greenish-yellow-8, edges-11)
+det(surface-15, a-13)
+amod(surface-15, shiny-14)
+dep(characteristics-2, surface-15)
+conj_and(Circular-4, surface-15)
+

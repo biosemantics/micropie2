@@ -1,0 +1,10 @@
+dep(4.3-5, Grows-1)
+prep_at(Grows-1, 1.7-3)
+prep(4.3-5, M-6)
+dep(M-6, NaCl-7)
+amod(growth-11, optimal-10)
+prep_with(4.3-5, growth-11)
+num(NaCl-15, 3.1-13)
+nn(NaCl-15, M-14)
+prep_at(4.3-5, NaCl-15)
+

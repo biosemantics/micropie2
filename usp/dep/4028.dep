@@ -1,0 +1,8 @@
+amod(colonies-2, Mature-1)
+nsubj(exceed-5, colonies-2)
+aux(exceed-5, do-3)
+neg(exceed-5, not-4)
+num(mm-7, 0.5-6)
+dobj(exceed-5, mm-7)
+prep_in(mm-7, diameter-9)
+

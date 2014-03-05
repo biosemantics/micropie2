@@ -1,0 +1,9 @@
+amod(mycoplasmas-4, most-2)
+amod(mycoplasmas-4, other-3)
+prep_unlike(susceptible-9, mycoplasmas-4)
+det(strains-7, both-6)
+nsubj(susceptible-9, strains-7)
+cop(susceptible-9, were-8)
+nn(acetate-12, thallium-11)
+prep_to(susceptible-9, acetate-12)
+

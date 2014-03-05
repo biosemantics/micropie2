@@ -1,0 +1,11 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(15987T-8, strain-3)
+cop(15987T-8, is-4)
+nn(15987T-8, A1-5)
+amod(15987T-8, =-6)
+nn(15987T-8, DSM-7)
+amod(13967T-11, =-9)
+nn(13967T-11, NCIMB-10)
+dep(15987T-8, 13967T-11)
+

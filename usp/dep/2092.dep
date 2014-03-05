@@ -1,0 +1,10 @@
+prep_to(Sensitive-1, aphidicolin-3)
+prep_to(Sensitive-1, anisomycin-5)
+conj_and(aphidicolin-3, anisomycin-5)
+prep_to(Sensitive-1, novobiocin-7)
+conj_and(aphidicolin-3, novobiocin-7)
+amod(concentrations-12, high-11)
+prep_to(Sensitive-1, concentrations-12)
+conj_and(aphidicolin-3, concentrations-12)
+prep_of(Sensitive-1, bacitracin-14)
+

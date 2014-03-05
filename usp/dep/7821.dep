@@ -1,0 +1,7 @@
+amod(yellow-3, greyish-2)
+amod(Colonies-1, yellow-3)
+appos(Colonies-1, round-5)
+det(surface-9, a-7)
+amod(surface-9, rough-8)
+prep_with(round-5, surface-9)
+

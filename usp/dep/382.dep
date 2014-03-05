@@ -1,0 +1,6 @@
+det(envelope-2, The-1)
+nsubj(be-3, envelope-2)
+xcomp(be-3, surrounding-4)
+det(cells-6, the-5)
+dobj(surrounding-4, cells-6)
+

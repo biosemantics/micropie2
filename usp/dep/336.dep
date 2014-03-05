@@ -1,0 +1,4 @@
+nn(sulfurireducens-2, Acidilobus-1)
+nsubj(strain-3, sulfurireducens-2)
+dobj(strain-3, 18D70-4)
+

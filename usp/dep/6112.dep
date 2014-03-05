@@ -1,0 +1,9 @@
+det(cells-2, The-1)
+nsubj(formed-7, cells-2)
+predet(strains-6, all-4)
+det(strains-6, these-5)
+prep_of(cells-2, strains-6)
+dobj(formed-7, aggregates-8)
+amod(size-11, varying-10)
+prep_of(aggregates-8, size-11)
+

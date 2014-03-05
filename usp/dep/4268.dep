@@ -1,0 +1,7 @@
+nn(diameter-4, Size-1)
+num(diameter-4, 0.3-2)
+nn(diameter-4, µm-3)
+num(µm-7, 3-4-6)
+prep_by(diameter-4, µm-7)
+advmod(diameter-4, long-8)
+

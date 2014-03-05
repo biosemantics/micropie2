@@ -1,0 +1,8 @@
+nsubj(coccoids-4, Cells-1)
+cop(coccoids-4, are-2)
+amod(coccoids-4, irregular-3)
+amod(coccoids-4, 1.0-6)
+num(µm-9, 2.0-8)
+dep(coccoids-4, µm-9)
+prep_in(µm-9, diameter-11)
+

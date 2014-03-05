@@ -1,0 +1,13 @@
+nsubj(rod-shaped-3, Cells-1)
+nsubj(pleomorphic-12, Cells-1)
+cop(rod-shaped-3, are-2)
+num(µm-5, 1.5-6-4)
+dep(rod-shaped-3, µm-5)
+number(.0-8, 0-7-1-7)
+num(µm-9, .0-8)
+prep_by(rod-shaped-3, µm-9)
+cop(pleomorphic-12, become-11)
+conj_but(rod-shaped-3, pleomorphic-12)
+amod(conditions-15, unfavourable-14)
+prep_in(pleomorphic-12, conditions-15)
+

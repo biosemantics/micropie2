@@ -1,0 +1,13 @@
+aux(utilize-2, Can-1)
+dobj(utilize-2, D-glucose-3)
+dobj(utilize-2, L-arginine-5)
+conj_and(D-glucose-3, L-arginine-5)
+amod(acid-8, L-glutamic-7)
+dobj(utilize-2, acid-8)
+conj_and(D-glucose-3, acid-8)
+dobj(utilize-2, L-methionine-10)
+conj_and(D-glucose-3, L-methionine-10)
+dobj(utilize-2, L-serine-13)
+conj_and(D-glucose-3, L-serine-13)
+prep_for(L-serine-13, growth-15)
+

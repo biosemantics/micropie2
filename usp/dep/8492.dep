@@ -1,0 +1,13 @@
+csubj(prepared-6, Isolated-1)
+amod(suspensions-5, macerated-3)
+nn(suspensions-5, tissue-4)
+prep_from(Isolated-1, suspensions-5)
+amod(pacificus-11, pooled-8)
+amod(pacificus-11, adult-9)
+nn(pacificus-11, I.-10)
+prep_from(prepared-6, pacificus-11)
+dep(pacificus-11, ticks-12)
+dep(pacificus-11, Ixodidae-14)
+partmod(pacificus-11, collected-16)
+prep_in(collected-16, Oregon-18)
+

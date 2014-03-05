@@ -1,0 +1,7 @@
+nn(extract-2, Yeast-1)
+nsubj(sources-7, extract-2)
+conj_and(extract-2, tryptone-4)
+nsubj(sources-7, tryptone-4)
+cop(sources-7, are-5)
+amod(sources-7, good-6)
+

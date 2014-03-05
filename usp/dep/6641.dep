@@ -1,0 +1,6 @@
+nn(alligatoris-4, L.-1)
+nn(alligatoris-4, gen.-2)
+nn(alligatoris-4, n.-3)
+det(alligator-7, an-6)
+prep_from(alligatoris-4, alligator-7)
+

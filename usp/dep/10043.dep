@@ -1,0 +1,5 @@
+appos(canis-1, dog-3)
+nn(L.-6, M.-5)
+dep(canis-1, L.-6)
+dep(L.-6, pl-7)
+

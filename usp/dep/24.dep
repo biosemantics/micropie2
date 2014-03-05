@@ -1,0 +1,7 @@
+nsubj(reduced-2, Tetrazolium-1)
+det(conditions-8, both-4)
+amod(conditions-8, aerobic-5)
+conj_and(aerobic-5, anaerobic-7)
+amod(conditions-8, anaerobic-7)
+prep_under(reduced-2, conditions-8)
+

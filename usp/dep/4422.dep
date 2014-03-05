@@ -1,0 +1,7 @@
+conj_and(Grows-1, producesmethane-3)
+prep_from(producesmethane-3, H2\/CO2-5)
+prep_from(producesmethane-3, formate-8)
+conj_and(H2\/CO2-5, formate-8)
+prep(formate-8, plus-9)
+dep(plus-9, CO2-10)
+

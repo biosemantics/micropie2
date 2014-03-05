@@ -1,0 +1,11 @@
+nsubj(require-2, Cells-1)
+quantmod(1.7-5, at-3)
+mwe(at-3, least-4)
+nsubj(M-6, 1.7-5)
+ccomp(require-2, M-6)
+num(%-9, 10-8)
+dep(M-6, %-9)
+dep(%-9, w\/v-10)
+dobj(M-6, NaCl-12)
+prep_for(NaCl-12, growth-14)
+

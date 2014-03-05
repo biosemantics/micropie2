@@ -1,0 +1,7 @@
+nsubj(gram-3, Cells-1)
+aux(gram-3, are-2)
+amod(coccoid-7, negative-4)
+conj_and(negative-4, irregular-6)
+amod(coccoid-7, irregular-6)
+dobj(gram-3, coccoid-7)
+

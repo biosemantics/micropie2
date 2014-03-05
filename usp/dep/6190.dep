@@ -1,0 +1,12 @@
+nsubj(visible-13, Multiplication-1)
+amod(fission-4, uneven-3)
+prep_by(Multiplication-1, fission-4)
+amod(planes-7, different-6)
+prep_in(fission-4, planes-7)
+dep(fission-4, septation-9)
+aux(visible-13, may-10)
+neg(visible-13, not-11)
+cop(visible-13, be-12)
+nn(microscopy-16, phase-contrast-15)
+prep_by(visible-13, microscopy-16)
+

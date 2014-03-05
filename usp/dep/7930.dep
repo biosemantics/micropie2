@@ -1,0 +1,11 @@
+det(growth-2, No-1)
+nsubjpass(observed-4, growth-2)
+auxpass(observed-4, was-3)
+amod(conditions-7, anaerobic-6)
+prep_under(observed-4, conditions-7)
+det(presence-10, the-9)
+prep_in(conditions-7, presence-10)
+prep_of(presence-10, NaNO2-12)
+prep_of(presence-10, NaNO3-14)
+conj_or(NaNO2-12, NaNO3-14)
+

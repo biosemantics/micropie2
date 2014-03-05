@@ -1,0 +1,6 @@
+nsubj(serves-2, Oxygen-1)
+det(acceptor-7, a-4)
+amod(acceptor-7, possible-5)
+nn(acceptor-7, electron-6)
+prep_as(serves-2, acceptor-7)
+

@@ -1,0 +1,5 @@
+dobj(Reduces-1, nitrates-2)
+prep_to(Reduces-1, nitrites-4)
+prep_to(Reduces-1, nitrites-6)
+conj_and(nitrites-4, nitrites-6)
+

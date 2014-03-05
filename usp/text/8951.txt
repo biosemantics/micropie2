@@ -1,0 +1,1 @@
+Amino acids tested were: alanine, arginine, aspartate, cystine, glycine, methionine, histidine, hydroxy-proline, lysine, proline, and valine.

@@ -1,0 +1,10 @@
+det(adsorption-2, No-1)
+prep_of(adsorption-2, human-4)
+prep_of(adsorption-2, guinea-pig-6)
+conj_or(human-4, guinea-pig-6)
+prep_of(adsorption-2, chicken-8)
+conj_or(human-4, chicken-8)
+nn(erythrocytes-12, sheep-11)
+prep_of(adsorption-2, erythrocytes-12)
+conj_or(human-4, erythrocytes-12)
+

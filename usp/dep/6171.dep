@@ -1,0 +1,8 @@
+nn(C2J-2, Strain-1)
+nsubj(has-3, C2J-2)
+det(rate-6, a-4)
+nn(rate-6, maximum-5)
+dobj(has-3, rate-6)
+prep_of(rate-6, growth-8)
+prep_at(growth-8, 0.2-10)
+

@@ -1,0 +1,6 @@
+nn(tests-4, Phosphatase-1)
+conj_and(Phosphatase-1, b-galactosidase-3)
+nn(tests-4, b-galactosidase-3)
+nsubj(negative-6, tests-4)
+cop(negative-6, are-5)
+

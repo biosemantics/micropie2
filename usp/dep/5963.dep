@@ -1,0 +1,11 @@
+det(sheath-2, The-1)
+nsubj(consists-3, sheath-2)
+amod(hoops-6, annular-5)
+prep_of(consists-3, hoops-6)
+partmod(hoops-6, stacked-7)
+aux(form-9, to-8)
+xcomp(stacked-7, form-9)
+det(tube-12, the-10)
+nn(tube-12, sheath-11)
+dobj(form-9, tube-12)
+

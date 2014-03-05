@@ -1,0 +1,11 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(ATCC-7, strain-3)
+cop(ATCC-7, is-4)
+nn(ATCC-7, BH29-5)
+amod(ATCC-7, =-6)
+num(MCCM-10, 700618-8)
+amod(MCCM-10, =-9)
+dep(ATCC-7, MCCM-10)
+dep(MCCM-10, 03231-11)
+

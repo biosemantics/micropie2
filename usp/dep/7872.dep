@@ -1,0 +1,6 @@
+nsubj(aerobic-6, Oxygen-1)
+amod(anaerobic-4, nitrate-3)
+conj_and(Oxygen-1, anaerobic-4)
+nsubj(aerobic-6, anaerobic-4)
+cop(aerobic-6, is-5)
+

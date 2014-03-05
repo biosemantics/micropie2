@@ -1,0 +1,6 @@
+nsubjpass(hydrolysed-5, Casein-1)
+conj_and(Casein-1, gelatin-3)
+nsubjpass(hydrolysed-5, gelatin-3)
+auxpass(hydrolysed-5, are-4)
+advmod(hydrolysed-5, also-6)
+

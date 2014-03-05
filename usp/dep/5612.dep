@@ -1,0 +1,7 @@
+advmod(served-4, Only-1)
+nn(dioxide-3, hydrogen-carbon-2)
+nsubj(served-4, dioxide-3)
+det(substrate-8, a-6)
+nn(substrate-8, growth-7)
+prep_as(served-4, substrate-8)
+

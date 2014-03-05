@@ -1,0 +1,10 @@
+nsubjpass(produced-3, Acid-1)
+auxpass(produced-3, is-2)
+prep_from(produced-3, glucose-5)
+prep_from(produced-3, glycerol-7)
+conj_and(glucose-5, glycerol-7)
+prep_from(produced-3, maltose-9)
+conj_and(glucose-5, maltose-9)
+prep_from(produced-3, mannose-11)
+conj_and(glucose-5, mannose-11)
+

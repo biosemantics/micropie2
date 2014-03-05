@@ -1,0 +1,6 @@
+det(S2-DGD-1-3, The-1)
+nn(S2-DGD-1-3, glycolipid-2)
+nsubjpass(detected-5, S2-DGD-1-3)
+auxpass(detected-5, was-4)
+advmod(detected-5, also-6)
+

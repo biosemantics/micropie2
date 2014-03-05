@@ -1,0 +1,9 @@
+det(cells-2, The-1)
+nsubjpass(coccoid-4, cells-2)
+auxpass(coccoid-4, were-3)
+det(diameter-7, a-6)
+prep_with(coccoid-4, diameter-7)
+number(.0-10, 0.4-2-9)
+num(µm-11, .0-10)
+prep_of(diameter-7, µm-11)
+

@@ -1,0 +1,11 @@
+nsubj(circular-3, Colonies-1)
+aux(circular-3, are-2)
+amod(convex-5, entire-4)
+iobj(circular-3, convex-5)
+amod(pale-7, opaque-6)
+amod(mm-11, pale-7)
+amod(mm-11, red-8)
+number(.0-10, 0.5-1-9)
+num(mm-11, .0-10)
+dobj(circular-3, mm-11)
+

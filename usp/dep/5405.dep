@@ -1,0 +1,13 @@
+det(growth-2, No-1)
+nsubj(occurred-3, growth-2)
+nsubjpass(added-10, withn-4)
+prep(withn-4, either-5)
+dep(either-5, acetate-6)
+dep(either-5, TMA-8)
+conj_or(acetate-6, TMA-8)
+auxpass(added-10, was-9)
+ccomp(occurred-3, added-10)
+det(substrate-14, the-12)
+amod(substrate-14, catabolic-13)
+prep_as(added-10, substrate-14)
+

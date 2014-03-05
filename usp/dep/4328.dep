@@ -1,0 +1,5 @@
+det(cells-2, The-1)
+nsubj(stained-3, cells-2)
+nsubj(positive-5, gram-4)
+xcomp(stained-3, positive-5)
+

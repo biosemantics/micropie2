@@ -1,0 +1,6 @@
+nsubj(chemolithotrophic-3, Growth-1)
+cop(chemolithotrophic-3, is-2)
+nn(lithoautotrophy-9, H2-S-7)
+nn(lithoautotrophy-9, ˚-8)
+prep_by_means_of(chemolithotrophic-3, lithoautotrophy-9)
+

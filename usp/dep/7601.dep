@@ -1,0 +1,12 @@
+nsubj(mm-4, Colonies-1)
+cop(mm-4, are-2)
+num(mm-4, 1-2-3)
+amod(˚C-12, diameter-6)
+num(d-9, 5-7-8)
+prep_after(diameter-6, d-9)
+prep_at(d-9, 37-11)
+prep_in(mm-4, ˚C-12)
+amod(˚C-12, translucent-13)
+amod(˚C-12, red-15)
+conj_and(translucent-13, red-15)
+

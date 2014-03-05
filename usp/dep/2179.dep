@@ -1,0 +1,10 @@
+amod(reduction-2, Nitrate-1)
+aux(nitrite-4, to-3)
+infmod(reduction-2, nitrite-4)
+auxpass(observed-6, is-5)
+ccomp(nitrite-4, observed-6)
+det(formation-10, no-8)
+nn(formation-10, gas-9)
+dep(reduction-2, formation-10)
+prep_from(formation-10, nitrate-12)
+

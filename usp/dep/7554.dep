@@ -1,0 +1,5 @@
+nn(JCM-4, CGMCC-1)
+num(JCM-4, 1.2124-2)
+nn(JCM-4, T-3)
+dep(JCM-4, 12255T-5)
+

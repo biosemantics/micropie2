@@ -1,0 +1,13 @@
+nn(extract-2, Yeast-1)
+nsubjpass(fermented-14, extract-2)
+conj_and(extract-2, peptone-4)
+nsubjpass(fermented-14, peptone-4)
+nn(extract-7, meat-6)
+conj_and(extract-2, extract-7)
+nsubjpass(fermented-14, extract-7)
+conj_and(extract-2, tryptone-9)
+nsubjpass(fermented-14, tryptone-9)
+conj_and(extract-2, casein-12)
+nsubjpass(fermented-14, casein-12)
+auxpass(fermented-14, are-13)
+

@@ -1,0 +1,12 @@
+nsubj(coccoid-6, Cells-1)
+cop(coccoid-6, are-2)
+amod(coccoid-6, pleomorphic-3)
+cc(pleomorphic-3, but-4)
+advmod(pleomorphic-3, primarily-5)
+appos(coccoid-6, varying-8)
+number(800-12, 300-10)
+dep(800-12, to-11)
+num(nm-13, 800-12)
+prep_from(varying-8, nm-13)
+prep_in(varying-8, diameter-15)
+

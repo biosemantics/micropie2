@@ -1,0 +1,5 @@
+advmod(found-2, Also-1)
+amod(deposits-6, ancient-4)
+nn(deposits-6, evaporite-5)
+prep_in(found-2, deposits-6)
+

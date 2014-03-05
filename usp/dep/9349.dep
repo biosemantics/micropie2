@@ -1,0 +1,11 @@
+nsubj(cocci-4, Cells-1)
+cop(cocci-4, are-2)
+amod(cocci-4, spherical-3)
+prep_from(cocci-4, 0.7-7)
+num(µm-10, 1.2-9)
+prep_to(cocci-4, µm-10)
+prep_in(µm-10, diameter-12)
+nsubj(occurs-17, division-16)
+conj_and(cocci-4, occurs-17)
+prep_by(occurs-17, constriction-19)
+

@@ -1,0 +1,8 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(FPiT-5, strain-3)
+cop(FPiT-5, is-4)
+amod(DSM-8, =-7)
+appos(FPiT-5, DSM-8)
+dep(DSM-8, 11106T-9)
+

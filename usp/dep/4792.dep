@@ -1,0 +1,6 @@
+nsubj(occurs-2, Growth-1)
+number(.5-5, 0.1-0-4)
+num(NaCl-7, .5-5)
+nn(NaCl-7, M-6)
+prep_between(occurs-2, NaCl-7)
+

@@ -1,0 +1,7 @@
+nsubj(contain-2, Cells-1)
+dobj(contain-2, phytanyl-3)
+dep(phytanyl-3, di-4)
+amod(lipids-8, tetraether-7)
+dobj(contain-2, lipids-8)
+conj_and(phytanyl-3, lipids-8)
+

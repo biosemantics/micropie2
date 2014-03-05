@@ -1,0 +1,12 @@
+nsubj(occurs-2, Growth-1)
+prep_on(occurs-2, glucose-4)
+prep_on(occurs-2, sucrose-6)
+conj_and(glucose-4, sucrose-6)
+prep_on(occurs-2, maltose-8)
+conj_and(glucose-4, maltose-8)
+amod(carbon-11, single-10)
+prep_as(occurs-2, carbon-11)
+nn(sources-14, energy-13)
+prep_as(occurs-2, sources-14)
+conj_and(carbon-11, sources-14)
+

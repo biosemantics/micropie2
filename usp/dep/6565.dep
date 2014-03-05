@@ -1,0 +1,5 @@
+nsubj(serves-2, Hydrogen-1)
+det(donor-6, the-4)
+nn(donor-6, electron-5)
+prep_as(serves-2, donor-6)
+

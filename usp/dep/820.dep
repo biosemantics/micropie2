@@ -1,0 +1,7 @@
+amod(sulfur-2, Elemental-1)
+nsubjpass(used-4, sulfur-2)
+auxpass(used-4, is-3)
+det(acceptor-8, an-6)
+nn(acceptor-8, electron-7)
+prep_as(used-4, acceptor-8)
+

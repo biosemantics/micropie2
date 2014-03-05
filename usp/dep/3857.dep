@@ -1,0 +1,4 @@
+nn(syrphidae-2, Mesoplasma-1)
+dep(syrphidae-2, syr-4)
+dep(syr-4, phid.ae-6)
+

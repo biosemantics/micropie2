@@ -1,0 +1,5 @@
+nn(colonies-2, Subsurface-1)
+nsubj(spheroids-5, colonies-2)
+cop(spheroids-5, were-3)
+amod(spheroids-5, filamentous-4)
+

@@ -1,0 +1,13 @@
+amod(cells-3, Irregular-1)
+nn(cells-3, coccoid-2)
+nsubj(non-motile-9, cells-3)
+nsubj(stain-5, that-4)
+rcmod(cells-3, stain-5)
+acomp(stain-5, Gram-negative-6)
+cop(non-motile-9, are-8)
+cop(µm-15, are-12)
+num(µm-15, 0.9-1-13)
+num(µm-15, .4-14)
+conj_and(non-motile-9, µm-15)
+prep_in(µm-15, diameter-17)
+

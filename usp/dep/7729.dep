@@ -1,0 +1,5 @@
+nsubj(have-2, Cells-1)
+dobj(have-2, tufts-3)
+amod(flagella-6, polar-5)
+prep_of(tufts-3, flagella-6)
+

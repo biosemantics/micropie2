@@ -1,0 +1,8 @@
+neg(motile-2, Not-1)
+amod(sodium-8, sensitive-4)
+num(%-7, 0.03-6)
+prep_to(sensitive-4, %-7)
+dep(motile-2, sodium-8)
+nn(sulfate-10, dodecyl-9)
+dep(sodium-8, sulfate-10)
+

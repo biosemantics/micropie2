@@ -1,0 +1,11 @@
+nsubjpass(inhibited-3, Growth-1)
+auxpass(inhibited-3, was-2)
+agent(inhibited-3, aphidicolin-5)
+appos(aphidicolin-5, bacitracin-7)
+appos(aphidicolin-5, chloramphenicol-9)
+conj_and(bacitracin-7, chloramphenicol-9)
+appos(aphidicolin-5, erythromycin-11)
+conj_and(bacitracin-7, erythromycin-11)
+appos(aphidicolin-5, novobiocin-14)
+conj_and(bacitracin-7, novobiocin-14)
+

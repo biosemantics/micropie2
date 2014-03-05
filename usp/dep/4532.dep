@@ -1,0 +1,8 @@
+nsubjpass(used-3, Formate-1)
+auxpass(used-3, is-2)
+advmod(used-3, poorly-4)
+nn(production-9, growth-6)
+conj_and(growth-6, methane-8)
+nn(production-9, methane-8)
+prep_for(used-3, production-9)
+

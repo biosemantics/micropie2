@@ -1,0 +1,8 @@
+nsubj(inhibited-2, Growth-1)
+nn(concentrations-5, phosphate-4)
+prep_by(inhibited-2, concentrations-5)
+prep(inhibited-2, above-6)
+pcomp(above-6, about-7)
+num(mM-9, 10-8)
+pobj(about-7, mM-9)
+

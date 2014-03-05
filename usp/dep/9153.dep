@@ -1,0 +1,10 @@
+det(range-3, The-1)
+nn(range-3, pH-2)
+nsubj(1.0-5-0-7, range-3)
+prep_for(range-3, growth-5)
+cop(1.0-5-0-7, is-6)
+amod(growth-10, optimal-9)
+prep_with(1.0-5-0-7, growth-10)
+prep_around(growth-10, pH-12)
+num(pH-12, 2.0-13)
+

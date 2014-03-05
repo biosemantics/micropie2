@@ -1,0 +1,4 @@
+nn(division-2, Cell-1)
+nsubj(occurs-3, division-2)
+prep_by(occurs-3, constriction-5)
+

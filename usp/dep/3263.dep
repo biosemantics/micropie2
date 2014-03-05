@@ -1,0 +1,12 @@
+nn(widths-4, Trichome-1)
+conj_and(Trichome-1, helix-3)
+nn(widths-4, helix-3)
+nsubj(5-8, widths-4)
+cop(5-8, are-5)
+number(±-7, 1-6)
+num(5-8, ±-7)
+num(m-12, 4-10)
+nn(m-12, μ-11)
+conj_and(5-8, m-12)
+advmod(5-8, respectively-13)
+

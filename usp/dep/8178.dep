@@ -1,0 +1,5 @@
+nsubj(has-2, Its-1)
+nn(content-5, DNA-3)
+nn(content-5, G+C-4)
+dobj(has-2, content-5)
+

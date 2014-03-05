@@ -1,0 +1,6 @@
+amod(cocci-2, Irregular-1)
+nsubj(be-5, cocci-2)
+conj_or(cocci-2, discs-4)
+nsubj(be-5, discs-4)
+xcomp(be-5, occurring-6)
+

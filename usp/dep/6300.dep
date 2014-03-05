@@ -1,0 +1,8 @@
+nsubj(form-2, Cells-1)
+amod(rods-6, curved-3)
+conj_or(curved-3, wavy-5)
+amod(rods-6, wavy-5)
+dobj(form-2, rods-6)
+amod(ends-9, blunt-8)
+prep_with(rods-6, ends-9)
+

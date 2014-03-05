@@ -1,0 +1,10 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(arg-1-6, strain-3)
+cop(arg-1-6, is-4)
+nn(arg-1-6, strain-5)
+cop(=-8, is-7)
+rcmod(arg-1-6, =-8)
+dep(=-8, JCM-9)
+num(JCM-9, 9737-10)
+

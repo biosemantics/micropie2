@@ -1,0 +1,13 @@
+det(composition-4, The-1)
+nn(composition-4, DNA-2)
+nn(composition-4, base-3)
+nsubj(guanine-12, composition-4)
+det(strain-7, this-6)
+prep_of(composition-4, strain-7)
+cop(guanine-12, is-8)
+num(guanine-12, 42-9)
+nn(guanine-12, mol-10)
+nn(guanine-12, %-11)
+prep(guanine-12, plus-13)
+dep(plus-13, cytosine-14)
+

@@ -1,0 +1,13 @@
+ccomp(reduced-4, Gelatinase-positive-1)
+nsubj(reduced-4, nitrates-3)
+ccomp(reduced-9, reduced-4)
+prep_to(reduced-4, nitrites-6)
+nsubj(reduced-9, nitrites-8)
+cc(produced-13, but-10)
+det(gas-12, no-11)
+nsubj(produced-13, gas-12)
+ccomp(reduced-9, produced-13)
+ccomp(produced-13, end-15)
+nsubj(unknown-17, product-16)
+xcomp(end-15, unknown-17)
+

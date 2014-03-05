@@ -1,0 +1,11 @@
+nn(factors-3, Organic-1)
+nn(factors-3, growth-2)
+nsubjpass(required-6, factors-3)
+auxpass(required-6, are-4)
+neg(required-6, not-5)
+nn(maintenance-9, culture-8)
+prep_for(required-6, maintenance-9)
+amod(Aa-13, mineral-salts-vitamin-11)
+nn(Aa-13, medium-12)
+prep_in(maintenance-9, Aa-13)
+

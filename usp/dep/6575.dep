@@ -1,0 +1,10 @@
+nsubj(µm-7, Cells-1)
+cop(µm-7, are-2)
+amod(µm-7, small-3)
+amod(µm-7, motile-4)
+nn(µm-7, cocci-5)
+num(µm-7, 1.0-6)
+det(diameter-10, a-9)
+prep_with(µm-7, diameter-10)
+prep_of(diameter-10, 0.7-12)
+

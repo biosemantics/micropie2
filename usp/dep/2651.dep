@@ -1,0 +1,13 @@
+nsubj(contain-2, Cells-1)
+dobj(contain-2, C20-3)
+nn(derivatives-6, C20-5)
+dep(C20-3, derivatives-6)
+prep_of(derivatives-6, phosphatidylglycerol-8)
+nn(phosphate-11, phosphatidylglycerol-10)
+prep_of(derivatives-6, phosphate-11)
+conj_and(phosphatidylglycerol-8, phosphate-11)
+nn(sulfate-15, phosphatidylglycerol-13)
+nn(sulfate-15, phosphate-14)
+prep_of(derivatives-6, sulfate-15)
+conj_and(phosphatidylglycerol-8, sulfate-15)
+

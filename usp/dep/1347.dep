@@ -1,0 +1,7 @@
+aux(grow-2, Can-1)
+advmod(grow-2, anaerobically-3)
+prep_with(grow-2, nitrate-5)
+det(acceptor-9, an-7)
+nn(acceptor-9, electron-8)
+prep_as(grow-2, acceptor-9)
+

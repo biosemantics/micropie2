@@ -1,0 +1,12 @@
+amod(fluid-4, hot-3)
+prep_from(Isolated-1, fluid-4)
+det(chimney-8, an-6)
+amod(chimney-8, active-7)
+prep_from(Isolated-1, chimney-8)
+det(Basin-13, the-10)
+nn(Basin-13, North-11)
+nn(Basin-13, Fiji-12)
+prep_in(chimney-8, Basin-13)
+nn(Pacific-16, SW-15)
+appos(Basin-13, Pacific-16)
+

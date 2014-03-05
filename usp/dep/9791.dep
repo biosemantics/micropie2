@@ -1,0 +1,12 @@
+amod(membrane-2, Unusual-1)
+nsubj(composition-4, membrane-2)
+nn(composition-4, lipid-3)
+dobj(2,3-di-O-phytanyl-sn-glycero-1-13, which-7)
+num(%-9, 45-8)
+nsubj(2,3-di-O-phytanyl-sn-glycero-1-13, %-9)
+cop(2,3-di-O-phytanyl-sn-glycero-1-13, is-10)
+det(2,3-di-O-phytanyl-sn-glycero-1-13, the-11)
+amod(2,3-di-O-phytanyl-sn-glycero-1-13, unique-12)
+prepc_of(composition-4, 2,3-di-O-phytanyl-sn-glycero-1-13)
+dep(composition-4, a-D-glucopyranosyl-3-phosphate-16)
+

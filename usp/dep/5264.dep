@@ -1,0 +1,13 @@
+det(G-3, The-1)
+nn(G-3, DNA-2)
+nsubj(%-10, G-3)
+nn(content-6, C-5)
+conj_+(G-3, content-6)
+nsubj(%-10, content-6)
+cop(%-10, is-7)
+number(mol-9, 59-8)
+num(%-10, mol-9)
+number(mol-13, 59.5-12)
+num(%-14, mol-13)
+conj_and(%-10, %-14)
+

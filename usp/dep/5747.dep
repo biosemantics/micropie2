@@ -1,0 +1,12 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+cop(\-6, is-4)
+nn(\-6, PL-12-5)
+rcmod(strain-3, \-6)
+punct(strain-3, \/-7)
+nsubj(=-10, M-8)
+cop(=-10, is-9)
+dep(strain-3, =-10)
+dep(=-10, OCM-11)
+num(OCM-11, 157-12)
+

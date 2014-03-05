@@ -1,0 +1,8 @@
+nsubj(cocci-3, They-1)
+cop(cocci-3, are-2)
+cop(µm-7, is-4)
+num(µm-7, 0.3-0-5)
+num(µm-7, .5-6)
+rcmod(cocci-3, µm-7)
+prep_in(µm-7, diameter-9)
+

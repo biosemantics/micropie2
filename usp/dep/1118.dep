@@ -1,0 +1,6 @@
+nn(casein-2, Starch-1)
+nsubj(are-5, casein-2)
+conj_and(casein-2, urea-4)
+nsubj(are-5, urea-4)
+neg(are-5, not-6)
+

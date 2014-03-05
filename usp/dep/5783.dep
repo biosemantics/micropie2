@@ -1,0 +1,11 @@
+csubj(metabolize-3, Did-1)
+neg(Did-1, not-2)
+dobj(metabolize-3, H2\/CO2-4)
+appos(H2\/CO2-4, formate-6)
+appos(H2\/CO2-4, 2-propanol\/CO2-8)
+conj_or(formate-6, 2-propanol\/CO2-8)
+appos(H2\/CO2-4, 2-butanol\/CO2-10)
+conj_or(formate-6, 2-butanol\/CO2-10)
+appos(H2\/CO2-4, acetate-13)
+conj_or(formate-6, acetate-13)
+

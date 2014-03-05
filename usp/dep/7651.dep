@@ -1,0 +1,9 @@
+nn(dihydrolase-3, arginine-2)
+dobj(Produces-1, dihydrolase-3)
+nn(decarboxylase-6, lysine-5)
+dobj(Produces-1, decarboxylase-6)
+conj_and(dihydrolase-3, decarboxylase-6)
+nn(decarboxylase-11, ornithine-10)
+dobj(Produces-1, decarboxylase-11)
+conj_negcc(dihydrolase-3, decarboxylase-11)
+

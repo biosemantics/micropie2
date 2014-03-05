@@ -1,0 +1,6 @@
+nsubj(has-2, Its-1)
+nn(sequence-6, 16S-3)
+nn(sequence-6, rRNA-4)
+nn(sequence-6, gene-5)
+dobj(has-2, sequence-6)
+

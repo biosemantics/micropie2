@@ -1,0 +1,10 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(ATCC-7, strain-3)
+cop(ATCC-7, is-4)
+nn(ATCC-7, 0502-5)
+amod(ATCC-7, =-6)
+number(°-9, 49388-8)
+dep(ATCC-7, °-9)
+dep(°-9, C.-10)
+

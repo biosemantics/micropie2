@@ -1,0 +1,13 @@
+nn(extract-2, Yeast-1)
+nsubj(supported-9, extract-2)
+prep(extract-2, plus-3)
+nn(infusion-8, peptone-4)
+conj_and(peptone-4, brain-6)
+nn(infusion-8, brain-6)
+nn(infusion-8, heart-7)
+dep(plus-3, infusion-8)
+amod(growth-13, rapid-10)
+conj_and(rapid-10, efficient-12)
+amod(growth-13, efficient-12)
+dobj(supported-9, growth-13)
+

@@ -1,0 +1,8 @@
+amod(medium-4, liquid-3)
+prep_in(Grows-1, medium-4)
+det(sediment-8, a-6)
+amod(sediment-8, yellow-7)
+prep_as(Grows-1, sediment-8)
+advmod(dispersed-11, easily-10)
+amod(sediment-8, dispersed-11)
+

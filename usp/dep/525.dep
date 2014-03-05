@@ -1,0 +1,13 @@
+nsubjpass(used-16, Sulfate-1)
+amod(sulfur-4, elemental-3)
+appos(Sulfate-1, sulfur-4)
+amod(nitrite-8, nitrate-6)
+amod(Sulfate-1, nitrite-8)
+conj_and(Sulfate-1, Fe-10)
+nsubjpass(used-16, Fe-10)
+appos(Fe-10, III-12)
+auxpass(used-16, are-14)
+neg(used-16, not-15)
+nn(acceptors-19, electron-18)
+prep_as(used-16, acceptors-19)
+

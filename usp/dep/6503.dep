@@ -1,0 +1,9 @@
+det(growth-2, No-1)
+nsubjpass(detected-5, growth-2)
+aux(detected-5, can-3)
+auxpass(detected-5, be-4)
+nn(C-7, °-6)
+dobj(detected-5, C-7)
+cc(C-7, or-8)
+advmod(C-7, below-9)
+

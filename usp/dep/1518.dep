@@ -1,0 +1,7 @@
+nn(content-2, G+C-1)
+nsubj(54.3-4, content-2)
+cop(54.3-4, is-3)
+number(mol-7, 54.5-6)
+num(%-8, mol-7)
+dep(54.3-4, %-8)
+

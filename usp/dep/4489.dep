@@ -1,0 +1,6 @@
+nsubj(%-6, G+C-1)
+cop(%-6, is-2)
+advmod(%-6, 28.8-29-3)
+number(mol-5, .5-4)
+num(%-6, mol-5)
+

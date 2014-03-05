@@ -1,0 +1,1 @@
+Utilizes a range of compounds as sole carbon and energy sources (glucose, fructose, sucrose, glycerol, acetate, succinate, and malate).

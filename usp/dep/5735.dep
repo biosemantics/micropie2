@@ -1,0 +1,6 @@
+amod(substrates-2, Catabolic-1)
+nsubj(methanol-4, substrates-2)
+cop(methanol-4, are-3)
+conj_and(methanol-4, methylamines-6)
+conj_and(methanol-4, methanol-9)
+

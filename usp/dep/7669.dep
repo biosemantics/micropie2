@@ -1,0 +1,7 @@
+nsubj(is-2, Growth-1)
+prep_between(is-2, pH-4)
+num(pH-4, 8.5-5)
+prep_between(is-2, pH-7)
+conj_and(pH-4, pH-7)
+num(pH-7, 11.0-8)
+

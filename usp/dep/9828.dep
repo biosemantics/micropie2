@@ -1,0 +1,7 @@
+nsubjpass(surrounded-3, Cells-1)
+auxpass(surrounded-3, are-2)
+det(membrane-7, a-5)
+amod(membrane-7, thin-6)
+agent(surrounded-3, membrane-7)
+advmod(surrounded-3, approx-8)
+

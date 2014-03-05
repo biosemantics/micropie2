@@ -1,0 +1,11 @@
+det(envelope-3, The-1)
+nn(envelope-3, cell-2)
+nsubj(consists-4, envelope-3)
+det(lattice-9, a-6)
+amod(lattice-9, hexagonal-7)
+nn(lattice-9, S-layer-8)
+prep_of(consists-4, lattice-9)
+dep(lattice-9, spacing-11)
+num(nm-13, 28-4-12)
+dep(spacing-11, nm-13)
+

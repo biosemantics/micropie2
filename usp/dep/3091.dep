@@ -1,0 +1,10 @@
+nsubj(rod-shaped-4, Cells-1)
+cop(rod-shaped-4, are-2)
+amod(rod-shaped-4, irregular-3)
+dep(rod-shaped-4, 0.5-6)
+dep(0.5-6, 1-8)
+dep(0.5-6, 1.5-10)
+conj_x(1-8, 1.5-10)
+dep(0.5-6, 2.5-12)
+dep(0.5-6, µm-13)
+

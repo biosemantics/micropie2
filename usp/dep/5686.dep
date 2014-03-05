@@ -1,0 +1,7 @@
+nsubj(Vitamins-7, Tungsten-1)
+conj_and(Tungsten-1, selenium-3)
+nsubj(Vitamins-7, selenium-3)
+dep(Vitamins-7, are-4)
+neg(Vitamins-7, not-5)
+amod(Vitamins-7, required-6)
+

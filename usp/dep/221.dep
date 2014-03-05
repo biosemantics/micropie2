@@ -1,0 +1,3 @@
+amod(hydrogen-2, Aerobic-1)
+dep(hydrogen-2, oxidation-3)
+

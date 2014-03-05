@@ -1,0 +1,11 @@
+conj_and(Grows-1, Grows-1)
+advmod(Grows-1, optimally-2)
+det(presence-5, the-4)
+prep_in(Grows-1, presence-5)
+num(NaCl-9, 20-7)
+nn(NaCl-9, g-8)
+prep_of(presence-5, NaCl-9)
+prep_per(NaCl-9, liter-11)
+prep_at(Grows-1, pH-14)
+prep_around(pH-14, 6.0-16)
+

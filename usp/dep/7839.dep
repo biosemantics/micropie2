@@ -1,0 +1,13 @@
+amod(rods-2, Cylinder-shaped-1)
+advmod(µm-9, usually-4)
+amod(3-6, between-5)
+num(µm-9, 3-6)
+conj_and(3-6, 7-8)
+num(µm-9, 7-8)
+rcmod(rods-2, µm-9)
+amod(rods-2, long-10)
+num(µm-13, 0.7-12)
+npadvmod(wide-14, µm-13)
+amod(rods-2, wide-14)
+conj_and(long-10, wide-14)
+

@@ -1,0 +1,6 @@
+nsubj(grows-2, It-1)
+advmod(grows-2, autotrophically-3)
+det(additions-7, any-5)
+amod(additions-7, organic-6)
+prep_without(grows-2, additions-7)
+

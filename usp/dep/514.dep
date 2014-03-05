@@ -1,0 +1,7 @@
+nsubj(used-5, Nitrate-1)
+conj_and(Nitrate-1, nitrite-3)
+nsubj(used-5, nitrite-3)
+neg(used-5, not-4)
+nn(acceptors-8, electron-7)
+prep_as(used-5, acceptors-8)
+

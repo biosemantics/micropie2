@@ -1,0 +1,7 @@
+det(habitat-2, The-1)
+nsubj(fish-7, habitat-2)
+cop(fish-7, is-3)
+det(fish-7, a-4)
+amod(fish-7, marine-water-5)
+nn(fish-7, aquaculture-6)
+

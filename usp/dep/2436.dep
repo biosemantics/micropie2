@@ -1,0 +1,7 @@
+nn(lakes-4, salt-3)
+dep(Habitat-1, lakes-4)
+nn(ponds-8, saltern-6)
+nn(ponds-8, crystallizer-7)
+dep(Habitat-1, ponds-8)
+conj_and(lakes-4, ponds-8)
+

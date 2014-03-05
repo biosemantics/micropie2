@@ -1,0 +1,6 @@
+nsubjpass(hydrolyzed-6, Arginine-1)
+conj_and(Arginine-1, urea-3)
+nsubjpass(hydrolyzed-6, urea-3)
+auxpass(hydrolyzed-6, are-4)
+neg(hydrolyzed-6, not-5)
+

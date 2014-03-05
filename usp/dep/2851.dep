@@ -1,0 +1,4 @@
+nn(Antarctica-5, Deep-3)
+nn(Antarctica-5, Lake-4)
+prep_from(Isolated-1, Antarctica-5)
+

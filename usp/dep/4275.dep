@@ -1,0 +1,10 @@
+det(growth-2, No-1)
+nsubj(occurred-3, growth-2)
+prep_with(occurred-3, methanol-5)
+prep_with(occurred-3, formate-7)
+conj_or(methanol-5, formate-7)
+prep_with(occurred-3, acetate-9)
+conj_or(methanol-5, acetate-9)
+prep_with(occurred-3, methylamines-11)
+conj_or(methanol-5, methylamines-11)
+

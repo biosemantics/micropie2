@@ -1,0 +1,9 @@
+amod(hemadsorption-2, Strong-1)
+nsubjpass(observed-6, hemadsorption-2)
+conj_and(hemadsorption-2, cytadsorption-4)
+nsubjpass(observed-6, cytadsorption-4)
+auxpass(observed-6, are-5)
+prep_with(observed-6, colonies-8)
+amod(medium-11, solid-10)
+prep_on(colonies-8, medium-11)
+

@@ -1,0 +1,6 @@
+nsubjpass(utilized-3, Glucose-1)
+auxpass(utilized-3, is-2)
+prep(utilized-3, but-4)
+nn(arginine-6, mannose-5)
+dep(but-4, arginine-6)
+

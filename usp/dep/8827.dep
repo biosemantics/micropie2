@@ -1,0 +1,10 @@
+det(gut-4, the-3)
+prep_from(Isolated-1, gut-4)
+det(horsefly-7, a-6)
+prep_of(gut-4, horsefly-7)
+partmod(horsefly-7, belonging-8)
+det(complex-13, the-10)
+nn(complex-13, Tabanus-11)
+nn(complex-13, abdominalis-limbatinevris-12)
+prep_to(belonging-8, complex-13)
+

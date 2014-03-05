@@ -1,0 +1,5 @@
+nsubjpass(produced-3, H2S-1)
+auxpass(produced-3, is-2)
+nn(thiosulfate-6, sodium-5)
+prep_from(produced-3, thiosulfate-6)
+

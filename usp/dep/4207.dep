@@ -1,0 +1,9 @@
+num(diameter-3, 1-2-1)
+nn(diameter-3, mm-2)
+nsubj(develop-4, diameter-3)
+num(weeks-7, 2-3-6)
+prep_after(develop-4, weeks-7)
+nn(colonies-11, incubation-9)
+nn(colonies-11, Round-10)
+prep_of(weeks-7, colonies-11)
+

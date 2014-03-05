@@ -1,0 +1,8 @@
+nsubjpass(reduced-3, Nitrate-1)
+auxpass(reduced-3, is-2)
+aux(nitrite-5, to-4)
+xcomp(reduced-3, nitrite-5)
+det(production-8, the-7)
+prep_with(nitrite-5, production-8)
+prep_of(production-8, gas-10)
+

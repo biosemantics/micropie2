@@ -1,0 +1,7 @@
+nsubj(exhibited-2, It-1)
+amod(catalase-4, positive-3)
+dobj(exhibited-2, catalase-4)
+nn(reactions-7, oxidase-6)
+dobj(exhibited-2, reactions-7)
+conj_and(catalase-4, reactions-7)
+

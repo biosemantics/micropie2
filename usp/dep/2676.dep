@@ -1,0 +1,9 @@
+nsubj(rods-3, Cells-1)
+cop(rods-3, are-2)
+dep(rods-3, 1.0-5)
+dep(1.0-5, 1.2-7)
+dep(1.0-5, 2.0-9)
+conj_x(1.2-7, 2.0-9)
+num(µm-12, 6.0-11)
+dep(1.0-5, µm-12)
+

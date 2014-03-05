@@ -1,0 +1,7 @@
+det(rods-2, The-1)
+nsubj(release-4, rods-2)
+aux(release-4, can-3)
+amod(cells-7, small-5)
+amod(cells-7, spherical-6)
+dobj(release-4, cells-7)
+

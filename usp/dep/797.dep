@@ -1,0 +1,6 @@
+nsubj(cocci-3, Cells-1)
+cop(cocci-3, are-2)
+num(flagellum-7, one-5)
+amod(flagellum-7, polar-6)
+prep_with(cocci-3, flagellum-7)
+

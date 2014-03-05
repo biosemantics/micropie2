@@ -1,0 +1,1 @@
+Grows in minimal medium containing 0.1 % yeast extract and D-galactose, L-rhamnose, D-xylose, D-arabinose, D-glucose, D-fructose, D-trehalose, D-raffinose, or glycerol as carbon sources.

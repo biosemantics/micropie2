@@ -1,0 +1,8 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(PT-9, strain-3)
+nn(themophila-6, Methanothrix-5)
+prep_of(strain-3, themophila-6)
+cop(PT-9, is-7)
+nn(PT-9, strain-8)
+

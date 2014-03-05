@@ -1,0 +1,9 @@
+nsubj(incubated-2, Cultures-1)
+prepc_without(incubated-2, shaking-4)
+ccomp(shaking-4, grow-5)
+det(mat-8, a-7)
+prep_as(grow-5, mat-8)
+det(sediment-12, a-11)
+prep_as(grow-5, sediment-12)
+conj_or(mat-8, sediment-12)
+

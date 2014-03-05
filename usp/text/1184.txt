@@ -1,0 +1,1 @@
+The strain is resistant to the following antibiotics (µg per mL): bacitracin (50), penicillin (50), ampicillin (50), chloramphenicol (50) and erythromycin (50) and is sensitive to the following antibiotics (µg per mL): novobiocin (25), anisomycin (25) and aphidicolin (25)_dot  The DNA G+C content of strain B3T is 63.2 mol%.

@@ -1,0 +1,5 @@
+nn(time-2, Generation-1)
+nsubj(was-3, time-2)
+num(min-6, 50-5)
+prep_about(was-3, min-6)
+

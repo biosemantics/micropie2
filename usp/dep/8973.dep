@@ -1,0 +1,11 @@
+nsubjpass(replaced-5, Sulfur-1)
+aux(replaced-5, could-2)
+neg(replaced-5, not-3)
+auxpass(replaced-5, be-4)
+agent(replaced-5, sulfite-7)
+appos(sulfite-7, tetrathionate-9)
+appos(sulfite-7, L-cystine-11)
+conj_or(tetrathionate-9, L-cystine-11)
+appos(sulfite-7, sulfate-14)
+conj_or(tetrathionate-9, sulfate-14)
+

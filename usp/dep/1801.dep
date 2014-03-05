@@ -1,0 +1,4 @@
+amod(Gram-1, negative-2)
+dep(Gram-1, nonmotile-4)
+dep(nonmotile-4, aerobic-6)
+

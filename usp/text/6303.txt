@@ -1,0 +1,1 @@
+Represent a distinct phylogenetic lineage in the family Methanospirillaceae based on 16S rRNA gene sequence analysis.

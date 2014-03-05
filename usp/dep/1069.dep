@@ -1,0 +1,9 @@
+nsubj(stimulate-10, Sulfate-1)
+appos(Sulfate-1, sulfite-3)
+appos(sulfite-3, thiosulfate-5)
+appos(sulfite-3, nitrate-7)
+conj_and(thiosulfate-5, nitrate-7)
+aux(stimulate-10, do-8)
+neg(stimulate-10, not-9)
+dobj(stimulate-10, growth-11)
+

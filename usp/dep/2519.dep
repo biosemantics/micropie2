@@ -1,0 +1,5 @@
+nsubj(present-5, a-Glucosidase-1)
+conj_and(a-Glucosidase-1, b-glucosidase-3)
+nsubj(present-5, b-glucosidase-3)
+cop(present-5, are-4)
+

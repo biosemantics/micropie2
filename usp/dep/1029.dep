@@ -1,0 +1,10 @@
+det(type-2, The-1)
+nsubj(acidiphilum-11, type-2)
+advmod(species-5, only-4)
+conj_and(type-2, species-5)
+nsubj(acidiphilum-11, species-5)
+det(genus-8, the-7)
+prep_of(species-5, genus-8)
+cop(acidiphilum-11, is-9)
+nn(acidiphilum-11, Ferroplasma-10)
+

@@ -1,0 +1,5 @@
+nsubj(dependent-3, Growth-1)
+cop(dependent-3, is-2)
+amod(sulfur-6, elemental-5)
+prep_on(dependent-3, sulfur-6)
+

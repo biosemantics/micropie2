@@ -1,0 +1,13 @@
+det(content-3, The-1)
+nn(content-3, G+C-2)
+nsubj(%-11, content-3)
+det(strain-7, the-5)
+nn(strain-7, type-6)
+prep_of(content-3, strain-7)
+cop(%-11, is-8)
+number(mol-10, 59-1-9)
+num(%-11, mol-10)
+mark(determined-14, as-13)
+dep(%-11, determined-14)
+prep_by(determined-14, HPLC-16)
+

@@ -1,0 +1,9 @@
+det(content-3, The-1)
+nn(content-3, G+C-2)
+nsubj(is-7, content-3)
+amod(DNA-6, genomic-5)
+prep_of(content-3, DNA-6)
+number(mol-10, 48-9)
+num(%-11, mol-10)
+prep_about(is-7, %-11)
+

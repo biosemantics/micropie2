@@ -1,0 +1,9 @@
+det(G+C-4, The-1)
+amod(G+C-4, mol-2)
+nn(G+C-4, %-3)
+nsubj(63.0-9, G+C-4)
+det(DNA-7, the-6)
+prep_of(G+C-4, DNA-7)
+cop(63.0-9, is-8)
+conj_and(63.0-9, 49.5-11)
+

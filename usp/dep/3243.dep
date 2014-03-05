@@ -1,0 +1,8 @@
+prep(Guanine-1, plus-2)
+nn(content-4, cytosine-3)
+dep(plus-2, content-4)
+number(mol-6, 64.4-5)
+num(%-7, mol-6)
+dep(Guanine-1, %-7)
+prep_by(%-7, HPLC-9)
+

@@ -1,0 +1,11 @@
+nsubj(round-6, Colonies-1)
+nsubj(nonpigmented-8, Colonies-1)
+nn(agar-4, HBM-3)
+prep_on(Colonies-1, agar-4)
+cop(round-6, are-5)
+conj_and(round-6, nonpigmented-8)
+conj_and(round-6, 2-10)
+num(mm-13, 3-12)
+dep(round-6, mm-13)
+prep_in(mm-13, diameter-15)
+

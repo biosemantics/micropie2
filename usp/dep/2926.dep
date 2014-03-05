@@ -1,0 +1,4 @@
+nsubjpass(required-4, MgCl2-1)
+auxpass(required-4, is-2)
+neg(required-4, not-3)
+

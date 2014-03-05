@@ -1,0 +1,6 @@
+nsubjpass(grown-3, Cells-1)
+auxpass(grown-3, be-2)
+det(salinities-7, the-5)
+amod(salinities-7, highest-6)
+prep_at(grown-3, salinities-7)
+

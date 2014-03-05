@@ -1,0 +1,10 @@
+nn(strain-2, Type-1)
+nsubj(4pT-4, strain-2)
+cop(4pT-4, is-3)
+amod(B-1739T-7, =-5)
+nn(B-1739T-7, VKM-6)
+dep(4pT-4, B-1739T-7)
+amod(10247T-10, =-8)
+nn(10247T-10, JCM-9)
+dep(B-1739T-7, 10247T-10)
+

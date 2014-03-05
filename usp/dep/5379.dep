@@ -1,0 +1,10 @@
+nsubj(contain-2, Cells-1)
+dobj(contain-2, tatiopterin-3)
+det(pterin-7, a-5)
+amod(pterin-7, modified-6)
+appos(tatiopterin-3, pterin-7)
+amod(pterin-7, distinct-8)
+prep_from(distinct-8, methanopterin-10)
+prep_from(distinct-8, sarcinapterin-12)
+conj_and(methanopterin-10, sarcinapterin-12)
+

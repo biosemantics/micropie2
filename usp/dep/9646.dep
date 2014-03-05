@@ -1,0 +1,9 @@
+prep_of(Source-1, isolate-3)
+amod(deposits-6, bottom-5)
+dep(Source-1, deposits-6)
+det(Bay-9, the-8)
+prep_of(deposits-6, Bay-9)
+nn(Zealand-14, Plenty-11)
+appos(Zealand-14, New-13)
+prep_of(Bay-9, Zealand-14)
+

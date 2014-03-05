@@ -1,0 +1,7 @@
+det(rate-5, The-1)
+dep(apparent-3, highest-2)
+amod(rate-5, apparent-3)
+nn(rate-5, growth-4)
+nsubj(2.5-7, rate-5)
+cop(2.5-7, is-6)
+

@@ -1,0 +1,12 @@
+nsubj(extract-3, yeast-2)
+xcomp(Used-1, extract-3)
+xcomp(Used-1, casein-5)
+conj_and(extract-3, casein-5)
+xcomp(Used-1, trypticase-7)
+conj_and(extract-3, trypticase-7)
+xcomp(Used-1, peptone-10)
+conj_and(extract-3, peptone-10)
+det(donor-14, an-12)
+nn(donor-14, electron-13)
+prep_as(extract-3, donor-14)
+

@@ -1,0 +1,8 @@
+csubj(produces-7, Grows-1)
+nn(extract-6, peptone-3)
+conj_and(peptone-3, yeast-5)
+nn(extract-6, yeast-5)
+prep_on(Grows-1, extract-6)
+amod(growth-9, weak-8)
+dobj(produces-7, growth-9)
+

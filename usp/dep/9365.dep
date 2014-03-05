@@ -1,0 +1,8 @@
+nsubj(supported-7, Cystine-1)
+conj_and(Cystine-1, cysteine-3)
+nsubj(supported-7, cysteine-3)
+conj_and(Cystine-1, polysulfide-6)
+nsubj(supported-7, polysulfide-6)
+amod(growth-9, rapid-8)
+dobj(supported-7, growth-9)
+

@@ -1,0 +1,8 @@
+amod(temperature-2, Optimum-1)
+number(°-4, 37-3)
+dep(temperature-2, °-4)
+nn(pH-7, C.-5)
+nn(pH-7, Optimum-6)
+dep(°-4, pH-7)
+num(pH-7, 7-8)
+

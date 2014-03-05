@@ -1,0 +1,4 @@
+nsubj(convex-2, Colonies-1)
+cop(circular-4, is-3)
+ccomp(convex-2, circular-4)
+

@@ -1,0 +1,1 @@
+The maximum salt tolerance for growth is 2.6 %, although growth is inhibited in strain AK-87 at this concentration.

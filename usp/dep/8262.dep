@@ -1,0 +1,4 @@
+det(hydrolysis-2, No-1)
+nsubj(occurs-5, hydrolysis-2)
+prep_of(hydrolysis-2, urea-4)
+

@@ -1,0 +1,11 @@
+det(one-3, The-1)
+amod(one-3, external-2)
+nsubj(electron-dense-5, one-3)
+cop(electron-dense-5, is-4)
+det(envelope-8, The-6)
+nn(envelope-8, cell-7)
+nsubj(consists-9, envelope-8)
+ccomp(electron-dense-5, consists-9)
+num(layers-12, two-11)
+prep_of(consists-9, layers-12)
+

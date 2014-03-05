@@ -1,0 +1,4 @@
+nn(acids-2, Amino-1)
+nsubjpass(utilized-4, acids-2)
+auxpass(utilized-4, are-3)
+

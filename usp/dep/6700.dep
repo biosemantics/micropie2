@@ -1,0 +1,11 @@
+det(wall-4, a-2)
+nn(wall-4, cell-3)
+nsubj(bounded-5, wall-4)
+ccomp(Lacks-1, bounded-5)
+advmod(bounded-5, only-6)
+det(membrane-12, a-8)
+amod(membrane-12, single-9)
+nn(membrane-12, trilaminar-10)
+nn(membrane-12, cell-11)
+prep_by(bounded-5, membrane-12)
+

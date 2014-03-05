@@ -1,0 +1,6 @@
+nn(species-2, Type-1)
+nn(DSM-5, Stetteria-3)
+nn(DSM-5, hydrogenophila-4)
+dep(species-2, DSM-5)
+dep(DSM-5, 11227-6)
+

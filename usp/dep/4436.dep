@@ -1,0 +1,5 @@
+det(variability-2, Some-1)
+nsubj(evident-5, variability-2)
+cop(evident-5, is-3)
+dep(evident-5, although-4)
+

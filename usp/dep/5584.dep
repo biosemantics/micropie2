@@ -1,0 +1,10 @@
+nsubj(rapid-3, Growth-1)
+cop(rapid-3, is-2)
+advmod(rapid-3, at-4)
+number(1.5-7, 0.1-5)
+dep(1.5-7, to-6)
+num(Na-9, 1.5-7)
+nn(Na-9, M-8)
+pobj(at-4, Na-9)
+rcmod(rapid-3, +-10)
+

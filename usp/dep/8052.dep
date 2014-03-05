@@ -1,0 +1,5 @@
+amod(amounts-3, minor-2)
+dobj(Has-1, amounts-3)
+amod(lipid-6, diether-5)
+prep_of(amounts-3, lipid-6)
+

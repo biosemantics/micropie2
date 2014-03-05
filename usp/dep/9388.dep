@@ -1,0 +1,8 @@
+nn(MPT-2, Strain-1)
+nsubj(appeared-3, MPT-2)
+aux(heterotroph-8, to-4)
+cop(heterotroph-8, be-5)
+det(heterotroph-8, an-6)
+amod(heterotroph-8, obligate-7)
+xcomp(appeared-3, heterotroph-8)
+

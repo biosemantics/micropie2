@@ -1,0 +1,1 @@
+Did not oxidize organic acids when grown on H2 and CO2, but used them as carbon sources.

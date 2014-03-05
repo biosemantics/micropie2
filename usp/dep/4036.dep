@@ -1,0 +1,11 @@
+amod(growth-4, Capable-1)
+prep_of(Capable-1, autotrophic-3)
+npadvmod(medium-10, growth-4)
+nn(salts-H2-7, mineral-6)
+prep_on(medium-10, salts-H2-7)
+punct(medium-10, \/-8)
+nn(medium-10, CO2-9)
+nsubj(contains-12, that-11)
+rcmod(medium-10, contains-12)
+dobj(contains-12, vitamins-13)
+

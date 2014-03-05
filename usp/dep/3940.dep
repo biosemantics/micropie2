@@ -1,0 +1,10 @@
+det(heap-6, a-3)
+amod(heap-6, smoldering-4)
+nn(heap-6, slag-5)
+prep_from(Isolated-1, heap-6)
+det(mine-10, a-8)
+nn(mine-10, uranium-9)
+prep_of(heap-6, mine-10)
+nn(Germany-14, Thiiringen-12)
+prep_in(mine-10, Germany-14)
+

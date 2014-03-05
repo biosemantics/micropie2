@@ -1,0 +1,7 @@
+nsubj(grow-2, Cells-1)
+advmod(grow-2, well-3)
+prep_at(well-3, 0-5)
+number(%-7, 12-6)
+amod(NaCl-8, %-7)
+dobj(grow-2, NaCl-8)
+

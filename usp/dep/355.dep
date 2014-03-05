@@ -1,0 +1,12 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(BH2T-6, strain-3)
+cop(BH2T-6, is-4)
+nn(BH2T-6, strain-5)
+amod(16551T-9, =-7)
+nn(16551T-9, DSM-8)
+dep(BH2T-6, 16551T-9)
+amod(13668T-12, =-10)
+nn(13668T-12, JCM-11)
+dep(16551T-9, 13668T-12)
+

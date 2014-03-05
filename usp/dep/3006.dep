@@ -1,0 +1,4 @@
+det(indole-2, No-1)
+nsubj(produced-3, indole-2)
+prep_from(produced-3, tryptophan-5)
+

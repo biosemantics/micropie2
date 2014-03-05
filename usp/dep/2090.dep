@@ -1,0 +1,6 @@
+nsubjpass(decarboxylated-6, Ornithine-1)
+conj_and(Ornithine-1, lysine-3)
+nsubjpass(decarboxylated-6, lysine-3)
+auxpass(decarboxylated-6, are-4)
+neg(decarboxylated-6, not-5)
+

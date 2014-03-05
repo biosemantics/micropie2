@@ -1,0 +1,11 @@
+nsubj(H2\/CO2-8, Substrates-1)
+nn(production-6, growth-3)
+conj_and(growth-3, methane-5)
+nn(production-6, methane-5)
+prep_for(Substrates-1, production-6)
+cop(H2\/CO2-8, are-7)
+conj_and(H2\/CO2-8, formate-10)
+conj_and(H2\/CO2-8, 2-propanol\/CO2-12)
+conj_and(H2\/CO2-8, 2-butanol\/CO2-14)
+conj_and(H2\/CO2-8, cyclopentanol\/CO2-16)
+

@@ -1,0 +1,10 @@
+nsubj(present-6, Cytochromes-1)
+conj_and(Cytochromes-1, factor-3)
+nsubj(present-6, factor-3)
+num(factor-3, III-4)
+cop(present-6, are-5)
+mark(absent-10, while-7)
+nsubj(absent-10, B12-8)
+cop(absent-10, is-9)
+ccomp(present-6, absent-10)
+

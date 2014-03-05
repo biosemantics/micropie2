@@ -1,0 +1,5 @@
+amod(colonies-3, Typical-1)
+nn(colonies-3, mycoplasma-2)
+nsubjpass(formed-5, colonies-3)
+auxpass(formed-5, are-4)
+

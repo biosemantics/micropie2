@@ -1,0 +1,5 @@
+prep(Uses-1, solely-2)
+pobj(solely-2, CO2-3)
+pobj(solely-2, H2-5)
+conj_and(CO2-3, H2-5)
+

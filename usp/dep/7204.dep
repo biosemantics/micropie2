@@ -1,0 +1,5 @@
+nn(acids-2, Amino-1)
+nsubjpass(required-4, acids-2)
+auxpass(required-4, are-3)
+prep_for(required-4, growth-6)
+

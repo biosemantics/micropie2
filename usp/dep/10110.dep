@@ -1,0 +1,6 @@
+nn(n.-3, gen.-2)
+dep(L.-1, n.-3)
+dep(n.-3, cati-4)
+det(cat-8, a-7)
+prep_of(n.-3, cat-8)
+

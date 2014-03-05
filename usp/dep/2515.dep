@@ -1,0 +1,6 @@
+nsubj(galactose-5, Glucose-1)
+cop(galactose-5, is-2)
+amod(galactose-5, xylose-3)
+nn(galactose-5, fructose-4)
+conj_and(galactose-5, proline-7)
+

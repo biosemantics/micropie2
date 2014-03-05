@@ -1,0 +1,11 @@
+nsubj(wide-3, Cells-1)
+cop(wide-3, were-2)
+amod(3-6, between-5)
+num(µm-9, 3-6)
+conj_and(3-6, 30-8)
+num(µm-9, 30-8)
+conj_and(wide-3, µm-9)
+amod(µm-12, long-10)
+tmod(long-10, 0.4-11)
+dep(wide-3, µm-12)
+

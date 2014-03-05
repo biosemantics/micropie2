@@ -1,0 +1,10 @@
+det(growth-5, The-1)
+nn(growth-5, NaCl-2)
+nn(growth-5, concentrations-3)
+amod(growth-5, supporting-4)
+nsubj(were-6, growth-5)
+prep_between(were-6, 1.0-8)
+num(%-11, 5.0-10)
+prep_between(were-6, %-11)
+conj_and(1.0-8, %-11)
+

@@ -1,0 +1,7 @@
+nsubjpass(reduced-5, Sulfur-1)
+conj_or(Sulfur-1, cystine-3)
+nsubjpass(reduced-5, cystine-3)
+auxpass(reduced-5, are-4)
+nn(sulfide-8, hydrogen-7)
+prep_to(reduced-5, sulfide-8)
+

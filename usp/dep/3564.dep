@@ -1,0 +1,8 @@
+nsubj(appear-4, Caldarchaeol-1)
+aux(appear-4, does-2)
+neg(appear-4, not-3)
+det(membrane-9, the-6)
+amod(membrane-9, purified-7)
+amod(membrane-9, outer-8)
+prep_in(appear-4, membrane-9)
+

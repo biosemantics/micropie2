@@ -1,0 +1,7 @@
+aux(grow-3, Could-1)
+neg(grow-3, not-2)
+conj_or(grow-3, grow-3)
+num(˚C-8, 105-7)
+prep_above(grow-3, ˚C-8)
+prep_at(grow-3, ˚C-8)
+

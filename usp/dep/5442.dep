@@ -1,0 +1,8 @@
+det(habitat-2, The-1)
+nsubj(waters-7, habitat-2)
+cop(waters-7, is-3)
+amod(waters-7, cold-4)
+amod(waters-7, sulfate-depleted-5)
+nn(waters-7, saline-6)
+advmod(waters-7, perennially-8)
+

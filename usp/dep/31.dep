@@ -1,0 +1,4 @@
+dep(Acholeplasma-1, brassicae-2)
+poss(i.cae-5, bras-3)
+dep(brassicae-2, i.cae-5)
+

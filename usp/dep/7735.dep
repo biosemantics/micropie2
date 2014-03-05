@@ -1,0 +1,11 @@
+amod(time-3, Optimal-1)
+amod(time-3, doubling-2)
+nsubj(min-6, time-3)
+cop(min-6, is-4)
+num(min-6, 50-5)
+number(°-9, 80-8)
+num(C-10, °-9)
+prep_at(min-6, C-10)
+nn(medium-13, YPS-V-12)
+prep_on(C-10, medium-13)
+

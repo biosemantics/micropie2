@@ -1,0 +1,10 @@
+nn(concentration-2, NaCl-1)
+partmod(concentration-2, allowing-3)
+nn(ranges-5, growth-4)
+dobj(allowing-3, ranges-5)
+num(%-8, 1-5-7)
+prep_from(allowing-3, %-8)
+dep(concentration-2, optimum-10)
+number(%-12, 2.4-11)
+amod(optimum-10, %-12)
+

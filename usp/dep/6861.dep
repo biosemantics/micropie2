@@ -1,0 +1,8 @@
+dobj(Requires-1, sterol-2)
+partmod(sterol-2, inhibited-4)
+nn(sulfonate-10, digitonin-6)
+conj_and(digitonin-6, sodium-8)
+nn(sulfonate-10, sodium-8)
+nn(sulfonate-10, polyanethol-9)
+agent(inhibited-4, sulfonate-10)
+

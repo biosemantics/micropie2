@@ -1,0 +1,7 @@
+nsubj(occurs-2, Growth-1)
+amod(75-4, between-3)
+num(˚C-7, 75-4)
+conj_and(75-4, 104-6)
+num(˚C-7, 104-6)
+dobj(occurs-2, ˚C-7)
+

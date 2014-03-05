@@ -1,0 +1,11 @@
+det(cells-2, The-1)
+nsubj(contain-3, cells-2)
+nn(inclusions-7, electron-4)
+amod(inclusions-7, dense-5)
+nn(inclusions-7, round-6)
+dobj(contain-3, inclusions-7)
+prep_about(contain-3, 0.1-9)
+num(µm-12, 0.2-11)
+dep(0.1-9, µm-12)
+prep_in(µm-12, diameter-14)
+

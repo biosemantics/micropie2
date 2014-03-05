@@ -1,0 +1,13 @@
+nn(Capri-4, L.-1)
+nn(Capri-4, gen.-2)
+nn(Capri-4, n.-3)
+det(goat-8, a-7)
+prep_of(Capri-4, goat-8)
+dep(Capri-4, L.-10)
+dep(Capri-4, incolere-12)
+conj_v.(L.-10, incolere-12)
+aux(dwell-15, to-14)
+dep(L.-17, dwell-15)
+appos(L.-10, L.-17)
+dep(L.-17, part-18)
+

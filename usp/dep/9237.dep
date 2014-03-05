@@ -1,0 +1,8 @@
+nsubj(enclosed-3, Apices-1)
+neg(enclosed-3, not-2)
+prep_in(enclosed-3, sheath-5)
+amod(color-10, pale-7)
+amod(color-10, brownish-8)
+nn(color-10, pink-9)
+appos(sheath-5, color-10)
+

@@ -1,0 +1,8 @@
+amod(leads-4, nitrate-3)
+prep_of(Reduction-1, leads-4)
+prep_to(Reduction-1, formation-6)
+nn(gases-11, nitrite-8)
+conj_and(nitrite-8, nitrous-10)
+nn(gases-11, nitrous-10)
+prep_of(Reduction-1, gases-11)
+

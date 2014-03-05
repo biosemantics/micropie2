@@ -1,0 +1,11 @@
+amod(cyanobacteria-3, Unicellular-1)
+amod(cyanobacteria-3, diazotrophic-2)
+nsubj(maintain-4, cyanobacteria-3)
+det(profile-8, a-5)
+amod(profile-8, dynamic-6)
+amod(profile-8, metabolic-7)
+dobj(maintain-4, profile-8)
+det(cycle-12, the-10)
+amod(cycle-12, diurnal-11)
+prep_throughout(maintain-4, cycle-12)
+

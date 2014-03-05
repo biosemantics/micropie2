@@ -1,0 +1,7 @@
+nn(dioxide-2, Carbon-1)
+nsubjpass(required-6, dioxide-2)
+conj_and(dioxide-2, acetate-4)
+nsubjpass(required-6, acetate-4)
+auxpass(required-6, are-5)
+prep_for(required-6, growth-8)
+

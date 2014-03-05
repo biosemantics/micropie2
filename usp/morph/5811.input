@@ -1,0 +1,16 @@
+Methanol_NNP
+,_,
+trimethylamine_NN
+,_,
+dimethylamine_NN
+and_CC
+monomethylamine_NN
+are_VBP
+reduced_VBN
+to_TO
+methane_NN
+with_IN
+molecular_JJ
+hydrogen_NN
+._.
+

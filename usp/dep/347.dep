@@ -1,0 +1,8 @@
+det(quinones-4, The-1)
+amod(quinones-4, major-2)
+amod(quinones-4, respiratory-3)
+nsubj(derivatives-7, quinones-4)
+cop(derivatives-7, are-5)
+nn(derivatives-7, naphthoquinone-6)
+amod(derivatives-7, present-8)
+

@@ -1,0 +1,9 @@
+nn(citri-2, S.-1)
+nsubj(species-6, citri-2)
+cop(species-6, is-3)
+det(species-6, the-4)
+nn(species-6, type-5)
+det(Spiroplasma-10, the-8)
+nn(Spiroplasma-10, genus-9)
+prep_of(species-6, Spiroplasma-10)
+

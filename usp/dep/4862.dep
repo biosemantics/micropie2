@@ -1,0 +1,13 @@
+det(cells-2, The-1)
+nsubj(negative-5, cells-2)
+nsubj(possess-7, cells-2)
+nsubj(exhibit-11, cells-2)
+cop(negative-5, are-3)
+npadvmod(negative-5, gram-4)
+conj_and(negative-5, possess-7)
+det(flagella-9, no-8)
+dobj(possess-7, flagella-9)
+conj_but(negative-5, exhibit-11)
+amod(structures-13, fimbrialike-12)
+dobj(exhibit-11, structures-13)
+

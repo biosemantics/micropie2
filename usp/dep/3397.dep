@@ -1,0 +1,5 @@
+nsubjpass(reduced-3, Nitrate-1)
+auxpass(reduced-3, is-2)
+prep_without(reduced-3, production-5)
+prep_of(production-5, gas-7)
+

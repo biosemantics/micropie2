@@ -1,0 +1,7 @@
+nn(content-2, G+C-1)
+nsubj(%-8, content-2)
+det(DNA-5, the-4)
+prep_of(content-2, DNA-5)
+cop(%-8, is-6)
+num(%-8, 62.7-7)
+

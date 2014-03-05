@@ -1,0 +1,11 @@
+nsubj(contain-2, Cells-1)
+amod(levels-4, low-3)
+dobj(contain-2, levels-4)
+prep_of(levels-4, carotenoid-6)
+nsubj(orange-12, colonies-9)
+cop(orange-12, are-10)
+amod(orange-12, pale-11)
+conj_and(contain-2, orange-12)
+advmod(colorless-15, almost-14)
+amod(orange-12, colorless-15)
+

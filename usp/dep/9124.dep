@@ -1,0 +1,11 @@
+nsubj(C-8, Growth-1)
+num(°-4, 70-3)
+prep_between(Growth-1, °-4)
+num(°-7, 95-6)
+prep_between(Growth-1, °-7)
+conj_and(°-4, °-7)
+advmod(alkaline-11, slightly-10)
+prep_to(C-8, alkaline-11)
+nn(values-13, pH-12)
+dep(alkaline-11, values-13)
+

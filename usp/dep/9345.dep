@@ -1,0 +1,5 @@
+det(absorbance-2, The-1)
+nsubj(decreased-5, absorbance-2)
+prep_of(absorbance-2, polysulfide-4)
+prep_during(decreased-5, growth-7)
+

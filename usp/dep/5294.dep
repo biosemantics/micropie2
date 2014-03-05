@@ -1,0 +1,12 @@
+nn(strain-2, Type-1)
+dep(strain-2, Nankai-1-4)
+amod(OCM-7, =-6)
+dep(Nankai-1-4, OCM-7)
+num(780W-11, 780-8)
+amod(780W-11, =-9)
+nn(780W-11, SMCC-10)
+dep(OCM-7, 780W-11)
+amod(DSMZ-13, =-12)
+dep(780W-11, DSMZ-13)
+num(DSMZ-13, 15122-14)
+

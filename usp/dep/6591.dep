@@ -1,0 +1,5 @@
+det(morphology-2, The-1)
+nsubj(variable-6, morphology-2)
+prep_of(morphology-2, Microcystis-4)
+cop(variable-6, is-5)
+

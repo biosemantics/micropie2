@@ -1,0 +1,7 @@
+det(film-2, A-1)
+nsubjpass(produced-4, film-2)
+auxpass(produced-4, is-3)
+nn(agar-8, egg-6)
+nn(agar-8, yolk-7)
+prep_on(produced-4, agar-8)
+

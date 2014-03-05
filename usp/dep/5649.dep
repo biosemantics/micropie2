@@ -1,0 +1,13 @@
+nsubj(coccoids-6, Cells-1)
+nsubj(occur-16, Cells-1)
+cop(coccoids-6, are-2)
+amod(coccoids-6, irregular-3)
+amod(coccoids-6, nonmotile-5)
+dep(coccoids-6, diameter-8)
+number(1.5-12, 1-10)
+dep(1.5-12, to-11)
+appos(diameter-8, 1.5-12)
+dep(diameter-8, µm-13)
+conj_and(coccoids-6, occur-16)
+advmod(occur-16, singly-17)
+

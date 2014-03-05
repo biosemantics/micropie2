@@ -1,0 +1,9 @@
+nn(extract-3, yeast-2)
+dobj(Utilizes-1, extract-3)
+dobj(Utilizes-1, tryptone-5)
+conj_and(extract-3, tryptone-5)
+dobj(Utilizes-1, peptone-7)
+conj_and(extract-3, peptone-7)
+dobj(Utilizes-1, casein-10)
+conj_and(extract-3, casein-10)
+

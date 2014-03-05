@@ -1,0 +1,1 @@
+Growth pH is extended to pH 5.9 when buffered with 10 mM MES.

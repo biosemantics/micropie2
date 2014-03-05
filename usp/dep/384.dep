@@ -1,0 +1,7 @@
+det(envelope-2, The-1)
+nsubj(wide-7, envelope-2)
+partmod(envelope-2, surrounding-3)
+det(cells-5, the-4)
+dobj(surrounding-3, cells-5)
+cop(wide-7, is-6)
+

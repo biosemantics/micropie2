@@ -1,0 +1,7 @@
+nsubj(stimulated-2, Growth-1)
+prep_by(stimulated-2, PABA-4)
+prep_by(stimulated-2, pyridoxine-6)
+conj_and(PABA-4, pyridoxine-6)
+prep_by(stimulated-2, thiamine-8)
+conj_and(PABA-4, thiamine-8)
+

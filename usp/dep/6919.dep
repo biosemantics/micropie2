@@ -1,0 +1,5 @@
+nn(blue-2, Methylene-1)
+nsubjpass(reduced-5, blue-2)
+auxpass(reduced-5, is-3)
+neg(reduced-5, not-4)
+

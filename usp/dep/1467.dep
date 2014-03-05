@@ -1,0 +1,13 @@
+nsubj(hydrolyzed-18, Gelatin-1)
+amod(Gelatin-1, liquified-2)
+nn(sulfide-5, hydrogen-4)
+nsubj(hydrolyzed-18, sulfide-5)
+partmod(sulfide-5, produced-6)
+prep_from(produced-6, thiosulfate-8)
+prep_from(produced-6, Tween-11)
+conj_and(thiosulfate-8, Tween-11)
+num(Tween-11, 40-12)
+amod(ester-16, palmitic-14)
+nn(ester-16, acid-15)
+appos(thiosulfate-8, ester-16)
+

@@ -1,0 +1,8 @@
+dep(DNA-1, G-2)
+nn(content-5, C-4)
+dep(DNA-1, content-5)
+conj_+(G-2, content-5)
+number(mol-8, 40.5-7)
+num(%-9, mol-8)
+dep(content-5, %-9)
+

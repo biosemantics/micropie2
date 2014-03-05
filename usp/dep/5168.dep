@@ -1,0 +1,12 @@
+nn(MSP-2, Strain-1)
+nsubjpass(represented-4, MSP-2)
+auxpass(represented-4, was-3)
+agent(represented-4, motile-6)
+amod(cocci-8, irregular-7)
+tmod(represented-4, cocci-8)
+det(diameter-11, a-10)
+prep_with(cocci-8, diameter-11)
+prep_of(diameter-11, 0.3-13)
+num(µm-16, 0.6-15)
+dep(cocci-8, µm-16)
+

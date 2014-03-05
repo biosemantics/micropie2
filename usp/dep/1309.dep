@@ -1,0 +1,6 @@
+det(aldolase-3, The-1)
+amod(aldolase-3, fructose-bisphosphate-2)
+nsubj(I.-6, aldolase-3)
+cop(I.-6, is-4)
+nn(I.-6, class-5)
+

@@ -1,0 +1,8 @@
+csubj(fly-8, Isolated-1)
+det(hemolymph-4, the-3)
+prep_from(Isolated-1, hemolymph-4)
+det(syrphid-7, the-6)
+prep_of(hemolymph-4, syrphid-7)
+nn(arbustorum-10, E.-9)
+dobj(fly-8, arbustorum-10)
+

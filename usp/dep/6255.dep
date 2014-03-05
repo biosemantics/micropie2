@@ -1,0 +1,5 @@
+det(%-3, The-1)
+nn(%-3, mol-2)
+nsubj(Tm-5, %-3)
+cop(Tm-5, is-4)
+

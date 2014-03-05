@@ -1,0 +1,6 @@
+nn(M-2, HS-Coenzyme-1)
+nsubj(stimulates-3, M-2)
+nn(growth-5, cell-4)
+dobj(stimulates-3, growth-5)
+advmod(stimulates-3, dramatically-6)
+

@@ -1,0 +1,13 @@
+det(growth-2, No-1)
+conj_or(growth-2, growth-2)
+amod(acids-6, free-4)
+nn(acids-6, amino-5)
+prep_on(growth-2, acids-6)
+appos(acids-6, sugars-8)
+amod(acids-11, organic-10)
+appos(sugars-8, acids-11)
+det(absence-16, the-15)
+prep_in(growth-2, absence-16)
+amod(substrates-19, organic-18)
+prep_of(growth-2, substrates-19)
+

@@ -1,0 +1,8 @@
+nsubj(˚C-6, Cells-1)
+cop(˚C-6, are-2)
+amod(˚C-6, mesophilic-3)
+amod(˚C-6, range-4)
+number(range-4, 15-5)
+num(˚C-9, 45-8)
+prep_to(˚C-6, ˚C-9)
+

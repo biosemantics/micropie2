@@ -1,0 +1,9 @@
+det(pH-2, The-1)
+nsubj(7.0-7, pH-2)
+amod(growth-5, optimum-4)
+prep_for(pH-2, growth-5)
+cop(7.0-7, is-6)
+number(°-9, 55-8)
+dep(7.0-7, °-9)
+dep(°-9, C.-10)
+

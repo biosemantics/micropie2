@@ -1,0 +1,11 @@
+nn(colonies-2, Subsurface-1)
+nsubj(cream-4, colonies-2)
+cop(cream-4, are-3)
+partmod(cream-4, colored-5)
+appos(cream-4, small-7)
+dep(small-7, diameter-9)
+num(mm-12, 0.2-11)
+appos(diameter-9, mm-12)
+amod(spheroids-15, irregular-14)
+dep(small-7, spheroids-15)
+

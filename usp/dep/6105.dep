@@ -1,0 +1,13 @@
+det(variety-4, a-2)
+amod(variety-4, wide-3)
+dobj(Metabolized-1, variety-4)
+prep_of(variety-4, substrates-6)
+prep_including(substrates-6, H2\/CO2-8)
+appos(H2\/CO2-8, methanol-10)
+appos(H2\/CO2-8, monomethylamine-12)
+conj_and(methanol-10, monomethylamine-12)
+appos(H2\/CO2-8, dimethylamine-14)
+conj_and(methanol-10, dimethylamine-14)
+appos(H2\/CO2-8, trimethylamine-17)
+conj_and(methanol-10, trimethylamine-17)
+

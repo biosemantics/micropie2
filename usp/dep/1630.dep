@@ -1,0 +1,7 @@
+nn(content-3, Amino-1)
+nn(content-3, sugar-2)
+nn(envelope-6, cell-5)
+prep_of(content-3, envelope-6)
+advmod(low-8, very-7)
+amod(content-3, low-8)
+

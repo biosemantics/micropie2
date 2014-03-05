@@ -1,0 +1,9 @@
+nn(cells-2, Square-1)
+nsubj(contain-3, cells-2)
+nn(vesicles-5, gas-4)
+dobj(contain-3, vesicles-5)
+nn(granules-9, PHA-7)
+nn(granules-9, storage-8)
+dobj(contain-3, granules-9)
+conj_and(vesicles-5, granules-9)
+

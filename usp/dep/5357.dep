@@ -1,0 +1,6 @@
+nn(composition-2, Lipid-1)
+nsubj(described-5, composition-2)
+prep_as(composition-2, that-4)
+det(genus-8, the-7)
+prep_for(described-5, genus-8)
+

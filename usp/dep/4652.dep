@@ -1,0 +1,9 @@
+nn(colonies-2, Round-1)
+nsubj(plates-11, colonies-2)
+num(mm-5, 1-4)
+prep_about(colonies-2, mm-5)
+nn(form-8, diameter-7)
+prep_in(mm-5, form-8)
+prep_on(form-8, Phytagel-10)
+dobj(plates-11, Pale-yellow-12)
+

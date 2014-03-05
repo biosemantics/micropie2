@@ -1,0 +1,8 @@
+amod(spheres-2, Terminal-1)
+nsubj(appear-8, spheres-2)
+dep(spheres-2, golf-clubs-5)
+det(phase-13, the-10)
+amod(phase-13, exponential-11)
+nn(phase-13, growth-12)
+prep_during(appear-8, phase-13)
+

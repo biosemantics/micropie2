@@ -1,0 +1,10 @@
+det(aggregates-3, The-1)
+nn(aggregates-3, cell-2)
+nsubj(large-5, aggregates-3)
+cop(large-5, were-4)
+xcomp(large-5, reaching-7)
+prt(reaching-7, up-8)
+num(mm-11, 1-10)
+prep_to(reaching-7, mm-11)
+prep_in(mm-11, diameter-13)
+

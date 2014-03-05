@@ -1,0 +1,6 @@
+nsubj(successful-7, Attempts-1)
+prep_at(Attempts-1, culture-3)
+aux(successful-7, have-4)
+neg(successful-7, not-5)
+cop(successful-7, been-6)
+

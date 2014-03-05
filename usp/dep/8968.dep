@@ -1,0 +1,7 @@
+nsubj(lyse-2, Cells-1)
+nn(values-5, pH-4)
+prep_at(lyse-2, values-5)
+number(8-9, 7.5-7)
+dep(8-9, to-8)
+prep_above(lyse-2, 8-9)
+

@@ -1,0 +1,9 @@
+nn(Ar-1343-2, Strain-1)
+nsubj(unable-4, Ar-1343-2)
+cop(unable-4, was-3)
+aux(grow-6, to-5)
+xcomp(unable-4, grow-6)
+det(absence-9, the-8)
+prep_in(grow-6, absence-9)
+prep_of(absence-9, cholesterol-11)
+

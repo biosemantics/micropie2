@@ -1,0 +1,1 @@
+The range of salinities tolerated is 0.3 to 3.5 M NaCl (0.3 to 2.6 M for the type strain).

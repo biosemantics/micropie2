@@ -1,0 +1,6 @@
+advmod(some-6, Primarily-1)
+nn(cells-4, rod-2)
+amod(cells-4, shaped-3)
+nsubj(some-6, cells-4)
+cop(some-6, is-5)
+

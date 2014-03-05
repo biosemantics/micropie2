@@ -1,0 +1,9 @@
+aux(use-3, Could-1)
+neg(use-3, not-2)
+dobj(use-3, thiosulfate-4)
+dobj(use-3, sulfite-6)
+conj_or(thiosulfate-4, sulfite-6)
+det(acceptor-10, an-8)
+nn(acceptor-10, electron-9)
+prep_as(use-3, acceptor-10)
+

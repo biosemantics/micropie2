@@ -1,0 +1,10 @@
+nn(ovalisporum-2, Aphanizomenon-1)
+nsubj(reappeared-3, ovalisporum-2)
+amod(amounts-6, diminished-5)
+prep_in(reappeared-3, amounts-6)
+det(summer-9, the-8)
+prep_in(amounts-6, summer-9)
+prep_in(amounts-6, fall-11)
+conj_and(summer-9, fall-11)
+prep_of(summer-9, 1995-13)
+

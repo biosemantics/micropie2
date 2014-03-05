@@ -1,0 +1,7 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(sp-7, strain-3)
+cop(sp-7, is-4)
+nn(sp-7, Sulfolobus-5)
+nn(sp-7, tokodaii-6)
+

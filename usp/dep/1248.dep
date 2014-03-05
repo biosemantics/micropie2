@@ -1,0 +1,12 @@
+nsubj(occurs-2, Growth-1)
+num(˚C-4, 50-3)
+dobj(occurs-2, ˚C-4)
+number(5.0-7, 2.0-6)
+dep(M-8, 5.0-7)
+dep(NaCl-12, M-8)
+number(%-11, 12-9)
+number(%-11, 30-10)
+amod(NaCl-12, %-11)
+dobj(occurs-2, NaCl-12)
+conj_and(˚C-4, NaCl-12)
+

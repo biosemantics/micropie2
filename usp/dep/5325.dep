@@ -1,0 +1,10 @@
+nn(range-2, PH-1)
+nsubj(7.5-7, range-2)
+prep_for(range-2, growth-4)
+cop(7.5-7, is-5)
+number(7.5-7, 6.5-6)
+dep(pH-10, 7.5-7)
+cop(pH-10, is-8)
+amod(pH-10, optimum-9)
+nsubj(pH-10, 7.0-11)
+

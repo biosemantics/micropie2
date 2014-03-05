@@ -1,0 +1,7 @@
+amod(leukemia-4, murine-3)
+dep(Source-1, leukemia-4)
+appos(leukemia-4, Friend-6)
+nn(line-10, tissue-8)
+nn(line-10, culture-9)
+dep(leukemia-4, line-10)
+

@@ -1,0 +1,12 @@
+nsubjpass(required-13, Acetate-1)
+appos(Acetate-1, formate-3)
+nn(extract-6, yeast-5)
+appos(Acetate-1, extract-6)
+appos(Acetate-1, trypticase-8)
+appos(Acetate-1, vitamins-10)
+auxpass(required-13, were-11)
+neg(required-13, not-12)
+prep_for(required-13, growth-15)
+prep_for(required-13, stimulatory-17)
+conj_or(growth-15, stimulatory-17)
+

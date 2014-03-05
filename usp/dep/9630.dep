@@ -1,0 +1,12 @@
+nn(NA1T-2, Strain-1)
+nsubj(represents-3, NA1T-2)
+det(species-6, a-4)
+amod(species-6, novel-5)
+nsubj(sp-13, species-6)
+prep_for(species-6, which-8)
+det(sp-13, the-9)
+nn(sp-13, name-10)
+nn(sp-13, Thermococcus-11)
+nn(sp-13, onnurineus-12)
+xcomp(represents-3, sp-13)
+

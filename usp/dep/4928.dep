@@ -1,0 +1,10 @@
+det(ability-2, The-1)
+nsubj(distinctive-7, ability-2)
+aux(use-4, to-3)
+infmod(ability-2, use-4)
+dobj(use-4, alanine-5)
+cop(distinctive-7, is-6)
+prep_for(distinctive-7, members-9)
+det(species-12, this-11)
+prep_of(members-9, species-12)
+

@@ -1,0 +1,9 @@
+dep(regular-2, Cells-1)
+amod(cocci-5, irregular-4)
+prep_to(regular-2, cocci-5)
+det(diameter-8, a-7)
+prep_with(cocci-5, diameter-8)
+number(.5-11, 0.6-1-10)
+num(µm-12, .5-11)
+prep_of(diameter-8, µm-12)
+

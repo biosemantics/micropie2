@@ -1,0 +1,6 @@
+det(optimum-3, The-1)
+nn(optimum-3, temperature-2)
+nsubj(is-4, optimum-3)
+num(˚C-7, 30-6)
+prep_about(is-4, ˚C-7)
+

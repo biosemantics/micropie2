@@ -1,0 +1,7 @@
+nsubj(grow-3, It-1)
+aux(grow-3, may-2)
+prep_at(grow-3, 28C-5)
+num(uC-10, 22-9)
+prep_at(grow-3, uC-10)
+conj_negcc(28C-5, uC-10)
+

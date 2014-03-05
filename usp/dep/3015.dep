@@ -1,0 +1,10 @@
+nsubj(.8-5, Cell-1)
+cop(.8-5, are-2)
+amod(.8-5, disc-shaped-3)
+number(.8-5, 1.2-0-4)
+dep(.8-5, x-6)
+num(µm-9, 1.0-1-7)
+num(µm-9, .5-8)
+dobj(x-6, µm-9)
+advmod(x-6, irregularly-10)
+

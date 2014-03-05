@@ -1,0 +1,1 @@
+Strain HBSQ001 = JCM 12895 = DSM 16790 is a reference strain.

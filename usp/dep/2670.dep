@@ -1,0 +1,6 @@
+nsubjpass(utilized-6, Lactate-1)
+amod(acid-4, glutamic-3)
+conj_and(Lactate-1, acid-4)
+nsubjpass(utilized-6, acid-4)
+auxpass(utilized-6, are-5)
+

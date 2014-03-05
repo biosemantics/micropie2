@@ -1,0 +1,5 @@
+amod(pH-1, optimum-2)
+number(7.4-5, 6.6-3)
+dep(7.4-5, to-4)
+num(pH-1, 7.4-5)
+

@@ -1,0 +1,8 @@
+csubj(metabolize-6, Ferments-1)
+nsubj(does-4, glucose-2)
+ccomp(Ferments-1, does-4)
+neg(does-4, not-5)
+dobj(metabolize-6, arginine-7)
+dobj(metabolize-6, urea-9)
+conj_or(arginine-7, urea-9)
+

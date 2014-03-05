@@ -1,0 +1,7 @@
+nsubjpass(fragile-3, Cells-1)
+nsubjpass(lysed-6, Cells-1)
+auxpass(fragile-3, are-2)
+advmod(lysed-6, easily-5)
+conj_and(fragile-3, lysed-6)
+advmod(lysed-6, osmotically-7)
+

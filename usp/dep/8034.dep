@@ -1,0 +1,12 @@
+prep_to(Resistant-1, rifampicin-3)
+prep_to(Resistant-1, vancomycin-5)
+conj_and(rifampicin-3, vancomycin-5)
+prep_to(Resistant-1, penicillin-7)
+conj_and(rifampicin-3, penicillin-7)
+prep_to(Resistant-1, kanamycin-9)
+conj_and(rifampicin-3, kanamycin-9)
+prep_to(Resistant-1, streptomycin-11)
+conj_and(rifampicin-3, streptomycin-11)
+prep_to(Resistant-1, chloramphenicol-13)
+conj_and(rifampicin-3, chloramphenicol-13)
+

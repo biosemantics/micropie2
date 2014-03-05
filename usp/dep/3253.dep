@@ -1,0 +1,11 @@
+nsubj(related-6, Genes-1)
+dep(Genes-1, A-2)
+dep(Genes-1, B-4)
+conj_and(A-2, B-4)
+cop(related-6, are-5)
+det(similarity-13, each-8)
+amod(similarity-13, other-9)
+num(%-12, 97.7-11)
+prep_at(other-9, %-12)
+prep_to(related-6, similarity-13)
+

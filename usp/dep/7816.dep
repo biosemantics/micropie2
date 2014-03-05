@@ -1,0 +1,11 @@
+amod(cyanobacterium-3, filamentous-1)
+amod(cyanobacterium-3, non-nitrogen-fixing-2)
+partmod(cyanobacterium-3, lacking-5)
+det(type-11, the-6)
+amod(type-11, typical-7)
+amod(type-11, prokaryotic-8)
+nn(type-11, glutamine-9)
+nn(type-11, synthetase-10)
+dobj(lacking-5, type-11)
+num(type-11, I-12)
+

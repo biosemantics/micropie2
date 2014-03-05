@@ -1,0 +1,9 @@
+nn(strain-2, Type-1)
+num(NCTC-10, 694-4)
+amod(NCTC-10, =-6)
+nn(NCTC-10, ATCC-7)
+num(NCTC-10, 33549-8)
+amod(NCTC-10, =-9)
+dep(strain-2, NCTC-10)
+num(NCTC-10, 10184-11)
+

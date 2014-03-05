@@ -1,0 +1,8 @@
+det(strain-3, The-1)
+nn(strain-3, type-2)
+nsubj(PL-12-5, strain-3)
+cop(PL-12-5, is-4)
+dep(M.-8, \-6)
+punct(M.-8, \/-7)
+dep(PL-12-5, M.-8)
+

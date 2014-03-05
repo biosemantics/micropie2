@@ -1,0 +1,12 @@
+det(content-4, The-1)
+nn(content-4, DNA-2)
+nn(content-4, G+C-3)
+nsubj(%-13, content-4)
+det(strains-9, the-6)
+num(strains-9, two-7)
+amod(strains-9, known-8)
+prep_of(content-4, strains-9)
+cop(%-13, is-10)
+number(mol-12, 46.9-11)
+num(%-13, mol-12)
+

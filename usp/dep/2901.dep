@@ -1,0 +1,12 @@
+nsubj(Gram-negative-3, Cells-1)
+cop(Gram-negative-3, are-2)
+dobj(Gram-negative-3, pleomorphic-5)
+dep(pleomorphic-5, 0.5-7)
+dep(0.5-7, 0.9-9)
+dep(0.5-7, 0.6-11)
+conj_x(0.9-9, 0.6-11)
+num(µm-14, 1.5-13)
+dep(0.5-7, µm-14)
+dobj(Gram-negative-3, motile-17)
+conj_and(pleomorphic-5, motile-17)
+

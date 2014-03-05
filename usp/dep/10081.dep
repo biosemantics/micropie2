@@ -1,0 +1,12 @@
+det(strains-2, All-1)
+nsubjpass(isolated-8, strains-2)
+partmod(strains-2, examined-3)
+advmod(far-5, thus-4)
+advmod(examined-3, far-5)
+aux(isolated-8, have-6)
+auxpass(isolated-8, been-7)
+amod(cavities-11, oropharygeal-10)
+prep_from(isolated-8, cavities-11)
+amod(cats-14, domestic-13)
+prep_of(cavities-11, cats-14)
+

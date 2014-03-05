@@ -1,0 +1,13 @@
+nsubj(arranged-13, Cells-1)
+amod(Cells-1, spherical-2)
+amod(Cells-1, compressed-4)
+conj_or(spherical-2, compressed-4)
+number(2-8, 1-6)
+dep(2-8, to-7)
+num(µm-9, 2-8)
+dobj(compressed-4, µm-9)
+amod(aggregates-12, rounded-11)
+prep_in(µm-9, aggregates-12)
+amod(packets-16, sarcinalike-15)
+prep_into(arranged-13, packets-16)
+

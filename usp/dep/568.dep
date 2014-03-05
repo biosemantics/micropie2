@@ -1,0 +1,9 @@
+nn(extract-2, Yeast-1)
+nsubjpass(used-6, extract-2)
+aux(used-6, can-3)
+neg(used-6, not-4)
+auxpass(used-6, be-5)
+det(donor-10, an-8)
+nn(donor-10, electron-9)
+prep_as(used-6, donor-10)
+

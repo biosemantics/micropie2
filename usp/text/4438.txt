@@ -1,0 +1,1 @@
+Grows and produces methane from H2/CO2 (80:20) and from formate plus CO2 (reference strains OCP and AK-87 cannot utilize formate plus CO2).

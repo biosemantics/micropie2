@@ -1,0 +1,8 @@
+nsubj(epilithic-3, It-1)
+cop(epilithic-3, is-2)
+prep_in(epilithic-3, circumneutral-5)
+prep_to(circumneutral-5, alkaline-7)
+xcomp(epilithic-3, running-8)
+dobj(running-8, waters-9)
+advmod(running-8, slightly-10)
+

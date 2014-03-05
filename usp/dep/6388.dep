@@ -1,0 +1,7 @@
+det(optimum-3, The-1)
+nn(optimum-3, pH-2)
+nsubj(7.4-7, optimum-3)
+cop(7.4-7, was-4)
+number(7.4-7, 7.0-5)
+dep(7.4-7, to-6)
+

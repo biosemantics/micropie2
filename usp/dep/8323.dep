@@ -1,0 +1,9 @@
+det(gut-4, the-3)
+prep_from(Isolated-1, gut-4)
+det(beetle-9, a-6)
+amod(beetle-9, larval-7)
+nn(beetle-9, scarabaeid-8)
+prep_of(gut-4, beetle-9)
+dep(beetle-9, C.-11)
+dep(C.-11, nitida-12)
+

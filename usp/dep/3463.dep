@@ -1,0 +1,12 @@
+nn(lipids-3, Membrane-1)
+amod(lipids-3, polar-2)
+nsubj(analogs-6, lipids-3)
+cop(analogs-6, are-4)
+amod(analogs-6, glycerol-diether-5)
+prep_of(analogs-6, PG-8)
+prep_of(analogs-6, PGP-Me-10)
+conj_and(PG-8, PGP-Me-10)
+det(glycolipids-13, some-12)
+prep_of(analogs-6, glycolipids-13)
+conj_and(PG-8, glycolipids-13)
+

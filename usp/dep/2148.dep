@@ -1,0 +1,4 @@
+nn(moieties-4, glycerol-2)
+nn(moieties-4, diether-3)
+dobj(Contains-1, moieties-4)
+

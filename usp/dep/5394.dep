@@ -1,0 +1,9 @@
+nsubj(substrates-5, H2-CO2-1)
+conj_and(H2-CO2-1, formate-3)
+nsubj(substrates-5, formate-3)
+cop(substrates-5, are-4)
+nn(production-10, growth-7)
+conj_and(growth-7, methane-9)
+nn(production-10, methane-9)
+prep_for(substrates-5, production-10)
+

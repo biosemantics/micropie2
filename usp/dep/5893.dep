@@ -1,0 +1,7 @@
+amod(time-2, Doubling-1)
+nsubj(is-3, time-2)
+num(h-6, 10-5)
+prep_about(is-3, h-6)
+amod(conditions-9, optimal-8)
+prep_under(h-6, conditions-9)
+

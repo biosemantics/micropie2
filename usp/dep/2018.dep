@@ -1,0 +1,5 @@
+aux(produce-3, Does-1)
+neg(produce-3, not-2)
+dobj(produce-3, gas-4)
+prep_from(produce-3, nitrate-6)
+

@@ -1,0 +1,8 @@
+nsubj(factor-5, Acetate-1)
+cop(factor-5, is-2)
+det(factor-5, a-3)
+nn(factor-5, growth-4)
+partmod(factor-5, required-6)
+nn(ZC-2T-9, strain-8)
+prep_for(required-6, ZC-2T-9)
+

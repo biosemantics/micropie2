@@ -1,0 +1,13 @@
+nsubj(chemolithotrophic-3, Growth-1)
+cop(chemolithotrophic-3, is-2)
+prep_by(chemolithotrophic-3, means-5)
+prep_of(means-5, oxidation-7)
+prep_of(means-5, reduction-9)
+conj_or(oxidation-7, reduction-9)
+prep_of(oxidation-7, S˚-11)
+prep_by(chemolithotrophic-3, means-14)
+conj_or(means-5, means-14)
+prep_of(means-14, oxidation-16)
+amod(iron-19, ferrous-18)
+prep_of(oxidation-16, iron-19)
+

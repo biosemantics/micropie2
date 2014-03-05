@@ -1,0 +1,9 @@
+det(C20C20-4, Both-1)
+nn(C20C20-4, diphytanyl-2)
+nn(C20C20-4, moieties-3)
+nsubj(detected-9, C20C20-4)
+amod(C20C25-8, phytanyl-sesterterpanyl-6)
+nn(C20C25-8, moieties-7)
+conj_and(C20C20-4, C20C25-8)
+nsubj(detected-9, C20C25-8)
+

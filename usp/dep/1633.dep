@@ -1,0 +1,4 @@
+nn(red-to-orange-2, Pigmentation-1)
+dep(due-3, red-to-orange-2)
+prep_to(due-3, carotenoids-5)
+

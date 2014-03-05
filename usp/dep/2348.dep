@@ -1,0 +1,10 @@
+amod(reduction-2, Nitrate-1)
+nsubj(nitrite-4, reduction-2)
+aux(nitrite-4, to-3)
+nn(formation-8, gas-7)
+nsubjpass(observed-13, formation-8)
+prep_from(formation-8, nitrate-10)
+auxpass(observed-13, are-11)
+neg(observed-13, not-12)
+conj_and(nitrite-4, observed-13)
+

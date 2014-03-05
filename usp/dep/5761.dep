@@ -1,0 +1,7 @@
+amod(member-5, obligatory-3)
+amod(member-5, anaerobic-4)
+conj_and(Methanogenic-1, member-5)
+det(Archaea-9, the-7)
+nn(Archaea-9, domain-8)
+prep_of(member-5, Archaea-9)
+

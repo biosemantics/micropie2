@@ -1,0 +1,11 @@
+nsubjpass(utilized-4, Starch-1)
+aux(utilized-4, can-2)
+auxpass(utilized-4, be-3)
+det(atmosphere-8, an-6)
+nn(atmosphere-8, N2\/CO2-7)
+prep_under(utilized-4, atmosphere-8)
+det(atmosphere-14, an-12)
+nn(atmosphere-14, H2\/CO2-13)
+prep_under(utilized-4, atmosphere-14)
+conj_negcc(atmosphere-8, atmosphere-14)
+

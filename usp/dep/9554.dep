@@ -1,0 +1,13 @@
+det(rings-3, No-1)
+nn(rings-3, cyclopropane-2)
+nsubjpass(observed-5, rings-3)
+auxpass(observed-5, were-4)
+preconj(observed-5, either-6)
+det(fraction-10, the-8)
+amod(fraction-10, organic-9)
+prep_in(observed-5, fraction-10)
+det(phase-15, the-13)
+amod(phase-15, residual-14)
+prep_in(observed-5, phase-15)
+conj_or(fraction-10, phase-15)
+

@@ -1,0 +1,11 @@
+nsubj(autotroph-5, It-1)
+cop(autotroph-5, is-2)
+det(autotroph-5, a-3)
+amod(autotroph-5, facultative-4)
+amod(autotroph-5, capable-6)
+preconj(anaerobic-9, both-8)
+prep_of(capable-6, anaerobic-9)
+amod(growth-12, aerobic-11)
+prep_of(capable-6, growth-12)
+conj_and(anaerobic-9, growth-12)
+

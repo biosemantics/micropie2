@@ -1,0 +1,8 @@
+nn(products-4, proteolysis-3)
+prep_on(Grows-1, products-4)
+det(mixture-7, a-6)
+prep_on(Grows-1, mixture-7)
+conj_and(products-4, mixture-7)
+nn(acids-10, amino-9)
+prep_of(mixture-7, acids-10)
+

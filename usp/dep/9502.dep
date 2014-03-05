@@ -1,0 +1,10 @@
+det(protein-3, The-1)
+amod(protein-3, major-2)
+nsubj(has-8, protein-3)
+det(wall-7, the-5)
+nn(wall-7, cell-6)
+prep_of(protein-3, wall-7)
+det(Mr-10, an-9)
+dobj(has-8, Mr-10)
+prep_of(Mr-10, 75000-12)
+

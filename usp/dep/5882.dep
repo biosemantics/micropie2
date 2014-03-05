@@ -1,0 +1,12 @@
+nn(colonies-2, Round-1)
+nsubj(present-10, colonies-2)
+dep(colonies-2, diameter-4)
+num(mm-7, 1-2-6)
+dep(diameter-4, mm-7)
+cop(present-10, are-9)
+num(weeks-13, 3-12)
+prep_after(present-10, weeks-13)
+prep_of(weeks-13, incubation-15)
+num(˚C-18, 37-17)
+prep_at(present-10, ˚C-18)
+

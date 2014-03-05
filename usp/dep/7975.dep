@@ -1,0 +1,7 @@
+nsubj(%-7, G-1)
+nn(content-4, C-3)
+conj_+(G-1, content-4)
+nsubj(%-7, content-4)
+cop(%-7, is-5)
+num(%-7, 45-6)
+

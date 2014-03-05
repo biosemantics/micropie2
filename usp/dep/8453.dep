@@ -1,0 +1,7 @@
+det(size-3, The-1)
+nn(size-3, genome-2)
+nsubjpass(determined-7, size-3)
+aux(determined-7, has-4)
+neg(determined-7, not-5)
+auxpass(determined-7, been-6)
+

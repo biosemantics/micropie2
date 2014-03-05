@@ -1,0 +1,6 @@
+nsubj(lobed-2, Cells-1)
+dobj(lobed-2, cocci-3)
+advmod(lobed-2, regularly-4)
+prep(lobed-2, to-5)
+pcomp(to-5, irregularly-6)
+

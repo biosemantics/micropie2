@@ -1,0 +1,7 @@
+dep(nov.Entomoplasma-1, freundtii-2)
+amod(ti.i-6, fr.eun.d-4)
+dep(freundtii-2, ti.i-6)
+nn(n-9, M.L.-7)
+nn(n-9, gen.-8)
+dep(ti.i-6, n-9)
+

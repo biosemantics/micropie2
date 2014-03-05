@@ -1,0 +1,7 @@
+nsubj(flagellated-2, Peritrichous-1)
+amod(size-4, Average-3)
+nsubj(µm-6, size-4)
+num(µm-6, 3-5)
+xcomp(flagellated-2, µm-6)
+prep_in(µm-6, diameter-8)
+

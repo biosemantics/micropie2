@@ -1,0 +1,9 @@
+nsubj(motile-3, It-1)
+nsubj(anaerobic-6, It-1)
+cop(motile-3, is-2)
+amod(anaerobic-6, obligately-5)
+conj_and(motile-3, anaerobic-6)
+amod(tufts-11, polar-10)
+prep_by_means_of(motile-3, tufts-11)
+prep_of(tufts-11, flagella-13)
+

@@ -1,0 +1,6 @@
+nn(acids-4, Carbon-1)
+nn(acids-4, sources-2)
+nn(acids-4, Casamino-3)
+nsubj(fructose-6, acids-4)
+cop(fructose-6, is-5)
+

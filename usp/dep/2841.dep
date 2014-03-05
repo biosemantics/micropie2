@@ -1,0 +1,7 @@
+amod(cells-3, Thin-1)
+amod(cells-3, rod-shaped-2)
+nsubj(µm-4, cells-3)
+acomp(µm-4, long-5)
+acomp(µm-4, pleomorphic-7)
+conj_but(long-5, pleomorphic-7)
+

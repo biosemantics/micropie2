@@ -1,0 +1,5 @@
+nsubj(coccus-5, It-1)
+cop(coccus-5, is-2)
+det(coccus-5, an-3)
+amod(coccus-5, irregular-4)
+

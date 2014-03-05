@@ -1,0 +1,9 @@
+nsubj(occurs-2, Growth-1)
+prep_on(occurs-2, trehalose-4)
+det(carbon-8, a-6)
+amod(carbon-8, single-7)
+prep_as(occurs-2, carbon-8)
+nn(source-11, energy-10)
+prep_as(occurs-2, source-11)
+conj_and(carbon-8, source-11)
+

@@ -1,0 +1,11 @@
+nn(dihydrolase-2, Arginine-1)
+nsubjpass(produced-11, dihydrolase-2)
+nn(decarboxylase-5, lysine-4)
+conj_and(dihydrolase-2, decarboxylase-5)
+nsubjpass(produced-11, decarboxylase-5)
+nn(decarboxylase-8, ornithine-7)
+conj_and(dihydrolase-2, decarboxylase-8)
+nsubjpass(produced-11, decarboxylase-8)
+auxpass(produced-11, are-9)
+neg(produced-11, not-10)
+

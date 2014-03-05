@@ -1,0 +1,12 @@
+amod(growth-3, organotrophic-2)
+prep_during(serve-15, growth-3)
+nn(sulfite-9, S˚-5)
+dep(sulfite-9, thiosulfate-7)
+nsubj(serve-15, sulfite-9)
+dep(sulfite-9, L-cystine-11)
+dep(sulfite-9, oxidized-13)
+conj_and(L-cystine-11, oxidized-13)
+dobj(oxidized-13, glutathione-14)
+nn(acceptors-18, electron-17)
+prep_as(serve-15, acceptors-18)
+

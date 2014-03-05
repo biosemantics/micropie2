@@ -1,0 +1,7 @@
+nn(maltose-3, Casein-1)
+nn(maltose-3, dextrose-2)
+nsubjpass(utilized-7, maltose-3)
+conj_and(maltose-3, starch-5)
+nsubjpass(utilized-7, starch-5)
+auxpass(utilized-7, are-6)
+

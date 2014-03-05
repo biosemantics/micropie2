@@ -1,0 +1,13 @@
+nsubj(motile-3, Cells-1)
+cop(motile-3, are-2)
+dep(rods-6, motile-3)
+cop(rods-6, is-4)
+amod(rods-6, Gram-negative-5)
+number(x-9, 0.5-7)
+number(x-9, 0.8-8)
+amod(rods-6, x-9)
+number(3.0-11, 2.0-10)
+num(µm-12, 3.0-11)
+nsubj(rods-6, µm-12)
+prep_in(µm-12, size-14)
+

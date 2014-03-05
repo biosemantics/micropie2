@@ -1,0 +1,5 @@
+amod(straight-7, Gram-negative-3)
+amod(straight-7, nonmotile-5)
+amod(rods-8, straight-7)
+dep(Morphology-1, rods-8)
+

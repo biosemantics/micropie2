@@ -1,0 +1,8 @@
+nn(methanol-2, Acetate-1)
+nsubj(substrates-7, methanol-2)
+conj_and(methanol-2, methylamines-4)
+nsubj(substrates-7, methylamines-4)
+cop(substrates-7, are-5)
+neg(substrates-7, not-6)
+prep_for(substrates-7, methanogenesis-9)
+

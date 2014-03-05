@@ -1,0 +1,13 @@
+conj_but(Non-motile-1, with-4)
+det(flagella-10, a-5)
+amod(flagella-10, few-6)
+amod(flagella-10, thin-7)
+amod(flagella-10, long-9)
+pobj(with-4, flagella-10)
+nsubjpass(removed-15, which-12)
+auxpass(removed-15, are-13)
+advmod(removed-15, easily-14)
+rcmod(flagella-10, removed-15)
+det(cell-18, the-17)
+prep_from(removed-15, cell-18)
+

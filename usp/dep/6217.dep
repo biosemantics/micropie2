@@ -1,0 +1,4 @@
+nn(walls-2, Cell-1)
+nsubj(contain-3, walls-2)
+dobj(contain-3, serine-4)
+

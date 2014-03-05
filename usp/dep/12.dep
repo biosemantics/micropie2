@@ -1,0 +1,5 @@
+det(film-2, Neither-1)
+nsubj(produced-5, film-2)
+conj_nor(film-2, spots-4)
+nsubj(produced-5, spots-4)
+

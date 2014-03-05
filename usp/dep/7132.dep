@@ -1,0 +1,5 @@
+nn(range-3, Growth-1)
+nn(range-3, temperature-2)
+num(30C-5, 22-4)
+dep(range-3, 30C-5)
+

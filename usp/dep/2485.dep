@@ -1,0 +1,6 @@
+dobj(Grows-1, best-2)
+prep_on(best-2, pyruvate-4)
+amod(source-8, sole-6)
+nn(source-8, carbon-7)
+prep_as(Grows-1, source-8)
+

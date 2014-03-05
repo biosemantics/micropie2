@@ -1,0 +1,8 @@
+nsubj(occurs-2, Growth-1)
+nn(concentrations-5, NaCl-4)
+prep_at(occurs-2, concentrations-5)
+prep_between(concentrations-5, 0-7)
+num(%-10, 7-9)
+prep_between(concentrations-5, %-10)
+conj_and(0-7, %-10)
+

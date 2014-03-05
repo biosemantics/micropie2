@@ -1,0 +1,13 @@
+nn(NCIMB-2, Strain-1)
+nsubjpass(regarded-15, NCIMB-2)
+dep(NCIMB-2, 784-3)
+partmod(NCIMB-2, deposited-5)
+nn(trapanicum-8, Halobacterium-7)
+prep_as(deposited-5, trapanicum-8)
+agent(deposited-5, Formisano-10)
+appos(NCIMB-2, 1962-12)
+auxpass(regarded-15, is-14)
+prep_as(regarded-15, synonymous-17)
+prep_with(regarded-15, NCIMB-19)
+num(NCIMB-19, 777-20)
+

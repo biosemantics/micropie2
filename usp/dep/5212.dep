@@ -1,0 +1,12 @@
+nn(JR1-3, Methanoculleus-1)
+nn(JR1-3, marisnigri-2)
+nsubjpass(isolated-5, JR1-3)
+auxpass(isolated-5, was-4)
+nn(sediment-9, Black-7)
+nn(sediment-9, Sea-8)
+prep_from(isolated-5, sediment-9)
+det(depth-12, a-11)
+prep_at(isolated-5, depth-12)
+num(cm-15, 0.5-20-14)
+prep_of(depth-12, cm-15)
+

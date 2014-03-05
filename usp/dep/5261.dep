@@ -1,0 +1,13 @@
+nsubj(grow-2, Cells-1)
+prep(grow-2, on-3)
+nn(formate-6, H2\/CO2-4)
+dep(on-3, formate-6)
+dep(formate-6, 2-8)
+dep(formate-6, propanol\/CO2-10)
+dep(formate-6, 2-butanol\/CO2-12)
+conj_and(propanol\/CO2-10, 2-butanol\/CO2-12)
+dep(formate-6, cyclopentanol-14)
+conj_and(propanol\/CO2-10, cyclopentanol-14)
+punct(formate-6, \/-15)
+dep(formate-6, CO2-16)
+

@@ -1,0 +1,6 @@
+det(growth-2, No-1)
+amod(xylan-5, native-4)
+prep_on(growth-2, xylan-5)
+prep_on(growth-2, xylose-7)
+conj_or(xylan-5, xylose-7)
+

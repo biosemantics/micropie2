@@ -1,0 +1,6 @@
+advmod(Grows-1, anaerobically-2)
+det(presence-5, the-4)
+prep_in(Grows-1, presence-5)
+prep_of(presence-5, DMSO-7)
+conj_negcc(Grows-1, nitrate-10)
+

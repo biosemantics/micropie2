@@ -1,0 +1,10 @@
+nsubj(have-8, Colonies-1)
+amod(medium-4, solid-3)
+prep_on(Colonies-1, medium-4)
+amod(conditions-7, anaerobic-6)
+prep_under(medium-4, conditions-7)
+det(appearance-12, a-9)
+amod(appearance-12, classic-10)
+amod(appearance-12, fried-egg-11)
+dobj(have-8, appearance-12)
+

@@ -1,0 +1,8 @@
+nsubj(mm-7, Colonies-1)
+amod(red-3, light-2)
+amod(Colonies-1, red-3)
+cop(mm-7, is-4)
+num(mm-7, 0.5-1-5)
+num(mm-7, .0-6)
+prep_in(mm-7, diameter-9)
+

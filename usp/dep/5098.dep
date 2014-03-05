@@ -1,0 +1,6 @@
+nsubj(serve-4, H2\/CO2-1)
+conj_and(H2\/CO2-1, formate-3)
+nsubj(serve-4, formate-3)
+prep_as(serve-4, substrates-6)
+prep_for(substrates-6, methanogenesis-8)
+

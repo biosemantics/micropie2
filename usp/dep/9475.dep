@@ -1,0 +1,6 @@
+aux(grow-3, to-2)
+dep(Unable-1, grow-3)
+prep_under(grow-3, H2\/CO2-5)
+amod(conditions-8, autotrophic-7)
+prep_under(grow-3, conditions-8)
+

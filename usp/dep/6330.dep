@@ -1,0 +1,13 @@
+amod(growth-4, Best-3)
+nsubjpass(obtained-6, growth-4)
+auxpass(obtained-6, is-5)
+dep(Nutrition-1, obtained-6)
+det(medium-10, a-8)
+amod(medium-10, complex-9)
+prep_in(obtained-6, medium-10)
+partmod(medium-10, containing-11)
+nn(extract-13, yeast-12)
+dobj(containing-11, extract-13)
+dobj(containing-11, Trypticase-15)
+conj_and(extract-13, Trypticase-15)
+
