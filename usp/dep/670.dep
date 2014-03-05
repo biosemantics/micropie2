@@ -1,6 +1,0 @@
-amod(growth-2, Fermentative-1)
-nn(extract-7, peptone-4)
-conj_and(peptone-4, yeast-6)
-nn(extract-7, yeast-6)
-prep_on(growth-2, extract-7)
-

@@ -1,8 +1,0 @@
-nsubj(required-2, NaCl-1)
-prep_for(required-2, growth-4)
-dep(+-11, optimal-6)
-num(Na-10, 0.5-8)
-nn(Na-10, M-9)
-prep_at(optimal-6, Na-10)
-dep(growth-4, +-11)
-

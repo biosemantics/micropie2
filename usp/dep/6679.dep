@@ -1,6 +1,0 @@
-amod(conditions-4, Aerobic-1)
-conj_and(Aerobic-1, anaerobic-3)
-amod(conditions-4, anaerobic-3)
-nsubj(GasPak-6, conditions-4)
-cop(GasPak-6, is-5)
-

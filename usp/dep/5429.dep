@@ -1,4 +1,0 @@
-nsubj(stain-2, Cells-1)
-nsubj(negative-4, gram-3)
-xcomp(stain-2, negative-4)
-

@@ -1,8 +1,0 @@
-nsubj(distinguishable-4, capricolum-1)
-cop(distinguishable-4, is-2)
-advmod(distinguishable-4, serologically-3)
-advmod(described-7, previously-6)
-amod(species-9, described-7)
-nn(species-9, Mycoplasma-8)
-prep_from(distinguishable-4, species-9)
-

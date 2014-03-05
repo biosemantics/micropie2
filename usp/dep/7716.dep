@@ -1,8 +1,0 @@
-det(pressure-4, The-1)
-amod(pressure-4, optimum-2)
-amod(pressure-4, hydrostatic-3)
-nsubj(MPa-9, pressure-4)
-prep_for(pressure-4, growth-6)
-cop(MPa-9, is-7)
-num(MPa-9, 30-8)
-

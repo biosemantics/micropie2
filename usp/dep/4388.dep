@@ -1,7 +1,0 @@
-nn(extract-2, Yeast-1)
-nsubj(required-6, extract-2)
-amod(extract-2, >-3)
-num(%-5, 0.01-4)
-dep(>-3, %-5)
-prep_for(required-6, growth-8)
-

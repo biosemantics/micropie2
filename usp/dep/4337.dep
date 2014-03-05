@@ -1,9 +1,0 @@
-nn(extract-2, Yeast-1)
-nsubj(stimulated-5, extract-2)
-conj_and(extract-2, Polypeptone-4)
-nsubj(stimulated-5, Polypeptone-4)
-nn(growth-7, cell-6)
-dobj(stimulated-5, growth-7)
-nn(SA-10, strain-9)
-prep_of(growth-7, SA-10)
-

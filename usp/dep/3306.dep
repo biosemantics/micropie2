@@ -1,7 +1,0 @@
-nsubj(coccoid-3, Cells-1)
-cop(coccoid-3, are-2)
-number(1.3-5, 0.8-4)
-num(µm-6, 1.3-5)
-dep(coccoid-3, µm-6)
-prep_in(coccoid-3, diameter-8)
-

@@ -1,1 +1,0 @@
-Cells grow at 20 42 ˚C with optimal growth at 37 ˚C.

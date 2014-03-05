@@ -1,6 +1,0 @@
-aux(grow-3, Could-1)
-neg(grow-3, not-2)
-advmod(grow-3, aerobically-4)
-advmod(grow-3, microaerobically-6)
-conj_or(aerobically-4, microaerobically-6)
-

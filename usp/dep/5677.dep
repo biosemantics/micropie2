@@ -1,8 +1,0 @@
-num(SDS-3, 0.01-1)
-nn(SDS-3, %-2)
-nsubj(w\/v-8, SDS-3)
-amod(solution-6, hypotonic-5)
-conj_and(SDS-3, solution-6)
-nsubj(w\/v-8, solution-6)
-cop(w\/v-8, is-7)
-

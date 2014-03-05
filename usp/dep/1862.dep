@@ -1,9 +1,0 @@
-nn(decarboxylase-2, Lysine-1)
-nsubj(negative-9, decarboxylase-2)
-nn(tests-7, ornithine-4)
-nn(tests-7, ornithine-5)
-nn(tests-7, decarboxylase-6)
-conj_and(decarboxylase-2, tests-7)
-nsubj(negative-9, tests-7)
-cop(negative-9, are-8)
-

@@ -1,6 +1,0 @@
-nsubj(red-7, Colonies-1)
-prep_on(Colonies-1, agar-3)
-cop(red-7, are-4)
-amod(clear-6, pigmented-5)
-amod(red-7, clear-6)
-

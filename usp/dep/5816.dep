@@ -1,6 +1,0 @@
-nsubj(dependent-3, Growth-1)
-cop(dependent-3, is-2)
-prep_on(dependent-3, HS-CoM-5)
-prep_on(dependent-3, vitamins-7)
-conj_and(HS-CoM-5, vitamins-7)
-

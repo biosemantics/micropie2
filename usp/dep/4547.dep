@@ -1,9 +1,0 @@
-det(peptide-2, The-1)
-nsubj(contains-3, peptide-2)
-amod(lysine-6, glutamate-4)
-nn(lysine-6, alanine-5)
-dobj(contains-3, lysine-6)
-nn(moiety-9, ornithine-8)
-dobj(contains-3, moiety-9)
-conj_and(lysine-6, moiety-9)
-

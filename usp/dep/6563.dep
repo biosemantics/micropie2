@@ -1,7 +1,0 @@
-det(range-3, The-1)
-nn(range-3, NaCl-2)
-nsubj(%-7, range-3)
-cop(%-7, is-4)
-number(.4-6, 0.9-5-5)
-num(%-7, .4-6)
-

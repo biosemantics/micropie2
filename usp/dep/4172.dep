@@ -1,6 +1,0 @@
-nn(dioxide-2, Hydrogen\/carbon-1)
-nsubj(substrates-6, dioxide-2)
-cop(substrates-6, are-3)
-det(substrates-6, the-4)
-amod(substrates-6, only-5)
-

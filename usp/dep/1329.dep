@@ -1,4 +1,0 @@
-det(strains-2, Some-1)
-nsubj(hydrolyze-3, strains-2)
-dobj(hydrolyze-3, casein-4)
-

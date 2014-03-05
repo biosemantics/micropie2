@@ -1,7 +1,0 @@
-amod(results-3, Citrate-1)
-nn(results-3, test-2)
-nsubj(Proskauer-6, results-3)
-cop(Proskauer-6, are-4)
-amod(Proskauer-6, negative-5)
-conj_and(Proskauer-6, Simmons-8)
-

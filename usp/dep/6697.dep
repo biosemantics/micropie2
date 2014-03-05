@@ -1,8 +1,0 @@
-nn(Capri-4, L.-1)
-nn(Capri-4, gen.-2)
-nn(Capri-4, n.-3)
-det(goat-8, a-7)
-prep_of(Capri-4, goat-8)
-nn(Gr-11, L.-10)
-dep(Capri-4, Gr-11)
-

@@ -1,9 +1,0 @@
-nsubj(10-5, Rods-1)
-cop(10-5, are-2)
-number(10-5, 5-3)
-dep(10-5, to-4)
-number(1-9, 0.5-7)
-dep(1-9, to-8)
-num(µm-10, 1-9)
-prep_by(10-5, µm-10)
-

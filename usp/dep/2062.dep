@@ -1,9 +1,0 @@
-nsubj(survive-2, Cells-1)
-amod(incubation-4, prolonged-3)
-dobj(survive-2, incubation-4)
-prep_in(incubation-4, 40-6)
-num(NaCl-10, 50-8)
-nn(NaCl-10, g-9)
-dep(incubation-4, NaCl-10)
-prep_per(NaCl-10, liter-12)
-

@@ -1,7 +1,0 @@
-nsubjpass(produced-3, Moderate-1)
-auxpass(produced-3, is-2)
-prep_during(produced-3, growth-5)
-amod(turbidity-9, liquid-7)
-nn(turbidity-9, media-8)
-prep_in(growth-5, turbidity-9)
-

@@ -1,6 +1,0 @@
-nsubj(sufficient-6, Sulfide-1)
-amod(sulfur-4, elemental-3)
-conj_or(Sulfide-1, sulfur-4)
-nsubj(sufficient-6, sulfur-4)
-cop(sufficient-6, are-5)
-

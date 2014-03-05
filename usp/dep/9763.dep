@@ -1,8 +1,0 @@
-nsubjpass(supported-3, Growth-1)
-auxpass(supported-3, is-2)
-det(mixture-7, a-5)
-amod(mixture-7, defined-6)
-agent(supported-3, mixture-7)
-nn(acids-10, amino-9)
-prep_of(mixture-7, acids-10)
-

@@ -1,7 +1,0 @@
-nn(cells-4, Coccoid-1)
-conj_or(Coccoid-1, oval-3)
-nn(cells-4, oval-3)
-num(µm-7, 1-5-2-6)
-appos(cells-4, µm-7)
-prep_in(µm-7, diameter-9)
-

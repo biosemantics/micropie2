@@ -1,4 +1,0 @@
-amod(ATCC-4, =-3)
-dep(MaBy-1, ATCC-4)
-dep(ATCC-4, 27104-5)
-

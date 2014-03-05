@@ -1,7 +1,0 @@
-cc(skipper-4, and-2)
-det(skipper-4, a-3)
-dep(skipper-4, Lepidoptera-6)
-dep(Lepidoptera-6, Hesperiidae-8)
-prep(skipper-4, in-10)
-dep(in-10, Maryland-11)
-

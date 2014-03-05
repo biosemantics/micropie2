@@ -1,8 +1,0 @@
-quantmod(8-4, at-2)
-mwe(at-2, least-3)
-num(%-5, 8-4)
-nn(NaCl-9, %-5)
-appos(%-5, w\/v-7)
-dobj(Requires-1, NaCl-9)
-prep_for(NaCl-9, growth-11)
-

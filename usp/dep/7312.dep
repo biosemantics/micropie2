@@ -1,4 +1,0 @@
-nn(optimum-2, Temperature-1)
-num(˚C-4, 37-40-3)
-dep(optimum-2, ˚C-4)
-

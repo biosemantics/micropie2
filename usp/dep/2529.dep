@@ -1,8 +1,0 @@
-nsubj(pleomorphic-3, Cells-1)
-cop(pleomorphic-3, are-2)
-advmod(pleomorphic-3, extremely-4)
-mark(rod-shaped-8, although-5)
-nsubj(rod-shaped-8, most-6)
-cop(rod-shaped-8, are-7)
-ccomp(pleomorphic-3, rod-shaped-8)
-

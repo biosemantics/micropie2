@@ -1,6 +1,0 @@
-nsubj(mannose-5, Ribose-1)
-cop(mannose-5, is-2)
-nn(mannose-5, fructose-3)
-nn(mannose-5, glucose-4)
-conj_and(mannose-5, sucrose-7)
-

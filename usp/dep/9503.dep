@@ -1,8 +1,0 @@
-amod(kinds-4, different-3)
-prep_of(Protrusions-1, kinds-4)
-dep(Protrusions-1, prostheca-like-6)
-appos(prostheca-like-6, chains-8)
-prep_of(chains-8, bubbles-10)
-amod(network-13, fimbriae-12)
-appos(bubbles-10, network-13)
-

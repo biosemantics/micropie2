@@ -1,6 +1,0 @@
-dobj(Produces-1, acid-2)
-nn(extract-7, maltose-4)
-conj_and(maltose-4, yeast-6)
-nn(extract-7, yeast-6)
-prep_from(Produces-1, extract-7)
-

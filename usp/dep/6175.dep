@@ -1,8 +1,0 @@
-aux(use-3, Did-1)
-neg(use-3, not-2)
-dobj(use-3, formate-4)
-dobj(use-3, H2\/CO2-6)
-conj_or(formate-4, H2\/CO2-6)
-amod(substrates-9, catabolic-8)
-prep_as(use-3, substrates-9)
-

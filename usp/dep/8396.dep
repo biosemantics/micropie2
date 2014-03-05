@@ -1,7 +1,0 @@
-advmod(distinct-2, Serologically-1)
-prep(distinct-2, from-3)
-pcomp(from-3, previously-4)
-dep(distinct-2, described-5)
-nn(species-7, Spiroplasma-6)
-dobj(described-5, species-7)
-

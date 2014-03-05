@@ -1,8 +1,0 @@
-nn(extracts-2, Cell-1)
-nsubj(have-5, extracts-2)
-aux(have-5, do-3)
-neg(have-5, not-4)
-nn(activity-8, CO-6)
-nn(activity-8, dehydrogenase-7)
-dobj(have-5, activity-8)
-

@@ -1,6 +1,0 @@
-amod(sulfur-2, Elemental-1)
-nsubjpass(reduced-4, sulfur-2)
-auxpass(reduced-4, was-3)
-nn(sulfide-7, hydrogen-6)
-prep_to(reduced-4, sulfide-7)
-

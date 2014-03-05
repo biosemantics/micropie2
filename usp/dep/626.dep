@@ -1,8 +1,0 @@
-amod(cyanobacteria-3, nonheterocystous-1)
-amod(cyanobacteria-3, filamentous-2)
-nsubj(reside-6, that-4)
-advmod(reside-6, typically-5)
-rcmod(cyanobacteria-3, reside-6)
-nn(lakes-9, alkaline-8)
-prep_in(reside-6, lakes-9)
-

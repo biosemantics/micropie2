@@ -1,5 +1,0 @@
-nn(acceptor-2, Electron-1)
-nsubj(necessary-5, acceptor-2)
-cop(necessary-5, is-3)
-neg(necessary-5, not-4)
-

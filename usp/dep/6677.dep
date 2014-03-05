@@ -1,7 +1,0 @@
-nsubj(good-3, Growth-1)
-cop(good-3, is-2)
-amod(conditions-8, aerobic-5)
-conj_and(aerobic-5, anaerobic-7)
-amod(conditions-8, anaerobic-7)
-prep_under(good-3, conditions-8)
-

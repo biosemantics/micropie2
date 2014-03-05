@@ -1,7 +1,0 @@
-det(number-2, A-1)
-nsubj(indicate-7, number-2)
-prep_of(number-2, lines-4)
-prep_of(lines-4, evidence-6)
-nn(sp-10, Synechococcus-9)
-prep_that(indicate-7, sp-10)
-

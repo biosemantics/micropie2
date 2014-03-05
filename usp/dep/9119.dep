@@ -1,7 +1,0 @@
-advmod(irregular-4, slightly-3)
-conj_or(Regular-1, irregular-4)
-dep(irregular-4, cocci-5)
-num(µm-8, 3-5-7)
-dep(irregular-4, µm-8)
-dep(µm-8, diam-9)
-

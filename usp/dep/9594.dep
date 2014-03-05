@@ -1,9 +1,0 @@
-nsubj(is-7, G-1)
-nn(content-4, C-3)
-conj_+(G-1, content-4)
-nsubj(is-7, content-4)
-prep_of(G-1, DNA-6)
-number(mol-10, 38-9)
-num(%-11, mol-10)
-prep_about(is-7, %-11)
-

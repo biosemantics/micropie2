@@ -1,9 +1,0 @@
-det(minimum-2, A-1)
-nsubjpass(required-8, minimum-2)
-num(Mg2-6, 1-4)
-nn(Mg2-6, mM-5)
-prep_of(minimum-2, Mg2-6)
-auxpass(required-8, is-7)
-prep_for(required-8, growth-10)
-xcomp(required-8, +-11)
-

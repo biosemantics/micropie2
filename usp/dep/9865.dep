@@ -1,8 +1,0 @@
-amod(growth-2, Optimal-1)
-nsubj(occurs-3, growth-2)
-num(˚C-6, 59-5)
-prep_at(occurs-3, ˚C-6)
-prep_at(occurs-3, pH-8)
-conj_and(˚C-6, pH-8)
-num(pH-8, 2.0-9)
-

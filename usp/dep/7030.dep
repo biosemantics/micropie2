@@ -1,5 +1,0 @@
-nsubj(are-4, Glucose-1)
-conj_and(Glucose-1, urea-3)
-nsubj(are-4, urea-3)
-neg(are-4, not-5)
-

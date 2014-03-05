@@ -1,8 +1,0 @@
-det(dependence-3, No-1)
-nn(dependence-3, growth-2)
-prep_on(dependence-3, NaCl-5)
-dep(NaCl-5, >-7)
-dep(>-7, 0-8)
-num(g\/l-11, 47-10)
-dep(0-8, g\/l-11)
-

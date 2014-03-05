@@ -1,7 +1,0 @@
-prepc_of(Incapable-1, using-3)
-amod(iron-5, ferrous-4)
-dobj(using-3, iron-5)
-det(source-9, an-7)
-nn(source-9, energy-8)
-prep_as(using-3, source-9)
-

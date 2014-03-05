@@ -1,7 +1,0 @@
-nn(micrographs-2, Electron-1)
-nsubj(reveal-3, micrographs-2)
-amod(components-7, occasional-4)
-amod(components-7, internal-5)
-nn(components-7, membrane-6)
-dobj(reveal-3, components-7)
-

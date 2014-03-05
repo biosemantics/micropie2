@@ -1,7 +1,0 @@
-prep_from(Isolated-1, viscera-3)
-det(fly-7, the-5)
-nn(fly-7, tabanid-6)
-prep_of(viscera-3, fly-7)
-amod(fly-7, T.-8)
-dep(T.-8, lineola-9)
-

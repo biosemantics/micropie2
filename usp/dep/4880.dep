@@ -1,8 +1,0 @@
-nn(range-2, pH-1)
-prep_of(range-2, growth-4)
-prep_between(range-2, 5-6)
-prep_between(range-2, 7.5-8)
-conj_and(5-6, 7.5-8)
-dep(5-6, optimum-10)
-dep(optimum-10, 5.7-12)
-

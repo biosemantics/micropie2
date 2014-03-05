@@ -1,7 +1,0 @@
-prep_for(Temperature-1, growth-3)
-num(˚C-6, 50-87-5)
-dep(Temperature-1, ˚C-6)
-nn(˚C-10, optimum-8)
-num(˚C-10, 85-9)
-dep(˚C-6, ˚C-10)
-

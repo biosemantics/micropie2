@@ -1,9 +1,0 @@
-det(growth-2, No-1)
-prep_with(growth-2, citrate-4)
-prep_with(growth-2, lactate-6)
-conj_or(citrate-4, lactate-6)
-prep_with(growth-2, starch-9)
-conj_or(citrate-4, starch-9)
-nn(donors-12, electron-11)
-prep_as(citrate-4, donors-12)
-

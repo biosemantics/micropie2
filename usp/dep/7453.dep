@@ -1,8 +1,0 @@
-number(.8-2, 0.4-0-1)
-num(Cells-4, .8-2)
-nn(Cells-4, lm-3)
-nsubj(Gram-negative-6, Cells-4)
-nsubj(rod-shaped-8, Cells-4)
-cop(Gram-negative-6, are-5)
-conj_and(Gram-negative-6, rod-shaped-8)
-

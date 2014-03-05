@@ -1,4 +1,0 @@
-prep_for(Pathogenicity-1, insects-3)
-neg(determined-5, not-4)
-amod(insects-3, determined-5)
-

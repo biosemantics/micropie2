@@ -1,8 +1,0 @@
-det(triturate-5, a-3)
-amod(triturate-5, frozen-4)
-prep_from(Isolated-1, triturate-5)
-amod(mosquitoes-10, female-7)
-amod(mosquitoes-10, C.-8)
-nn(mosquitoes-10, annulus-9)
-prep_of(triturate-5, mosquitoes-10)
-

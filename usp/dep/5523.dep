@@ -1,6 +1,0 @@
-det(wall-3, The-1)
-nn(wall-3, cell-2)
-nsubj(SDS-6, wall-3)
-cop(SDS-6, is-4)
-amod(SDS-6, resistant-5)
-

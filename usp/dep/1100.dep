@@ -1,8 +1,0 @@
-prep_inside(Contents-1, cells-3)
-det(blue-green-6, a-4)
-amod(blue-green-6, pale-5)
-dep(Contents-1, blue-green-6)
-amod(color-9, grayish-8)
-dep(Contents-1, color-9)
-conj_or(blue-green-6, color-9)
-

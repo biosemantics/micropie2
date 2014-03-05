@@ -1,6 +1,0 @@
-det(requirement-3, The-1)
-nn(requirement-3, sterol-2)
-nsubjpass(fulfilled-5, requirement-3)
-auxpass(fulfilled-5, is-4)
-agent(fulfilled-5, cholesterol-7)
-

@@ -1,6 +1,0 @@
-num(glycolipids-3, Two-1)
-amod(glycolipids-3, minor-2)
-nsubj(X1-5, glycolipids-3)
-cop(X1-5, is-4)
-conj_and(X1-5, X2-7)
-

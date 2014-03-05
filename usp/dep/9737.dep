@@ -1,8 +1,0 @@
-amod(structures-5, hydrothermal-3)
-amod(structures-5, venting-4)
-prep_from(Isolated-1, structures-5)
-det(Rise-10, the-7)
-nn(Rise-10, East-8)
-nn(Rise-10, Pacific-9)
-prep_on(structures-5, Rise-10)
-

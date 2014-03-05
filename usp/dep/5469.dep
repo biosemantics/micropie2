@@ -1,9 +1,0 @@
-amod(alcohols-2, Secondary-1)
-nsubjpass(oxidized-4, alcohols-2)
-auxpass(oxidized-4, are-3)
-prep_to(oxidized-4, ketones-6)
-amod(alcohols-9, primary-8)
-appos(ketones-6, alcohols-9)
-amod(acids-12, monocarboxylic-11)
-prep_to(oxidized-4, acids-12)
-

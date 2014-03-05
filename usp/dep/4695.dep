@@ -1,8 +1,0 @@
-nn(Optimum-2, pH-1)
-prep_near(Optimum-2, 6.0-4)
-dep(Optimum-2, growth-6)
-rcmod(growth-6, occurs-7)
-prep_at(occurs-7, pH-9)
-num(pH-9, 5.2-10)
-prep_to(occurs-7, 7.0-12)
-

@@ -1,8 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(GRUA-1-5, strain-3)
-cop(GRUA-1-5, is-4)
-amod(ATCC-8, =-7)
-dep(GRUA-1-5, ATCC-8)
-dep(ATCC-8, 49580-9)
-

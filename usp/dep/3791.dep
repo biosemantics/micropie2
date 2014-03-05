@@ -1,5 +1,0 @@
-advmod(Nonmotile-5, True-1)
-nn(walls-3, cell-2)
-nsubj(Nonmotile-5, walls-3)
-cop(Nonmotile-5, is-4)
-

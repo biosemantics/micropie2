@@ -1,9 +1,0 @@
-nn(firm-2, Sheath-1)
-appos(firm-2, rough-4)
-amod(blackish-purple-8, colorless-6)
-dep(blackish-purple-8, to-7)
-amod(firm-2, blackish-purple-8)
-num(µm-11, 0.5-1-10)
-npadvmod(thick-12, µm-11)
-amod(firm-2, thick-12)
-

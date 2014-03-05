@@ -1,8 +1,0 @@
-nsubj(used-6, Sulfate-1)
-conj_or(Sulfate-1, sulfite-3)
-nsubj(used-6, sulfite-3)
-conj_or(Sulfate-1, thiosulfate-5)
-conj_and(sulfite-3, thiosulfate-5)
-nn(acceptors-9, electron-8)
-prep_as(used-6, acceptors-9)
-

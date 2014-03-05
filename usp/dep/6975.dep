@@ -1,9 +1,0 @@
-dep(mycoides-1, Cottew-3)
-dep(mycoides-1, Yeats-5)
-conj_and(Cottew-3, Yeats-5)
-appos(Cottew-3, 1978-7)
-dep(1978-7, Thigpen-9)
-nn(al.-11, et-10)
-dep(Thigpen-9, al.-11)
-amod(Cottew-3, 1983-13)
-

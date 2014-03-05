@@ -1,9 +1,0 @@
-amod(range-2, Salinity-1)
-nn(ranges-5, growth-4)
-prep_for(range-2, ranges-5)
-number(46-9, 15.3-7)
-dep(46-9, to-8)
-num(g-10, 46-9)
-prep_from(range-2, g-10)
-prep_per(range-2, liter-12)
-

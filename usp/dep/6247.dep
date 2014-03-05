@@ -1,9 +1,0 @@
-det(growth-2, No-1)
-nsubjpass(obtained-6, growth-2)
-conj_or(growth-2, methane-4)
-nsubjpass(obtained-6, methane-4)
-auxpass(obtained-6, is-5)
-prep_with(obtained-6, H2-8)
-prep_with(obtained-6, ethanol-10)
-conj_and(H2-8, ethanol-10)
-

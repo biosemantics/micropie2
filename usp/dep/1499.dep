@@ -1,7 +1,0 @@
-dobj(Requires-1, NaCl-2)
-prep_for(NaCl-2, growth-4)
-advmod(NaCl-2, at-5)
-pobj(at-5, least-6)
-num(%-8, 12.5-7)
-dep(NaCl-2, %-8)
-

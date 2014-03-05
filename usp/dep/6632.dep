@@ -1,7 +1,0 @@
-nsubj(haemagglutinates-2, It-1)
-nn(pig-4, guinea-3)
-dobj(haemagglutinates-2, pig-4)
-nn(erythrocytes-7, tortoise-6)
-dobj(haemagglutinates-2, erythrocytes-7)
-conj_and(pig-4, erythrocytes-7)
-

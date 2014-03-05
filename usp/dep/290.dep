@@ -1,9 +1,0 @@
-nsubj(Gram-negative-3, Cells-1)
-cop(Gram-negative-3, are-2)
-prep_with(Gram-negative-3, diameter-5)
-num(µm-8, 1.2-7)
-prep_of(diameter-5, µm-8)
-cop(cocci-11, is-9)
-amod(cocci-11, irregular-10)
-rcmod(µm-8, cocci-11)
-

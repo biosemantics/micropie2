@@ -1,9 +1,0 @@
-amod(SDS-7, Susceptible-1)
-prep_to(Susceptible-1, lysis-3)
-num(%-6, 0.1-5)
-prep_by(lysis-3, %-6)
-dep(SDS-7, solution-8)
-amod(solutions-11, hypotonic-10)
-dep(SDS-7, solutions-11)
-conj_and(solution-8, solutions-11)
-

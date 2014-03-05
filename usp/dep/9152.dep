@@ -1,6 +1,0 @@
-amod(growth-2, Optimal-1)
-nsubj(be-3, growth-2)
-xcomp(be-3, occurring-4)
-num(˚C-7, 84-6)
-prep_at(occurring-4, ˚C-7)
-

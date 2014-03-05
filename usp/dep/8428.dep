@@ -1,7 +1,0 @@
-det(gut-4, the-3)
-prep_from(Isolated-1, gut-4)
-det(horsefly-7, a-6)
-prep_of(gut-4, horsefly-7)
-dep(horsefly-7, T.-9)
-dep(T.-9, gladiator-10)
-

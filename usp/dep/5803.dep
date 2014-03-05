@@ -1,5 +1,0 @@
-nn(extract-2, Yeast-1)
-nsubj(g\/liter-5, extract-2)
-cop(g\/liter-5, is-3)
-num(g\/liter-5, 1-4)
-

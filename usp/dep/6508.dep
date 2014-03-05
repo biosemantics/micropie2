@@ -1,9 +1,0 @@
-nn(Methane-2, C.-1)
-nsubjpass(formed-4, Methane-2)
-auxpass(formed-4, is-3)
-prep_from(formed-4, H2-6)
-nn(°-10, CO2-8)
-num(°-10, 97-9)
-prep_from(formed-4, °-10)
-conj_and(H2-6, °-10)
-

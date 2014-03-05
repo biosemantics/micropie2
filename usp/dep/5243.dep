@@ -1,8 +1,0 @@
-nn(optimum-3, Growth-1)
-nn(optimum-3, temperature-2)
-num(˚C-5, 37-4)
-dep(optimum-3, ˚C-5)
-dep(optimum-3, range-7)
-num(˚C-9, 30-45-8)
-dep(range-7, ˚C-9)
-

@@ -1,9 +1,0 @@
-nsubj(support-9, D-galactose-1)
-conj_and(D-galactose-1, D-fructose-3)
-nsubj(support-9, D-fructose-3)
-conj_and(D-galactose-1, sorbitol-6)
-nsubj(support-9, sorbitol-6)
-aux(support-9, did-7)
-neg(support-9, not-8)
-dobj(support-9, growth-10)
-

@@ -1,9 +1,0 @@
-prep_of(Source-1, isolate-3)
-dep(Source-1, sand-5)
-det(shore-8, the-7)
-prep_from(sand-5, shore-8)
-nn(Island-11, Whale-10)
-prep_of(shore-8, Island-11)
-nn(Zealand-14, New-13)
-appos(Island-11, Zealand-14)
-

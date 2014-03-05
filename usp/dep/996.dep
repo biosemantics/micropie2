@@ -1,7 +1,0 @@
-nn(lipids-2, Core-1)
-nsubj(consist-3, lipids-2)
-prep_of(consist-3, 2,3-di-O-phytanyl-5)
-dobj(consist-3, sn-glycerol-7)
-dobj(consist-3, glycerol-dialkyl-glycerol-9)
-conj_and(sn-glycerol-7, glycerol-dialkyl-glycerol-9)
-

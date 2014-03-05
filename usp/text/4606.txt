@@ -1,1 +1,0 @@
-Cannot catabolize acetate, methanol, trimethylamine, lactate, glucose, CO2 + 1-propanol, CO2 + 2-propanol, CO2 + 1-butanol, or 2-butanol as substrates for methanogenesis.

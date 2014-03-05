@@ -1,5 +1,0 @@
-nn(temperature-2, Growth-1)
-nsubj(ranges-3, temperature-2)
-num(˚C-6, 55-97-5)
-prep_from(ranges-3, ˚C-6)
-

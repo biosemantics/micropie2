@@ -1,6 +1,0 @@
-conj_and(Non-motile-1, resistant-3)
-prep_to(Non-motile-1, lysis-5)
-number(%-8, 10-7)
-amod(SDS-9, %-8)
-prep_by(lysis-5, SDS-9)
-

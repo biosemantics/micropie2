@@ -1,8 +1,0 @@
-nsubj(be-2, Cells-1)
-xcomp(be-2, making-3)
-dobj(making-3, colonies-4)
-amod(red-6, light-5)
-amod(colonies-4, red-6)
-dobj(making-3, orange-8)
-conj_or(colonies-4, orange-8)
-

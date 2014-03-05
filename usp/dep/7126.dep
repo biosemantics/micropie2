@@ -1,5 +1,0 @@
-nsubj(filterable-2, Cells-1)
-num(membranes-6, 200-4)
-nn(membranes-6, nm-5)
-prep_through(filterable-2, membranes-6)
-

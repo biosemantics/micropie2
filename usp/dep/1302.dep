@@ -1,9 +1,0 @@
-nsubj(occurs-2, Growth-1)
-det(presence-5, the-4)
-prep_in(occurs-2, presence-5)
-number(4.5-9, 2.0-7)
-dep(4.5-9, to-8)
-num(NaCl-11, 4.5-9)
-nn(NaCl-11, M-10)
-prep_of(presence-5, NaCl-11)
-

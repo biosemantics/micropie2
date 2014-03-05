@@ -1,5 +1,0 @@
-dep(Yeast-1, extract-2)
-dep(Yeast-1, peptone-4)
-conj_or(extract-2, peptone-4)
-neg(peptone-4, not-5)
-

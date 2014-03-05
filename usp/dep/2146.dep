@@ -1,6 +1,0 @@
-nsubjpass(produced-3, Nitrite-1)
-auxpass(produced-3, was-2)
-prep_from(produced-3, nitrate-5)
-nn(production-8, gas-7)
-prep_with(produced-3, production-8)
-

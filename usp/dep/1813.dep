@@ -1,6 +1,0 @@
-nsubj(H2-6, Menaquinones-1)
-dep(Menaquinones-1, MK-8-2)
-dep(Menaquinones-1, MK-8-4)
-conj_and(MK-8-2, MK-8-4)
-cop(H2-6, is-5)
-

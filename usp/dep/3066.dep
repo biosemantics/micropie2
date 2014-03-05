@@ -1,5 +1,0 @@
-nn(vacuoles-2, Gas-1)
-nsubjpass(produced-5, vacuoles-2)
-auxpass(produced-5, are-3)
-neg(produced-5, not-4)
-

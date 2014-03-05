@@ -1,6 +1,0 @@
-amod(time-3, Optimal-1)
-amod(time-3, doubling-2)
-nsubj(min-6, time-3)
-cop(min-6, is-4)
-num(min-6, 50-5)
-

@@ -1,1 +1,0 @@
-The Topt is 15˚C, and the temperature range for growth is 17°C to the freezing point of the culture medium; no growth occurs at temperatures above 19°C.  Slightly halophilic (good growth occurs in the presence of 350 to 600 mM Na+, but no growth occurs in the presence of 100 or 850 mM Na+).

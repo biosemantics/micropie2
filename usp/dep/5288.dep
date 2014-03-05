@@ -1,9 +1,0 @@
-nsubj(nutrient-6, Acetate-1)
-cop(nutrient-6, is-2)
-det(nutrient-6, the-3)
-amod(nutrient-6, sole-4)
-amod(nutrient-6, organic-5)
-partmod(nutrient-6, required-7)
-nn(carbon-10, cell-9)
-prep_for(required-7, carbon-10)
-

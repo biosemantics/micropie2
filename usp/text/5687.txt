@@ -1,1 +1,0 @@
-Tungsten and selenium are not required.

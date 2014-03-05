@@ -1,7 +1,0 @@
-nsubj(occurs-2, Growth-1)
-prep_at(occurs-2, temperatures-4)
-num(˚C-9, 80-6)
-conj_and(80-6, 102-8)
-num(˚C-9, 102-8)
-prep_between(temperatures-4, ˚C-9)
-

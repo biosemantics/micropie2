@@ -1,6 +1,0 @@
-nn(diethers-4, C20C20-1)
-conj_and(C20C20-1, C20C25-3)
-nn(diethers-4, C20C25-3)
-nsubj(present-6, diethers-4)
-cop(present-6, are-5)
-

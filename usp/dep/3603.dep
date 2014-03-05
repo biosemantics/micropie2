@@ -1,6 +1,0 @@
-amod(sulphur-2, Elemental-1)
-nsubj(inhibit-5, sulphur-2)
-conj_and(sulphur-2, NaCl-4)
-nsubj(inhibit-5, NaCl-4)
-dobj(inhibit-5, growth-6)
-

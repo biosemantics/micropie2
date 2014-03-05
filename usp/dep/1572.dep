@@ -1,7 +1,0 @@
-nn(gelatin-2, Casein-1)
-nsubjpass(hydrolysed-7, gelatin-2)
-conj_and(gelatin-2, Tween-4)
-nsubjpass(hydrolysed-7, Tween-4)
-num(Tween-4, 80-5)
-auxpass(hydrolysed-7, are-6)
-

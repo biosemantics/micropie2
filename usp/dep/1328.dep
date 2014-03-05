@@ -1,5 +1,0 @@
-nsubjpass(hydrolyzed-5, Starch-1)
-conj_and(Starch-1, gelatin-3)
-nsubjpass(hydrolyzed-5, gelatin-3)
-auxpass(hydrolyzed-5, are-4)
-

@@ -1,9 +1,0 @@
-det(.2-7, the-3)
-nn(.2-7, pH-4)
-nn(.2-7, range-5)
-num(.2-7, 6.5-8-6)
-prep_in(Growth-1, .2-7)
-amod(7.0-7-10, optimum-9)
-dep(Growth-1, 7.0-7-10)
-dep(7.0-7-10, .5-11)
-

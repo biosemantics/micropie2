@@ -1,7 +1,0 @@
-aux(grow-3, to-2)
-dep(Unable-1, grow-3)
-xcomp(grow-3, using-4)
-dobj(using-4, glucose-5)
-dobj(using-4, citrate-7)
-conj_and(glucose-5, citrate-7)
-

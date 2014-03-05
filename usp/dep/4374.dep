@@ -1,9 +1,0 @@
-amod(filaments-2, Individual-1)
-nsubjpass(observed-10, filaments-2)
-quantmod(100-5, over-4)
-num(µm-6, 100-5)
-prep_of(filaments-2, µm-6)
-prep_in(µm-6, length-8)
-auxpass(observed-10, are-9)
-advmod(observed-10, occasionally-11)
-

@@ -1,6 +1,0 @@
-nsubj(optimal-3, Growth-1)
-cop(optimal-3, is-2)
-num(NaCl-7, 3.4-5)
-nn(NaCl-7, M-6)
-prep_in(optimal-3, NaCl-7)
-

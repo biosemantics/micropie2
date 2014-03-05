@@ -1,7 +1,0 @@
-advmod(Grows-1, rapidly-2)
-amod(medium-5, broth-4)
-prep_in(Grows-1, medium-5)
-nn(production-9, acid-8)
-prep_with(Grows-1, production-9)
-prep_from(Grows-1, glucose-11)
-

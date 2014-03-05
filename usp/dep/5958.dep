@@ -1,6 +1,0 @@
-nsubj(grow-4, Chains-1)
-prep_of(Chains-1, cells-3)
-advmod(long-6, as-5)
-amod(filaments-7, long-6)
-dobj(grow-4, filaments-7)
-

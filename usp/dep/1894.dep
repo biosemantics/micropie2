@@ -1,5 +1,0 @@
-prep_to(Sensitive-1, novobiocin-3)
-num(µg-6, 50-5)
-dep(novobiocin-3, µg-6)
-prep_per(µg-6, ml-8)
-

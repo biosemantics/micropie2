@@ -1,7 +1,0 @@
-nsubj(motile-3, Cells-1)
-cop(motile-3, are-2)
-det(flagellum-8, a-5)
-amod(flagellum-8, single-6)
-amod(flagellum-8, polar-7)
-prep_with(motile-3, flagellum-8)
-

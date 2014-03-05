@@ -1,6 +1,0 @@
-nn(lipids-2, Core-1)
-nsubj(contain-3, lipids-2)
-dobj(contain-3, archaeol-4)
-dobj(contain-3, caldarchaeol-6)
-conj_and(archaeol-4, caldarchaeol-6)
-

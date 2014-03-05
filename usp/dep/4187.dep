@@ -1,9 +1,0 @@
-nn(colonies-2, Surface-1)
-nsubj(round-7, colonies-2)
-nsubj(white-10, colonies-2)
-prep_on(colonies-2, agar-4)
-cop(round-7, are-5)
-amod(round-7, small-6)
-amod(white-10, greyish-9)
-conj_and(round-7, white-10)
-

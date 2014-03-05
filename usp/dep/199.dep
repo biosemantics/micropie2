@@ -1,6 +1,0 @@
-nsubj(required-5, Sterol-1)
-conj_or(Sterol-1, serum-3)
-nsubj(required-5, serum-3)
-neg(required-5, not-4)
-prep_for(required-5, growth-7)
-

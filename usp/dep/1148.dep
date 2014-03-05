@@ -1,8 +1,0 @@
-amod(time-2, Doubling-1)
-nsubj(12-5, time-2)
-cop(12-5, is-3)
-quantmod(12-5, approximately-4)
-num(h.-8, 13-7)
-dep(12-5, h.-8)
-dep(h.-8, Nonmotile-9)
-

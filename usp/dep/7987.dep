@@ -1,8 +1,0 @@
-num(˚C-2, 100-1)
-nsubj(pH-4, ˚C-2)
-cop(pH-4, is-3)
-num(pH-4, 7-5)
-number(%-8, 2-7)
-amod(NaCl-9, %-8)
-conj_and(pH-4, NaCl-9)
-

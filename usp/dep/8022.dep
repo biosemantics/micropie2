@@ -1,9 +1,0 @@
-nn(protein-2, Ferments-1)
-nsubj(glucose-8, protein-2)
-amod(products-5, proteolytic-4)
-conj_and(protein-2, products-5)
-nsubj(glucose-8, products-5)
-conj_and(protein-2, carbohydrates-7)
-conj_and(products-5, carbohydrates-7)
-advmod(glucose-8, especially-9)
-

@@ -1,7 +1,0 @@
-amod(concentration-3, Optimal-1)
-nn(concentration-3, NaCl-2)
-nsubj(%-8, concentration-3)
-prep_for(concentration-3, growth-5)
-cop(%-8, is-6)
-num(%-8, 1.0-7)
-

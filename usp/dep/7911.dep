@@ -1,6 +1,0 @@
-nn(wall-2, Cell-1)
-nsubj(composed-3, wall-2)
-nn(layer-7, protein-5)
-nn(layer-7, surface-6)
-prep_of(composed-3, layer-7)
-

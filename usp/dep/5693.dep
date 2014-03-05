@@ -1,8 +1,0 @@
-nsubjpass(utilized-9, H2-CO2-1)
-conj_and(H2-CO2-1, formate-3)
-nsubjpass(utilized-9, formate-3)
-conj_and(H2-CO2-1, acetate-6)
-nsubjpass(utilized-9, acetate-6)
-auxpass(utilized-9, are-7)
-neg(utilized-9, not-8)
-

@@ -1,6 +1,0 @@
-num(%-4, 0.2-12-3)
-prep_between(Growth-1, %-4)
-dep(Growth-1, NaCl-5)
-num(.2-7, 4.5-7-6)
-dep(NaCl-5, .2-7)
-

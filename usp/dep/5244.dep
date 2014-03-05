@@ -1,6 +1,0 @@
-nn(sediment-3, Source-1)
-nn(sediment-3, Freshwater-2)
-nsubj(River-6, sediment-3)
-cop(River-6, is-4)
-amod(River-6, Olentangy-5)
-

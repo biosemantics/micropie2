@@ -1,6 +1,0 @@
-nsubj(inhibit-4, 1-Butanol-1)
-conj_and(1-Butanol-1, 2-butanol-3)
-nsubj(inhibit-4, 2-butanol-3)
-nn(production-6, methane-5)
-dobj(inhibit-4, production-6)
-

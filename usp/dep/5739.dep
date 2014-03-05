@@ -1,5 +1,0 @@
-det(organism-2, The-1)
-nsubjpass(lysed-4, organism-2)
-auxpass(lysed-4, is-3)
-agent(lysed-4, SDS-6)
-

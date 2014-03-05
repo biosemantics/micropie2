@@ -1,8 +1,0 @@
-csubj(Pits-10, Isolated-1)
-nn(sediments-4, surface-3)
-prep_from(Isolated-1, sediments-4)
-det(Tar-9, the-6)
-nn(Tar-9, La-7)
-nn(Tar-9, Brea-8)
-prep_at(Isolated-1, Tar-9)
-

@@ -1,5 +1,0 @@
-nn(envelope-2, Cell-1)
-nsubj(consists-3, envelope-2)
-quantmod(double-6, a-5)
-prep_of(consists-3, double-6)
-

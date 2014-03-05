@@ -1,5 +1,0 @@
-det(strains-2, Some-1)
-nsubj(produce-3, strains-2)
-dobj(produce-3, indole-4)
-prep_from(produce-3, tryptophan-6)
-

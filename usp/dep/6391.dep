@@ -1,7 +1,0 @@
-nn(pellets-2, Cell-1)
-nsubj(red-8, pellets-2)
-partmod(pellets-2, collected-3)
-agent(collected-3, centrifugation-5)
-cop(red-8, were-6)
-nn(red-8, brick-7)
-

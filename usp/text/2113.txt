@@ -1,1 +1,0 @@
-Minimal Mg2+ concentration 0.02 M.  Tolerant to 1.5 M Mg2+.

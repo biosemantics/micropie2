@@ -1,5 +1,0 @@
-dep(_-1, dot-2)
-number(mol-4, 54.5-3)
-num(%-5, mol-4)
-dep(dot-2, %-5)
-

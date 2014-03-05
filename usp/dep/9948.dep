@@ -1,9 +1,0 @@
-nsubjpass(observed-3, Growth-1)
-auxpass(observed-3, was-2)
-det(range-7, the-5)
-nn(range-7, pH-6)
-prep_in(observed-3, range-7)
-number(6.8-10, 4.6-8)
-dep(6.8-10, to-9)
-dep(range-7, 6.8-10)
-

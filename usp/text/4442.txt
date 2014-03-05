@@ -1,1 +1,0 @@
-Strain OCP requires yeast extract and peptone in addition to acetate, and strain AK-87 requires co-enzyme M and fatty acids in addition to these.

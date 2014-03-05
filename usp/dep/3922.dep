@@ -1,8 +1,0 @@
-det(lipids-4, The-1)
-amod(lipids-4, main-2)
-amod(lipids-4, cellular-3)
-nsubj(calditoglycerocaldiarchaeol-6, lipids-4)
-cop(calditoglycerocaldiarchaeol-6, are-5)
-appos(calditoglycerocaldiarchaeol-6, CGTE-8)
-conj_and(calditoglycerocaldiarchaeol-6, caldarchaeol-11)
-

@@ -1,8 +1,0 @@
-nn(composition-3, DNA-1)
-nn(composition-3, base-2)
-nsubj(GC-8, composition-3)
-cop(GC-8, is-4)
-num(GC-8, 53-5)
-nn(GC-8, mol-6)
-nn(GC-8, %-7)
-

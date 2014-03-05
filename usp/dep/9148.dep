@@ -1,9 +1,0 @@
-nsubj(able-3, LT-1)
-cop(able-3, is-2)
-aux(grow-5, to-4)
-xcomp(able-3, grow-5)
-nn(extract-8, yeast-7)
-prep_on(grow-5, extract-8)
-prep_on(grow-5, peptone-10)
-conj_or(extract-8, peptone-10)
-

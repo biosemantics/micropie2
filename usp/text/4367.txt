@@ -1,1 +1,0 @@
-Metabolizes H2 plus CO2 and formate (the latter very poorly), yielding CH4 as the sole product.

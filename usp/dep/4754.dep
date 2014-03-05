@@ -1,7 +1,0 @@
-amod(cells-2, Coccoid-1)
-nsubjpass(observed-4, cells-2)
-auxpass(observed-4, are-3)
-amod(cultures-8, late-exponential-6)
-nn(cultures-8, phase-7)
-prep_in(observed-4, cultures-8)
-

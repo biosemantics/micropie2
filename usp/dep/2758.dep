@@ -1,5 +1,0 @@
-nn(lysis-2, Cell-1)
-nsubj(occurs-3, lysis-2)
-amod(condition-6, hypotonic-5)
-prep_on(occurs-3, condition-6)
-

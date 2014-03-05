@@ -1,7 +1,0 @@
-nsubj(epilithic-3, It-1)
-cop(epilithic-3, is-2)
-prep_to(epilithic-3, alkaline-5)
-xcomp(epilithic-3, running-6)
-dobj(running-6, waters-7)
-advmod(running-6, slightly-8)
-

@@ -1,8 +1,0 @@
-det(spring-5, an-3)
-amod(spring-5, acidothermal-4)
-prep_from(Isolated-1, spring-5)
-prep_in(spring-5, Tengchong-7)
-nn(province-10, Yunnan-9)
-prep_of(Tengchong-7, province-10)
-prep_of(province-10, China-12)
-

@@ -1,6 +1,0 @@
-det(cells-2, The-1)
-nsubj(lack-3, cells-2)
-amod(walls-6, true-4)
-nn(walls-6, cell-5)
-dobj(lack-3, walls-6)
-

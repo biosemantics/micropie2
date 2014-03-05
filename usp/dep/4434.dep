@@ -1,8 +1,0 @@
-nsubj(stain-2, Cells-1)
-acomp(stain-2, Gram-positive-3)
-mark(evident-8, although-4)
-det(variability-6, some-5)
-nsubj(evident-8, variability-6)
-cop(evident-8, is-7)
-ccomp(Gram-positive-3, evident-8)
-

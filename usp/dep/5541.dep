@@ -1,7 +1,0 @@
-nsubjpass(surrounded-3, Cells-1)
-auxpass(surrounded-3, are-2)
-det(capsule-8, a-5)
-nn(capsule-8, slime-6)
-nn(capsule-8, polysaccharide-7)
-agent(surrounded-3, capsule-8)
-

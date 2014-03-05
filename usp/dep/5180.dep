@@ -1,7 +1,0 @@
-nsubj(substrates-7, H2-CO2-1)
-conj_and(H2-CO2-1, formate-3)
-nsubj(substrates-7, formate-3)
-cop(substrates-7, are-4)
-det(substrates-7, the-5)
-amod(substrates-7, only-6)
-

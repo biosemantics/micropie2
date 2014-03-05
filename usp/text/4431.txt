@@ -1,1 +1,0 @@
-The maximum salt tolerance for growth is 2.6 %.

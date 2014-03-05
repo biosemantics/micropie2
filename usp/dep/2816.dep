@@ -1,6 +1,0 @@
-nsubj(halophilic-3, Cells-1)
-nsubj(lyse-5, Cells-1)
-cop(halophilic-3, are-2)
-conj_and(halophilic-3, lyse-5)
-advmod(halophilic-3, extremely-6)
-

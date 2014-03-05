@@ -1,7 +1,0 @@
-amod(sludge-6, mesophilic-3)
-conj_and(mesophilic-3, thermophilic-5)
-amod(sludge-6, thermophilic-5)
-dep(Habitat-1, sludge-6)
-dep(Habitat-1, digesters-8)
-conj_or(sludge-6, digesters-8)
-

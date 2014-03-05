@@ -1,6 +1,0 @@
-num(%-2, 20-1)
-nsubj(NaCl-6, %-2)
-cop(NaCl-6, is-3)
-num(NaCl-6, 3.5-4)
-nn(NaCl-6, M-5)
-

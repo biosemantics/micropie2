@@ -1,8 +1,0 @@
-det(vents-6, the-3)
-nn(vents-6, Okinawa-4)
-nn(vents-6, Trough-5)
-prep_from(Isolated-1, vents-6)
-det(depth-9, a-8)
-prep_at(Isolated-1, depth-9)
-prep_of(depth-9, 1395m-11)
-

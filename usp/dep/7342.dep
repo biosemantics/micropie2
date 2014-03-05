@@ -1,6 +1,0 @@
-nsubj(red-3, Colonies-1)
-cop(red-3, are-2)
-ccomp(red-3, pigmented-4)
-nn(medium-7, Halobacteria-6)
-prep_in(pigmented-4, medium-7)
-

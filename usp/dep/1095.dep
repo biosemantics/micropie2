@@ -1,6 +1,0 @@
-nsubj(granular-3, Colonies-1)
-nsubj(subaerophytic-6, Colonies-1)
-cop(granular-3, are-2)
-advmod(subaerophytic-6, commonly-5)
-conj_and(granular-3, subaerophytic-6)
-

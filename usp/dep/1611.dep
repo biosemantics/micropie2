@@ -1,5 +1,0 @@
-nn(lipids-2, Polar-1)
-nsubj(based-3, lipids-2)
-nn(ethers-6, 23-di-O-phytanyl-sn-glycerol-5)
-prep_on(based-3, ethers-6)
-

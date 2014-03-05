@@ -1,8 +1,0 @@
-prep_to(Resistant-1, rifampicin-3)
-prep_to(Resistant-1, streptomycin-5)
-conj_and(rifampicin-3, streptomycin-5)
-prep_to(Resistant-1, vancomycin-7)
-conj_and(rifampicin-3, vancomycin-7)
-prep_to(Resistant-1, chloramphenicol-9)
-conj_and(rifampicin-3, chloramphenicol-9)
-

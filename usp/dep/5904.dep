@@ -1,8 +1,0 @@
-amod(colonies-2, Greenish-1)
-nsubj(formed-8, colonies-2)
-num(mm-5, 1-4)
-prep_about(colonies-2, mm-5)
-prep_in(mm-5, diameter-7)
-amod(plates-11, Gelrite-10)
-prep_on(formed-8, plates-11)
-

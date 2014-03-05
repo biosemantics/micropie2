@@ -1,7 +1,0 @@
-nsubj(lyse-2, Cells-1)
-nn(values-5, pH-4)
-prep_at(lyse-2, values-5)
-mwe(than-7, greater-6)
-quantmod(8.5-8, than-7)
-dep(values-5, 8.5-8)
-

@@ -1,8 +1,0 @@
-amod(culture-4, liquid-3)
-prep_in(Rods-1, culture-4)
-num(x-7, 0.5-1-5)
-num(x-7, .0-6)
-dep(Rods-1, x-7)
-num(µm-9, 2-15-8)
-dep(x-7, µm-9)
-

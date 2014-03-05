@@ -1,9 +1,0 @@
-nsubjpass(reduced-3, Sulfur-1)
-auxpass(reduced-3, is-2)
-prep_to(reduced-3, H2S-5)
-det(presence-8, the-7)
-prep_in(reduced-3, presence-8)
-prep_of(presence-8, CO2-10)
-prep_of(presence-8, H2-12)
-conj_and(CO2-10, H2-12)
-

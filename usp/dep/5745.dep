@@ -1,9 +1,0 @@
-det(content-3, The-1)
-amod(content-3, guanine-plus-cytosine-2)
-nsubj(%-10, content-3)
-det(DNA-6, the-5)
-prep_of(content-3, DNA-6)
-cop(%-10, is-7)
-number(mol-9, 39-8)
-num(%-10, mol-9)
-

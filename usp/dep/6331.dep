@@ -1,5 +1,0 @@
-nn(fluid-2, Rumen-1)
-nsubjpass(required-5, fluid-2)
-auxpass(required-5, is-3)
-neg(required-5, not-4)
-

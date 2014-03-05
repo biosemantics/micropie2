@@ -1,6 +1,0 @@
-nsubj(possess-2, May-1)
-det(wall-6, a-3)
-amod(wall-6, thick-4)
-nn(wall-6, cell-5)
-dobj(possess-2, wall-6)
-

@@ -1,8 +1,0 @@
-nsubj(occurs-2, Growth-1)
-num(˚C-4, 80-3)
-dobj(occurs-2, ˚C-4)
-dobj(occurs-2, pH-6)
-conj_and(˚C-4, pH-6)
-number(5.4-8, 2.3-7)
-dep(pH-6, 5.4-8)
-

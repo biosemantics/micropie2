@@ -1,8 +1,0 @@
-nsubjpass(influenced-3, Cell-1)
-auxpass(influenced-3, is-2)
-det(concentration-6, the-5)
-agent(influenced-3, concentration-6)
-amod(morphology-10, divalent-8)
-nn(morphology-10, cations-9)
-prep_of(concentration-6, morphology-10)
-

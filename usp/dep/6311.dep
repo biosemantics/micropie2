@@ -1,7 +1,0 @@
-nn(extract-4, Acetate-1)
-conj_or(Acetate-1, yeast-3)
-nn(extract-4, yeast-3)
-nsubjpass(required-6, extract-4)
-auxpass(required-6, is-5)
-prep_for(required-6, growth-8)
-

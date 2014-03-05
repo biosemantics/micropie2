@@ -1,7 +1,0 @@
-nn(novobiocin-3, Anisomycin-1)
-nn(novobiocin-3, bacitracin-2)
-nsubj(0\/129-7, novobiocin-3)
-conj_and(novobiocin-3, vibriostat-5)
-nsubj(0\/129-7, vibriostat-5)
-cop(0\/129-7, is-6)
-

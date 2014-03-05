@@ -1,5 +1,0 @@
-amod(bodies-2, Coccoid-1)
-nsubj(be-3, bodies-2)
-xcomp(be-3, occurring-4)
-advmod(occurring-4, mostly-5)
-

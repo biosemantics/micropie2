@@ -1,6 +1,0 @@
-nn(material-2, Organic-1)
-nsubj(stimulate-5, material-2)
-aux(stimulate-5, does-3)
-neg(stimulate-5, not-4)
-dobj(stimulate-5, growth-6)
-

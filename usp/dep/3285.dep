@@ -1,7 +1,0 @@
-advmod(lyse-6, Extremely-1)
-nsubj(lyse-6, halophilic-2)
-det(cells-5, the-4)
-conj_and(halophilic-2, cells-5)
-nsubj(lyse-6, cells-5)
-prep_in(lyse-6, water-8)
-

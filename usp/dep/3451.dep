@@ -1,7 +1,0 @@
-nn(lipids-7, C20C20-2)
-conj_and(C20C20-2, C20C25-4)
-nn(lipids-7, C20C25-4)
-nn(lipids-7, diether-5)
-nn(lipids-7, core-6)
-dobj(Possesses-1, lipids-7)
-

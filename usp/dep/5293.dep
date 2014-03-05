@@ -1,6 +1,0 @@
-nn(hydrates-2, Methane-1)
-nsubj(occur-3, hydrates-2)
-amod(sediments-6, deep-4)
-amod(sediments-6, marine-5)
-dobj(occur-3, sediments-6)
-

@@ -1,8 +1,0 @@
-det(salterns-5, the-3)
-amod(salterns-5, solar-4)
-prep_from(Isolated-1, salterns-5)
-nn(Rojo-8, Cabo-7)
-prep_of(salterns-5, Rojo-8)
-nn(Rico-11, Puerto-10)
-appos(Rojo-8, Rico-11)
-

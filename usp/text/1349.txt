@@ -1,1 +1,0 @@
-Produces acid from glucose, fructose, ribose, xylose, maltose, sucrose, mannitol, sorbitol, and glycerol.

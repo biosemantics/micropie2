@@ -1,9 +1,0 @@
-det(organism-2, The-1)
-nsubj(grows-3, organism-2)
-number(°-6, 37-5)
-num(C-7, °-6)
-prep_at(grows-3, C-7)
-advmod(grows-3, microaerophilically-8)
-advmod(grows-3, anaerobically-10)
-conj_or(microaerophilically-8, anaerobically-10)
-

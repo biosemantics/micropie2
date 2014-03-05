@@ -1,8 +1,0 @@
-nsubjpass(produced-3, Acid-1)
-auxpass(produced-3, is-2)
-prep_from(produced-3, glucose-5)
-prep_from(produced-3, trehalose-7)
-conj_and(glucose-5, trehalose-7)
-prep_from(produced-3, fructose-10)
-conj_and(glucose-5, fructose-10)
-

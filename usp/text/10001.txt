@@ -1,1 +1,0 @@
-Growth pH is extended to pH 5.9.

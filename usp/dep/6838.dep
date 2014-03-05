@@ -1,7 +1,0 @@
-nsubjpass(inhibited-3, Growth-1)
-auxpass(inhibited-3, is-2)
-num(%-6, 0.002-5)
-agent(inhibited-3, %-6)
-nn(blue-8, methylene-7)
-dep(%-6, blue-8)
-

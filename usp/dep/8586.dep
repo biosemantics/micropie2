@@ -1,7 +1,0 @@
-nsubj(vary-2, Cells-1)
-number(300-6, 200-4)
-dep(300-6, to-5)
-num(nm-7, 300-6)
-prep_from(vary-2, nm-7)
-prep_in(nm-7, diameter-9)
-

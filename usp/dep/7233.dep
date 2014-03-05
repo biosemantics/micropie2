@@ -1,9 +1,0 @@
-nsubjpass(hydrolysed-10, Gelatin-1)
-conj_and(Gelatin-1, Tweens-3)
-nsubjpass(hydrolysed-10, Tweens-3)
-num(Tweens-3, 20-4)
-appos(Tweens-3, 40-6)
-appos(Tweens-3, 80-8)
-conj_and(40-6, 80-8)
-auxpass(hydrolysed-10, are-9)
-

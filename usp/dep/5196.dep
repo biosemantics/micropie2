@@ -1,6 +1,0 @@
-nsubj(resist-2, Cells-1)
-dobj(resist-2, lysis-3)
-number(%-6, 1-5)
-amod(SDS-7, %-6)
-prep_by(resist-2, SDS-7)
-

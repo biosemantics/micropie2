@@ -1,7 +1,0 @@
-nsubj(grow-2, Colonies-1)
-number(1.5-6, 1.0-4)
-dep(1.5-6, to-5)
-num(mm-7, 1.5-6)
-prep_to(grow-2, mm-7)
-prep_in(grow-2, diameter-9)
-

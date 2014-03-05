@@ -1,8 +1,0 @@
-dep(terpenoid-3, Lipid-1)
-advmod(terpenoid-3, largely-2)
-det(derivatives-8, no-5)
-amod(derivatives-8, fatty-6)
-nn(derivatives-8, acid-7)
-dep(present-9, derivatives-8)
-parataxis(terpenoid-3, present-9)
-

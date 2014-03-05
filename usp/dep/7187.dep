@@ -1,5 +1,0 @@
-nn(requirement-4, growth-3)
-prep_with(Alkaliphilic-1, requirement-4)
-nn(carbonate-7, sodium-6)
-prep_for(Alkaliphilic-1, carbonate-7)
-

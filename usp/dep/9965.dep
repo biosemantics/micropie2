@@ -1,6 +1,0 @@
-nn(aggregates-2, Cell-1)
-nsubj(exhibit-3, aggregates-2)
-det(fluorescence-6, a-4)
-amod(fluorescence-6, bluish-green-5)
-dobj(exhibit-3, fluorescence-6)
-

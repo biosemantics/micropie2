@@ -1,9 +1,0 @@
-nsubjpass(hydrolysed-4, Tween-1)
-num(Tween-1, 80-2)
-auxpass(hydrolysed-4, is-3)
-acomp(hydrolysed-4, negative-5)
-nn(amylase-8, caseinase-7)
-prep_for(hydrolysed-4, amylase-8)
-prep_for(hydrolysed-4, gelatinase-10)
-conj_and(amylase-8, gelatinase-10)
-

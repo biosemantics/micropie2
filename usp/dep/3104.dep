@@ -1,5 +1,0 @@
-conj_and(Gelatin-1, starch-3)
-conj_and(Gelatin-1, casein-5)
-neg(hydrolysed-7, not-6)
-partmod(Gelatin-1, hydrolysed-7)
-

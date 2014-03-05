@@ -1,6 +1,0 @@
-nn(envelope-2, Cell-1)
-det(structure-7, a-4)
-amod(structure-7, hexagonal-5)
-nn(structure-7, subunit-6)
-prep_with(envelope-2, structure-7)
-

@@ -1,5 +1,0 @@
-nsubj(formed-4, H2S-1)
-conj_and(H2S-1, methane-3)
-nsubj(formed-4, methane-3)
-prep_during(formed-4, growth-6)
-

@@ -1,9 +1,0 @@
-aux(use-3, Could-1)
-neg(use-3, not-2)
-dobj(use-3, thiosulfate-4)
-dobj(use-3, sulfite-6)
-conj_or(thiosulfate-4, sulfite-6)
-dobj(use-3, sulfate-9)
-conj_or(thiosulfate-4, sulfate-9)
-prep_in_place_of(use-3, sulfur-13)
-

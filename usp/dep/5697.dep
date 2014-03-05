@@ -1,8 +1,0 @@
-det(range-3, The-1)
-nn(range-3, pH-2)
-nsubj(8.0-9, range-3)
-prep_for(range-3, growth-5)
-cop(8.0-9, is-6)
-number(8.0-9, 6.0-7)
-dep(8.0-9, to-8)
-

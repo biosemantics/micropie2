@@ -1,9 +1,0 @@
-nsubj(orange-4, Colonies-1)
-nsubj(circular-8, Colonies-1)
-nsubj(elevated-10, Colonies-1)
-cop(orange-4, are-2)
-amod(orange-4, pale-3)
-conj_and(orange-4, smooth-6)
-conj_and(orange-4, circular-8)
-conj_and(orange-4, elevated-10)
-

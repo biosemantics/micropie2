@@ -1,8 +1,0 @@
-nsubj(0.5-7, Maximum-1)
-amod(rate-4, specific-2)
-nn(rate-4, growth-3)
-dep(Maximum-1, rate-4)
-cop(0.5-7, is-5)
-quantmod(0.5-7, approximately-6)
-prep_per(0.5-7, hour-9)
-

@@ -1,9 +1,0 @@
-nn(akinetes-2, Ovate-1)
-nsubj(um-5, akinetes-2)
-cop(um-5, are-3)
-num(um-5, 12-14-4)
-prep_in(um-5, diameter-7)
-num(um-10, 18-20-9)
-prep_in(um-5, um-10)
-conj_and(diameter-7, um-10)
-

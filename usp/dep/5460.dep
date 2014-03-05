@@ -1,8 +1,0 @@
-amod(coccoid-2, Irregular-1)
-amod(cells-5, nonmotile-4)
-appos(coccoid-2, cells-5)
-amod(coccoid-2, 0.5-7)
-num(µm-10, 1.5-9)
-dep(coccoid-2, µm-10)
-prep_in(µm-10, diameter-12)
-

@@ -1,8 +1,0 @@
-nn(varium-2, Adj.-1)
-nsubj(varied-4, varium-2)
-amod(varium-2, diverse-3)
-dep(varied-4, intended-5)
-aux(mean-7, to-6)
-xcomp(intended-5, mean-7)
-acomp(mean-7, different-8)
-

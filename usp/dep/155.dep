@@ -1,8 +1,0 @@
-det(composition-4, The-1)
-nn(composition-4, DNA-2)
-nn(composition-4, base-3)
-nsubj(%-8, composition-4)
-cop(%-8, is-5)
-number(mol-7, 31-6)
-num(%-8, mol-7)
-

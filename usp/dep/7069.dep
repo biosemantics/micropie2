@@ -1,9 +1,0 @@
-nn(strain-2, Type-1)
-dep(strain-2, CKK-4)
-amod(ATCC-7, =-6)
-dep(CKK-4, ATCC-7)
-num(NCTC-10, 33553-8)
-amod(NCTC-10, =-9)
-dep(ATCC-7, NCTC-10)
-dep(NCTC-10, 10187-11)
-

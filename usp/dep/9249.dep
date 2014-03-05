@@ -1,4 +1,0 @@
-nn(strain-2, Reference-1)
-nn(GSE-PSE06-07G-5, Tapinothrix-4)
-dep(strain-2, GSE-PSE06-07G-5)
-

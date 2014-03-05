@@ -1,9 +1,0 @@
-amod(orange-9, small-2)
-conj_and(small-2, entire-4)
-amod(orange-9, entire-4)
-conj_and(small-2, smooth-6)
-amod(orange-9, smooth-6)
-conj_and(small-2, red-8)
-amod(orange-9, red-8)
-dep(Colonies-1, orange-9)
-

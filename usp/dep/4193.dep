@@ -1,8 +1,0 @@
-nsubjpass(reduced-3, Growth-1)
-auxpass(reduced-3, is-2)
-agent(reduced-3, penicillin-5)
-agent(reduced-3, vancomycin-7)
-conj_and(penicillin-5, vancomycin-7)
-agent(reduced-3, kanamycin-9)
-conj_and(penicillin-5, kanamycin-9)
-

@@ -1,8 +1,0 @@
-det(diameter-4, a-3)
-prep_with(Cocci-1, diameter-4)
-prep_of(diameter-4, 0.8-6)
-num(µm-9, 2-8)
-dep(Cocci-1, µm-9)
-partmod(µm-9, occurring-10)
-advmod(occurring-10, singly-11)
-

@@ -1,4 +1,0 @@
-num(mol-2, 38-1)
-nn(GC-4, %-3)
-dep(mol-2, GC-4)
-

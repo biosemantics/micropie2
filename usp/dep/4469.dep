@@ -1,4 +1,0 @@
-amod(temperature-2, Optimal-1)
-num(˚C-4, 37-40-3)
-dep(temperature-2, ˚C-4)
-

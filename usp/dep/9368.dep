@@ -1,6 +1,0 @@
-prep_of(Incapable-1, growth-3)
-amod(conditions-6, autotrophic-5)
-prep_under(Incapable-1, conditions-6)
-prep_with(Incapable-1, hydrogen-8)
-amod(hydrogen-8, present-9)
-

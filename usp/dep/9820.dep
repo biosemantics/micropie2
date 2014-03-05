@@ -1,7 +1,0 @@
-aux(grow-3, Did-1)
-neg(grow-3, not-2)
-advmod(grow-3, autotrophically-4)
-det(headspace-8, a-6)
-nn(headspace-8, H2\/CO2-7)
-prep_under(grow-3, headspace-8)
-

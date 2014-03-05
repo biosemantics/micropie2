@@ -1,9 +1,0 @@
-advmod(aerobic-2, Strictly-1)
-dep(used-6, aerobic-2)
-nsubjpass(used-6, oxygen-4)
-auxpass(used-6, is-5)
-det(acceptor-11, the-8)
-amod(acceptor-11, final-9)
-nn(acceptor-11, electron-10)
-prep_as(used-6, acceptor-11)
-

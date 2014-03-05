@@ -1,8 +1,0 @@
-aux(reduce-3, Does-1)
-neg(reduce-3, not-2)
-acomp(reduce-3, nitrate-4)
-aux(nitrite-6, to-5)
-xcomp(nitrate-4, nitrite-6)
-amod(conditions-9, aerobic-8)
-prep_under(nitrite-6, conditions-9)
-

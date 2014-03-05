@@ -1,7 +1,0 @@
-nsubj(mesophilic-3, Strains-1)
-cop(mesophilic-3, are-2)
-dep(mesophilic-3, range-5)
-num(range-5, 15-6)
-num(˚C-9, 45-8)
-prep_to(range-5, ˚C-9)
-

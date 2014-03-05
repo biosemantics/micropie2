@@ -1,8 +1,0 @@
-nsubj(present-5, Oxygen-1)
-conj_or(Oxygen-1, air-3)
-nsubj(present-5, air-3)
-cop(present-5, was-4)
-det(medium-9, the-7)
-nn(medium-9, culture-8)
-prep_in(present-5, medium-9)
-

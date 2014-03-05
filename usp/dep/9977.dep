@@ -1,7 +1,0 @@
-nn(acetate-2, CO2-1)
-nsubj(formed-5, acetate-2)
-conj_and(acetate-2, isovalerate-4)
-nsubj(formed-5, isovalerate-4)
-amod(products-8, metabolic-7)
-prep_as(formed-5, products-8)
-

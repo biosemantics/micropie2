@@ -1,7 +1,0 @@
-prep_from(Isolated-1, deep-sea-3)
-amod(systems-8, shallow-5)
-amod(systems-8, marine-6)
-amod(systems-8, hydrothermal-7)
-prep_from(Isolated-1, systems-8)
-conj_and(deep-sea-3, systems-8)
-

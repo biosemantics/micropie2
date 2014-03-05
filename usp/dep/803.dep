@@ -1,9 +1,0 @@
-nn(range-3, PH-1)
-nn(range-3, growth-2)
-number(6.8-7, 4.8-5)
-dep(6.8-7, to-6)
-prep_from(range-3, 6.8-7)
-prep_with(range-3, optimum-9)
-prep_at(range-3, pH-11)
-num(pH-11, 6.0-12)
-

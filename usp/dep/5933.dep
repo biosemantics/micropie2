@@ -1,9 +1,0 @@
-nn(vitamins-3, Coenzyme-1)
-nn(vitamins-3, M-2)
-nsubjpass(required-8, vitamins-3)
-nn(extract-6, yeast-5)
-conj_and(vitamins-3, extract-6)
-nsubjpass(required-8, extract-6)
-auxpass(required-8, were-7)
-prep_for(required-8, growth-10)
-

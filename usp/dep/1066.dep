@@ -1,6 +1,0 @@
-nsubj(1-3, Cells-1)
-cop(1-3, are-2)
-num(µm-6, 3-5)
-dep(1-3, µm-6)
-prep_in(µm-6, diameter-8)
-

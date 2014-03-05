@@ -1,5 +1,0 @@
-nsubj(serves-2, TMA-1)
-amod(substrate-5, catabolic-4)
-prep_as(serves-2, substrate-5)
-prep_with(serves-2, methane-7)
-

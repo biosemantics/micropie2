@@ -1,8 +1,0 @@
-dobj(Reduce-1, nitrate-2)
-aux(nitrite-4, to-3)
-xcomp(Reduce-1, nitrite-4)
-advmod(nitrite-4, aerobically-5)
-det(formation-8, the-7)
-prep_without(nitrite-4, formation-8)
-prep_of(formation-8, gas-10)
-

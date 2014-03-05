@@ -1,6 +1,0 @@
-advmod(anaerobic-2, Strictly-1)
-dep(anaerobic-2, mesophilic-4)
-conj_or(anaerobic-2, neutrophilic-6)
-advmod(alkaliphilic-9, mildly-8)
-conj_or(anaerobic-2, alkaliphilic-9)
-

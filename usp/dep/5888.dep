@@ -1,8 +1,0 @@
-amod(member-5, Methanogenic-1)
-conj_and(Methanogenic-1, obligattely-3)
-amod(member-5, obligattely-3)
-amod(member-5, anaerobic-4)
-det(Archaea-9, the-7)
-nn(Archaea-9, domain-8)
-prep_of(member-5, Archaea-9)
-

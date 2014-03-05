@@ -1,9 +1,0 @@
-nsubjpass(utilized-5, Fructose-1)
-conj_and(Fructose-1, sucrose-3)
-nsubjpass(utilized-5, sucrose-3)
-auxpass(utilized-5, are-4)
-det(production-8, the-7)
-prep_with(utilized-5, production-8)
-nn(Glucose-11, acid-10)
-prep_of(production-8, Glucose-11)
-

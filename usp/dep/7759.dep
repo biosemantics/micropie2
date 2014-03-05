@@ -1,7 +1,0 @@
-nsubjpass(observed-7, Pilli-1)
-conj_or(Pilli-1, flagella-3)
-nsubjpass(observed-7, flagella-3)
-aux(observed-7, have-4)
-neg(observed-7, not-5)
-auxpass(observed-7, been-6)
-

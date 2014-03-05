@@ -1,7 +1,0 @@
-nsubj(metabolized-8, Formate-1)
-conj_and(Formate-1, methanol-3)
-nsubj(metabolized-8, methanol-3)
-conj_and(Formate-1, methylamine-6)
-nsubj(metabolized-8, methylamine-6)
-neg(methylamine-6, not-7)
-

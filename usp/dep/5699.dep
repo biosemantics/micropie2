@@ -1,8 +1,0 @@
-nn(extract-2, Yeast-1)
-nsubj(essential-5, extract-2)
-nsubj(stimulates-7, extract-2)
-cop(essential-5, is-3)
-neg(essential-5, not-4)
-conj_but(essential-5, stimulates-7)
-dobj(stimulates-7, growth-8)
-

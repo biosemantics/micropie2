@@ -1,5 +1,0 @@
-nsubj(stain-2, Gram-1)
-nsubj(variable-5, results-3)
-cop(variable-5, are-4)
-ccomp(stain-2, variable-5)
-

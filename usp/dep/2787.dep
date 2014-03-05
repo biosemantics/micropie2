@@ -1,8 +1,0 @@
-prep_to(Susceptible-1, bacitracin-3)
-num(U-6, 10-5)
-appos(bacitracin-3, U-6)
-prep_to(Susceptible-1, novobiocin-9)
-conj_and(bacitracin-3, novobiocin-9)
-num(µg-12, 30-11)
-appos(bacitracin-3, µg-12)
-

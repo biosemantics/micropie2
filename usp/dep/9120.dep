@@ -1,7 +1,0 @@
-nsubj(µg-4, Which-1)
-cop(µg-4, are-2)
-num(µg-4, 40-3)
-det(tuft-7, a-6)
-prep_with(µg-4, tuft-7)
-prep_of(tuft-7, filaments-9)
-

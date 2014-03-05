@@ -1,7 +1,0 @@
-nsubj(enlarge-3, Spheres-1)
-aux(enlarge-3, can-2)
-xcomp(enlarge-3, producing-5)
-amod(forms-8, coccoid-6)
-nn(forms-8, cell-7)
-dobj(producing-5, forms-8)
-

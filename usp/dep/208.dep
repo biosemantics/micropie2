@@ -1,7 +1,0 @@
-nsubj(wide-3, Cells-1)
-cop(wide-3, are-2)
-number(1.5-7, 1-5)
-dep(1.5-7, to-6)
-num(µm-8, 1.5-7)
-prep_about(wide-3, µm-8)
-

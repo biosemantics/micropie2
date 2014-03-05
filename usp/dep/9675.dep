@@ -1,8 +1,0 @@
-det(presence-2, The-1)
-nsubj(had-5, presence-2)
-prep_of(presence-2, NH4Cl-4)
-det(effect-8, a-6)
-amod(effect-8, stimulating-7)
-dobj(had-5, effect-8)
-prep_on(effect-8, growth-10)
-

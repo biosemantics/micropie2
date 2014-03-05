@@ -1,7 +1,0 @@
-det(hypolimnion-5, the-3)
-amod(hypolimnion-5, anoxic-4)
-prep_from(Isolated-1, hypolimnion-5)
-nn(Lake-8, Ace-7)
-prep_of(hypolimnion-5, Lake-8)
-appos(Lake-8, Antarctica-10)
-

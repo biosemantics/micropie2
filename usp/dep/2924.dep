@@ -1,9 +1,0 @@
-nsubj(small-3, Colonies-1)
-nsubj(entire-5, Colonies-1)
-nsubj(smooth-7, Colonies-1)
-nsubj(red-pigmented-9, Colonies-1)
-cop(small-3, are-2)
-conj_and(small-3, entire-5)
-conj_and(small-3, smooth-7)
-conj_and(small-3, red-pigmented-9)
-

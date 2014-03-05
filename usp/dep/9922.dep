@@ -1,9 +1,0 @@
-csubj(grows-2, Grows-1)
-advmod(best-5, even-3)
-advmod(best-5, up-4)
-advmod(grows-2, best-5)
-prep_at(grows-2, pH-7)
-num(pH-7, 5-8)
-prep_at(grows-2, 90-10)
-conj_and(pH-7, 90-10)
-

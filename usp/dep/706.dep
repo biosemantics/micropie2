@@ -1,6 +1,0 @@
-det(rDNA-3, The-1)
-nn(rDNA-3, 16s-2)
-nsubj(contain-5, rDNA-3)
-aux(contain-5, may-4)
-dobj(contain-5, introns-6)
-

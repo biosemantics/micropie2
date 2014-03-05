@@ -1,7 +1,0 @@
-prep_on(Grows-1, peptone-3)
-nn(extract-6, yeast-5)
-prep_on(Grows-1, extract-6)
-conj_and(peptone-3, extract-6)
-prep_on(Grows-1, starch-9)
-conj_and(peptone-3, starch-9)
-

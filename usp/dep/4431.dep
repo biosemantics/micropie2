@@ -1,8 +1,0 @@
-det(tolerance-4, The-1)
-nn(tolerance-4, maximum-2)
-nn(tolerance-4, salt-3)
-nsubj(%-9, tolerance-4)
-prep_for(tolerance-4, growth-6)
-cop(%-9, is-7)
-num(%-9, 2.6-8)
-

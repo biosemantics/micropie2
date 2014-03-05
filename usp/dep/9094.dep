@@ -1,6 +1,0 @@
-amod(growth-2, Optimal-1)
-nsubj(is-3, growth-2)
-prep_at(is-3, pH-5)
-number(3-7, 2.5-6)
-num(pH-5, 3-7)
-

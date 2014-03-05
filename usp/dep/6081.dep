@@ -1,4 +1,0 @@
-nn(%-2, Mol-1)
-nsubj(ranges-3, %-2)
-prep_from(ranges-3, 39-44-5)
-

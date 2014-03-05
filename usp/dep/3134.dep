@@ -1,5 +1,0 @@
-nsubj(positive-5, Catalase-1)
-conj_and(Catalase-1, oxidase-3)
-nsubj(positive-5, oxidase-3)
-cop(positive-5, are-4)
-

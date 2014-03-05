@@ -1,9 +1,0 @@
-nsubj(circular-3, Colonies-1)
-cop(circular-3, are-2)
-csubj(greyish-10, surrounded-4)
-det(zone-8, a-6)
-amod(zone-8, white-7)
-prep_by(surrounded-4, zone-8)
-cop(greyish-10, is-9)
-ccomp(circular-3, greyish-10)
-

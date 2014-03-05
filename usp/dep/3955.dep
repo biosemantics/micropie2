@@ -1,8 +1,0 @@
-amod(oxidation-3, Aerobic-1)
-nn(oxidation-3, hydrogen-2)
-amod(concentrations-7, optimal-5)
-tmod(optimal-5, O2-6)
-appos(oxidation-3, concentrations-7)
-num(%-10, 0.5-9)
-prep_around(concentrations-7, %-10)
-

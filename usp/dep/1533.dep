@@ -1,9 +1,0 @@
-conj_+(Mg2-1, requirements-3)
-dep(Mg2-1, 0.05-0-4)
-num(range-8, .1-5)
-nn(range-8, M.-6)
-nn(range-8, pH-7)
-dep(0.05-0-4, range-8)
-num(.0-10, 5.5-8-9)
-dep(0.05-0-4, .0-10)
-

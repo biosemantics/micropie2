@@ -1,8 +1,0 @@
-nsubj(H2\/CO2-8, Substrates-1)
-nn(production-6, growth-3)
-conj_and(growth-3, methane-5)
-nn(production-6, methane-5)
-prep_for(Substrates-1, production-6)
-cop(H2\/CO2-8, are-7)
-conj_and(H2\/CO2-8, formate-10)
-

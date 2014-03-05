@@ -1,9 +1,0 @@
-num(%-2, 2-1)
-nsubj(occurs-6, %-2)
-nn(growth-5, magnesium-3)
-nn(growth-5, Optimum-4)
-dep(%-2, growth-5)
-det(presence-9, the-8)
-prep_in(occurs-6, presence-9)
-prep_of(presence-9, 1-11)
-

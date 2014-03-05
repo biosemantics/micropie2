@@ -1,4 +1,0 @@
-conj_and(Motility-1, flagella-3)
-neg(observed-5, not-4)
-partmod(Motility-1, observed-5)
-

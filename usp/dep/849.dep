@@ -1,8 +1,0 @@
-det(G+C-4, The-1)
-amod(G+C-4, mol-2)
-nn(G+C-4, %-3)
-nsubj(51.3-9, G+C-4)
-det(DNA-7, the-6)
-prep_of(G+C-4, DNA-7)
-cop(51.3-9, is-8)
-

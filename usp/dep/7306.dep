@@ -1,6 +1,0 @@
-nn(gelatin-2, Liquefies-1)
-nsubj(produce-5, gelatin-2)
-aux(produce-5, does-3)
-neg(produce-5, not-4)
-dobj(produce-5, sulphide-6)
-

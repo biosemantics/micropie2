@@ -1,8 +1,0 @@
-nsubjpass(produced-8, Phosphatidyl-1)
-dep(Phosphatidyl-1, glycerol-2)
-dep(Phosphatidyl-1, methylated-4)
-conj_and(glycerol-2, methylated-4)
-nn(glycerol-6, phosphatidyl-5)
-dobj(methylated-4, glycerol-6)
-auxpass(produced-8, are-7)
-

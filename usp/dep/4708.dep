@@ -1,5 +1,0 @@
-amod(hydrothermal-4, deep-sea-3)
-prep_from(Isolated-1, hydrothermal-4)
-ccomp(Isolated-1, vent-5)
-dobj(vent-5, fluid-6)
-

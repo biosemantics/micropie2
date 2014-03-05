@@ -1,1 +1,0 @@
-Electron donors not utilized: lactate, citrate, alanine, histidine, proline, glycine, L-Cysteine, aspartic acid, glutamic acid, DMSO, catechol, phenol, toluene, benzene, benzoic acid, and Fe(II).

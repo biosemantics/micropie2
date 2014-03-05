@@ -1,7 +1,0 @@
-nsubj(%-8, H2-1)
-det(phase-5, the-3)
-nn(phase-5, gas-4)
-prep_in(H2-1, phase-5)
-cop(%-8, is-6)
-num(%-8, 100-7)
-

@@ -1,7 +1,0 @@
-dep(adj.-1, litorale-2)
-det(shore-6, the-5)
-prep_of(adj.-1, shore-6)
-amod(area-9, coastal-8)
-prep_of(adj.-1, area-9)
-conj_or(shore-6, area-9)
-

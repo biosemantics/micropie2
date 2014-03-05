@@ -1,6 +1,0 @@
-nsubj(act-4, Sulfur-1)
-conj_or(Sulfur-1, thiosulfate-3)
-nsubj(act-4, thiosulfate-3)
-nn(acceptors-7, electron-6)
-prep_as(act-4, acceptors-7)
-

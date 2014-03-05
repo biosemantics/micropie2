@@ -1,6 +1,0 @@
-det(reaction-2, The-1)
-nsubj(negative-7, reaction-2)
-prep_for(reaction-2, Tween-4)
-num(Tween-4, 80-5)
-cop(negative-7, is-6)
-

@@ -1,9 +1,0 @@
-advmod(irregular-2, Slightly-1)
-dep(irregular-2, cocci-3)
-num(µm-7, 1.2-3-6)
-prep_about(irregular-2, µm-7)
-nn(flagella-13, diameter-9)
-amod(flagella-13, monopolar-11)
-amod(flagella-13, polytrichous-12)
-prep_in(µm-7, flagella-13)
-

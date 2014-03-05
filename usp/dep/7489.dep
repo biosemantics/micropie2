@@ -1,7 +1,0 @@
-det(range-3, a-2)
-dobj(Utilizes-1, range-3)
-nn(acids-6, amino-5)
-prep_of(range-3, acids-6)
-prep_of(range-3, sugars-8)
-conj_and(acids-6, sugars-8)
-

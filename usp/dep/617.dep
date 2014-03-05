@@ -1,6 +1,0 @@
-amod(salt-4, extreme-3)
-prep_under(thrives-1, salt-4)
-nn(conditions-7, pH-6)
-prep_under(thrives-1, conditions-7)
-conj_and(salt-4, conditions-7)
-

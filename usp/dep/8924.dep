@@ -1,7 +1,0 @@
-prep_to(Resistant-1, vancomycin-3)
-appos(vancomycin-3, kanamycin-5)
-appos(vancomycin-3, streptomycin-7)
-conj_and(kanamycin-5, streptomycin-7)
-appos(vancomycin-3, chloramphenicol-10)
-conj_and(kanamycin-5, chloramphenicol-10)
-

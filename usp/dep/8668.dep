@@ -1,7 +1,0 @@
-nn(Type-3, _-1)
-nn(Type-3, dot-2)
-nn(%-7, strain-4)
-num(%-7, 30-31-5)
-nn(%-7, mol-6)
-dep(Type-3, %-7)
-

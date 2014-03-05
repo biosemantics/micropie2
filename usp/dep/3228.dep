@@ -1,7 +1,0 @@
-nsubj(occurs-2, Growth-1)
-advmod(occurs-2, only-3)
-prep_between(occurs-2, pH-5)
-num(pH-5, 7.0-6)
-prep_between(occurs-2, 8.0-8)
-conj_and(pH-5, 8.0-8)
-

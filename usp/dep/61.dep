@@ -1,8 +1,0 @@
-nn(n.-5, M.-1)
-nn(n.-5, L.-2)
-nn(n.-5, pl-3)
-nn(n.-5, L.-4)
-nn(pig-8, cavia-6)
-nn(pig-8, guinea-7)
-dep(n.-5, pig-8)
-

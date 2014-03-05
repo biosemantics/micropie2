@@ -1,7 +1,0 @@
-nn(strain-2, Type-1)
-nsubj(A33T-4, strain-2)
-cop(A33T-4, is-3)
-partmod(A33T-4, deposited-5)
-amod(1.1984-8, AS-7)
-prep_as(deposited-5, 1.1984-8)
-

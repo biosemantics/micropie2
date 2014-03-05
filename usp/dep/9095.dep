@@ -1,9 +1,0 @@
-det(growth-2, No-1)
-nsubjpass(detected-4, growth-2)
-auxpass(detected-4, was-3)
-prep_at(detected-4, pH-6)
-num(pH-6, 1-7)
-prep_at(detected-4, pH-9)
-conj_or(pH-6, pH-9)
-num(pH-9, 6-10)
-

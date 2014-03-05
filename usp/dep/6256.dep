@@ -1,8 +1,0 @@
-nsubj(26-5, G-1)
-conj_+(G-1, C-3)
-nsubj(26-5, C-3)
-cop(26-5, is-4)
-det(%-8, The-6)
-nn(%-8, mol-7)
-dep(26-5, %-8)
-

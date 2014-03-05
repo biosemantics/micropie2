@@ -1,7 +1,0 @@
-amod(sludge-5, mesophilic-3)
-nn(sludge-5, sewage-4)
-dep(Habitat-1, sludge-5)
-amod(springs-8, hot-7)
-dep(Habitat-1, springs-8)
-conj_and(sludge-5, springs-8)
-

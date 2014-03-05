@@ -1,6 +1,0 @@
-det(Voges-2, The-1)
-nn(test-5, Proskauer-4)
-nsubj(negative-7, test-5)
-cop(negative-7, is-6)
-dep(Voges-2, negative-7)
-

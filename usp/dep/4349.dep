@@ -1,7 +1,0 @@
-amod(Gram-1, positive-like-2)
-prep_by(positive-like-2, staining-4)
-nn(ultrastructure-8, cell-6)
-nn(ultrastructure-8, wall-7)
-prep_by(positive-like-2, ultrastructure-8)
-conj_and(staining-4, ultrastructure-8)
-

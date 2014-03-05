@@ -1,7 +1,0 @@
-nsubj(regular-3, Cells-1)
-cop(regular-3, are-2)
-amod(cocci-6, irregular-5)
-prep_to(regular-3, cocci-6)
-prep_to(regular-3, variable-8)
-conj_and(cocci-6, variable-8)
-

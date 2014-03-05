@@ -1,6 +1,0 @@
-nsubjpass(hydrolysed-6, Gelatin-1)
-conj_and(Gelatin-1, casein-3)
-nsubjpass(hydrolysed-6, casein-3)
-auxpass(hydrolysed-6, are-4)
-neg(hydrolysed-6, not-5)
-

@@ -1,8 +1,0 @@
-nsubjpass(used-5, Methylamines-1)
-conj_and(Methylamines-1, methanol-3)
-nsubjpass(used-5, methanol-3)
-auxpass(used-5, are-4)
-prep_for(used-5, growth-7)
-prep_for(used-5, methanogenesis-9)
-conj_and(growth-7, methanogenesis-9)
-

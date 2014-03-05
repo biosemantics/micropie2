@@ -1,9 +1,0 @@
-prep_to(Resistant-1, penicillin-3)
-appos(penicillin-3, chloramphenicol-5)
-appos(penicillin-3, streptomycin-7)
-conj_and(chloramphenicol-5, streptomycin-7)
-appos(penicillin-3, erythromycin-9)
-conj_and(chloramphenicol-5, erythromycin-9)
-appos(penicillin-3, tetracycline-12)
-conj_and(chloramphenicol-5, tetracycline-12)
-

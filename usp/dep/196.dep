@@ -1,6 +1,0 @@
-nsubjpass(produced-6, Phosphatase-1)
-conj_and(Phosphatase-1, urease-3)
-nsubjpass(produced-6, urease-3)
-auxpass(produced-6, are-4)
-neg(produced-6, not-5)
-

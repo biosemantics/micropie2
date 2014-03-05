@@ -1,7 +1,0 @@
-nn(composition-3, DNA-1)
-nn(composition-3, base-2)
-number(mol-5, 43-4)
-num(%-6, mol-5)
-dep(composition-3, %-6)
-dep(%-6, G+C-7)
-

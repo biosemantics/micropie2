@@ -1,7 +1,0 @@
-nsubj(reveals-2, Phase-1)
-amod(cells-4, single-3)
-dobj(reveals-2, cells-4)
-nn(forms-7, dumbbell-6)
-dobj(reveals-2, forms-7)
-conj_and(cells-4, forms-7)
-

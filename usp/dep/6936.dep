@@ -1,9 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(differ-6, strain-3)
-aux(differ-6, does-4)
-neg(differ-6, not-5)
-det(strain-10, the-8)
-nn(strain-10, Jones-9)
-prep_from(differ-6, strain-10)
-

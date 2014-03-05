@@ -1,8 +1,0 @@
-amod(2,3-diphosphoglycerate-2, Cyclic-1)
-dep(present-3, 2,3-diphosphoglycerate-2)
-amod(concentrations-6, high-5)
-prep_in(present-3, concentrations-6)
-dep(present-3, up-8)
-num(M-11, 1.1-10)
-prep_to(up-8, M-11)
-

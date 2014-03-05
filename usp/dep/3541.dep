@@ -1,9 +1,0 @@
-prep_by(Grows-1, fermentation-3)
-nn(products-6, proteolysis-5)
-prep_of(fermentation-3, products-6)
-dep(products-6, e.g.-8)
-dep(products-6, tryptones-10)
-conj_and(e.g.-8, tryptones-10)
-dep(products-6, gelatin-12)
-conj_and(e.g.-8, gelatin-12)
-

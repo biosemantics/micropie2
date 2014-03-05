@@ -1,7 +1,0 @@
-nsubj(0.8-1-4, Cells-1)
-cop(0.8-1-4, are-2)
-amod(0.8-1-4, cocci-3)
-num(µm-6, .0-5)
-npadvmod(irregular-7, µm-6)
-amod(0.8-1-4, irregular-7)
-

@@ -1,9 +1,0 @@
-det(properties-4, the-2)
-amod(properties-4, following-3)
-dobj(Displays-1, properties-4)
-prep_in(properties-4, addition-6)
-prep_to(properties-4, those-8)
-partmod(those-8, described-9)
-det(genus-12, the-11)
-prep_for(described-9, genus-12)
-

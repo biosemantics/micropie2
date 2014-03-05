@@ -1,7 +1,0 @@
-det(strains-2, Some-1)
-nsubj(utilize-3, strains-2)
-dobj(utilize-3, thiosulfate-4)
-det(source-8, a-6)
-nn(source-8, sulfur-7)
-prep_as(utilize-3, source-8)
-

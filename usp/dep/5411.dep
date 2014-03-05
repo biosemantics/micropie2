@@ -1,8 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(AK-7-5, strain-3)
-cop(AK-7-5, is-4)
-dep(AK-7-5, OCM-7)
-num(17338-9, 787\/DSMZ-8)
-dep(OCM-7, 17338-9)
-

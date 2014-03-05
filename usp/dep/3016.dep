@@ -1,9 +1,0 @@
-nsubj(µm-9, Cell-1)
-cop(µm-9, are-2)
-amod(µm-9, disc-shaped-3)
-number(.8-5, 1.2-0-4)
-dep(disc-shaped-3, .8-5)
-prep(.8-5, x-6)
-num(.5-8, 1.0-1-7)
-dep(x-6, .5-8)
-

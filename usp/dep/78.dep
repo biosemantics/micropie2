@@ -1,9 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(GP3-6, strain-3)
-cop(GP3-6, is-4)
-nn(GP3-6, strain-5)
-amod(NCTC-9, =-8)
-dep(GP3-6, NCTC-9)
-dep(NCTC-9, 11727-10)
-

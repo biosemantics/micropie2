@@ -1,9 +1,0 @@
-csubjpass(produced-9, Reduces-1)
-acomp(Reduces-1, nitrate-2)
-aux(nitrite-4, to-3)
-xcomp(nitrate-2, nitrite-4)
-xcomp(nitrate-2, indole-6)
-conj_and(nitrite-4, indole-6)
-auxpass(produced-9, is-7)
-neg(produced-9, not-8)
-

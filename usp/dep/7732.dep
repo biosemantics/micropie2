@@ -1,5 +1,0 @@
-advmod(Growth-1, also-2)
-nn(peptone-5, yeast-4)
-prep_on(Growth-1, peptone-5)
-prep_without(Growth-1, S˚-7)
-

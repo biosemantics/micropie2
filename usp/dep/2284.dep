@@ -1,5 +1,0 @@
-csubj(produces-2, Reduces-1)
-dobj(produces-2, H2S-3)
-nn(thiosulfate-6, sodium-5)
-prep_from(produces-2, thiosulfate-6)
-

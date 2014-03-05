@@ -1,7 +1,0 @@
-det(range-3, The-1)
-nn(range-3, pH-2)
-nsubj(8.2-7, range-3)
-cop(8.2-7, was-4)
-number(8.2-7, 5.0-5)
-dep(8.2-7, to-6)
-

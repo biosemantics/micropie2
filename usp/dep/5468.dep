@@ -1,7 +1,0 @@
-nsubjpass(used-6, Methanol-1)
-conj_or(Methanol-1, acetate-3)
-nsubjpass(used-6, acetate-3)
-auxpass(used-6, are-4)
-neg(used-6, not-5)
-prep_for(used-6, methanogenesis-8)
-

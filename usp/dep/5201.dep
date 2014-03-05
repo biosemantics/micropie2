@@ -1,7 +1,0 @@
-nsubj(used-3, Formate-1)
-neg(used-3, not-2)
-nn(formation-8, growth-5)
-conj_or(growth-5, methane-7)
-nn(formation-8, methane-7)
-prep_for(used-3, formation-8)
-

@@ -1,6 +1,0 @@
-nsubj(shorter-3, Cells-1)
-cop(shorter-3, become-2)
-amod(cultures-7, older-5)
-amod(cultures-7, liquid-6)
-prep_in(shorter-3, cultures-7)
-

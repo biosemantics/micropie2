@@ -1,7 +1,0 @@
-amod(colonies-2, Mulberry-1)
-nsubj(common-4, colonies-2)
-cop(common-4, are-3)
-amod(plates-8, primary-6)
-nn(plates-8, isolation-7)
-prep_on(common-4, plates-8)
-

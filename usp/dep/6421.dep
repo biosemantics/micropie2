@@ -1,8 +1,0 @@
-det(content-4, The-1)
-nn(content-4, DNA-2)
-nn(content-4, G+C-3)
-nsubjpass(determined-6, content-4)
-auxpass(determined-6, is-5)
-amod(denaturation-9, thermal-8)
-agent(determined-6, denaturation-9)
-

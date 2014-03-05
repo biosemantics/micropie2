@@ -1,1 +1,0 @@
-Could not use arabinose, fructose, galactose, glucose, lactose, maltose, mannose, ribose, sucrose, xylose, acetate, butyrate, citrate, formate, fumarate, lactate, malate, propionate, pyruvate, succinate, methanol, formamide, methylamine, or trimethylamine.

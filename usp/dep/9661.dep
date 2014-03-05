@@ -1,7 +1,0 @@
-nn(range-2, PH-1)
-prep_of(range-2, growth-4)
-det(optimum-7, the-6)
-prep_with(range-2, optimum-7)
-prep_around(optimum-7, pH-9)
-num(pH-9, 6-10)
-

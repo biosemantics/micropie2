@@ -1,6 +1,0 @@
-nn(Gram-3, dot-2)
-dep(_-1, Gram-3)
-quantmod(62.7-5, negative-4)
-num(%-6, 62.7-5)
-dep(Gram-3, %-6)
-

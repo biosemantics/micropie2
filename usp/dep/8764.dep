@@ -1,5 +1,0 @@
-amod(filaments-2, Helical-1)
-num(nm-4, 200-250-3)
-dep(filaments-2, nm-4)
-prep_in(nm-4, diameter-6)
-

@@ -1,9 +1,0 @@
-nsubjpass(used-6, Sulfate-1)
-conj_and(Sulfate-1, thiosulfate-3)
-nsubjpass(used-6, thiosulfate-3)
-auxpass(used-6, are-4)
-neg(used-6, not-5)
-nn(acceptors-9, electron-8)
-prep_as(used-6, acceptors-9)
-dep(acceptors-9, Nitrate-10)
-

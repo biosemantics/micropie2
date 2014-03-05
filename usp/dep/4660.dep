@@ -1,9 +1,0 @@
-nsubjpass(stimulated-3, Growth-1)
-auxpass(stimulated-3, is-2)
-agent(stimulated-3, selenate-5)
-agent(stimulated-3, tungstate-7)
-conj_and(selenate-5, tungstate-7)
-nn(extract-10, yeast-9)
-agent(stimulated-3, extract-10)
-conj_and(selenate-5, extract-10)
-

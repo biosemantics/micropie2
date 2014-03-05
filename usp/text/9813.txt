@@ -1,1 +1,0 @@
-Species is capable of fermenting yeast, peptone, tryptone, beef extract, and casein.

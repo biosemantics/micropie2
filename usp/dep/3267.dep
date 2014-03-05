@@ -1,6 +1,0 @@
-det(sheath-2, No-1)
-nsubj(visible-4, sheath-2)
-cop(visible-4, is-3)
-nn(microscopy-7, light-6)
-prep_under(visible-4, microscopy-7)
-

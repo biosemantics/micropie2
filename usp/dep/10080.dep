@@ -1,8 +1,0 @@
-nsubjpass(metabolized-8, Arginine-1)
-det(carbohydrates-5, the-3)
-amod(carbohydrates-5, usual-4)
-conj_and(Arginine-1, carbohydrates-5)
-nsubjpass(metabolized-8, carbohydrates-5)
-auxpass(metabolized-8, are-6)
-neg(metabolized-8, not-7)
-

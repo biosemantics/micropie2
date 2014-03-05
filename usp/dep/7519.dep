@@ -1,7 +1,0 @@
-nsubj(ca.-3, Cells-1)
-cop(ca.-3, were-2)
-dep(ca.-3, 0.5-4)
-num(µm-7, 3-5-6)
-conj_x(ca.-3, µm-7)
-amod(µm-7, wide-8)
-

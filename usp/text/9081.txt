@@ -1,1 +1,0 @@
-Capable of using D-arabinose, D-xylose, D-galactose, maltose, sucrose, D-fructose, L-glutamic acid, tryptone, and yeast extract.

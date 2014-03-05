@@ -1,5 +1,0 @@
-det(growth-2, No-1)
-nsubj(observed-3, growth-2)
-amod(medium-6, sulfur-free-5)
-prep_in(observed-3, medium-6)
-

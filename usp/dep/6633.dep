@@ -1,9 +1,0 @@
-det(strains-6, all-5)
-conj_negcc(Most-1, strains-6)
-nn(pig-9, haemadsorb-7)
-nn(pig-9, guinea-8)
-dep(Most-1, pig-9)
-nn(erythrocytes-12, tortoise-11)
-dep(Most-1, erythrocytes-12)
-conj_and(pig-9, erythrocytes-12)
-

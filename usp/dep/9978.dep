@@ -1,5 +1,0 @@
-nn(inhibition-2, Growth-1)
-prep_by(inhibition-2, sulfur-4)
-prep_by(inhibition-2, hydrogen-6)
-conj_or(sulfur-4, hydrogen-6)
-

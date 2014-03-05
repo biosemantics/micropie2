@@ -1,9 +1,0 @@
-nsubjpass(retarded-3, Growth-1)
-auxpass(retarded-3, is-2)
-dep(%-6, 0.05-5)
-advmod(acetate-8, %-6)
-nn(acetate-8, thallium-7)
-agent(retarded-3, acetate-8)
-agent(retarded-3, penicillins-12)
-conj_negcc(acetate-8, penicillins-12)
-

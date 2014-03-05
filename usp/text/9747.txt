@@ -1,1 +1,0 @@
-Grows with peptone, bacto-tryptone, Casamino acids and yeast extract as electron donors, but no growth on D-glucose, fructose, maltose, sucrose, D-mannitol, glycerol, methanol, ethanol, butyrate, propionate, acetate, formate, lactate, pyruvate, citrate or amino acids.

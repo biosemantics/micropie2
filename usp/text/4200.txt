@@ -1,1 +1,0 @@
-Uses H2\/CO2 for methane production only.

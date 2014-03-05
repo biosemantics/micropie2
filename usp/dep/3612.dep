@@ -1,7 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(AQ1-7, strain-3)
-cop(AQ1-7, is-4)
-nn(AQ1-7, Ignisphaera-5)
-nn(AQ1-7, aggregans-6)
-

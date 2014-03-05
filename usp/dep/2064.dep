@@ -1,9 +1,0 @@
-quantmod(1-3, At-1)
-mwe(At-1, least-2)
-num(Mg2-5, 1-3)
-nn(Mg2-5, mM-4)
-nsubj(Requires-9, Mg2-5)
-cc(Requires-9, +-6)
-advmod(Requires-9, for-7)
-pobj(for-7, growth-8)
-

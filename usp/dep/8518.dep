@@ -1,8 +1,0 @@
-nsubjpass(verified-8, Pathogenicity-1)
-prep_for(Pathogenicity-1, plants-3)
-prep_for(Pathogenicity-1, insects-5)
-conj_and(plants-3, insects-5)
-aux(verified-8, has-6)
-auxpass(verified-8, been-7)
-advmod(verified-8, experimentally-9)
-

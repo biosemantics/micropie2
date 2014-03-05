@@ -1,8 +1,0 @@
-det(organisms-2, The-1)
-nsubj(resistant-4, organisms-2)
-cop(resistant-4, are-3)
-nn(ampicillin-7, vancomycin-6)
-prep_to(resistant-4, ampicillin-7)
-prep_to(resistant-4, kanamycin-9)
-conj_and(ampicillin-7, kanamycin-9)
-

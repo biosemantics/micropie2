@@ -1,9 +1,0 @@
-det(isolates-2, These-1)
-nsubj(metabolized-3, isolates-2)
-preconj(arginine-5, both-4)
-dobj(metabolized-3, arginine-5)
-dobj(metabolized-3, glucose-7)
-conj_and(arginine-5, glucose-7)
-dobj(metabolized-3, urea-10)
-conj_negcc(arginine-5, urea-10)
-

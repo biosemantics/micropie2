@@ -1,7 +1,0 @@
-nsubj(circular-3, Colonies-1)
-cop(circular-3, are-2)
-number(2-5, 1-4)
-num(mm-6, 2-5)
-dep(circular-3, mm-6)
-prep_in(circular-3, diameter-8)
-

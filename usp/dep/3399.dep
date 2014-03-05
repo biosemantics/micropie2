@@ -1,6 +1,0 @@
-nsubjpass(hydrolysed-6, Tweens-1)
-dep(Tweens-1, 40-2)
-dep(Tweens-1, 80-4)
-conj_and(40-2, 80-4)
-auxpass(hydrolysed-6, are-5)
-

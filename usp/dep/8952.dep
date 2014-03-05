@@ -1,6 +1,0 @@
-det(growth-2, No-1)
-prep_on(growth-2, formate-4)
-det(donor-8, an-6)
-nn(donor-8, electron-7)
-prep_as(growth-2, donor-8)
-

@@ -1,1 +1,0 @@
-Grows and producesmethane from H2/CO2 and from formate plus CO2.

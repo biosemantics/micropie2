@@ -1,7 +1,0 @@
-det(rate-3, The-1)
-nn(rate-3, growth-2)
-nsubj(is-4, rate-3)
-advmod(is-4, approx-5)
-amod(conditions-8, optimum-7)
-prep_under(is-4, conditions-8)
-

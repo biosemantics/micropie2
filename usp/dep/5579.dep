@@ -1,8 +1,0 @@
-nsubj(sensitive-3, Cells-1)
-cop(sensitive-3, are-2)
-prep_to(sensitive-3, lysis-5)
-num(g-8, 0.2-7)
-prep_by(sensitive-3, g-8)
-prep_of(g-8, SDS-10)
-prep_per(SDS-10, liter-12)
-

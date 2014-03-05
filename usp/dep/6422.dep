@@ -1,6 +1,0 @@
-amod(digesters-6, thermophilic-3)
-amod(digesters-6, anaerobic-5)
-dep(Habitat-1, digesters-6)
-amod(springs-9, hot-8)
-appos(digesters-6, springs-9)
-

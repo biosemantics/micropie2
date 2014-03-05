@@ -1,8 +1,0 @@
-det(species-3, The-1)
-nn(species-3, type-2)
-nsubj(asiaticus-9, species-3)
-det(genus-6, the-5)
-prep_of(species-3, genus-6)
-cop(asiaticus-9, is-7)
-amod(asiaticus-9, Halovivax-8)
-

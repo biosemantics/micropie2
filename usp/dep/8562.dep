@@ -1,9 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(LD-1-6, strain-3)
-cop(LD-1-6, is-4)
-nn(LD-1-6, strain-5)
-amod(ATCC-9, =-8)
-dep(LD-1-6, ATCC-9)
-dep(ATCC-9, 43213-10)
-

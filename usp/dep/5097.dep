@@ -1,7 +1,0 @@
-det(G+C-4, The-1)
-nn(G+C-4, mol-2)
-nn(G+C-4, %-3)
-nsubj(ranges-5, G+C-4)
-num(%-8, 29-32-7)
-prep_from(ranges-5, %-8)
-

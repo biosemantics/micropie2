@@ -1,7 +1,0 @@
-det(size-4, The-1)
-amod(size-4, average-2)
-nn(size-4, genome-3)
-nsubj(kbp-7, size-4)
-cop(kbp-7, is-5)
-num(kbp-7, 1,215-6)
-

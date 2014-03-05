@@ -1,9 +1,0 @@
-nn(surfaces-4, flower-3)
-prep_from(Isolated-1, surfaces-4)
-nn(hederacea-7, Calystegia-6)
-prep_of(surfaces-4, hederacea-7)
-prep_in(Isolated-1, Jiangsu-9)
-poss(Republic-13, People-11)
-appos(Jiangsu-9, Republic-13)
-prep_of(Republic-13, China-15)
-

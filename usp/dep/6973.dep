@@ -1,7 +1,0 @@
-nsubj(does-2, Ferments-1)
-neg(does-2, not-3)
-dep(does-2, metabolize-4)
-dobj(metabolize-4, arginine-5)
-dobj(metabolize-4, urea-7)
-conj_or(arginine-5, urea-7)
-

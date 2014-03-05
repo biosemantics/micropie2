@@ -1,8 +1,0 @@
-det(range-3, The-1)
-nn(range-3, pH-2)
-nsubj(.3-9, range-3)
-amod(growth-6, good-5)
-prep_for(range-3, growth-6)
-cop(.3-9, is-7)
-num(.3-9, 6.4-7-8)
-

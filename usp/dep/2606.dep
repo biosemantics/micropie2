@@ -1,9 +1,0 @@
-nsubjpass(utilized-3, L-alanine-1)
-auxpass(utilized-3, is-2)
-amod(nitrogen-7, single-5)
-nn(nitrogen-7, carbon-6)
-prep_as(utilized-3, nitrogen-7)
-nn(sources-10, energy-9)
-prep_as(utilized-3, sources-10)
-conj_or(nitrogen-7, sources-10)
-

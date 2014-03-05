@@ -1,9 +1,0 @@
-det(strain-2, The-1)
-nsubj(able-4, strain-2)
-cop(able-4, is-3)
-aux(grow-6, to-5)
-xcomp(able-4, grow-6)
-advmod(grow-6, chemolithoautotrophically-7)
-prepc_by(grow-6, oxidizing-9)
-dobj(oxidizing-9, sulfur-10)
-

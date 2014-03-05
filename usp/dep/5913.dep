@@ -1,9 +1,0 @@
-amod(polymerase-3, DNA-dependent-1)
-nn(polymerase-3, RNA-2)
-det(AB-6, the-5)
-prep_of(polymerase-3, AB-6)
-nn(pattern-12, B-8)
-nn(pattern-12, C-10)
-nn(pattern-12, subunit-11)
-dep(AB-6, pattern-12)
-

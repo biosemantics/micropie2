@@ -1,8 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(PUPA-2-5, strain-3)
-cop(PUPA-2-5, is-4)
-amod(ATCC-8, =-7)
-dep(PUPA-2-5, ATCC-8)
-dep(ATCC-8, 49581-9)
-

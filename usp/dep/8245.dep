@@ -1,8 +1,0 @@
-prep_from(Isolated-1, gut-3)
-det(beetle-8, an-5)
-amod(beetle-8, adult-6)
-nn(beetle-8, cantharid-7)
-prep_of(gut-3, beetle-8)
-nn(carolinus-10, C.-9)
-dep(beetle-8, carolinus-10)
-

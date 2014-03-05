@@ -1,9 +1,0 @@
-det(range-4, the-1)
-amod(range-4, optimal-2)
-nn(range-4, temperature-3)
-prep_for(range-4, UCYN-b-6)
-dep(UCYN-b-6, 26-8)
-num(C-12, 29-10)
-nn(C-12, °-11)
-dep(26-8, C-12)
-

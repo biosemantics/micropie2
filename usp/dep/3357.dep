@@ -1,7 +1,0 @@
-nsubj(are-6, Tweens-1)
-number(60-3, 40-2)
-dep(Tweens-1, 60-3)
-conj_and(Tweens-1, 80-5)
-nsubj(are-6, 80-5)
-neg(are-6, not-7)
-

@@ -1,1 +1,0 @@
-Utilizes D-fructose, D-galactose, D-glucose, maltose, L-asparagine, L-glycine, L-proline, and L-valine as sole sources of carbon and energy, but not L-arabinose, sucrose, D-mannitol, D-ribose, L-arginine, L-methionine, L-aspartic acid, L-cysteine, L-phenylalanine or L-tyrosine.

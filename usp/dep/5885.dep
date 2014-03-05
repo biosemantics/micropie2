@@ -1,7 +1,0 @@
-det(cells-2, The-1)
-nsubj(occur-3, cells-2)
-dep(pairs-7, singly-4)
-conj_or(singly-4, in-6)
-dep(pairs-7, in-6)
-dobj(occur-3, pairs-7)
-

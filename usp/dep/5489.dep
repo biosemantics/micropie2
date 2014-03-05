@@ -1,8 +1,0 @@
-nn(production-4, Growth-1)
-conj_and(Growth-1, methane-3)
-nn(production-4, methane-3)
-prep_on(production-4, H2-6)
-dep(production-4, CO2-8)
-dep(production-4, formate-10)
-conj_and(CO2-8, formate-10)
-

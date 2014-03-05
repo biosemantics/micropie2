@@ -1,8 +1,0 @@
-nsubj(use-6, Capable-1)
-prepc_of(Capable-1, growing-3)
-prep(growing-3, in-4)
-aux(use-6, can-5)
-advmod(few-8, relatively-7)
-amod(substrates-9, few-8)
-dobj(use-6, substrates-9)
-

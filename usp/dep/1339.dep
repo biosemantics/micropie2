@@ -1,9 +1,0 @@
-nn(lipids-2, Polar-1)
-nsubjpass(characterized-4, lipids-2)
-auxpass(characterized-4, are-3)
-det(presence-7, the-6)
-agent(characterized-4, presence-7)
-nn(derivatives-10, C20C20-9)
-prep_of(presence-7, derivatives-10)
-prep_of(derivatives-10, TGD-2-12)
-

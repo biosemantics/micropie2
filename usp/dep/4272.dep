@@ -1,8 +1,0 @@
-nn(relationship-2, Temperature-1)
-dep(relationship-2, Optimum-4)
-num(range-8, 58-62-6)
-nn(range-8, ˚C-7)
-appos(Optimum-4, range-8)
-num(˚C-11, 40-69-10)
-dep(Optimum-4, ˚C-11)
-

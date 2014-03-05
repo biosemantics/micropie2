@@ -1,7 +1,0 @@
-amod(acid-2, Formic-1)
-nsubjpass(split-4, acid-2)
-auxpass(split-4, is-3)
-prep_into(split-4, H2-6)
-prep_into(split-4, CO2-8)
-conj_and(H2-6, CO2-8)
-

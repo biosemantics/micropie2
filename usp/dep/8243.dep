@@ -1,6 +1,0 @@
-nn(requirement-2, Sterol-1)
-nsubj(met-3, requirement-2)
-prep_by(met-3, cholesterol-5)
-prep_by(met-3, serum-7)
-conj_or(cholesterol-5, serum-7)
-

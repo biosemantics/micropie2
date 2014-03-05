@@ -1,8 +1,0 @@
-nsubj(occurs-2, Growth-1)
-num(˚C-4, 45-3)
-dobj(occurs-2, ˚C-4)
-amod(growth-7, optimum-6)
-prep_with(˚C-4, growth-7)
-num(˚C-10, 37-9)
-prep_around(occurs-2, ˚C-10)
-

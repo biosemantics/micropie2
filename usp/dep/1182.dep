@@ -1,8 +1,0 @@
-det(fraction-4, The-1)
-amod(fraction-4, polar-2)
-nn(fraction-4, lipid-3)
-nsubj(consists-5, fraction-4)
-prep_of(consists-5, PG-7)
-prep_of(consists-5, PGP-Me-9)
-conj_and(PG-7, PGP-Me-9)
-

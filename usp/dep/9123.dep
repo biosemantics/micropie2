@@ -1,8 +1,0 @@
-nsubj(C-8, Growth-1)
-num(°-4, 70-3)
-prep_between(Growth-1, °-4)
-num(°-7, 95-6)
-prep_between(Growth-1, °-7)
-conj_and(°-4, °-7)
-prep_at(C-8, neutral-10)
-

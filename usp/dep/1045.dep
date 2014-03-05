@@ -1,8 +1,0 @@
-nsubj(sphere-shaped-3, Cells-1)
-cop(sphere-shaped-3, are-2)
-amod(archaea-6, nonspore-forming-5)
-conj_and(sphere-shaped-3, archaea-6)
-nn(wall-11, lack-9)
-nn(wall-11, cell-10)
-conj_and(sphere-shaped-3, wall-11)
-

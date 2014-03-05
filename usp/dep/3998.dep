@@ -1,7 +1,0 @@
-det(growth-2, No-1)
-nsubj(occurs-3, growth-2)
-prep_at(occurs-3, pH-5)
-num(pH-5, 5-6)
-prep_at(occurs-3, 9-8)
-conj_or(pH-5, 9-8)
-

@@ -1,7 +1,0 @@
-amod(1-1, Shortest-2)
-dep(Shortest-2, doubling-3)
-nn(h.-5, time-4)
-dep(anaerobic-7, h.-5)
-advmod(anaerobic-7, Obligately-6)
-dep(doubling-3, anaerobic-7)
-

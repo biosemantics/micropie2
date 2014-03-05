@@ -1,9 +1,0 @@
-det(time-3, The-1)
-amod(time-3, doubling-2)
-nsubj(h-7, time-3)
-cop(h-7, is-4)
-quantmod(12-6, approximately-5)
-num(h-7, 12-6)
-amod(conditions-10, optimum-9)
-prep_under(h-7, conditions-10)
-

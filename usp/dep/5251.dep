@@ -1,6 +1,0 @@
-nn(growth-4, Optimum-3)
-dep(Nutrition-1, growth-4)
-number(%-7, 1-6)
-amod(NaCl-8, %-7)
-prep_in(growth-4, NaCl-8)
-

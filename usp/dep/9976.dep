@@ -1,6 +1,0 @@
-nn(acetate-2, CO2-1)
-nsubj(H2-6, acetate-2)
-conj_and(acetate-2, isovalerate-4)
-nsubj(H2-6, isovalerate-4)
-cop(H2-6, is-5)
-

@@ -1,7 +1,0 @@
-nsubj(have-2, Cells-1)
-amod(fibers-4, polar-3)
-dobj(have-2, fibers-4)
-prep_of(fibers-4, 3-6)
-num(µm-9, 300-8)
-prep_by(have-2, µm-9)
-

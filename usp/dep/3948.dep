@@ -1,9 +1,0 @@
-nsubj(serve-7, Tetrathionate-1)
-amod(sulfate-4, ferrous-3)
-conj_and(Tetrathionate-1, sulfate-4)
-nsubj(serve-7, sulfate-4)
-aux(serve-7, did-5)
-neg(serve-7, not-6)
-nn(sources-10, energy-9)
-prep_as(serve-7, sources-10)
-

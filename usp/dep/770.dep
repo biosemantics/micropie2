@@ -1,9 +1,0 @@
-num(PCC-1, 8801-2)
-conj_and(PCC-1, PCC-4)
-num(PCC-4, 8802-5)
-mark(unchanged-11, although-7)
-nn(production-9, hydrogen-8)
-nsubj(unchanged-11, production-9)
-cop(unchanged-11, remained-10)
-dep(PCC-4, unchanged-11)
-

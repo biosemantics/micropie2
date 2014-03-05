@@ -1,9 +1,0 @@
-nn(H2-4, MK-8-1)
-conj_and(MK-8-1, MK-8-3)
-nn(H2-4, MK-8-3)
-nsubj(%-9, H2-4)
-number(%-6, 8.8-5)
-amod(H2-4, %-6)
-cop(%-9, is-7)
-num(%-9, 91.9-8)
-

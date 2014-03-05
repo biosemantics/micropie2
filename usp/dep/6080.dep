@@ -1,5 +1,0 @@
-nn(%-2, Mol-1)
-nsubj(ranges-3, %-2)
-num(G+C-6, 39-44-5)
-prep_from(ranges-3, G+C-6)
-

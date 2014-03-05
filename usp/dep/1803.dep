@@ -1,7 +1,0 @@
-det(temperature-3, The-1)
-amod(temperature-3, optimum-2)
-nsubj(C.-7, temperature-3)
-cop(C.-7, is-4)
-number(°-6, 40-5)
-num(C.-7, °-6)
-

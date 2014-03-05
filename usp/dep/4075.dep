@@ -1,8 +1,0 @@
-nsubj(7.7-8, 8.6-1)
-det(pH-5, the-3)
-amod(pH-5, optimum-4)
-conj_and(8.6-1, pH-5)
-nsubj(7.7-8, pH-5)
-cop(7.7-8, is-6)
-number(7.7-8, 7.2-7)
-

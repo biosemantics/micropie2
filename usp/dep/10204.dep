@@ -1,6 +1,0 @@
-nn(IC-060-2, Strain-1)
-nsubjpass(included-4, IC-060-2)
-auxpass(included-4, is-3)
-det(species-7, this-6)
-prep_in(included-4, species-7)
-

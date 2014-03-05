@@ -1,5 +1,0 @@
-dep(motile-2, Weakly-1)
-prepc_depending_on(motile-2, on-5)
-nn(conditions-7, culture-6)
-pobj(motile-2, conditions-7)
-

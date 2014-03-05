@@ -1,9 +1,0 @@
-nsubjpass(fragile-3, Cells-1)
-nsubjpass(lysed-6, Cells-1)
-auxpass(fragile-3, are-2)
-advmod(lysed-6, easily-5)
-conj_and(fragile-3, lysed-6)
-amod(solutions-10, low-8)
-amod(solutions-10, osmolal-9)
-prep_in(lysed-6, solutions-10)
-

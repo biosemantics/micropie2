@@ -1,8 +1,0 @@
-nsubj(resistant-3, Cells-1)
-cop(resistant-3, are-2)
-nn(kanamycin-5, penicillin-4)
-dep(resistant-3, kanamycin-5)
-dep(resistant-3, tetracycline-7)
-conj_and(kanamycin-5, tetracycline-7)
-prep_against(kanamycin-5, vancomycin-9)
-

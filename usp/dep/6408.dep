@@ -1,9 +1,0 @@
-nn(caldarchaetidylinositol-2, Gentiobiosyl-1)
-nsubjpass(found-7, caldarchaetidylinositol-2)
-nn(caldarchaetidylethanolamine-5, gentiobiosyl-4)
-conj_and(caldarchaetidylinositol-2, caldarchaetidylethanolamine-5)
-nsubjpass(found-7, caldarchaetidylethanolamine-5)
-auxpass(found-7, are-6)
-amod(lipids-10, polar-9)
-prep_as(found-7, lipids-10)
-

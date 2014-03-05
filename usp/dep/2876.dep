@@ -1,6 +1,0 @@
-prep_to(Sensitive-1, rifampicin-3)
-prep_to(Sensitive-1, bacitracin-5)
-conj_and(rifampicin-3, bacitracin-5)
-prep_to(Sensitive-1, novobiocin-7)
-conj_and(rifampicin-3, novobiocin-7)
-

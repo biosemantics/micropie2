@@ -1,6 +1,0 @@
-det(cells-2, All-1)
-nsubj(lack-3, cells-2)
-det(wall-6, a-4)
-nn(wall-6, cell-5)
-dobj(lack-3, wall-6)
-

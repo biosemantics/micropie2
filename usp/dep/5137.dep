@@ -1,8 +1,0 @@
-nsubjpass(produced-3, Methane-1)
-auxpass(produced-3, is-2)
-nn(formate-7, H2\/CO2-5)
-prep_from(produced-3, formate-7)
-prep_from(produced-3, 2-9)
-conj_and(formate-7, 2-9)
-dobj(produced-3, propanol\/CO2-11)
-

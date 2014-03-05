@@ -1,5 +1,0 @@
-nsubj(tend-2, Cells-1)
-prep_to(tend-2, clump-4)
-amod(culture-7, liquid-6)
-prep_in(clump-4, culture-7)
-

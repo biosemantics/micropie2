@@ -1,6 +1,0 @@
-nsubj(rods-6, Strain-1)
-nn(cells-3, SA-2)
-dep(Strain-1, cells-3)
-cop(rods-6, were-4)
-amod(rods-6, short-5)
-

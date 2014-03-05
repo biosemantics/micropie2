@@ -1,8 +1,0 @@
-nn(erythrocytes-5, Chicken-1)
-conj_and(Chicken-1, guinea-3)
-nn(erythrocytes-5, guinea-3)
-nn(erythrocytes-5, pig-4)
-nsubjpass(hemadsorbed-8, erythrocytes-5)
-auxpass(hemadsorbed-8, are-6)
-neg(hemadsorbed-8, not-7)
-

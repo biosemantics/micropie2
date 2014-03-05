@@ -1,7 +1,0 @@
-advmod(distinct-2, Serologically-1)
-det(species-8, all-4)
-amod(species-8, other-5)
-amod(species-8, recognized-6)
-nn(species-8, Mycoplasma-7)
-prep_from(distinct-2, species-8)
-

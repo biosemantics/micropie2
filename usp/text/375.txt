@@ -1,1 +1,0 @@
-Requires NaCl (optimum 2.5-3.5%) for growth.

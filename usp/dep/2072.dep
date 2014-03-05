@@ -1,7 +1,0 @@
-amod(sulfur-3, elemental-2)
-dobj(Reduces-1, sulfur-3)
-prep_to(Reduces-1, sulfide-5)
-advmod(conditions-9, strictly-7)
-amod(conditions-9, anaerobic-8)
-prep_under(sulfide-5, conditions-9)
-

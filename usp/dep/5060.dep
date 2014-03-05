@@ -1,7 +1,0 @@
-advmod(Grows-1, well-2)
-amod(concentrations-9, low-4)
-num(M-7, 0.06-6)
-dep(low-4, M-7)
-prep_at(Grows-1, concentrations-9)
-prep_of(concentrations-9, NaCl-11)
-

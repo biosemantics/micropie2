@@ -1,7 +1,0 @@
-prep_for(Positive-1, catalase-3)
-prep_for(Positive-1, oxidase-5)
-conj_and(catalase-3, oxidase-5)
-nn(formation-8, indole-7)
-prep_for(Positive-1, formation-8)
-conj_and(catalase-3, formation-8)
-

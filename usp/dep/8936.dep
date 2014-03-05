@@ -1,9 +1,0 @@
-nsubj(form-2, Cells-1)
-amod(protrusions-4, cytoplasmatic-3)
-dobj(form-2, protrusions-4)
-amod(phase-12, particular-7)
-det(growth-11, the-9)
-amod(growth-11, stationary-10)
-prep_during(particular-7, growth-11)
-prep_in(form-2, phase-12)
-

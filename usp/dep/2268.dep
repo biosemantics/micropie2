@@ -1,8 +1,0 @@
-nn(aldolase-2, Bisphosphate-1)
-dep(fructose-1-5, aldolase-2)
-cop(fructose-1-5, is-3)
-det(fructose-1-5, The-4)
-num(I.-8, 6-6)
-nn(I.-8, class-7)
-nsubj(fructose-1-5, I.-8)
-

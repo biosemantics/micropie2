@@ -1,7 +1,0 @@
-nn(production-2, H2S-1)
-nsubj(negative-8, production-2)
-prep_from(production-2, thiosulfate-4)
-prep_from(production-2, cysteine-6)
-conj_or(thiosulfate-4, cysteine-6)
-cop(negative-8, is-7)
-

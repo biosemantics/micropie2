@@ -1,9 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(F-6, strain-3)
-cop(F-6, is-4)
-nn(F-6, strain-5)
-prep(F-6, is-7)
-dep(is-7, DSM-8)
-num(DSM-8, 3108-9)
-

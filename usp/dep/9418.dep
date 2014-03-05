@@ -1,8 +1,0 @@
-prep_on(Growth-1, chitin-3)
-nn(extract-6, yeast-5)
-prep_on(Growth-1, extract-6)
-conj_and(chitin-3, extract-6)
-nn(extract-10, meat-9)
-prep_on(Growth-1, extract-10)
-conj_and(chitin-3, extract-10)
-

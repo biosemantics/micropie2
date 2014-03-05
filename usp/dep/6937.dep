@@ -1,9 +1,0 @@
-num(isolates-3, Six-1)
-nn(isolates-3, Mycoplasma-2)
-nsubjpass(isolated-5, isolates-3)
-auxpass(isolated-5, were-4)
-amod(monkeys-8, grivit-7)
-prep_from(isolated-5, monkeys-8)
-partmod(monkeys-8, imported-9)
-prep_from(imported-9, Ethiopia-11)
-

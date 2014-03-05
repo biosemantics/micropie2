@@ -1,9 +1,0 @@
-nsubj(grow-2, Cells-1)
-prepc_by(grow-2, forming-4)
-dobj(forming-4, methane-5)
-prep_from(forming-4, methylamines-7)
-prep_from(forming-4, methylsulfides-9)
-conj_and(methylamines-7, methylsulfides-9)
-prep_from(forming-4, methanol-12)
-conj_and(methylamines-7, methanol-12)
-

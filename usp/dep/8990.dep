@@ -1,7 +1,0 @@
-nsubj(contain-2, Cells-1)
-nn(lipids-5, glycerol-dibisphytanyl-nonitol-3)
-nn(lipids-5, tetraether-4)
-dobj(contain-2, lipids-5)
-dobj(contain-2, sulfolobusquinone-7)
-conj_and(lipids-5, sulfolobusquinone-7)
-

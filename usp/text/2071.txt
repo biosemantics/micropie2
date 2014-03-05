@@ -1,1 +1,0 @@
-Cannot utilize SO42-, S2O32-, NO3-, DMSO or TMAO as electron acceptors.

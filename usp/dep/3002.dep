@@ -1,7 +1,0 @@
-nsubj(produced-2, Bacteriorhodopsin-1)
-det(light-5, the-4)
-prep_in(produced-2, light-5)
-amod(tensions-9, reduced-7)
-nn(tensions-9, oxygen-8)
-prep_under(produced-2, tensions-9)
-

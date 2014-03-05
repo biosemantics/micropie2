@@ -1,6 +1,0 @@
-nn(colonies-2, White-1)
-nsubjpass(formed-4, colonies-2)
-auxpass(formed-4, are-3)
-amod(medium-7, solid-6)
-prep_on(formed-4, medium-7)
-

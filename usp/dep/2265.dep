@@ -1,5 +1,0 @@
-aux(produce-3, Does-1)
-neg(produce-3, not-2)
-dobj(produce-3, indole-4)
-prep_from(produce-3, tryptophan-6)
-

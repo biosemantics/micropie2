@@ -1,8 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(H-8, strain-3)
-nn(molare-6, M.-5)
-prep_of(strain-3, molare-6)
-cop(H-8, is-7)
-advmod(H-8, 542-9)
-

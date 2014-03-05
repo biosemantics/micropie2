@@ -1,9 +1,0 @@
-nn(factors-2, Growth-1)
-nsubjpass(required-9, factors-2)
-amod(factors-2, present-3)
-amod(fluid-7, clarified-5)
-nn(fluid-7, rumen-6)
-prep_in(present-3, fluid-7)
-auxpass(required-9, are-8)
-prep_for(required-9, growth-11)
-

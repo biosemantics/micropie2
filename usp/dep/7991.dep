@@ -1,6 +1,0 @@
-prep_of(Formation-1, H2-3)
-prep_of(Formation-1, CO2-5)
-conj_and(H2-3, CO2-5)
-nn(extract-8, yeast-7)
-prep_from(Formation-1, extract-8)
-

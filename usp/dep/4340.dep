@@ -1,8 +1,0 @@
-nsubjpass(produced-3, Methane-1)
-auxpass(produced-3, was-2)
-advmod(rapidly-5, most-4)
-advmod(produced-3, rapidly-5)
-prep_at(produced-3, pH-7)
-num(pH-7, 6.0-8)
-prep_to(produced-3, 7.5-10)
-

@@ -1,9 +1,0 @@
-nsubj(belong-4, 19-2)
-det(clade-9, the-6)
-amod(clade-9, same-7)
-amod(clade-9, phylogenetic-8)
-prep_to(belong-4, clade-9)
-amod(spp-13, marine-11)
-nn(spp-13, Synechococcus-12)
-prep_as(clade-9, spp-13)
-

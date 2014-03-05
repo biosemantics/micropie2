@@ -1,6 +1,0 @@
-det(growth-2, No-1)
-nsubjpass(observed-4, growth-2)
-auxpass(observed-4, was-3)
-amod(conditions-7, autotrophic-6)
-prep_under(observed-4, conditions-7)
-

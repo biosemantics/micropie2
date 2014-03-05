@@ -1,5 +1,0 @@
-nn(extract-2, Yeast-1)
-nsubjpass(required-5, extract-2)
-auxpass(required-5, is-3)
-neg(required-5, not-4)
-

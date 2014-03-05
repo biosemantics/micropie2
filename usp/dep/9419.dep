@@ -1,7 +1,0 @@
-nn(peptone-4, casein-3)
-prep_on(Growth-1, peptone-4)
-nn(peptone-7, meat-6)
-prep_on(Growth-1, peptone-7)
-conj_and(peptone-4, peptone-7)
-prep_with(peptone-4, sulfur-9)
-

@@ -1,8 +1,0 @@
-nsubj(confirmed-8, Pathogenicity-1)
-dep(Pathogenicity-1, lethality-3)
-amod(progeny-6, male-5)
-prep_to(lethality-3, progeny-6)
-prep_by(confirmed-8, injection-10)
-nn(pseudoobscura-13, Drosophila-12)
-prep_into(confirmed-8, pseudoobscura-13)
-

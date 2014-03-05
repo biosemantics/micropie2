@@ -1,7 +1,0 @@
-aux(grow-3, Does-1)
-neg(grow-3, not-2)
-nn(extract-8, sulfur-5)
-conj_and(sulfur-5, yeast-7)
-nn(extract-8, yeast-7)
-prep_on(grow-3, extract-8)
-

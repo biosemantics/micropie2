@@ -1,9 +1,0 @@
-nn(chloride-3, Triphenyl-1)
-nn(chloride-3, tetrazolium-2)
-nsubjpass(reduced-5, chloride-3)
-auxpass(reduced-5, is-4)
-advmod(reduced-5, anaerobically-6)
-cc(not-8, but-7)
-dep(reduced-5, not-8)
-dep(not-8, aerobically-9)
-

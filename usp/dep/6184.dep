@@ -1,7 +1,0 @@
-num(C-5, 55-3)
-nn(C-5, °-4)
-dep(Source-1, C-5)
-amod(digestor-8, anaerobic-6)
-nn(digestor-8, sludge-7)
-dep(C-5, digestor-8)
-

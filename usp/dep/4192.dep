@@ -1,8 +1,0 @@
-amod(growth-2, Optimal-1)
-nsubj(occurs-3, growth-2)
-det(presence-6, the-5)
-prep_in(occurs-3, presence-6)
-num(NaCl-10, 0.1-8)
-nn(NaCl-10, M-9)
-prep_of(presence-6, NaCl-10)
-

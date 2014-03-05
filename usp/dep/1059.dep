@@ -1,9 +1,0 @@
-nn(envelope-2, Cell-1)
-nsubj(consists-3, envelope-2)
-det(S-layer-6, an-5)
-prep_of(consists-3, S-layer-6)
-partmod(S-layer-6, covering-7)
-det(membrane-10, the-8)
-amod(membrane-10, cytoplasmic-9)
-dobj(covering-7, membrane-10)
-

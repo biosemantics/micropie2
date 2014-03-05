@@ -1,1 +1,0 @@
-Grows only on pyruvate, pyruvate plus glycerol, or glycerol plus acetate as carbon sources in defined medium.

@@ -1,6 +1,0 @@
-nn(n.phoca-2, L.-1)
-appos(n.phoca-2, seal-4)
-dep(seal-4, phocidae-6)
-det(seal-10, a-9)
-prep_of(phocidae-6, seal-10)
-

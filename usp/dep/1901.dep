@@ -1,7 +1,0 @@
-nsubjpass(observed-3, Rotational-1)
-auxpass(observed-3, is-2)
-prepc_in(observed-3, elongated-5)
-nsubj(motility-8, cells-6)
-amod(motility-8, Gram-negative-7)
-xcomp(elongated-5, motility-8)
-

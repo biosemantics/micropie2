@@ -1,8 +1,0 @@
-prep_to(Sensitive-1, erythromycin-3)
-num(µg-6, 15-5)
-appos(erythromycin-3, µg-6)
-prep_to(Sensitive-1, novobiocin-9)
-conj_and(erythromycin-3, novobiocin-9)
-num(µg-12, 30-11)
-appos(erythromycin-3, µg-12)
-

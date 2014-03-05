@@ -1,9 +1,0 @@
-amod(alcohols-4, Secondary-1)
-conj_and(Secondary-1, cyclic-3)
-amod(alcohols-4, cyclic-3)
-nsubjpass(oxidized-6, alcohols-4)
-auxpass(oxidized-6, are-5)
-det(ketones-10, the-8)
-amod(ketones-10, respective-9)
-prep_to(oxidized-6, ketones-10)
-

@@ -1,1 +1,0 @@
-H2/CO2 headspace gas did not support autotrophic growth in medium devoid of yeast extract and tryptone.

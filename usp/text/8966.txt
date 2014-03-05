@@ -1,1 +1,0 @@
-Cells grow at temperatures ranging from about 57 to 89˚C, with optimal growth occurring around 80°C.  No growth is detected at 50°C (incubation time 3 weeks) and 89°C.  The pH suitable for growth ranges from 1.0 to 5.5, with optimum growth around pH 2.5 to 3.

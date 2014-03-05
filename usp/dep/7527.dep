@@ -1,9 +1,0 @@
-dep(Hydrolyses-1, Tween-2)
-num(Tween-2, 80-3)
-dep(Hydrolyses-1, starch-6)
-conj_negcc(Tween-2, starch-6)
-conj_negcc(Tween-2, casein-8)
-conj_or(starch-6, casein-8)
-conj_negcc(Tween-2, gelatin-11)
-conj_or(starch-6, gelatin-11)
-

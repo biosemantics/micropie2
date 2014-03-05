@@ -1,5 +1,0 @@
-advmod(growth-3, Facultatively-1)
-dep(growth-3, chemolithoautotrophic-2)
-nn(oxidation-6, sulphur-5)
-prep_by(growth-3, oxidation-6)
-

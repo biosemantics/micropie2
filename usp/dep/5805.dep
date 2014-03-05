@@ -1,5 +1,0 @@
-nsubj(required-4, Indole-1)
-conj_or(Indole-1, tryptophan-3)
-nsubj(required-4, tryptophan-3)
-prep_for(required-4, growth-6)
-

@@ -1,9 +1,0 @@
-amod(NaC1-7, optimally-2)
-number(.3-5, 0.2-0-4)
-num(%-6, .3-5)
-prep_at(optimally-2, %-6)
-dobj(Grows-1, NaC1-7)
-dobj(Grows-1, pH-10)
-conj_and(NaC1-7, pH-10)
-prep_around(pH-10, 7.0-12)
-

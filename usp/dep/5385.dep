@@ -1,7 +1,0 @@
-advmod(anaerobic-2, Obligately-1)
-det(growth-8, no-4)
-amod(growth-8, microaerophilic-5)
-conj_or(microaerophilic-5, aerobic-7)
-amod(growth-8, aerobic-7)
-appos(anaerobic-2, growth-8)
-

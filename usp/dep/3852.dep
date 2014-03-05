@@ -1,8 +1,0 @@
-det(mass-5, The-1)
-amod(mass-5, average-2)
-nn(mass-5, genome-3)
-amod(mass-5, molecular-4)
-nsubj(MDa-8, mass-5)
-cop(MDa-8, is-6)
-num(MDa-8, 886-7)
-

@@ -1,6 +1,0 @@
-advmod(susceptible-2, Very-1)
-prep_to(susceptible-2, lysis-4)
-nn(sulfate-8, sodium-6)
-nn(sulfate-8, dodecyl-7)
-prep_by(lysis-4, sulfate-8)
-

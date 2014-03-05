@@ -1,9 +1,0 @@
-nsubj(serve-6, Nitrate-1)
-conj_or(Nitrate-1, nitrite-3)
-nsubj(serve-6, nitrite-3)
-aux(serve-6, can-4)
-neg(serve-6, not-5)
-nn(Sulfate-10, electron-8)
-nn(Sulfate-10, acceptors-9)
-prep_as(serve-6, Sulfate-10)
-

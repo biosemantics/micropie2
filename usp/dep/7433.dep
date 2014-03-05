@@ -1,9 +1,0 @@
-nn(range-2, Temperature-1)
-nn(˚C-6, growth-4)
-num(˚C-6, 25-40-5)
-prep_for(range-2, ˚C-6)
-det(optimum-9, an-8)
-prep_with(range-2, optimum-9)
-num(˚C-12, 37-11)
-prep_at(optimum-9, ˚C-12)
-

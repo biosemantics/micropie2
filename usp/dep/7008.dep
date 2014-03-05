@@ -1,7 +1,0 @@
-det(cells-2, The-1)
-nsubj(adhere-3, cells-2)
-nn(surfaces-8, glass-5)
-conj_and(glass-5, plastic-7)
-nn(surfaces-8, plastic-7)
-prep_to(adhere-3, surfaces-8)
-

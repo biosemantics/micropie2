@@ -1,7 +1,0 @@
-dobj(Grows-1, ˚C-2)
-advmod(Grows-1, best-3)
-prep_at(Grows-1, pH-5)
-num(pH-5, 5-6)
-prep_at(Grows-1, 90-8)
-conj_and(pH-5, 90-8)
-

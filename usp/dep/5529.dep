@@ -1,5 +1,0 @@
-nsubj(serves-2, Ammonia-1)
-det(source-6, a-4)
-nn(source-6, nitrogen-5)
-prep_as(serves-2, source-6)
-

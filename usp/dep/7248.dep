@@ -1,4 +1,0 @@
-cc(catalase-4, and-3)
-dep(Oxidase-1, catalase-4)
-amod(catalase-4, positive-5)
-

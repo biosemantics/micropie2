@@ -1,6 +1,0 @@
-conj_and(Grows-1, produces-3)
-dobj(Grows-1, methane-4)
-prep_from(Grows-1, H2-6)
-prep_from(Grows-1, CO2-8)
-conj_and(H2-6, CO2-8)
-

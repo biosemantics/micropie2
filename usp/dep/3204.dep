@@ -1,8 +1,0 @@
-prep_at(Grows-1, 25-3)
-num(˚C-6, 45-5)
-dobj(Grows-1, ˚C-6)
-amod(growth-10, optimal-9)
-prep_with(˚C-6, growth-10)
-num(˚C-13, 30-12)
-prep_at(growth-10, ˚C-13)
-

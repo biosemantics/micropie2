@@ -1,6 +1,0 @@
-nsubj(has-4, Proskauer-1)
-conj_and(Proskauer-1, Simmons-3)
-nsubj(has-4, Simmons-3)
-nn(tests-6, citrate-5)
-dobj(has-4, tests-6)
-

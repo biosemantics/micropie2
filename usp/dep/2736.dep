@@ -1,6 +1,0 @@
-det(requirement-2, The-1)
-nsubj(variable-6, requirement-2)
-prep_for(requirement-2, magnesium-4)
-cop(variable-6, is-5)
-prep_among(variable-6, strains-8)
-

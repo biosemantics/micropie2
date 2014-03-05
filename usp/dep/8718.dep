@@ -1,6 +1,0 @@
-advmod(distinct-2, Serologically-1)
-advmod(characterized-5, previously-4)
-amod(species-7, characterized-5)
-nn(species-7, Spiroplasma-6)
-prep_from(distinct-2, species-7)
-

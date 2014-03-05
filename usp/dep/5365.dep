@@ -1,7 +1,0 @@
-nsubj(mesophilic-3, Cells-1)
-cop(mesophilic-3, are-2)
-dep(mesophilic-3, range-4)
-num(range-4, 15-5)
-num(˚C-8, 45-7)
-prep_to(mesophilic-3, ˚C-8)
-

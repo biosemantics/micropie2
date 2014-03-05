@@ -1,8 +1,0 @@
-det(temperature-4, The-1)
-amod(temperature-4, optimum-2)
-nn(temperature-4, growth-3)
-nsubj(was-5, temperature-4)
-prep_around(was-5, 80-7)
-num(˚C-10, 85-9)
-dep(80-7, ˚C-10)
-

@@ -1,6 +1,0 @@
-advmod(growth-3, Only-1)
-amod(growth-3, heterotrophic-2)
-nsubjpass(observed-6, growth-3)
-aux(observed-6, has-4)
-auxpass(observed-6, been-5)
-

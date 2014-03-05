@@ -1,7 +1,0 @@
-prep_of(Capable-1, growth-3)
-num(˚C-6, 74-5)
-prep_between(Capable-1, ˚C-6)
-num(˚C-9, 102-8)
-prep_between(Capable-1, ˚C-9)
-conj_and(˚C-6, ˚C-9)
-

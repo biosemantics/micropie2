@@ -1,8 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(MCB-3-5, strain-3)
-cop(MCB-3-5, is-4)
-amod(MCB-3-5, =-6)
-dep(=-6, DSM-7)
-num(DSM-7, 3091-8)
-

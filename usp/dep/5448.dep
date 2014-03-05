@@ -1,5 +1,0 @@
-amod(SDS-7, sensitive-3)
-num(%-6, 1-5)
-prep_to(sensitive-3, %-6)
-dep(Gram-negative-1, SDS-7)
-

@@ -1,8 +1,0 @@
-dobj(Grows-1, best-2)
-num(˚C-5, 70-4)
-prep_at(best-2, ˚C-5)
-dobj(Grows-1, pH-7)
-conj_and(best-2, pH-7)
-num(4.8-10, 4.2-8)
-dep(pH-7, 4.8-10)
-

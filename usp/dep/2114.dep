@@ -1,5 +1,0 @@
-amod(temperature-3, Optimum-1)
-nn(temperature-3, growth-2)
-num(˚C-5, 45-4)
-dep(temperature-3, ˚C-5)
-

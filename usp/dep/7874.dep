@@ -1,6 +1,0 @@
-amod(sulfur-2, Elemental-1)
-nsubj(inhibits-3, sulfur-2)
-amod(growth-6, aerobic-4)
-nn(growth-6, cell-5)
-dobj(inhibits-3, growth-6)
-

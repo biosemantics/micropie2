@@ -1,8 +1,0 @@
-det(habitat-2, The-1)
-nsubj(strain-8, habitat-2)
-cop(strain-8, is-3)
-nn(strain-8, lion-4)
-conj_and(lion-4, leopard-6)
-nn(strain-8, leopard-6)
-nn(strain-8, throats.Type-7)
-

@@ -1,6 +1,0 @@
-advmod(defined-3, autotrophically-2)
-dep(Grows-1, defined-3)
-dep(medium-5, mineral-4)
-acomp(defined-3, medium-5)
-prep(medium-5, in-6)
-

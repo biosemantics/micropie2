@@ -1,8 +1,0 @@
-det(temperature-2, The-1)
-nsubj(C.-9, temperature-2)
-amod(growth-5, optimum-4)
-prep_for(temperature-2, growth-5)
-cop(C.-9, is-6)
-number(°-8, 55-7)
-num(C.-9, °-8)
-

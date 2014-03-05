@@ -1,5 +1,0 @@
-dep(Source-1, Mud-3)
-det(pasture-7, a-5)
-nn(pasture-7, cattle-6)
-prep_from(Mud-3, pasture-7)
-

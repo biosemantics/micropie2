@@ -1,8 +1,0 @@
-nsubj(present-6, Cytochromes-1)
-conj_and(Cytochromes-1, factor-3)
-nsubj(present-6, factor-3)
-num(factor-3, III-4)
-cop(present-6, are-5)
-det(cells-9, the-8)
-prep_in(present-6, cells-9)
-

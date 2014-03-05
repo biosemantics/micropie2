@@ -1,8 +1,0 @@
-nn(content-3, DNA-1)
-nn(content-3, G+C-2)
-num(%-9, 54-5)
-num(mol-8, 56-7)
-conj_and(54-5, mol-8)
-num(%-9, mol-8)
-prep_between(content-3, %-9)
-

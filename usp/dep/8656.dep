@@ -1,9 +1,0 @@
-advmod(distinct-2, Serologically-1)
-amod(species-6, other-4)
-nn(species-6, Spiroplasma-5)
-prep_from(distinct-2, species-6)
-prep_from(distinct-2, groups-8)
-conj_and(species-6, groups-8)
-prep_from(distinct-2, subgroups-10)
-conj_and(species-6, subgroups-10)
-

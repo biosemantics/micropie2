@@ -1,5 +1,0 @@
-number(%-4, 1-3)
-amod(medium-6, %-4)
-nn(medium-6, SDS-5)
-prep_in(Lyses-1, medium-6)
-

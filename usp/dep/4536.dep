@@ -1,8 +1,0 @@
-aux(require-3, Does-1)
-neg(require-3, not-2)
-nn(acids-7, coenzymeMor-4)
-amod(acids-7, branched-chain-5)
-amod(acids-7, fatty-6)
-dobj(require-3, acids-7)
-prep_for(acids-7, growth-9)
-

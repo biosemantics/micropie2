@@ -1,8 +1,0 @@
-nn(strain-2, Type-1)
-dep(strain-2, strain-4)
-dep(strain-4, HRC-5)
-num(HRC-5, 70-159-6)
-amod(ATCC-9, =-8)
-dep(HRC-5, ATCC-9)
-dep(ATCC-9, 25960-10)
-

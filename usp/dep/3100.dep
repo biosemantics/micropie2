@@ -1,7 +1,0 @@
-amod(temperature-2, Optimal-1)
-nsubj(37-6, temperature-2)
-prep_for(temperature-2, growth-4)
-cop(37-6, is-5)
-num(˚C-9, 40-8)
-dep(37-6, ˚C-9)
-

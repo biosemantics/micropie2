@@ -1,8 +1,0 @@
-nn(acids-2, Casamino-1)
-nsubjpass(utilized-7, acids-2)
-conj_and(acids-2, tryptophan-4)
-nsubjpass(utilized-7, tryptophan-4)
-auxpass(utilized-7, are-5)
-neg(utilized-7, not-6)
-dobj(utilized-7, Maltose-8)
-

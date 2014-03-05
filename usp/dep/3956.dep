@@ -1,7 +1,0 @@
-det(reduction-3, No-1)
-nn(reduction-3, sulfur-2)
-det(presence-6, the-5)
-prep_in(reduction-3, presence-6)
-amod(hydrogen-9, molecular-8)
-prep_of(reduction-3, hydrogen-9)
-

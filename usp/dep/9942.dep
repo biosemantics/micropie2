@@ -1,7 +1,0 @@
-amod(growth-2, Optimal-1)
-num(˚C-5, 90-4)
-prep_at(growth-2, ˚C-5)
-prep_at(growth-2, pH-7)
-conj_and(˚C-5, pH-7)
-num(pH-7, 5.7-8)
-

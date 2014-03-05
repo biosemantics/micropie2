@@ -1,9 +1,0 @@
-nn(contents-4, gut-3)
-prep_from(Isolated-1, contents-4)
-det(beetle-9, a-6)
-amod(beetle-9, green-7)
-nn(beetle-9, tiger-8)
-prep_of(contents-4, beetle-9)
-dep(beetle-9, Coleoptera-11)
-dep(Coleoptera-11, Cicindelidae-13)
-

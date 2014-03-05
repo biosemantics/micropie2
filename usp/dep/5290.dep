@@ -1,8 +1,0 @@
-det(nutrient-4, The-1)
-amod(nutrient-4, sole-2)
-amod(nutrient-4, organic-3)
-nsubjpass(required-6, nutrient-4)
-auxpass(required-6, be-5)
-nn(carbon-9, cell-8)
-prep_for(required-6, carbon-9)
-

@@ -1,6 +1,0 @@
-nn(sediments-4, sea-3)
-dep(Habitat-1, sediments-4)
-nn(Island-7, Vulcano-6)
-prep_near(sediments-4, Island-7)
-appos(Island-7, Italy-9)
-

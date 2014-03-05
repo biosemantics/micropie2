@@ -1,8 +1,0 @@
-amod(reduction-2, Nitrate-1)
-nsubjpass(observed-6, reduction-2)
-aux(nitrite-4, to-3)
-infmod(reduction-2, nitrite-4)
-auxpass(observed-6, is-5)
-det(strains-9, some-8)
-prep_in(observed-6, strains-9)
-

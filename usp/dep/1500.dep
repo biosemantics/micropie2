@@ -1,8 +1,0 @@
-dobj(Requires-1, NaCl-2)
-prep_for(NaCl-2, growth-4)
-det(presence-7, the-6)
-prep_in(Requires-1, presence-7)
-num(MgCl2-11, 0.6-9)
-nn(MgCl2-11, M-10)
-prep_of(presence-7, MgCl2-11)
-

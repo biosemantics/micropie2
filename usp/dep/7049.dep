@@ -1,9 +1,0 @@
-nsubj(referring-5, n.-1)
-nn(pear-3, pirum-2)
-dep(n.-1, pear-3)
-det(morphology-9, the-7)
-amod(morphology-9, pear-shaped-8)
-prep_to(referring-5, morphology-9)
-det(cells-12, the-11)
-prep_of(morphology-9, cells-12)
-

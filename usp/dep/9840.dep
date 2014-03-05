@@ -1,8 +1,0 @@
-nsubjpass(inhibited-3, Growth-1)
-auxpass(inhibited-3, is-2)
-agent(inhibited-3, erythromycin-5)
-agent(inhibited-3, novobiocin-7)
-conj_and(erythromycin-5, novobiocin-7)
-agent(inhibited-3, rifampicin-9)
-conj_and(erythromycin-5, rifampicin-9)
-

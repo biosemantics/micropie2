@@ -1,6 +1,0 @@
-nsubj(textured-4, Surface-1)
-prep_of(Surface-1, cells-3)
-det(pattern-8, a-6)
-amod(pattern-8, hexagonal-7)
-prep_with(textured-4, pattern-8)
-

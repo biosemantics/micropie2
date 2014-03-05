@@ -1,8 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(A21JP2-5, strain-3)
-cop(A21JP2-5, is-4)
-cop(700619T-8, is-6)
-nn(700619T-8, ATCC-7)
-rcmod(A21JP2-5, 700619T-8)
-

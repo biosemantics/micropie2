@@ -1,6 +1,0 @@
-nn(vesicles-2, Gas-1)
-nsubjpass(observed-4, vesicles-2)
-auxpass(observed-4, are-3)
-det(cells-7, the-6)
-prep_inside(observed-4, cells-7)
-

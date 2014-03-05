@@ -1,8 +1,0 @@
-nsubj(liberated-10, Reproduction-1)
-prep_by(Reproduction-1, disintegration-3)
-prep_of(disintegration-3, colonies-5)
-advmod(colonies-5, sometimes-7)
-amod(cells-9, solitary-8)
-dep(colonies-5, cells-9)
-prep_from(liberated-10, sheaths-12)
-

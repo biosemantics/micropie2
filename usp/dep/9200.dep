@@ -1,8 +1,0 @@
-amod(cyanobacterium-3, unicellular-1)
-amod(cyanobacterium-3, marine-2)
-det(sp-9, The-5)
-amod(sp-9, marine-6)
-nn(sp-9, cyanobacterium-7)
-nn(sp-9, Synechococcus-8)
-appos(cyanobacterium-3, sp-9)
-

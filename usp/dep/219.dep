@@ -1,8 +1,0 @@
-det(organism-2, The-1)
-nsubjpass(isolated-4, organism-2)
-auxpass(isolated-4, was-3)
-det(spring-9, an-6)
-amod(spring-9, acidic-7)
-amod(spring-9, solfataric-8)
-prep_from(isolated-4, spring-9)
-

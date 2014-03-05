@@ -1,8 +1,0 @@
-nsubj(unaffected-3, Growth-1)
-cop(unaffected-3, was-2)
-det(presence-6, the-5)
-prep_by(unaffected-3, presence-6)
-prep_of(presence-6, sulfur-8)
-prep_of(presence-6, sulfate-10)
-conj_or(sulfur-8, sulfate-10)
-

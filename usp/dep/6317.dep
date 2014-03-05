@@ -1,6 +1,0 @@
-nsubj(occur-2, Cells-1)
-prep_in(occur-2, filaments-4)
-prep_from(filaments-4, 15-6)
-advmod(often-8, most-7)
-advmod(occur-2, often-8)
-

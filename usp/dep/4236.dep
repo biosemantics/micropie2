@@ -1,7 +1,0 @@
-nn(extract-4, Acetate-1)
-conj_and(Acetate-1, yeast-3)
-nn(extract-4, yeast-3)
-nsubj(essential-6, extract-4)
-cop(essential-6, are-5)
-prep_for(essential-6, growth-8)
-

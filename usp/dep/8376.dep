@@ -1,6 +1,0 @@
-det(size-3, The-1)
-nn(size-3, genome-2)
-nsubj(kbp-6, size-3)
-cop(kbp-6, is-4)
-num(kbp-6, 1350-5)
-

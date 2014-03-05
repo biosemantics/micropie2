@@ -1,6 +1,0 @@
-dobj(Shows-1, blue-2)
-amod(fluorescence-5, green-4)
-dep(blue-2, fluorescence-5)
-nn(light-8, UV-7)
-prep_under(fluorescence-5, light-8)
-

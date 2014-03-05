@@ -1,7 +1,0 @@
-det(pH-3, The-1)
-amod(pH-3, optimum-2)
-nsubj(7.2-7, pH-3)
-cop(7.2-7, is-4)
-number(7.2-7, 7.0-5)
-dep(7.2-7, to-6)
-

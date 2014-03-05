@@ -1,8 +1,0 @@
-nn(content-2, G+C-1)
-nsubj(%-9, content-2)
-prep_of(content-2, DNA-4)
-cop(%-9, is-5)
-quantmod(mol-8, approximately-6)
-number(mol-8, 42-7)
-num(%-9, mol-8)
-

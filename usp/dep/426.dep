@@ -1,7 +1,0 @@
-nn(bactoclasticum-2, Anaeroplasma-1)
-nsubj(organism-7, bactoclasticum-2)
-cop(organism-7, is-3)
-det(organism-7, a-4)
-advmod(anaerobic-6, strictly-5)
-amod(organism-7, anaerobic-6)
-

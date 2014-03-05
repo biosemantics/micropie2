@@ -1,8 +1,0 @@
-nn(strain-2, Type-1)
-nsubj(FC-4, strain-2)
-cop(FC-4, is-3)
-num(FC-4, 097-2-5)
-prep(FC-4, is-6)
-dep(is-6, ATCC-7)
-num(ATCC-7, 700667-8)
-

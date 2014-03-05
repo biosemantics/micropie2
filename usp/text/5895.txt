@@ -1,1 +1,0 @@
-Produces methane from H2-CO2, formate, and CO2+2-propanol, CO2+1-butanol, and isobutanol.

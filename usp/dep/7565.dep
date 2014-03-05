@@ -1,8 +1,0 @@
-nsubj(oxidase-3, Cells-1)
-nsubj(catalase-negative-6, Cells-1)
-cop(oxidase-3, are-2)
-conj_and(oxidase-3, catalase-negative-6)
-partmod(catalase-negative-6, using-7)
-amod(testing-9, conventional-8)
-dobj(using-7, testing-9)
-

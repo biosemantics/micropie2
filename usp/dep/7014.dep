@@ -1,9 +1,0 @@
-advmod(unrelated-2, Serologically-1)
-prep(unrelated-2, to-3)
-pcomp(to-3, previously-4)
-dep(unrelated-2, described-5)
-dobj(described-5, species-6)
-dobj(described-5, strains-8)
-conj_and(species-6, strains-8)
-prep_of(species-6, mycoplasmas-10)
-

@@ -1,6 +1,0 @@
-nsubj(pass-2, Cells-1)
-det(filter-5, a-4)
-prep_through(pass-2, filter-5)
-prep_with(filter-5, 450-nm-7)
-dep(450-nm-7, pores-8)
-

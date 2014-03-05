@@ -1,7 +1,0 @@
-det(growth-2, No-1)
-nsubj(occurs-3, growth-2)
-advmod(occurs-3, anaerobically-4)
-prep_with(occurs-3, nitrate-6)
-prep_with(occurs-3, arginine-9)
-conj_or(nitrate-6, arginine-9)
-

@@ -1,9 +1,0 @@
-prep_to(Brown-1, purple-3)
-prep_in(purple-3, color-5)
-prep_with(Brown-1, brown-7)
-partmod(brown-7, tending-8)
-aux(younger-11, to-9)
-cop(younger-11, be-10)
-xcomp(tending-8, younger-11)
-prep_in(younger-11, age-13)
-

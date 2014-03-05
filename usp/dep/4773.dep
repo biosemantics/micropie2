@@ -1,5 +1,0 @@
-amod(growth-2, Optimum-1)
-nsubj(occurs-3, growth-2)
-prep_at(occurs-3, pH-5)
-num(pH-5, 7.0-6)
-

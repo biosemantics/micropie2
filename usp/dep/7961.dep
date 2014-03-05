@@ -1,6 +1,0 @@
-nn(envelope-2, Cell-1)
-nsubj(consists-3, envelope-2)
-det(S-layer-7, a-5)
-amod(S-layer-7, double-6)
-prep_of(consists-3, S-layer-7)
-

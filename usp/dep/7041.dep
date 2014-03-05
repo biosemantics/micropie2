@@ -1,8 +1,0 @@
-det(habitat-2, The-1)
-nsubj(tracts-6, habitat-2)
-cop(tracts-6, is-3)
-det(tracts-6, the-4)
-amod(tracts-6, respiratory-5)
-nn(seals-9, harbor-8)
-prep_of(tracts-6, seals-9)
-

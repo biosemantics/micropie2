@@ -1,7 +1,0 @@
-nsubj(Voges-7, Methyl-1)
-amod(Methyl-1, red-2)
-dep(Methyl-1, Proskauer-3)
-dep(Methyl-1, Simmons-5)
-conj_and(Proskauer-3, Simmons-5)
-cop(Voges-7, is-6)
-

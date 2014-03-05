@@ -1,7 +1,0 @@
-nsubj(serve-5, Formate-1)
-conj_or(Formate-1, hydrogen-3)
-nsubj(serve-5, hydrogen-3)
-aux(serve-5, can-4)
-nn(substrate-8, growth-7)
-prep_as(serve-5, substrate-8)
-

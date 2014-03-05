@@ -1,8 +1,0 @@
-det(organism-4, A-1)
-advmod(anaerobic-3, strictly-2)
-amod(organism-4, anaerobic-3)
-nsubjpass(found-6, organism-4)
-auxpass(found-6, be-5)
-det(rumen-9, the-8)
-prep_in(found-6, rumen-9)
-

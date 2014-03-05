@@ -1,8 +1,0 @@
-det(fishpond-7, a-3)
-amod(fishpond-7, marine-4)
-nn(fishpond-7, water-5)
-nn(fishpond-7, aquaculture-6)
-prep_from(Isolated-1, fishpond-7)
-nn(Taiwan-11, Wong-Kong-9)
-prep_near(fishpond-7, Taiwan-11)
-

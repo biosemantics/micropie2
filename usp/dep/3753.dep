@@ -1,7 +1,0 @@
-det(strains-3, The-1)
-amod(strains-3, known-2)
-nsubjpass(isolated-5, strains-3)
-auxpass(isolated-5, were-4)
-nn(surfaces-8, flower-7)
-prep_from(isolated-5, surfaces-8)
-

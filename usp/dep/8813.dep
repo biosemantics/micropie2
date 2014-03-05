@@ -1,7 +1,0 @@
-det(size-3, The-1)
-nn(size-3, genome-2)
-nsubj(kbp-7, size-3)
-cop(kbp-7, is-4)
-quantmod(1,230-6, approximately-5)
-num(kbp-7, 1,230-6)
-

@@ -1,7 +1,0 @@
-det(time-3, The-1)
-amod(time-3, doubling-2)
-nsubj(12-6, time-3)
-cop(12-6, is-4)
-quantmod(12-6, approximately-5)
-amod(12-6, h.-7)
-

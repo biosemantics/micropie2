@@ -1,6 +1,0 @@
-nsubj(pink-pigmented-4, Colonies-1)
-nsubj(small-6, Colonies-1)
-aux(pink-pigmented-4, may-2)
-cop(pink-pigmented-4, be-3)
-conj_and(pink-pigmented-4, small-6)
-

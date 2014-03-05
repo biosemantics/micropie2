@@ -1,7 +1,0 @@
-nn(gen.-2, M.L.-1)
-nsubj(referring-5, gen.-2)
-dep(gen.-2, multilocale-3)
-prep_to(referring-5, more-7)
-num(location-10, one-9)
-prep_than(more-7, location-10)
-

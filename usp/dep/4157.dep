@@ -1,7 +1,0 @@
-nn(MF-2, Strain-1)
-nsubj(produced-3, MF-2)
-dobj(produced-3, CH4-4)
-prep_from(produced-3, H2-6)
-prep_from(produced-3, CO2-8)
-conj_and(H2-6, CO2-8)
-

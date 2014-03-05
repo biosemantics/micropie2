@@ -1,1 +1,0 @@
-Uses H2 plus CO2, methanol plus H2 and methylamine plus H2 as sources for growth and methane production.

@@ -1,6 +1,0 @@
-det(genome-2, The-1)
-nn(averages-4, size-3)
-dep(genome-2, averages-4)
-num(MDa-6, 527-5)
-dep(averages-4, MDa-6)
-

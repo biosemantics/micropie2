@@ -1,4 +1,0 @@
-nn(extract-2, Yeast-1)
-nsubj(stimulatory-4, extract-2)
-cop(stimulatory-4, is-3)
-

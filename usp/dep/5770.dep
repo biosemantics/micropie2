@@ -1,7 +1,0 @@
-aux(grow-3, Does-1)
-neg(grow-3, not-2)
-xcomp(grow-3, using-4)
-dobj(using-4, H2-5)
-dobj(using-4, CO2-7)
-conj_and(H2-5, CO2-7)
-

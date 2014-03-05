@@ -1,8 +1,0 @@
-nsubjpass(determined-9, Pathogenicity-1)
-prep_for(Pathogenicity-1, plants-3)
-prep_for(Pathogenicity-1, insects-5)
-conj_or(plants-3, insects-5)
-aux(determined-9, has-6)
-neg(determined-9, not-7)
-auxpass(determined-9, been-8)
-

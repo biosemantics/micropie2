@@ -1,7 +1,0 @@
-partmod(Shortest-1, doubling-2)
-dobj(doubling-2, time-3)
-num(min-6, 37-5)
-prep_about(doubling-2, min-6)
-amod(conditions-9, optimal-8)
-prep_under(min-6, conditions-9)
-

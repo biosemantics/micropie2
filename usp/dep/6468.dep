@@ -1,6 +1,0 @@
-amod(NaCl-1, optimum-2)
-num(NaCl-5, 0-10-3)
-nn(NaCl-5, g-4)
-dep(NaCl-1, NaCl-5)
-prep_per(NaCl-5, liter-7)
-

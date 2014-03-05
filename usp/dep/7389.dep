@@ -1,9 +1,0 @@
-det(lake-6, a-3)
-amod(lake-6, neutral-4)
-nn(lake-6, salt-5)
-prep_from(Isolated-1, lake-6)
-det(part-10, the-8)
-amod(part-10, northwest-9)
-prep_in(lake-6, part-10)
-prep_of(part-10, China-12)
-

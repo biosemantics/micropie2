@@ -1,8 +1,0 @@
-nsubjpass(hydrolysed-8, Starch-1)
-conj_and(Starch-1, Tweens-3)
-nsubjpass(hydrolysed-8, Tweens-3)
-num(Tweens-3, 40-4)
-conj_and(Starch-1, 80-6)
-conj_and(Tweens-3, 80-6)
-auxpass(hydrolysed-8, are-7)
-

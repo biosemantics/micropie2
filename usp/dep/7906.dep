@@ -1,6 +1,0 @@
-nn(lipids-3, Isopranyl-1)
-nn(lipids-3, ether-2)
-det(membrane-7, the-5)
-nn(membrane-7, cell-6)
-prep_in(lipids-3, membrane-7)
-

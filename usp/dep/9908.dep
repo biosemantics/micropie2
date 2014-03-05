@@ -1,6 +1,0 @@
-advmod(Grows-1, autotrophically-2)
-prep_on(Grows-1, CO2-4)
-det(presence-7, the-6)
-prep_in(CO2-4, presence-7)
-prep_of(presence-7, sulfur-9)
-

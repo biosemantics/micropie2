@@ -1,6 +1,0 @@
-dep(exhibit-3, Packed-1)
-nsubj(exhibit-3, cells-2)
-det(color-6, a-4)
-amod(color-6, green-5)
-dobj(exhibit-3, color-6)
-

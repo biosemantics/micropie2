@@ -1,7 +1,0 @@
-nn(Maryland-2, Georgia-1)
-nsubj(USA-7, Maryland-2)
-nn(York-5, New-4)
-conj_and(Maryland-2, York-5)
-nsubj(USA-7, York-5)
-cop(USA-7, is-6)
-

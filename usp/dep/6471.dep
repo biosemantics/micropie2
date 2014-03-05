@@ -1,8 +1,0 @@
-amod(cocci-2, Irregular-1)
-det(diameter-7, a-5)
-nn(diameter-7, mean-6)
-prep_with(cocci-2, diameter-7)
-number(.5-10, 1.0-1-9)
-num(µm-11, .5-10)
-prep_of(diameter-7, µm-11)
-

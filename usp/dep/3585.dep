@@ -1,5 +1,0 @@
-dep(Occurring-1, singly-2)
-dep(Occurring-1, in-4)
-conj_and(singly-2, in-4)
-pobj(in-4, pairs-5)
-

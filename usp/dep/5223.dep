@@ -1,7 +1,0 @@
-det(acetate-2, Neither-1)
-nsubj(stimulatory-7, acetate-2)
-nn(extract-5, yeast-4)
-conj_nor(acetate-2, extract-5)
-nsubj(stimulatory-7, extract-5)
-cop(stimulatory-7, was-6)
-

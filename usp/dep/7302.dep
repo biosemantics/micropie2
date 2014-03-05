@@ -1,9 +1,0 @@
-dobj(Reduces-1, nitrates-2)
-prep_to(Reduces-1, nitrites-4)
-prep_to(Reduces-1, nitrites-6)
-conj_and(nitrites-4, nitrites-6)
-det(product-11, an-8)
-amod(product-11, unknown-9)
-nn(product-11, end-10)
-prep_to(Reduces-1, product-11)
-

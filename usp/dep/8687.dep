@@ -1,9 +1,0 @@
-det(hemolymph-4, the-3)
-prep_from(Isolated-1, hemolymph-4)
-det(wasp-9, an-6)
-amod(wasp-9, adult-7)
-amod(wasp-9, vespid-8)
-prep_of(hemolymph-4, wasp-9)
-nn(quadridens-12, M.-11)
-appos(wasp-9, quadridens-12)
-

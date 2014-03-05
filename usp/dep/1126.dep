@@ -1,6 +1,0 @@
-nn(plates-5, MR2A-3)
-nn(plates-5, agar-4)
-prep_on(Colonies-1, plates-5)
-partmod(Colonies-1, containing-6)
-dobj(containing-6, 3.4-7)
-

@@ -1,7 +1,0 @@
-nsubjpass(produced-3, Acid-1)
-auxpass(produced-3, is-2)
-advmod(grown-5, when-4)
-advcl(produced-3, grown-5)
-amod(carbohydrates-8, utilizable-7)
-prep_on(grown-5, carbohydrates-8)
-

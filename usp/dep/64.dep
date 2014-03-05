@@ -1,7 +1,0 @@
-amod(cells-2, Pleomorphic-1)
-nsubjpass(bounded-4, cells-2)
-auxpass(bounded-4, are-3)
-det(membrane-8, a-6)
-amod(membrane-8, single-7)
-agent(bounded-4, membrane-8)
-

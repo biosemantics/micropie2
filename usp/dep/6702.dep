@@ -1,6 +1,0 @@
-aux(filtered-3, Can-1)
-auxpass(filtered-3, be-2)
-amod(filters-7, 450-nm-pore-size-5)
-nn(filters-7, membrane-6)
-prep_through(filtered-3, filters-7)
-

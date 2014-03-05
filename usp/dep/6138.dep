@@ -1,4 +1,0 @@
-nn(soil-5, Tundra-3)
-nn(soil-5, wetland-4)
-prep_from(Isolated-1, soil-5)
-

@@ -1,5 +1,0 @@
-nsubj(produced-2, Methane-1)
-prep_from(produced-2, H2-4)
-prep_from(produced-2, formate-6)
-conj_and(H2-4, formate-6)
-

@@ -1,6 +1,0 @@
-num(weeks-2, 10-1)
-nsubj(incubation-4, weeks-2)
-cop(incubation-4, be-3)
-num(˚C-7, 37-6)
-prep_at(incubation-4, ˚C-7)
-

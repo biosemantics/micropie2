@@ -1,8 +1,0 @@
-nn(production-2, Methane-1)
-cc(production-2, but-4)
-det(growth-6, no-5)
-nsubj(occurs-7, growth-6)
-dep(production-2, occurs-7)
-num(˚C-10, 5-9)
-prep_at(occurs-7, ˚C-10)
-

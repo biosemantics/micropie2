@@ -1,8 +1,0 @@
-det(growth-2, No-1)
-nsubjpass(detected-4, growth-2)
-auxpass(detected-4, was-3)
-nn(bottles-7, serum-6)
-prep_in(detected-4, bottles-7)
-amod(conditions-10, autotrophic-9)
-prep_under(detected-4, conditions-10)
-

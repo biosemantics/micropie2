@@ -1,6 +1,0 @@
-dep(Type-1, stain-2)
-nn(JCM-6, Pyrococcus-4)
-nn(JCM-6, horikoshii-5)
-dep(Type-1, JCM-6)
-dep(JCM-6, 9974-7)
-

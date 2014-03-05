@@ -1,9 +1,0 @@
-nn(colonies-2, Subsurface-1)
-nsubj(golden-4, colonies-2)
-nsubj(irregular-6, colonies-2)
-nsubj(multilobed-10, colonies-2)
-cop(golden-4, are-3)
-conj_and(golden-4, irregular-6)
-advmod(multilobed-10, often-9)
-conj_and(golden-4, multilobed-10)
-

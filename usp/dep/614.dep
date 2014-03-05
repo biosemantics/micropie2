@@ -1,6 +1,0 @@
-nn(site-3, Snake-1)
-nn(site-3, Pit-2)
-nsubj(Ridge-6, site-3)
-cop(Ridge-6, is-4)
-nn(Ridge-6, Mid-Atlantic-5)
-

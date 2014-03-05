@@ -1,9 +1,0 @@
-nsubj(round-6, Colonies-1)
-cop(round-6, are-2)
-amod(round-6, small-3)
-tmod(small-3, 0.2-4)
-nn(round-6, mm-5)
-conj_and(round-6, convex-8)
-amod(margins-11, entire-10)
-prep_with(convex-8, margins-11)
-

@@ -1,8 +1,0 @@
-nsubj(susceptible-3, Cells-1)
-cop(susceptible-3, are-2)
-nn(SDS-6, lysis-5)
-prep_to(susceptible-3, SDS-6)
-amod(solutions-9, hypotonic-8)
-prep_to(susceptible-3, solutions-9)
-conj_and(SDS-6, solutions-9)
-

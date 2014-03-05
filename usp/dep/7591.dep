@@ -1,9 +1,0 @@
-nsubj(occurs-2, Growth-1)
-prep_between(occurs-2, pH-4)
-num(pH-4, 7-5)
-prep_between(occurs-2, 10-7)
-conj_and(pH-4, 10-7)
-num(˚C-11, 25-50-10)
-prep_between(occurs-2, ˚C-11)
-conj_and(pH-4, ˚C-11)
-

@@ -1,9 +1,0 @@
-amod(reduction-2, Aerobic-1)
-nsubjpass(detected-11, reduction-2)
-prep_of(reduction-2, nitrate-4)
-conj_and(reduction-2, nitrite-6)
-nsubjpass(detected-11, nitrite-6)
-nn(production-9, gas-8)
-prep_without(nitrite-6, production-9)
-auxpass(detected-11, was-10)
-

@@ -1,1 +1,0 @@
-Isolate AN1 has an absolute requirement for either Na+ or Li+ for growth.

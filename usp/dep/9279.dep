@@ -1,8 +1,0 @@
-nsubjpass(formed-3, H2S-1)
-auxpass(formed-3, is-2)
-det(presence-6, the-5)
-prep_in(formed-3, presence-6)
-prep_of(presence-6, polysulfide-8)
-prep_of(presence-6, sulfur-10)
-conj_or(polysulfide-8, sulfur-10)
-

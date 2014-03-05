@@ -1,6 +1,0 @@
-nn(tests-4, Oxidase-1)
-conj_and(Oxidase-1, catalase-3)
-nn(tests-4, catalase-3)
-nsubj(negative-6, tests-4)
-cop(negative-6, are-5)
-

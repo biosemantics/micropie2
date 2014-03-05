@@ -1,9 +1,0 @@
-nn(RIII-4-2, Strain-1)
-nsubj(strain-11, RIII-4-2)
-amod(ATCC-5, =-4)
-dep(RIII-4-2, ATCC-5)
-dep(ATCC-5, 33757-6)
-cop(strain-11, is-8)
-det(strain-11, the-9)
-nn(strain-11, type-10)
-

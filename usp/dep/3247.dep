@@ -1,6 +1,0 @@
-amod(growth-2, Optimum-1)
-nsubj(occurs-3, growth-2)
-det(presence-6, the-5)
-prep_in(occurs-3, presence-6)
-prep_of(presence-6, 1-8)
-

@@ -1,5 +1,0 @@
-det(acid-2, No-1)
-nsubjpass(produced-4, acid-2)
-auxpass(produced-4, is-3)
-prep_from(produced-4, sugars-6)
-

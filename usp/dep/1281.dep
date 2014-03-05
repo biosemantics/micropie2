@@ -1,8 +1,0 @@
-det(growth-3, No-1)
-amod(growth-3, anaerobic-2)
-det(presence-6, the-5)
-prep_in(growth-3, presence-6)
-prep_of(growth-3, arginine-8)
-prep_of(growth-3, DMSO-10)
-conj_or(arginine-8, DMSO-10)
-

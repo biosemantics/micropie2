@@ -1,7 +1,0 @@
-det(G+C-4, The-1)
-nn(G+C-4, mol-2)
-nn(G+C-4, %-3)
-nsubj(%-7, G+C-4)
-cop(%-7, is-5)
-num(%-7, 32.5-6)
-

@@ -1,9 +1,0 @@
-advmod(inhibited-2, Slightly-1)
-prep_by(inhibited-2, ampicillin-4)
-prep_by(inhibited-2, chloramphenicol-6)
-conj_and(ampicillin-4, chloramphenicol-6)
-prep_by(inhibited-2, kanamycin-8)
-conj_and(ampicillin-4, kanamycin-8)
-prep_by(inhibited-2, gentamicin-10)
-conj_and(ampicillin-4, gentamicin-10)
-

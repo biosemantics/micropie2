@@ -1,6 +1,0 @@
-nsubj(serve-4, Fe-1)
-conj_and(Fe-1, sulfide-3)
-nsubj(serve-4, sulfide-3)
-nn(donors-7, electron-6)
-prep_as(serve-4, donors-7)
-

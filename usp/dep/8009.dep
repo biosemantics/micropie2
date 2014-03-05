@@ -1,7 +1,0 @@
-nn(strain-2, Type-1)
-nsubj(furiosus-5, strain-2)
-cop(furiosus-5, is-3)
-nn(furiosus-5, Pyrococcus-4)
-prep(furiosus-5, is-6)
-dep(is-6, FRG-7)
-

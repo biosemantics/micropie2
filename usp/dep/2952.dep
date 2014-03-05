@@ -1,4 +1,0 @@
-dep(positive-6, Oxidase-1)
-prep(Oxidase-1, and-3)
-dep(and-3, catalase-4)
-

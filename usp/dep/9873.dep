@@ -1,7 +1,0 @@
-conj_and(Sucrose-1, glucose-3)
-conj_and(Sucrose-1, galactose-5)
-conj_and(Sucrose-1, mannose-7)
-conj_and(Sucrose-1, fructose-10)
-dep(Sucrose-1, stimulate-11)
-dobj(stimulate-11, growth-12)
-

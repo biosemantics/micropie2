@@ -1,9 +1,0 @@
-det(time-3, The-1)
-amod(time-3, doubling-2)
-nsubjpass(estimated-5, time-3)
-auxpass(estimated-5, was-4)
-aux(min-9, to-6)
-cop(min-9, be-7)
-num(min-9, 40-8)
-xcomp(estimated-5, min-9)
-

@@ -1,9 +1,0 @@
-aux(produce-3, Does-1)
-neg(produce-3, not-2)
-amod(growth-5, filamentous-4)
-dobj(produce-3, growth-5)
-dobj(produce-3, films-7)
-conj_or(growth-5, films-7)
-dobj(produce-3, spots-9)
-conj_or(growth-5, spots-9)
-

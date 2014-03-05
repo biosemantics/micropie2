@@ -1,5 +1,0 @@
-nn(test-4, Proskauer-3)
-nsubj(negative-6, test-4)
-cop(negative-6, is-5)
-dep(Voges-1, negative-6)
-

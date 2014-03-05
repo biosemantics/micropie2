@@ -1,8 +1,0 @@
-aux(use-3, to-2)
-dep(Unable-1, use-3)
-dobj(use-3, lactate-4)
-dobj(use-3, acetate-6)
-conj_and(lactate-4, acetate-6)
-dobj(use-3, pyruvate-9)
-conj_and(lactate-4, pyruvate-9)
-

@@ -1,6 +1,0 @@
-dobj(Produces-1, methane-2)
-advmod(methane-2, only-3)
-prep_from(methane-2, H2-5)
-prep_from(methane-2, CO2-7)
-conj_and(H2-5, CO2-7)
-

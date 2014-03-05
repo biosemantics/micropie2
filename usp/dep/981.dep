@@ -1,9 +1,0 @@
-det(gut-5, a-3)
-amod(gut-5, pupal-4)
-prep_from(Isolated-1, gut-5)
-det(angulata-11, the-7)
-amod(angulata-11, firefly-8)
-nn(angulata-11, beetle-9)
-nn(angulata-11, Pyractonema-10)
-prep_of(gut-5, angulata-11)
-

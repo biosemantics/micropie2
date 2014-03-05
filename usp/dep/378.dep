@@ -1,7 +1,0 @@
-nsubj(are-2, Cells-1)
-number(1.0-6, 0.8-4)
-dep(1.0-6, to-5)
-num(µm-7, 1.0-6)
-prep_about(are-2, µm-7)
-advmod(are-2, usually-8)
-

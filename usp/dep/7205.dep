@@ -1,9 +1,0 @@
-amod(rods-2, Non-pigmented-1)
-conj_or(rods-2, coccobacilli-4)
-num(x-8, 0.3-0-6)
-num(x-8, .5-7)
-appos(rods-2, x-8)
-num(µm-11, 1-1-9)
-num(µm-11, .5-10)
-dep(x-8, µm-11)
-

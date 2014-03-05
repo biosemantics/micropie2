@@ -1,4 +1,0 @@
-advmod(anaerobic-2, Obligately-1)
-amod(cells-3, anaerobic-2)
-dep(cells-3, Gram-negative-5)
-

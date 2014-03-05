@@ -1,7 +1,0 @@
-amod(colonies-4, Yellow-1)
-nn(colonies-4, round-2)
-amod(colonies-4, smooth-3)
-nsubjpass(formed-6, colonies-4)
-auxpass(formed-6, be-5)
-prep_on(formed-6, agar-8)
-

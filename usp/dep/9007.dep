@@ -1,7 +1,0 @@
-amod(sulfur-4, elemental-3)
-prep_on(Grows-1, sulfur-4)
-det(source-9, a-6)
-amod(source-9, sole-7)
-nn(source-9, energy-8)
-prep_as(Grows-1, source-9)
-

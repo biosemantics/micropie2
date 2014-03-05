@@ -1,8 +1,0 @@
-det(gut-4, the-3)
-prep_from(Isolated-1, gut-4)
-det(pyralis-10, the-6)
-amod(pyralis-10, firefly-7)
-nn(pyralis-10, beetle-8)
-nn(pyralis-10, Photinus-9)
-prep_of(gut-4, pyralis-10)
-

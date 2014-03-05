@@ -1,7 +1,0 @@
-nsubj(support-6, Pyruvate-1)
-prep(Pyruvate-1, plus-2)
-dep(plus-2, acetate-3)
-aux(support-6, will-4)
-neg(support-6, not-5)
-dobj(support-6, growth-7)
-

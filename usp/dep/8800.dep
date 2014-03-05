@@ -1,5 +1,0 @@
-nsubj(lack-2, Cells-1)
-det(wall-5, a-3)
-nn(wall-5, cell-4)
-dobj(lack-2, wall-5)
-

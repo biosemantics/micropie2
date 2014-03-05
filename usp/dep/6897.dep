@@ -1,7 +1,0 @@
-det(sinus-5, the-3)
-amod(sinus-5, infraorbital-4)
-prep_from(Isolated-1, sinus-5)
-det(chicken-9, an-7)
-amod(chicken-9, adult-8)
-prep_of(sinus-5, chicken-9)
-

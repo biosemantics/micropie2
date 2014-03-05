@@ -1,8 +1,0 @@
-det(growth-2, No-1)
-amod(sulfur-5, elemental-4)
-prep_on(growth-2, sulfur-5)
-prep_on(growth-2, tetrathionate-7)
-conj_and(sulfur-5, tetrathionate-7)
-prep_on(growth-2, thiosulfate-10)
-conj_and(sulfur-5, thiosulfate-10)
-

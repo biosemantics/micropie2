@@ -1,6 +1,0 @@
-amod(growth-2, Autotrophic-1)
-prep_by(growth-2, oxidation-4)
-prep_of(growth-2, hydrogen-6)
-prep_of(growth-2, thiosulfate-8)
-conj_or(hydrogen-6, thiosulfate-8)
-

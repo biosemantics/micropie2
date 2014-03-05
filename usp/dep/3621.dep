@@ -1,6 +1,0 @@
-preconj(sulphite-2, Both-1)
-nsubj(inhibited-5, sulphite-2)
-conj_and(sulphite-2, thioglycolate-4)
-nsubj(inhibited-5, thioglycolate-4)
-dobj(inhibited-5, growth-6)
-

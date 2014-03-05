@@ -1,9 +1,0 @@
-amod(cells-2, Many-1)
-nsubj(have-10, cells-2)
-det(phase-7, the-4)
-amod(phase-7, late-5)
-nn(phase-7, log-6)
-prep_in(cells-2, phase-7)
-prep_of(phase-7, growth-9)
-dobj(have-10, vacuoles-11)
-

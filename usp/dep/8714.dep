@@ -1,6 +1,0 @@
-nsubj(filaments-6, Cells-1)
-cop(filaments-6, are-2)
-amod(filaments-6, helical-3)
-conj_and(helical-3, motile-5)
-amod(filaments-6, motile-5)
-

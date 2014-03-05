@@ -1,8 +1,0 @@
-det(hemolymph-4, the-3)
-prep_from(Isolated-1, hemolymph-4)
-det(corrusca-10, the-6)
-amod(corrusca-10, firefly-7)
-nn(corrusca-10, beetle-8)
-nn(corrusca-10, E.-9)
-prep_of(hemolymph-4, corrusca-10)
-

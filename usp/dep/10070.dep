@@ -1,5 +1,0 @@
-nsubj(coccoid-3, Cells-1)
-nsubj(coccobacillary-5, Cells-1)
-cop(coccoid-3, are-2)
-conj_or(coccoid-3, coccobacillary-5)
-

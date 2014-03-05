@@ -1,7 +1,0 @@
-det(range-3, The-1)
-nn(range-3, NaCl-2)
-nsubj(M.-8, range-3)
-prep_for(range-3, growth-5)
-cop(M.-8, is-6)
-num(M.-8, 2.2-7)
-

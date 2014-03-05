@@ -1,6 +1,0 @@
-nsubjpass(utilized-5, Pyruvate-1)
-conj_and(Pyruvate-1, acetate-3)
-nsubjpass(utilized-5, acetate-3)
-auxpass(utilized-5, are-4)
-prep_for(utilized-5, growth-7)
-

@@ -1,5 +1,0 @@
-nsubj(sulfide-2, Forms-1)
-prep_from(sulfide-2, sulfur-4)
-prep_from(sulfide-2, thiosulfate-6)
-conj_and(sulfur-4, thiosulfate-6)
-

@@ -1,7 +1,0 @@
-nsubj(show-2, Cultures-1)
-det(response-6, a-3)
-amod(response-6, positive-4)
-nn(response-6, growth-5)
-dobj(show-2, response-6)
-prep_to(show-2, cholesterol-8)
-

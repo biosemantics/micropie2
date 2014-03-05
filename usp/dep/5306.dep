@@ -1,5 +1,0 @@
-advmod(anaerobic-2, Obligately-1)
-amod(cells-3, anaerobic-2)
-nsubj(stain-4, cells-3)
-advmod(stain-4, Gram-negatively-5)
-

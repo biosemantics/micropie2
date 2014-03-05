@@ -1,6 +1,0 @@
-cc(capricolum-1, and-3)
-nn(antigens-5, share-4)
-dep(capricolum-1, antigens-5)
-nn(mycoides-8, M.-7)
-prep_with(antigens-5, mycoides-8)
-

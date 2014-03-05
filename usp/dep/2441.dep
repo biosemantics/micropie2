@@ -1,9 +1,0 @@
-nsubj(pink-7, Colonies-1)
-nn(medium-4, agar-3)
-prep_on(Colonies-1, medium-4)
-cop(pink-7, are-5)
-amod(pink-7, iridescent-6)
-det(edge-11, an-9)
-amod(edge-11, entire-10)
-prep_with(pink-7, edge-11)
-

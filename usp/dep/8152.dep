@@ -1,9 +1,0 @@
-dobj(Utilizes-1, ammonia-2)
-dobj(Utilizes-1, nitrate-4)
-conj_and(ammonia-2, nitrate-4)
-dobj(Utilizes-1, urea-7)
-conj_and(ammonia-2, urea-7)
-amod(sources-11, sole-9)
-nn(sources-11, nitrogen-10)
-prep_as(Utilizes-1, sources-11)
-

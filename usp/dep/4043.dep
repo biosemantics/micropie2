@@ -1,5 +1,0 @@
-det(growth-2, No-1)
-conj_or(growth-2, growth-2)
-prep_below(growth-2, 6.4-4)
-prep_above(growth-2, 8.6-7)
-

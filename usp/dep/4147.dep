@@ -1,9 +1,0 @@
-advmod(Grows-1, optimally-2)
-prep_at(Grows-1, 35-4)
-num(˚C-7, 38-6)
-dep(35-4, ˚C-7)
-dep(35-4, pH-9)
-conj_and(˚C-7, pH-9)
-num(pH-9, 7.0-10)
-amod(35-4, 7.5-12)
-

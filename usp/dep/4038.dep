@@ -1,7 +1,0 @@
-nsubj(stimulated-2, Growth-1)
-det(addition-5, the-4)
-prep_by(stimulated-2, addition-5)
-amod(compounds-8, organic-7)
-prep_of(addition-5, compounds-8)
-advmod(stimulated-2, greatly-9)
-

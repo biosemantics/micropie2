@@ -1,7 +1,0 @@
-preconj(hydrogen-2, Both-1)
-nsubjpass(required-6, hydrogen-2)
-conj_and(hydrogen-2, methanol-4)
-nsubjpass(required-6, methanol-4)
-auxpass(required-6, are-5)
-prep_for(required-6, growth-8)
-

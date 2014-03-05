@@ -1,5 +1,0 @@
-nsubj(positive-7, Tests-1)
-prep_for(Tests-1, catabolism-3)
-prep_of(catabolism-3, glucose-5)
-cop(positive-7, were-6)
-

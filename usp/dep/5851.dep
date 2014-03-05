@@ -1,9 +1,0 @@
-det(growth-2, No-1)
-nsubj(occurs-3, growth-2)
-prep_on(occurs-3, acetate-5)
-dep(occurs-3, alone-6)
-prep_on(occurs-3, methanol-9)
-conj_and(acetate-5, methanol-9)
-prep_on(occurs-3, methylamines-13)
-conj_and(acetate-5, methylamines-13)
-

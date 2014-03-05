@@ -1,5 +1,0 @@
-nn(daylight-2, 15ºC-1)
-nsubj(dark-5, daylight-2)
-cop(dark-5, is-3)
-amod(dark-5, 10ºC-4)
-

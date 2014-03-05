@@ -1,6 +1,0 @@
-advmod(unstable-2, Osmotically-1)
-dep(occurs-5, unstable-2)
-nsubj(occurs-5, lysis-4)
-amod(solutions-8, hypotonic-7)
-prep_in(occurs-5, solutions-8)
-

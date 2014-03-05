@@ -1,6 +1,0 @@
-nn(test-3, Methyl-1)
-amod(test-3, red-2)
-nsubj(positive-5, test-3)
-cop(positive-5, is-4)
-conj_and(positive-5, Voges-7)
-

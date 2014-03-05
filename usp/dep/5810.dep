@@ -1,8 +1,0 @@
-num(µm-2, 0.3-1)
-amod(medium-5, solid-4)
-prep_in(µm-2, medium-5)
-partmod(µm-2, containing-6)
-number(%-8, 1-7)
-amod(agarose-9, %-8)
-dobj(containing-6, agarose-9)
-

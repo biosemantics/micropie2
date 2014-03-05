@@ -1,5 +1,0 @@
-det(not-2, a-1)
-dep(not-2, sterol-4)
-partmod(sterol-4, derived-5)
-prep_from(derived-5, Gr-7)
-

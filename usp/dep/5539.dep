@@ -1,7 +1,0 @@
-nsubj(occurs-2, Multiplication-1)
-amod(fission-5, binary-4)
-prep_by(occurs-2, fission-5)
-neg(fission-5, not-7)
-amod(fission-9, multiple-8)
-dep(fission-5, fission-9)
-

@@ -1,8 +1,0 @@
-nn(methanol-2, Ethanol-1)
-nsubjpass(utilized-7, methanol-2)
-conj_and(methanol-2, methylamines-4)
-nsubjpass(utilized-7, methylamines-4)
-auxpass(utilized-7, are-5)
-neg(utilized-7, not-6)
-dobj(utilized-7, Acetate-8)
-

@@ -1,4 +1,0 @@
-dep(Mycoplasma-1, simbae-2)
-dep(simbae-2, sim-4)
-dep(sim-4, bae-6)
-

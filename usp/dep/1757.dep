@@ -1,9 +1,0 @@
-amod(diether-3, Sulfated-1)
-nn(diether-3, mannosylglucosylglycerol-2)
-nsubj(present-5, diether-3)
-cop(present-5, is-4)
-nn(sulfate-8, phosphatidylglycerol-7)
-nsubj(absent-10, sulfate-8)
-cop(absent-10, is-9)
-parataxis(present-5, absent-10)
-

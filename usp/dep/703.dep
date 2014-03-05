@@ -1,9 +1,0 @@
-dobj(Requires-1, sulfur-2)
-dobj(Requires-1, thiosulfate-4)
-conj_or(sulfur-2, thiosulfate-4)
-dobj(Requires-1, sulfate-6)
-conj_or(sulfur-2, sulfate-6)
-amod(acceptors-10, possible-8)
-nn(acceptors-10, electron-9)
-prep_as(Requires-1, acceptors-10)
-

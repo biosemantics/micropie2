@@ -1,6 +1,0 @@
-amod(colonies-2, Deep-1)
-nsubj(are-3, colonies-2)
-dep(are-3, rounded-4)
-dep(are-3, filamentous-6)
-conj_and(rounded-4, filamentous-6)
-

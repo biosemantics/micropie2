@@ -1,8 +1,0 @@
-nn(round-4, Convex-1)
-amod(round-4, pale-2)
-amod(round-4, yellow-3)
-nsubj(formed-7, round-4)
-amod(colonies-6, smooth-5)
-dep(round-4, colonies-6)
-prep_on(formed-7, agar-9)
-

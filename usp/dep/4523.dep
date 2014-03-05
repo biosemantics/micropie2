@@ -1,7 +1,0 @@
-nsubj(present-5, Galactosamine-1)
-conj_and(Galactosamine-1, glucosamine-3)
-nsubj(present-5, glucosamine-3)
-cop(present-5, are-4)
-amod(hydrolysates-8, cell-wall-7)
-prep_in(present-5, hydrolysates-8)
-

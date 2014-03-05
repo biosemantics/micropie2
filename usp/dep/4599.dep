@@ -1,5 +1,0 @@
-nsubj(occurs-2, Growth-1)
-prep_from(occurs-2, pH-4)
-num(pH-4, 7.0-5)
-prep_to(occurs-2, 8.4-7)
-

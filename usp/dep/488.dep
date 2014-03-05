@@ -1,9 +1,0 @@
-det(heterocysts-2, The-1)
-nsubj(smaller-6, heterocysts-2)
-conj_and(heterocysts-2, akinetes-4)
-nsubj(smaller-6, akinetes-4)
-cop(smaller-6, were-5)
-prep_than(smaller-6, those-8)
-partmod(those-8, reported-9)
-agent(reported-9, Forti-11)
-

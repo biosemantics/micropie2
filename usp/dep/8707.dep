@@ -1,8 +1,0 @@
-det(gut-4, the-3)
-prep_from(Isolated-1, gut-4)
-det(opaca-10, the-6)
-nn(opaca-10, tabanid-7)
-nn(opaca-10, fly-8)
-nn(opaca-10, H.-9)
-prep_of(gut-4, opaca-10)
-

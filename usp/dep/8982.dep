@@ -1,6 +1,0 @@
-nn(lipids-5, isopranyl-3)
-nn(lipids-5, ether-4)
-prep_of(Occurrence-1, lipids-5)
-poss(cells-8, their-7)
-prep_in(Occurrence-1, cells-8)
-

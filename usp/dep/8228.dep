@@ -1,6 +1,0 @@
-nsubjpass(known-7, Pathogenicity-1)
-det(flies-4, these-3)
-prep_for(Pathogenicity-1, flies-4)
-auxpass(known-7, is-5)
-neg(known-7, not-6)
-

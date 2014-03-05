@@ -1,6 +1,0 @@
-advmod(anaerobic-3, Possibly-1)
-advmod(anaerobic-3, facultatively-2)
-det(presence-6, the-5)
-prep_in(anaerobic-3, presence-6)
-prep_of(presence-6, nitrate-8)
-

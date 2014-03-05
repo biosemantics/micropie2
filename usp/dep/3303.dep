@@ -1,4 +1,0 @@
-prep_to(Susceptible-1, bacitracin-3)
-prep_to(Susceptible-1, novobiocin-5)
-conj_and(bacitracin-3, novobiocin-5)
-

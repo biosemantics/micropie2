@@ -1,5 +1,0 @@
-nn(WT1-5, strain-2)
-nn(WT1-5, Thermococcus-3)
-nn(WT1-5, waiotapuensis-4)
-dep(Type-1, WT1-5)
-

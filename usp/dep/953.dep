@@ -1,7 +1,0 @@
-prep_for(Negative-1, sucrose-3)
-appos(sucrose-3, lactose-5)
-appos(sucrose-3, trehalose-7)
-conj_and(lactose-5, trehalose-7)
-appos(sucrose-3, mannose-10)
-conj_and(lactose-5, mannose-10)
-

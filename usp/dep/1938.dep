@@ -1,8 +1,0 @@
-amod(growth-2, Anaerobic-1)
-nsubj(occur-9, growth-2)
-prep_with(growth-2, arginine-4)
-prep_with(growth-2, DMSO-6)
-conj_or(arginine-4, DMSO-6)
-aux(occur-9, does-7)
-neg(occur-9, not-8)
-

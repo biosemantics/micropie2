@@ -1,7 +1,0 @@
-nsubj(catalase-negative-8, Cells-1)
-partmod(Cells-1, grown-2)
-nn(medium-6, rumen-4)
-nn(medium-6, fluid-5)
-prep_in(grown-2, medium-6)
-cop(catalase-negative-8, are-7)
-

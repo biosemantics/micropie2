@@ -1,6 +1,0 @@
-dep(PH-1, 5-9-2)
-num(NaCl-6, 0.5-5-4)
-nn(NaCl-6, %-5)
-dep(PH-1, NaCl-6)
-conj_and(5-9-2, NaCl-6)
-

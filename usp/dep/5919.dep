@@ -1,8 +1,0 @@
-nn(extract-2, Yeast-1)
-nsubj(stimulate-7, extract-2)
-amod(homogenates-6, bacterial-4)
-nn(homogenates-6, cell-5)
-conj_and(extract-2, homogenates-6)
-nsubj(stimulate-7, homogenates-6)
-dobj(stimulate-7, growth-8)
-

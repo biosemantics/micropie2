@@ -1,8 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(1R7-9, strain-3)
-partmod(strain-3, isolated-4)
-nn(rectums-7, rabbit-6)
-prep_from(isolated-4, rectums-7)
-cop(1R7-9, is-8)
-

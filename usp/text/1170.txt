@@ -1,1 +1,0 @@
-Cells contain PG, PGP-Me and PGS.

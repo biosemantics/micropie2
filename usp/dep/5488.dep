@@ -1,6 +1,0 @@
-amod(concentration-3, Optimal-1)
-nn(concentration-3, salt-2)
-num(NaCl-7, 0.1-5)
-nn(NaCl-7, M-6)
-dep(concentration-3, NaCl-7)
-

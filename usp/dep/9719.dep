@@ -1,7 +1,0 @@
-nsubj(occurs-2, Growth-1)
-num(˚C-5, 50-4)
-prep_between(occurs-2, ˚C-5)
-num(˚C-8, 93-7)
-prep_between(occurs-2, ˚C-8)
-conj_and(˚C-5, ˚C-8)
-

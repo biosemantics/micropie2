@@ -1,8 +1,0 @@
-nsubj(occurring-7, Small-1)
-cop(occurring-7, is-2)
-amod(cells-5, irregular-3)
-nn(cells-5, coccoid-4)
-attr(occurring-7, cells-5)
-advmod(occurring-7, usually-6)
-advmod(occurring-7, singly-8)
-

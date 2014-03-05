@@ -1,7 +1,0 @@
-nsubj(utilized-3, Sugars-1)
-neg(utilized-3, not-2)
-mark(stimulates-6, although-4)
-nsubj(stimulates-6, acetate-5)
-advcl(utilized-3, stimulates-6)
-dobj(stimulates-6, growth-7)
-

@@ -1,1 +1,0 @@
-Uses H2 and CO2 as energy and carbon sources to produce methane.

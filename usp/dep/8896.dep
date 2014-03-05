@@ -1,5 +1,0 @@
-prep(strain-3, In-2)
-dep(CCC-4, strain-3)
-dep(CCC-4, Baja-95-5)
-dep(CCC-4, Cl-6)
-

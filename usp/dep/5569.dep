@@ -1,7 +1,0 @@
-nsubj(sediment-4, Source-1)
-cop(sediment-4, is-2)
-amod(sediment-4, anaerobic-3)
-amod(Lake-8, Great-6)
-nn(Lake-8, Salt-7)
-prep_from(sediment-4, Lake-8)
-

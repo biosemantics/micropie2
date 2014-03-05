@@ -1,9 +1,0 @@
-advmod(H2-CO2-2, Only-1)
-nsubjpass(used-4, H2-CO2-2)
-auxpass(used-4, is-3)
-amod(energy-7, sole-6)
-prep_as(used-4, energy-7)
-nn(source-10, carbon-9)
-prep_as(used-4, source-10)
-conj_and(energy-7, source-10)
-

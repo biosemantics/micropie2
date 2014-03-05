@@ -1,4 +1,0 @@
-nn(compounds-2, Tryptone-1)
-nsubj(inhibited-3, compounds-2)
-dobj(inhibited-3, growth-4)
-

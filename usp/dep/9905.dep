@@ -1,6 +1,0 @@
-nsubj(incorporated-2, Acetate-1)
-nn(acids-5, amino-4)
-prep_into(incorporated-2, acids-5)
-prep_into(incorporated-2, sugars-7)
-conj_and(acids-5, sugars-7)
-

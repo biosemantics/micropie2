@@ -1,9 +1,0 @@
-det(hemolymph-4, the-3)
-prep_from(Isolated-1, hemolymph-4)
-det(fly-9, a-6)
-amod(fly-9, common-7)
-nn(fly-9, scorpion-8)
-prep_of(hemolymph-4, fly-9)
-nn(helena-12, Panorpa-11)
-appos(fly-9, helena-12)
-

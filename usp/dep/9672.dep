@@ -1,7 +1,0 @@
-nn(strain-2, Type-1)
-nsubj(Japan-7, strain-2)
-nn(OG-1-5, Thermococcus-3)
-nn(OG-1-5, peptonophilus-4)
-dep(strain-2, OG-1-5)
-cop(Japan-7, is-6)
-

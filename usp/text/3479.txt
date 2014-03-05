@@ -1,1 +1,0 @@
-Produces acid from D-glucose, but not from D-galactose, sucrose, D-fructose, D-xylose, D-mannitol, D-mannose, trehalose, D-arabinose or lactose.

@@ -1,8 +1,0 @@
-det(vesicles-3, No-1)
-nn(vesicles-3, gas-2)
-nsubj(formed-4, vesicles-3)
-amod(cells-6, inside-5)
-dobj(formed-4, cells-6)
-expl(were-8, There-7)
-rcmod(cells-6, were-8)
-

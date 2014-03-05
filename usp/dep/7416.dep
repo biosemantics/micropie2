@@ -1,9 +1,0 @@
-num(Rods-3, 0.5-1-1)
-num(Rods-3, .0-2)
-amod(culture-6, liquid-5)
-prep_in(Rods-3, culture-6)
-num(µm-9, 2-15-8)
-prep_in(Rods-3, µm-9)
-conj_x(culture-6, µm-9)
-advmod(Rods-3, usually-10)
-

@@ -1,9 +1,0 @@
-aux(utilize-3, Can-1)
-neg(utilize-3, not-2)
-dobj(utilize-3, nitrate-4)
-dobj(utilize-3, DMSO-6)
-conj_or(nitrate-4, DMSO-6)
-amod(acceptors-10, alternative-8)
-nn(acceptors-10, electron-9)
-prep_as(utilize-3, acceptors-10)
-

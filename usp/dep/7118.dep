@@ -1,7 +1,0 @@
-nn(testudineum-2, adj.-1)
-prep(testudineum-2, of-3)
-nsubj(belonging-5, or-4)
-dep(of-3, belonging-5)
-det(tortoise-8, a-7)
-prep_to(belonging-5, tortoise-8)
-

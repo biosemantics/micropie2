@@ -1,9 +1,0 @@
-nn(concentrations-2, Formate-1)
-amod(concentrations-2, >-3)
-num(mM-5, 50-4)
-nsubj(inhibitory-7, mM-5)
-cop(inhibitory-7, are-6)
-ccomp(>-3, inhibitory-7)
-prep_at(>-3, pH-9)
-num(pH-9, 5.5-10)
-

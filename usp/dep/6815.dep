@@ -1,8 +1,0 @@
-nn(reactivity-4, capripneumoniae-1)
-conj_and(capripneumoniae-1, limited-3)
-nn(reactivity-4, limited-3)
-prep_with(reactivity-4, strains-6)
-nn(subsp-10, M.-8)
-nn(subsp-10, capricolum-9)
-prep_of(reactivity-4, subsp-10)
-

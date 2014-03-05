@@ -1,8 +1,0 @@
-nsubj(be-2, Cabbage-1)
-xcomp(be-2, referring-3)
-det(origin-7, the-5)
-nn(origin-7, plant-6)
-prep_to(referring-3, origin-7)
-det(organism-10, the-9)
-prep_of(origin-7, organism-10)
-

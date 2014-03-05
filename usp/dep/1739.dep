@@ -1,7 +1,0 @@
-det(description-2, The-1)
-nsubj(identical-4, description-2)
-cop(identical-4, is-3)
-prep_to(identical-4, that-6)
-partmod(that-6, published-7)
-prep_for(published-7, Nbt-9)
-

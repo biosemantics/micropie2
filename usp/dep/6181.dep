@@ -1,8 +1,0 @@
-det(only-2, The-1)
-nsubj(requires-5, only-2)
-partmod(only-2, described-3)
-dobj(described-3, strain-4)
-amod(acid-7, para-aminobenzoic-6)
-dobj(requires-5, acid-7)
-prep_for(acid-7, growth-9)
-

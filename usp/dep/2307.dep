@@ -1,5 +1,0 @@
-nsubj(lyse-2, Cells-1)
-advmod(lyse-2, immediately-3)
-amod(water-6, distilled-5)
-prep_in(lyse-2, water-6)
-

@@ -1,6 +1,0 @@
-nsubj(positive-7, Tests-1)
-prep_for(Tests-1, b-galactosidase-3)
-prep_for(Tests-1, phosphatase-5)
-conj_and(b-galactosidase-3, phosphatase-5)
-cop(positive-7, are-6)
-

@@ -1,8 +1,0 @@
-nsubj(serve-4, H2-1)
-conj_and(H2-1, CO2-3)
-nsubj(serve-4, CO2-3)
-prep_as(serve-4, energy-6)
-nn(sources-10, carbon-9)
-prep_as(serve-4, sources-10)
-conj_and(energy-6, sources-10)
-

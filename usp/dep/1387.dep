@@ -1,5 +1,0 @@
-det(growth-2, No-1)
-nsubj(observed-3, growth-2)
-num(˚C-6, 55-5)
-prep_above(observed-3, ˚C-6)
-

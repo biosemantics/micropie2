@@ -1,7 +1,0 @@
-nsubj(wide-6, Cells-1)
-cop(wide-6, are-2)
-number(1.0-4, 0.5-3)
-num(µm-5, 1.0-4)
-npadvmod(wide-6, µm-5)
-conj_and(wide-6, 1.0-8)
-

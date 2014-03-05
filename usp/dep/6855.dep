@@ -1,6 +1,0 @@
-nn(leopharyngis-2, L.n.-1)
-nsubj(pharynx-4, leopharyngis-2)
-cop(pharynx-4, is-3)
-det(lion-7, a-6)
-prep_of(pharynx-4, lion-7)
-

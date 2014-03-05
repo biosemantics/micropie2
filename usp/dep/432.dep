@@ -1,9 +1,0 @@
-number(10-3, 2-1)
-dep(10-3, to-2)
-num(forms-5, 10-3)
-amod(forms-5, coccoid-4)
-nsubjpass(joined-7, forms-5)
-auxpass(joined-7, be-6)
-amod(filaments-10, short-9)
-agent(joined-7, filaments-10)
-

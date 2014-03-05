@@ -1,8 +1,0 @@
-amod(tissue-3, Inner-1)
-nn(tissue-3, wetwood-2)
-amod(trees-6, living-5)
-prep_of(tissue-3, trees-6)
-amod(sediments-9, aquatic-8)
-prep_of(tissue-3, sediments-9)
-conj_and(trees-6, sediments-9)
-

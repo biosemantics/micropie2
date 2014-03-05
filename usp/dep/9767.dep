@@ -1,9 +1,0 @@
-prep_from(Isolated-1, Waiotapu-3)
-det(terrestrial-6, a-5)
-appos(Waiotapu-3, terrestrial-6)
-nn(spring-10, freshwater-8)
-amod(spring-10, hot-9)
-appos(terrestrial-6, spring-10)
-nn(Zealand-13, New-12)
-prep_in(spring-10, Zealand-13)
-

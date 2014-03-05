@@ -1,6 +1,0 @@
-nn(content-2, G+C-1)
-prep_of(content-2, DNA-4)
-number(mol-7, 29-6)
-num(%-8, mol-7)
-dep(DNA-4, %-8)
-

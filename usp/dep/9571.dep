@@ -1,9 +1,0 @@
-prep_from(Isolated-1, samples-3)
-det(solfatara-6, a-5)
-prep_from(Isolated-1, solfatara-6)
-det(wharf-9, a-8)
-prep_at(solfatara-6, wharf-9)
-nn(Island-12, Kodakara-11)
-prep_on(Isolated-1, Island-12)
-appos(Island-12, Japan-14)
-

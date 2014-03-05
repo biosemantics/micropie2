@@ -1,9 +1,0 @@
-det(aldolase-3, The-1)
-amod(aldolase-3, fructose-bisphosphate-2)
-nsubj(class-5, aldolase-3)
-cop(class-5, is-4)
-num(class-5, I-6)
-cop(insensitive-9, is-7)
-npadvmod(insensitive-9, EDTA-8)
-rcmod(class-5, insensitive-9)
-

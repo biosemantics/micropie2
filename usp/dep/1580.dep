@@ -1,6 +1,0 @@
-advmod(is-4, The-1)
-amod(menaquinone-3, predominant-2)
-nsubj(is-4, menaquinone-3)
-dep(8-7, MK-5)
-dep(is-4, 8-7)
-

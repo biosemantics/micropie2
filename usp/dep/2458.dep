@@ -1,8 +1,0 @@
-det(strains-2, Both-1)
-nsubjpass(isolated-4, strains-2)
-auxpass(isolated-4, were-3)
-amod(ponds-9, solar-6)
-nn(ponds-9, saltern-7)
-nn(ponds-9, crystallizer-8)
-prep_from(isolated-4, ponds-9)
-

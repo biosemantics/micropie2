@@ -1,7 +1,0 @@
-poss(content-3, Its-1)
-nn(content-3, G+C-2)
-nsubj(%-7, content-3)
-cop(%-7, is-4)
-number(mol-6, 65.5-5)
-num(%-7, mol-6)
-

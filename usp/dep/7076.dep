@@ -1,7 +1,0 @@
-nsubj(have-2, Colonies-1)
-det(appearance-6, a-3)
-amod(appearance-6, typical-4)
-amod(appearance-6, fried-egg-5)
-dobj(have-2, appearance-6)
-prep_on(appearance-6, agar-8)
-

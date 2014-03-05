@@ -1,5 +1,0 @@
-det(growth-3, No-1)
-amod(growth-3, autotrophic-2)
-nsubjpass(detected-5, growth-3)
-auxpass(detected-5, was-4)
-

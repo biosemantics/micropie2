@@ -1,9 +1,0 @@
-amod(rods-4, Non-motile-1)
-amod(rods-4, pleomorphic-3)
-num(x-8, 0.7-1-6)
-num(x-8, .0-7)
-dep(rods-4, x-8)
-num(µm-11, 1.5-3-9)
-num(µm-11, .0-10)
-dep(x-8, µm-11)
-

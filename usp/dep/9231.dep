@@ -1,6 +1,0 @@
-nsubj(be-2, Brown-1)
-xcomp(be-2, tending-3)
-aux(younger-6, to-4)
-cop(younger-6, be-5)
-xcomp(tending-3, younger-6)
-

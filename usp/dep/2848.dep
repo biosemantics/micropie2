@@ -1,6 +1,0 @@
-nn(arc-4, Gelatin-1)
-conj_and(Gelatin-1, starch-3)
-nn(arc-4, starch-3)
-neg(hydrolysed-6, not-5)
-partmod(arc-4, hydrolysed-6)
-

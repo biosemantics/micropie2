@@ -1,8 +1,0 @@
-nn(composition-3, DNA-1)
-nn(composition-3, base-2)
-num(moles-6, 63.4-5)
-dep(composition-3, moles-6)
-dep(moles-6, guanine-7)
-dep(moles-6, cytosine-9)
-conj_+(guanine-7, cytosine-9)
-

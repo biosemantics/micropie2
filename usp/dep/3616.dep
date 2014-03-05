@@ -1,6 +1,0 @@
-amod(growth-2, Weak-1)
-nsubj(extract-5, growth-2)
-cop(extract-5, was-3)
-amod(extract-5, evident-4)
-conj_and(extract-5, sucrose-7)
-

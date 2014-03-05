@@ -1,8 +1,0 @@
-nsubj(occur-2, Cells-1)
-prep_in(occur-2, filaments-4)
-prep_from(filaments-4, 15-6)
-quantmod(hundred-9, several-8)
-num(µm-10, hundred-9)
-prep_to(occur-2, µm-10)
-prep_in(µm-10, length-12)
-

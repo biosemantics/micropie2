@@ -1,7 +1,0 @@
-nsubjpass(determined-8, Pathogenicity-1)
-amod(insects-4, other-3)
-prep_for(Pathogenicity-1, insects-4)
-aux(determined-8, has-5)
-neg(determined-8, not-6)
-auxpass(determined-8, been-7)
-

@@ -1,6 +1,0 @@
-aux(grow-3, Can-1)
-advmod(grow-3, also-2)
-advmod(grow-3, autotrophically-4)
-xcomp(grow-3, using-5)
-dobj(using-5, CO2-6)
-

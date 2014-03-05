@@ -1,1 +1,0 @@
-Optimal doubling time is 45 min.

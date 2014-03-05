@@ -1,5 +1,0 @@
-nsubj(Gram-positive-6, Gram-negative-2)
-det(cells-5, some-4)
-prep_with(Gram-negative-2, cells-5)
-xcomp(Stain-1, Gram-positive-6)
-

@@ -1,5 +1,0 @@
-prep(Ferments-1, both-2)
-dep(both-2, poly-3)
-dep(both-2, disaccharides-6)
-conj_and(poly-3, disaccharides-6)
-

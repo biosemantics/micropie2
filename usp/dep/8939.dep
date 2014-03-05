@@ -1,6 +1,0 @@
-nsubjpass(required-3, Hydrogen-1)
-auxpass(required-3, is-2)
-det(donor-7, an-5)
-nn(donor-7, electron-6)
-prep_as(required-3, donor-7)
-

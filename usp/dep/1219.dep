@@ -1,8 +1,0 @@
-number(%-2, 30-1)
-amod(NaCl-3, %-2)
-nsubj(w\/v-10, NaCl-3)
-amod(growth-6, optimum-5)
-prep_with(NaCl-3, growth-6)
-prep_at(growth-6, 21-8)
-cop(w\/v-10, is-9)
-

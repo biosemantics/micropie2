@@ -1,9 +1,0 @@
-nn(methylphosphate-5, phosphatidylglycerol-2)
-conj_and(phosphatidylglycerol-2, phosphatidylglycerol-4)
-nn(methylphosphate-5, phosphatidylglycerol-4)
-dobj(Possesses-1, methylphosphate-5)
-amod(components-10, major-7)
-amod(components-10, polar-8)
-nn(components-10, lipid-9)
-prep_as(Possesses-1, components-10)
-

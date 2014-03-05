@@ -1,7 +1,0 @@
-nn(strain-2, Type-1)
-nn(NS-C-6, Thermococcus-4)
-nn(NS-C-6, litoralis-5)
-dep(strain-2, NS-C-6)
-appos(NS-C-6, DSM-8)
-num(DSM-8, 5473-9)
-

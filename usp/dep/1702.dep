@@ -1,7 +1,0 @@
-nsubjpass(hydrolysed-5, Casein-1)
-conj_and(Casein-1, gelatin-3)
-nsubjpass(hydrolysed-5, gelatin-3)
-auxpass(hydrolysed-5, are-4)
-conj_but(hydrolysed-5, not-8)
-dep(not-8, starch-9)
-

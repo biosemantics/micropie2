@@ -1,8 +1,0 @@
-nn(PG-2, Strain-1)
-nsubj(DSM-5, PG-2)
-cop(DSM-5, is-3)
-num(DSM-5, ¯-4)
-num(DSM-5, 11978-6)
-num(OCM816-8, ¯-7)
-dep(DSM-5, OCM816-8)
-

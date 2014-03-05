@@ -1,6 +1,0 @@
-nn(pharynx-2, L.n.-1)
-nsubj(leopharyngis-6, pharynx-2)
-cop(leopharyngis-6, is-3)
-nn(leopharyngis-6, throat-4)
-nn(leopharyngis-6, L.n.-5)
-

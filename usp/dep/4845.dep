@@ -1,9 +1,0 @@
-nn(walls-2, Cell-1)
-amod(SDS-7, sensitive-3)
-num(%-6, 0.001-5)
-prep_to(sensitive-3, %-6)
-dep(walls-2, SDS-7)
-amod(water-10, distilled-9)
-dep(walls-2, water-10)
-conj_and(SDS-7, water-10)
-

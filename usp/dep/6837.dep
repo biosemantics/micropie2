@@ -1,8 +1,0 @@
-nsubjpass(inhibited-3, Growth-1)
-auxpass(inhibited-3, is-2)
-num(blue-8, 0.002-5)
-nn(blue-8, %-6)
-nn(blue-8, methylene-7)
-agent(inhibited-3, blue-8)
-prep_in(blue-8, agar-10)
-

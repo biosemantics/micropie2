@@ -1,1 +1,0 @@
-Pyruvate, lactate, acetate, proionate, trimethylamine, dimethylamine, methylamine, cyclopentanol, ethanol, methanol, 1-propanol, 2-propanol, 1-butanol, and 2-butanol did not support growth and methane production.

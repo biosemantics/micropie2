@@ -1,4 +1,0 @@
-cc(gelatinase-4, and-3)
-dep(Amylase-1, gelatinase-4)
-amod(gelatinase-4, positive-5)
-

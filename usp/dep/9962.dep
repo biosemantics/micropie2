@@ -1,9 +1,0 @@
-nsubj(pm-2, Aggregates-1)
-quantmod(hundred-5, several-4)
-num(individuals-6, hundred-5)
-prep_with(pm-2, individuals-6)
-amod(individuals-6, visible-7)
-quantmod(10-10, up-8)
-dep(10-10, to-9)
-dep(visible-7, 10-10)
-

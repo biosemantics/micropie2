@@ -1,8 +1,0 @@
-nsubjpass(tolerated-3, NaCl-1)
-auxpass(tolerated-3, is-2)
-prep_at(tolerated-3, concentrations-5)
-quantmod(2.5-8, up-6)
-dep(2.5-8, to-7)
-dep(%-9, 2.5-8)
-dep(concentrations-5, %-9)
-

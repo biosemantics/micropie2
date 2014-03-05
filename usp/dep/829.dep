@@ -1,6 +1,0 @@
-dep(strongly-3, a-2)
-advmod(smelling-4, strongly-3)
-partmod(Forms-1, smelling-4)
-amod(product-6, unknown-5)
-dobj(smelling-4, product-6)
-

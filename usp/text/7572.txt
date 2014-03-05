@@ -1,1 +1,0 @@
-Grows best on pyruvate, and can use acetate, butanol, butyrate, ethanol, glycerol, lactate, propanol and propionate as sole carbon sources.

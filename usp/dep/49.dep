@@ -1,5 +1,0 @@
-nn(var-7, broccoli-3)
-dep(broccoli-3, Brassica-5)
-dep(Brassica-5, oleracea-6)
-prep_from(Isolated-1, var-7)
-

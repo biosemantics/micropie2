@@ -1,7 +1,0 @@
-det(envelope-3, The-1)
-nn(envelope-3, cell-2)
-nsubj(consists-4, envelope-3)
-num(layer-7, one-6)
-prep_of(consists-4, layer-7)
-prep_of(layer-7, subunits-9)
-

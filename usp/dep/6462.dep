@@ -1,9 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(harbors-4, strain-3)
-det(prophage-10, a-5)
-advmod(integrated-7, chromosomally-6)
-amod(prophage-10, integrated-7)
-amod(prophage-10, defective-9)
-dobj(harbors-4, prophage-10)
-

@@ -1,7 +1,0 @@
-amod(triglycosyl-3, Characteristic-1)
-amod(triglycosyl-3, sulfated-2)
-dep(present-7, triglycosyl-3)
-nn(diethers-6, tetraglycosyl-5)
-conj_and(triglycosyl-3, diethers-6)
-dep(present-7, diethers-6)
-

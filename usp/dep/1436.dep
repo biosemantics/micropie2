@@ -1,6 +1,0 @@
-nsubj(%-6, MK-8-1)
-conj_and(MK-8-1, MK-8-3)
-nsubj(%-6, MK-8-3)
-cop(%-6, is-4)
-num(%-6, 91.8-5)
-

@@ -1,6 +1,0 @@
-nn(acids-2, Amino-1)
-nsubjpass(required-5, acids-2)
-auxpass(required-5, are-3)
-neg(required-5, not-4)
-prep_for(required-5, growth-7)
-

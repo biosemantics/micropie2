@@ -1,7 +1,0 @@
-nsubjpass(formed-9, H2S-1)
-dep(H2S-1, up-3)
-num(µM-6, 25-5)
-prep_to(up-3, µM-6)
-auxpass(formed-9, is-8)
-prep_during(formed-9, growth-11)
-

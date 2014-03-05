@@ -1,8 +1,0 @@
-nn(helix-2, n.-1)
-det(coil-5, a-4)
-conj_or(helix-2, coil-5)
-conj_or(helix-2, spiral-7)
-nn(fem-11, M.-9)
-nn(fem-11, L.-10)
-dep(helix-2, fem-11)
-

@@ -1,8 +1,0 @@
-det(fish-4, A-1)
-amod(fish-4, marine-water-2)
-nn(fish-4, aquaculture-3)
-nsubjpass(pond-6, fish-4)
-auxpass(pond-6, be-5)
-nn(Taiwan-9, Wong-Kong-8)
-prep_near(pond-6, Taiwan-9)
-

@@ -1,1 +1,0 @@
-Catabolic substrates for growth include H2/CO2 and methanol+H2 but not formate, acetate, methylamine+H2, 2-propanol or iso-butanol.

@@ -1,5 +1,0 @@
-nsubj(detected-5, Glycolipids-1)
-conj_and(Glycolipids-1, PGS-3)
-nsubj(detected-5, PGS-3)
-neg(detected-5, not-4)
-

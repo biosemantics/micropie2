@@ -1,8 +1,0 @@
-advmod(Occurs-1, mostly-2)
-amod(cells-5, single-4)
-prep_as(Occurs-1, cells-5)
-dep(Occurs-1, sometimes-7)
-prep_in(Occurs-1, pairs-9)
-prep_in(Occurs-1, clusters-11)
-conj_and(pairs-9, clusters-11)
-

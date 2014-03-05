@@ -1,5 +1,0 @@
-nn(pellets-2, Cell-1)
-nsubjpass(collected-4, pellets-2)
-auxpass(collected-4, be-3)
-agent(collected-4, centrifugation-6)
-

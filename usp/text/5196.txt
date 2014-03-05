@@ -1,1 +1,0 @@
-Cells resist lysis by 1 % SDS.

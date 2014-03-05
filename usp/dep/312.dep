@@ -1,9 +1,0 @@
-nsubj(occurs-2, Growth-1)
-nn(extract-5, beef-4)
-prep_on(occurs-2, extract-5)
-nn(extract-8, soya-7)
-prep_on(occurs-2, extract-8)
-conj_and(extract-5, extract-8)
-prep_on(occurs-2, galactose-11)
-conj_and(extract-5, galactose-11)
-

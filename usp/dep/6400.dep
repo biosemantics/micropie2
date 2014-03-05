@@ -1,8 +1,0 @@
-det(wall-4, A-1)
-amod(wall-4, thick-2)
-nn(wall-4, cell-3)
-nsubj(ca.-6, wall-4)
-cop(ca.-6, is-5)
-num(nm-8, 20-7)
-dep(ca.-6, nm-8)
-

@@ -1,8 +1,0 @@
-amod(crossreactions-2, Serological-1)
-nsubjpass(reported-5, crossreactions-2)
-aux(reported-5, have-3)
-auxpass(reported-5, been-4)
-nn(subsp-9, M.-7)
-nn(subsp-9, mycoides-8)
-prep_with(reported-5, subsp-9)
-

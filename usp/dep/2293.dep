@@ -1,8 +1,0 @@
-nn(diether-3, Mannosyl-1)
-nn(diether-3, glucosyl-2)
-nsubj(present-5, diether-3)
-cop(present-5, is-4)
-det(glycolipid-9, a-7)
-amod(glycolipid-9, minor-8)
-prep_as(present-5, glycolipid-9)
-

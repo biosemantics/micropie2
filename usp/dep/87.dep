@@ -1,5 +1,0 @@
-nsubj(lack-2, Cells-1)
-amod(walls-5, true-3)
-nn(walls-5, cell-4)
-dobj(lack-2, walls-5)
-

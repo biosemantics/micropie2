@@ -1,9 +1,0 @@
-nsubj(grow-2, Cells-1)
-prep_at(grow-2, pH-4)
-number(7.3-6, 5.6-5)
-dobj(grow-2, 7.3-6)
-amod(growth-9, optimal-8)
-prep_with(7.3-6, growth-9)
-prep_at(grow-2, pH-11)
-num(pH-11, 6.6-12)
-

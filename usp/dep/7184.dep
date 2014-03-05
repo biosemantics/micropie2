@@ -1,9 +1,0 @@
-nsubj(rods-4, Cells-1)
-cop(rods-4, are-2)
-amod(rods-4, short-3)
-num(x-7, 0.7-0-5)
-num(x-7, .9-6)
-dep(rods-4, x-7)
-num(µm-9, 2-4-8)
-dep(x-7, µm-9)
-

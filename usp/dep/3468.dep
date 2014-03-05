@@ -1,5 +1,0 @@
-nn(soil-5, sulfate-3)
-nn(soil-5, saline-4)
-prep_from(Isolated-1, soil-5)
-prep_of(soil-5, Turkmenia-7)
-

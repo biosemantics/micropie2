@@ -1,8 +1,0 @@
-advmod(concentration-5, only-3)
-amod(concentration-5, high-4)
-prep_to(Susceptible-1, concentration-5)
-prep_of(concentration-5, bacitracin-7)
-num(µg-10, 40-9)
-dep(bacitracin-7, µg-10)
-prep_per(µg-10, mL-12)
-

@@ -1,9 +1,0 @@
-det(content-3, The-1)
-nn(content-3, G+C-2)
-nsubj(%-10, content-3)
-det(DNA-6, the-5)
-prep_of(content-3, DNA-6)
-cop(%-10, is-7)
-number(mol-9, 59.5-8)
-num(%-10, mol-9)
-

@@ -1,7 +1,0 @@
-nsubjpass(required-3, Acetate-1)
-auxpass(required-3, is-2)
-det(source-7, a-5)
-nn(source-7, carbon-6)
-prep_as(required-3, source-7)
-prep_for(source-7, growth-9)
-

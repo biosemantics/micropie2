@@ -1,7 +1,0 @@
-det(temperature-3, The-1)
-nn(temperature-3, growth-2)
-nsubj(ranged-7, temperature-3)
-det(strain-6, the-5)
-prep_of(temperature-3, strain-6)
-prep_from(ranged-7, 65-9)
-

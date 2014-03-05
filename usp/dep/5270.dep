@@ -1,6 +1,0 @@
-nsubj(occur-2, They-1)
-dep(pairs-6, singly-3)
-conj_or(singly-3, in-5)
-dep(pairs-6, in-5)
-dobj(occur-2, pairs-6)
-

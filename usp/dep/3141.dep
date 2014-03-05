@@ -1,8 +1,0 @@
-nn(sucrose-2, Glucose-1)
-nsubjpass(utilized-6, sucrose-2)
-conj_and(sucrose-2, maltose-4)
-nsubjpass(utilized-6, maltose-4)
-auxpass(utilized-6, are-5)
-prep_with(utilized-6, production-8)
-prep_of(production-8, acids-10)
-

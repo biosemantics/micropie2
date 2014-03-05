@@ -1,5 +1,0 @@
-det(averages-3, The-1)
-nn(averages-3, genome-2)
-num(megadaltons-5, 585-4)
-dep(averages-3, megadaltons-5)
-

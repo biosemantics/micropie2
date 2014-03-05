@@ -1,7 +1,0 @@
-det(temperature-3, The-1)
-amod(temperature-3, optimum-2)
-nsubj(is-4, temperature-3)
-prep_between(is-4, 30-6)
-prep_between(is-4, 47C-8)
-conj_and(30-6, 47C-8)
-

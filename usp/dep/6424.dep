@@ -1,8 +1,0 @@
-nn(range-2, PH-1)
-nsubj(.8-5, range-2)
-cop(.8-5, is-3)
-num(.8-5, 6.0-8-4)
-advmod(.8-5, optimum-6)
-num(.6-8, 7.2-7-7)
-dep(optimum-6, .6-8)
-

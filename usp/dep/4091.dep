@@ -1,8 +1,0 @@
-nn(cysteine-2, Acetate-1)
-nsubj(stimulatory-7, cysteine-2)
-nn(vitamins-5, B-4)
-conj_and(cysteine-2, vitamins-5)
-nsubj(stimulatory-7, vitamins-5)
-cop(stimulatory-7, are-6)
-prep_for(stimulatory-7, growth-9)
-

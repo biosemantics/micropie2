@@ -1,9 +1,0 @@
-nsubjpass(identified-7, Two-1)
-det(glycolipids-4, the-3)
-prep_of(Two-1, glycolipids-4)
-aux(identified-7, have-5)
-auxpass(identified-7, been-6)
-prep_as(identified-7, STeGD-9)
-prep_as(identified-7, S2-DGD-11)
-conj_and(STeGD-9, S2-DGD-11)
-

@@ -1,1 +1,0 @@
-Cannot utilize nitrate or DMSO as alternative electron acceptors.

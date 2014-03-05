@@ -1,8 +1,0 @@
-det(growth-3, No-1)
-amod(growth-3, autotrophic-2)
-nsubj(supplemented-7, growth-3)
-amod(media-6, minimal-5)
-prep_in(growth-3, media-6)
-amod(sulfur-10, elemental-9)
-prep_with(supplemented-7, sulfur-10)
-

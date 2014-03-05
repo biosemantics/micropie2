@@ -1,7 +1,0 @@
-det(gut-4, the-3)
-prep_from(Isolated-1, gut-4)
-det(dragonfly-7, the-6)
-prep_of(gut-4, dragonfly-7)
-nn(longipennis-9, P.-8)
-dep(dragonfly-7, longipennis-9)
-

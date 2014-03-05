@@ -1,6 +1,0 @@
-nsubj(obtained-3, italica-1)
-det(market-8, a-5)
-amod(market-8, commercial-6)
-nn(market-8, vegetable-7)
-prep_at(obtained-3, market-8)
-

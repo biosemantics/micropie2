@@ -1,9 +1,0 @@
-det(growth-2, No-1)
-nsubj(occurs-3, growth-2)
-amod(medium-6, minimal-5)
-prep_in(occurs-3, medium-6)
-amod(medium-6, amended-7)
-det(headspace-11, a-9)
-nn(headspace-11, H2\/CO2-10)
-prep_with(amended-7, headspace-11)
-

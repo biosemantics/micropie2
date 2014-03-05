@@ -1,1 +1,0 @@
-They freely pass through filters with 450 and 220 nm pores, but do not pass through filters with 100 nm pores.

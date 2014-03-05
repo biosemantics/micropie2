@@ -1,9 +1,0 @@
-amod(isolates-2, Similar-1)
-nsubj(found-3, isolates-2)
-det(hemocoel-6, the-5)
-prep_in(found-3, hemocoel-6)
-dep(beetles-9, click-8)
-prep_of(hemocoel-6, beetles-9)
-dep(beetles-9, Coleoptera-11)
-dep(Coleoptera-11, Elateridae-13)
-

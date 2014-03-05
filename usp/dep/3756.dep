@@ -1,7 +1,0 @@
-det(weight-4, The-1)
-nn(weight-4, genome-2)
-amod(weight-4, molecular-3)
-nsubj(1.05-6, weight-4)
-cop(1.05-6, is-5)
-conj_x(1.05-6, l09-8)
-

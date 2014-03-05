@@ -1,7 +1,0 @@
-nsubj(lyse-2, Cells-1)
-advmod(lyse-2, rapidly-3)
-prep_in(lyse-2, SDS-5)
-amod(water-9, distilled-8)
-prep_in(lyse-2, water-9)
-conj_and(SDS-5, water-9)
-

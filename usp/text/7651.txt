@@ -1,1 +1,0 @@
-Produces arginine dihydrolase and lysine decarboxylase, but not ornithine decarboxylase.

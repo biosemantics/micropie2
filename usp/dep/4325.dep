@@ -1,8 +1,0 @@
-amod(rods-2, Short-1)
-nsubj(wide-4, rods-2)
-cop(wide-4, were-3)
-prep(wide-4, by-5)
-num(µm-7, 2.1-6)
-npadvmod(long-8, µm-7)
-pcomp(by-5, long-8)
-

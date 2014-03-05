@@ -1,9 +1,0 @@
-nsubj(cocci-4, Cells-1)
-cop(cocci-4, are-2)
-amod(cocci-4, nonmotile-3)
-number(1.7-7, 0.8-6)
-num(µm-8, 1.7-7)
-conj_and(cocci-4, µm-8)
-prep_in(µm-8, diameter-10)
-advmod(cocci-4, typically-11)
-

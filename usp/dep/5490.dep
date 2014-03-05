@@ -1,9 +1,0 @@
-number(%-2, 0.5-1)
-amod(extract-4, %-2)
-nn(extract-4, yeast-3)
-nsubj(peptone-8, extract-4)
-cop(peptone-8, is-5)
-number(%-7, 0.5-6)
-amod(peptone-8, %-7)
-conj_and(peptone-8, acetate-10)
-

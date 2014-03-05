@@ -1,5 +1,0 @@
-nn(Spiroplasma-4, citri-1)
-conj_and(citri-1, other-3)
-nn(Spiroplasma-4, other-3)
-dep(Spiroplasma-4, strains-5)
-

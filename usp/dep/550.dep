@@ -1,7 +1,0 @@
-nsubj(serve-5, Thiosulfate-1)
-conj_and(Thiosulfate-1, sulfite-4)
-nsubj(serve-5, sulfite-4)
-nn(acceptors-8, electron-7)
-prep_as(serve-5, acceptors-8)
-prep_for(acceptors-8, growth-10)
-

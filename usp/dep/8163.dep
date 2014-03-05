@@ -1,5 +1,0 @@
-nn(growth-2, Maximum-1)
-nsubj(be-3, growth-2)
-xcomp(be-3, occurring-4)
-prep_at(occurring-4, 200-6)
-

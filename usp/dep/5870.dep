@@ -1,7 +1,0 @@
-amod(concentration-3, Optimal-1)
-nn(concentration-3, salt-2)
-nsubj(NaCl-7, concentration-3)
-cop(NaCl-7, is-4)
-number(%-6, 1-5)
-amod(NaCl-7, %-6)
-

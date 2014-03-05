@@ -1,6 +1,0 @@
-prep_between(Grew-1, pH-3)
-num(pH-3, 6-9-4)
-advmod(Grew-1, optimally-6)
-prep_at(Grew-1, pH-8)
-num(pH-8, 7.5-9)
-

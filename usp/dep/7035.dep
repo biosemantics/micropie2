@@ -1,5 +1,0 @@
-nsubj(occurs-2, Alpha-hemolysis-1)
-amod(agar-6, bovine-4)
-nn(agar-6, blood-5)
-prep_on(occurs-2, agar-6)
-

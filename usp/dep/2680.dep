@@ -1,9 +1,0 @@
-number(5.0-2, 2.5-1)
-num(NaCl-4, 5.0-2)
-nn(NaCl-4, M-3)
-nsubj(NaCl-9, NaCl-4)
-cop(NaCl-9, is-5)
-amod(NaCl-9, optimum-6)
-tmod(optimum-6, 3.4-7)
-nn(NaCl-9, M-8)
-

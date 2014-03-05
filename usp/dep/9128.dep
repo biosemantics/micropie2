@@ -1,6 +1,0 @@
-nn(lipids-2, Membrane-1)
-nsubj(consist-3, lipids-2)
-advmod(consist-3, exclusively-4)
-nn(tetraethers-7, dibiphytanylglycerol-6)
-prep_of(consist-3, tetraethers-7)
-

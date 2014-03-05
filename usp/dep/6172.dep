@@ -1,7 +1,0 @@
-advmod(Grows-1, poorly-2)
-num(osmol\/kg-5, 0.3-4)
-prep_at(Grows-1, osmol\/kg-5)
-det(addition-8, no-7)
-dep(osmol\/kg-5, addition-8)
-prep_of(addition-8, NaCl-10)
-

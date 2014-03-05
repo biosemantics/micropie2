@@ -1,6 +1,0 @@
-det(chains-2, Some-1)
-nsubj(elongated-5, chains-2)
-aux(elongated-5, may-3)
-aux(elongated-5, have-4)
-dobj(elongated-5, cells-6)
-

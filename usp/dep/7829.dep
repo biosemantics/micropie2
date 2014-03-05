@@ -1,6 +1,0 @@
-advmod(grown-2, Aerobically-1)
-dep(exhibit-4, grown-2)
-nsubj(exhibit-4, cells-3)
-amod(reaction-6, catalase-positive-5)
-dobj(exhibit-4, reaction-6)
-

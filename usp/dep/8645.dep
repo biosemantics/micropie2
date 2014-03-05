@@ -1,6 +1,0 @@
-det(weight-4, The-1)
-nn(weight-4, genome-2)
-amod(weight-4, molecular-3)
-dep(weight-4, is-6)
-nsubj(is-6, lo9-7)
-

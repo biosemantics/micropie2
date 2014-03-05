@@ -1,6 +1,0 @@
-prep_to(Sensitive-1, erythromycin-3)
-prep_to(Sensitive-1, novobiocin-5)
-conj_and(erythromycin-3, novobiocin-5)
-prep_to(Sensitive-1, rifampicin-7)
-conj_and(erythromycin-3, rifampicin-7)
-

@@ -1,5 +1,0 @@
-nn(lampri-2, Spiroplasma-1)
-dep(lampri-2, dicola-4)
-dep(dicola-4, lam.py.ri.di-6)
-dep(lam.py.ri.di-6, co.la-8)
-

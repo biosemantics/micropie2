@@ -1,6 +1,0 @@
-amod(cells-2, Rod-shaped-1)
-dep(cells-2, 0.5-4)
-num(µm-7, 2.5-5-6)
-dep(cells-2, µm-7)
-conj_x(0.5-4, µm-7)
-

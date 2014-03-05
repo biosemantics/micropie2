@@ -1,8 +1,0 @@
-neg(strains-3, Not-1)
-det(strains-3, all-2)
-nsubj(capable-5, strains-3)
-cop(capable-5, are-4)
-amod(growth-8, rapid-7)
-prep_of(capable-5, growth-8)
-prep_on(growth-8, H2\/CO2-10)
-

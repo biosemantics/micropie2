@@ -1,7 +1,0 @@
-nsubj(has-2, It-1)
-det(pH-5, an-3)
-amod(pH-5, optimum-4)
-dobj(has-2, pH-5)
-prep_of(pH-5, 1.0-7)
-dep(pH-5, 1.2-9)
-

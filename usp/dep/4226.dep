@@ -1,7 +1,0 @@
-det(salt-requirement-2, No-1)
-nsubj(tolerates-5, salt-requirement-2)
-advmod(tolerates-5, but-4)
-number(%-7, 1.8-6)
-amod(NaCl-8, %-7)
-dobj(tolerates-5, NaCl-8)
-

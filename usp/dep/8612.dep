@@ -1,7 +1,0 @@
-det(gut-4, the-3)
-prep_from(Isolated-1, gut-4)
-nn(nigrovittatus-7, T.-6)
-prep_of(gut-4, nigrovittatus-7)
-dep(Isolated-1, Diptera-9)
-dep(Diptera-9, Tabanidae-11)
-

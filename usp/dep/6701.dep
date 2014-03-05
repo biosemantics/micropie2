@@ -1,6 +1,0 @@
-det(wall-4, a-2)
-nn(wall-4, cell-3)
-nsubj(bounded-5, wall-4)
-ccomp(Lacks-1, bounded-5)
-advmod(bounded-5, only-6)
-

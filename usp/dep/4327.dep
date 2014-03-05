@@ -1,7 +1,0 @@
-nsubj(µm-7, Strain-1)
-nn(cells-3, SA-2)
-dep(Strain-1, cells-3)
-cop(µm-7, were-4)
-amod(µm-7, wide-5)
-tmod(wide-5, 0.7-6)
-

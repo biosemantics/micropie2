@@ -1,6 +1,0 @@
-det(cells-2, The-1)
-nsubj(cocci-5, cells-2)
-cop(cocci-5, are-3)
-amod(cocci-5, regular-4)
-advmod(cocci-5, nearly-6)
-

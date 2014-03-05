@@ -1,9 +1,0 @@
-det(guts-4, the-3)
-prep_from(Isolated-1, guts-4)
-det(beetle-9, an-6)
-amod(beetle-9, adult-7)
-amod(beetle-9, long-horned-8)
-prep_of(guts-4, beetle-9)
-nn(sp-12, Grammoptera-11)
-dep(Isolated-1, sp-12)
-

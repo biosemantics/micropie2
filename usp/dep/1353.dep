@@ -1,7 +1,0 @@
-nsubjpass(reduced-3, Nitrate-1)
-auxpass(reduced-3, is-2)
-prep_with(reduced-3, production-5)
-prep_of(production-5, gas-7)
-prep_of(production-5, nitrite-9)
-conj_and(gas-7, nitrite-9)
-

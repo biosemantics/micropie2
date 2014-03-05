@@ -1,7 +1,0 @@
-amod(member-2, Obligatory-1)
-det(Euryarchaeota-5, the-4)
-prep_of(member-2, Euryarchaeota-5)
-det(Archaea-9, the-7)
-nn(Archaea-9, domain-8)
-prep_of(member-2, Archaea-9)
-

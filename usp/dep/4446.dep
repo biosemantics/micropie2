@@ -1,9 +1,0 @@
-det(range-4, The-1)
-amod(range-4, optimum-2)
-nn(range-4, temperature-3)
-nsubj(28-8, range-4)
-prep_for(range-4, growth-6)
-cop(28-8, is-7)
-num(˚C-11, 42-10)
-dep(28-8, ˚C-11)
-

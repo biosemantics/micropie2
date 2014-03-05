@@ -1,8 +1,0 @@
-det(floor-7, the-3)
-advmod(heated-5, geothermally-4)
-amod(floor-7, heated-5)
-nn(floor-7, sea-6)
-prep_from(Isolated-1, floor-7)
-nn(Italy-11, Vulcano-9)
-prep_at(floor-7, Italy-11)
-

@@ -1,6 +1,0 @@
-nsubj(gram-negative-3, Cells-1)
-nsubj(halophilic-6, Cells-1)
-cop(gram-negative-3, are-2)
-advmod(halophilic-6, extremely-5)
-conj_and(gram-negative-3, halophilic-6)
-

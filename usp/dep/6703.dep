@@ -1,9 +1,0 @@
-amod(requirements-3, Fastidious-1)
-amod(requirements-3, cultural-2)
-dep(requirements-3, needs-5)
-amod(media-7, special-6)
-dep(needs-5, media-7)
-advmod(needs-5, particularly-9)
-amod(isolation-12, primary-11)
-prep_for(particularly-9, isolation-12)
-

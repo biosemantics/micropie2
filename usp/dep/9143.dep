@@ -1,8 +1,0 @@
-advmod(growing-2, Exponentially-1)
-amod(cells-3, growing-2)
-nsubj(µm-7, cells-3)
-cop(µm-7, are-4)
-num(µm-7, 1-2-1-5)
-num(µm-7, .5-6)
-prep_in(µm-7, diameter-9)
-

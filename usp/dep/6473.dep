@@ -1,7 +1,0 @@
-amod(motility-3, vigorous-2)
-dep(Exhibits-1, motility-3)
-det(bundle-7, a-5)
-amod(bundle-7, polar-6)
-prep_with(motility-3, bundle-7)
-prep_of(bundle-7, flagella-9)
-

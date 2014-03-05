@@ -1,9 +1,0 @@
-nsubj(temperature-6, PH-1)
-num(PH-1, 7.0-2)
-conj_and(PH-1, 8.0-4)
-nsubj(temperature-6, 8.0-4)
-cop(temperature-6, is-5)
-num(temperature-6, 22-7)
-num(˚C-9, 50-8)
-dep(temperature-6, ˚C-9)
-

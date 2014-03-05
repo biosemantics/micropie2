@@ -1,9 +1,0 @@
-nsubj(grow-2, Cells-1)
-num(˚C-5, 63-92-4)
-prep_at(grow-2, ˚C-5)
-amod(growth-8, optimal-7)
-prep_with(˚C-5, growth-8)
-partmod(growth-8, occurring-9)
-num(˚C-12, 84-11)
-prep_at(occurring-9, ˚C-12)
-

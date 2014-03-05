@@ -1,8 +1,0 @@
-nn(amounts-2, Trace-1)
-nsubj(0.005-7, amounts-2)
-nn(extract-5, yeast-4)
-prep_of(amounts-2, extract-5)
-cop(0.005-7, is-6)
-num(%-10, 0.02-9)
-prep_to(0.005-7, %-10)
-

@@ -1,7 +1,0 @@
-nsubj(circular-3, Colonies-1)
-cop(circular-3, are-2)
-partmod(circular-3, surrounded-4)
-det(zone-8, a-6)
-amod(zone-8, white-7)
-agent(surrounded-4, zone-8)
-

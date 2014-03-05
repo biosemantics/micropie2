@@ -1,1 +1,0 @@
-Glucose, galactose, sucrose, maltose and glycerol support growth as single carbon and energy sources.

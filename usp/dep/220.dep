@@ -1,7 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(strain-5, strain-3)
-cop(strain-5, is-4)
-dep(strain-5, DSM-6)
-num(DSM-6, 1651-7)
-

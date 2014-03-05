@@ -1,8 +1,0 @@
-amod(growth-2, Optimal-1)
-nsubj(occurs-3, growth-2)
-amod(37-5, between-4)
-num(˚C-8, 37-5)
-conj_and(37-5, 40-7)
-num(˚C-8, 40-7)
-dobj(occurs-3, ˚C-8)
-

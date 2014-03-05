@@ -1,5 +1,0 @@
-nsubjpass(hydrolysed-5, Starch-1)
-conj_and(Starch-1, DNA-3)
-nsubjpass(hydrolysed-5, DNA-3)
-auxpass(hydrolysed-5, are-4)
-

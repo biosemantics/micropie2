@@ -1,7 +1,0 @@
-nsubjpass(required-6, Cholesterol-1)
-conj_or(Cholesterol-1, serum-3)
-nsubjpass(required-6, serum-3)
-auxpass(required-6, is-4)
-neg(required-6, not-5)
-prep_for(required-6, growth-8)
-

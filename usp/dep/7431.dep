@@ -1,8 +1,0 @@
-num(NaCl-6, 2.0-5-3)
-nn(NaCl-6, .2-4)
-nn(NaCl-6, M-5)
-prep_at(Grows-1, NaCl-6)
-det(optimum-10, an-9)
-prep_with(Grows-1, optimum-10)
-prep_at(optimum-10, 3M-12)
-

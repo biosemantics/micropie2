@@ -1,5 +1,0 @@
-neg(strains-3, Not-1)
-det(strains-3, all-2)
-nsubj(capable-5, strains-3)
-cop(capable-5, are-4)
-

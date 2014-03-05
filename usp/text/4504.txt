@@ -1,1 +1,0 @@
-Cells are resistant to lysis by SDS.

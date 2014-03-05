@@ -1,9 +1,0 @@
-advmod(strong-2, Relatively-1)
-amod(turbidity-3, strong-2)
-nsubjpass(produced-5, turbidity-3)
-auxpass(produced-5, is-4)
-prep_during(produced-5, growth-7)
-prep_in(growth-7, broth-9)
-xcomp(produced-5, containing-10)
-dobj(containing-10, serum-11)
-

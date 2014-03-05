@@ -1,9 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubj(Gottingen-9, strain-3)
-cop(Gottingen-9, is-4)
-nn(Gottingen-9, strain-5)
-nn(Gottingen-9, P2St-6)
-nn(Gottingen-9, DSM-7)
-num(Gottingen-9, 2956-8)
-

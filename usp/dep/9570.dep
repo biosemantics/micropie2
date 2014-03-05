@@ -1,6 +1,0 @@
-det(cells-2, The-1)
-nsubj(harbor-3, cells-2)
-amod(flagella-6, several-4)
-amod(flagella-6, polar-5)
-dobj(harbor-3, flagella-6)
-

@@ -1,8 +1,0 @@
-dep(medium-2, Solid-1)
-dep(medium-2, be-3)
-xcomp(be-3, containing-4)
-num(%-6, 1.6-5)
-dobj(containing-4, %-6)
-nn(agar-8, Noble-7)
-dep(%-6, agar-8)
-

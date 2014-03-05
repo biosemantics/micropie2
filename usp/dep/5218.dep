@@ -1,6 +1,0 @@
-det(wall-3, The-1)
-nn(wall-3, cell-2)
-nsubjpass(composed-5, wall-3)
-auxpass(composed-5, was-4)
-prep_of(composed-5, glycoprotein-7)
-

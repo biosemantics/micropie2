@@ -1,9 +1,0 @@
-amod(rods-2, Curved-1)
-partmod(rods-2, measuring-3)
-num(µm-5, 7.4-4)
-npadvmod(long-6, µm-5)
-advmod(measuring-3, long-6)
-num(µm-9, 0.5-8)
-prep_by(long-6, µm-9)
-advmod(long-6, wide-10)
-

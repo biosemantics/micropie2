@@ -1,5 +1,0 @@
-nsubj(exhibit-2, filaments-1)
-dep(exhibit-2, T-4)
-dep(T-4, type-7)
-partmod(type-7, branching-8)
-

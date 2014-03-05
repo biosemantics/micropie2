@@ -1,6 +1,0 @@
-nn(cottewii-2, M.-1)
-nsubj(catabolizes-3, cottewii-2)
-dobj(catabolizes-3, glucose-4)
-dobj(catabolizes-3, mannose-6)
-conj_and(glucose-4, mannose-6)
-

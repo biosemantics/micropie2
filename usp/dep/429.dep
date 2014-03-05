@@ -1,8 +1,0 @@
-det(variety-2, A-1)
-nsubjpass(exhibited-7, variety-2)
-amod(forms-5, pleomorphic-4)
-prep_of(variety-2, forms-5)
-auxpass(exhibited-7, are-6)
-amod(cells-10, older-9)
-agent(exhibited-7, cells-10)
-

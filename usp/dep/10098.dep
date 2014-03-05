@@ -1,6 +1,0 @@
-det(strains-2, All-1)
-nsubj(hydrolyze-3, strains-2)
-dobj(hydrolyze-3, urea-4)
-prep_with(hydrolyze-3, production-6)
-prep_of(production-6, ammonia-8)
-

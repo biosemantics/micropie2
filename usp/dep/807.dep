@@ -1,7 +1,0 @@
-nn(products-2, Fermentation-1)
-nsubj(acetate-5, products-2)
-partmod(products-2, detected-3)
-cop(acetate-5, are-4)
-conj_and(acetate-5, H2-7)
-conj_and(acetate-5, CO2-9)
-

@@ -1,5 +1,0 @@
-number(1.0-3, 0.8-2)
-num(µm-4, 1.0-3)
-dep(Cells-1, µm-4)
-prep_in(µm-4, diameter-6)
-

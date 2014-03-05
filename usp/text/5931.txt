@@ -1,1 +1,0 @@
-Produces methane from H2/CO2, but not formate, acetate, methanol, ethanol, 2-propanol, butanol, or trimethylamine.

@@ -1,6 +1,0 @@
-advmod(anaerobic-2, Strictly-1)
-amod(growth-4, anaerobic-2)
-amod(growth-4, fermentative-3)
-nsubj(extract-7, growth-4)
-prep_on(growth-4, yeast-6)
-

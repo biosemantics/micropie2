@@ -1,9 +1,0 @@
-det(Mg2-3, The-1)
-amod(Mg2-3, optimum-2)
-nsubj(25-7, Mg2-3)
-conj_+(Mg2-3, concentration-5)
-nsubj(25-7, concentration-5)
-cop(25-7, was-6)
-num(mM-10, 100-9)
-dep(25-7, mM-10)
-

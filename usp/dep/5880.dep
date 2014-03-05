@@ -1,6 +1,0 @@
-advmod(Lives-1, possibly-2)
-nn(swamps-7, seawater-4)
-conj_and(seawater-4, freshwater-6)
-nn(swamps-7, freshwater-6)
-prep_in(Lives-1, swamps-7)
-

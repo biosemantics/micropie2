@@ -1,8 +1,0 @@
-nn(captivus-3, L.-1)
-nn(captivus-3, adj.-2)
-nsubj(adj.-7, captivus-3)
-cop(adj.-7, is-4)
-amod(adj.-7, captive-5)
-nn(adj.-7, M.L.-6)
-dep(adj.-7, leocaptivus-8)
-

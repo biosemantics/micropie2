@@ -1,9 +1,0 @@
-nn(gas-4, Ammonium-1)
-conj_and(gas-4, N2-3)
-nsubj(sources-9, N2-3)
-nsubj(sources-9, gas-4)
-conj_and(gas-4, alanine-6)
-nsubj(sources-9, alanine-6)
-cop(sources-9, are-7)
-nn(sources-9, nitrogen-8)
-

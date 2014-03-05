@@ -1,6 +1,0 @@
-nsubj(requires-2, It-1)
-dobj(requires-2, serum-3)
-dobj(requires-2, sterol-5)
-conj_or(serum-3, sterol-5)
-prep_for(serum-3, growth-7)
-

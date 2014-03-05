@@ -1,6 +1,0 @@
-nsubj(surrounded-2, Cells-1)
-advmod(surrounded-2, only-3)
-det(membrane-7, a-5)
-amod(membrane-7, cytoplasmic-6)
-prep_by(surrounded-2, membrane-7)
-

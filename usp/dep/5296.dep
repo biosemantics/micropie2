@@ -1,7 +1,0 @@
-amod(alcohols-2, Secondary-1)
-nsubjpass(used-5, alcohols-2)
-aux(used-5, might-3)
-auxpass(used-5, be-4)
-nn(donor-8, electron-7)
-prep_as(used-5, donor-8)
-

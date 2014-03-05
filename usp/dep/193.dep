@@ -1,8 +1,0 @@
-nsubjpass(hydrolysed-8, Aesculin-1)
-conj_and(Aesculin-1, arginine-3)
-nsubjpass(hydrolysed-8, arginine-3)
-conj_and(Aesculin-1, urea-5)
-nsubjpass(hydrolysed-8, urea-5)
-auxpass(hydrolysed-8, are-6)
-neg(hydrolysed-8, not-7)
-

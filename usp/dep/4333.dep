@@ -1,9 +1,0 @@
-nsubj(use-4, It-1)
-aux(use-4, could-2)
-neg(use-4, not-3)
-nn(trimethylamine-6, methanol-5)
-dobj(use-4, trimethylamine-6)
-dobj(use-4, acetate-8)
-conj_and(trimethylamine-6, acetate-8)
-prep_as(trimethylamine-6, substrates-10)
-

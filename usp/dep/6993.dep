@@ -1,6 +1,0 @@
-amod(cross-reactions-3, serological-2)
-dobj(Shows-1, cross-reactions-3)
-nn(subsp-7, M.-5)
-nn(subsp-7, mycoides-6)
-prep_with(Shows-1, subsp-7)
-

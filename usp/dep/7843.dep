@@ -1,6 +1,0 @@
-cop(X-4, is-3)
-dep(V-1, X-4)
-amod(aggregates-7, raft-shaped-6)
-dep(V-1, aggregates-7)
-conj_and(X-4, aggregates-7)
-

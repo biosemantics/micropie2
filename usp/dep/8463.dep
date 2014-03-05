@@ -1,7 +1,0 @@
-aux(utilize-3, Does-1)
-neg(utilize-3, not-2)
-nn(arginine-7, urea-4)
-conj_or(urea-4, catabolize-6)
-nn(arginine-7, catabolize-6)
-dobj(utilize-3, arginine-7)
-

@@ -1,7 +1,0 @@
-nn(lysis-2, Cell-1)
-nsubj(occur-5, lysis-2)
-aux(occur-5, does-3)
-neg(occur-5, not-4)
-amod(water-8, distilled-7)
-prep_in(occur-5, water-8)
-

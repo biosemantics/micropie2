@@ -1,7 +1,0 @@
-nsubj(serve-5, N2-1)
-conj_or(N2-1, NH3-3)
-nsubj(serve-5, NH3-3)
-aux(serve-5, may-4)
-nn(source-8, nitrogen-7)
-prep_as(serve-5, source-8)
-

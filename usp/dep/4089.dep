@@ -1,6 +1,0 @@
-nsubjpass(used-3, Ammonia-1)
-auxpass(used-3, is-2)
-det(source-7, a-5)
-nn(source-7, nitrogen-6)
-prep_as(used-3, source-7)
-

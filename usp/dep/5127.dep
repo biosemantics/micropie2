@@ -1,6 +1,0 @@
-nsubj(stimulatory-3, Acetate-1)
-cop(stimulatory-3, was-2)
-amod(concentrations-7, lower-5)
-nn(concentrations-7, salt-6)
-prep_at(stimulatory-3, concentrations-7)
-

@@ -1,7 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubjpass(isolated-5, strain-3)
-auxpass(isolated-5, was-4)
-nn(sludge-8, sewage-7)
-prep_from(isolated-5, sludge-8)
-

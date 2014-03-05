@@ -1,8 +1,0 @@
-aux(resist-3, to-2)
-dep(Able-1, resist-3)
-dobj(resist-3, doses-4)
-num(kGy-7, 3-6)
-prep_of(doses-4, kGy-7)
-prep_without(resist-3, loss-9)
-prep_of(loss-9, cultivability-11)
-

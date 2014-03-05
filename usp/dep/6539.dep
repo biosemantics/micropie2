@@ -1,8 +1,0 @@
-amod(nitrogen-4, molecular-3)
-appos(Ammonium-1, nitrogen-4)
-appos(Ammonium-1, nitrate-6)
-conj_and(nitrogen-4, nitrate-6)
-dep(nitrate-6, serve-7)
-nn(sources-10, nitrogen-9)
-prep_as(serve-7, sources-10)
-

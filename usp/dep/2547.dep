@@ -1,5 +1,0 @@
-nn(acids-2, Amino-1)
-nsubjpass(deaminated-5, acids-2)
-auxpass(deaminated-5, are-3)
-neg(deaminated-5, not-4)
-

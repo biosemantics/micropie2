@@ -1,8 +1,0 @@
-nn(content-3, DNA-1)
-nn(content-3, G+C-2)
-nsubj(%-8, content-3)
-cop(%-8, is-4)
-advmod(%-8, 64.2-5)
-number(mol-7, 64.9-6)
-num(%-8, mol-7)
-

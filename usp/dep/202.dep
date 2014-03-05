@@ -1,8 +1,0 @@
-advmod(distinct-2, Serologically-1)
-det(Acholeplasma-6, all-4)
-amod(Acholeplasma-6, other-5)
-prep_from(distinct-2, Acholeplasma-6)
-nn(species-9, Mycoplasma-8)
-prep_from(distinct-2, species-9)
-conj_and(Acholeplasma-6, species-9)
-

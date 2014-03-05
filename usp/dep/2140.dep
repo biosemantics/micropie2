@@ -1,8 +1,0 @@
-prep_to(Susceptible-1, novobiocin-3)
-prep_to(Susceptible-1, bacitracin-5)
-conj_and(novobiocin-3, bacitracin-5)
-prep_to(Susceptible-1, sulfamethazone-7)
-conj_and(novobiocin-3, sulfamethazone-7)
-prep(Susceptible-1, plus-8)
-dep(plus-8, trimethoprim-9)
-

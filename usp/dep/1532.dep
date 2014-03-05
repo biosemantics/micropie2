@@ -1,8 +1,0 @@
-nn(range-2, Temperature-1)
-prep_for(range-2, growth-4)
-num(˚C-7, 20-55-6)
-dep(range-2, ˚C-7)
-amod(˚C-11, optimum-9)
-tmod(optimum-9, 50-10)
-appos(˚C-7, ˚C-11)
-

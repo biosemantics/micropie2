@@ -1,7 +1,0 @@
-det(collection-4, The-1)
-nn(collection-4, DSM-2)
-nn(collection-4, culture-3)
-nsubj(DSM-6, collection-4)
-cop(DSM-6, is-5)
-num(DSM-6, 12914-7)
-

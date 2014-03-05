@@ -1,9 +1,0 @@
-nsubj(grows-2, It-1)
-prep_at(grows-2, pH-4)
-number(2.5-6, 0.2-5)
-amod(pH-4, 2.5-6)
-det(pH-10, an-8)
-amod(pH-10, optimum-9)
-prep_with(pH-4, pH-10)
-dep(pH-4, 1.0-11)
-

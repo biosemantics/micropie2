@@ -1,9 +1,0 @@
-nn(methanethiol-10, methanol-2)
-dep(methanethiol-10, monomethylamine-4)
-dep(methanethiol-10, dimethylamine-6)
-dep(methanethiol-10, trimethylamine-8)
-dobj(Metabolized-1, methanethiol-10)
-amod(sulfide-14, dimethyl-13)
-dobj(Metabolized-1, sulfide-14)
-conj_and(methanethiol-10, sulfide-14)
-

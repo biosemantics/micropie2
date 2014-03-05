@@ -1,8 +1,0 @@
-csubj(varying-3, Shape-1)
-cop(varying-3, is-2)
-number(800-7, 200-5)
-dep(800-7, to-6)
-num(nm-8, 800-7)
-prep_from(varying-3, nm-8)
-prep_in(varying-3, diameter-10)
-

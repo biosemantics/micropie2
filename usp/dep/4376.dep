@@ -1,6 +1,0 @@
-nsubj(ca-7, Septation-1)
-prep_within(Septation-1, filaments-3)
-advmod(occurs-5, typically-4)
-dep(filaments-3, occurs-5)
-advmod(occurs-5, at-6)
-

@@ -1,7 +1,0 @@
-advmod(Occur-1, often-2)
-prep_in(Occur-1, filaments-4)
-conj_and(Occur-1, tend-6)
-aux(attach-8, to-7)
-xcomp(tend-6, attach-8)
-prep_to(attach-8, particles-10)
-

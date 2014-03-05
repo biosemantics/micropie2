@@ -1,8 +1,0 @@
-det(strain-3, The-1)
-nn(strain-3, type-2)
-nsubjpass(obtained-5, strain-3)
-auxpass(obtained-5, was-4)
-det(digester-9, an-7)
-amod(digester-9, acidogenic-8)
-prep_from(obtained-5, digester-9)
-

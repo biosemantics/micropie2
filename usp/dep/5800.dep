@@ -1,8 +1,0 @@
-nsubj(dependent-3, Growth-1)
-cop(dependent-3, was-2)
-nn(isovalerate-7, acetate-5)
-nn(isovalerate-7, isobutyrate-6)
-prep_on(dependent-3, isovalerate-7)
-prep_on(dependent-3, 2-methylbutyrate-9)
-conj_and(isovalerate-7, 2-methylbutyrate-9)
-

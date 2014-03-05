@@ -1,7 +1,0 @@
-nsubj(absent-8, Aminolipids-1)
-conj_and(Aminolipids-1, phospholipids-3)
-nsubj(absent-8, phospholipids-3)
-conj_and(Aminolipids-1, glycolipids-6)
-nsubj(absent-8, glycolipids-6)
-cop(absent-8, were-7)
-

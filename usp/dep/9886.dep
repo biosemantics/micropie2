@@ -1,7 +1,0 @@
-dobj(Occurs-1, free-living-2)
-amod(solfataras-7, continental-4)
-conj_and(continental-4, submarine-6)
-amod(solfataras-7, submarine-6)
-prep_in(free-living-2, solfataras-7)
-prep_in(Occurs-1, Italy-9)
-

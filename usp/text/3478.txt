@@ -1,1 +1,0 @@
-Utilizes D-glucose and D-galactose as carbon sources for growth but not lactose, L-glycine, L-proline or L-cysteine.

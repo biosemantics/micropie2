@@ -1,6 +1,0 @@
-nn(optimum-2, Temperature-1)
-num(optimum-6, 37-4)
-nn(optimum-6, ˚C-5)
-prep_around(optimum-2, optimum-6)
-prep_around(optimum-2, 7.0-8)
-

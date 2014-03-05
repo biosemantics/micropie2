@@ -1,5 +1,0 @@
-nn(lipid-2, Core-1)
-prep(lipid-2, exclusively-3)
-pobj(exclusively-3, 2,3-di-Ophytanyl-4)
-dep(lipid-2, glycerol-6)
-

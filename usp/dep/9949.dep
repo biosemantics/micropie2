@@ -1,7 +1,0 @@
-amod(growth-2, Good-1)
-prep_on(growth-2, peptone-4)
-partmod(growth-2, reducing-5)
-dobj(reducing-5, sulfur-6)
-nn(sulfide-9, hydrogen-8)
-prep_to(reducing-5, sulfide-9)
-

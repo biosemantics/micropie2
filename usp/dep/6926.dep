@@ -1,7 +1,0 @@
-nn(metabolic-inhibition-7, immunofluorescence-3)
-dep(metabolic-inhibition-7, complement-fixation-5)
-prep_by(Unique-1, metabolic-inhibition-7)
-nn(tests-11, growth-inhibition-10)
-prep_by(Unique-1, tests-11)
-conj_and(metabolic-inhibition-7, tests-11)
-

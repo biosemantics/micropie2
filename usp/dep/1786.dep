@@ -1,6 +1,0 @@
-det(lysis-2, No-1)
-nsubjpass(observed-4, lysis-2)
-auxpass(observed-4, is-3)
-amod(water-7, distilled-6)
-prep_in(observed-4, water-7)
-

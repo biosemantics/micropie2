@@ -1,6 +1,0 @@
-nsubj(unable-3, Cells-1)
-cop(unable-3, are-2)
-aux(grow-5, to-4)
-xcomp(unable-3, grow-5)
-prep_with(grow-5, H2\/CO2-7)
-

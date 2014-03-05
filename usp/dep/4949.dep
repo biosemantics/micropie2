@@ -1,7 +1,0 @@
-nsubj(substrates-6, Methanol-1)
-conj_and(Methanol-1, methylamines-3)
-nsubj(substrates-6, methylamines-3)
-cop(substrates-6, are-4)
-neg(substrates-6, not-5)
-prep_for(substrates-6, methanogenesis-8)
-

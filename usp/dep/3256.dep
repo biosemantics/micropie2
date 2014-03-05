@@ -1,9 +1,0 @@
-det(walls-3, The-1)
-nn(walls-3, cross-2)
-nsubj(thin-5, walls-3)
-nsubj(invisible-7, walls-3)
-cop(thin-5, are-4)
-conj_and(thin-5, invisible-7)
-amod(specimens-10, live-9)
-prep_in(thin-5, specimens-10)
-

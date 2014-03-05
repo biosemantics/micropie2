@@ -1,7 +1,0 @@
-amod(Cells-3, Non-motile-1)
-num(Cells-3, 4.0-2)
-nsubj(Gram-negative-5, Cells-3)
-cop(Gram-negative-5, are-4)
-num(µm-7, 1.0-6)
-dep(Gram-negative-5, µm-7)
-

@@ -1,8 +1,0 @@
-nn(DGD-2, PG-1)
-nsubj(PGS-8, DGD-2)
-num(phospholipids-6, two-4)
-amod(phospholipids-6, unknown-5)
-conj_and(DGD-2, phospholipids-6)
-nsubj(PGS-8, phospholipids-6)
-cop(PGS-8, is-7)
-

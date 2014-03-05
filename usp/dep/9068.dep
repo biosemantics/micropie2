@@ -1,6 +1,0 @@
-nsubj(grow-2, Cells-1)
-advmod(grow-2, optimally-3)
-prep_on(grow-2, medium-5)
-partmod(medium-5, supplemented-6)
-prep_with(supplemented-6, tryptone-8)
-

@@ -1,6 +1,0 @@
-amod(growth-2, Slow-1)
-nn(acids-5, casamino-4)
-prep_on(growth-2, acids-5)
-prep_on(growth-2, casein-7)
-conj_and(acids-5, casein-7)
-

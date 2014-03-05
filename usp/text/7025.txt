@@ -1,1 +1,0 @@
-Cells pass through filters having pore diameters of 450 nm but are retained by filters having pore diameters of 220 nm.

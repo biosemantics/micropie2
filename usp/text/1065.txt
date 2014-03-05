@@ -1,1 +1,0 @@
-Additional electron acceptors are not necessary.

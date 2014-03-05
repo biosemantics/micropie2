@@ -1,7 +1,0 @@
-nsubj(produces-2, It-1)
-amod(enzymes-7, extracellular-3)
-amod(enzymes-7, proteolytic-4)
-conj_and(proteolytic-4, bacterioclastic-6)
-amod(enzymes-7, bacterioclastic-6)
-dobj(produces-2, enzymes-7)
-

@@ -1,1 +1,0 @@
-Obligate heterotroph that utilizes yeast extract, beef extract, tryptone, peptone, casein, and starch as carbon and energy sources.

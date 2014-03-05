@@ -1,9 +1,0 @@
-amod(alcohols-2, Secondary-1)
-nsubjpass(utilized-12, alcohols-2)
-dep(alcohols-2, 2-propanol-4)
-appos(2-propanol-4, 2-butanol-6)
-appos(2-propanol-4, cyclopentanol-8)
-conj_and(2-butanol-6, cyclopentanol-8)
-auxpass(utilized-12, are-10)
-neg(utilized-12, not-11)
-

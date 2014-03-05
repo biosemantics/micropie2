@@ -1,9 +1,0 @@
-nn(sources-2, Nitrogen-1)
-nsubj(include-3, sources-2)
-dobj(include-3, ammonium-4)
-nn(gas-7, N2-6)
-dobj(include-3, gas-7)
-conj_and(ammonium-4, gas-7)
-dobj(include-3, alanine-9)
-conj_and(ammonium-4, alanine-9)
-

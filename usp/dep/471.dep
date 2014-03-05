@@ -1,7 +1,0 @@
-nn(A-2-2, Strain-1)
-nsubjpass(designated-4, A-2-2)
-auxpass(designated-4, is-3)
-det(strain-8, the-6)
-nn(strain-8, type-7)
-prep_as(designated-4, strain-8)
-

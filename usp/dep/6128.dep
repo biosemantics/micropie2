@@ -1,8 +1,0 @@
-nsubjpass(used-4, H2\/CO2-1)
-aux(used-4, may-2)
-auxpass(used-4, be-3)
-advmod(used-4, concurrently-5)
-prep_with(used-4, trimethylamine-7)
-prep_with(used-4, methanol-9)
-conj_or(trimethylamine-7, methanol-9)
-

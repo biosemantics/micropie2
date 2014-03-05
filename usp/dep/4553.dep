@@ -1,7 +1,0 @@
-nsubjpass(grown-3, Cells-1)
-auxpass(grown-3, be-2)
-prep_in(grown-3, rumen-5)
-num(rumen-5, ¯-6)
-dep(medium-8, uid-7)
-amod(rumen-5, medium-8)
-

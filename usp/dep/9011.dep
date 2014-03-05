@@ -1,8 +1,0 @@
-nsubj(better-3, Growth-1)
-cop(better-3, was-2)
-advmod(than-6, always-4)
-dep(than-6, extract-5)
-advmod(better-3, than-6)
-prep_on(than-6, sulfur-8)
-advmod(than-6, alone-9)
-

@@ -1,9 +1,0 @@
-aux(grow-3, Does-1)
-neg(grow-3, not-2)
-amod(water-12, medium-5)
-nn(concentrations-8, salt-7)
-prep_with(medium-5, concentrations-8)
-amod(water-12, similar-9)
-prep_to(similar-9, sea-11)
-prep_in(grow-3, water-12)
-

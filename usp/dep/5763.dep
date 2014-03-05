@@ -1,5 +1,0 @@
-dobj(Produces-1, methane-2)
-prep_from(Produces-1, H2-4)
-prep_from(Produces-1, methanol-6)
-conj_+(H2-4, methanol-6)
-

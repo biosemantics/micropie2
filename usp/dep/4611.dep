@@ -1,7 +1,0 @@
-nsubj(cocci-3, Cells-1)
-cop(cocci-3, are-2)
-number(.0-5, 0.8-1-4)
-num(µm-6, .0-5)
-dep(cocci-3, µm-6)
-prep_in(cocci-3, diameter-8)
-

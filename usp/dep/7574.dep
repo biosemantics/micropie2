@@ -1,6 +1,0 @@
-nsubjpass(produced-4, Acid-1)
-auxpass(produced-4, is-2)
-neg(produced-4, not-3)
-nn(utilization-7, carbohydrate-6)
-prep_from(produced-4, utilization-7)
-

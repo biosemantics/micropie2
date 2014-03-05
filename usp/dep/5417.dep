@@ -1,6 +1,0 @@
-nn(nagative-2, Gram-1)
-amod(SDS-8, sensitive-4)
-num(%-7, 1-6)
-prep_to(sensitive-4, %-7)
-dep(nagative-2, SDS-8)
-

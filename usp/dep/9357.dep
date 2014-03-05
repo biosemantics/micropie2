@@ -1,9 +1,0 @@
-nsubj(necessary-4, Sulfur-1)
-nsubj(enhances-8, Sulfur-1)
-cop(necessary-4, is-2)
-neg(necessary-4, not-3)
-prep(necessary-4, for-5)
-advmod(enhances-8, greatly-7)
-conj_but(necessary-4, enhances-8)
-dobj(enhances-8, growth-9)
-

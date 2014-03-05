@@ -1,9 +1,0 @@
-det(size-3, The-1)
-nn(size-3, genome-2)
-nsubj(kbp-6, size-3)
-cop(kbp-6, is-4)
-num(kbp-6, 1850-5)
-cop(MDa-9, is-7)
-num(MDa-9, 1233-8)
-rcmod(kbp-6, MDa-9)
-

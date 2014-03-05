@@ -1,8 +1,0 @@
-nsubjpass(utilized-7, L-Arabinose-1)
-conj_and(L-Arabinose-1, D-glucose-3)
-nsubjpass(utilized-7, D-glucose-3)
-conj_and(L-Arabinose-1, glycerol-5)
-nsubjpass(utilized-7, glycerol-5)
-auxpass(utilized-7, are-6)
-prep_for(utilized-7, growth-9)
-

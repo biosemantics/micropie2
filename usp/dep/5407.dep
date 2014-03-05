@@ -1,8 +1,0 @@
-nsubj(extract-8, Actate-1)
-amod(matter-5, complex-3)
-amod(matter-5, organic-4)
-conj_and(Actate-1, matter-5)
-nsubj(extract-8, matter-5)
-cop(extract-8, is-6)
-nn(extract-8, yeast-7)
-

@@ -1,8 +1,0 @@
-amod(growth-2, Weak-1)
-nsubj(evident-4, growth-2)
-cop(evident-4, was-3)
-nn(extract-7, beef-6)
-prep_on(evident-4, extract-7)
-prep_on(evident-4, sucrose-9)
-conj_and(extract-7, sucrose-9)
-

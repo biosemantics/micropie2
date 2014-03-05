@@ -1,8 +1,0 @@
-nsubj(occurs-2, Growth-1)
-dobj(occurs-2, NaCl-3)
-det(optimum-6, an-5)
-prep_with(occurs-2, optimum-6)
-number(%-9, 20-8)
-amod(NaCl-10, %-9)
-prep_at(optimum-6, NaCl-10)
-

@@ -1,5 +1,0 @@
-nn(lipids-5, C20C20-2)
-nn(lipids-5, diether-3)
-nn(lipids-5, core-4)
-dobj(Possesses-1, lipids-5)
-

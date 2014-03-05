@@ -1,8 +1,0 @@
-nsubj(occurs-2, Growth-1)
-det(range-6, the-4)
-nn(range-6, pH-5)
-prep_at(occurs-2, range-6)
-number(8.0-10, 5.8-8)
-dep(8.0-10, to-9)
-prep_from(occurs-2, 8.0-10)
-

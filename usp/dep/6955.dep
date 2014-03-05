@@ -1,9 +1,0 @@
-num(strains-4, Five-1)
-amod(strains-4, glucose-fermenting-2)
-nn(strains-4, Mycoplasma-3)
-nsubjpass(isolated-6, strains-4)
-auxpass(isolated-6, were-5)
-det(pharynx-9, the-8)
-prep_from(isolated-6, pharynx-9)
-prep_of(pharynx-9, dogs-11)
-

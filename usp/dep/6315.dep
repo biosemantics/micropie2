@@ -1,7 +1,0 @@
-amod(rods-2, Curved-1)
-nsubj(be-3, rods-2)
-xcomp(be-3, measuring-4)
-num(µm-6, 7.4-5)
-dobj(measuring-4, µm-6)
-advmod(measuring-4, long-7)
-

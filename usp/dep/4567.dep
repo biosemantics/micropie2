@@ -1,8 +1,0 @@
-advmod(coccoid-2, Irregularly-1)
-amod(cells-3, coccoid-2)
-nsubj(motile-7, cells-3)
-amod(cells-3, non-motile-4)
-cc(non-motile-4, or-5)
-advmod(non-motile-4, weakly-6)
-prep_with(motile-7, flagella-9)
-

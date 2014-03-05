@@ -1,8 +1,0 @@
-prep_in(Isolated-1, 1981-3)
-det(flower-7, a-5)
-nn(flower-7, fall-6)
-prep_from(Isolated-1, flower-7)
-dep(flower-7, Compositae-9)
-nn(sp-12, Bidens-11)
-dep(Compositae-9, sp-12)
-
