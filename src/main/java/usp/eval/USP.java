@@ -73,12 +73,35 @@ public class USP {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
+		
+		USP usp = new USP();
+		
+		// Set<String> output = usp.getObjectValue("Produces arginine dihydrolase and lysine decarboxylase, but not ornithine decarboxylase.", "produces", "V", "dobj");
+		Set<String> output = usp.getObjectValue("Hydrogen sulfide is produced.", "produced", "V", "nsubjpass");
+
+		
+		System.out.println(output.toString());
+		
+		// Hydrogen sulfide is produced.
+		// Relatively strong turbidity is produced containing serum.
+		
+		
+		
+		/*
 		if (args.length!=3) {
 			Utils.println("java -cp usp.jar eval.USP <evalDir> <resultDir> <dataDir>");
 			return;
@@ -89,325 +112,6 @@ public class USP {
 		rstDir_=args[1];
 		dataDir_=args[2];		
 		
-		// The following part is my own testing
-				
-		// // read morph: map form to lemma
-		// readMorph();
-		
-		// keywordList_.put("utilize", new HashMap<String, Integer>());
-		// keywordList_.put("produces", new HashMap<String, Integer>());
-		// keywordList_.put("produce", new HashMap<String, Integer>());
-		// keywordList_.put("adapt", new HashMap<String, Integer>());
-		keywordList_.put("cells", new HashMap<String, Integer>());
-		// keywordList_.put("colonies", new HashMap<String, Integer>());
-		// keywordList_.put("resistant", new HashMap<String, Integer>());
-		// keywordList_.put("sensitive", new HashMap<String, Integer>());
-		// keywordList_.put("use", new HashMap<String, Integer>());
-		// keywordList_.put("grow", new HashMap<String, Integer>());
-
-		// keywordList_.put("cells", "0"); // N
-		// keywordList_.put("resistant", "0"); // J
-		
-		String dir=rstDir_;
-		String fid=dataDir_;
-		if (fid.indexOf(Utils.FILE_SEP)>=0) fid=fid.substring(fid.lastIndexOf(Utils.FILE_SEP));
-
-		
-		String fileName=dir+Utils.FILE_SEP+fid+".mln";
-		readClust2(fileName);
-		
-		fileName=dir+Utils.FILE_SEP+fid+".parse";
-		readPart(fileName);
-		
-		// readSents();	// also read dep
-		
-		for (Map.Entry<String, Map<String,Integer>> entry : keywordList_.entrySet()) {
-
-			String key = entry.getKey();
-			System.out.println("Keyword::" + key);
-			// System.out.println("ci::" + ci);
-			// System.out.println(clustIdx_depArgClustIdx_.get(ci));
-			// System.out.println(clustIdx_argTypeClustIdx_.get(ci));
-			// System.out.println(clustIdx_depArgClustIdx_.get(ci).get("nsubj"));
-			
-			
-			
-			
-			Map<String,Integer> clustIdx_pos_ = entry.getValue();
-			System.out.println("clustIdx_pos::" + clustIdx_pos_.toString());
-			
-			for (Map.Entry<String,Integer> clustIdx_pos_entry_ : clustIdx_pos_.entrySet()) {
-
-				String pos = clustIdx_pos_entry_.getKey(); // type, ex: V, N, and J
-				int ci= clustIdx_pos_entry_.getValue(); // ci: clustIdx
-				// Build different rules for different types such as V, N, and J
-				Set<String> pids=clustIdx_ptIds_.get(ci);
-				System.out.println("pids :: " + pids);
-				System.out.println("pids.size() :: " + pids.size());
-
-				if ( pos.equals("V") ) {
-					if ( clustIdx_depArgClustIdx_.get(ci).get("dobj") == null ) continue; // doesn't go through the following
-					int aci = clustIdx_depArgClustIdx_.get(ci).get("dobj"); 
-					System.out.println("aci is ::" + aci );
-
-					for (String pid:pids) {
-						
-						if (ptId_aciChdIds_.get(pid)!=null) { 
-							// System.out.println("pid is ::" + pid);
-							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
-							
-							
-							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
-								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
-									// System.out.println("cid is ::" + cid);
-									String sentId = cid.split(":")[0];
-									System.out.println("sentId is ::" + sentId);
-								
-									// Go to .dep to grab the result back
-									// to see how much we can get								
-									
-									String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
-									List<List<String>> depList = readDepFromDepFile(depFileName);
-									
-									String output = "";
-									for (List<String> rowInDepList : depList) {
-										if (rowInDepList.get(0).toString().equals("dobj") && rowInDepList.get(1).toString().toLowerCase().equals(key)){
-											String dobjString = rowInDepList.get(3).toString();
-											String dobjIdx = rowInDepList.get(4).toString();
-											
-											// System.out.println("dobjString::" + dobjString); 
-											
-											for (List<String> rowInDepList2 : depList) {
-												String relString = rowInDepList2.get(0).toString();
-												String govString = rowInDepList2.get(1).toString();
-												String govIdx = rowInDepList2.get(2).toString();
-												String depString = rowInDepList2.get(3).toString();
-												
-												if (dobjString.equals(govString) && dobjIdx.equals(govIdx) ) {												
-													// System.out.println("dep::" + depString );
-													// System.out.println("rel::" + relString );
-													if (relString.equals("nn")) {
-														// System.out.println("dep::" + depString );
-														// System.out.println("rel::" + relString );
-														output += depString + " ";
-													}
-												}
-												
-											}
-											output += dobjString + " \n";
-										}
-									}
-									System.out.println("output:\n" + output);
-								}
-							}
-						}
-					}
-
-					/*
-					for (Map.Entry<String, String> entry2 : clustIdx_argTypeClustIdx_.get(ci).entrySet()) {
-						String argForm = entry2.getKey();
-						String value2 = entry2.getValue(); //value 2: 
-							
-						// System.out.println(value2);
-						// String[] value2Array = value2.split(" "); // not good				
-						// String[] value2Array = value2.split("\t");
-						// System.out.println(value2Array.length);
-							
-						Map<String,String> outputMap = readClustrCoreFormToOutputMap(value2);
-
-						if (pos.equals("V")) {
-							String result1 = printMatchingResult(argForm, "<dobj>", "N", outputMap);
-							if (result1.length() > 1) {
-								System.out.println(pos+":<dobj>:N");
-								System.out.println(result1);
-							}
-							String result2 = printMatchingResult(argForm, "<nsubj>", "N", outputMap);
-							if (result2.length() > 1) {
-								System.out.println(pos+":<nsubj>:N");
-								System.out.println(result2);
-							}
-						}
-						if (pos.equals("N")) {
-							String result1 = printMatchingResult(argForm, "<amod>", "J", outputMap);
-							if (result1.length() > 1) {
-								System.out.println(pos+":<amod>:J");
-								System.out.println(result1);
-							}
-
-						}
-						if (pos.equals("J")) {
-							String result1 = printMatchingResult(argForm, "<prep_to>", "N", outputMap);
-							if (result1.length() > 1) {
-								System.out.println(pos+":<prep_to>:N");
-								System.out.println(result1);
-							}
-
-						}
-						
-						// printMatchingResult(argForm, "<amod>", "N", outputMap);
-
-					}
-					*/				
-				}
-
-
-				if ( pos.equals("J") ) {
-					if ( clustIdx_depArgClustIdx_.get(ci).get("prep_to") == null ) continue; // doesn't go through the following
-					int aci = clustIdx_depArgClustIdx_.get(ci).get("prep_to"); 
-					System.out.println("aci is ::" + aci );
-
-					for (String pid:pids) {
-						
-						if (ptId_aciChdIds_.get(pid)!=null) { 
-							// System.out.println("pid is ::" + pid);
-							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
-							
-							
-							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
-								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
-									System.out.println("cid is ::" + cid);
-									String sentId = cid.split(":")[0];
-									System.out.println("sentId is ::" + sentId);
-								
-									// Go to .dep to grab the result back
-									// to see how much we can get								
-									
-									String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
-									List<List<String>> depList = readDepFromDepFile(depFileName);
-									
-									String output = "";
-									for (List<String> rowInDepList : depList) {
-										
-										// if( rowInDepList.get(0).toString().equals("nn") ) {
-										//	System.out.println("has nn::" + rowInDepList.toString());
-										// } 
-										
-										if ( rowInDepList.get(0).toString().equals("prep_to") && rowInDepList.get(1).toString().toLowerCase().equals(key) ) {
-											String prep_toString = rowInDepList.get(3).toString();
-											String prep_toIdx = rowInDepList.get(4).toString();
-											
-											// System.out.println("prep_toString::" + prep_toString); 
-											output += prep_toString + "\n";
-											
-											for (List<String> rowInDepList2 : depList) {
-												String relString = rowInDepList2.get(0).toString();
-												String govString = rowInDepList2.get(1).toString();
-												String govIdx = rowInDepList2.get(2).toString();
-												String depString = rowInDepList2.get(3).toString();
-												
-												if (prep_toString.equals(govString) && prep_toIdx.equals(govIdx) ) {												
-													// System.out.println("dep::" + depString );
-													// System.out.println("rel::" + relString );
-													if (relString.equals("appos")) {  // appositional modifier
-																					  // Ex: Sam, my brother
-																					  // appos(Sam, brother)
-														
-														// System.out.println("dep::" + depString );
-														// System.out.println("rel::" + relString );
-														output += depString + "\n";
-													}
-												}
-												
-											}
-											
-										}
-									}
-									System.out.println("output:\n" + output);
-								}
-							}
-						}
-					}			
-				}
-
-				if ( pos.equals("N") ) {
-					if ( clustIdx_depArgClustIdx_.get(ci).get("amod") == null ) continue; // doesn't go through the following
-					int aci = clustIdx_depArgClustIdx_.get(ci).get("amod"); 
-					System.out.println("aci is ::" + aci );
-
-					for (String pid:pids) {
-						
-						if (ptId_aciChdIds_.get(pid)!=null) { 
-							// System.out.println("pid is ::" + pid);
-							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
-							
-							
-							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
-								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
-									System.out.println("cid is ::" + cid);
-									String sentId = cid.split(":")[0];
-									System.out.println("sentId is ::" + sentId);
-								
-									// Go to .dep to grab the result back
-									// to see how much we can get								
-									
-									String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
-									List<List<String>> depList = readDepFromDepFile(depFileName);
-									
-									String output = "";
-									for (List<String> rowInDepList : depList) {
-										
-										// if( rowInDepList.get(0).toString().equals("nn") ) {
-										//	System.out.println("has nn::" + rowInDepList.toString());
-										// } 
-										
-										if ( rowInDepList.get(0).toString().equals("amod") && rowInDepList.get(1).toString().toLowerCase().equals(key) ) {
-											String prep_toString = rowInDepList.get(3).toString();
-											String prep_toIdx = rowInDepList.get(4).toString();
-											
-											// System.out.println("prep_toString::" + prep_toString); 
-											output += prep_toString + "\n";
-											
-											/*
-											for (List<String> rowInDepList2 : depList) {
-												String relString = rowInDepList2.get(0).toString();
-												String govString = rowInDepList2.get(1).toString();
-												String govIdx = rowInDepList2.get(2).toString();
-												String depString = rowInDepList2.get(3).toString();
-												
-												if (prep_toString.equals(govString) && prep_toIdx.equals(govIdx) ) {												
-													// System.out.println("dep::" + depString );
-													// System.out.println("rel::" + relString );
-													if (relString.equals("appos")) {  // appositional modifier
-																					  // Ex: Sam, my brother
-																					  // appos(Sam, brother)
-														
-														// System.out.println("dep::" + depString );
-														// System.out.println("rel::" + relString );
-														output += depString + "\n";
-													}
-												}
-												
-											}
-											*/
-										}
-									}
-									System.out.println("output:\n" + output);
-								}
-							}
-						}
-					}			
-				}				
-				
-			
-			}
-			
-			System.out.println("\n");
-			
-			
-		}
-		
-		// 
-		// http://stackoverflow.com/questions/1318980/how-to-iterate-over-a-treemap		
-		// 
-		// http://examples.javacodegeeks.com/core-java/util/treemap/treemap-iterator-example/
-		
-		
-		
-		// The above part is my own testing
-		
-		
-		
-		/*
 		// read questions
 		readQuestions();
 		
@@ -438,6 +142,367 @@ public class USP {
 		
 	}
 
+	
+	public USP() {
+		
+	}
+	
+	
+	public Set<String> getObjectValue(String text, String keyword, String keywordType, String keywordObject) throws Exception {
+		
+		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+				
+		rstDir_ = "usp_results";
+		dataDir_ = "usp";		
+
+		keywordList_.put(keyword, new HashMap<String, Integer>());
+		
+		String dir = rstDir_;
+		String fid = dataDir_;
+		if (fid.indexOf(Utils.FILE_SEP)>=0) fid=fid.substring(fid.lastIndexOf(Utils.FILE_SEP));
+
+		
+		String fileName=dir+Utils.FILE_SEP+fid+".mln";
+		readClust2(fileName);
+		
+		fileName=dir+Utils.FILE_SEP+fid+".parse";
+		readPart(fileName);
+		
+		// readSents();	// also read dep
+		
+		for (Map.Entry<String, Map<String,Integer>> entry : keywordList_.entrySet()) {
+
+			String key = entry.getKey();
+			// System.out.println("Keyword::" + key);
+			// System.out.println("ci::" + ci);
+			// System.out.println(clustIdx_depArgClustIdx_.get(ci));
+			// System.out.println(clustIdx_argTypeClustIdx_.get(ci));
+			// System.out.println(clustIdx_depArgClustIdx_.get(ci).get("nsubj"));
+			
+			Map<String,Integer> clustIdx_pos_ = entry.getValue();
+			// System.out.println("clustIdx_pos::" + clustIdx_pos_.toString());
+			
+			for (Map.Entry<String,Integer> clustIdx_pos_entry_ : clustIdx_pos_.entrySet()) {
+
+				String pos = clustIdx_pos_entry_.getKey(); // type, ex: V, N, and J
+				int ci= clustIdx_pos_entry_.getValue(); // ci: clustIdx
+				// Build different rules for different types such as V, N, and J
+				Set<String> pids=clustIdx_ptIds_.get(ci);
+				// System.out.println("pids :: " + pids);
+				// System.out.println("pids.size() :: " + pids.size());
+
+				
+				
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("dobj") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("dobj") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("dobj"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									
+									// System.out.println("text::" + text + "::sentText::" + sentText);
+									
+									if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<List<String>> depList = readDepFromDepFile(depFileName);
+										
+										
+										for (List<String> rowInDepList : depList) {
+											if (rowInDepList.get(0).toString().equals("dobj") && rowInDepList.get(1).toString().toLowerCase().equals(key)){
+												String dobjString = rowInDepList.get(3).toString();
+												String dobjIdx = rowInDepList.get(4).toString();
+												
+												// System.out.println("dobjString::" + dobjString); 
+												
+												String tmpOutput = "";
+												
+												for (List<String> rowInDepList2 : depList) {
+													String relString = rowInDepList2.get(0).toString();
+													String govString = rowInDepList2.get(1).toString();
+													String govIdx = rowInDepList2.get(2).toString();
+													String depString = rowInDepList2.get(3).toString();
+													
+													if (dobjString.equals(govString) && dobjIdx.equals(govIdx) ) {												
+														// System.out.println("dep::" + depString );
+														// System.out.println("rel::" + relString );
+														if (relString.equals("nn")) {
+															// System.out.println("dep::" + depString );
+															// System.out.println("rel::" + relString );
+															tmpOutput += depString + " ";
+														}
+													}
+													
+												}
+												tmpOutput += dobjString;
+												output.add(tmpOutput);									}
+										}
+										// System.out.println("output:\n" + output);										
+									}
+								}
+							}
+						}
+					}				
+				}
+
+				
+
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("nsubjpass") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("nsubjpass") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("nsubjpass"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									
+									// System.out.println("text::" + text + "::sentText::" + sentText);
+									
+									if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<List<String>> depList = readDepFromDepFile(depFileName);
+										
+										
+										for (List<String> rowInDepList : depList) {
+											if (rowInDepList.get(0).toString().equals("nsubjpass") && rowInDepList.get(1).toString().toLowerCase().equals(key)){
+												String dobjString = rowInDepList.get(3).toString();
+												String dobjIdx = rowInDepList.get(4).toString();
+												
+												// System.out.println("dobjString::" + dobjString); 
+												
+												String tmpOutput = "";
+												
+												for (List<String> rowInDepList2 : depList) {
+													String relString = rowInDepList2.get(0).toString();
+													String govString = rowInDepList2.get(1).toString();
+													String govIdx = rowInDepList2.get(2).toString();
+													String depString = rowInDepList2.get(3).toString();
+													
+													if (dobjString.equals(govString) && dobjIdx.equals(govIdx) ) {												
+														// System.out.println("dep::" + depString );
+														// System.out.println("rel::" + relString );
+														if (relString.equals("nn")) {
+															// System.out.println("dep::" + depString );
+															// System.out.println("rel::" + relString );
+															tmpOutput += depString + " ";
+														}
+													}
+													
+												}
+												tmpOutput += dobjString;
+												output.add(tmpOutput);									}
+										}
+										// System.out.println("output:\n" + output);										
+									}
+								}
+							}
+						}
+					}				
+				}
+				
+				
+
+				if ( pos.equals("J") && pos.equals(keywordType) && keywordObject.equals("prep_to") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("prep_to") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("prep_to"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									
+									// System.out.println("text::" + text + "::sentText::" + sentText);
+									
+									if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<List<String>> depList = readDepFromDepFile(depFileName);
+										
+										for (List<String> rowInDepList : depList) {
+											
+											// if( rowInDepList.get(0).toString().equals("nn") ) {
+											//	System.out.println("has nn::" + rowInDepList.toString());
+											// } 
+											
+											if ( rowInDepList.get(0).toString().equals("prep_to") && rowInDepList.get(1).toString().toLowerCase().equals(key) ) {
+												String prep_toString = rowInDepList.get(3).toString();
+												String prep_toIdx = rowInDepList.get(4).toString();
+												
+												// System.out.println("prep_toString::" + prep_toString); 
+												// output += prep_toString + "\n";
+												output.add(prep_toString);
+												
+												for (List<String> rowInDepList2 : depList) {
+													String relString = rowInDepList2.get(0).toString();
+													String govString = rowInDepList2.get(1).toString();
+													String govIdx = rowInDepList2.get(2).toString();
+													String depString = rowInDepList2.get(3).toString();
+													
+													if (prep_toString.equals(govString) && prep_toIdx.equals(govIdx) ) {												
+														// System.out.println("dep::" + depString );
+														// System.out.println("rel::" + relString );
+														if (relString.equals("appos")) {  // appositional modifier
+																						  // Ex: Sam, my brother
+																						  // appos(Sam, brother)
+															
+															// System.out.println("dep::" + depString );
+															// System.out.println("rel::" + relString );
+															// output += depString + "\n";
+															output.add(depString);
+														}
+													}
+													
+												}
+												
+											}
+										}
+									}
+									// System.out.println("output:\n" + output);
+								}
+							}
+						}
+					}			
+				}
+
+				if ( pos.equals("N") && pos.equals(keywordType) && keywordObject.equals("amod") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("amod") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("amod"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									//System.out.println("sentId is ::" + sentId);
+									
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									
+									// System.out.println("text::" + text + "::sentText::" + sentText);
+									
+									if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<List<String>> depList = readDepFromDepFile(depFileName);
+										
+										for (List<String> rowInDepList : depList) {
+											
+											// if( rowInDepList.get(0).toString().equals("nn") ) {
+											//	System.out.println("has nn::" + rowInDepList.toString());
+											// } 
+											
+											if ( rowInDepList.get(0).toString().equals("amod") && rowInDepList.get(1).toString().toLowerCase().equals(key) ) {
+												String amodString = rowInDepList.get(3).toString();
+												String amodIdx = rowInDepList.get(4).toString();
+												
+												// System.out.println("amodString::" + amodString); 
+												// output += amodString + "\n";
+												output.add(amodString);
+
+											}
+										}										
+									}
+									//System.out.println("output:\n" + output);
+								}
+							}
+						}
+					}			
+				}				
+				
+			
+			}
+			
+			// System.out.println("\n");
+			
+			
+		}
+		
+		// 
+		// http://stackoverflow.com/questions/1318980/how-to-iterate-over-a-treemap		
+		// 
+		// http://examples.javacodegeeks.com/core-java/util/treemap/treemap-iterator-example/
+
+		// The above part is my own testing		
+		
+		
+		
+		
+		
+		
+		
+		return output;
+		
+	}
+	
+
+	static String readDepFromTxtFile(String txtFileName) throws NumberFormatException, IOException {
+		String returnString = "";
+		
+		File txtFile = new File(txtFileName);
+		BufferedReader in = new BufferedReader(new FileReader(txtFile));
+		String s;
+				
+		while ((s = in.readLine())!=null) {
+			returnString += s;			
+		}
+		in.close();		
+		
+		return returnString;
+	}	
+	
 	
 	static List<List<String>> readDepFromDepFile(String depFileName) throws NumberFormatException, IOException {
 		
@@ -825,7 +890,7 @@ public class USP {
 		String[] ts;
 		
 		
-		System.out.println(fileName);
+		// System.out.println(fileName);
 		in=new BufferedReader(new FileReader(fileName));
 		while ((s=in.readLine())!=null) {
 			// id/str

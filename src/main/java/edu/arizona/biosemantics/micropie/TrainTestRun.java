@@ -144,8 +144,11 @@ public class TrainTestRun implements IRun {
 		long startTime = System.currentTimeMillis();
 		try {
 
-			Parse uspParse = new Parse();
-			uspParse.runParse("123", "456");
+			// Parse uspParse = new Parse();
+			// uspParse.runParse("usp", "usp_results");
+			
+			
+			
 			// sentenceReader.setInputStream(new FileInputStream(trainingFile));
 			// List<Sentence> trainingSentences = sentenceReader.read();
 			// nFolderCrossValidation(10, trainingSentences);
@@ -153,7 +156,7 @@ public class TrainTestRun implements IRun {
 			// List<Sentence> testSentences = createTestSentences();
 			// createUSPInputs(testSentences);
 
-			/*
+			
 			sentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = sentenceReader.read();
 			classifier.train(trainingSentences);
@@ -177,7 +180,7 @@ public class TrainTestRun implements IRun {
 			TaxonCharacterMatrix matrix = matrixCreator.create();
 			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
 			matrixWriter.write(matrix);
-			*/
+			
 			
 			
 		} catch (Exception e) {

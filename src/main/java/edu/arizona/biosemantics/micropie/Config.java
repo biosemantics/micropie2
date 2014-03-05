@@ -24,12 +24,14 @@ import com.google.inject.name.Names;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.regex.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.AntibioticSensitivityExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellDiameterExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellLongExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellShapeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellWideExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CharacterValueExtractorProvider;
+import edu.arizona.biosemantics.micropie.extract.regex.FermentationProductsExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclMaxExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclMinExtractor;
@@ -263,6 +265,10 @@ public class Config extends AbstractModule {
 		extractors.add(new GrowthNaclOptimumExtractor(Label.c3));
 		extractors.add(new GrowthNaclMaxExtractor(Label.c3));
 		extractors.add(new GrowthNaclMinExtractor(Label.c3));
+		extractors.add(new FermentationProductsExtractor(Label.c6));
+		extractors.add(new AntibioticSensitivityExtractor(Label.c4));
+		
+		
 		
 		return extractors;
 	}
