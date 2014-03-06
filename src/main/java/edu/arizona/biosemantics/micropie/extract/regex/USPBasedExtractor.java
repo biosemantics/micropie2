@@ -17,9 +17,9 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 	private Set<USPRequest> uspRequests;
 	private MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor();
 
-	public USPBasedExtractor(ILabel label) {
-		super(label, "Antibiotic Sensitivity");
-	}
+	// public USPBasedExtractor(ILabel label) {
+	//	super(label, "Antibiotic Sensitivity");
+	// }
 	
 	@Inject
 	public USPBasedExtractor(@Named("USPBasedExtractor_Label")Label label, 

@@ -89,7 +89,13 @@ public class MicropieUSPExtractor {
 		MicropieUSPExtractor usp = new MicropieUSPExtractor();
 		
 		// Set<String> output = usp.getObjectValue("Produces arginine dihydrolase and lysine decarboxylase, but not ornithine decarboxylase.", "produces", "V", "dobj");
-		Set<String> output = usp.getObjectValue("Hydrogen sulfide is produced.", "produced", "V", "nsubjpass");
+		
+		// Set<String> output = usp.getObjectValue("Hydrogen sulfide is produced.", "produced", "V", "nsubjpass");
+		// System.out.println(output.toString());
+		
+		
+		// Resistant to vancomycin, ampicillin, ristocetin, novobiocin, rifampicin, streptomycin, and chloramphenicol.
+		Set<String> output = usp.getObjectValue("Resistant to vancomycin, ampicillin, ristocetin, novobiocin, rifampicin, streptomycin, and chloramphenicol.", "resistant", "J", "prep_to");
 		System.out.println(output.toString());
 		
 		// nsubjpass examples
@@ -345,7 +351,7 @@ public class MicropieUSPExtractor {
 													if (prep_toString.equals(govString) && prep_toIdx.equals(govIdx) ) {												
 														// System.out.println("dep::" + depString );
 														// System.out.println("rel::" + relString );
-														if (relString.equals("appos")) {  // appositional modifier
+														if (relString.equals("appos") || relString.equals("conj_and")) {  // appositional modifier
 																						  // Ex: Sam, my brother
 																						  // appos(Sam, brother)
 															

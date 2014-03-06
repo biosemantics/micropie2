@@ -265,8 +265,8 @@ public class Config extends AbstractModule {
 		extractors.add(new GrowthNaclOptimumExtractor(Label.c3));
 		extractors.add(new GrowthNaclMaxExtractor(Label.c3));
 		extractors.add(new GrowthNaclMinExtractor(Label.c3));
-		extractors.add(new FermentationProductsExtractor(Label.c6));
-		extractors.add(new AntibioticSensitivityExtractor(Label.c4));
+		// extractors.add(new FermentationProductsExtractor(Label.c6));
+		// extractors.add(new AntibioticSensitivityExtractor(Label.c4));
 		
 		
 		
