@@ -66,7 +66,6 @@ public class MicropieUSPExtractor {
 	}
 	
 	
-	static Map<String, Map<String,Integer>> keywordList_ = new TreeMap<String,Map<String,Integer>>();
 	static Map<Integer,Map<String,String>> clustIdx_argTypeClustIdx_=new HashMap<Integer,Map<String,String>>();
 	
 	
@@ -95,13 +94,23 @@ public class MicropieUSPExtractor {
 		
 		
 		// Resistant to vancomycin, ampicillin, ristocetin, novobiocin, rifampicin, streptomycin, and chloramphenicol.
-		Set<String> output = usp.getObjectValue("Resistant to vancomycin, ampicillin, ristocetin, novobiocin, rifampicin, streptomycin, and chloramphenicol.", "resistant", "J", "prep_to");
-		System.out.println(output.toString());
+		// Set<String> output = usp.getObjectValue("Resistant to vancomycin, ampicillin, ristocetin, novobiocin, rifampicin, streptomycin, and chloramphenicol.", "resistant", "J", "prep_to");
+		// System.out.println(output.toString());
+		
+		
+		// Resistant to chloramphenicol, ampicillin, penicillin, kanamycin, vancomycin and streptomycin, but sensitive to rifampicin.
+		// Set<String> output = usp.getObjectValue("Resistant to chloramphenicol, ampicillin, penicillin, kanamycin, vancomycin and streptomycin, but sensitive to rifampicin.", "resistant", "J", "prep_to");
+		// System.out.println(output.toString());		
+		// Set<String> output2 = usp.getObjectValue("Resistant to chloramphenicol, ampicillin, penicillin, kanamycin, vancomycin and streptomycin, but sensitive to rifampicin.", "sensitive", "J", "prep_to");
+		// System.out.println(output2.toString());
 		
 		// nsubjpass examples
 		// Hydrogen sulfide is produced.
 		// Relatively strong turbidity is produced containing serum.
 		
+		// Isolated from a commercial chalcocite heap leaching operation in Myanmar.
+		Set<String> output = usp.getObjectValue("Isolated from a commercial chalcocite heap leaching operation in Myanmar.", "isolated", "V", "prep_from");
+		System.out.println(output.toString());
 
 		
 		
@@ -121,6 +130,7 @@ public class MicropieUSPExtractor {
 		rstDir_ = "usp_results";
 		dataDir_ = "usp";		
 
+		Map<String, Map<String,Integer>> keywordList_ = new TreeMap<String,Map<String,Integer>>();
 		keywordList_.put(keyword, new HashMap<String, Integer>());
 		
 		String dir = rstDir_;
@@ -129,7 +139,7 @@ public class MicropieUSPExtractor {
 
 		
 		String fileName=dir+Utils.FILE_SEP+fid+".mln";
-		readClust2(fileName);
+		readClust2(fileName, keywordList_);
 		
 		fileName=dir+Utils.FILE_SEP+fid+".parse";
 		readPart(fileName);
@@ -158,7 +168,7 @@ public class MicropieUSPExtractor {
 				// System.out.println("pids.size() :: " + pids.size());
 
 				
-				
+				// Rule 1:: V => dobj
 				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("dobj") ) {
 					if ( clustIdx_depArgClustIdx_.get(ci).get("dobj") == null ) continue; // doesn't go through the following
 					int aci = clustIdx_depArgClustIdx_.get(ci).get("dobj"); 
@@ -228,7 +238,7 @@ public class MicropieUSPExtractor {
 				}
 
 				
-
+				// Rule 2:: V => nsubjpass
 				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("nsubjpass") ) {
 					if ( clustIdx_depArgClustIdx_.get(ci).get("nsubjpass") == null ) continue; // doesn't go through the following
 					int aci = clustIdx_depArgClustIdx_.get(ci).get("nsubjpass"); 
@@ -298,7 +308,7 @@ public class MicropieUSPExtractor {
 				}
 				
 				
-
+				// Rule 3:: J => prep_to
 				if ( pos.equals("J") && pos.equals(keywordType) && keywordObject.equals("prep_to") ) {
 					if ( clustIdx_depArgClustIdx_.get(ci).get("prep_to") == null ) continue; // doesn't go through the following
 					int aci = clustIdx_depArgClustIdx_.get(ci).get("prep_to"); 
@@ -327,7 +337,7 @@ public class MicropieUSPExtractor {
 										
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<List<String>> depList = readDepFromDepFile(depFileName);
-										
+																				
 										for (List<String> rowInDepList : depList) {
 											
 											// if( rowInDepList.get(0).toString().equals("nn") ) {
@@ -374,6 +384,7 @@ public class MicropieUSPExtractor {
 					}			
 				}
 
+				// Rule 4:: N => amod
 				if ( pos.equals("N") && pos.equals(keywordType) && keywordObject.equals("amod") ) {
 					if ( clustIdx_depArgClustIdx_.get(ci).get("amod") == null ) continue; // doesn't go through the following
 					int aci = clustIdx_depArgClustIdx_.get(ci).get("amod"); 
@@ -428,6 +439,73 @@ public class MicropieUSPExtractor {
 					}			
 				}				
 				
+				// Rule 5:: V => prep_from
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("prep_from") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("prep_from") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("prep_from"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									
+									// System.out.println("text::" + text + "::sentText::" + sentText);
+									
+									// if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<List<String>> depList = readDepFromDepFile(depFileName);
+										
+										
+										for (List<String> rowInDepList : depList) {
+											if (rowInDepList.get(0).toString().equals("prep_from") && rowInDepList.get(1).toString().toLowerCase().equals(key)){
+
+												
+												
+												String tmpOutput = "";
+												
+												String kwdPlusFrom = keyword + " from ";
+												int startIdxOfKwdPlusFrom = sentText.indexOf(kwdPlusFrom);
+												
+												if ( startIdxOfKwdPlusFrom > 0 ) {
+													int afterIdx = startIdxOfKwdPlusFrom + kwdPlusFrom.length();
+													System.out.println("afterIdx::" + afterIdx);
+													
+													// System.out.println("indexOf(kwdPlusFrom)::" + sentText.indexOf(kwdPlusFrom));
+													// System.out.println("indexOf(kwdPlusFrom) + kwdPlusFrom.length()::" + sentText.indexOf(kwdPlusFrom) + kwdPlusFrom.length());
+													String subSentText = sentText.substring(startIdxOfKwdPlusFrom);
+													
+													tmpOutput = subSentText.toLowerCase().replaceAll(kwdPlusFrom, "");
+												}
+												
+
+												
+												
+												
+												
+												output.add(tmpOutput);
+										}
+										// System.out.println("output:\n" + output);										
+									}
+								}
+							}
+						}
+					}				
+				}
 			
 			}
 			
@@ -580,7 +658,7 @@ public class MicropieUSPExtractor {
 	
 	
 	// find clustIdx for rel in questions
-	static void readClust2(String fileName) throws Exception {
+	static void readClust2(String fileName, Map<String, Map<String,Integer>> keywordList_) throws Exception {
 		BufferedReader in;
 		String s;
 		String[] ts;
@@ -673,7 +751,7 @@ public class MicropieUSPExtractor {
 				// System.out.println("4. frequency :: " + frequency);
 				
 				// process multiple piece				
-				procRelType2(ci,pos,rt);			
+				procRelType2(ci,pos,rt, keywordList_);			
 			}
 			currCi=ci;
 			dep_aci = new HashMap<String,Integer>();
@@ -684,7 +762,7 @@ public class MicropieUSPExtractor {
 		in.close();		
 	}
 
-	static void procRelType2(int clustIdx, String pos, String relType) {
+	static void procRelType2(int clustIdx, String pos, String relType, Map<String, Map<String,Integer>> keywordList_) {
 		// 19508	[(N:b (nn (N:nf-kappa))):1466,	(N:b (dep (N:nf-kappa))):2]
 
 		if (pos.equals("V")) {
