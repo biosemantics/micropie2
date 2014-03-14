@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie.transform;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
@@ -36,11 +37,37 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		text = normalizer.transform(text);
 		log(LogLevel.INFO, "Done normalizing, resulting text: " + text);
 		
+		
+		
 		log(LogLevel.INFO, "Splitting text into sentences");
 		List<String> sentences =  getSentences(text);
 		log(LogLevel.INFO, "Done splitting text into sentences. Created " + sentences.size() + " + sentences");
+		
+		
+		// TODO:: Splitting
+		// Example: Sent1; Sent2; Sent3; Sent4.
+		// =>
+		// Sent1
+		// Sent2
+		// Sent3
+		// Sent4
+		
+		
+		
+		log(LogLevel.INFO, "Replacing abbreviation back to original sentence");
+		// replace abbreviation back to original sentence
+		List<String> sentencesBack = new ArrayList<String>();
+		for (String sentence: sentences) {
+			sentence = normalizer.transformBack(sentence);
+			sentencesBack.add(sentence);
+		}
+		log(LogLevel.INFO, "Done replacing abbreviation back to original sentence");
+
+		
 		sentenceSplitLatch.countDown();
-		return sentences;
+		// return sentences;
+		return sentencesBack;
+		
 	}
 	
 	private List<String> getSentences(String text) {

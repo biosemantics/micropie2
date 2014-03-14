@@ -38,9 +38,9 @@ public class FermentationProductsExtractor extends AbstractCharacterValueExtract
 		// Example:  ??
 		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor();
 		try {
-			output = micropieUSPExtractor.getObjectValue(text, "produces", "V", "dobj");
-			output.addAll(micropieUSPExtractor.getObjectValue(text, "produced", "V", "nsubjpass"));
-			output.addAll(micropieUSPExtractor.getObjectValue(text, "formed", "V", "nsubjpass"));
+			output = micropieUSPExtractor.getObjectValue(text, "produces", "V", "dobj", "Dep");
+			output.addAll(micropieUSPExtractor.getObjectValue(text, "produced", "V", "nsubjpass", "Dep"));
+			output.addAll(micropieUSPExtractor.getObjectValue(text, "formed", "V", "nsubjpass", "Dep"));
 			System.out.println("Fermentation Products::" + output.toString());
 			
 		} catch (Exception e) {

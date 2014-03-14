@@ -70,9 +70,12 @@ public class TextNormalizer implements ITextNormalizer {
 				if (tokenString.substring(0,1).equals("(") && tokenString.substring(tokenString.length()-1,tokenString.length()).equals(")")
 						|| tokenString.substring(0,1).equals("(") && tokenString.substring(tokenString.length()-2,tokenString.length()-1).equals(")")) {
 				
-					String finalCompoundTokenReplacement = tokenString.replaceAll("\\.", "_dot");
+					String finalCompoundTokenReplacement = tokenString.replaceAll("\\.", "pp_dot");
 					log(LogLevel.INFO, "finalCompoundTokenReplacement ::" + finalCompoundTokenReplacement);
-					text = text.replace(tokenString, finalCompoundTokenReplacement);
+					
+					// it seems we don't have to do this
+					// text = text.replace(tokenString, finalCompoundTokenReplacement);
+					// it seems we don't have to do this
 				
 					parenthesisReplacements.put(tokenString, finalCompoundTokenReplacement);
 
@@ -94,9 +97,12 @@ public class TextNormalizer implements ITextNormalizer {
 				}
 				
 				
-				String finalCompoundTokenReplacement = finalCompoundToken.replaceAll("\\.", "_dot");
+				String finalCompoundTokenReplacement = finalCompoundToken.replaceAll("\\.", "pp_dot");
 				log(LogLevel.INFO, "finalCompoundTokenReplacement ::" + finalCompoundTokenReplacement);
-				text = text.replace(finalCompoundToken, finalCompoundTokenReplacement);
+				
+				// it seems we don't have to do this
+				// text = text.replace(finalCompoundToken, finalCompoundTokenReplacement);
+				// it seems we don't have to do this
 				
 				parenthesisReplacements.put(finalCompoundToken, finalCompoundTokenReplacement);
 				log(LogLevel.INFO, finalCompoundToken);
@@ -126,8 +132,21 @@ public class TextNormalizer implements ITextNormalizer {
 		// log(LogLevel.INFO, "newSent::" + newSent);
 		log(LogLevel.INFO, newSent);
 		
-		replace(text, this.abbreviations);
-		replace(text, parenthesisReplacements);
+		text = replace(text, this.abbreviations);
+		
+		// text = replace(text, parenthesisReplacements); // mark it first since this one doesn't work very well
+		
+		// "DNA base composition 45 mol% G + C.  Temperature optimum 30 to 37˚C."
+		text = text.replaceAll("G\\s\\+\\sC", "G+C");
+		
+		// TODO
+		// spaceM. => spaceM . ex: 11-23 M.
+		// "DNA base composition 45 mol% G + C.  Temperature optimum 30 to 37˚C."
+		// streptomycin and polymycin B.  The polar lip
+		// μ m => μm
+		// 
+		
+		
 		return text;
 	}
 	
@@ -138,5 +157,24 @@ public class TextNormalizer implements ITextNormalizer {
 		}
 		return text;
 	}
+
+	
+	
+	public String transformBack(String sent) {
+		
+		sent = replaceBack(sent, this.abbreviations);
+		
+		
+		return sent;
+	}
+
+	public String replaceBack(String sent, LinkedHashMap<String, String> replacements) {
+		for (String original : replacements.keySet()) {
+			//or was this meant to work as regex replace? (.replace vs .replaceAll)
+			sent = sent.replace(replacements.get(original), original);
+		}
+		return sent;
+	}	
+	
 	
 }

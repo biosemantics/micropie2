@@ -1,14 +1,17 @@
-^.$[]{}|*+?, escape symbol
+^.$[]{}|*+?, escape_symbol
 gen\. nov\., gen_dot_space_nov_dot
 spec\. nov\., spec_dot_space_nov_dot
 sp\. nov\., sp_dot_space_nov_dot
 comb\. nov\., comb_dot_space_nov_dot
 var\., var_dot
+sp\., sp_dot
+nov\., nov_dot
+ca\., ca_dot
 ˚C, degree_celsius_1
 "C, degree_celsius_2
 ◦ C, degree_celsius_3
 °C, degree_celsius_4
-ca\., ca_dot
+° C, degree_celsius_5
 Chl a, Chl_a
 Chl b, Chl_b
 Chl c, Chl_c

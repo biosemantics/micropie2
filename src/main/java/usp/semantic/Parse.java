@@ -132,6 +132,8 @@ public class Parse {
 		// System.out.println("dataDir_::" + dataDir_);
 		// System.out.println("rstDir_::" + rstDir_);
 		
+		new File("usp_results").mkdirs();
+		
 		usp.util.Timer timer=new usp.util.Timer();
 
 		PrintStream out=null;	
@@ -343,7 +345,10 @@ public class Parse {
 			int argTypeIdx=p.getArgType();
 //			Utils.println("---> dep="+dep+" path="+p.toString()+" argTypeIdx="+argTypeIdx+" argType="+ArgType.getArgType(argTypeIdx));
 			Part cp=Part.getPartByRootNodeId(cid);
-			if (cp==null) Utils.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
+			if (cp==null) {
+				Utils.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
+				continue; // Elvis add on 3/11/2014 to prevent the parsing error
+			}
 
 			// TO-DO: fix this, should have unique par
 			if (cp.parPart_!=null) {

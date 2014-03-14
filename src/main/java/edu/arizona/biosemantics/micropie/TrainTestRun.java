@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -15,11 +17,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.StringTokenizer;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 
+import org.apache.commons.io.FileUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -53,6 +57,7 @@ import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TokensAnnotation;
 import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.ling.StringLabelFactory;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -60,6 +65,15 @@ import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
+import edu.stanford.nlp.trees.LabeledScoredTreeFactory;
+import edu.stanford.nlp.trees.PennTreeReader;
+import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation;
+import edu.stanford.nlp.trees.TreeReader;
+import edu.stanford.nlp.trees.tregex.TregexMatcher;
+import edu.stanford.nlp.trees.tregex.TregexPattern;
+import edu.stanford.nlp.trees.tregex.tsurgeon.Tsurgeon;
+import edu.stanford.nlp.trees.tregex.tsurgeon.TsurgeonPattern;
 import edu.stanford.nlp.util.CoreMap;
 
 public class TrainTestRun implements IRun {
@@ -69,7 +83,7 @@ public class TrainTestRun implements IRun {
 	private String predictionsFile;
 	private String matrixFile;
 
-	private CSVSentenceReader sentenceReader;
+	private CSVSentenceReader trainingSentenceReader;
 	private MultiSVMClassifier classifier;
 	private XMLTextReader textReader;
 	private ITextNormalizer textNormalizer;
@@ -88,7 +102,6 @@ public class TrainTestRun implements IRun {
 	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
 	private Map<TaxonTextFile, List<Sentence>> taxonSentencesMap;
 
-
 	@Inject
 	public TrainTestRun(
 			@Named("trainingFile") String trainingFile,
@@ -100,8 +113,10 @@ public class TrainTestRun implements IRun {
 			@Named("SentenceClassificationMap") Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap,
 			@Named("SentenceMetadataMap") Map<Sentence, SentenceMetadata> sentenceMetadataMap,
 			@Named("TaxonSentencesMap") Map<TaxonTextFile, List<Sentence>> taxonSentencesMap,
-			MultiSVMClassifier classifier, CSVSentenceReader sentenceReader,
-			XMLTextReader textReader, ITextNormalizer textNormalizer,
+			MultiSVMClassifier classifier,
+			CSVSentenceReader trainingSentenceReader,
+			XMLTextReader textReader,
+			ITextNormalizer textNormalizer,
 			@Named("TokenizeSSplit") StanfordCoreNLP tokenizeSSplit,
 			@Named("TokenizeSSplitPosParse") StanfordCoreNLP tokenizeSSplitPosParse,
 			LexicalizedParser lexicalizedParser,
@@ -118,7 +133,7 @@ public class TrainTestRun implements IRun {
 		this.sentenceMetadataMap = sentenceMetadataMap;
 		this.taxonSentencesMap = taxonSentencesMap;
 		this.classifier = classifier;
-		this.sentenceReader = sentenceReader;
+		this.trainingSentenceReader = trainingSentenceReader;
 		this.textReader = textReader;
 		this.textNormalizer = textNormalizer;
 		this.tokenizeSSplit = tokenizeSSplit;
@@ -144,45 +159,59 @@ public class TrainTestRun implements IRun {
 		long startTime = System.currentTimeMillis();
 		try {
 
-			// Parse uspParse = new Parse();
-			// uspParse.runParse("usp", "usp_results");
-			
-			
-			
-			// sentenceReader.setInputStream(new FileInputStream(trainingFile));
-			// List<Sentence> trainingSentences = sentenceReader.read();
+			// NFolder Cross Validation
+			// trainingSentenceReader.setInputStream(new
+			// FileInputStream(trainingFile));
+			// List<Sentence> trainingSentences = trainingSentenceReader.read();
 			// nFolderCrossValidation(10, trainingSentences);
 
+			// Create USP Inputs
 			// List<Sentence> testSentences = createTestSentences();
 			// createUSPInputs(testSentences);
 
+			stanfordCoreNLPTest();
 			
-			sentenceReader.setInputStream(new FileInputStream(trainingFile));
-			List<Sentence> trainingSentences = sentenceReader.read();
-			classifier.train(trainingSentences);
+			// Parse uspParse = new Parse();
+			// uspParse.runParse("usp", "usp_results");
 
-			List<Sentence> testSentences = createTestSentences();
-			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>();
-			// TODO possibly parallelize here
-			for (Sentence testSentence : testSentences) {
-				Set<ILabel> prediction = classifier
-						.getClassification(testSentence);
-				MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence(
-						testSentence, prediction);
-				sentenceClassificationMap.put(testSentence, classifiedSentence);
-				predictions.add(classifiedSentence);
-			}
+			// Training data set statistics
+			// trainingSentenceReader.setInputStream(new
+			// FileInputStream(trainingFile));
+			// trainingSentenceReader.categoryStat();
 
-			classifiedSentenceWriter.setOutputStream(new FileOutputStream(
-					predictionsFile));
-			classifiedSentenceWriter.write(predictions);
+			// Split compound category from training data set
+			// trainingSentenceReader.setInputStream(new
+			// FileInputStream(trainingFile));
+			// trainingSentenceReader.setOutputStream(new
+			// FileOutputStream("split-" + trainingFile));
+			// trainingSentenceReader.splitCompoundCategory();
 
-			TaxonCharacterMatrix matrix = matrixCreator.create();
-			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
-			matrixWriter.write(matrix);
+			/*
+			 * trainingSentenceReader.setInputStream(new FileInputStream(
+			 * trainingFile)); List<Sentence> trainingSentences =
+			 * trainingSentenceReader.read();
+			 * classifier.train(trainingSentences);
+			 * 
+			 * List<Sentence> testSentences = createTestSentences();
+			 * List<MultiClassifiedSentence> predictions = new
+			 * LinkedList<MultiClassifiedSentence>(); // TODO possibly
+			 * parallelize here for (Sentence testSentence : testSentences) {
+			 * Set<ILabel> prediction = classifier
+			 * .getClassification(testSentence); MultiClassifiedSentence
+			 * classifiedSentence = new MultiClassifiedSentence( testSentence,
+			 * prediction); sentenceClassificationMap.put(testSentence,
+			 * classifiedSentence); predictions.add(classifiedSentence); }
+			 * 
+			 * classifiedSentenceWriter.setOutputStream(new FileOutputStream(
+			 * predictionsFile)); classifiedSentenceWriter.write(predictions);
+			 * 
+			 * TaxonCharacterMatrix matrix = matrixCreator.create();
+			 * matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
+			 * matrixWriter.write(matrix);
+			 */
+
 			
-			
-			
+
 		} catch (Exception e) {
 			log(LogLevel.ERROR, "Could not run Main", e);
 		}
@@ -580,160 +609,295 @@ public class TrainTestRun implements IRun {
 	private void createUSPInputs(List<Sentence> sentenceList)
 			throws IOException, InterruptedException, ExecutionException {
 
+		// if the folder "usp" exists, delete it
+		FileUtils.deleteDirectory(new File("usp"));
+		
+		
 		int counter = 1;
-		for (Sentence sentence : sentenceList) {
-
-			StringBuilder depStringBuilder = new StringBuilder();
+		for (Sentence sentence : sentenceList) {			
+			StringBuilder depStringBuilder = new StringBuilder(); // Stanford Dependency
 			StringBuilder inputStringBuilder = new StringBuilder();
 			StringBuilder morphStringBuilder = new StringBuilder();
+			StringBuilder parseStringBuilder = new StringBuilder(); // Parse Tree
 			StringBuilder textStringBuilder = new StringBuilder();
 
-			String text = sentence.getText(); // it is sentence based not text based anymore
+			String text = sentence.getText(); // it is sentence based not text
+												// based anymore
+
 			log(LogLevel.INFO,
 					"build pos tagger and dependency as USP inputs using stanford corenlp pipeline...");
 
-			Annotation annotation = new Annotation(text);
-			this.tokenizeSSplitPosParse.annotate(annotation);
-			List<CoreMap> sentenceAnnotations = annotation
-					.get(SentencesAnnotation.class);
-			for (CoreMap sentenceAnnotation : sentenceAnnotations) {
-				// result.add(sentenceAnnotation.toString());
-				for (CoreLabel token : sentenceAnnotation
-						.get(TokensAnnotation.class)) {
+			StringTokenizer textToken = new StringTokenizer(text, " ");
+			if (textToken.countTokens() < 50) {
+				Annotation annotation = new Annotation(text);
+				this.tokenizeSSplitPosParse.annotate(annotation);
+				List<CoreMap> sentenceAnnotations = annotation
+						.get(SentencesAnnotation.class);
+				for (CoreMap sentenceAnnotation : sentenceAnnotations) {
+					// result.add(sentenceAnnotation.toString());
+					for (CoreLabel token : sentenceAnnotation
+							.get(TokensAnnotation.class)) {
 
-					String pos = token.get(PartOfSpeechAnnotation.class);
-					// System.out.println(token + "_" + pos);
+						String pos = token.get(PartOfSpeechAnnotation.class);
+						// System.out.println(token + "_" + pos);
 
-					if (token.toString().equals("_")) {
-						inputStringBuilder.append("dash_" + pos + "\n");
-						morphStringBuilder.append("dash\n");
-					} else {
-						inputStringBuilder.append(token + "_" + pos + "\n");
-						morphStringBuilder.append(token.toString()
-								.toLowerCase() + "\n");
+						if (token.toString().equals("_")) {
+							inputStringBuilder.append("dash_" + pos + "\n");
+							morphStringBuilder.append("dash\n");
+						} else {
+							inputStringBuilder.append(token + "_" + pos + "\n");
+							morphStringBuilder.append(token.toString()
+									.toLowerCase() + "\n");
+						}
+
 					}
+					
+					Tree tree = sentenceAnnotation.get(TreeAnnotation.class);
+
+					//System.out.println("The first sentence parsed is:");
+					// tree.pennPrint(outputStream);
+					String treeString = tree.pennString();
+					//System.out.println(treeString);
+					parseStringBuilder.append(treeString);
+					
+					SemanticGraph dependencies = sentenceAnnotation
+							.get(CollapsedCCProcessedDependenciesAnnotation.class);
+					// the same as above
+					// SemanticGraph dependencies =
+					// sentenceAnnotation.get(CollapsedDependenciesAnnotation.class);
+
+					// Deprecated
+					// String depString = dependencies.toString("plain");
+					// depString = depString.replaceAll(",", ", ");
+					// System.out.println("Dependency String::" + depString);
+					// depStringBuilder.append(dependencies.toString("plain"));
+					// Deprecated
+
+					// System.out.println("xml format::" +
+					// dependencies.toString("xml"));
+					String depStringXml = dependencies.toString("xml");
+
+					String depStringPlain = "";
+					SAXBuilder saxBuilder = new SAXBuilder();
+					try {
+						Document xmlDocument = saxBuilder
+								.build(new StringReader(depStringXml));
+						// String message =
+						// xmlDocument.getRootElement().getText();
+						// System.out.println(message);
+						Element rootNode = xmlDocument.getRootElement();
+						// System.out.println(rootNode.getName());
+						// //<dependencies
+						// style="typed"> => dependencies
+						// System.out.println(rootNode.getAttributeValue("style"));
+						// // style="typed" => typed
+
+						List depList = rootNode.getChildren("dep");
+						for (int i = 0; i <= depList.size() - 1; i++) {
+							Element element = (Element) depList.get(i);
+							// System.out.println("dep type : "+
+							// element.getAttributeValue("type"));
+							depStringPlain += element.getAttributeValue("type")
+									+ "(";
+
+							// System.out.println("governor : "+
+							// element.getChildText("governor"));
+							depStringPlain += element.getChildText("governor")
+									+ "-";
+							List<Element> childrenList = element
+									.getChildren("governor");
+							for (int j = 0; j <= childrenList.size() - 1; j++) {
+								Element element2 = childrenList.get(j);
+								// System.out.println("idx : "+
+								// element2.getAttributeValue("idx"));
+								depStringPlain += element2
+										.getAttributeValue("idx");
+							}
+							depStringPlain += ", ";
+
+							// System.out.println("dependent : "+
+							// element.getChildText("dependent"));
+							depStringPlain += element.getChildText("dependent")
+									+ "-";
+							List<Element> childrenList2 = element
+									.getChildren("dependent");
+							for (int j = 0; j <= childrenList2.size() - 1; j++) {
+								Element element2 = childrenList2.get(j);
+								// System.out.println("idx : "+
+								// element2.getAttributeValue("idx"));
+								depStringPlain += element2
+										.getAttributeValue("idx");
+							}
+							depStringPlain += ")\n";
+
+						}
+						depStringBuilder.append(depStringPlain);
+						// System.out.println("dependencies::" + dependencies);
+						// System.out.println("depStringPlain:: " +
+						// depStringPlain);
+
+					} catch (JDOMException e) {
+						// handle JDOMException
+					} catch (IOException e) {
+						// handle IOException
+					}
+
+					// textStringBuilder.append(sentence.getText());
 
 				}
 
-				SemanticGraph dependencies = sentenceAnnotation
-						.get(CollapsedCCProcessedDependenciesAnnotation.class);
-				// the same as above
-				// SemanticGraph dependencies =
-				// sentenceAnnotation.get(CollapsedDependenciesAnnotation.class);
+				textStringBuilder.append(text);
 
-				// Deprecated
-				// String depString = dependencies.toString("plain");
-				// depString = depString.replaceAll(",", ", ");
-				// System.out.println("Dependency String::" + depString);
-				// depStringBuilder.append(dependencies.toString("plain"));
-				// Deprecated
+				new File("usp").mkdirs();
+				new File("usp/dep").mkdirs();
+				new File("usp/dep/0").mkdirs();
+				new File("usp/morph").mkdirs();
+				new File("usp/morph/0").mkdirs();
+				new File("usp/text").mkdirs();
+				new File("usp/text/0").mkdirs();
+				new File("usp/parse").mkdirs();
+				new File("usp/parse/0").mkdirs();
 
-				// System.out.println("xml format::" +
-				// dependencies.toString("xml"));
-				String depStringXml = dependencies.toString("xml");
-
-				String depStringPlain = "";
-				SAXBuilder saxBuilder = new SAXBuilder();
-				try {
-					Document xmlDocument = saxBuilder.build(new StringReader(
-							depStringXml));
-					// String message = xmlDocument.getRootElement().getText();
-					// System.out.println(message);
-					Element rootNode = xmlDocument.getRootElement();
-					// System.out.println(rootNode.getName()); //<dependencies
-					// style="typed"> => dependencies
-					// System.out.println(rootNode.getAttributeValue("style"));
-					// // style="typed" => typed
-
-					List depList = rootNode.getChildren("dep");
-					for (int i = 0; i <= depList.size() - 1; i++) {
-						Element element = (Element) depList.get(i);
-						// System.out.println("dep type : "+
-						// element.getAttributeValue("type"));
-						depStringPlain += element.getAttributeValue("type")
-								+ "(";
-
-						// System.out.println("governor : "+
-						// element.getChildText("governor"));
-						depStringPlain += element.getChildText("governor")
-								+ "-";
-						List<Element> childrenList = element
-								.getChildren("governor");
-						for (int j = 0; j <= childrenList.size() - 1; j++) {
-							Element element2 = childrenList.get(j);
-							// System.out.println("idx : "+
-							// element2.getAttributeValue("idx"));
-							depStringPlain += element2.getAttributeValue("idx");
-						}
-						depStringPlain += ", ";
-
-						// System.out.println("dependent : "+
-						// element.getChildText("dependent"));
-						depStringPlain += element.getChildText("dependent")
-								+ "-";
-						List<Element> childrenList2 = element
-								.getChildren("dependent");
-						for (int j = 0; j <= childrenList2.size() - 1; j++) {
-							Element element2 = childrenList2.get(j);
-							// System.out.println("idx : "+
-							// element2.getAttributeValue("idx"));
-							depStringPlain += element2.getAttributeValue("idx");
-						}
-						depStringPlain += ")\n";
-
-					}
-					depStringBuilder.append(depStringPlain);
-					// System.out.println("dependencies::" + dependencies);
-					// System.out.println("depStringPlain:: " + depStringPlain);
-
-				} catch (JDOMException e) {
-					// handle JDOMException
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/dep/0/" + counter + ".dep", false)))) {
+					out.println(depStringBuilder);
 				} catch (IOException e) {
-					// handle IOException
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/morph/0/" + counter + ".input",
+								false)))) {
+					out.println(inputStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/morph/0/" + counter + ".morph",
+								false)))) {
+					out.println(morphStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(
+						new BufferedWriter(new FileWriter("usp/text/0/"
+								+ counter + ".txt", false)))) {
+					out.println(textStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(
+						new BufferedWriter(new FileWriter("usp/parse/0/"
+								+ counter + ".parse", false)))) {
+					out.println(parseStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
 				}
 
-				textStringBuilder.append(sentence.getText());
-
-			}
-
-			new File("usp").mkdirs();
-			new File("usp/dep").mkdirs();
-			new File("usp/dep/0").mkdirs();
-			new File("usp/morph").mkdirs();
-			new File("usp/morph/0").mkdirs();
-			new File("usp/text").mkdirs();
-			new File("usp/text/0").mkdirs();
-
-			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("usp/dep/0/" + counter + ".dep", false)))) {
-				out.println(depStringBuilder);
-			} catch (IOException e) {
-				// exception handling left as an exercise for the reader
-			}
-			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("usp/morph/0/" + counter + ".input", false)))) {
-				out.println(inputStringBuilder);
-			} catch (IOException e) {
-				// exception handling left as an exercise for the reader
-			}
-			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("usp/morph/0/" + counter + ".morph", false)))) {
-				out.println(morphStringBuilder);
-			} catch (IOException e) {
-				// exception handling left as an exercise for the reader
-			}
-			try (PrintWriter out = new PrintWriter(new BufferedWriter(
-					new FileWriter("usp/text/0/" + counter + ".txt", false)))) {
-				out.println(textStringBuilder);
-			} catch (IOException e) {
-				// exception handling left as an exercise for the reader
 			}
 
 			counter++;
 			log(LogLevel.INFO,
-				"done building pos tagger and dependency as USP inputs using stanford corenlp pipeline...");
+					"done building pos tagger and dependency as USP inputs using stanford corenlp pipeline...");
 
 		}
+	}
+
+	private void stanfordCoreNLPTest() throws IOException {
+
+		Annotation annotation = new Annotation(
+				"This bacteria is isolated from sea salt in Taiwan.");
+		
+		// This bacteria is isolated from sea salt in Taiwan.
+		// Growth is most rapid at 34 to 37°C, and very slow or no growth occurs at temperatures below 12°C and above 40°C.  Type strain DMS1 was isolated from a slurry prepared from a eutrophic pond sediment (Campus of Dekkerswald Institute, Nijmegen, The Netherlands).
+		// The type strain is MG62T (=JCM 10825T=DSM 13459T), which was isolated from a paddy field soil in Chikugo, Fukuoka, Japan.
+		// The type strain, SH-6T (=CECT 7173T=CGMCC 1.6379T=JCM 14033T), was isolated from Shangmatala salt lake, Inner Mongolia, China.
+
+		
+		this.tokenizeSSplitPosParse.annotate(annotation);
+
+		List<CoreMap> sentenceAnnotations = annotation
+				.get(SentencesAnnotation.class);
+
+		String treeString = "";
+		if (sentenceAnnotations != null && sentenceAnnotations.size() > 0) {
+			CoreMap sentence = sentenceAnnotations.get(0);
+			Tree tree = sentence.get(TreeAnnotation.class);
+
+			System.out.println("The first sentence parsed is:");
+			// tree.pennPrint(outputStream);
+			treeString = tree.pennString();
+			System.out.println(treeString);
+		}
+		// http://stackoverflow.com/questions/11832490/stanford-core-nlp-java-output
+
+		// traverse the parse tree
+		// http://stackoverflow.com/questions/10474827/get-certain-nodes-out-of-a-parse-tree
+		// [java-nlp-user] Traversing the Parse Tree
+		// https://mailman.stanford.edu/pipermail/java-nlp-user/2011-April/000906.html
+
+		// http://stackoverflow.com/questions/6624479/extracting-sub-trees-using-stanford-tregex
+		// -->
+		// -->
+		// TreeReader r = new PennTreeReader(new
+		// StringReader("(VP (VP (VBZ Try) (NP (NP (DT this) (NN wine)) (CC and) (NP (DT these) (NNS snails)))) (PUNCT .))"),
+		// new LabeledScoredTreeFactory(new StringLabelFactory()));
+
+		// http://tides.umiacs.umd.edu/webtrec/stanfordParser/javadoc/edu/stanford/nlp/trees/PennTreeReader.html
+		// TreeReader tr = new PennTreeReader(new BufferedReader(new
+		// InputStreamReader(new FileInputStream(file),"UTF-8")),
+		// myTreeFactory);
+		// Tree t = tr.readTree();
+
+		TreeReader tr = new PennTreeReader(new StringReader(treeString),
+				new LabeledScoredTreeFactory(new StringLabelFactory()));
+		Tree tree2 = tr.readTree();
+		String tree2String = tree2.pennString();
+		System.out.println(tree2String);
+
+		TregexPattern tgrepPattern = TregexPattern.compile("PP <1 (IN << from)");
+
+		// upper level
+		//TregexPattern tgrepPattern = TregexPattern
+		//		.compile("VP <1 (VBN << " + "isolated" + ")");
+		
+		// NP <1 (NP << Bank)
+		// http://stackoverflow.com/questions/3693323/how-do-i-manipulate-parse-trees
+
+		TregexMatcher m = tgrepPattern.matcher(tree2);
+		while (m.find()) {
+			Tree subtree = m.getMatch();
+			System.out.println(subtree.toString());
+
+			
+			final StringBuilder sb = new StringBuilder();
+
+			for ( final Tree t : subtree.getLeaves() ) {
+			     sb.append(t.toString()).append(" ");
+			}
+			System.out.println("sb::" + sb);
+			// http://stackoverflow.com/questions/11148890/how-to-print-the-parse-tree-of-stanford-javanlp
+			// 
+			
+			
+			
+			
+			// Tree[] aaa = subtree.children();
+			// for ( int i = 0; i < aaa.length; i++ ) {
+			//	System.out.println("i::" + aaa[i].toString());
+			// }
+			
+			// System.out.println(subtree.pennString()); // equal => subtree.pennPrint();
+
+		}
+
+		// Tree t = Tree
+		// 		.valueOf("(ROOT (S (NP (NP (NNP Bank)) (PP (IN of) (NP (NNP America)))) (VP (VBD used) (S (VP (TO to) (VP (VB be) (VP (VBN called) (NP (NP (NNP Bank)) (PP (IN of) (NP (NNP Italy)))))))))))");
+		// TregexPattern pat = TregexPattern
+		//		.compile("NP <1 (NP << Bank) <2 PP=remove");
+		// TsurgeonPattern surgery = Tsurgeon
+		//		.parseOperation("excise remove remove");
+		// Tsurgeon.processPattern(pat, surgery, t).pennPrint();
+
 	}
 
 }

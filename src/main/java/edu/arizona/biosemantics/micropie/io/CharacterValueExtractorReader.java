@@ -51,9 +51,9 @@ public class CharacterValueExtractorReader implements
 		String strLine;
 		while ((strLine = br.readLine()) != null) {
 			String[] requestParameters = strLine.split("\t");
-			if(requestParameters.length != 3) 
+			if(requestParameters.length != 4) 
 				continue;
-			uspRequests.add(new USPRequest(requestParameters[0], requestParameters[1], requestParameters[2]));
+			uspRequests.add(new USPRequest(requestParameters[0], requestParameters[1], requestParameters[2], requestParameters[3]));
 		}
 		br.close();
 		return new USPBasedExtractor(Label.valueOf(labelName), character, uspRequests);
