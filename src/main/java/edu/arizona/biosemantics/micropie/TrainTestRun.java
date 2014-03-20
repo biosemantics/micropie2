@@ -160,56 +160,67 @@ public class TrainTestRun implements IRun {
 		try {
 
 			// NFolder Cross Validation
-			// trainingSentenceReader.setInputStream(new
-			// FileInputStream(trainingFile));
+			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			// List<Sentence> trainingSentences = trainingSentenceReader.read();
 			// nFolderCrossValidation(10, trainingSentences);
 
+			// stanfordCoreNLPTest();
+			stanfordCoreNLPTest2();
+			
 			// Create USP Inputs
 			// List<Sentence> testSentences = createTestSentences();
 			// createUSPInputs(testSentences);
 
-			stanfordCoreNLPTest();
 			
+			
+			// Run USP Parse
 			// Parse uspParse = new Parse();
 			// uspParse.runParse("usp", "usp_results");
 
+			
+			
 			// Training data set statistics
-			// trainingSentenceReader.setInputStream(new
-			// FileInputStream(trainingFile));
+			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			// trainingSentenceReader.categoryStat();
 
 			// Split compound category from training data set
-			// trainingSentenceReader.setInputStream(new
-			// FileInputStream(trainingFile));
-			// trainingSentenceReader.setOutputStream(new
-			// FileOutputStream("split-" + trainingFile));
+			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-" + trainingFile));
 			// trainingSentenceReader.splitCompoundCategory();
 
+			
+			
 			/*
-			 * trainingSentenceReader.setInputStream(new FileInputStream(
-			 * trainingFile)); List<Sentence> trainingSentences =
-			 * trainingSentenceReader.read();
-			 * classifier.train(trainingSentences);
-			 * 
-			 * List<Sentence> testSentences = createTestSentences();
-			 * List<MultiClassifiedSentence> predictions = new
-			 * LinkedList<MultiClassifiedSentence>(); // TODO possibly
-			 * parallelize here for (Sentence testSentence : testSentences) {
-			 * Set<ILabel> prediction = classifier
-			 * .getClassification(testSentence); MultiClassifiedSentence
-			 * classifiedSentence = new MultiClassifiedSentence( testSentence,
-			 * prediction); sentenceClassificationMap.put(testSentence,
-			 * classifiedSentence); predictions.add(classifiedSentence); }
-			 * 
-			 * classifiedSentenceWriter.setOutputStream(new FileOutputStream(
-			 * predictionsFile)); classifiedSentenceWriter.write(predictions);
-			 * 
-			 * TaxonCharacterMatrix matrix = matrixCreator.create();
-			 * matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
-			 * matrixWriter.write(matrix);
-			 */
-
+			// formal MicroPIE process
+			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+			List<Sentence> trainingSentences = trainingSentenceReader.read();
+			classifier.train(trainingSentences);
+			
+			List<Sentence> testSentences = createTestSentences();
+			
+			// USP
+			// createUSPInputs(testSentences);
+			// Parse uspParse = new Parse();
+			// uspParse.runParse("usp", "usp_results");
+			// USP
+			
+			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
+			for (Sentence testSentence : testSentences) {
+				Set<ILabel> prediction = classifier.getClassification(testSentence);
+				MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence( testSentence, prediction);
+				sentenceClassificationMap.put(testSentence,classifiedSentence);
+				predictions.add(classifiedSentence);
+			}
+			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
+			classifiedSentenceWriter.write(predictions);
+			TaxonCharacterMatrix matrix = matrixCreator.create();
+			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
+			matrixWriter.write(matrix);
+			// formal MicroPIE process
+			
+			*/
+			
+			
 			
 
 		} catch (Exception e) {
@@ -303,13 +314,14 @@ public class TrainTestRun implements IRun {
 			List<String> sentences = sentenceSplits.get(i).get();
 			List<ListenableFuture<List<String>>> subsentenceSplits = new LinkedList<ListenableFuture<List<String>>>();
 			for (final String sentence : sentences) {
-				/*
-				 * String[] tokens = sentence.split("\\s+");
-				 * System.out.println("length " + tokens.length); int size =
-				 * tokens.length; overall += size; if(size > maxSize) { maxSize
-				 * = size; }
-				 */
+				// String[] tokens = sentence.split("\\s+");
+				// System.out.println("length " + tokens.length);
+				//int tokenSize = tokens.length;
+				// overall += size;
+				// if(size > maxSize) { maxSize = size; }
+				
 				if (sentence.length() <= 80) {
+				//if (tokenSize <= 30) {
 
 					CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(
 							sentence, lexicalizedParser, PTBTokenizer.factory(
@@ -900,4 +912,60 @@ public class TrainTestRun implements IRun {
 
 	}
 
+	
+	private void stanfordCoreNLPTest2() throws IOException {
+		
+		
+		Annotation annotation = new Annotation(
+				"Utilizes acetate, lactate, malic acid, fumaric acid, sucrose, L-glutamic acid, glucose, fructose, succinate, lactose, DL-aspartic acid, pyruvate, glycine, galactose, sorbitol, glycerol, starch, L-histidine, trehalose, DL-norleucine, D-glucuronic acid, DL-phenylalanine, aesculin and salicin, but not L-arginine, L-alanine, sodium citrate, xylose, mannitol, L-threonine, dulcitol, dextrin, L-methionine, 3,3-dimethylglutaric acid or L-tyrosine.");
+		
+		// Utilizes acetate, lactate, malic acid, fumaric acid, sucrose, L-glutamic acid, glucose, fructose, succinate, lactose, DL-aspartic acid, pyruvate, glycine, galactose, sorbitol, glycerol, starch, L-histidine, trehalose, DL-norleucine, D-glucuronic acid, DL-phenylalanine, aesculin and salicin, but not L-arginine, L-alanine, sodium citrate, xylose, mannitol, L-threonine, dulcitol, dextrin, L-methionine, 3,3-dimethylglutaric acid or L-tyrosine.
+		// Utilizes H2/CO2, formate, 2-propanol/CO2 and 2-butanol/ CO2 for growth and/or methane production.
+		// Utilizes glucose, fructose, glycerol, maltose, trehalose, starch, propionate, fumarate, acetate, threonine, asparagine and lysine as single carbon and energy sources for growth."
+		// Christopher Manning owns club barcelona?
+
+		
+		this.tokenizeSSplitPosParse.annotate(annotation);
+
+		List<CoreMap> sentenceAnnotations = annotation
+				.get(SentencesAnnotation.class);
+
+		String treeString = "";
+		if (sentenceAnnotations != null && sentenceAnnotations.size() > 0) {
+			CoreMap sentence = sentenceAnnotations.get(0);
+			Tree tree = sentence.get(TreeAnnotation.class);
+
+			System.out.println("The first sentence parsed is:");
+			// tree.pennPrint(outputStream);
+			treeString = tree.pennString();
+			System.out.println(treeString);
+		}
+		
+		
+		
+		TreeReader tr = new PennTreeReader(new StringReader(treeString),
+				new LabeledScoredTreeFactory(new StringLabelFactory()));
+		Tree tree = tr.readTree();
+		// System.out.println(tree.pennString());
+		
+		
+		TregexPattern NPpattern = TregexPattern.compile("@NP !<< @NP");
+		TregexMatcher matcher = NPpattern.matcher(tree);
+		
+		int counter = 0;
+		while (matcher.findNextMatchingNode()) {
+			Tree match = matcher.getMatch();
+			System.out.println(counter + "::" + match.yield());
+			
+			for (int i = 0; i < match.yield().size(); i++) {
+				System.out.println("J::" + i + "::" +match.yield().get(i));
+			}
+				
+			counter+=1;
+			
+		}
+			
+		
+	}
+	
 }

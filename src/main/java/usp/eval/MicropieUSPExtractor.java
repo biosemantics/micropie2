@@ -117,9 +117,46 @@ public class MicropieUSPExtractor {
 		
 		// Isolated from a commercial chalcocite heap leaching operation in Myanmar.
 		// Both strains were isolated from solar saltern crystallizer ponds.
-		Set<String> output = usp.getObjectValue("Both strains were isolated from solar saltern crystallizer ponds.", "isolated", "V", "prep_from", "parse");
+		// Set<String> output = usp.getObjectValue("Both strains were isolated from solar saltern crystallizer ponds.", "isolated", "V", "prep_from", "parse");
+		// System.out.println(output.toString());
+
+		// Glucose and arginine are utilized.
+		// Set<String> output = usp.getObjectValue("Glucose and arginine are utilized.", "utilized", "V", "nsubjpass", "dep");
+		//System.out.println(output.toString());
+		// [arginine, Glucose]
+
+				
+		// Mycoplasma synoviae ferments glucose aerobically and anaerobically, does not utilize arginine or urea, does not ferment tetrazolium chloride or show phosphatase activity, and produces film and spots.
+		// Set<String> output = usp.getObjectValue("Mycoplasma synoviae ferments glucose aerobically and anaerobically, does not utilize arginine or urea, does not ferment tetrazolium chloride or show phosphatase activity, and produces film and spots.", "utilize", "V", "dobj", "dep");
+		// System.out.println(output.toString());
+		
+		// Utilizes L-arabinose, D-fructose, D-glucose, D-xylose and glutamic acid, but not D-galactose or serine as the sole energy source.
+		// Set<String> output = usp.getObjectValue("Utilizes L-arabinose, D-fructose, D-glucose, D-xylose and glutamic acid, but not D-galactose or serine as the sole energy source.", "utilizes", "V", "dobj", "dep");
+		// System.out.println(output.toString());
+		
+
+		
+		Set<String> output = usp.getObjectValue("Utilizes both H2/CO2 and formate for methane production.", "utilizes", "V", "dobj", "dep");
 		System.out.println(output.toString());
 
+		// Utilizes glucose, fructose, glycerol, maltose, trehalose, starch, propionate, fumarate, acetate, threonine, asparagine and lysine as single carbon and energy sources for growth."
+		output = usp.getObjectValue("Utilizes glucose, fructose, glycerol, maltose, trehalose, starch, propionate, fumarate, acetate, threonine, asparagine and lysine as single carbon and energy sources for growth.", "utilizes", "V", "dobj", "dep");
+		System.out.println(output.toString());		
+
+		// Utilizes acetate, lactate, malic acid, fumaric acid, sucrose, L-glutamic acid, glucose, fructose, succinate, lactose, DL-aspartic acid, pyruvate, glycine, galactose, sorbitol, glycerol, starch, L-histidine, trehalose, DL-norleucine, D-glucuronic acid, DL-phenylalanine, aesculin and salicin, but not L-arginine, L-alanine, sodium citrate, xylose, mannitol, L-threonine, dulcitol, dextrin, L-methionine, 3,3-dimethylglutaric acid or L-tyrosine.
+		output = usp.getObjectValue("Utilizes acetate, lactate, malic acid, fumaric acid, sucrose, L-glutamic acid, glucose, fructose, succinate, lactose, DL-aspartic acid, pyruvate, glycine, galactose, sorbitol, glycerol, starch, L-histidine, trehalose, DL-norleucine, D-glucuronic acid, DL-phenylalanine, aesculin and salicin, but not L-arginine, L-alanine, sodium citrate, xylose, mannitol, L-threonine, dulcitol, dextrin, L-methionine, 3,3-dimethylglutaric acid or L-tyrosine.", "utilizes", "V", "dobj", "dep");
+		System.out.println(output.toString());		
+		
+		
+		output = usp.getObjectValue("Utilizes H2/CO2, formate, 2-propanol/CO2 and 2-butanol/ CO2 for growth and/or methane production.", "utilizes", "V", "dobj", "dep");
+		System.out.println(output.toString());
+		
+
+		
+		
+		
+		
+		
 		// Methane is produced from H2/CO2 and formate.
 		// Acid is produced from xylose, arabinose, glucose, sucrose, maltose, lactose (weak) and starch.
 		// Methane is produced from H2/CO2, formate, 2-propanol/CO2 and 2-butanol/CO2.
@@ -226,6 +263,7 @@ public class MicropieUSPExtractor {
 									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
 									String sentText = readDepFromTxtFile(txtFileName);
 									
+									
 									// System.out.println("text::" + text + "::sentText::" + sentText);
 									
 									if (text.equals(sentText)) {
@@ -235,6 +273,8 @@ public class MicropieUSPExtractor {
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<List<String>> depList = readDepFromDepFile(depFileName);
 										
+										// System.out.println("depFileName::" + depFileName);
+										System.out.println("\ntext::" + text);
 										
 										for (List<String> rowInDepList : depList) {
 											if (rowInDepList.get(0).toString().equals("dobj") && rowInDepList.get(1).toString().toLowerCase().equals(keyword)) {
