@@ -38,8 +38,8 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 						uspRequest.getKeyword(), uspRequest.getKeywordType(), uspRequest.getKeywordObject(), uspRequest.getExtractionType());
 				returnCharacterStrings.addAll(tmpMicropieUSPExtractorResult);
 				
-				// System.out.println("Text:" + text + "::kwd::" + uspRequest.getKeyword() + "::type::" + uspRequest.getKeywordType());
-				// System.out.println("uspRequest.getKeyword():" + uspRequest.getKeyword() + "::" + tmpMicropieUSPExtractorResult);
+				System.out.println("Text:" + text + "::kwd::" + uspRequest.getKeyword() + "::type::" + uspRequest.getKeywordType());
+				System.out.println("uspRequest.getKeyword():" + uspRequest.getKeyword() + "::" + tmpMicropieUSPExtractorResult);
 				
 			} catch(Exception e) {
 				log(LogLevel.ERROR, "Could not get object value from USP extractor for sentence: \"" + text + "\" with " + uspRequest);

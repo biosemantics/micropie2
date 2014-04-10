@@ -27,17 +27,45 @@ public class XMLTextReader implements ITextReader {
 	@Override
 	public String read() throws Exception {
 		String text = rootNode.getChildText("description");
+		Element desc = rootNode.getChild("description");
+		String descType = desc.getAttributeValue("type");
 		
-		if(text != null) 
+		// System.out.println("descType:" + descType);
+		// System.out.println("text:" + text);
+		
+		if(text != null && descType.equals("morphology")) {  
+			System.out.println("text:" + text);
 			return text;
+		}	
 		throw new Exception("Could not find a description");
+		
+		
 	}
 
 	public String getTaxon() throws Exception {
-		String taxon = rootNode.getChildText("taxon_name");
+		// String taxon = rootNode.getChildText("taxon_name");
 		
-		if(taxon != null) 
+		
+		//<taxon_identification status="ACCEPTED">
+		//<family_name>aaa</family_name>
+		//<subfamily_name>bbb</subfamily_name>
+		//<genus_name>ccc</genus_name>
+		//<species_name>ddd</species_name>
+		//<strain_name>Arc51T (=NBRC 100649T=DSM 18877T)</strain_name><strain_source>Arc51T (=NBRC 100649T=DSM 18877T)</strain_source>
+		//</taxon_identification>
+		
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		
+		String taxon = "";
+		taxon += taxon_identification.getChildText("genus_name");
+		taxon += " ";
+		taxon += taxon_identification.getChildText("species_name");
+	
+		
+		if(taxon != null) {
+			System.out.println("taxon:" + taxon);
 			return taxon;
+		}	
 		throw new Exception("Could not find a taxon name");
 	}
 }

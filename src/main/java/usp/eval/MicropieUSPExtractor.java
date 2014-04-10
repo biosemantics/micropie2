@@ -3,6 +3,7 @@ package usp.eval;
 import java.util.*;
 import java.io.*;
 
+import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.stanford.nlp.ling.StringLabelFactory;
 import edu.stanford.nlp.trees.LabeledScoredTreeFactory;
 import edu.stanford.nlp.trees.PennTreeReader;
@@ -136,23 +137,30 @@ public class MicropieUSPExtractor {
 		
 
 		
-		Set<String> output = usp.getObjectValue("Utilizes both H2/CO2 and formate for methane production.", "utilizes", "V", "dobj", "dep");
-		System.out.println(output.toString());
+		// Set<String> output = usp.getObjectValue("Utilizes both H2/CO2 and formate for methane production.", "utilizes", "V", "dobj", "dep");
+		// System.out.println(output.toString());
 
 		// Utilizes glucose, fructose, glycerol, maltose, trehalose, starch, propionate, fumarate, acetate, threonine, asparagine and lysine as single carbon and energy sources for growth."
-		output = usp.getObjectValue("Utilizes glucose, fructose, glycerol, maltose, trehalose, starch, propionate, fumarate, acetate, threonine, asparagine and lysine as single carbon and energy sources for growth.", "utilizes", "V", "dobj", "dep");
-		System.out.println(output.toString());		
+		// output = usp.getObjectValue("Utilizes glucose, fructose, glycerol, maltose, trehalose, starch, propionate, fumarate, acetate, threonine, asparagine and lysine as single carbon and energy sources for growth.", "utilizes", "V", "dobj", "dep");
+		// System.out.println(output.toString());		
 
 		// Utilizes acetate, lactate, malic acid, fumaric acid, sucrose, L-glutamic acid, glucose, fructose, succinate, lactose, DL-aspartic acid, pyruvate, glycine, galactose, sorbitol, glycerol, starch, L-histidine, trehalose, DL-norleucine, D-glucuronic acid, DL-phenylalanine, aesculin and salicin, but not L-arginine, L-alanine, sodium citrate, xylose, mannitol, L-threonine, dulcitol, dextrin, L-methionine, 3,3-dimethylglutaric acid or L-tyrosine.
-		output = usp.getObjectValue("Utilizes acetate, lactate, malic acid, fumaric acid, sucrose, L-glutamic acid, glucose, fructose, succinate, lactose, DL-aspartic acid, pyruvate, glycine, galactose, sorbitol, glycerol, starch, L-histidine, trehalose, DL-norleucine, D-glucuronic acid, DL-phenylalanine, aesculin and salicin, but not L-arginine, L-alanine, sodium citrate, xylose, mannitol, L-threonine, dulcitol, dextrin, L-methionine, 3,3-dimethylglutaric acid or L-tyrosine.", "utilizes", "V", "dobj", "dep");
-		System.out.println(output.toString());		
+		// output = usp.getObjectValue("Utilizes acetate, lactate, malic acid, fumaric acid, sucrose, L-glutamic acid, glucose, fructose, succinate, lactose, DL-aspartic acid, pyruvate, glycine, galactose, sorbitol, glycerol, starch, L-histidine, trehalose, DL-norleucine, D-glucuronic acid, DL-phenylalanine, aesculin and salicin, but not L-arginine, L-alanine, sodium citrate, xylose, mannitol, L-threonine, dulcitol, dextrin, L-methionine, 3,3-dimethylglutaric acid or L-tyrosine.", "utilizes", "V", "dobj", "dep");
+		// System.out.println(output.toString());		
 		
 		
-		output = usp.getObjectValue("Utilizes H2/CO2, formate, 2-propanol/CO2 and 2-butanol/ CO2 for growth and/or methane production.", "utilizes", "V", "dobj", "dep");
-		System.out.println(output.toString());
+		// output = usp.getObjectValue("Utilizes H2/CO2, formate, 2-propanol/CO2 and 2-butanol/ CO2 for growth and/or methane production.", "utilizes", "V", "dobj", "dep");
+		// System.out.println(output.toString());
 		
+		
+		// Sensitive to (μg per disc) azithromycin (15), novobiocin (30), tetracycline (30), neomycin (30), cefoxitin (30), ceftriaxone (30), ceftizoxime (30), cefotaxime (30), lincomycin (2), cefazolin (30), rifampicin (5), spectinomycin (100), ofloxacin (5), amoxicillin (10), imipenem (10), cefixime (5), cefalexin (30), nitrofurantoin (300), vancomycin (30), gentamicin (10), streptomycin (10), furazolidone (300), cephradine (30), chloramphenicol (30), clindamycin (2), cefuroxime (30), cefoperazone (75), piperacillin (100), levofloxacin (5), teicoplanin (30) and norfloxacin (10).
+		// kwd::sensitive::type::J
 
-		
+		// Resistant to kanamycin (30 μg), gentamicin (10 μg), neomycin (30 μg) and polymyxin B (300 μg), but sensitive to ampicillin (10 μg), penicillin (10 IU), streptomycin (10 μg) and tetracycline (30 μg).
+
+		Set<String> output = usp.getObjectValue("Resistant to kanamycin (30 μg), gentamicin (10 μg), neomycin (30 μg) and polymyxin B (300 μg), but sensitive to ampicillin (10 μg), penicillin (10 IU), streptomycin (10 μg) and tetracycline (30 μg).",
+				"resistant", "J", "prep_to", "dep");
+		System.out.println(output.toString());
 		
 		
 		
@@ -199,6 +207,7 @@ public class MicropieUSPExtractor {
 	public Set<String> getObjectValue(String text, String keyword, String keywordType, String keywordObject, String extractionType) throws Exception {
 		
 		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+		String USPId = "";
 				
 		rstDir_ = "usp_results";
 		dataDir_ = "usp";		
@@ -403,18 +412,39 @@ public class MicropieUSPExtractor {
 									// System.out.println("cid is ::" + cid);
 									String sentId = cid.split(":")[0];
 									// System.out.println("sentId is ::" + sentId);
+
+									
 									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
 									String sentText = readDepFromTxtFile(txtFileName);
 									
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
+									
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("\n11::sentText::" + sentText + "::22\n");
 									// System.out.println("text::" + text + "::sentText::" + sentText);
 									
-									if (text.equals(sentText)) {
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
 										// Go to .dep to grab the result back
 										// to see how much we can get								
 										
+										
+										
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<List<String>> depList = readDepFromDepFile(depFileName);
-																				
+										
+										
+										// indexFileName = dataDir_+ "/index/0/" + sentId + ".index";
+										USPId = sentId;
+										
+										
+										System.out.println("keyword::" + keyword);
+										System.out.println("depFileName::" + depFileName);
+										System.out.println("sentText::" + sentText);
+										
 										for (List<String> rowInDepList : depList) {
 											
 											// if( rowInDepList.get(0).toString().equals("nn") ) {
@@ -427,8 +457,10 @@ public class MicropieUSPExtractor {
 												
 												// System.out.println("prep_toString::" + prep_toString); 
 												// output += prep_toString + "\n";
-												output.add(prep_toString);
+												output.add(prep_toString + "::" + prep_toIdx);
 												
+												
+												/*
 												for (List<String> rowInDepList2 : depList) {
 													String relString = rowInDepList2.get(0).toString();
 													String govString = rowInDepList2.get(1).toString();
@@ -450,7 +482,7 @@ public class MicropieUSPExtractor {
 													}
 													
 												}
-												
+												*/
 											}
 										}
 									}
@@ -1013,6 +1045,16 @@ public class MicropieUSPExtractor {
 			// System.out.println("\n");
 			
 			
+			// Final step::
+			// Read index
+			
+			// Set<String> outputItemList = mapToOriMorph(USPId, output);
+			// output = outputItemList;
+			
+			output = mapToOriMorph(USPId, output);
+			// Map back to orignal sentence
+			
+			
 		}
 		
 		// 
@@ -1022,15 +1064,96 @@ public class MicropieUSPExtractor {
 
 		// The above part is my own testing		
 		
-		
-		
-		
-		
-		
-		
 		return output;
 		
 	}
+	
+	static Set<String> mapToOriMorph(String USPId, Set<String> output) throws NumberFormatException, IOException {
+		Set<String> extractedItemList = new HashSet<String>();
+
+		String collapsedIndexFileName = dataDir_+ "/index/0/" + USPId + ".index";
+		String originalMorphFileName = dataDir_+ "/morph_o/0/" + USPId + ".morph";
+		
+		List<String> collapsedIndexList = new ArrayList<String>();
+		List<String> originaMorphList = new ArrayList<String>();
+		
+		File collapsedIndexFile = new File(collapsedIndexFileName);
+		BufferedReader collapsedIndexFileReader = new BufferedReader(new FileReader(collapsedIndexFile));
+		String s;
+		
+		String collapsedIndexString = "";
+		
+		while ((s = collapsedIndexFileReader.readLine())!=null) {
+			collapsedIndexString += s + "\n";
+			collapsedIndexList.add(s);
+		}				
+		collapsedIndexFileReader.close();
+
+		File originalMorphFile = new File(originalMorphFileName);
+		BufferedReader originalMorphFileReader = new BufferedReader(new FileReader(originalMorphFile));
+		
+		while ((s = originalMorphFileReader.readLine())!=null) {
+			originaMorphList.add(s);
+		}				
+		originalMorphFileReader.close();
+		
+		// System.out.println("collapsedIndexString::" + collapsedIndexString);
+
+		
+		Iterator<String> iterator = output.iterator();
+		while (iterator.hasNext()) {
+			String outputString = iterator.next().toString();
+			String[] outputStringArray = outputString.split("::");
+
+			String termName = outputStringArray[0];
+			String termIndex = outputStringArray[1];
+			
+			
+			int indexInCollapsedIndexListCounter = 1;
+			for (String itemInCollapsedIndexList : collapsedIndexList) {
+				// System.out.println("itemInCollapsedIndexList::" + itemInCollapsedIndexList);
+				String[] itemInCollapsedIndexListArray = itemInCollapsedIndexList.split("\t");
+				
+				if (itemInCollapsedIndexListArray.length > 1) {
+					String itemName = itemInCollapsedIndexListArray[0];
+					String itemIndexList = itemInCollapsedIndexListArray[1];
+					
+					if (termName.equals(itemName) && Integer.parseInt(termIndex) == indexInCollapsedIndexListCounter) {
+						// System.out.println("itemIndexList::" + itemIndexList);
+						
+						String[] itemIndexListArray = itemIndexList.split("::");
+						
+						for ( int i = 0; i < itemIndexListArray.length; i++) {
+							
+							int actualIndexInOriginalMorph = Integer.parseInt(itemIndexListArray[i]);
+							
+							// Read the original sentence (txt file)
+							// Read originaMorphList
+							
+							int indexInOriginaMorphListCounter = 0;
+							for ( String itemInOriginaMorphList : originaMorphList) {
+								if (actualIndexInOriginalMorph == indexInOriginaMorphListCounter) {
+									extractedItemList.add(itemInOriginaMorphList);
+								}
+								indexInOriginaMorphListCounter++;
+							}
+							
+						}
+	
+					}					
+				}
+
+				
+				indexInCollapsedIndexListCounter++;
+			}
+			
+			
+		}
+		
+		return extractedItemList;
+		
+	}
+
 	
 
 	static String readDepFromTxtFile(String txtFileName) throws NumberFormatException, IOException {
@@ -1101,7 +1224,7 @@ public class MicropieUSPExtractor {
 				int depId=Integer.parseInt(dep.substring(dep.lastIndexOf("-")+1));
 				
 				gov = gov.substring(0, gov.lastIndexOf("-")); 
-				dep = dep.substring(0, dep.lastIndexOf("-")); 
+				dep = dep.substring(0, dep.lastIndexOf("-"));
 				
 				depRowList.add(rel);
 				depRowList.add(gov);

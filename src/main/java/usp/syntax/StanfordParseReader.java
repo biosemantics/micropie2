@@ -83,6 +83,12 @@ public class StanfordParseReader implements ParseReader {
 		int senId=0;
 		BufferedReader in = new BufferedReader(new FileReader(depFileName));
 		String s;
+		
+		// Print out for Elvis test
+		// System.out.println("depFileName::" + depFileName);
+		// System.out.println("doc.sentences_.size()::" + doc.sentences_.size());
+		
+		
 		Sentence currSent=doc.sentences_.get(senId);
 		currSent.tkn_children_.put(0,new HashSet<Pair<String,Integer>>());
 		Set<Integer> currNonRoots=new HashSet<Integer>();
