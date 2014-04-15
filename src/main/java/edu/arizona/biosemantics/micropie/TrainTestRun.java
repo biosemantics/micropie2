@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,6 +31,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringEscapeUtils;
@@ -57,6 +59,8 @@ import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.CollapseUSPSentByCategoryCharTokenizer;
+import edu.arizona.biosemantics.micropie.model.CollapseUSPSentIndexMapping;
 import edu.arizona.biosemantics.micropie.model.CollapsedSentenceAndIndex;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
@@ -64,6 +68,7 @@ import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.arizona.biosemantics.micropie.model.USPTermIndex;
+import edu.arizona.biosemantics.micropie.transform.CollapseUSPSentByCategoryChar;
 import edu.arizona.biosemantics.micropie.transform.CompoundSentenceSplitRun;
 import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.SentenceSplitRun;
@@ -231,13 +236,17 @@ public class TrainTestRun implements IRun {
 				predictions.add(classifiedSentence);
 			}
 			
+			
+			
 			// 
 			// USP
 			createUSPInputs(predictions);
+			
 			Parse uspParse = new Parse();
 			uspParse.runParse("usp", "usp_results");
 			// USP
 
+			
 			
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
 			classifiedSentenceWriter.write(predictions);
@@ -652,16 +661,14 @@ public class TrainTestRun implements IRun {
 	private void createUSPInputs(List<MultiClassifiedSentence> predictions)
 			throws IOException, InterruptedException, ExecutionException {
 
-		
-		
-		// STEP 1: Read Abbreviation List First
+		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
 		
 		// if the folder "usp" exists, delete it
 		FileUtils.deleteDirectory(new File("usp"));
 		
-		
 		// Construct abbreviation list
-		Set<String> keywordsExtractor = new HashSet<String>();
+		Hashtable<String, String> kwdListByCategory = new Hashtable<String, String>();
+		// Example {category1_character1,XXX|YYY|ZZZ}
 		
 		File inputDir = new File("CharacterValueExtractors");
 		if(inputDir.exists() && !inputDir.isFile()) {
@@ -676,10 +683,13 @@ public class TrainTestRun implements IRun {
 					int lastDotIndex = name.lastIndexOf(".");
 					
 					String labelName = name.substring(0, firstDotIndex);
+					
 					String character = name.substring(firstDotIndex + 1, lastDotIndex);
 					
-					character = character.replaceAll("\\s", "_");
-					
+					character = character.replaceAll("\\s", "-");
+					character = character.replaceAll("\\(", "-");
+					character = character.replaceAll("\\)", "-");
+					// character = character.substring(0,10);
 					
 					String type = name.substring(lastDotIndex + 1, name.length());
 					
@@ -687,13 +697,11 @@ public class TrainTestRun implements IRun {
 					
 					ExtractorType extractorType = ExtractorType.valueOf(type);
 					
-					Set<String> keywords = new HashSet<String>();
+					String keywords = "";
 					switch(extractorType) {
 					case key:
 						BufferedReader br = new BufferedReader(new InputStreamReader(
 								new FileInputStream(file), "UTF8"));
-						
-
 						
 						String strLine;
 						while ((strLine = br.readLine()) != null) {
@@ -703,12 +711,21 @@ public class TrainTestRun implements IRun {
 							//	System.out.println("c7 exists!");
 							//	System.out.println("strLine is ::" + strLine);
 							// }
-							if (strLine.length() > 0) {
-								keywords.add(labelName + "_" + character.substring(0,3) + "::" + strLine.toLowerCase());
+							if (strLine.length() > 1) {
+								keywords += strLine.toLowerCase() + "|";
 							}
 						}
 						br.close();
-						keywordsExtractor.addAll(keywords);
+						
+						if( keywords.length() > 1) {
+							if( keywords.substring(keywords.length()-1, keywords.length()).equals("|")) {
+								keywords = keywords.substring(0, keywords.length()-1);
+							}
+							kwdListByCategory.put(labelName+"-"+character, keywords);
+
+						}
+						
+
 					case usp:
 						// do nothing
 					default:
@@ -720,26 +737,30 @@ public class TrainTestRun implements IRun {
 				}
 			}
 		}
+		
+		
 
-		System.out.println("keywordsExtractor.toString()::" + keywordsExtractor.toString());
 		
 		
 		
-		
-		// STEP 2: Build Original Sentence USP inputs
 		
 		int counter = 1;
 		for (MultiClassifiedSentence multiClassifiedSentence : predictions) {			
+			
+			
+			
 			StringBuilder depStringBuilder = new StringBuilder(); // Stanford Dependency
 			StringBuilder inputStringBuilder = new StringBuilder();
 			StringBuilder morphStringBuilder = new StringBuilder();
 			StringBuilder parseStringBuilder = new StringBuilder(); // Parse Tree
 			StringBuilder textStringBuilder = new StringBuilder();
 
+			String sentText0 = multiClassifiedSentence.getSentence().getText();
+			
+			
 			String sentText = multiClassifiedSentence.getSentence().getText(); // it is sentence based not text
 			Set<ILabel> sentLabels = multiClassifiedSentence.getPredictions(); // labels
 			// based anymore ??
-			
 			
 			
 			log(LogLevel.INFO,
@@ -751,6 +772,9 @@ public class TrainTestRun implements IRun {
 			
 			StringTokenizer textToken = new StringTokenizer(sentText, " ");
 			if (textToken.countTokens() < 60) {
+				
+				// STEP 2: Build Original Sentence USP inputs
+				/*
 				Annotation annotation = new Annotation(sentText);
 				this.tokenizeSSplitPosParse.annotate(annotation);
 				List<CoreMap> sentenceAnnotations = annotation
@@ -913,114 +937,232 @@ public class TrainTestRun implements IRun {
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
+				*/
+				
 				
 				
 
 				
 				// STEP 3: Build sentence list with abbreviation terms
+				
+				// and build the collapseUSPSent Index
+				// build collase USP sentence
+				
+				
+				
+				
+				// System.out.println("ORI_SENT::"+ sentText);
+
+				
+				CollapseUSPSentByCategoryChar collapseUSPSentByCateogryChar = new CollapseUSPSentByCategoryChar();
+				
 				// System.out.println("ORI_SENT::"+ sentText);
 				
+				sentText = stanfordTokenizerTransformation(sentText);
+				
+				// System.out.println("sentText::2::" + sentText);
+				
+				String tagSentText = collapseUSPSentByCateogryChar.tagWithCategoryList(sentText, kwdListByCategory);
+				
+				// System.out.println("tagTestSent::" + tagSentText);
+				
+				
+				List<CollapseUSPSentIndexMapping> collapseUSPSentIndexMappingList = new ArrayList<CollapseUSPSentIndexMapping>();
 				
 				
 				
+				CollapseUSPSentByCategoryCharTokenizer collapseUSPSentByCategoryCharTokenizer = new CollapseUSPSentByCategoryCharTokenizer();
 				
-				// System.out.println("depStringPlain::"+ depStringPlain);
-				// String[] depStringPlainArray = depStringPlain.split("\n");
-	 			
-				// System.out.println("keywordsExtractor.toString()::" + keywordsExtractor.toString());
-				// Step 3-1: loop hashset<String>
-				// Step 3-2: replace keyword from original sentText
+				String[] tokens = collapseUSPSentByCategoryCharTokenizer.tokenize(sentText);
 				
-				// String indexOutput = "";
-				// List<USPTermIndex> uspTermIndexList = new ArrayList<USPTermIndex>();
+				for (int i = 0; i < tokens.length; i++) {
+					morphStringBuilder.append(tokens[i].toString()
+						.toLowerCase() + "\n");
+				}
+				
+				textStringBuilder.append(sentText0);
 				
 				
-				//Iterating over HashSet using Iterator in Java
-				Iterator<String> iterKeywordsExtractor = keywordsExtractor.iterator();
+				new File("usp").mkdirs();
+				new File("usp/morph_o").mkdirs();
+				new File("usp/morph_o/0").mkdirs();
+				new File("usp/text_o").mkdirs();
+				new File("usp/text_o/0").mkdirs();
 				
-				while(iterKeywordsExtractor.hasNext()){
-					String keywordAll = iterKeywordsExtractor.next();
-					// System.out.println("keywordAll::"+ keywordAll);
-					
-					String[] keywordAllArray = keywordAll.split("::");
-					
-					// System.out.println("keywordAllArray[0]::"+ keywordAllArray[0]);
-					// System.out.println("keywordAllArray[1]::"+ keywordAllArray[1]);
-					String characterName = keywordAllArray[0];
-					// System.out.println("characterName::"+ characterName);
-					// Carbohydrates_(mono_&_disaccharides)
-					// Carbohydrates_(mono_&_disaccharides)_(mono_&_disaccharides)
-					// Just because in Carbohydrates_(mono_&_disaccharides), it also contains Carbohydrates
-					
-					//text = text.replaceAll(StringEscapeUtils.escapeJava(keywordAllArray[1]), keywordAllArray[0]);				
-					// System.out.println(Pattern.quote(keywordAllArray[1]));
-					// System.out.println(keywordAllArray);
-					// System.out.println(characterName);
-					
-					String term = keywordAllArray[1].toLowerCase();
-					String[] termArray = term.split("\\s");
-					
-					List<Integer> phraseIndexList = new ArrayList<Integer>();
-					
-					List<Integer> termIndexList = new ArrayList<Integer>();
-					
-					
-					if (termArray.length > 1) {					
-						if (sentText.contains(term)) {
-							// replace
-							sentText = sentText.replaceAll(Pattern.quote(term), characterName);
-						}
-					}else {
-						if (term.length() > 1) {
-							// sentText = sentText.replaceAll(Pattern.quote(term), characterName);
-							
-							StringBuilder sentText2 = new StringBuilder(); ;
-							String[] sentTextArray = sentText.toLowerCase().split("\\s");
-							for (int i = 0; i < sentTextArray.length; i++) {
-								String sentTextArrayItem = sentTextArray[i];
-								boolean containComma = false;
-								if (sentTextArrayItem.substring(sentTextArrayItem.length()-1,sentTextArrayItem.length()).equals(",")) {
-									sentTextArrayItem = sentTextArrayItem.substring(0,sentTextArrayItem.length()-1);
-									containComma = true;
-								}
-								if (sentTextArrayItem.equals(term)) {								
-									sentTextArrayItem = characterName;
-									// System.out.println("textArray[i]::" + textArray[i] + "::characterName::" + characterName);
-									
-								}
-								if (containComma == true) sentTextArrayItem += ",";
-								
-								sentText2.append(sentTextArrayItem + " ");
-							}
-
-							sentText = sentText2.toString();
-							if (sentText.substring(sentText.length()-1,sentText.length()).equals(" ")) {
-								sentText = sentText.substring(0,sentText.length()-1);
-							}
-							sentText = sentText.substring(0, 1).toUpperCase() + sentText.substring(1);		
-						}
-						
-					}
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/morph_o/0/" + counter + ".morph",
+								false)))) {
+					out.println(morphStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(
+						new BufferedWriter(new FileWriter("usp/text_o/0/"
+								+ counter + ".txt", false)))) {
+					out.println(textStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
 				}
 				
 				
-				// System.out.println("SENT_REPLACED_BY_CATEGORY::"+ sentText); // 			
 				
-				String sentReplacedByCategoryKwd = sentText;			
+				String[] tagTokens = collapseUSPSentByCategoryCharTokenizer.tokenize(tagSentText);
+				// System.out.println(Arrays.toString(tokens));
+				
+				
+				int oriIndex = 0;
+				for (int index  = 0; index < tagTokens.length;) {
+					
+					// System.out.println("\n::oriIndex::" + oriIndex);
+
+					String tagToken = tagTokens[index];
+					
+					// System.out.println("index::" + index);
+					// System.out.println("tagToken::" + tagToken);
+					
+					List<String> words = new ArrayList<String>();
+					words.add(tagToken);
+					String category = collapseUSPSentByCateogryChar.getCategoryName(tagToken, kwdListByCategory);
+					
+					if ( !category.equals("") ) {
+						// System.out.println("category::" + category + "::");
+						words = collapseUSPSentByCateogryChar.fetchSubseqTokensOfCat(index, category, tagTokens);
+						// System.out.println("fetchSubseqTokensOfCat::" + words.toString());
+						
+						int count = 0;
+						ArrayList<String> indices = new ArrayList<String>();
+						
+						for (String word : words) {
+							
+							// System.out.println("word::" + word);
+							if (word.matches("\\W+")) {
+								count++;
+								
+								// indices.add(String.valueOf(index+count));
+							} else {
+								word = collapseUSPSentByCateogryChar.removeNumAndCategory(word); //turn ‘DDD#EEE[Cat]’ to ‘DDD EEE’
+								String[] parts = word.split(" ");
+								
+								String multiIndex = ""; 
+								for ( String part: parts ){
+									multiIndex += String.valueOf(oriIndex+count) + "-";
+									// indices.add(String.valueOf(oriIndex+count));
+									count++;
+								}
+								
+								if (multiIndex.substring(multiIndex.length()-1, multiIndex.length()).equals("-")) {
+								 	multiIndex = multiIndex.substring(0, multiIndex.length()-1);
+								}
+								indices.add(multiIndex);
+							}
+						}
+						
+
+						// System.out.println("indices::" + indices.toString());
+						// System.out.println("oriIndex::" + oriIndex);
+						// System.out.println("index::" + index);
+						
+						
+						// transfer it into indiciesString
+						String indicesString = "";
+						int itemInIndicesCounter = 0;
+						for (String itemInIndices : indices) {
+							if (itemInIndicesCounter == (indices.size()-1)) {
+								indicesString += itemInIndices;
+							} else {
+								indicesString += itemInIndices + ",";
+							}
+							itemInIndicesCounter++;
+						}
+						
+						collapseUSPSentIndexMappingList.add(collapseUSPSentByCateogryChar.addMapping(category, indicesString)); //add a list of index	
+						
+						// System.out.println("tokenNumber(words)::" + tokenNumber(words) + "::words.size()::" + words.size());
+						
+						// System.out.println("old index::" + index);
+						index = index + words.size();
+						// System.out.println("new index::" + index);
+						oriIndex = oriIndex + collapseUSPSentByCateogryChar.tokenNumber(words);
+						// System.out.println("new oriIndex::" + oriIndex);
+						
+					} else {
+						
+						// System.out.println("tagToken::" + tagToken);
+						// System.out.println("oriIndex::" + oriIndex);
+						// System.out.println("index::" + index);
+						
+						collapseUSPSentIndexMappingList.add(collapseUSPSentByCateogryChar.addMapping(tagToken, String.valueOf(oriIndex))); //add single index
+						
+						index +=1;
+						// System.out.println("Update the index to " + index);
+						
+						oriIndex +=1;
+						// System.out.println("Update the oriIndex to " + oriIndex);
+						
+					}
+					// System.out.println("\n");
+				}
+				
 				
 				
 				
 				// STEP 4: Collapse the sentence and build index txt file
 				
-				String sentStanfordTokenizedString = stanfordTokenizerTransformation(sentReplacedByCategoryKwd); // sentReplacedByCategoryKwdStanfordTokenizedString
-				// System.out.println("sentStanfordTokenizedString::" + sentStanfordTokenizedString);
-				String[] sentStanfordTokenizedStringTokens = tokenize(sentStanfordTokenizedString);
-				
+			
 				String collapsedSentString = "";
 				String collapsedSentIndexString = "";
 				
 				
+				int lastIndexInPreviousItem = -1;
+				int firstIndexInCurrentItem = -1;
+				int itemInCollapseUSPSentIndexMappingListCounter = 0;
+				for (CollapseUSPSentIndexMapping itemInCollapseUSPSentIndexMappingList : collapseUSPSentIndexMappingList) {
+					// System.out.println("itemInCollapseUSPSentIndexMappingList.getToken()::" + itemInCollapseUSPSentIndexMappingList.getToken());
+					// System.out.println("itemInCollapseUSPSentIndexMappingList.getIndices()::" + itemInCollapseUSPSentIndexMappingList.getIndices());
+					String curToken = itemInCollapseUSPSentIndexMappingList.getToken();
+					String curIndices = itemInCollapseUSPSentIndexMappingList.getIndices();
+					
+					String[] curIndicesArray = curIndices.split(",");
+					String[] subFirstIndexArray = curIndicesArray[0].split("-");
+					String[] subLastIndexArray = curIndicesArray[curIndicesArray.length-1].split("-");
+					
+					if (itemInCollapseUSPSentIndexMappingListCounter == 0) {
+						firstIndexInCurrentItem = Integer.parseInt(subFirstIndexArray[0]);
+					}
+					
+					if (itemInCollapseUSPSentIndexMappingListCounter > 0) {
+						firstIndexInCurrentItem = Integer.parseInt(subFirstIndexArray[0]);
+ 					}
+					
+					
+					// System.out.println("lastIndexInPreviousItem::" + lastIndexInPreviousItem);					
+					// System.out.println("firstIndexInCurrentItem::" + firstIndexInCurrentItem);
+					
+					
+					
+					if ((lastIndexInPreviousItem+1) < firstIndexInCurrentItem) {
+						collapsedSentString += " , " + itemInCollapseUSPSentIndexMappingList.getToken();
+						collapsedSentIndexString +=  ",\t\n";
+						collapsedSentIndexString += itemInCollapseUSPSentIndexMappingList.getToken() + "\t" + itemInCollapseUSPSentIndexMappingList.getIndices() + "\n";
+						
+					} else {
+						collapsedSentString += " " + itemInCollapseUSPSentIndexMappingList.getToken();
+						collapsedSentIndexString += itemInCollapseUSPSentIndexMappingList.getToken() + "\t" + itemInCollapseUSPSentIndexMappingList.getIndices() + "\n";
+					}
+					
+					lastIndexInPreviousItem = Integer.parseInt(subLastIndexArray[subLastIndexArray.length-1]);
+ 					
+					
+					itemInCollapseUSPSentIndexMappingListCounter++;
+					
+				}
 				
+				// System.out.println("collapsedSent::" + collapsedSentString);
+				// System.out.println("collapsedSentIndexString::" + collapsedSentIndexString);
+
+				
+				
+				/*
 				if ( isCollapsedSentence(sentStanfordTokenizedStringTokens) == true) {
 					CollapsedSentenceAndIndex generatedCollapsedSentence = generateCollapsedSentenceAndIndex(sentStanfordTokenizedStringTokens);
 					// System.out.println("generatedCollapsedSentence::" + generatedCollapsedSentence.getCollapsedSentence() + "\n");
@@ -1052,8 +1194,11 @@ public class TrainTestRun implements IRun {
 					
 					
 				}
-
+				*/
 				
+				
+				
+
 				
 				// STEP 5: Build USP_COLLAPSED inputs
 				// build collapsed USP inputs
@@ -1239,7 +1384,14 @@ public class TrainTestRun implements IRun {
 					out.println(collapsedParseStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
-				}				
+				}
+				
+				
+				
+				
+				
+				
+				
 				
 			}
 			
@@ -1250,6 +1402,29 @@ public class TrainTestRun implements IRun {
 		}
 	}	
 	
+	/*
+	private String getCategoryName(String token, Hashtable<String, String> kwdListByCategory) {
+		
+		String categoryName = "";
+		Iterator<Map.Entry<String, String>> kwdListByCategoryIterator = kwdListByCategory.entrySet().iterator();
+		while (kwdListByCategoryIterator.hasNext()) {
+			Map.Entry<String, String> entry = kwdListByCategoryIterator.next();
+			String category_char_name = entry.getKey();
+			String patternString = entry.getValue();
+			
+			int startIdx = token.indexOf("[");
+			int endIdx = token.indexOf("]");
+			String tokenCategoryName = token.substring(startIdx, endIdx);
+			
+			if (tokenCategoryName.equals(category_char_name)) {
+				categoryName = category_char_name;
+			}
+			
+		}
+		
+		return categoryName;
+	}
+	*/
 
 	private String getPhrase(int indexStartNum, int indexEndNum, String[] depStringPlainArray) {
 		String phraseString = "";
@@ -1581,7 +1756,7 @@ public class TrainTestRun implements IRun {
 		String returnString = "";
 				
 		Annotation annotation = new Annotation(oriSent);
-		this.tokenizeSSplitPosParse.annotate(annotation);
+		this.tokenizeSSplit.annotate(annotation);
 		List<CoreMap> sentenceAnnotations = annotation
 				.get(SentencesAnnotation.class);
 		for (CoreMap sentenceAnnotation : sentenceAnnotations) {

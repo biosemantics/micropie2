@@ -6,12 +6,15 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import au.com.bytecode.opencsv.CSVWriter;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
+import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 
 public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 
@@ -22,9 +25,11 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 	}
 
 	@Override
-	public void write(List<MultiClassifiedSentence> classifiedSentences)
-			throws Exception {
+	public void write(List<MultiClassifiedSentence> classifiedSentences) throws Exception {
 		log(LogLevel.INFO, "Writing prediciton results...");
+		
+		
+		
 		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
 		List<String[]> lines = new LinkedList<String[]>();
 		for(MultiClassifiedSentence classifiedSentence : classifiedSentences) 

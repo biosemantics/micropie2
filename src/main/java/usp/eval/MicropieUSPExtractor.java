@@ -158,10 +158,28 @@ public class MicropieUSPExtractor {
 
 		// Resistant to kanamycin (30 μg), gentamicin (10 μg), neomycin (30 μg) and polymyxin B (300 μg), but sensitive to ampicillin (10 μg), penicillin (10 IU), streptomycin (10 μg) and tetracycline (30 μg).
 
-		Set<String> output = usp.getObjectValue("Resistant to kanamycin (30 μg), gentamicin (10 μg), neomycin (30 μg) and polymyxin B (300 μg), but sensitive to ampicillin (10 μg), penicillin (10 IU), streptomycin (10 μg) and tetracycline (30 μg).",
-				"resistant", "J", "prep_to", "dep");
-		System.out.println(output.toString());
+		// Set<String> output = usp.getObjectValue("Resistant to kanamycin (30 μg), gentamicin (10 μg), neomycin (30 μg) and polymyxin B (300 μg), but sensitive to ampicillin (10 μg), penicillin (10 IU), streptomycin (10 μg) and tetracycline (30 μg).",
+		// 		"resistant", "J", "prep_to", "dep");
+		// System.out.println(output.toString());
 		
+		// Resistant to kanamycin, gentamicin, neomycin and polymyxin B, but sensitive to ampicillin, penicillin, streptomycin and tetracycline.
+		// Set<String> output = usp.getObjectValue("Resistant to kanamycin, gentamicin, neomycin and polymyxin B, but sensitive to ampicillin, penicillin, streptomycin and tetracycline.",
+		//		"resistant", "J", "prep_to", "dep");
+		// System.out.println(output.toString());
+		
+		
+		
+		// Resistant to kanamycin, gentamicin, neomycin and polymyxin B.
+		// Resistant to kanamycin , gentamicin , neomycin and polymyxin B.
+		// Set<String> output = usp.getObjectValue("Resistant to kanamycin, gentamicin, neomycin and polymyxin B.",
+		// 		"resistant", "J", "prep_to", "dep");
+		// System.out.println(output.toString());
+		
+		
+		// Utilizes Tween 40, d-galactose, gentiobiose, α-d-glucose, mono-succinate, citric acid, d-glucuronic acid, succinamic acid, succinic acid, alaninamide, glycyl l-aspartic acid, hydroxy-l-proline, l-ornithine, l-pyroglutamic acid, urocanic acid, thymidine, 2-aminoethanol and glycerol.
+		Set<String> output = usp.getObjectValue("Utilizes Tween 40, d-galactose, gentiobiose, α-d-glucose, mono-succinate, citric acid, d-glucuronic acid, succinamic acid, succinic acid, alaninamide, glycyl l-aspartic acid, hydroxy-l-proline, l-ornithine, l-pyroglutamic acid, urocanic acid, thymidine, 2-aminoethanol and glycerol.",
+				"utilizes", "V", "dobj", "dep");
+		System.out.println(output.toString());
 		
 		
 		
@@ -270,12 +288,18 @@ public class MicropieUSPExtractor {
 									// System.out.println("sentId is ::" + sentId);
 
 									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
-									String sentText = readDepFromTxtFile(txtFileName);
+									String sentText = readDepFromTxtFile(txtFileName); // collapsed sentence
+									
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
 									
 									
-									// System.out.println("text::" + text + "::sentText::" + sentText);
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
 									
-									if (text.equals(sentText)) {
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
 										// Go to .dep to grab the result back
 										// to see how much we can get								
 										
@@ -283,7 +307,16 @@ public class MicropieUSPExtractor {
 										List<List<String>> depList = readDepFromDepFile(depFileName);
 										
 										// System.out.println("depFileName::" + depFileName);
-										System.out.println("\ntext::" + text);
+										System.out.println("\nRule 1::text::" + text);
+										
+										USPId = sentId;
+
+										System.out.println("keyword::" + keyword);
+										System.out.println("depFileName::" + depFileName);
+										// System.out.println("text::" + text);
+										// System.out.println("oriSentText::" + oriSentText);
+										System.out.println("sentText(collapsed sentence)::" + sentText);										
+										
 										
 										for (List<String> rowInDepList : depList) {
 											if (rowInDepList.get(0).toString().equals("dobj") && rowInDepList.get(1).toString().toLowerCase().equals(keyword)) {
@@ -292,27 +325,38 @@ public class MicropieUSPExtractor {
 												
 												// System.out.println("dobjString::" + dobjString); 
 												
-												String tmpOutput = "";
-												
-												for (List<String> rowInDepList2 : depList) {
-													String relString = rowInDepList2.get(0).toString();
-													String govString = rowInDepList2.get(1).toString();
-													String govIdx = rowInDepList2.get(2).toString();
-													String depString = rowInDepList2.get(3).toString();
+												if (dobjString.matches("^c\\d\\-\\w+")) {
+													// System.out.println("This dobj is category term!!");
+													output.add(dobjString + "::" + dobjIdx);
+												} else {
+													String tmpOutput = "";
 													
-													if (dobjString.equals(govString) && dobjIdx.equals(govIdx) ) {												
-														// System.out.println("dep::" + depString );
-														// System.out.println("rel::" + relString );
-														if (relString.equals("nn")) {
+													for (List<String> rowInDepList2 : depList) {
+														String relString = rowInDepList2.get(0).toString();
+														String govString = rowInDepList2.get(1).toString();
+														String govIdx = rowInDepList2.get(2).toString();
+														String depString = rowInDepList2.get(3).toString();
+														
+														if (dobjString.equals(govString) && dobjIdx.equals(govIdx) ) {												
+															// System.out.println("dobjString::" + dobjString );
 															// System.out.println("dep::" + depString );
 															// System.out.println("rel::" + relString );
-															tmpOutput += depString + " ";
+															
+															if (relString.equals("nn") || relString.equals("amod")) {
+																// amod(acid-10, mono-succinate-7)
+																// amod(acid-10, citric-9)
+																// System.out.println("dobjString::" + dobjString );
+																// System.out.println("dep::" + depString );
+																// System.out.println("rel::" + relString );
+																
+																tmpOutput += depString + " ";
+															}
 														}
+														
 													}
-													
+													tmpOutput += dobjString;
+													output.add(tmpOutput + "::" + dobjIdx);
 												}
-												tmpOutput += dobjString;
-												output.add(tmpOutput);
 											}
 										}
 										// System.out.println("output:\n" + output);										
@@ -346,9 +390,16 @@ public class MicropieUSPExtractor {
 									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
 									String sentText = readDepFromTxtFile(txtFileName);
 									
-									// System.out.println("text::" + text + "::sentText::" + sentText);
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
 									
-									if (text.equals(sentText)) {
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
 										// Go to .dep to grab the result back
 										// to see how much we can get								
 										
@@ -361,29 +412,37 @@ public class MicropieUSPExtractor {
 												String dobjString = rowInDepList.get(3).toString();
 												String dobjIdx = rowInDepList.get(4).toString();
 												
-												// System.out.println("dobjString::" + dobjString); 
+												USPId = sentId;
+
+												// System.out.println("dobjString::" + dobjString);
 												
-												String tmpOutput = "";
-												
-												for (List<String> rowInDepList2 : depList) {
-													String relString = rowInDepList2.get(0).toString();
-													String govString = rowInDepList2.get(1).toString();
-													String govIdx = rowInDepList2.get(2).toString();
-													String depString = rowInDepList2.get(3).toString();
+												if (dobjString.matches("^c\\d\\-\\w+")) {
+													// System.out.println("This dobj is category term!!");
+													output.add(dobjString + "::" + dobjIdx);
+												} else {
+													String tmpOutput = "";
 													
-													if (dobjString.equals(govString) && dobjIdx.equals(govIdx) ) {												
-														// System.out.println("dep::" + depString );
-														// System.out.println("rel::" + relString );
-														if (relString.equals("nn")) {
+													for (List<String> rowInDepList2 : depList) {
+														String relString = rowInDepList2.get(0).toString();
+														String govString = rowInDepList2.get(1).toString();
+														String govIdx = rowInDepList2.get(2).toString();
+														String depString = rowInDepList2.get(3).toString();
+														
+														if (dobjString.equals(govString) && dobjIdx.equals(govIdx) ) {												
 															// System.out.println("dep::" + depString );
 															// System.out.println("rel::" + relString );
-															tmpOutput += depString + " ";
+															if (relString.equals("nn") || relString.equals("amod")) {
+																// System.out.println("dep::" + depString );
+																// System.out.println("rel::" + relString );
+																tmpOutput += depString + " ";
+															}
 														}
+														
 													}
-													
+													tmpOutput += dobjString;
+													output.add(tmpOutput + "::" + dobjIdx);
 												}
-												tmpOutput += dobjString;
-												output.add(tmpOutput);									}
+											}
 										}
 										// System.out.println("output:\n" + output);										
 									}
@@ -423,8 +482,7 @@ public class MicropieUSPExtractor {
 									
 									// System.out.println("text::" + text);
 									// System.out.println("oriSentText::" + oriSentText);
-									// System.out.println("\n11::sentText::" + sentText + "::22\n");
-									// System.out.println("text::" + text + "::sentText::" + sentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
 									
 									if (text.equals(oriSentText)) {
 									// if (text.equals(sentText)) {
@@ -443,7 +501,7 @@ public class MicropieUSPExtractor {
 										
 										System.out.println("keyword::" + keyword);
 										System.out.println("depFileName::" + depFileName);
-										System.out.println("sentText::" + sentText);
+										System.out.println("sentText(collapsed sentence)::" + sentText);
 										
 										for (List<String> rowInDepList : depList) {
 											
@@ -460,12 +518,17 @@ public class MicropieUSPExtractor {
 												output.add(prep_toString + "::" + prep_toIdx);
 												
 												
-												/*
+												
 												for (List<String> rowInDepList2 : depList) {
+													
+													// System.out.println("rowInDepList2::" + rowInDepList2.toString());
+													// example: [prep_to, Resistant, 1, c4_ant, 21]
+													
 													String relString = rowInDepList2.get(0).toString();
 													String govString = rowInDepList2.get(1).toString();
 													String govIdx = rowInDepList2.get(2).toString();
 													String depString = rowInDepList2.get(3).toString();
+													String depIdx = rowInDepList2.get(4).toString();
 													
 													if (prep_toString.equals(govString) && prep_toIdx.equals(govIdx) ) {												
 														// System.out.println("dep::" + depString );
@@ -477,12 +540,12 @@ public class MicropieUSPExtractor {
 															// System.out.println("dep::" + depString );
 															// System.out.println("rel::" + relString );
 															// output += depString + "\n";
-															output.add(depString);
+															output.add(depString + "::" + depIdx);
 														}
 													}
 													
 												}
-												*/
+												
 											}
 										}
 									}
@@ -515,14 +578,24 @@ public class MicropieUSPExtractor {
 									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
 									String sentText = readDepFromTxtFile(txtFileName);
 									
-									// System.out.println("text::" + text + "::sentText::" + sentText);
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
 									
-									if (text.equals(sentText)) {
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
 										// Go to .dep to grab the result back
 										// to see how much we can get								
 										
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<List<String>> depList = readDepFromDepFile(depFileName);
+										
+										USPId = sentId;
+
 										
 										for (List<String> rowInDepList : depList) {
 											
@@ -536,8 +609,10 @@ public class MicropieUSPExtractor {
 												
 												// System.out.println("amodString::" + amodString); 
 												// output += amodString + "\n";
-												output.add(amodString);
+												// output.add(amodString);
 
+												output.add(amodString + "::" + amodIdx);
+												
 											}
 										}										
 									}
@@ -576,21 +651,31 @@ public class MicropieUSPExtractor {
 
 									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
 									String sentText = readDepFromTxtFile(txtFileName);
+									// rule5_outputBuilder.append("\nSent " + counter + "::" + sentText + "\n");
+
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
 									
-									// System.out.println("text::" + text + "::sentText::" + sentText);
-									//  System.out.println("\nSent::" + sentText);
 									
-									rule5_outputBuilder.append("\nSent " + counter + "::" + sentText + "\n");
+									// System.out.println("Rule 5::");
 									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
 									
-									// if (text.equals(sentText)) { // match to target sent
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
 										// Go to .dep to grab the result back
 										// to see how much we can get								
 										
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<List<String>> depList = readDepFromDepFile(depFileName);
 										
-										// System.out.println("depFileName::" + depFileName);
+										System.out.println("Rule 5::");
+										System.out.println("depFileName::" + depFileName);
+										
+										USPId = sentId;
+
 										
 										String parseFileName = dataDir_+ "/parse/0/" + sentId + ".parse";
 										String parseTreeText = readParseFromParseFile(parseFileName);
@@ -634,7 +719,7 @@ public class MicropieUSPExtractor {
 														}
 														tmpOutput += prep_fromString;
 														
-														output.add(tmpOutput);
+														output.add(tmpOutput + "::" + prep_fromIdx);
 														
 														// System.out.println("Output 1:" + tmpOutput);
 														// rule5_outputBuilder.append(tmpOutput + "\n");
@@ -748,7 +833,7 @@ public class MicropieUSPExtractor {
 													
 													// System.out.println("Output 2::" + extractedSubTree);
 													
-													output.add(extractedSubTree);
+													output.add(extractedSubTree + "::-1");
 													
 													// rule5_outputBuilder.append("Output2::" + extractedSubTree + "\n");
 												}
@@ -805,7 +890,7 @@ public class MicropieUSPExtractor {
 
 
 										// System.out.println("output:\n" + output);										
-									// } // match to target sent
+									} // match to target sent
 								}
 							}
 						}
@@ -842,18 +927,24 @@ public class MicropieUSPExtractor {
 									String sentId = cid.split(":")[0];
 									// System.out.println("sentId is ::" + sentId);
 
-									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
-									String sentText = readDepFromTxtFile(txtFileName);
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
 									
-									// System.out.println("text::" + text + "::sentText::" + sentText);
 									
-									if (text.equals(sentText)) {
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
 										// Go to .dep to grab the result back
 										// to see how much we can get								
 										
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<List<String>> depList = readDepFromDepFile(depFileName);
 										
+										USPId = sentId;
+
 										
 										for (List<String> rowInDepList : depList) {
 											if (rowInDepList.get(0).toString().equals("prep_in") && rowInDepList.get(1).toString().toLowerCase().equals(keyword)) {
@@ -862,27 +953,32 @@ public class MicropieUSPExtractor {
 												
 												// System.out.println("prep_inString::" + prep_injString); 
 												
-												String tmpOutput = "";
-												
-												for (List<String> rowInDepList2 : depList) {
-													String relString = rowInDepList2.get(0).toString();
-													String govString = rowInDepList2.get(1).toString();
-													String govIdx = rowInDepList2.get(2).toString();
-													String depString = rowInDepList2.get(3).toString();
+												if (prep_inString.matches("^c\\d\\-\\w+")) {
+													// System.out.println("This prep_in is category term!!");
+													output.add(prep_inString + "::" + prep_inIdx);
+												} else {
+													String tmpOutput = "";
 													
-													if (prep_inString.equals(govString) && prep_inIdx.equals(govIdx) ) {												
-														// System.out.println("dep::" + depString );
-														// System.out.println("rel::" + relString );
-														if (relString.equals("amod")) {
+													for (List<String> rowInDepList2 : depList) {
+														String relString = rowInDepList2.get(0).toString();
+														String govString = rowInDepList2.get(1).toString();
+														String govIdx = rowInDepList2.get(2).toString();
+														String depString = rowInDepList2.get(3).toString();
+														
+														if (prep_inString.equals(govString) && prep_inIdx.equals(govIdx) ) {												
 															// System.out.println("dep::" + depString );
 															// System.out.println("rel::" + relString );
-															tmpOutput += depString + " ";
+															if (relString.equals("amod")) {
+																// System.out.println("dep::" + depString );
+																// System.out.println("rel::" + relString );
+																tmpOutput += depString + " ";
+															}
 														}
+														
 													}
-													
-												}
-												tmpOutput += prep_inString;
-												output.add(tmpOutput);
+													tmpOutput += prep_inString;
+													output.add(tmpOutput + "::" + prep_inIdx);												}
+												
 											}
 										
 										}
@@ -913,17 +1009,26 @@ public class MicropieUSPExtractor {
 									String sentId = cid.split(":")[0];
 									// System.out.println("sentId is ::" + sentId);
 
-									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
-									String sentText = readDepFromTxtFile(txtFileName);
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
 									
-									// System.out.println("text::" + text + "::sentText::" + sentText);
 									
-									if (text.equals(sentText)) {
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
 										// Go to .dep to grab the result back
 										// to see how much we can get								
 										
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<List<String>> depList = readDepFromDepFile(depFileName);
+										
+										
+										USPId = sentId;
+
+										
 										
 										
 										for (List<String> rowInDepList : depList) {
@@ -933,27 +1038,34 @@ public class MicropieUSPExtractor {
 												
 												// System.out.println("prep_asString::" + prep_injString); 
 												
-												String tmpOutput = "";
-												
-												for (List<String> rowInDepList2 : depList) {
-													String relString = rowInDepList2.get(0).toString();
-													String govString = rowInDepList2.get(1).toString();
-													String govIdx = rowInDepList2.get(2).toString();
-													String depString = rowInDepList2.get(3).toString();
+												if (prep_asString.matches("^c\\d\\-\\w+")) {
+													// System.out.println("This prep_in is category term!!");
+													output.add(prep_asString + "::" + prep_asIdx);
+												} else {
+													String tmpOutput = "";
 													
-													if (prep_asString.equals(govString) && prep_asIdx.equals(govIdx) ) {												
-														// System.out.println("dep::" + depString );
-														// System.out.println("rel::" + relString );
-														if (relString.equals("nn")) {
+													for (List<String> rowInDepList2 : depList) {
+														String relString = rowInDepList2.get(0).toString();
+														String govString = rowInDepList2.get(1).toString();
+														String govIdx = rowInDepList2.get(2).toString();
+														String depString = rowInDepList2.get(3).toString();
+														
+														if (prep_asString.equals(govString) && prep_asIdx.equals(govIdx) ) {												
 															// System.out.println("dep::" + depString );
 															// System.out.println("rel::" + relString );
-															tmpOutput += depString + " ";
+															if (relString.equals("nn")) {
+																// System.out.println("dep::" + depString );
+																// System.out.println("rel::" + relString );
+																tmpOutput += depString + " ";
+															}
 														}
+														
 													}
-													
+													tmpOutput += prep_asString;
+													output.add(tmpOutput + "::" + prep_asIdx);
 												}
-												tmpOutput += prep_asString;
-												output.add(tmpOutput);
+												
+
 											}
 										
 										}
@@ -989,9 +1101,16 @@ public class MicropieUSPExtractor {
 									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
 									String sentText = readDepFromTxtFile(txtFileName);
 									
-									// System.out.println("text::" + text + "::sentText::" + sentText);
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
 									
-									if (text.equals(sentText)) {
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
 										// Go to .dep to grab the result back
 										// to see how much we can get								
 										
@@ -999,34 +1118,42 @@ public class MicropieUSPExtractor {
 										List<List<String>> depList = readDepFromDepFile(depFileName);
 										
 										
+										USPId = sentId;
+
+										
 										for (List<String> rowInDepList : depList) {
 											if (rowInDepList.get(0).toString().equals("prep_for") && rowInDepList.get(1).toString().toLowerCase().equals(keyword)) {
 												String prep_forString = rowInDepList.get(3).toString();
 												String prep_forIdx = rowInDepList.get(4).toString();
 												
 												// System.out.println("prep_forString::" + prep_forjString); 
-												
-												String tmpOutput = "";
-												
-												for (List<String> rowInDepList2 : depList) {
-													String relString = rowInDepList2.get(0).toString();
-													String govString = rowInDepList2.get(1).toString();
-													String govIdx = rowInDepList2.get(2).toString();
-													String depString = rowInDepList2.get(3).toString();
+
+												if (prep_forString.matches("^c\\d\\-\\w+")) {
+													// System.out.println("This prep_in is category term!!");
+													output.add(prep_forString + "::" + prep_forIdx);
+												} else {
+													String tmpOutput = "";
 													
-													if (prep_forString.equals(govString) && prep_forIdx.equals(govIdx) ) {												
-														// System.out.println("dep::" + depString );
-														// System.out.println("rel::" + relString );
-														if (relString.equals("nn")) {
+													for (List<String> rowInDepList2 : depList) {
+														String relString = rowInDepList2.get(0).toString();
+														String govString = rowInDepList2.get(1).toString();
+														String govIdx = rowInDepList2.get(2).toString();
+														String depString = rowInDepList2.get(3).toString();
+														
+														if (prep_forString.equals(govString) && prep_forIdx.equals(govIdx) ) {												
 															// System.out.println("dep::" + depString );
 															// System.out.println("rel::" + relString );
-															tmpOutput += depString + " ";
+															if (relString.equals("nn")) {
+																// System.out.println("dep::" + depString );
+																// System.out.println("rel::" + relString );
+																tmpOutput += depString + " ";
+															}
 														}
+														
 													}
-													
+													tmpOutput += prep_forString;
+													output.add(tmpOutput + "::" + prep_forIdx);													
 												}
-												tmpOutput += prep_forString;
-												output.add(tmpOutput);
 											}
 										
 										}
@@ -1071,85 +1198,142 @@ public class MicropieUSPExtractor {
 	static Set<String> mapToOriMorph(String USPId, Set<String> output) throws NumberFormatException, IOException {
 		Set<String> extractedItemList = new HashSet<String>();
 
-		String collapsedIndexFileName = dataDir_+ "/index/0/" + USPId + ".index";
-		String originalMorphFileName = dataDir_+ "/morph_o/0/" + USPId + ".morph";
-		
-		List<String> collapsedIndexList = new ArrayList<String>();
-		List<String> originaMorphList = new ArrayList<String>();
-		
-		File collapsedIndexFile = new File(collapsedIndexFileName);
-		BufferedReader collapsedIndexFileReader = new BufferedReader(new FileReader(collapsedIndexFile));
-		String s;
-		
-		String collapsedIndexString = "";
-		
-		while ((s = collapsedIndexFileReader.readLine())!=null) {
-			collapsedIndexString += s + "\n";
-			collapsedIndexList.add(s);
-		}				
-		collapsedIndexFileReader.close();
-
-		File originalMorphFile = new File(originalMorphFileName);
-		BufferedReader originalMorphFileReader = new BufferedReader(new FileReader(originalMorphFile));
-		
-		while ((s = originalMorphFileReader.readLine())!=null) {
-			originaMorphList.add(s);
-		}				
-		originalMorphFileReader.close();
-		
-		// System.out.println("collapsedIndexString::" + collapsedIndexString);
-
-		
-		Iterator<String> iterator = output.iterator();
-		while (iterator.hasNext()) {
-			String outputString = iterator.next().toString();
-			String[] outputStringArray = outputString.split("::");
-
-			String termName = outputStringArray[0];
-			String termIndex = outputStringArray[1];
+		if ( output.size() > 0 ) {
 			
+			System.out.println("output::" + output);
 			
-			int indexInCollapsedIndexListCounter = 1;
-			for (String itemInCollapsedIndexList : collapsedIndexList) {
-				// System.out.println("itemInCollapsedIndexList::" + itemInCollapsedIndexList);
-				String[] itemInCollapsedIndexListArray = itemInCollapsedIndexList.split("\t");
+			String collapsedIndexFileName = dataDir_+ "/index/0/" + USPId + ".index";
+			String originalMorphFileName = dataDir_+ "/morph_o/0/" + USPId + ".morph";
+			
+			List<String> collapsedIndexList = new ArrayList<String>();
+			List<String> originaMorphList = new ArrayList<String>();
+			
+			File collapsedIndexFile = new File(collapsedIndexFileName);
+			BufferedReader collapsedIndexFileReader = new BufferedReader(new FileReader(collapsedIndexFile));
+			String s;
+			
+			String collapsedIndexString = "";
+			
+			while ((s = collapsedIndexFileReader.readLine())!=null) {
+				collapsedIndexString += s + "\n";
+				collapsedIndexList.add(s);
+			}				
+			collapsedIndexFileReader.close();
+
+			File originalMorphFile = new File(originalMorphFileName);
+			BufferedReader originalMorphFileReader = new BufferedReader(new FileReader(originalMorphFile));
+			
+			while ((s = originalMorphFileReader.readLine())!=null) {
+				originaMorphList.add(s);
+			}				
+			originalMorphFileReader.close();
+			
+			// System.out.println("collapsedIndexString::" + collapsedIndexString);
+
+			
+			Iterator<String> iterator = output.iterator();
+			while (iterator.hasNext()) {
+				String outputString = iterator.next().toString();
+				String[] outputStringArray = outputString.split("::");
 				
-				if (itemInCollapsedIndexListArray.length > 1) {
-					String itemName = itemInCollapsedIndexListArray[0];
-					String itemIndexList = itemInCollapsedIndexListArray[1];
+				String termName = "";
+				String termIndex = "";
+				if ( outputStringArray.length > 1 ) {
+					termName = outputStringArray[0];
+					termIndex = outputStringArray[1];
 					
-					if (termName.equals(itemName) && Integer.parseInt(termIndex) == indexInCollapsedIndexListCounter) {
-						// System.out.println("itemIndexList::" + itemIndexList);
-						
-						String[] itemIndexListArray = itemIndexList.split("::");
-						
-						for ( int i = 0; i < itemIndexListArray.length; i++) {
+					if (termName.matches("^c\\d\\-\\w+")) {
+						int indexInCollapsedIndexListCounter = 1;
+						for (String itemInCollapsedIndexList : collapsedIndexList) {
+							// System.out.println("itemInCollapsedIndexList::" + itemInCollapsedIndexList);
+							String[] itemInCollapsedIndexListArray = itemInCollapsedIndexList.split("\t");
 							
-							int actualIndexInOriginalMorph = Integer.parseInt(itemIndexListArray[i]);
-							
-							// Read the original sentence (txt file)
-							// Read originaMorphList
-							
-							int indexInOriginaMorphListCounter = 0;
-							for ( String itemInOriginaMorphList : originaMorphList) {
-								if (actualIndexInOriginalMorph == indexInOriginaMorphListCounter) {
-									extractedItemList.add(itemInOriginaMorphList);
-								}
-								indexInOriginaMorphListCounter++;
-							}
-							
-						}
-	
-					}					
-				}
+							if (itemInCollapsedIndexListArray.length > 1) {
+								String itemName = itemInCollapsedIndexListArray[0];
+								String itemIndexList = itemInCollapsedIndexListArray[1];
+								
+								if (termName.equals(itemName) && Integer.parseInt(termIndex) == indexInCollapsedIndexListCounter) {
+									// System.out.println("itemIndexList::" + itemIndexList);
+									
+									String[] itemIndexListArray = itemIndexList.split(",");
+									
+									for ( int i = 0; i < itemIndexListArray.length; i++) {
+										// System.out.println("itemIndexListArray[i]::" + itemIndexListArray[i]);
+										//example: 1,3,5
+										//example2: 1,3-4,5
+										String actualIndexInOriginalMorph = itemIndexListArray[i];
+										String[] actualIndexInOriginalMorphArray = actualIndexInOriginalMorph.split("-");
+										
+										// System.out.println("actualIndexInOriginalMorphArray.length::" + actualIndexInOriginalMorphArray.length);
+										
+										String extractedItems = "";
+										for (int j = 0;  j < actualIndexInOriginalMorphArray.length; j++) {
+											// System.out.println("actualIndexInOriginalMorphArray[j]::" + actualIndexInOriginalMorphArray[j]);
 
+											// Read the original sentence (txt file)
+											// Read originaMorphList
+											int actualIndexInOriginalMorphInt= Integer.parseInt(actualIndexInOriginalMorphArray[j]);
+											
+											int indexInOriginaMorphListCounter = 0;
+											for ( String itemInOriginaMorphList : originaMorphList) {
+												
+
+													
+												if (actualIndexInOriginalMorphInt == indexInOriginaMorphListCounter) {												
+													// if (indexInOriginaMorphListCounter > 0) {
+													//	String previousString = originaMorphList.get(indexInOriginaMorphListCounter-1).toString();
+													//	System.out.println("previousString::" + previousString);
+													//
+													//	if ( !previousString.matches("\\W+")) {
+													//		//extractedItems += originaMorphList.get(indexInOriginaMorphListCounter-1).toString() + " ";
+													//		System.out.println("Should::" + previousString + " " + itemInOriginaMorphList);
+													//	}
+													// }
+													// System.out.println("itemInOriginaMorphList::" + itemInOriginaMorphList);
+													extractedItems += itemInOriginaMorphList + " ";
+													
+												}
+												
+
+												
+												indexInOriginaMorphListCounter++;
+											}										
+										}
+										extractedItemList.add(extractedItems);
+										
+
+										
+										
+										
+
+										
+									}
 				
-				indexInCollapsedIndexListCounter++;
+								}					
+							}
+
+							
+							indexInCollapsedIndexListCounter++;
+						}						
+						
+					} else {
+						extractedItemList.add(termName);
+					}
+					
+			
+
+				}
 			}
 			
+			if (extractedItemList.size() == 0) {
+				extractedItemList.add("");
+			}			
 			
+			
+			
+		} else {
+			extractedItemList.add("");
 		}
-		
 		return extractedItemList;
 		
 	}
