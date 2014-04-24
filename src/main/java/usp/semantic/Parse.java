@@ -222,6 +222,7 @@ public class Parse {
 		ArrayList<Article> articles=new ArrayList<Article>();
 		for (int i=0; i<inputFileNames_.size(); i++) {
 			Article a=parseReader_.readParse(inputFileNames_.get(i));
+			// System.out.println("inputFileNames_::" + inputFileNames_);
 			articles.add(a);
 		}
 		

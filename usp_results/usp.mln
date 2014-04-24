@@ -1,0 +1,1401 @@
+1	[(N:cells):24]
+	2	1:3
+		4:<dep>:1	9:<amod>:2
+		3:[(N:·):35]:1	339:[(J:rod-shaped):1]:1	25:[(J:c2-cell-shape):4]:1
+	3	1:2
+		18:<rcmod>:1	11:<nn>:1
+		272:[(V:formed):1]:1	11:[(N:c2-cell-shape):19]:1
+	5	2:1
+		6:<conj_and>:1	23:<prep_with>:1
+		341:[(V:pointed):1]:1	340:[(N:sides):1]:1
+2	[(CD:0):68]
+	1	1:14
+		5:<num>:13	9:<amod>:1
+		136:[(J:dominant):2]:1	2:[(CD:0):68]:2	4:[(CD:7):9]:3	387:[(CD:ai15):1]:1	386:[(CD:i15):2]:1	46:[(CD:18):4]:3	45:[(CD:16):3]:3
+	3	1:2	2:2	4:1	5:2
+		3:<nsubj>:2	4:<dep>:17	14:<prep_in>:1
+		84:[(N:nacl):7]:1	274:[(V:grows):3]:1	2:[(CD:0):68]:10	3:[(N:·):35]:1	190:[(N:medium):3]:1	6:[(N:×):7]:1	283:[(N:range):3]:1	58:[(N:%):20]:2	179:[(N:1ω9c):2]:2
+	4	1:15	3:1
+		20:<appos>:9	6:<conj_and>:9
+		117:[(N:acid):10]:2	2:[(CD:0):68]:4	178:[(N:c18):2]:2	264:[(N:3-oh):3]:1	177:[(N:iso-c15):5]:2	182:[(N:iso-c16):2]:2	183:[(N:anteiso-c15):4]:3	181:[(N:c16):2]:2
+3	[(N:·):35]
+	0	1:17	2:2	3:3
+		34:<xcomp>:1	4:<dep>:27	9:<amod>:2
+		238:[(V:off-white):1]:1	35:[(N:c2-motility):12]:1	2:[(CD:0):68]:4	3:[(N:·):35]:7	4:[(CD:7):9]:1	6:[(N:×):7]:1	7:[(CD:5):7]:3	76:[(CD:4):10]:1	9:[(N:μm):17]:4	153:[(N:mm):5]:1	87:[(CD:6):11]:2	58:[(N:%):20]:3	60:[(CD:8):14]:1
+	1	1:29	2:5
+		5:<num>:39
+		87:[(CD:6):11]:2	2:[(CD:0):68]:18	4:[(CD:7):9]:2	5:[(CD:1):10]:3	83:[(CD:3):5]:1	7:[(CD:5):7]:2	8:[(CD:2):3]:1	59:[(CD:40):6]:2	131:[(CD:10):9]:1	389:[(CD:34):2]:2	268:[(CD:39):1]:1	60:[(CD:8):14]:4
+	2	1:7
+		3:<nsubj>:6	6:<conj_and>:1
+		1:[(N:cells):24]:1	96:[(N:colonies):13]:1	52:[(N:content):7]:4	133:[(CD:15):6]:1
+	5	1:2
+		18:<rcmod>:1	33:<prep_after>:1
+		149:[(N:incubation):4]:1	61:[(N:hplc):1]:1
+	8	1:7
+		11:<nn>:5	14:<prep_in>:2
+		68:[(N:diameter):7]:2	86:[(N:ph):9]:4	269:[(N:length):1]:1
+4	[(CD:7):9]
+	0	2:1
+		4:<dep>:2
+		6:[(N:×):7]:1	9:[(N:μm):17]:1
+5	[(CD:1):10]
+	1	1:2
+		5:<num>:2
+		386:[(CD:i15):2]:1	133:[(CD:15):6]:1
+	2	1:2
+		4:<dep>:1	20:<appos>:1
+		153:[(N:mm):5]:1	388:[(N:n-6):1]:1
+6	[(N:×):7]
+	0	1:1	2:1	4:2
+		4:<dep>:7	11:<nn>:4
+		3:[(N:·):35]:8	9:[(N:μm):17]:3
+	1	1:5
+		5:<num>:5
+		5:[(CD:1):10]:1	146:[(CD:0.7):2]:2	60:[(CD:8):14]:2
+7	[(CD:5):7]
+8	[(CD:2):3]
+9	[(N:μm):17]
+	0	1:9
+		5:<num>:9
+		139:[(CD:9):2]:1	87:[(CD:6):11]:3	4:[(CD:7):9]:1	67:[(CD:0.6):1]:1	8:[(CD:2):3]:1	147:[(CD:3.8):4]:2
+	1	1:3
+		19:<advmod>:2	14:<prep_in>:1
+		3:[(N:·):35]:1	144:[(R:approximately):2]:2
+	2	1:4
+		3:<nsubj>:4
+		1:[(N:cells):24]:2	147:[(CD:3.8):4]:2
+10	[(V:occur):2]
+	1	2:1
+		0:<conj_or>:1	2:<dobj>:1
+		11:[(N:c2-cell-shape):19]:1	12:[(IN:in):1]:1
+	2	1:2
+		3:<nsubj>:2
+		1:[(N:cells):24]:1	73:[(N:growth):17]:1
+	4	2:1
+		25:<prep_on>:1	12:<neg>:1
+		21:[(N:agar):11]:1	24:[(R:not):32]:1
+11	[(N:c2-cell-shape):19]
+	0	1:4
+		16:<prep_of>:1	6:<conj_and>:2	26:<prep_from>:1
+		204:[(N:systems):2]:1	1:[(N:cells):24]:1	66:[(CD:0.4):1]:1	72:[(N:appendages):1]:1
+	1	1:10
+		4:<dep>:2	23:<prep_with>:2	8:<prep_to>:2	9:<amod>:1	11:<nn>:3
+		35:[(N:c2-motility):12]:2	292:[(J:supplementary):1]:1	202:[(J:antibiotic):1]:1	142:[(N:ends):4]:2	129:[(V:indicated):1]:1	9:[(N:μm):17]:1	11:[(N:c2-cell-shape):19]:2
+	2	1:1
+		5:<num>:1
+		65:[(CD:1.5):1]:1
+12	[(IN:in):1]
+	0	1:1
+		1:<pobj>:1
+		11:[(N:c2-cell-shape):19]:1
+13	[(J:elemental):1]
+14	[(N:c9-inorganic):1]
+	0	1:1
+		9:<amod>:1
+		13:[(J:elemental):1]:1
+15	[(V:reduced):7]
+	0	1:1
+		6:<conj_and>:1
+		15:[(V:reduced):7]:1
+	1	1:7
+		7:<nsubjpass>:7
+		17:[(N:c9-nitrogen-compounds):11]:3	110:[(N:nitrate):3]:3	14:[(N:c9-inorganic):1]:1
+	3	1:7
+		8:<prep_to>:2	12:<neg>:5
+		17:[(N:c9-nitrogen-compounds):11]:1	16:[(J:c9-inorganic):4]:1	24:[(R:not):32]:5
+17	[(N:c9-nitrogen-compounds):11]
+	0	1:1
+		0:<conj_or>:1
+		407:[(N:dmso):2]:1
+16	[(J:c9-inorganic):4]
+19	[(N:c9-polysaccharides):9]
+	0	1:3
+		6:<conj_and>:3
+		17:[(N:c9-nitrogen-compounds):11]:1	20:[(N:dna):9]:2
+	1	1:3
+		10:<conj_negcc>:2	11:<nn>:1
+		253:[(N:arginine):3]:1	21:[(N:agar):11]:2
+18	[(N:hydrolyses):2]
+	0	1:2
+		4:<dep>:2
+		19:[(N:c9-polysaccharides):9]:2
+21	[(N:agar):11]
+	2	1:3
+		9:<amod>:3
+		58:[(N:%):20]:1	150:[(V:modified):2]:2
+	3	1:6	2:5
+		0:<conj_or>:5	22:<prep>:1	11:<nn>:10
+		326:[(N:c3-salinity-preference):1]:1	205:[(N:egg):2]:2	19:[(N:c9-polysaccharides):9]:3	206:[(N:yolk):2]:2	200:[(N:brucella):1]:1	23:[(N:compounds):2]:2	106:[(N:c8-pathogen-target-organ):4]:2	90:[(IN:on):1]:1	151:[(N:gam):2]:2
+20	[(N:dna):9]
+	0	1:3
+		16:<prep_of>:3
+		54:[(N:strain):7]:3
+23	[(N:compounds):2]
+	0	1:2
+		11:<nn>:2
+		22:[(N:tween):2]:2
+22	[(N:tween):2]
+25	[(J:c2-cell-shape):4]
+	0	1:2
+		6:<conj_and>:2
+		25:[(J:c2-cell-shape):4]:1	26:[(J:heavy):1]:1
+	2	1:3
+		19:<advmod>:2	12:<neg>:1
+		154:[(R:slightly):4]:2	24:[(R:not):32]:1
+24	[(R:not):32]
+	0	1:2
+		4:<dep>:2
+		125:[(J:resistant):6]:2
+27	[(PRP:it):1]
+26	[(J:heavy):1]
+	0	1:1
+		3:<nsubj>:1
+		1:[(N:cells):24]:1
+29	[(N:c7-tests):25]
+	1	1:8	2:4
+		0:<conj_or>:2	20:<appos>:5	11:<nn>:9
+		119:[(N:c4):1]:1	32:[(N:activity):1]:1	168:[(N:c14):2]:2	253:[(N:arginine):3]:1	355:[(N:cytochrome):1]:1	163:[(N:oxidase):5]:2	78:[(N:c.):7]:2	29:[(N:c7-tests):25]:2	120:[(N:c8):1]:1	30:[(N:c9-amino-acids):26]:3
+	3	1:3
+		6:<conj_and>:3
+		109:[(J:negative):6]:1	123:[(N:activities):6]:2
+	5	2:2
+		3:<nsubj>:1	5:<num>:3
+		81:[(CD:30):13]:1	217:[(N:temperature):2]:1	77:[(CD:°):12]:2
+28	[(V:has):1]
+	1	2:1
+		2:<dobj>:1	3:<nsubj>:1
+		27:[(PRP:it):1]:1	29:[(N:c7-tests):25]:1
+31	[(J:c7-tests):2]
+30	[(N:c9-amino-acids):26]
+	0	4:1
+		6:<conj_and>:4
+		123:[(N:activities):6]:1	29:[(N:c7-tests):25]:1	122:[(N:naphthol-as-bi-phosphohydrolase):1]:1	121:[(N:α-chymotrypsin):1]:1
+34	[(N:c2-internal-features):7]
+	0	1:6
+		20:<appos>:2	9:<amod>:4
+		33:[(J:gram-negative):10]:4	11:[(N:c2-cell-shape):19]:2
+	1	1:6
+		32:<attr>:2	6:<conj_and>:4
+		35:[(N:c2-motility):12]:2	11:[(N:c2-cell-shape):19]:2	63:[(N:c3-oxygen-use):9]:2
+	2	1:2
+		11:<nn>:2
+		11:[(N:c2-cell-shape):19]:2
+	3	1:4
+		3:<nsubj>:4
+		1:[(N:cells):24]:4
+	4	1:1
+		13:<prepc_by>:1
+		36:[(V:swimming):1]:1
+35	[(N:c2-motility):12]
+	2	1:2
+		18:<rcmod>:1	11:<nn>:1
+		9:[(N:μm):17]:1	211:[(V:is):4]:1
+	4	1:5
+		3:<nsubj>:2	5:<num>:1	9:<amod>:2
+		1:[(N:cells):24]:2	87:[(CD:6):11]:1	210:[(J:bacterial):2]:2
+32	[(N:activity):1]
+	0	1:1
+		9:<amod>:1
+		31:[(J:c7-tests):2]:1
+33	[(J:gram-negative):10]
+	0	1:2
+		9:<amod>:2
+		197:[(J:c3-oxygen-use):4]:2
+38	[(N:cultures):1]
+	0	1:1
+		11:<nn>:1
+		37:[(N:broth):2]:1
+39	[(N:catalase):3]
+	0	1:1
+		6:<conj_and>:1
+		29:[(N:c7-tests):25]:1
+36	[(V:swimming):1]
+	0	1:1
+		14:<prep_in>:1
+		38:[(N:cultures):1]:1
+37	[(N:broth):2]
+	0	1:1
+		11:<nn>:1
+		249:[(N:pyg):2]:1
+42	[(N:acids):5]
+	0	1:1	2:2	3:2
+		9:<amod>:11
+		40:[(J:cellular):5]:4	41:[(J:fatty):10]:4	243:[(J:succinic):1]:1	44:[(J:predominant):3]:1	240:[(J:major):5]:1
+43	[(J:iso-15):2]
+	0	1:2
+		4:<dep>:2
+		136:[(J:dominant):2]:1	44:[(J:predominant):3]:1
+	1	1:2
+		3:<nsubj>:2
+		42:[(N:acids):5]:2
+40	[(J:cellular):5]
+41	[(J:fatty):10]
+46	[(CD:18):4]
+47	[(N:anteiso-15):2]
+	0	1:2
+		3:<nsubj>:2
+		2:[(CD:0):68]:2
+44	[(J:predominant):3]
+	0	3:1
+		5:<num>:2	15:<tmod>:1
+		2:[(CD:0):68]:3
+45	[(CD:16):3]
+51	[(N:g+c):7]
+50	[(N:mk-6):2]
+	0	1:2
+		3:<nsubj>:2
+		49:[(N:quinone):3]:2
+49	[(N:quinone):3]
+	0	2:3
+		9:<amod>:6
+		48:[(J:respiratory):5]:3	240:[(J:major):5]:2	44:[(J:predominant):3]:1
+48	[(J:respiratory):5]
+55	[(N:species):3]
+	0	1:2
+		11:<nn>:2
+		53:[(N:type):7]:2
+54	[(N:strain):7]
+	0	1:7
+		4:<dep>:1	5:<num>:1	11:<nn>:5
+		412:[(N:t):1]:1	53:[(N:type):7]:5	405:[(CD:4.03.5):1]:1
+	1	1:1
+		16:<prep_of>:1
+		55:[(N:species):3]:1
+53	[(N:type):7]
+52	[(N:content):7]
+	0	1:3	2:4
+		11:<nn>:11
+		51:[(N:g+c):7]:7	20:[(N:dna):9]:4
+	1	1:6
+		16:<prep_of>:6
+		55:[(N:species):3]:1	20:[(N:dna):9]:3	54:[(N:strain):7]:2
+	2	1:1
+		9:<amod>:1
+		267:[(J:genomic):1]:1
+59	[(CD:40):6]
+	0	1:1
+		3:<nsubj>:1
+		283:[(N:range):3]:1
+	1	1:3
+		17:<number>:3
+		79:[(CD:37):6]:1	133:[(CD:15):6]:2
+58	[(N:%):20]
+	2	1:20
+		17:<number>:11	5:<num>:9
+		2:[(CD:0):68]:2	87:[(CD:6):11]:1	139:[(CD:9):2]:1	157:[(CD:20):4]:3	83:[(CD:3):5]:3	7:[(CD:5):7]:2	76:[(CD:4):10]:2	57:[(N:mol):7]:5	60:[(CD:8):14]:1
+	3	1:8
+		3:<nsubj>:3	4:<dep>:3	20:<appos>:1	23:<prep_with>:1
+		85:[(N:optimum):6]:1	84:[(N:nacl):7]:1	52:[(N:content):7]:3	57:[(N:mol):7]:2	284:[(N:w\/v):1]:1
+57	[(N:mol):7]
+	0	1:5
+		17:<number>:5
+		262:[(CD:48):1]:1	338:[(CD:39.4):1]:1	76:[(CD:4):10]:1	56:[(CD:41.5):1]:1	60:[(CD:8):14]:1
+56	[(CD:41.5):1]
+63	[(N:c3-oxygen-use):9]
+	0	1:5
+		19:<advmod>:4	4:<dep>:1
+		143:[(R:strictly):4]:4	62:[(R:facultatively):1]:1
+	2	2:1	4:2
+		20:<appos>:5	6:<conj_and>:5
+		34:[(N:c2-internal-features):7]:1	187:[(N:fusiform):1]:1	35:[(N:c2-motility):12]:2	69:[(V:surrounded):1]:1	33:[(J:gram-negative):10]:1	291:[(N:gram-stain-negative):1]:1	64:[(CD:1.0):4]:1	11:[(N:c2-cell-shape):19]:1	104:[(N:c3-pigements):11]:1
+	5	1:3
+		3:<nsubj>:2	14:<prep_in>:1
+		68:[(N:diameter):7]:1	1:[(N:cells):24]:2
+62	[(R:facultatively):1]
+61	[(N:hplc):1]
+	0	1:1
+		3:<nsubj>:1
+		58:[(N:%):20]:1
+60	[(CD:8):14]
+	0	3:1
+		4:<dep>:3
+		2:[(CD:0):68]:1	3:[(N:·):35]:1	9:[(N:μm):17]:1
+68	[(N:diameter):7]
+	0	1:2
+		6:<conj_and>:2
+		237:[(N:convex):2]:1	5:[(CD:1):10]:1
+69	[(V:surrounded):1]
+	1	2:1
+		21:<prep_by>:1	7:<nsubjpass>:1
+		1:[(N:cells):24]:1	11:[(N:c2-cell-shape):19]:1
+70	[(R:relatively):1]
+71	[(J:thick):1]
+	0	1:1
+		19:<advmod>:1
+		70:[(R:relatively):1]:1
+64	[(CD:1.0):4]
+	0	2:1
+		4:<dep>:2
+		9:[(N:μm):17]:1	11:[(N:c2-cell-shape):19]:1
+65	[(CD:1.5):1]
+66	[(CD:0.4):1]
+67	[(CD:0.6):1]
+76	[(CD:4):10]
+	2	1:1	7:1
+		0:<conj_or>:5	18:<rcmod>:1	6:<conj_and>:1	9:<amod>:1
+		84:[(N:nacl):7]:1	21:[(N:agar):11]:1	77:[(CD:°):12]:2	79:[(CD:37):6]:1	88:[(CD:12):2]:1	74:[(V:occurs):4]:1	75:[(IN:at):1]:1
+77	[(CD:°):12]
+	3	1:10
+		17:<number>:6	5:<num>:4
+		275:[(CD:35):1]:1	374:[(CD:23):1]:1	81:[(CD:30):13]:2	277:[(CD:33):1]:1	59:[(CD:40):6]:1	79:[(CD:37):6]:4
+	4	3:1
+		4:<dep>:1	20:<appos>:1	23:<prep_with>:1
+		2:[(CD:0):68]:1	80:[(N:c):11]:2
+78	[(N:c.):7]
+79	[(CD:37):6]
+72	[(N:appendages):1]
+	0	1:1
+		9:<amod>:1
+		71:[(J:thick):1]:1
+73	[(N:growth):17]
+	3	1:7
+		9:<amod>:3	11:<nn>:2	28:<prep_for>:2
+		325:[(J:anaerobic):1]:1	78:[(N:c.):7]:1	63:[(N:c3-oxygen-use):9]:1	148:[(N:days):5]:2	89:[(J:optimum):5]:2
+	4	1:2	3:1
+		4:<dep>:3	24:<prep_at>:2
+		3:[(N:·):35]:3	77:[(CD:°):12]:1	73:[(N:growth):17]:1
+	7	1:3
+		18:<rcmod>:1	27:<partmod>:1	14:<prep_in>:1
+		373:[(V:detected):1]:1	274:[(V:grows):3]:1	158:[(N:bile):3]:1
+74	[(V:occurs):4]
+	1	1:4
+		3:<nsubj>:4
+		29:[(N:c7-tests):25]:1	73:[(N:growth):17]:3
+	2	1:4
+		2:<dobj>:1	25:<prep_on>:1	24:<prep_at>:2
+		21:[(N:agar):11]:1	157:[(CD:20):4]:1	76:[(CD:4):10]:1	46:[(CD:18):4]:1
+75	[(IN:at):1]
+85	[(N:optimum):6]
+	1	1:4	2:1
+		4:<dep>:2	24:<prep_at>:3	14:<prep_in>:1
+		84:[(N:nacl):7]:1	324:[(CD:8.0):1]:1	86:[(N:ph):9]:1	320:[(CD:25):1]:1	58:[(N:%):20]:2
+84	[(N:nacl):7]
+	0	1:4
+		9:<amod>:4
+		58:[(N:%):20]:4
+	1	1:2
+		4:<dep>:2
+		85:[(N:optimum):6]:2
+	2	1:1
+		24:<prep_at>:1
+		86:[(N:ph):9]:1
+87	[(CD:6):11]
+	1	1:4
+		17:<number>:2	4:<dep>:2
+		86:[(N:ph):9]:1	9:[(N:μm):17]:1	60:[(CD:8):14]:2
+86	[(N:ph):9]
+	0	1:3
+		5:<num>:3
+		87:[(CD:6):11]:1	4:[(CD:7):9]:1	321:[(CD:6.0):1]:1
+	2	2:3
+		4:<dep>:4	9:<amod>:2
+		85:[(N:optimum):6]:1	3:[(N:·):35]:1	322:[(CD:9.0):1]:1	89:[(J:optimum):5]:2	60:[(CD:8):14]:1
+81	[(CD:30):13]
+80	[(N:c):11]
+	0	1:8
+		11:<nn>:7	14:<prep_in>:1
+		82:[(N:°):6]:6	78:[(N:c.):7]:1	198:[(N:environment):1]:1
+	1	1:8
+		5:<num>:8
+		81:[(CD:30):13]:3	76:[(CD:4):10]:1	59:[(CD:40):6]:1	77:[(CD:°):12]:3
+	5	1:3
+		23:<prep_with>:1	9:<amod>:2
+		276:[(R:even):1]:1	8:[(CD:2):3]:1	59:[(CD:40):6]:1
+	8	1:3
+		25:<prep_on>:1	24:<prep_at>:2
+		86:[(N:ph):9]:1	3:[(N:·):35]:1	190:[(N:medium):3]:1
+	9	1:4	2:2
+		3:<nsubj>:1	4:<dep>:3	20:<appos>:1	6:<conj_and>:3
+		85:[(N:optimum):6]:2	84:[(N:nacl):7]:1	117:[(N:acid):10]:1	116:[(N:alkaline):1]:1	80:[(N:c):11]:1	73:[(N:growth):17]:2
+83	[(CD:3):5]
+82	[(N:°):6]
+93	[(N:na):1]
+92	[(N:tgy):1]
+95	[(N:macconkey):1]
+94	[(N:tsa):1]
+89	[(J:optimum):5]
+88	[(CD:12):2]
+	0	1:1
+		4:<dep>:1
+		86:[(N:ph):9]:1
+91	[(N:tsb\/10):1]
+	0	3:1
+		6:<conj_and>:3
+		93:[(N:na):1]:1	92:[(N:tgy):1]:1	94:[(N:tsa):1]:1
+90	[(IN:on):1]
+	1	2:1
+		1:<pobj>:1	10:<conj_negcc>:1
+		95:[(N:macconkey):1]:1	91:[(N:tsb\/10):1]:1
+102	[(J:yellow):3]
+	0	1:3
+		9:<amod>:3
+		101:[(J:pale):1]:1	366:[(J:light):2]:2
+	1	1:3
+		3:<nsubj>:3
+		98:[(N:edges):2]:1	96:[(N:colonies):13]:2
+	2	1:1
+		14:<prep_in>:1
+		239:[(N:color):3]:1
+103	[(J:flexirubin-type):1]
+100	[(J:mucoid):1]
+	0	1:1
+		6:<conj_and>:1
+		102:[(J:yellow):3]:1
+101	[(J:pale):1]
+98	[(N:edges):2]
+	1	1:2
+		9:<amod>:1	11:<nn>:1
+		99:[(J:regular):1]:1	11:[(N:c2-cell-shape):19]:1
+99	[(J:regular):1]
+96	[(N:colonies):13]
+	1	1:4
+		25:<prep_on>:2	9:<amod>:2
+		21:[(N:agar):11]:1	308:[(N:ma):1]:1	212:[(J:distinct):2]:2
+97	[(J:circular):6]
+	1	2:1
+		3:<nsubj>:1	23:<prep_with>:1
+		98:[(N:edges):2]:1	96:[(N:colonies):13]:1
+	3	2:1
+		4:<dep>:1	9:<amod>:1
+		153:[(N:mm):5]:1	64:[(CD:1.0):4]:1
+110	[(N:nitrate):3]
+111	[(N:api):1]
+108	[(J:red):1]
+109	[(J:negative):6]
+	1	1:5
+		3:<nsubj>:3	28:<prep_for>:2
+		29:[(N:c7-tests):25]:1	123:[(N:activities):6]:1	286:[(N:urease):1]:1	164:[(N:arylamidase):16]:2
+106	[(N:c8-pathogen-target-organ):4]
+107	[(N:methyl):1]
+	0	2:1
+		4:<dep>:2
+		108:[(J:red):1]:1	109:[(J:negative):6]:1
+104	[(N:c3-pigements):11]
+	0	1:1	2:2
+		9:<amod>:5
+		103:[(J:flexirubin-type):1]:1	301:[(J:non-diffusible):2]:2	302:[(J:carotenoid-type):2]:2
+	2	1:7
+		4:<dep>:1	23:<prep_with>:1	11:<nn>:5
+		368:[(N:carotenoid):3]:3	314:[(N:absorption):1]:1	195:[(N:tan):1]:1	303:[(N:flexirubin):2]:2
+105	[(V:produced):12]
+	0	1:10
+		12:<neg>:9	14:<prep_in>:1
+		37:[(N:broth):2]:1	24:[(R:not):32]:9
+	1	1:12
+		7:<nsubjpass>:12
+		327:[(N:acetoin):1]:1	163:[(N:oxidase):5]:2	161:[(N:indole):3]:3	317:[(N:nm):4]:1	287:[(N:hydrogen):1]:1	328:[(N:h2s):2]:1	104:[(N:c3-pigements):11]:2	241:[(N:amounts):1]:1
+	5	1:3
+		37:<ccomp>:1	40:<prep_as>:1	26:<prep_from>:1
+		16:[(J:c9-inorganic):4]:1	247:[(N:products):1]:1	315:[(V:peaks):1]:1
+119	[(N:c4):1]
+118	[(N:phosphatases):1]
+	2	4:1
+		20:<appos>:1	5:<num>:2	11:<nn>:1
+		81:[(CD:30):13]:1	80:[(N:c):11]:1	77:[(CD:°):12]:1	29:[(N:c7-tests):25]:1
+117	[(N:acid):10]
+	0	1:1	2:2
+		9:<amod>:5
+		184:[(J:unknown):2]:2	245:[(J:isovaleric):1]:1	41:[(J:fatty):10]:2
+116	[(N:alkaline):1]
+115	[(N:h):1]
+	0	1:1
+		5:<num>:1
+		76:[(CD:4):10]:1
+114	[(V:incubated):1]
+	1	2:1
+		24:<prep_at>:1	28:<prep_for>:1
+		118:[(N:phosphatases):1]:1	115:[(N:h):1]:1
+113	[(N:strips):1]
+	0	3:1
+		27:<partmod>:1	11:<nn>:2
+		114:[(V:incubated):1]:1	112:[(N:zym):1]:1	111:[(N:api):1]:1
+112	[(N:zym):1]
+127	[(N:μg):8]
+	1	1:8
+		5:<num>:7	29:<prep_per>:1
+		81:[(CD:30):13]:3	131:[(CD:10):9]:3	11:[(N:c2-cell-shape):19]:1	134:[(CD:300):2]:1
+126	[(TO:to):2]
+125	[(J:resistant):6]
+	1	1:1
+		30:<infmod>:1
+		126:[(TO:to):2]:1
+	2	1:2	2:4
+		3:<nsubj>:1	4:<dep>:2	20:<appos>:1	8:<prep_to>:5	9:<amod>:1
+		96:[(N:colonies):13]:1	158:[(N:bile):3]:2	336:[(N:b):2]:1	127:[(N:μg):8]:1	130:[(N:c4-antibiotics):31]:5
+124	[(J:present):2]
+	0	1:2
+		3:<nsubj>:2
+		123:[(N:activities):6]:1	30:[(N:c9-amino-acids):26]:1
+	1	1:1
+		26:<prep_from>:1
+		113:[(N:strips):1]:1
+123	[(N:activities):6]
+	0	1:6
+		9:<amod>:1	11:<nn>:5
+		17:[(N:c9-nitrogen-compounds):11]:2	163:[(N:oxidase):5]:1	29:[(N:c7-tests):25]:2	31:[(J:c7-tests):2]:1
+122	[(N:naphthol-as-bi-phosphohydrolase):1]
+121	[(N:α-chymotrypsin):1]
+120	[(N:c8):1]
+137	[(FW:i.e.):1]
+136	[(J:dominant):2]
+	0	3:1
+		5:<num>:2	15:<tmod>:1
+		2:[(CD:0):68]:3
+139	[(CD:9):2]
+138	[(J:>):2]
+	2	3:1
+		3:<nsubj>:1	4:<dep>:1	9:<amod>:1
+		137:[(FW:i.e.):1]:1	2:[(CD:0):68]:1	58:[(N:%):20]:1
+	4	2:1
+		16:<prep_of>:1	15:<tmod>:1
+		148:[(N:days):5]:1	73:[(N:growth):17]:1
+141	[(J:round):3]
+	3	4:1
+		19:<advmod>:1	3:<nsubj>:1	8:<prep_to>:1	14:<prep_in>:1
+		1:[(N:cells):24]:1	142:[(N:ends):4]:1	11:[(N:c2-cell-shape):19]:1	270:[(R:usually):1]:1
+140	[(V:stain):2]
+	0	1:2
+		31:<acomp>:2
+		33:[(J:gram-negative):10]:2
+	1	1:2
+		6:<conj_and>:2
+		34:[(N:c2-internal-features):7]:2
+	2	1:2
+		3:<nsubj>:2
+		1:[(N:cells):24]:2
+143	[(R:strictly):4]
+142	[(N:ends):4]
+	0	1:3
+		16:<prep_of>:1	9:<amod>:2
+		1:[(N:cells):24]:1	141:[(J:round):3]:2
+129	[(V:indicated):1]
+	0	1:1
+		19:<advmod>:1
+		128:[(R:otherwise):1]:1
+128	[(R:otherwise):1]
+131	[(CD:10):9]
+130	[(N:c4-antibiotics):31]
+	0	1:15
+		20:<appos>:15
+		81:[(CD:30):13]:3	127:[(N:μg):8]:6	131:[(CD:10):9]:2	133:[(CD:15):6]:1	132:[(N:iu):2]:2	134:[(CD:300):2]:1
+	1	1:6	4:1	8:1
+		0:<conj_or>:1	6:<conj_and>:16	11:<nn>:1
+		201:[(N:colistin):1]:1	336:[(N:b):2]:1	130:[(N:c4-antibiotics):31]:15	135:[(N:sodium):1]:1
+	4	1:2
+		4:<dep>:1	43:<conj_but>:1
+		337:[(J:sensitive):3]:1	11:[(N:c2-cell-shape):19]:1
+133	[(CD:15):6]
+	0	1:1
+		4:<dep>:1
+		80:[(N:c):11]:1
+132	[(N:iu):2]
+	0	1:2
+		5:<num>:2
+		131:[(CD:10):9]:2
+135	[(N:sodium):1]
+	1	2:1
+		20:<appos>:1	11:<nn>:1
+		5:[(CD:1):10]:1	130:[(N:c4-antibiotics):31]:1
+134	[(CD:300):2]
+152	[(CD:0.1):2]
+	0	1:2
+		9:<amod>:2
+		155:[(J:opaque):3]:2
+	1	1:2
+		4:<dep>:2
+		153:[(N:mm):5]:2
+	2	1:2
+		3:<nsubj>:2
+		96:[(N:colonies):13]:2
+	3	1:2
+		33:<prep_after>:2
+		73:[(N:growth):17]:2
+153	[(N:mm):5]
+	0	1:5
+		5:<num>:5
+		83:[(CD:3):5]:1	310:[(CD:3.0):1]:1	145:[(CD:0.5):4]:2	60:[(CD:8):14]:1
+	1	1:4
+		14:<prep_in>:4
+		68:[(N:diameter):7]:4
+154	[(R:slightly):4]
+155	[(J:opaque):3]
+	0	1:2
+		19:<advmod>:2
+		154:[(R:slightly):4]:2
+	1	1:1	2:2
+		6:<conj_and>:5
+		156:[(J:gray):3]:3	97:[(J:circular):6]:2
+156	[(J:gray):3]
+157	[(CD:20):4]
+	0	1:1
+		4:<dep>:1
+		80:[(N:c):11]:1
+158	[(N:bile):3]
+	0	1:3
+		9:<amod>:3
+		58:[(N:%):20]:3
+159	[(N:aesculin):4]
+	0	1:2
+		6:<conj_and>:2
+		19:[(N:c9-polysaccharides):9]:2
+144	[(R:approximately):2]
+	0	1:2
+		1:<pobj>:2
+		6:[(N:×):7]:2
+145	[(CD:0.5):4]
+146	[(CD:0.7):2]
+	0	1:2
+		17:<number>:2
+		145:[(CD:0.5):4]:2
+147	[(CD:3.8):4]
+	0	1:2
+		17:<number>:2
+		64:[(CD:1.0):4]:2
+148	[(N:days):5]
+	0	1:5
+		5:<num>:5
+		4:[(CD:7):9]:1	76:[(CD:4):10]:3	88:[(CD:12):2]:1
+	1	1:3
+		16:<prep_of>:1	23:<prep_with>:2
+		149:[(N:incubation):4]:3
+149	[(N:incubation):4]
+	0	1:4
+		24:<prep_at>:1	11:<nn>:3
+		80:[(N:c):11]:1	148:[(N:days):5]:1	63:[(N:c3-oxygen-use):9]:2
+	1	1:3
+		25:<prep_on>:3
+		235:[(N:plates):1]:1	21:[(N:agar):11]:2
+150	[(V:modified):2]
+151	[(N:gam):2]
+171	[(J:main):2]
+170	[(J:pyroglutamic):2]
+169	[(N:α-mannosidase):2]
+168	[(N:c14):2]
+175	[(N:profile):3]
+	0	1:2	2:1
+		9:<amod>:4
+		250:[(J:non-hydroxylated):1]:1	41:[(J:fatty):10]:3
+	1	1:3
+		11:<nn>:3
+		117:[(N:acid):10]:3
+174	[(N:mk-11):2]
+173	[(N:mk-10):2]
+	0	1:2
+		6:<conj_and>:2
+		174:[(N:mk-11):2]:2
+	1	1:2
+		3:<nsubj>:2
+		172:[(N:quinones):2]:2
+172	[(N:quinones):2]
+	0	2:2
+		9:<amod>:4
+		171:[(J:main):2]:2	48:[(J:respiratory):5]:2
+163	[(N:oxidase):5]
+	0	1:3
+		6:<conj_and>:3
+		29:[(N:c7-tests):25]:3
+162	[(J:positive):2]
+	0	1:2
+		3:<nsubj>:2
+		39:[(N:catalase):3]:2
+161	[(N:indole):3]
+	0	1:1
+		6:<conj_and>:1
+		29:[(N:c7-tests):25]:1
+160	[(V:hydrolysed):6]
+	0	1:2
+		6:<conj_and>:2
+		15:[(V:reduced):7]:2
+	1	1:4
+		19:<advmod>:1	12:<neg>:3
+		24:[(R:not):32]:3	377:[(R:weakly):1]:1
+	2	1:6
+		7:<nsubjpass>:6
+		19:[(N:c9-polysaccharides):9]:1	159:[(N:aesculin):4]:4	376:[(N:starch):1]:1
+167	[(N:decarboxylase):2]
+	0	1:2
+		11:<nn>:2
+		30:[(N:c9-amino-acids):26]:2
+166	[(N:6-phosphate-β-galactosidase):2]
+165	[(N:chymotrypsin):2]
+164	[(N:arylamidase):16]
+	0	17:2
+		6:<conj_and>:34
+		169:[(N:α-mannosidase):2]:2	167:[(N:decarboxylase):2]:2	29:[(N:c7-tests):25]:6	166:[(N:6-phosphate-β-galactosidase):2]:2	165:[(N:chymotrypsin):2]:2	164:[(N:arylamidase):16]:14	30:[(N:c9-amino-acids):26]:6
+	1	1:16
+		11:<nn>:16
+		117:[(N:acid):10]:2	30:[(N:c9-amino-acids):26]:14
+	2	1:2
+		9:<amod>:2
+		170:[(J:pyroglutamic):2]:2
+186	[(CD:17.879):2]
+187	[(N:fusiform):1]
+	0	1:1
+		14:<prep_in>:1
+		188:[(N:shape):1]:1
+184	[(J:unknown):2]
+185	[(N:ecl):2]
+	0	1:2
+		5:<num>:2
+		186:[(CD:17.879):2]:2
+190	[(N:medium):3]
+	0	1:1
+		11:<nn>:1
+		249:[(N:pyg):2]:1
+191	[(V:containing):3]
+	0	1:3
+		2:<dobj>:2	37:<ccomp>:1
+		106:[(N:c8-pathogen-target-organ):4]:1	192:[(N:punctiform):1]:1	362:[(N:concentrations):1]:1
+	1	1:2
+		3:<nsubj>:2
+		80:[(N:c):11]:1	148:[(N:days):5]:1
+188	[(N:shape):1]
+	0	1:1
+		6:<conj_and>:1
+		29:[(N:c7-tests):25]:1
+189	[(V:demonstrate):1]
+	0	1:1
+		6:<conj_and>:1
+		193:[(V:begin):1]:1
+	4	4:1
+		35:<parataxis>:1	2:<dobj>:1	33:<prep_after>:1	36:<prepc_at>:1
+		138:[(J:>):2]:1	191:[(V:containing):3]:2	104:[(N:c3-pigements):11]:1
+178	[(N:c18):2]
+179	[(N:1ω9c):2]
+	0	1:2
+		20:<appos>:2
+		180:[(N:c15):4]:2
+176	[(V:consists):2]
+	0	1:2
+		4:<dep>:2
+		185:[(N:ecl):2]:2
+	1	1:2
+		3:<nsubj>:2
+		175:[(N:profile):3]:2
+	2	1:2
+		16:<prep_of>:2
+		177:[(N:iso-c15):5]:2
+177	[(N:iso-c15):5]
+	0	1:2	4:1
+		4:<dep>:6
+		2:[(CD:0):68]:4	306:[(N:g):1]:1	264:[(N:3-oh):3]:1
+182	[(N:iso-c16):2]
+183	[(N:anteiso-c15):4]
+	2	3:1
+		3:<nsubj>:1	4:<dep>:1	6:<conj_and>:1
+		2:[(CD:0):68]:1	263:[(N:anteiso-c17):2]:1	42:[(N:acids):5]:1
+180	[(N:c15):4]
+	0	1:1
+		3:<nsubj>:1
+		2:[(CD:0):68]:1
+181	[(N:c16):2]
+205	[(N:egg):2]
+204	[(N:systems):2]
+	0	1:2
+		11:<nn>:2
+		203:[(N:anaerobe):2]:2
+	1	1:1
+		3:<nsubj>:1
+		21:[(N:agar):11]:1
+207	[(V:have):3]
+	0	1:3
+		2:<dobj>:3
+		35:[(N:c2-motility):12]:1	354:[(N:system):1]:1	208:[(N:lecithinase):1]:1
+	1	1:3
+		3:<nsubj>:2	12:<neg>:1
+		1:[(N:cells):24]:1	96:[(N:colonies):13]:1	24:[(R:not):32]:1
+206	[(N:yolk):2]
+201	[(N:colistin):1]
+200	[(N:brucella):1]
+203	[(N:anaerobe):2]
+202	[(J:antibiotic):1]
+197	[(J:c3-oxygen-use):4]
+196	[(J:black):1]
+199	[(J:haemolytic):1]
+	1	2:1
+		6:<conj_and>:1	25:<prep_on>:1
+		21:[(N:agar):11]:1	125:[(J:resistant):6]:1
+198	[(N:environment):1]
+	1	2:1
+		25:<prep_on>:1	9:<amod>:1
+		190:[(N:medium):3]:1	197:[(J:c3-oxygen-use):4]:1
+193	[(V:begin):1]
+	1	2:1
+		34:<xcomp>:1	3:<nsubj>:1
+		96:[(N:colonies):13]:1	194:[(V:show):1]:1
+192	[(N:punctiform):1]
+	0	1:1
+		3:<nsubj>:1
+		106:[(N:c8-pathogen-target-organ):4]:1
+195	[(N:tan):1]
+	0	1:1
+		4:<dep>:1
+		196:[(J:black):1]:1
+194	[(V:show):1]
+	1	2:1
+		2:<dobj>:1	33:<prep_after>:1
+		131:[(CD:10):9]:1	104:[(N:c3-pigements):11]:1
+220	[(V:based):1]
+	1	2:1
+		7:<nsubjpass>:1	25:<prep_on>:1
+		222:[(N:strains):4]:1	219:[(N:description):1]:1
+221	[(CD:eight):2]
+222	[(N:strains):4]
+	0	1:2
+		5:<num>:2
+		221:[(CD:eight):2]:2
+	1	1:2
+		27:<partmod>:2
+		223:[(V:isolated):2]:1	231:[(V:studied):2]:1
+223	[(V:isolated):2]
+	0	1:2
+		26:<prep_from>:2
+		225:[(N:skin):2]:2
+	1	1:1
+		7:<nsubjpass>:1
+		222:[(N:strains):4]:1
+216	[(N:types):2]
+	0	1:2
+		9:<amod>:2
+		214:[(J:numerous):2]:2
+	1	1:2
+		11:<nn>:2
+		215:[(N:media):3]:2
+217	[(N:temperature):2]
+	1	2:1
+		9:<amod>:1	11:<nn>:1
+		89:[(J:optimum):5]:1	73:[(N:growth):17]:1
+218	[(IN:since):1]
+219	[(N:description):1]
+212	[(J:distinct):2]
+213	[(V:appear):2]
+	0	1:2
+		3:<nsubj>:2
+		96:[(N:colonies):13]:1	209:[(N:evidence):2]:1
+	1	1:2
+		25:<prep_on>:2
+		216:[(N:types):2]:2
+	2	1:1
+		19:<advmod>:1
+		218:[(IN:since):1]:1
+214	[(J:numerous):2]
+215	[(N:media):3]
+	1	2:1
+		9:<amod>:1	27:<partmod>:1
+		359:[(J:solid):1]:1	191:[(V:containing):3]:1
+208	[(N:lecithinase):1]
+	0	1:1
+		38:<conj_nor>:1
+		123:[(N:activities):6]:1
+209	[(N:evidence):2]
+	0	1:2
+		16:<prep_of>:2
+		35:[(N:c2-motility):12]:2
+210	[(J:bacterial):2]
+211	[(V:is):4]
+	1	1:4
+		3:<nsubj>:3	39:<prep_since>:1
+		96:[(N:colonies):13]:1	73:[(N:growth):17]:1	209:[(N:evidence):2]:1	285:[(N:gelatin):1]:1
+	2	1:1
+		12:<neg>:1
+		24:[(R:not):32]:1
+239	[(N:color):3]
+	0	1:1
+		20:<appos>:1
+		97:[(J:circular):6]:1
+238	[(V:off-white):1]
+	1	2:1
+		3:<nsubj>:1	14:<prep_in>:1
+		239:[(N:color):3]:1	237:[(N:convex):2]:1
+237	[(N:convex):2]
+	0	3:1
+		9:<amod>:3
+		155:[(J:opaque):3]:1	236:[(J:entire):2]:1	97:[(J:circular):6]:1
+236	[(J:entire):2]
+235	[(N:plates):1]
+	0	1:1
+		11:<nn>:1
+		234:[(N:faa):1]:1
+234	[(N:faa):1]
+233	[(R:obligately):1]
+232	[(N:bacilli):3]
+	2	2:2	5:1
+		19:<advmod>:1	4:<dep>:4	9:<amod>:4
+		33:[(J:gram-negative):10]:3	3:[(N:·):35]:1	233:[(R:obligately):1]:1	6:[(N:×):7]:2	197:[(J:c3-oxygen-use):4]:1	60:[(CD:8):14]:1
+	3	1:3
+		3:<nsubj>:3
+		1:[(N:cells):24]:3
+231	[(V:studied):2]
+	0	1:1
+		7:<nsubjpass>:1
+		222:[(N:strains):4]:1
+230	[(J:identical):2]
+	0	1:2
+		3:<nsubj>:2
+		229:[(N:results):2]:2
+	1	1:1
+		28:<prep_for>:1
+		222:[(N:strains):4]:1
+229	[(N:results):2]
+	0	1:2
+		9:<amod>:2
+		228:[(J:biochemical):2]:2
+228	[(J:biochemical):2]
+227	[(N:abscesses):2]
+	0	1:2
+		9:<amod>:2
+		226:[(J:soft-tissue):2]:2
+226	[(J:soft-tissue):2]
+225	[(N:skin):2]
+	0	1:2
+		9:<amod>:2
+		224:[(J:c8-host):2]:2
+	1	1:2
+		6:<conj_and>:2
+		227:[(N:abscesses):2]:2
+224	[(J:c8-host):2]
+254	[(V:utilize):3]
+	1	1:3
+		2:<dobj>:2	22:<prep>:1
+		256:[(N:sugars):1]:1	413:[(CC:either):1]:1	407:[(N:dmso):2]:1
+	2	1:1
+		44:<advcl>:1
+		254:[(V:utilize):3]:1
+	3	1:3
+		6:<conj_and>:1	12:<neg>:2
+		257:[(V:produce):1]:1	24:[(R:not):32]:2
+	6	2:2
+		3:<nsubj>:2	40:<prep_as>:2
+		410:[(N:acceptor):1]:1	414:[(N:acceptors):1]:1	54:[(N:strain):7]:2
+255	[(J:various):1]
+252	[(N:iso-c14):1]
+	1	4:1
+		19:<advmod>:1	3:<nsubj>:1	4:<dep>:2
+		2:[(CD:0):68]:2	175:[(N:profile):3]:1	251:[(R:predominately):1]:1
+253	[(N:arginine):3]
+	0	1:1
+		6:<conj_and>:1
+		17:[(N:c9-nitrogen-compounds):11]:1
+250	[(J:non-hydroxylated):1]
+251	[(R:predominately):1]
+248	[(N:metabolism):1]
+249	[(N:pyg):2]
+246	[(N:end):1]
+247	[(N:products):1]
+	1	2:1
+		16:<prep_of>:1	11:<nn>:1
+		248:[(N:metabolism):1]:1	246:[(N:end):1]:1
+244	[(N:trace):1]
+	0	1:1
+		16:<prep_of>:1
+		117:[(N:acid):10]:1
+245	[(J:isovaleric):1]
+242	[(N:c9-organic-acids):4]
+	0	1:2	2:1
+		6:<conj_and>:3	40:<prep_as>:1
+		261:[(N:product):2]:1	42:[(N:acids):5]:1	244:[(N:trace):1]:1	242:[(N:c9-organic-acids):4]:1
+243	[(J:succinic):1]
+240	[(J:major):5]
+241	[(N:amounts):1]
+	1	2:1
+		16:<prep_of>:1	9:<amod>:1
+		242:[(N:c9-organic-acids):4]:1	240:[(J:major):5]:1
+275	[(CD:35):1]
+274	[(V:grows):3]
+	1	1:3
+		24:<prep_at>:2	14:<prep_in>:1
+		2:[(CD:0):68]:1	3:[(N:·):35]:2
+	2	1:2
+		35:<parataxis>:1	3:<nsubj>:1
+		279:[(J:slower):1]:1	78:[(N:c.):7]:1
+273	[(CC:both):1]
+	0	1:1
+		4:<dep>:1
+		11:[(N:c2-cell-shape):19]:1
+272	[(V:formed):1]
+	1	2:1
+		19:<advmod>:1	22:<prep>:1
+		273:[(CC:both):1]:1	271:[(R:occasionally):1]:1
+279	[(J:slower):1]
+	3	4:1
+		19:<advmod>:1	3:<nsubj>:1	37:<ccomp>:1	41:<prep_than>:1
+		3:[(N:·):35]:1	278:[(R:significantly):1]:1	281:[(V:grow):2]:1	280:[(DT:that):1]:1
+278	[(R:significantly):1]
+277	[(CD:33):1]
+276	[(R:even):1]
+	0	1:1
+		24:<prep_at>:1
+		77:[(CD:°):12]:1
+283	[(N:range):3]
+	0	2:2	4:1
+		11:<nn>:6	28:<prep_for>:2
+		84:[(N:nacl):7]:2	217:[(N:temperature):2]:1	282:[(N:concentration):2]:2	78:[(N:c.):7]:1	73:[(N:growth):17]:2
+282	[(N:concentration):2]
+281	[(V:grow):2]
+	1	1:2
+		12:<neg>:2
+		24:[(R:not):32]:2
+	2	2:1
+		2:<dobj>:1	3:<nsubj>:1
+		283:[(N:range):3]:1	78:[(N:c.):7]:1
+	4	1:2
+		24:<prep_at>:1	14:<prep_in>:1
+		289:[(N:presence):1]:1	77:[(CD:°):12]:1
+280	[(DT:that):1]
+	0	1:1
+		24:<prep_at>:1
+		77:[(CD:°):12]:1
+287	[(N:hydrogen):1]
+	1	2:1
+		6:<conj_and>:1	9:<amod>:1
+		288:[(N:c9-other):2]:1	16:[(J:c9-inorganic):4]:1
+286	[(N:urease):1]
+285	[(N:gelatin):1]
+284	[(N:w\/v):1]
+258	[(N:fermentation):1]
+259	[(N:end-products):1]
+	2	3:1
+		23:<prep_with>:1	9:<amod>:1	11:<nn>:1
+		258:[(N:fermentation):1]:1	242:[(N:c9-organic-acids):4]:1	240:[(J:major):5]:1
+256	[(N:sugars):1]
+	0	1:1
+		9:<amod>:1
+		255:[(J:various):1]:1
+257	[(V:produce):1]
+	2	3:1
+		2:<dobj>:1	3:<nsubj>:1	40:<prep_as>:1
+		259:[(N:end-products):1]:1	55:[(N:species):3]:1	242:[(N:c9-organic-acids):4]:1
+262	[(CD:48):1]
+263	[(N:anteiso-c17):2]
+	0	1:1
+		4:<dep>:1
+		264:[(N:3-oh):3]:1
+260	[(J:minor):1]
+261	[(N:product):2]
+	0	1:2
+		9:<amod>:2
+		260:[(J:minor):1]:1	351:[(J:intracellular):1]:1
+	1	1:1
+		11:<nn>:1
+		352:[(N:reserve):1]:1
+266	[(N:h4):1]
+267	[(J:genomic):1]
+264	[(N:3-oh):3]
+	0	1:3
+		5:<num>:3
+		2:[(CD:0):68]:3
+	2	1:2
+		6:<conj_and>:1	11:<nn>:1
+		263:[(N:anteiso-c17):2]:1	180:[(N:c15):4]:1
+265	[(N:mk-8):1]
+	1	2:1
+		3:<nsubj>:1	20:<appos>:1
+		49:[(N:quinone):3]:1	266:[(N:h4):1]:1
+270	[(R:usually):1]
+271	[(R:occasionally):1]
+268	[(CD:39):1]
+269	[(N:length):1]
+305	[(V:dominated):1]
+	1	2:1
+		7:<nsubjpass>:1	42:<agent>:1
+		304:[(N:composition):1]:1	177:[(N:iso-c15):5]:1
+304	[(N:composition):1]
+	0	3:1
+		9:<amod>:2	11:<nn>:1
+		117:[(N:acid):10]:1	40:[(J:cellular):5]:1	41:[(J:fatty):10]:1
+307	[(N:iso-c17):1]
+306	[(N:g):1]
+	1	2:1
+		20:<appos>:1	5:<num>:1
+		307:[(N:iso-c17):1]:1	5:[(CD:1):10]:1
+309	[(J:orange):1]
+	2	3:1
+		3:<nsubj>:1	23:<prep_with>:1	14:<prep_in>:1
+		239:[(N:color):3]:1	96:[(N:colonies):13]:1	312:[(N:surfaces):1]:1
+308	[(N:ma):1]
+311	[(J:smooth):1]
+310	[(CD:3.0):1]
+313	[(N:margins):1]
+	0	1:1
+		9:<amod>:1
+		236:[(J:entire):2]:1
+312	[(N:surfaces):1]
+	1	2:1
+		6:<conj_and>:1	9:<amod>:1
+		311:[(J:smooth):1]:1	313:[(N:margins):1]:1
+315	[(V:peaks):1]
+	1	2:1
+		3:<nsubj>:1	24:<prep_at>:1
+		317:[(N:nm):4]:1	104:[(N:c3-pigements):11]:1
+314	[(N:absorption):1]
+317	[(N:nm):4]
+	0	1:4
+		5:<num>:4
+		371:[(CD:455):1]:1	316:[(CD:451):1]:1	319:[(CD:503):1]:1	318:[(CD:474):1]:1
+	1	1:1
+		6:<conj_and>:1
+		317:[(N:nm):4]:1
+316	[(CD:451):1]
+319	[(CD:503):1]
+318	[(CD:474):1]
+288	[(N:c9-other):2]
+289	[(N:presence):1]
+	0	1:1
+		16:<prep_of>:1
+		290:[(N:c9-complex-mixtures):1]:1
+290	[(N:c9-complex-mixtures):1]
+291	[(N:gram-stain-negative):1]
+292	[(J:supplementary):1]
+	0	1:1
+		4:<dep>:1
+		293:[(N:fig):1]:1
+293	[(N:fig):1]
+294	[(N:s1):1]
+	0	1:1
+		4:<dep>:1
+		297:[(N:online):1]:1
+295	[(J:available):1]
+	0	1:1
+		14:<prep_in>:1
+		296:[(N:ijsem):1]:1
+296	[(N:ijsem):1]
+297	[(N:online):1]
+	0	1:1
+		4:<dep>:1
+		295:[(J:available):1]:1
+298	[(V:gliding):1]
+299	[(N:motility):2]
+	0	1:2
+		9:<amod>:2
+		357:[(J:c2-motility):1]:1	298:[(V:gliding):1]:1
+300	[(J:absent):5]
+	0	1:5
+		3:<nsubj>:5
+		384:[(N:sphingophospholipids):1]:1	299:[(N:motility):2]:1	29:[(N:c7-tests):25]:1	104:[(N:c3-pigements):11]:2
+301	[(J:non-diffusible):2]
+302	[(J:carotenoid-type):2]
+303	[(N:flexirubin):2]
+343	[(N:tryptone):1]
+342	[(R:approx):1]
+341	[(V:pointed):1]
+	1	2:1
+		19:<advmod>:1	2:<dobj>:1
+		342:[(R:approx):1]:1	142:[(N:ends):4]:1
+340	[(N:sides):1]
+	0	1:1
+		9:<amod>:1
+		25:[(J:c2-cell-shape):4]:1
+339	[(J:rod-shaped):1]
+338	[(CD:39.4):1]
+337	[(J:sensitive):3]
+	1	1:3
+		4:<dep>:1	8:<prep_to>:2
+		126:[(TO:to):2]:1	130:[(N:c4-antibiotics):31]:1	390:[(N:azithromycin):1]:1
+336	[(N:b):2]
+	0	1:1
+		20:<appos>:1
+		127:[(N:μg):8]:1
+	2	1:2
+		43:<conj_but>:1	11:<nn>:1
+		337:[(J:sensitive):3]:1	130:[(N:c4-antibiotics):31]:1
+351	[(J:intracellular):1]
+350	[(J:poly-β-hydroxybutyrate):1]
+349	[(V:accumulate):1]
+	3	4:1
+		6:<conj_and>:1	40:<prep_as>:1	12:<neg>:1	31:<acomp>:1
+		207:[(V:have):3]:1	261:[(N:product):2]:1	350:[(J:poly-β-hydroxybutyrate):1]:1	24:[(R:not):32]:1
+348	[(N:stages):1]
+	0	1:1
+		9:<amod>:1
+		347:[(V:resting):1]:1
+347	[(V:resting):1]
+346	[(N:endospores):1]
+	0	1:1
+		0:<conj_or>:1
+		348:[(N:stages):1]:1
+345	[(V:form):1]
+	1	2:1
+		2:<dobj>:1	12:<neg>:1
+		24:[(R:not):32]:1	346:[(N:endospores):1]:1
+344	[(V:required):1]
+	1	2:1
+		7:<nsubjpass>:1	28:<prep_for>:1
+		343:[(N:tryptone):1]:1	73:[(N:growth):17]:1
+326	[(N:c3-salinity-preference):1]
+327	[(N:acetoin):1]
+	0	2:1
+		6:<conj_and>:2
+		288:[(N:c9-other):2]:1	328:[(N:h2s):2]:1
+324	[(CD:8.0):1]
+	0	1:1
+		5:<num>:1
+		323:[(CD:7.0):1]:1
+325	[(J:anaerobic):1]
+322	[(CD:9.0):1]
+323	[(CD:7.0):1]
+320	[(CD:25):1]
+	0	1:1
+		4:<dep>:1
+		80:[(N:c):11]:1
+321	[(CD:6.0):1]
+334	[(N:microplate):1]
+	0	1:1
+		11:<nn>:1
+		333:[(N:gn2):1]:1
+335	[(V:utilized):2]
+	0	1:2
+		7:<nsubjpass>:2
+		253:[(N:arginine):3]:1	329:[(N:none):1]:1
+	1	1:1
+		12:<neg>:1
+		24:[(R:not):32]:1
+332	[(N:sources):1]
+	2	3:1
+		9:<amod>:1	11:<nn>:1	14:<prep_in>:1
+		334:[(N:microplate):1]:1	330:[(J:other):1]:1	331:[(N:carbon):1]:1
+333	[(N:gn2):1]
+330	[(J:other):1]
+331	[(N:carbon):1]
+328	[(N:h2s):2]
+329	[(N:none):1]
+	0	1:1
+		16:<prep_of>:1
+		332:[(N:sources):1]:1
+373	[(V:detected):1]
+	0	1:1
+		24:<prep_at>:1
+		80:[(N:c):11]:1
+372	[(CD:480):1]
+375	[(V:decompose):1]
+	1	2:1
+		2:<dobj>:1	12:<neg>:1
+		21:[(N:agar):11]:1	24:[(R:not):32]:1
+374	[(CD:23):1]
+369	[(N:absorbance):1]
+368	[(N:carotenoid):3]
+371	[(CD:455):1]
+	0	1:1
+		6:<conj_and>:1
+		372:[(CD:480):1]:1
+370	[(N:peaks):1]
+	0	1:1
+		11:<nn>:1
+		369:[(N:absorbance):1]:1
+381	[(J:only):1]
+380	[(N:pe):1]
+	1	2:1
+		9:<amod>:1	11:<nn>:1
+		379:[(N:b.):1]:1	378:[(J:susceptible):1]:1
+383	[(V:identified):1]
+382	[(N:phospholipid):1]
+	2	3:1
+		3:<nsubj>:1	9:<amod>:1	27:<partmod>:1
+		381:[(J:only):1]:1	380:[(N:pe):1]:1	383:[(V:identified):1]:1
+377	[(R:weakly):1]
+376	[(N:starch):1]
+	0	1:1
+		6:<conj_and>:1
+		19:[(N:c9-polysaccharides):9]:1
+379	[(N:b.):1]
+378	[(J:susceptible):1]
+	1	2:1
+		8:<prep_to>:1	12:<neg>:1
+		24:[(R:not):32]:1	130:[(N:c4-antibiotics):31]:1
+356	[(N:exhibits):1]
+	0	1:1
+		4:<dep>:1
+		299:[(N:motility):2]:1
+357	[(J:c2-motility):1]
+358	[(N:low-convex):1]
+	3	4:1
+		3:<nsubj>:1	4:<dep>:1	25:<prep_on>:1	9:<amod>:1
+		5:[(CD:1):10]:1	96:[(N:colonies):13]:1	97:[(J:circular):6]:1	215:[(N:media):3]:1
+359	[(J:solid):1]
+352	[(N:reserve):1]
+353	[(J:c9-amino-acids):1]
+354	[(N:system):1]
+	1	2:1
+		9:<amod>:1	11:<nn>:1
+		353:[(J:c9-amino-acids):1]:1	29:[(N:c7-tests):25]:1
+355	[(N:cytochrome):1]
+364	[(N:extract):1]
+	0	1:1
+		6:<conj_and>:1
+		16:[(J:c9-inorganic):4]:1
+365	[(V:stimulate):1]
+	1	2:1
+		2:<dobj>:1	3:<nsubj>:1
+		73:[(N:growth):17]:1	363:[(N:yeast):1]:1
+366	[(J:light):2]
+367	[(V:produces):3]
+	0	1:3
+		2:<dobj>:3
+		104:[(N:c3-pigements):11]:3
+	2	1:2
+		23:<prep_with>:1	24:<prep_at>:1
+		370:[(N:peaks):1]:1	317:[(N:nm):4]:1
+360	[(J:high):1]
+361	[(N:nutrient):1]
+362	[(N:concentrations):1]
+	1	2:1
+		9:<amod>:1	11:<nn>:1
+		360:[(J:high):1]:1	361:[(N:nutrient):1]:1
+363	[(N:yeast):1]
+	0	1:1
+		9:<amod>:1
+		364:[(N:extract):1]:1
+410	[(N:acceptor):1]
+	1	2:1
+		9:<amod>:1	11:<nn>:1
+		408:[(J:alternative):2]:1	409:[(N:electron):2]:1
+411	[(CD:8.8.11):1]
+408	[(J:alternative):2]
+409	[(N:electron):2]
+414	[(N:acceptors):1]
+	1	2:1
+		9:<amod>:1	11:<nn>:1
+		408:[(J:alternative):2]:1	409:[(N:electron):2]:1
+412	[(N:t):1]
+	0	1:1
+		5:<num>:1
+		411:[(CD:8.8.11):1]:1
+413	[(CC:either):1]
+	0	1:1
+		4:<dep>:1
+		17:[(N:c9-nitrogen-compounds):11]:1
+402	[(N:piperacillin):1]
+403	[(N:levofloxacin):1]
+400	[(N:cefuroxime):1]
+401	[(N:cefoperazone):1]
+406	[(V:reduce):1]
+	2	3:1
+		2:<dobj>:1	8:<prep_to>:1	43:<conj_but>:1
+		254:[(V:utilize):3]:1	17:[(N:c9-nitrogen-compounds):11]:2
+407	[(N:dmso):2]
+404	[(N:teicoplanin):1]
+405	[(CD:4.03.5):1]
+395	[(N:imipenem):1]
+394	[(N:ofloxacin):1]
+393	[(N:cefazolin):1]
+392	[(N:cefotaxime):1]
+399	[(N:cephradine):1]
+398	[(N:furazolidone):1]
+397	[(N:cefalexin):1]
+396	[(N:cefixime):1]
+387	[(CD:ai15):1]
+386	[(CD:i15):2]
+385	[(CD:odd-numbered):1]
+	0	6:1
+		6:<conj_and>:6
+		2:[(CD:0):68]:3	5:[(CD:1):10]:2	133:[(CD:15):6]:1
+	1	1:1
+		3:<nsubj>:1
+		42:[(N:acids):5]:1
+384	[(N:sphingophospholipids):1]
+391	[(N:ceftizoxime):1]
+390	[(N:azithromycin):1]
+	0	21:1
+		6:<conj_and>:21
+		395:[(N:imipenem):1]:1	394:[(N:ofloxacin):1]:1	393:[(N:cefazolin):1]:1	392:[(N:cefotaxime):1]:1	399:[(N:cephradine):1]:1	398:[(N:furazolidone):1]:1	397:[(N:cefalexin):1]:1	396:[(N:cefixime):1]:1	402:[(N:piperacillin):1]:1	403:[(N:levofloxacin):1]:1	400:[(N:cefuroxime):1]:1	401:[(N:cefoperazone):1]:1	130:[(N:c4-antibiotics):31]:7	391:[(N:ceftizoxime):1]:1	404:[(N:teicoplanin):1]:1
+389	[(CD:34):2]
+388	[(N:n-6):1]

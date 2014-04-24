@@ -357,7 +357,8 @@ public class TrainTestRun implements IRun {
 				// overall += size;
 				// if(size > maxSize) { maxSize = size; }
 				
-				if (sentence.length() <= 80) {
+				if (sentence.length() <= 100) {
+				//if (sentence.length() <= 200) {
 				//if (tokenSize <= 30) {
 
 					CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(
@@ -712,7 +713,12 @@ public class TrainTestRun implements IRun {
 							//	System.out.println("strLine is ::" + strLine);
 							// }
 							if (strLine.length() > 1) {
-								keywords += strLine.toLowerCase() + "|";
+								
+								// remove space
+								// 
+								String keyword = strLine.trim().toLowerCase();
+								
+								keywords += keyword + "|";
 							}
 						}
 						br.close();
@@ -771,7 +777,7 @@ public class TrainTestRun implements IRun {
 			String depStringPlain = ""; // Dependency String
 			
 			StringTokenizer textToken = new StringTokenizer(sentText, " ");
-			if (textToken.countTokens() < 60) {
+			if (textToken.countTokens() < 40) {
 				
 				// STEP 2: Build Original Sentence USP inputs
 				/*
@@ -1759,17 +1765,19 @@ public class TrainTestRun implements IRun {
 		this.tokenizeSSplit.annotate(annotation);
 		List<CoreMap> sentenceAnnotations = annotation
 				.get(SentencesAnnotation.class);
-		for (CoreMap sentenceAnnotation : sentenceAnnotations) {
-			// result.add(sentenceAnnotation.toString());
-			for (CoreLabel token : sentenceAnnotation
-					.get(TokensAnnotation.class)) {
-				
-				returnString += " " + token;
-				
-			}
-		}
 		
-		returnString = returnString.substring(1);	
+		if (sentenceAnnotations.size() > 0) {
+			for (CoreMap sentenceAnnotation : sentenceAnnotations) {
+				// result.add(sentenceAnnotation.toString());
+				for (CoreLabel token : sentenceAnnotation
+						.get(TokensAnnotation.class)) {
+					returnString += " " + token;
+				}
+			}
+			returnString = returnString.substring(1);	
+		} else {
+			returnString = oriSent;
+		}
 		
 		return returnString;
 	}

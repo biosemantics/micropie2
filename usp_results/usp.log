@@ -1,0 +1,182 @@
+=== Params ===
+resultDir	usp_results
+dataDir	usp
+priorNumParam	-5.0
+priorNumConj	-10.0
+
+Gathering filenames ...
+<PREPROC> Filenames gathered: 179 files
+[Parse] read syntax ...
+<TIME> Read parse 0s
+[Parse] initial partition/clust/agenda ...
+ERR: Multiple parents, skip np: cp=100:0:010 par=100:0:008 np=100:0:002
+ERR: Multiple parents, skip np: cp=100:0:013 par=100:0:008 np=100:0:002
+ERR: Multiple parents, skip np: cp=100:0:004 par=100:0:002 np=100:0:001
+ERR: Multiple parents, skip np: cp=100:0:008 par=100:0:002 np=100:0:001
+ERR: Multiple parents, skip np: cp=101:0:001 par=101:0:006 np=101:0:004
+ERR: Multiple parents, skip np: cp=102:0:007 par=102:0:004 np=102:0:002
+ERR: Multiple parents, skip np: cp=102:0:010 par=102:0:004 np=102:0:002
+ERR: Multiple parents, skip np: cp=106:0:014 par=106:0:011 np=106:0:007
+ERR: Multiple parents, skip np: cp=110:0:013 par=110:0:011 np=110:0:007
+ERR: Multiple parents, skip np: cp=110:0:026 par=110:0:022 np=110:0:020
+ERR: Multiple parents, skip np: cp=110:0:001 par=110:0:020 np=110:0:004
+ERR: Multiple parents, skip np: cp=111:0:054 par=111:0:052 np=111:0:051
+ERR: Multiple parents, skip np: cp=111:0:056 par=111:0:052 np=111:0:051
+ERR: Multiple parents, skip np: cp=111:0:058 par=111:0:052 np=111:0:051
+ERR: Multiple parents, skip np: cp=111:0:062 par=111:0:051 np=111:0:063
+ERR: Multiple parents, skip np: cp=111:0:008 par=111:0:005 np=111:0:003
+ERR: Multiple parents, skip np: cp=111:0:016 par=111:0:005 np=111:0:003
+ERR: Multiple parents, skip np: cp=111:0:030 par=111:0:005 np=111:0:003
+ERR: Multiple parents, skip np: cp=111:0:042 par=111:0:005 np=111:0:003
+ERR: Multiple parents, skip np: cp=111:0:063 par=111:0:005 np=111:0:003
+ERR: Multiple parents, skip np: cp=113:0:002 par=113:0:007 np=113:0:004
+ERR: Multiple parents, skip np: cp=121:0:031 par=121:0:029 np=121:0:040
+ERR: Multiple parents, skip np: cp=121:0:033 par=121:0:029 np=121:0:040
+ERR: Multiple parents, skip np: cp=121:0:035 par=121:0:029 np=121:0:040
+ERR: Multiple parents, skip np: cp=121:0:038 par=121:0:029 np=121:0:040
+ERR: Multiple parents, skip np: cp=121:0:014 par=121:0:012 np=121:0:017
+ERR: Multiple parents, skip np: cp=121:0:016 par=121:0:012 np=121:0:017
+ERR: Multiple parents, skip np: cp=124:0:017 par=124:0:011 np=124:0:001
+ERR: Multiple parents, skip np: cp=124:0:022 par=124:0:011 np=124:0:001
+ERR: Multiple parents, skip np: cp=124:0:028 par=124:0:011 np=124:0:001
+ERR: Multiple parents, skip np: cp=124:0:033 par=124:0:011 np=124:0:001
+ERR: Multiple parents, skip np: cp=124:0:038 par=124:0:011 np=124:0:001
+ERR: Multiple parents, skip np: cp=124:0:043 par=124:0:011 np=124:0:001
+ERR: Multiple parents, skip np: cp=124:0:048 par=124:0:011 np=124:0:001
+ERR: Multiple parents, skip np: cp=124:0:053 par=124:0:011 np=124:0:001
+ERR: Multiple parents, skip np: cp=125:0:009 par=125:0:006 np=125:0:003
+ERR: Multiple parents, skip np: cp=126:0:014 par=126:0:011 np=126:0:007
+ERR: Multiple parents, skip np: cp=128:0:017 par=128:0:006 np=128:0:002
+ERR: Multiple parents, skip np: cp=131:0:026 par=131:0:024 np=131:0:016
+ERR: Multiple parents, skip np: cp=131:0:028 par=131:0:024 np=131:0:016
+ERR: Multiple parents, skip np: cp=134:0:003 par=134:0:001 np=134:0:006
+ERR: Multiple parents, skip np: cp=137:0:003 par=137:0:001 np=137:0:006
+ERR: Multiple parents, skip np: cp=143:0:007 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:009 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:011 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:013 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:016 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:019 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:022 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:024 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:026 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:031 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:034 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:037 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:041 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:044 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:046 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:049 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=143:0:051 par=143:0:004 np=143:0:001
+ERR: Multiple parents, skip np: cp=145:0:034 par=145:0:029 np=145:0:009
+ERR: Multiple parents, skip np: cp=146:0:017 par=146:0:006 np=146:0:002
+ERR: Multiple parents, skip np: cp=149:0:026 par=149:0:024 np=149:0:016
+ERR: Multiple parents, skip np: cp=149:0:028 par=149:0:024 np=149:0:016
+ERR: Multiple parents, skip np: cp=152:0:003 par=152:0:001 np=152:0:006
+ERR: Multiple parents, skip np: cp=155:0:003 par=155:0:001 np=155:0:006
+ERR: Multiple parents, skip np: cp=161:0:007 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:009 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:011 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:013 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:016 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:019 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:022 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:024 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:026 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:031 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:034 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:037 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:041 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:044 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:046 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:049 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=161:0:051 par=161:0:004 np=161:0:001
+ERR: Multiple parents, skip np: cp=163:0:034 par=163:0:029 np=163:0:009
+ERR: Multiple parents, skip np: cp=164:0:015 par=164:0:013 np=164:0:011
+ERR: Multiple parents, skip np: cp=165:0:001 par=165:0:022 np=165:0:002
+ERR: Multiple parents, skip np: cp=166:0:015 par=166:0:013 np=166:0:011
+ERR: Multiple parents, skip np: cp=166:0:001 par=166:0:011 np=166:0:003
+ERR: Multiple parents, skip np: cp=168:0:011 par=168:0:008 np=168:0:006
+ERR: Multiple parents, skip np: cp=172:0:014 par=172:0:011 np=172:0:008
+ERR: Multiple parents, skip np: cp=173:0:010 par=173:0:007 np=173:0:004
+ERR: Multiple parents, skip np: cp=18:0:008 par=18:0:005 np=18:0:010
+ERR: Multiple parents, skip np: cp=181:0:030 par=181:0:028 np=181:0:026
+ERR: Multiple parents, skip np: cp=184:0:007 par=184:0:004 np=184:0:002
+ERR: Multiple parents, skip np: cp=184:0:010 par=184:0:004 np=184:0:002
+ERR: Multiple parents, skip np: cp=185:0:012 par=185:0:010 np=185:0:008
+ERR: Multiple parents, skip np: cp=185:0:014 par=185:0:010 np=185:0:008
+ERR: Multiple parents, skip np: cp=185:0:016 par=185:0:010 np=185:0:008
+ERR: Multiple parents, skip np: cp=187:0:004 par=187:0:002 np=187:0:007
+ERR: Multiple parents, skip np: cp=188:0:003 par=188:0:001 np=188:0:006
+ERR: Multiple parents, skip np: cp=19:0:009 par=19:0:007 np=19:0:006
+ERR: Multiple parents, skip np: cp=19:0:001 par=19:0:006 np=19:0:002
+ERR: Multiple parents, skip np: cp=21:0:006 par=21:0:002 np=21:0:008
+ERR: Multiple parents, skip np: cp=24:0:014 par=24:0:012 np=24:0:015
+ERR: Multiple parents, skip np: cp=25:0:011 par=25:0:009 np=25:0:012
+ERR: Multiple parents, skip np: cp=27:0:020 par=27:0:009 np=27:0:034
+ERR: Multiple parents, skip np: cp=33:0:004 par=33:0:001 np=33:0:007
+ERR: Multiple parents, skip np: cp=38:0:003 par=38:0:001 np=38:0:004
+ERR: Multiple parents, skip np: cp=4:0:005 par=4:0:002 np=4:0:010
+ERR: Multiple parents, skip np: cp=42:0:023 par=42:0:021 np=42:0:009
+ERR: Multiple parents, skip np: cp=43:0:018 par=43:0:016 np=43:0:014
+ERR: Multiple parents, skip np: cp=43:0:024 par=43:0:021 np=43:0:005
+ERR: Multiple parents, skip np: cp=44:0:015 par=44:0:012 np=44:0:017
+ERR: Multiple parents, skip np: cp=48:0:003 par=48:0:001 np=48:0:008
+ERR: Multiple parents, skip np: cp=48:0:005 par=48:0:001 np=48:0:008
+ERR: Multiple parents, skip np: cp=50:0:010 par=50:0:008 np=50:0:002
+ERR: Multiple parents, skip np: cp=50:0:013 par=50:0:008 np=50:0:002
+ERR: Multiple parents, skip np: cp=50:0:004 par=50:0:002 np=50:0:001
+ERR: Multiple parents, skip np: cp=50:0:008 par=50:0:002 np=50:0:001
+ERR: Multiple parents, skip np: cp=51:0:005 par=51:0:002 np=51:0:007
+ERR: Multiple parents, skip np: cp=56:0:022 par=56:0:015 np=56:0:031
+ERR: Multiple parents, skip np: cp=56:0:029 par=56:0:015 np=56:0:031
+ERR: Multiple parents, skip np: cp=56:0:031 par=56:0:009 np=56:0:001
+ERR: Multiple parents, skip np: cp=56:0:037 par=56:0:009 np=56:0:001
+ERR: Multiple parents, skip np: cp=56:0:043 par=56:0:009 np=56:0:001
+ERR: Multiple parents, skip np: cp=56:0:049 par=56:0:009 np=56:0:001
+ERR: Multiple parents, skip np: cp=61:0:007 par=61:0:004 np=61:0:003
+ERR: Multiple parents, skip np: cp=7:0:004 par=7:0:002 np=7:0:001
+ERR: Multiple parents, skip np: cp=73:0:007 par=73:0:005 np=73:0:008
+ERR: Multiple parents, skip np: cp=76:0:007 par=76:0:005 np=76:0:009
+ERR: Multiple parents, skip np: cp=79:0:006 par=79:0:004 np=79:0:003
+ERR: Multiple parents, skip np: cp=80:0:003 par=80:0:001 np=80:0:005
+ERR: Multiple parents, skip np: cp=83:0:006 par=83:0:004 np=83:0:002
+ERR: Multiple parents, skip np: cp=87:0:005 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:007 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:009 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:011 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:013 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:015 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:017 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:019 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:021 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:023 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:025 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:027 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:029 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:031 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:033 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:035 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:037 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:039 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:041 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:043 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=87:0:045 par=87:0:003 np=87:0:001
+ERR: Multiple parents, skip np: cp=88:0:013 par=88:0:011 np=88:0:009
+ERR: Multiple parents, skip np: cp=88:0:009 par=88:0:006 np=88:0:001
+ERR: Multiple parents, skip np: cp=88:0:005 par=88:0:003 np=88:0:001
+ERR: Multiple parents, skip np: cp=90:0:003 par=90:0:001 np=90:0:006
+ERR: Multiple parents, skip np: cp=92:0:030 par=92:0:028 np=92:0:027
+ERR: Multiple parents, skip np: cp=92:0:001 par=92:0:012 np=92:0:004
+<INFO> numSent=179 numTkn=2904
+<TIME> Init 0s
+<TIME> Merge args 0s
+<INFO> Create initial agenda ... clust=414
+<TIME> Create agenda 0s
+<ProcAgenda> ...
+<INFO> Initial agenda MC=1434 ABS=196
+<INFO> Initial agenda to score=0
+<INFO> Agenda scored=0 (0s)
+<INFO> Agenda MC executed=0 (0s)
+<INFO> Agenda Compose executed=0 (0s)
+<TIME> Proc agenda 0s

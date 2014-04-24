@@ -1,0 +1,5288 @@
+100:0:001	hydrolyses
+	18	[(N:hydrolyses):2]
+	
+	
+100:0:002	c9-polysaccharides
+	19	[(N:c9-polysaccharides):9]
+	100:0:001	18	[(N:hydrolyses):2]
+	0	4	<dep>
+100:0:004	dna
+	20	[(N:dna):9]
+	100:0:002	19	[(N:c9-polysaccharides):9]
+	0	6	<conj_and>
+100:0:008	agar
+	21	[(N:agar):11]
+	100:0:002	19	[(N:c9-polysaccharides):9]
+	1	10	<conj_negcc>
+100:0:010	c9-polysaccharides
+	19	[(N:c9-polysaccharides):9]
+	100:0:008	21	[(N:agar):11]
+	3	0	<conj_or>
+100:0:012	tween
+	22	[(N:tween):2]
+	100:0:013	23	[(N:compounds):2]
+	0	11	<nn>
+100:0:013	compounds
+	23	[(N:compounds):2]
+	100:0:008	21	[(N:agar):11]
+	3	0	<conj_or>
+101:0:001	cells
+	1	[(N:cells):24]
+	101:0:006	26	[(J:heavy):1]
+	0	3	<nsubj>
+101:0:003	not
+	24	[(R:not):32]
+	101:0:004	25	[(J:c2-cell-shape):4]
+	2	12	<neg>
+101:0:004	c2-cell-shape
+	25	[(J:c2-cell-shape):4]
+	
+	
+101:0:006	heavy
+	26	[(J:heavy):1]
+	101:0:004	25	[(J:c2-cell-shape):4]
+	0	6	<conj_and>
+102:0:001	it
+	27	[(PRP:it):1]
+	102:0:002	28	[(V:has):1]
+	1	3	<nsubj>
+102:0:002	has
+	28	[(V:has):1]
+	
+	
+102:0:004	c7-tests
+	29	[(N:c7-tests):25]
+	102:0:002	28	[(V:has):1]
+	1	2	<dobj>
+102:0:006	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	102:0:007	29	[(N:c7-tests):25]
+	1	11	<nn>
+102:0:007	c7-tests
+	29	[(N:c7-tests):25]
+	102:0:004	29	[(N:c7-tests):25]
+	1	0	<conj_or>
+102:0:009	c7-tests
+	31	[(J:c7-tests):2]
+	102:0:010	32	[(N:activity):1]
+	0	9	<amod>
+102:0:010	activity
+	32	[(N:activity):1]
+	102:0:004	29	[(N:c7-tests):25]
+	1	0	<conj_or>
+103:0:001	cells
+	1	[(N:cells):24]
+	103:0:005	34	[(N:c2-internal-features):7]
+	3	3	<nsubj>
+103:0:003	gram-negative
+	33	[(J:gram-negative):10]
+	103:0:005	34	[(N:c2-internal-features):7]
+	0	9	<amod>
+103:0:004	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	103:0:005	34	[(N:c2-internal-features):7]
+	2	11	<nn>
+103:0:005	c2-internal-features
+	34	[(N:c2-internal-features):7]
+	
+	
+103:0:007	c2-motility
+	35	[(N:c2-motility):12]
+	103:0:005	34	[(N:c2-internal-features):7]
+	1	6	<conj_and>
+103:0:009	swimming
+	36	[(V:swimming):1]
+	103:0:005	34	[(N:c2-internal-features):7]
+	4	13	<prepc_by>
+103:0:011	broth
+	37	[(N:broth):2]
+	103:0:012	38	[(N:cultures):1]
+	0	11	<nn>
+103:0:012	cultures
+	38	[(N:cultures):1]
+	103:0:009	36	[(V:swimming):1]
+	0	14	<prep_in>
+104:0:001	cells
+	1	[(N:cells):24]
+	104:0:005	34	[(N:c2-internal-features):7]
+	3	3	<nsubj>
+104:0:003	gram-negative
+	33	[(J:gram-negative):10]
+	104:0:005	34	[(N:c2-internal-features):7]
+	0	9	<amod>
+104:0:004	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	104:0:005	34	[(N:c2-internal-features):7]
+	2	11	<nn>
+104:0:005	c2-internal-features
+	34	[(N:c2-internal-features):7]
+	
+	
+104:0:007	c2-motility
+	35	[(N:c2-motility):12]
+	104:0:005	34	[(N:c2-internal-features):7]
+	1	6	<conj_and>
+105:0:001	catalase
+	39	[(N:catalase):3]
+	
+	
+105:0:004	c7-tests
+	29	[(N:c7-tests):25]
+	105:0:001	39	[(N:catalase):3]
+	0	6	<conj_and>
+106:0:001	cellular
+	40	[(J:cellular):5]
+	106:0:003	42	[(N:acids):5]
+	0	9	<amod>
+106:0:002	fatty
+	41	[(J:fatty):10]
+	106:0:003	42	[(N:acids):5]
+	0	9	<amod>
+106:0:003	acids
+	42	[(N:acids):5]
+	106:0:005	43	[(J:iso-15):2]
+	1	3	<nsubj>
+106:0:005	iso-15
+	43	[(J:iso-15):2]
+	
+	
+106:0:007	predominant
+	44	[(J:predominant):3]
+	106:0:005	43	[(J:iso-15):2]
+	0	4	<dep>
+106:0:008	0
+	2	[(CD:0):68]
+	106:0:007	44	[(J:predominant):3]
+	0	15	<tmod>
+106:0:009	0
+	2	[(CD:0):68]
+	106:0:007	44	[(J:predominant):3]
+	0	5	<num>
+106:0:010	16
+	45	[(CD:16):3]
+	106:0:011	2	[(CD:0):68]
+	1	5	<num>
+106:0:011	0
+	2	[(CD:0):68]
+	106:0:007	44	[(J:predominant):3]
+	0	5	<num>
+106:0:013	18
+	46	[(CD:18):4]
+	106:0:014	2	[(CD:0):68]
+	1	5	<num>
+106:0:014	0
+	2	[(CD:0):68]
+	106:0:011	2	[(CD:0):68]
+	4	6	<conj_and>
+107:0:001	0
+	2	[(CD:0):68]
+	107:0:003	47	[(N:anteiso-15):2]
+	0	3	<nsubj>
+107:0:003	anteiso-15
+	47	[(N:anteiso-15):2]
+	
+	
+108:0:002	predominant
+	44	[(J:predominant):3]
+	108:0:004	49	[(N:quinone):3]
+	0	9	<amod>
+108:0:003	respiratory
+	48	[(J:respiratory):5]
+	108:0:004	49	[(N:quinone):3]
+	0	9	<amod>
+108:0:004	quinone
+	49	[(N:quinone):3]
+	108:0:006	50	[(N:mk-6):2]
+	0	3	<nsubj>
+108:0:006	mk-6
+	50	[(N:mk-6):2]
+	
+	
+109:0:002	dna
+	20	[(N:dna):9]
+	109:0:004	52	[(N:content):7]
+	0	11	<nn>
+109:0:003	g+c
+	51	[(N:g+c):7]
+	109:0:004	52	[(N:content):7]
+	0	11	<nn>
+109:0:004	content
+	52	[(N:content):7]
+	109:0:016	58	[(N:%):20]
+	3	3	<nsubj>
+109:0:007	type
+	53	[(N:type):7]
+	109:0:008	54	[(N:strain):7]
+	0	11	<nn>
+109:0:008	strain
+	54	[(N:strain):7]
+	109:0:004	52	[(N:content):7]
+	1	16	<prep_of>
+109:0:011	type
+	53	[(N:type):7]
+	109:0:012	55	[(N:species):3]
+	0	11	<nn>
+109:0:012	species
+	55	[(N:species):3]
+	109:0:008	54	[(N:strain):7]
+	1	16	<prep_of>
+109:0:014	41.5
+	56	[(CD:41.5):1]
+	109:0:015	57	[(N:mol):7]
+	0	17	<number>
+109:0:015	mol
+	57	[(N:mol):7]
+	109:0:016	58	[(N:%):20]
+	2	5	<num>
+109:0:016	%
+	58	[(N:%):20]
+	
+	
+10:0:001	elemental
+	13	[(J:elemental):1]
+	10:0:002	14	[(N:c9-inorganic):1]
+	0	9	<amod>
+10:0:002	c9-inorganic
+	14	[(N:c9-inorganic):1]
+	10:0:004	15	[(V:reduced):7]
+	1	7	<nsubjpass>
+10:0:004	reduced
+	15	[(V:reduced):7]
+	
+	
+10:0:006	c9-inorganic
+	16	[(J:c9-inorganic):4]
+	10:0:004	15	[(V:reduced):7]
+	3	8	<prep_to>
+10:0:008	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	10:0:010	15	[(V:reduced):7]
+	1	7	<nsubjpass>
+10:0:010	reduced
+	15	[(V:reduced):7]
+	10:0:004	15	[(V:reduced):7]
+	0	6	<conj_and>
+10:0:012	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	10:0:010	15	[(V:reduced):7]
+	3	8	<prep_to>
+110:0:001	cells
+	1	[(N:cells):24]
+	110:0:020	69	[(V:surrounded):1]
+	1	7	<nsubjpass>
+110:0:003	facultatively
+	62	[(R:facultatively):1]
+	110:0:004	63	[(N:c3-oxygen-use):9]
+	0	19	<advmod>
+110:0:004	c3-oxygen-use
+	63	[(N:c3-oxygen-use):9]
+	
+	
+110:0:007	1.0
+	64	[(CD:1.0):4]
+	110:0:004	63	[(N:c3-oxygen-use):9]
+	2	20	<appos>
+110:0:009	1.5
+	65	[(CD:1.5):1]
+	110:0:011	11	[(N:c2-cell-shape):19]
+	2	5	<num>
+110:0:010	μm
+	9	[(N:μm):17]
+	110:0:011	11	[(N:c2-cell-shape):19]
+	1	11	<nn>
+110:0:011	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	110:0:007	64	[(CD:1.0):4]
+	0	4	<dep>
+110:0:013	0.4
+	66	[(CD:0.4):1]
+	110:0:011	11	[(N:c2-cell-shape):19]
+	0	6	<conj_and>
+110:0:015	0.6
+	67	[(CD:0.6):1]
+	110:0:016	9	[(N:μm):17]
+	0	5	<num>
+110:0:016	μm
+	9	[(N:μm):17]
+	110:0:007	64	[(CD:1.0):4]
+	0	4	<dep>
+110:0:018	diameter
+	68	[(N:diameter):7]
+	110:0:004	63	[(N:c3-oxygen-use):9]
+	5	14	<prep_in>
+110:0:020	surrounded
+	69	[(V:surrounded):1]
+	110:0:004	63	[(N:c3-oxygen-use):9]
+	2	6	<conj_and>
+110:0:022	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	110:0:020	69	[(V:surrounded):1]
+	1	21	<prep_by>
+110:0:024	relatively
+	70	[(R:relatively):1]
+	110:0:025	71	[(J:thick):1]
+	0	19	<advmod>
+110:0:025	thick
+	71	[(J:thick):1]
+	110:0:026	72	[(N:appendages):1]
+	0	9	<amod>
+110:0:026	appendages
+	72	[(N:appendages):1]
+	110:0:022	11	[(N:c2-cell-shape):19]
+	0	6	<conj_and>
+111:0:002	growth
+	73	[(N:growth):17]
+	111:0:003	74	[(V:occurs):4]
+	1	3	<nsubj>
+111:0:003	occurs
+	74	[(V:occurs):4]
+	
+	
+111:0:004	at
+	75	[(IN:at):1]
+	111:0:005	76	[(CD:4):10]
+	2	9	<amod>
+111:0:005	4
+	76	[(CD:4):10]
+	111:0:003	74	[(V:occurs):4]
+	2	2	<dobj>
+111:0:007	40
+	59	[(CD:40):6]
+	111:0:008	77	[(CD:°):12]
+	3	5	<num>
+111:0:008	°
+	77	[(CD:°):12]
+	111:0:005	76	[(CD:4):10]
+	2	0	<conj_or>
+111:0:009	c.
+	78	[(N:c.):7]
+	111:0:010	73	[(N:growth):17]
+	3	11	<nn>
+111:0:010	growth
+	73	[(N:growth):17]
+	111:0:011	74	[(V:occurs):4]
+	1	3	<nsubj>
+111:0:011	occurs
+	74	[(V:occurs):4]
+	111:0:005	76	[(CD:4):10]
+	2	18	<rcmod>
+111:0:013	18
+	46	[(CD:18):4]
+	111:0:011	74	[(V:occurs):4]
+	2	24	<prep_at>
+111:0:015	37
+	79	[(CD:37):6]
+	111:0:016	77	[(CD:°):12]
+	3	17	<number>
+111:0:016	°
+	77	[(CD:°):12]
+	111:0:005	76	[(CD:4):10]
+	2	0	<conj_or>
+111:0:017	c
+	80	[(N:c):11]
+	111:0:016	77	[(CD:°):12]
+	4	4	<dep>
+111:0:020	30
+	81	[(CD:30):13]
+	111:0:022	80	[(N:c):11]
+	1	5	<num>
+111:0:021	°
+	82	[(N:°):6]
+	111:0:022	80	[(N:c):11]
+	0	11	<nn>
+111:0:022	c
+	80	[(N:c):11]
+	111:0:016	77	[(CD:°):12]
+	4	20	<appos>
+111:0:026	0
+	2	[(CD:0):68]
+	111:0:016	77	[(CD:°):12]
+	4	23	<prep_with>
+111:0:028	3
+	83	[(CD:3):5]
+	111:0:029	58	[(N:%):20]
+	2	17	<number>
+111:0:029	%
+	58	[(N:%):20]
+	111:0:030	84	[(N:nacl):7]
+	0	9	<amod>
+111:0:030	nacl
+	84	[(N:nacl):7]
+	111:0:005	76	[(CD:4):10]
+	2	0	<conj_or>
+111:0:032	optimum
+	85	[(N:optimum):6]
+	111:0:030	84	[(N:nacl):7]
+	1	4	<dep>
+111:0:033	0
+	2	[(CD:0):68]
+	111:0:034	58	[(N:%):20]
+	2	5	<num>
+111:0:034	%
+	58	[(N:%):20]
+	111:0:032	85	[(N:optimum):6]
+	1	4	<dep>
+111:0:035	nacl
+	84	[(N:nacl):7]
+	111:0:034	58	[(N:%):20]
+	3	4	<dep>
+111:0:039	ph
+	86	[(N:ph):9]
+	111:0:030	84	[(N:nacl):7]
+	2	24	<prep_at>
+111:0:040	6
+	87	[(CD:6):11]
+	111:0:039	86	[(N:ph):9]
+	0	5	<num>
+111:0:042	12
+	88	[(CD:12):2]
+	111:0:005	76	[(CD:4):10]
+	2	0	<conj_or>
+111:0:044	optimum
+	89	[(J:optimum):5]
+	111:0:045	86	[(N:ph):9]
+	2	9	<amod>
+111:0:045	ph
+	86	[(N:ph):9]
+	111:0:042	88	[(CD:12):2]
+	0	4	<dep>
+111:0:046	7
+	4	[(CD:7):9]
+	111:0:045	86	[(N:ph):9]
+	0	5	<num>
+111:0:048	8
+	60	[(CD:8):14]
+	111:0:045	86	[(N:ph):9]
+	2	4	<dep>
+111:0:051	on
+	90	[(IN:on):1]
+	111:0:063	21	[(N:agar):11]
+	3	22	<prep>
+111:0:052	tsb\/10
+	91	[(N:tsb\/10):1]
+	111:0:051	90	[(IN:on):1]
+	1	1	<pobj>
+111:0:054	tgy
+	92	[(N:tgy):1]
+	111:0:052	91	[(N:tsb\/10):1]
+	0	6	<conj_and>
+111:0:056	na
+	93	[(N:na):1]
+	111:0:052	91	[(N:tsb\/10):1]
+	0	6	<conj_and>
+111:0:058	tsa
+	94	[(N:tsa):1]
+	111:0:052	91	[(N:tsb\/10):1]
+	0	6	<conj_and>
+111:0:062	macconkey
+	95	[(N:macconkey):1]
+	111:0:051	90	[(IN:on):1]
+	1	10	<conj_negcc>
+111:0:063	agar
+	21	[(N:agar):11]
+	111:0:005	76	[(CD:4):10]
+	2	6	<conj_and>
+112:0:001	colonies
+	96	[(N:colonies):13]
+	112:0:003	97	[(J:circular):6]
+	1	3	<nsubj>
+112:0:003	circular
+	97	[(J:circular):6]
+	
+	
+112:0:005	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	112:0:006	98	[(N:edges):2]
+	1	11	<nn>
+112:0:006	edges
+	98	[(N:edges):2]
+	112:0:003	97	[(J:circular):6]
+	1	23	<prep_with>
+113:0:001	regular
+	99	[(J:regular):1]
+	113:0:002	98	[(N:edges):2]
+	1	9	<amod>
+113:0:002	edges
+	98	[(N:edges):2]
+	113:0:007	102	[(J:yellow):3]
+	1	3	<nsubj>
+113:0:004	mucoid
+	100	[(J:mucoid):1]
+	
+	
+113:0:006	pale
+	101	[(J:pale):1]
+	113:0:007	102	[(J:yellow):3]
+	0	9	<amod>
+113:0:007	yellow
+	102	[(J:yellow):3]
+	113:0:004	100	[(J:mucoid):1]
+	0	6	<conj_and>
+114:0:001	flexirubin-type
+	103	[(J:flexirubin-type):1]
+	114:0:002	104	[(N:c3-pigements):11]
+	0	9	<amod>
+114:0:002	c3-pigements
+	104	[(N:c3-pigements):11]
+	114:0:005	105	[(V:produced):12]
+	1	7	<nsubjpass>
+114:0:004	not
+	24	[(R:not):32]
+	114:0:005	105	[(V:produced):12]
+	0	12	<neg>
+114:0:005	produced
+	105	[(V:produced):12]
+	
+	
+115:0:002	c7-tests
+	29	[(N:c7-tests):25]
+	115:0:003	74	[(V:occurs):4]
+	1	3	<nsubj>
+115:0:003	occurs
+	74	[(V:occurs):4]
+	
+	
+115:0:005	5
+	7	[(CD:5):7]
+	115:0:006	58	[(N:%):20]
+	2	17	<number>
+115:0:006	%
+	58	[(N:%):20]
+	115:0:008	21	[(N:agar):11]
+	2	9	<amod>
+115:0:007	c8-pathogen-target-organ
+	106	[(N:c8-pathogen-target-organ):4]
+	115:0:008	21	[(N:agar):11]
+	3	11	<nn>
+115:0:008	agar
+	21	[(N:agar):11]
+	115:0:003	74	[(V:occurs):4]
+	2	25	<prep_on>
+117:0:001	methyl
+	107	[(N:methyl):1]
+	
+	
+117:0:002	red
+	108	[(J:red):1]
+	117:0:001	107	[(N:methyl):1]
+	0	4	<dep>
+117:0:003	negative
+	109	[(J:negative):6]
+	117:0:001	107	[(N:methyl):1]
+	0	4	<dep>
+118:0:001	nitrate
+	110	[(N:nitrate):3]
+	118:0:004	15	[(V:reduced):7]
+	1	7	<nsubjpass>
+118:0:003	not
+	24	[(R:not):32]
+	118:0:004	15	[(V:reduced):7]
+	3	12	<neg>
+118:0:004	reduced
+	15	[(V:reduced):7]
+	
+	
+11:0:002	g+c
+	51	[(N:g+c):7]
+	11:0:003	52	[(N:content):7]
+	0	11	<nn>
+11:0:003	content
+	52	[(N:content):7]
+	11:0:013	3	[(N:·):35]
+	2	3	<nsubj>
+11:0:006	dna
+	20	[(N:dna):9]
+	11:0:003	52	[(N:content):7]
+	1	16	<prep_of>
+11:0:009	type
+	53	[(N:type):7]
+	11:0:010	54	[(N:strain):7]
+	0	11	<nn>
+11:0:010	strain
+	54	[(N:strain):7]
+	11:0:006	20	[(N:dna):9]
+	0	16	<prep_of>
+11:0:012	40
+	59	[(CD:40):6]
+	11:0:013	3	[(N:·):35]
+	1	5	<num>
+11:0:013	·
+	3	[(N:·):35]
+	
+	
+11:0:014	8
+	60	[(CD:8):14]
+	11:0:015	57	[(N:mol):7]
+	0	17	<number>
+11:0:015	mol
+	57	[(N:mol):7]
+	11:0:016	58	[(N:%):20]
+	2	5	<num>
+11:0:016	%
+	58	[(N:%):20]
+	11:0:018	61	[(N:hplc):1]
+	0	3	<nsubj>
+11:0:018	hplc
+	61	[(N:hplc):1]
+	11:0:013	3	[(N:·):35]
+	5	18	<rcmod>
+121:0:002	api
+	111	[(N:api):1]
+	121:0:004	113	[(N:strips):1]
+	0	11	<nn>
+121:0:003	zym
+	112	[(N:zym):1]
+	121:0:004	113	[(N:strips):1]
+	0	11	<nn>
+121:0:004	strips
+	113	[(N:strips):1]
+	121:0:040	124	[(J:present):2]
+	1	26	<prep_from>
+121:0:005	incubated
+	114	[(V:incubated):1]
+	121:0:004	113	[(N:strips):1]
+	0	27	<partmod>
+121:0:007	4
+	76	[(CD:4):10]
+	121:0:008	115	[(N:h):1]
+	0	5	<num>
+121:0:008	h
+	115	[(N:h):1]
+	121:0:005	114	[(V:incubated):1]
+	1	28	<prep_for>
+121:0:010	30
+	81	[(CD:30):13]
+	121:0:017	118	[(N:phosphatases):1]
+	2	5	<num>
+121:0:011	°
+	77	[(CD:°):12]
+	121:0:017	118	[(N:phosphatases):1]
+	2	5	<num>
+121:0:012	c
+	80	[(N:c):11]
+	121:0:017	118	[(N:phosphatases):1]
+	2	11	<nn>
+121:0:014	alkaline
+	116	[(N:alkaline):1]
+	121:0:012	80	[(N:c):11]
+	9	6	<conj_and>
+121:0:016	acid
+	117	[(N:acid):10]
+	121:0:012	80	[(N:c):11]
+	9	6	<conj_and>
+121:0:017	phosphatases
+	118	[(N:phosphatases):1]
+	121:0:005	114	[(V:incubated):1]
+	1	24	<prep_at>
+121:0:019	c7-tests
+	29	[(N:c7-tests):25]
+	121:0:017	118	[(N:phosphatases):1]
+	2	20	<appos>
+121:0:021	c4
+	119	[(N:c4):1]
+	121:0:019	29	[(N:c7-tests):25]
+	1	20	<appos>
+121:0:024	c7-tests
+	29	[(N:c7-tests):25]
+	121:0:019	29	[(N:c7-tests):25]
+	1	20	<appos>
+121:0:026	c8
+	120	[(N:c8):1]
+	121:0:024	29	[(N:c7-tests):25]
+	1	20	<appos>
+121:0:029	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	121:0:040	124	[(J:present):2]
+	0	3	<nsubj>
+121:0:031	c7-tests
+	29	[(N:c7-tests):25]
+	121:0:029	30	[(N:c9-amino-acids):26]
+	0	6	<conj_and>
+121:0:033	α-chymotrypsin
+	121	[(N:α-chymotrypsin):1]
+	121:0:029	30	[(N:c9-amino-acids):26]
+	0	6	<conj_and>
+121:0:035	naphthol-as-bi-phosphohydrolase
+	122	[(N:naphthol-as-bi-phosphohydrolase):1]
+	121:0:029	30	[(N:c9-amino-acids):26]
+	0	6	<conj_and>
+121:0:037	c7-tests
+	29	[(N:c7-tests):25]
+	121:0:038	123	[(N:activities):6]
+	0	11	<nn>
+121:0:038	activities
+	123	[(N:activities):6]
+	121:0:029	30	[(N:c9-amino-acids):26]
+	0	6	<conj_and>
+121:0:040	present
+	124	[(J:present):2]
+	
+	
+124:0:001	resistant
+	125	[(J:resistant):6]
+	
+	
+124:0:002	to
+	126	[(TO:to):2]
+	124:0:001	125	[(J:resistant):6]
+	1	30	<infmod>
+124:0:004	μg
+	127	[(N:μg):8]
+	124:0:001	125	[(J:resistant):6]
+	2	4	<dep>
+124:0:006	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	124:0:004	127	[(N:μg):8]
+	1	29	<prep_per>
+124:0:008	otherwise
+	128	[(R:otherwise):1]
+	124:0:009	129	[(V:indicated):1]
+	0	19	<advmod>
+124:0:009	indicated
+	129	[(V:indicated):1]
+	124:0:006	11	[(N:c2-cell-shape):19]
+	1	4	<dep>
+124:0:011	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	124:0:001	125	[(J:resistant):6]
+	2	4	<dep>
+124:0:013	10
+	131	[(CD:10):9]
+	124:0:014	132	[(N:iu):2]
+	0	5	<num>
+124:0:014	iu
+	132	[(N:iu):2]
+	124:0:011	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+124:0:017	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	124:0:011	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+124:0:019	15
+	133	[(CD:15):6]
+	124:0:017	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+124:0:022	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	124:0:011	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+124:0:024	300
+	134	[(CD:300):2]
+	124:0:022	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+124:0:027	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	124:0:028	135	[(N:sodium):1]
+	1	11	<nn>
+124:0:028	sodium
+	135	[(N:sodium):1]
+	124:0:011	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+124:0:030	1
+	5	[(CD:1):10]
+	124:0:028	135	[(N:sodium):1]
+	1	20	<appos>
+124:0:033	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	124:0:011	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+124:0:035	30
+	81	[(CD:30):13]
+	124:0:033	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+124:0:038	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	124:0:011	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+124:0:040	30
+	81	[(CD:30):13]
+	124:0:038	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+124:0:043	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	124:0:011	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+124:0:045	10
+	131	[(CD:10):9]
+	124:0:043	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+124:0:048	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	124:0:011	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+124:0:050	30
+	81	[(CD:30):13]
+	124:0:048	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+124:0:053	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	124:0:011	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+124:0:055	10
+	131	[(CD:10):9]
+	124:0:053	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+125:0:002	dominant
+	136	[(J:dominant):2]
+	125:0:003	2	[(CD:0):68]
+	1	9	<amod>
+125:0:003	0
+	2	[(CD:0):68]
+	125:0:012	138	[(J:>):2]
+	2	3	<nsubj>
+125:0:004	0
+	2	[(CD:0):68]
+	125:0:003	2	[(CD:0):68]
+	3	4	<dep>
+125:0:005	16
+	45	[(CD:16):3]
+	125:0:006	2	[(CD:0):68]
+	1	5	<num>
+125:0:006	0
+	2	[(CD:0):68]
+	125:0:003	2	[(CD:0):68]
+	3	4	<dep>
+125:0:008	18
+	46	[(CD:18):4]
+	125:0:009	2	[(CD:0):68]
+	1	5	<num>
+125:0:009	0
+	2	[(CD:0):68]
+	125:0:006	2	[(CD:0):68]
+	4	6	<conj_and>
+125:0:011	i.e.
+	137	[(FW:i.e.):1]
+	125:0:012	138	[(J:>):2]
+	2	4	<dep>
+125:0:012	>
+	138	[(J:>):2]
+	
+	
+125:0:013	9
+	139	[(CD:9):2]
+	125:0:014	58	[(N:%):20]
+	2	17	<number>
+125:0:014	%
+	58	[(N:%):20]
+	125:0:012	138	[(J:>):2]
+	2	9	<amod>
+126:0:001	cellular
+	40	[(J:cellular):5]
+	126:0:003	42	[(N:acids):5]
+	0	9	<amod>
+126:0:002	fatty
+	41	[(J:fatty):10]
+	126:0:003	42	[(N:acids):5]
+	0	9	<amod>
+126:0:003	acids
+	42	[(N:acids):5]
+	126:0:005	43	[(J:iso-15):2]
+	1	3	<nsubj>
+126:0:005	iso-15
+	43	[(J:iso-15):2]
+	
+	
+126:0:007	dominant
+	136	[(J:dominant):2]
+	126:0:005	43	[(J:iso-15):2]
+	0	4	<dep>
+126:0:008	0
+	2	[(CD:0):68]
+	126:0:007	136	[(J:dominant):2]
+	0	15	<tmod>
+126:0:009	0
+	2	[(CD:0):68]
+	126:0:007	136	[(J:dominant):2]
+	0	5	<num>
+126:0:010	16
+	45	[(CD:16):3]
+	126:0:011	2	[(CD:0):68]
+	1	5	<num>
+126:0:011	0
+	2	[(CD:0):68]
+	126:0:007	136	[(J:dominant):2]
+	0	5	<num>
+126:0:013	18
+	46	[(CD:18):4]
+	126:0:014	2	[(CD:0):68]
+	1	5	<num>
+126:0:014	0
+	2	[(CD:0):68]
+	126:0:011	2	[(CD:0):68]
+	4	6	<conj_and>
+127:0:001	0
+	2	[(CD:0):68]
+	127:0:003	47	[(N:anteiso-15):2]
+	0	3	<nsubj>
+127:0:003	anteiso-15
+	47	[(N:anteiso-15):2]
+	
+	
+128:0:001	cells
+	1	[(N:cells):24]
+	128:0:002	140	[(V:stain):2]
+	2	3	<nsubj>
+128:0:002	stain
+	140	[(V:stain):2]
+	
+	
+128:0:003	gram-negative
+	33	[(J:gram-negative):10]
+	128:0:002	140	[(V:stain):2]
+	0	31	<acomp>
+128:0:006	c2-internal-features
+	34	[(N:c2-internal-features):7]
+	128:0:002	140	[(V:stain):2]
+	1	6	<conj_and>
+128:0:008	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	128:0:006	34	[(N:c2-internal-features):7]
+	0	20	<appos>
+128:0:010	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	128:0:008	11	[(N:c2-cell-shape):19]
+	1	8	<prep_to>
+128:0:012	round
+	141	[(J:round):3]
+	128:0:013	142	[(N:ends):4]
+	0	9	<amod>
+128:0:013	ends
+	142	[(N:ends):4]
+	128:0:010	11	[(N:c2-cell-shape):19]
+	1	23	<prep_with>
+128:0:016	strictly
+	143	[(R:strictly):4]
+	128:0:017	63	[(N:c3-oxygen-use):9]
+	0	19	<advmod>
+128:0:017	c3-oxygen-use
+	63	[(N:c3-oxygen-use):9]
+	128:0:006	34	[(N:c2-internal-features):7]
+	1	6	<conj_and>
+129:0:001	cells
+	1	[(N:cells):24]
+	129:0:009	9	[(N:μm):17]
+	2	3	<nsubj>
+129:0:003	approximately
+	144	[(R:approximately):2]
+	129:0:009	9	[(N:μm):17]
+	1	19	<advmod>
+129:0:004	0.5
+	145	[(CD:0.5):4]
+	129:0:005	146	[(CD:0.7):2]
+	0	17	<number>
+129:0:005	0.7
+	146	[(CD:0.7):2]
+	129:0:006	6	[(N:×):7]
+	1	5	<num>
+129:0:006	×
+	6	[(N:×):7]
+	129:0:003	144	[(R:approximately):2]
+	0	1	<pobj>
+129:0:007	1.0
+	64	[(CD:1.0):4]
+	129:0:008	147	[(CD:3.8):4]
+	0	17	<number>
+129:0:008	3.8
+	147	[(CD:3.8):4]
+	129:0:009	9	[(N:μm):17]
+	0	5	<num>
+129:0:009	μm
+	9	[(N:μm):17]
+	
+	
+12:0:002	g+c
+	51	[(N:g+c):7]
+	12:0:003	52	[(N:content):7]
+	0	11	<nn>
+12:0:003	content
+	52	[(N:content):7]
+	12:0:013	3	[(N:·):35]
+	2	3	<nsubj>
+12:0:006	dna
+	20	[(N:dna):9]
+	12:0:003	52	[(N:content):7]
+	1	16	<prep_of>
+12:0:009	type
+	53	[(N:type):7]
+	12:0:010	54	[(N:strain):7]
+	0	11	<nn>
+12:0:010	strain
+	54	[(N:strain):7]
+	12:0:006	20	[(N:dna):9]
+	0	16	<prep_of>
+12:0:012	40
+	59	[(CD:40):6]
+	12:0:013	3	[(N:·):35]
+	1	5	<num>
+12:0:013	·
+	3	[(N:·):35]
+	
+	
+12:0:014	8
+	60	[(CD:8):14]
+	12:0:016	58	[(N:%):20]
+	2	17	<number>
+12:0:015	mol
+	57	[(N:mol):7]
+	12:0:016	58	[(N:%):20]
+	3	4	<dep>
+12:0:016	%
+	58	[(N:%):20]
+	12:0:013	3	[(N:·):35]
+	0	9	<amod>
+130:0:001	3.8
+	147	[(CD:3.8):4]
+	130:0:003	9	[(N:μm):17]
+	2	3	<nsubj>
+130:0:003	μm
+	9	[(N:μm):17]
+	
+	
+131:0:002	growth
+	73	[(N:growth):17]
+	131:0:016	152	[(CD:0.1):2]
+	3	33	<prep_after>
+131:0:004	4
+	76	[(CD:4):10]
+	131:0:005	148	[(N:days):5]
+	0	5	<num>
+131:0:005	days
+	148	[(N:days):5]
+	131:0:002	73	[(N:growth):17]
+	3	28	<prep_for>
+131:0:007	c3-oxygen-use
+	63	[(N:c3-oxygen-use):9]
+	131:0:008	149	[(N:incubation):4]
+	0	11	<nn>
+131:0:008	incubation
+	149	[(N:incubation):4]
+	131:0:005	148	[(N:days):5]
+	1	23	<prep_with>
+131:0:010	modified
+	150	[(V:modified):2]
+	131:0:012	21	[(N:agar):11]
+	2	9	<amod>
+131:0:011	gam
+	151	[(N:gam):2]
+	131:0:012	21	[(N:agar):11]
+	3	11	<nn>
+131:0:012	agar
+	21	[(N:agar):11]
+	131:0:008	149	[(N:incubation):4]
+	1	25	<prep_on>
+131:0:014	colonies
+	96	[(N:colonies):13]
+	131:0:016	152	[(CD:0.1):2]
+	2	3	<nsubj>
+131:0:016	0.1
+	152	[(CD:0.1):2]
+	
+	
+131:0:018	0.5
+	145	[(CD:0.5):4]
+	131:0:019	153	[(N:mm):5]
+	0	5	<num>
+131:0:019	mm
+	153	[(N:mm):5]
+	131:0:016	152	[(CD:0.1):2]
+	1	4	<dep>
+131:0:021	diameter
+	68	[(N:diameter):7]
+	131:0:019	153	[(N:mm):5]
+	1	14	<prep_in>
+131:0:023	slightly
+	154	[(R:slightly):4]
+	131:0:024	155	[(J:opaque):3]
+	0	19	<advmod>
+131:0:024	opaque
+	155	[(J:opaque):3]
+	131:0:016	152	[(CD:0.1):2]
+	0	9	<amod>
+131:0:026	circular
+	97	[(J:circular):6]
+	131:0:024	155	[(J:opaque):3]
+	1	6	<conj_and>
+131:0:028	gray
+	156	[(J:gray):3]
+	131:0:024	155	[(J:opaque):3]
+	1	6	<conj_and>
+133:0:001	not
+	24	[(R:not):32]
+	
+	
+133:0:002	resistant
+	125	[(J:resistant):6]
+	133:0:001	24	[(R:not):32]
+	0	4	<dep>
+133:0:004	20
+	157	[(CD:20):4]
+	133:0:005	58	[(N:%):20]
+	2	17	<number>
+133:0:005	%
+	58	[(N:%):20]
+	133:0:006	158	[(N:bile):3]
+	0	9	<amod>
+133:0:006	bile
+	158	[(N:bile):3]
+	133:0:002	125	[(J:resistant):6]
+	2	8	<prep_to>
+134:0:001	aesculin
+	159	[(N:aesculin):4]
+	134:0:006	160	[(V:hydrolysed):6]
+	2	7	<nsubjpass>
+134:0:003	c9-polysaccharides
+	19	[(N:c9-polysaccharides):9]
+	134:0:001	159	[(N:aesculin):4]
+	0	6	<conj_and>
+134:0:005	not
+	24	[(R:not):32]
+	134:0:006	160	[(V:hydrolysed):6]
+	1	12	<neg>
+134:0:006	hydrolysed
+	160	[(V:hydrolysed):6]
+	
+	
+134:0:008	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	134:0:011	15	[(V:reduced):7]
+	1	7	<nsubjpass>
+134:0:010	not
+	24	[(R:not):32]
+	134:0:011	15	[(V:reduced):7]
+	3	12	<neg>
+134:0:011	reduced
+	15	[(V:reduced):7]
+	134:0:006	160	[(V:hydrolysed):6]
+	0	6	<conj_and>
+135:0:001	indole
+	161	[(N:indole):3]
+	135:0:004	105	[(V:produced):12]
+	1	7	<nsubjpass>
+135:0:003	not
+	24	[(R:not):32]
+	135:0:004	105	[(V:produced):12]
+	0	12	<neg>
+135:0:004	produced
+	105	[(V:produced):12]
+	
+	
+136:0:001	catalase
+	39	[(N:catalase):3]
+	136:0:003	162	[(J:positive):2]
+	0	3	<nsubj>
+136:0:003	positive
+	162	[(J:positive):2]
+	
+	
+137:0:001	oxidase
+	163	[(N:oxidase):5]
+	137:0:006	105	[(V:produced):12]
+	1	7	<nsubjpass>
+137:0:003	c7-tests
+	29	[(N:c7-tests):25]
+	137:0:001	163	[(N:oxidase):5]
+	0	6	<conj_and>
+137:0:005	not
+	24	[(R:not):32]
+	137:0:006	105	[(V:produced):12]
+	0	12	<neg>
+137:0:006	produced
+	105	[(V:produced):12]
+	
+	
+13:0:001	cells
+	1	[(N:cells):24]
+	13:0:004	34	[(N:c2-internal-features):7]
+	3	3	<nsubj>
+13:0:003	gram-negative
+	33	[(J:gram-negative):10]
+	13:0:004	34	[(N:c2-internal-features):7]
+	0	9	<amod>
+13:0:004	c2-internal-features
+	34	[(N:c2-internal-features):7]
+	
+	
+13:0:005	c2-motility
+	35	[(N:c2-motility):12]
+	13:0:006	11	[(N:c2-cell-shape):19]
+	1	11	<nn>
+13:0:006	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	13:0:004	34	[(N:c2-internal-features):7]
+	1	32	<attr>
+143:0:001	negative
+	109	[(J:negative):6]
+	
+	
+143:0:003	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:004	164	[(N:arylamidase):16]
+	1	11	<nn>
+143:0:004	arylamidase
+	164	[(N:arylamidase):16]
+	143:0:001	109	[(J:negative):6]
+	1	28	<prep_for>
+143:0:006	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:007	29	[(N:c7-tests):25]
+	1	11	<nn>
+143:0:007	c7-tests
+	29	[(N:c7-tests):25]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:009	chymotrypsin
+	165	[(N:chymotrypsin):2]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:011	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:013	6-phosphate-β-galactosidase
+	166	[(N:6-phosphate-β-galactosidase):2]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:015	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:016	167	[(N:decarboxylase):2]
+	0	11	<nn>
+143:0:016	decarboxylase
+	167	[(N:decarboxylase):2]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:018	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:019	164	[(N:arylamidase):16]
+	1	11	<nn>
+143:0:019	arylamidase
+	164	[(N:arylamidase):16]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:021	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:022	164	[(N:arylamidase):16]
+	1	11	<nn>
+143:0:022	arylamidase
+	164	[(N:arylamidase):16]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:024	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:026	c7-tests
+	29	[(N:c7-tests):25]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:028	c14
+	168	[(N:c14):2]
+	143:0:026	29	[(N:c7-tests):25]
+	1	20	<appos>
+143:0:031	α-mannosidase
+	169	[(N:α-mannosidase):2]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:033	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:034	164	[(N:arylamidase):16]
+	1	11	<nn>
+143:0:034	arylamidase
+	164	[(N:arylamidase):16]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:036	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:037	164	[(N:arylamidase):16]
+	1	11	<nn>
+143:0:037	arylamidase
+	164	[(N:arylamidase):16]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:039	pyroglutamic
+	170	[(J:pyroglutamic):2]
+	143:0:041	164	[(N:arylamidase):16]
+	2	9	<amod>
+143:0:040	acid
+	117	[(N:acid):10]
+	143:0:041	164	[(N:arylamidase):16]
+	1	11	<nn>
+143:0:041	arylamidase
+	164	[(N:arylamidase):16]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:043	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:044	164	[(N:arylamidase):16]
+	1	11	<nn>
+143:0:044	arylamidase
+	164	[(N:arylamidase):16]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:046	c7-tests
+	29	[(N:c7-tests):25]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:048	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:049	164	[(N:arylamidase):16]
+	1	11	<nn>
+143:0:049	arylamidase
+	164	[(N:arylamidase):16]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+143:0:051	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	143:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+144:0:002	main
+	171	[(J:main):2]
+	144:0:004	172	[(N:quinones):2]
+	0	9	<amod>
+144:0:003	respiratory
+	48	[(J:respiratory):5]
+	144:0:004	172	[(N:quinones):2]
+	0	9	<amod>
+144:0:004	quinones
+	172	[(N:quinones):2]
+	144:0:006	173	[(N:mk-10):2]
+	1	3	<nsubj>
+144:0:006	mk-10
+	173	[(N:mk-10):2]
+	
+	
+144:0:008	mk-11
+	174	[(N:mk-11):2]
+	144:0:006	173	[(N:mk-10):2]
+	0	6	<conj_and>
+145:0:002	fatty
+	41	[(J:fatty):10]
+	145:0:004	175	[(N:profile):3]
+	0	9	<amod>
+145:0:003	acid
+	117	[(N:acid):10]
+	145:0:004	175	[(N:profile):3]
+	1	11	<nn>
+145:0:004	profile
+	175	[(N:profile):3]
+	145:0:005	176	[(V:consists):2]
+	1	3	<nsubj>
+145:0:005	consists
+	176	[(V:consists):2]
+	
+	
+145:0:007	iso-c15
+	177	[(N:iso-c15):5]
+	145:0:005	176	[(V:consists):2]
+	2	16	<prep_of>
+145:0:009	0
+	2	[(CD:0):68]
+	145:0:007	177	[(N:iso-c15):5]
+	0	4	<dep>
+145:0:011	c18
+	178	[(N:c18):2]
+	145:0:009	2	[(CD:0):68]
+	4	20	<appos>
+145:0:013	1ω9c
+	179	[(N:1ω9c):2]
+	145:0:009	2	[(CD:0):68]
+	3	4	<dep>
+145:0:015	c15
+	180	[(N:c15):4]
+	145:0:013	179	[(N:1ω9c):2]
+	0	20	<appos>
+145:0:017	0
+	2	[(CD:0):68]
+	145:0:009	2	[(CD:0):68]
+	3	4	<dep>
+145:0:019	c16
+	181	[(N:c16):2]
+	145:0:017	2	[(CD:0):68]
+	4	20	<appos>
+145:0:021	0
+	2	[(CD:0):68]
+	145:0:009	2	[(CD:0):68]
+	3	4	<dep>
+145:0:023	iso-c16
+	182	[(N:iso-c16):2]
+	145:0:021	2	[(CD:0):68]
+	4	20	<appos>
+145:0:025	0
+	2	[(CD:0):68]
+	145:0:009	2	[(CD:0):68]
+	3	4	<dep>
+145:0:027	anteiso-c15
+	183	[(N:anteiso-c15):4]
+	145:0:025	2	[(CD:0):68]
+	4	20	<appos>
+145:0:029	0
+	2	[(CD:0):68]
+	145:0:009	2	[(CD:0):68]
+	3	4	<dep>
+145:0:032	unknown
+	184	[(J:unknown):2]
+	145:0:034	117	[(N:acid):10]
+	0	9	<amod>
+145:0:033	fatty
+	41	[(J:fatty):10]
+	145:0:034	117	[(N:acid):10]
+	0	9	<amod>
+145:0:034	acid
+	117	[(N:acid):10]
+	145:0:029	2	[(CD:0):68]
+	4	6	<conj_and>
+145:0:036	ecl
+	185	[(N:ecl):2]
+	145:0:005	176	[(V:consists):2]
+	0	4	<dep>
+145:0:037	17.879
+	186	[(CD:17.879):2]
+	145:0:036	185	[(N:ecl):2]
+	0	5	<num>
+146:0:001	cells
+	1	[(N:cells):24]
+	146:0:002	140	[(V:stain):2]
+	2	3	<nsubj>
+146:0:002	stain
+	140	[(V:stain):2]
+	
+	
+146:0:003	gram-negative
+	33	[(J:gram-negative):10]
+	146:0:002	140	[(V:stain):2]
+	0	31	<acomp>
+146:0:006	c2-internal-features
+	34	[(N:c2-internal-features):7]
+	146:0:002	140	[(V:stain):2]
+	1	6	<conj_and>
+146:0:008	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	146:0:006	34	[(N:c2-internal-features):7]
+	0	20	<appos>
+146:0:010	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	146:0:008	11	[(N:c2-cell-shape):19]
+	1	8	<prep_to>
+146:0:012	round
+	141	[(J:round):3]
+	146:0:013	142	[(N:ends):4]
+	0	9	<amod>
+146:0:013	ends
+	142	[(N:ends):4]
+	146:0:010	11	[(N:c2-cell-shape):19]
+	1	23	<prep_with>
+146:0:016	strictly
+	143	[(R:strictly):4]
+	146:0:017	63	[(N:c3-oxygen-use):9]
+	0	19	<advmod>
+146:0:017	c3-oxygen-use
+	63	[(N:c3-oxygen-use):9]
+	146:0:006	34	[(N:c2-internal-features):7]
+	1	6	<conj_and>
+147:0:001	cells
+	1	[(N:cells):24]
+	147:0:009	9	[(N:μm):17]
+	2	3	<nsubj>
+147:0:003	approximately
+	144	[(R:approximately):2]
+	147:0:009	9	[(N:μm):17]
+	1	19	<advmod>
+147:0:004	0.5
+	145	[(CD:0.5):4]
+	147:0:005	146	[(CD:0.7):2]
+	0	17	<number>
+147:0:005	0.7
+	146	[(CD:0.7):2]
+	147:0:006	6	[(N:×):7]
+	1	5	<num>
+147:0:006	×
+	6	[(N:×):7]
+	147:0:003	144	[(R:approximately):2]
+	0	1	<pobj>
+147:0:007	1.0
+	64	[(CD:1.0):4]
+	147:0:008	147	[(CD:3.8):4]
+	0	17	<number>
+147:0:008	3.8
+	147	[(CD:3.8):4]
+	147:0:009	9	[(N:μm):17]
+	0	5	<num>
+147:0:009	μm
+	9	[(N:μm):17]
+	
+	
+148:0:001	3.8
+	147	[(CD:3.8):4]
+	148:0:003	9	[(N:μm):17]
+	2	3	<nsubj>
+148:0:003	μm
+	9	[(N:μm):17]
+	
+	
+149:0:002	growth
+	73	[(N:growth):17]
+	149:0:016	152	[(CD:0.1):2]
+	3	33	<prep_after>
+149:0:004	4
+	76	[(CD:4):10]
+	149:0:005	148	[(N:days):5]
+	0	5	<num>
+149:0:005	days
+	148	[(N:days):5]
+	149:0:002	73	[(N:growth):17]
+	3	28	<prep_for>
+149:0:007	c3-oxygen-use
+	63	[(N:c3-oxygen-use):9]
+	149:0:008	149	[(N:incubation):4]
+	0	11	<nn>
+149:0:008	incubation
+	149	[(N:incubation):4]
+	149:0:005	148	[(N:days):5]
+	1	23	<prep_with>
+149:0:010	modified
+	150	[(V:modified):2]
+	149:0:012	21	[(N:agar):11]
+	2	9	<amod>
+149:0:011	gam
+	151	[(N:gam):2]
+	149:0:012	21	[(N:agar):11]
+	3	11	<nn>
+149:0:012	agar
+	21	[(N:agar):11]
+	149:0:008	149	[(N:incubation):4]
+	1	25	<prep_on>
+149:0:014	colonies
+	96	[(N:colonies):13]
+	149:0:016	152	[(CD:0.1):2]
+	2	3	<nsubj>
+149:0:016	0.1
+	152	[(CD:0.1):2]
+	
+	
+149:0:018	0.5
+	145	[(CD:0.5):4]
+	149:0:019	153	[(N:mm):5]
+	0	5	<num>
+149:0:019	mm
+	153	[(N:mm):5]
+	149:0:016	152	[(CD:0.1):2]
+	1	4	<dep>
+149:0:021	diameter
+	68	[(N:diameter):7]
+	149:0:019	153	[(N:mm):5]
+	1	14	<prep_in>
+149:0:023	slightly
+	154	[(R:slightly):4]
+	149:0:024	155	[(J:opaque):3]
+	0	19	<advmod>
+149:0:024	opaque
+	155	[(J:opaque):3]
+	149:0:016	152	[(CD:0.1):2]
+	0	9	<amod>
+149:0:026	circular
+	97	[(J:circular):6]
+	149:0:024	155	[(J:opaque):3]
+	1	6	<conj_and>
+149:0:028	gray
+	156	[(J:gray):3]
+	149:0:024	155	[(J:opaque):3]
+	1	6	<conj_and>
+14:0:001	cells
+	1	[(N:cells):24]
+	14:0:004	34	[(N:c2-internal-features):7]
+	3	3	<nsubj>
+14:0:003	gram-negative
+	33	[(J:gram-negative):10]
+	14:0:004	34	[(N:c2-internal-features):7]
+	0	9	<amod>
+14:0:004	c2-internal-features
+	34	[(N:c2-internal-features):7]
+	
+	
+14:0:005	c2-motility
+	35	[(N:c2-motility):12]
+	14:0:006	11	[(N:c2-cell-shape):19]
+	1	11	<nn>
+14:0:006	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	14:0:004	34	[(N:c2-internal-features):7]
+	1	32	<attr>
+151:0:001	not
+	24	[(R:not):32]
+	
+	
+151:0:002	resistant
+	125	[(J:resistant):6]
+	151:0:001	24	[(R:not):32]
+	0	4	<dep>
+151:0:004	20
+	157	[(CD:20):4]
+	151:0:005	58	[(N:%):20]
+	2	17	<number>
+151:0:005	%
+	58	[(N:%):20]
+	151:0:006	158	[(N:bile):3]
+	0	9	<amod>
+151:0:006	bile
+	158	[(N:bile):3]
+	151:0:002	125	[(J:resistant):6]
+	2	8	<prep_to>
+152:0:001	aesculin
+	159	[(N:aesculin):4]
+	152:0:006	160	[(V:hydrolysed):6]
+	2	7	<nsubjpass>
+152:0:003	c9-polysaccharides
+	19	[(N:c9-polysaccharides):9]
+	152:0:001	159	[(N:aesculin):4]
+	0	6	<conj_and>
+152:0:005	not
+	24	[(R:not):32]
+	152:0:006	160	[(V:hydrolysed):6]
+	1	12	<neg>
+152:0:006	hydrolysed
+	160	[(V:hydrolysed):6]
+	
+	
+152:0:008	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	152:0:011	15	[(V:reduced):7]
+	1	7	<nsubjpass>
+152:0:010	not
+	24	[(R:not):32]
+	152:0:011	15	[(V:reduced):7]
+	3	12	<neg>
+152:0:011	reduced
+	15	[(V:reduced):7]
+	152:0:006	160	[(V:hydrolysed):6]
+	0	6	<conj_and>
+153:0:001	indole
+	161	[(N:indole):3]
+	153:0:004	105	[(V:produced):12]
+	1	7	<nsubjpass>
+153:0:003	not
+	24	[(R:not):32]
+	153:0:004	105	[(V:produced):12]
+	0	12	<neg>
+153:0:004	produced
+	105	[(V:produced):12]
+	
+	
+154:0:001	catalase
+	39	[(N:catalase):3]
+	154:0:003	162	[(J:positive):2]
+	0	3	<nsubj>
+154:0:003	positive
+	162	[(J:positive):2]
+	
+	
+155:0:001	oxidase
+	163	[(N:oxidase):5]
+	155:0:006	105	[(V:produced):12]
+	1	7	<nsubjpass>
+155:0:003	c7-tests
+	29	[(N:c7-tests):25]
+	155:0:001	163	[(N:oxidase):5]
+	0	6	<conj_and>
+155:0:005	not
+	24	[(R:not):32]
+	155:0:006	105	[(V:produced):12]
+	0	12	<neg>
+155:0:006	produced
+	105	[(V:produced):12]
+	
+	
+15:0:001	strictly
+	143	[(R:strictly):4]
+	15:0:002	63	[(N:c3-oxygen-use):9]
+	0	4	<dep>
+15:0:002	c3-oxygen-use
+	63	[(N:c3-oxygen-use):9]
+	
+	
+161:0:001	negative
+	109	[(J:negative):6]
+	
+	
+161:0:003	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:004	164	[(N:arylamidase):16]
+	1	11	<nn>
+161:0:004	arylamidase
+	164	[(N:arylamidase):16]
+	161:0:001	109	[(J:negative):6]
+	1	28	<prep_for>
+161:0:006	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:007	29	[(N:c7-tests):25]
+	1	11	<nn>
+161:0:007	c7-tests
+	29	[(N:c7-tests):25]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:009	chymotrypsin
+	165	[(N:chymotrypsin):2]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:011	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:013	6-phosphate-β-galactosidase
+	166	[(N:6-phosphate-β-galactosidase):2]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:015	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:016	167	[(N:decarboxylase):2]
+	0	11	<nn>
+161:0:016	decarboxylase
+	167	[(N:decarboxylase):2]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:018	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:019	164	[(N:arylamidase):16]
+	1	11	<nn>
+161:0:019	arylamidase
+	164	[(N:arylamidase):16]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:021	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:022	164	[(N:arylamidase):16]
+	1	11	<nn>
+161:0:022	arylamidase
+	164	[(N:arylamidase):16]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:024	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:026	c7-tests
+	29	[(N:c7-tests):25]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:028	c14
+	168	[(N:c14):2]
+	161:0:026	29	[(N:c7-tests):25]
+	1	20	<appos>
+161:0:031	α-mannosidase
+	169	[(N:α-mannosidase):2]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:033	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:034	164	[(N:arylamidase):16]
+	1	11	<nn>
+161:0:034	arylamidase
+	164	[(N:arylamidase):16]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:036	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:037	164	[(N:arylamidase):16]
+	1	11	<nn>
+161:0:037	arylamidase
+	164	[(N:arylamidase):16]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:039	pyroglutamic
+	170	[(J:pyroglutamic):2]
+	161:0:041	164	[(N:arylamidase):16]
+	2	9	<amod>
+161:0:040	acid
+	117	[(N:acid):10]
+	161:0:041	164	[(N:arylamidase):16]
+	1	11	<nn>
+161:0:041	arylamidase
+	164	[(N:arylamidase):16]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:043	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:044	164	[(N:arylamidase):16]
+	1	11	<nn>
+161:0:044	arylamidase
+	164	[(N:arylamidase):16]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:046	c7-tests
+	29	[(N:c7-tests):25]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:048	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:049	164	[(N:arylamidase):16]
+	1	11	<nn>
+161:0:049	arylamidase
+	164	[(N:arylamidase):16]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+161:0:051	c9-amino-acids
+	30	[(N:c9-amino-acids):26]
+	161:0:004	164	[(N:arylamidase):16]
+	0	6	<conj_and>
+162:0:002	main
+	171	[(J:main):2]
+	162:0:004	172	[(N:quinones):2]
+	0	9	<amod>
+162:0:003	respiratory
+	48	[(J:respiratory):5]
+	162:0:004	172	[(N:quinones):2]
+	0	9	<amod>
+162:0:004	quinones
+	172	[(N:quinones):2]
+	162:0:006	173	[(N:mk-10):2]
+	1	3	<nsubj>
+162:0:006	mk-10
+	173	[(N:mk-10):2]
+	
+	
+162:0:008	mk-11
+	174	[(N:mk-11):2]
+	162:0:006	173	[(N:mk-10):2]
+	0	6	<conj_and>
+163:0:002	fatty
+	41	[(J:fatty):10]
+	163:0:004	175	[(N:profile):3]
+	0	9	<amod>
+163:0:003	acid
+	117	[(N:acid):10]
+	163:0:004	175	[(N:profile):3]
+	1	11	<nn>
+163:0:004	profile
+	175	[(N:profile):3]
+	163:0:005	176	[(V:consists):2]
+	1	3	<nsubj>
+163:0:005	consists
+	176	[(V:consists):2]
+	
+	
+163:0:007	iso-c15
+	177	[(N:iso-c15):5]
+	163:0:005	176	[(V:consists):2]
+	2	16	<prep_of>
+163:0:009	0
+	2	[(CD:0):68]
+	163:0:007	177	[(N:iso-c15):5]
+	0	4	<dep>
+163:0:011	c18
+	178	[(N:c18):2]
+	163:0:009	2	[(CD:0):68]
+	4	20	<appos>
+163:0:013	1ω9c
+	179	[(N:1ω9c):2]
+	163:0:009	2	[(CD:0):68]
+	3	4	<dep>
+163:0:015	c15
+	180	[(N:c15):4]
+	163:0:013	179	[(N:1ω9c):2]
+	0	20	<appos>
+163:0:017	0
+	2	[(CD:0):68]
+	163:0:009	2	[(CD:0):68]
+	3	4	<dep>
+163:0:019	c16
+	181	[(N:c16):2]
+	163:0:017	2	[(CD:0):68]
+	4	20	<appos>
+163:0:021	0
+	2	[(CD:0):68]
+	163:0:009	2	[(CD:0):68]
+	3	4	<dep>
+163:0:023	iso-c16
+	182	[(N:iso-c16):2]
+	163:0:021	2	[(CD:0):68]
+	4	20	<appos>
+163:0:025	0
+	2	[(CD:0):68]
+	163:0:009	2	[(CD:0):68]
+	3	4	<dep>
+163:0:027	anteiso-c15
+	183	[(N:anteiso-c15):4]
+	163:0:025	2	[(CD:0):68]
+	4	20	<appos>
+163:0:029	0
+	2	[(CD:0):68]
+	163:0:009	2	[(CD:0):68]
+	3	4	<dep>
+163:0:032	unknown
+	184	[(J:unknown):2]
+	163:0:034	117	[(N:acid):10]
+	0	9	<amod>
+163:0:033	fatty
+	41	[(J:fatty):10]
+	163:0:034	117	[(N:acid):10]
+	0	9	<amod>
+163:0:034	acid
+	117	[(N:acid):10]
+	163:0:029	2	[(CD:0):68]
+	4	6	<conj_and>
+163:0:036	ecl
+	185	[(N:ecl):2]
+	163:0:005	176	[(V:consists):2]
+	0	4	<dep>
+163:0:037	17.879
+	186	[(CD:17.879):2]
+	163:0:036	185	[(N:ecl):2]
+	0	5	<num>
+164:0:001	cells
+	1	[(N:cells):24]
+	164:0:003	63	[(N:c3-oxygen-use):9]
+	5	3	<nsubj>
+164:0:003	c3-oxygen-use
+	63	[(N:c3-oxygen-use):9]
+	
+	
+164:0:005	gram-negative
+	33	[(J:gram-negative):10]
+	164:0:003	63	[(N:c3-oxygen-use):9]
+	2	20	<appos>
+164:0:007	c2-internal-features
+	34	[(N:c2-internal-features):7]
+	164:0:003	63	[(N:c3-oxygen-use):9]
+	2	20	<appos>
+164:0:009	c2-motility
+	35	[(N:c2-motility):12]
+	164:0:003	63	[(N:c3-oxygen-use):9]
+	2	20	<appos>
+164:0:011	fusiform
+	187	[(N:fusiform):1]
+	164:0:003	63	[(N:c3-oxygen-use):9]
+	2	20	<appos>
+164:0:013	shape
+	188	[(N:shape):1]
+	164:0:011	187	[(N:fusiform):1]
+	0	14	<prep_in>
+164:0:015	c7-tests
+	29	[(N:c7-tests):25]
+	164:0:013	188	[(N:shape):1]
+	0	6	<conj_and>
+165:0:001	colonies
+	96	[(N:colonies):13]
+	165:0:022	193	[(V:begin):1]
+	1	3	<nsubj>
+165:0:002	demonstrate
+	189	[(V:demonstrate):1]
+	
+	
+165:0:003	c3-pigements
+	104	[(N:c3-pigements):11]
+	165:0:002	189	[(V:demonstrate):1]
+	4	2	<dobj>
+165:0:005	>
+	138	[(J:>):2]
+	165:0:002	189	[(V:demonstrate):1]
+	4	33	<prep_after>
+165:0:006	7
+	4	[(CD:7):9]
+	165:0:007	148	[(N:days):5]
+	0	5	<num>
+165:0:007	days
+	148	[(N:days):5]
+	165:0:005	138	[(J:>):2]
+	4	15	<tmod>
+165:0:009	c3-oxygen-use
+	63	[(N:c3-oxygen-use):9]
+	165:0:010	73	[(N:growth):17]
+	3	11	<nn>
+165:0:010	growth
+	73	[(N:growth):17]
+	165:0:005	138	[(J:>):2]
+	4	16	<prep_of>
+165:0:012	37
+	79	[(CD:37):6]
+	165:0:013	77	[(CD:°):12]
+	3	17	<number>
+165:0:013	°
+	77	[(CD:°):12]
+	165:0:014	80	[(N:c):11]
+	1	5	<num>
+165:0:014	c
+	80	[(N:c):11]
+	165:0:017	191	[(V:containing):3]
+	1	3	<nsubj>
+165:0:016	medium
+	190	[(N:medium):3]
+	165:0:014	80	[(N:c):11]
+	8	25	<prep_on>
+165:0:017	containing
+	191	[(V:containing):3]
+	165:0:002	189	[(V:demonstrate):1]
+	4	36	<prepc_at>
+165:0:018	c8-pathogen-target-organ
+	106	[(N:c8-pathogen-target-organ):4]
+	165:0:020	192	[(N:punctiform):1]
+	0	3	<nsubj>
+165:0:020	punctiform
+	192	[(N:punctiform):1]
+	165:0:017	191	[(V:containing):3]
+	0	37	<ccomp>
+165:0:022	begin
+	193	[(V:begin):1]
+	165:0:002	189	[(V:demonstrate):1]
+	0	6	<conj_and>
+165:0:024	show
+	194	[(V:show):1]
+	165:0:022	193	[(V:begin):1]
+	1	34	<xcomp>
+165:0:025	c3-pigements
+	104	[(N:c3-pigements):11]
+	165:0:024	194	[(V:show):1]
+	1	2	<dobj>
+165:0:027	tan
+	195	[(N:tan):1]
+	165:0:025	104	[(N:c3-pigements):11]
+	2	4	<dep>
+165:0:029	black
+	196	[(J:black):1]
+	165:0:027	195	[(N:tan):1]
+	0	4	<dep>
+165:0:032	10
+	131	[(CD:10):9]
+	165:0:024	194	[(V:show):1]
+	1	33	<prep_after>
+165:0:034	12
+	88	[(CD:12):2]
+	165:0:035	148	[(N:days):5]
+	0	5	<num>
+165:0:035	days
+	148	[(N:days):5]
+	165:0:048	191	[(V:containing):3]
+	1	3	<nsubj>
+165:0:037	incubation
+	149	[(N:incubation):4]
+	165:0:035	148	[(N:days):5]
+	1	16	<prep_of>
+165:0:039	37
+	79	[(CD:37):6]
+	165:0:040	77	[(CD:°):12]
+	3	17	<number>
+165:0:040	°
+	77	[(CD:°):12]
+	165:0:041	80	[(N:c):11]
+	1	5	<num>
+165:0:041	c
+	80	[(N:c):11]
+	165:0:037	149	[(N:incubation):4]
+	0	24	<prep_at>
+165:0:044	c3-oxygen-use
+	197	[(J:c3-oxygen-use):4]
+	165:0:045	198	[(N:environment):1]
+	1	9	<amod>
+165:0:045	environment
+	198	[(N:environment):1]
+	165:0:041	80	[(N:c):11]
+	0	14	<prep_in>
+165:0:047	medium
+	190	[(N:medium):3]
+	165:0:045	198	[(N:environment):1]
+	1	25	<prep_on>
+165:0:048	containing
+	191	[(V:containing):3]
+	165:0:002	189	[(V:demonstrate):1]
+	4	35	<parataxis>
+165:0:049	c8-pathogen-target-organ
+	106	[(N:c8-pathogen-target-organ):4]
+	165:0:048	191	[(V:containing):3]
+	0	2	<dobj>
+166:0:001	colonies
+	96	[(N:colonies):13]
+	166:0:011	125	[(J:resistant):6]
+	2	3	<nsubj>
+166:0:003	haemolytic
+	199	[(J:haemolytic):1]
+	
+	
+166:0:005	brucella
+	200	[(N:brucella):1]
+	166:0:007	21	[(N:agar):11]
+	3	11	<nn>
+166:0:006	c8-pathogen-target-organ
+	106	[(N:c8-pathogen-target-organ):4]
+	166:0:007	21	[(N:agar):11]
+	3	11	<nn>
+166:0:007	agar
+	21	[(N:agar):11]
+	166:0:003	199	[(J:haemolytic):1]
+	1	25	<prep_on>
+166:0:011	resistant
+	125	[(J:resistant):6]
+	166:0:003	199	[(J:haemolytic):1]
+	1	6	<conj_and>
+166:0:013	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	166:0:011	125	[(J:resistant):6]
+	2	8	<prep_to>
+166:0:015	colistin
+	201	[(N:colistin):1]
+	166:0:013	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+166:0:017	antibiotic
+	202	[(J:antibiotic):1]
+	166:0:018	11	[(N:c2-cell-shape):19]
+	1	9	<amod>
+166:0:018	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	166:0:013	130	[(N:c4-antibiotics):31]
+	4	4	<dep>
+166:0:020	anaerobe
+	203	[(N:anaerobe):2]
+	166:0:021	204	[(N:systems):2]
+	0	11	<nn>
+166:0:021	systems
+	204	[(N:systems):2]
+	166:0:018	11	[(N:c2-cell-shape):19]
+	0	26	<prep_from>
+167:0:001	egg
+	205	[(N:egg):2]
+	167:0:003	21	[(N:agar):11]
+	3	11	<nn>
+167:0:002	yolk
+	206	[(N:yolk):2]
+	167:0:003	21	[(N:agar):11]
+	3	11	<nn>
+167:0:003	agar
+	21	[(N:agar):11]
+	167:0:006	204	[(N:systems):2]
+	1	3	<nsubj>
+167:0:005	anaerobe
+	203	[(N:anaerobe):2]
+	167:0:006	204	[(N:systems):2]
+	0	11	<nn>
+167:0:006	systems
+	204	[(N:systems):2]
+	
+	
+168:0:001	colonies
+	96	[(N:colonies):13]
+	168:0:006	207	[(V:have):3]
+	1	3	<nsubj>
+168:0:003	egg
+	205	[(N:egg):2]
+	168:0:005	21	[(N:agar):11]
+	3	11	<nn>
+168:0:004	yolk
+	206	[(N:yolk):2]
+	168:0:005	21	[(N:agar):11]
+	3	11	<nn>
+168:0:005	agar
+	21	[(N:agar):11]
+	168:0:001	96	[(N:colonies):13]
+	1	25	<prep_on>
+168:0:006	have
+	207	[(V:have):3]
+	
+	
+168:0:008	lecithinase
+	208	[(N:lecithinase):1]
+	168:0:006	207	[(V:have):3]
+	0	2	<dobj>
+168:0:010	c7-tests
+	31	[(J:c7-tests):2]
+	168:0:011	123	[(N:activities):6]
+	0	9	<amod>
+168:0:011	activities
+	123	[(N:activities):6]
+	168:0:008	208	[(N:lecithinase):1]
+	0	38	<conj_nor>
+169:0:002	evidence
+	209	[(N:evidence):2]
+	169:0:011	213	[(V:appear):2]
+	0	3	<nsubj>
+169:0:004	bacterial
+	210	[(J:bacterial):2]
+	169:0:005	35	[(N:c2-motility):12]
+	4	9	<amod>
+169:0:005	c2-motility
+	35	[(N:c2-motility):12]
+	169:0:002	209	[(N:evidence):2]
+	0	16	<prep_of>
+169:0:007	is
+	211	[(V:is):4]
+	169:0:005	35	[(N:c2-motility):12]
+	2	18	<rcmod>
+169:0:009	distinct
+	212	[(J:distinct):2]
+	169:0:010	96	[(N:colonies):13]
+	1	9	<amod>
+169:0:010	colonies
+	96	[(N:colonies):13]
+	169:0:007	211	[(V:is):4]
+	1	39	<prep_since>
+169:0:011	appear
+	213	[(V:appear):2]
+	
+	
+169:0:013	numerous
+	214	[(J:numerous):2]
+	169:0:015	216	[(N:types):2]
+	0	9	<amod>
+169:0:014	media
+	215	[(N:media):3]
+	169:0:015	216	[(N:types):2]
+	1	11	<nn>
+169:0:015	types
+	216	[(N:types):2]
+	169:0:011	213	[(V:appear):2]
+	1	25	<prep_on>
+170:0:002	evidence
+	209	[(N:evidence):2]
+	170:0:007	211	[(V:is):4]
+	1	3	<nsubj>
+170:0:004	bacterial
+	210	[(J:bacterial):2]
+	170:0:005	35	[(N:c2-motility):12]
+	4	9	<amod>
+170:0:005	c2-motility
+	35	[(N:c2-motility):12]
+	170:0:002	209	[(N:evidence):2]
+	0	16	<prep_of>
+170:0:007	is
+	211	[(V:is):4]
+	
+	
+171:0:001	distinct
+	212	[(J:distinct):2]
+	171:0:002	96	[(N:colonies):13]
+	1	9	<amod>
+171:0:002	colonies
+	96	[(N:colonies):13]
+	171:0:004	213	[(V:appear):2]
+	0	3	<nsubj>
+171:0:003	since
+	218	[(IN:since):1]
+	171:0:004	213	[(V:appear):2]
+	2	19	<advmod>
+171:0:004	appear
+	213	[(V:appear):2]
+	
+	
+171:0:006	numerous
+	214	[(J:numerous):2]
+	171:0:008	216	[(N:types):2]
+	0	9	<amod>
+171:0:007	media
+	215	[(N:media):3]
+	171:0:008	216	[(N:types):2]
+	1	11	<nn>
+171:0:008	types
+	216	[(N:types):2]
+	171:0:004	213	[(V:appear):2]
+	1	25	<prep_on>
+172:0:002	description
+	219	[(N:description):1]
+	172:0:004	220	[(V:based):1]
+	1	7	<nsubjpass>
+172:0:004	based
+	220	[(V:based):1]
+	
+	
+172:0:006	eight
+	221	[(CD:eight):2]
+	172:0:007	222	[(N:strains):4]
+	0	5	<num>
+172:0:007	strains
+	222	[(N:strains):4]
+	172:0:004	220	[(V:based):1]
+	1	25	<prep_on>
+172:0:008	isolated
+	223	[(V:isolated):2]
+	172:0:007	222	[(N:strains):4]
+	1	27	<partmod>
+172:0:010	c8-host
+	224	[(J:c8-host):2]
+	172:0:011	225	[(N:skin):2]
+	0	9	<amod>
+172:0:011	skin
+	225	[(N:skin):2]
+	172:0:008	223	[(V:isolated):2]
+	0	26	<prep_from>
+172:0:013	soft-tissue
+	226	[(J:soft-tissue):2]
+	172:0:014	227	[(N:abscesses):2]
+	0	9	<amod>
+172:0:014	abscesses
+	227	[(N:abscesses):2]
+	172:0:011	225	[(N:skin):2]
+	1	6	<conj_and>
+173:0:001	eight
+	221	[(CD:eight):2]
+	173:0:002	222	[(N:strains):4]
+	0	5	<num>
+173:0:002	strains
+	222	[(N:strains):4]
+	173:0:004	223	[(V:isolated):2]
+	1	7	<nsubjpass>
+173:0:004	isolated
+	223	[(V:isolated):2]
+	
+	
+173:0:006	c8-host
+	224	[(J:c8-host):2]
+	173:0:007	225	[(N:skin):2]
+	0	9	<amod>
+173:0:007	skin
+	225	[(N:skin):2]
+	173:0:004	223	[(V:isolated):2]
+	0	26	<prep_from>
+173:0:009	soft-tissue
+	226	[(J:soft-tissue):2]
+	173:0:010	227	[(N:abscesses):2]
+	0	9	<amod>
+173:0:010	abscesses
+	227	[(N:abscesses):2]
+	173:0:007	225	[(N:skin):2]
+	1	6	<conj_and>
+174:0:001	biochemical
+	228	[(J:biochemical):2]
+	174:0:002	229	[(N:results):2]
+	0	9	<amod>
+174:0:002	results
+	229	[(N:results):2]
+	174:0:004	230	[(J:identical):2]
+	0	3	<nsubj>
+174:0:004	identical
+	230	[(J:identical):2]
+	
+	
+174:0:007	strains
+	222	[(N:strains):4]
+	174:0:004	230	[(J:identical):2]
+	1	28	<prep_for>
+174:0:008	studied
+	231	[(V:studied):2]
+	174:0:007	222	[(N:strains):4]
+	1	27	<partmod>
+175:0:001	biochemical
+	228	[(J:biochemical):2]
+	175:0:002	229	[(N:results):2]
+	0	9	<amod>
+175:0:002	results
+	229	[(N:results):2]
+	175:0:004	230	[(J:identical):2]
+	0	3	<nsubj>
+175:0:004	identical
+	230	[(J:identical):2]
+	
+	
+176:0:002	strains
+	222	[(N:strains):4]
+	176:0:004	231	[(V:studied):2]
+	0	7	<nsubjpass>
+176:0:004	studied
+	231	[(V:studied):2]
+	
+	
+177:0:001	cells
+	1	[(N:cells):24]
+	177:0:005	232	[(N:bacilli):3]
+	3	3	<nsubj>
+177:0:003	c3-oxygen-use
+	197	[(J:c3-oxygen-use):4]
+	177:0:005	232	[(N:bacilli):3]
+	2	9	<amod>
+177:0:004	gram-negative
+	33	[(J:gram-negative):10]
+	177:0:005	232	[(N:bacilli):3]
+	2	9	<amod>
+177:0:005	bacilli
+	232	[(N:bacilli):3]
+	
+	
+177:0:006	0
+	2	[(CD:0):68]
+	177:0:007	3	[(N:·):35]
+	1	5	<num>
+177:0:007	·
+	3	[(N:·):35]
+	177:0:005	232	[(N:bacilli):3]
+	2	4	<dep>
+177:0:008	7
+	4	[(CD:7):9]
+	177:0:009	2	[(CD:0):68]
+	1	5	<num>
+177:0:009	0
+	2	[(CD:0):68]
+	177:0:016	60	[(CD:8):14]
+	0	4	<dep>
+177:0:010	·
+	3	[(N:·):35]
+	177:0:013	6	[(N:×):7]
+	0	11	<nn>
+177:0:011	8
+	60	[(CD:8):14]
+	177:0:013	6	[(N:×):7]
+	1	5	<num>
+177:0:012	μm
+	9	[(N:μm):17]
+	177:0:013	6	[(N:×):7]
+	0	11	<nn>
+177:0:013	×
+	6	[(N:×):7]
+	177:0:009	2	[(CD:0):68]
+	3	4	<dep>
+177:0:014	0
+	2	[(CD:0):68]
+	177:0:015	3	[(N:·):35]
+	1	5	<num>
+177:0:015	·
+	3	[(N:·):35]
+	177:0:016	60	[(CD:8):14]
+	0	4	<dep>
+177:0:016	8
+	60	[(CD:8):14]
+	177:0:005	232	[(N:bacilli):3]
+	2	4	<dep>
+177:0:017	6
+	87	[(CD:6):11]
+	177:0:018	9	[(N:μm):17]
+	0	5	<num>
+177:0:018	μm
+	9	[(N:μm):17]
+	177:0:016	60	[(CD:8):14]
+	0	4	<dep>
+177:0:019	obligately
+	233	[(R:obligately):1]
+	177:0:005	232	[(N:bacilli):3]
+	2	19	<advmod>
+178:0:001	cells
+	1	[(N:cells):24]
+	178:0:005	232	[(N:bacilli):3]
+	3	3	<nsubj>
+178:0:003	c3-oxygen-use
+	197	[(J:c3-oxygen-use):4]
+	178:0:004	33	[(J:gram-negative):10]
+	0	9	<amod>
+178:0:004	gram-negative
+	33	[(J:gram-negative):10]
+	178:0:005	232	[(N:bacilli):3]
+	2	9	<amod>
+178:0:005	bacilli
+	232	[(N:bacilli):3]
+	
+	
+178:0:006	0
+	2	[(CD:0):68]
+	178:0:007	3	[(N:·):35]
+	1	5	<num>
+178:0:007	·
+	3	[(N:·):35]
+	178:0:013	6	[(N:×):7]
+	0	4	<dep>
+178:0:008	7
+	4	[(CD:7):9]
+	178:0:009	2	[(CD:0):68]
+	1	5	<num>
+178:0:009	0
+	2	[(CD:0):68]
+	178:0:007	3	[(N:·):35]
+	0	4	<dep>
+178:0:010	·
+	3	[(N:·):35]
+	178:0:013	6	[(N:×):7]
+	0	4	<dep>
+178:0:011	8
+	60	[(CD:8):14]
+	178:0:010	3	[(N:·):35]
+	1	5	<num>
+178:0:012	μm
+	9	[(N:μm):17]
+	178:0:013	6	[(N:×):7]
+	0	11	<nn>
+178:0:013	×
+	6	[(N:×):7]
+	178:0:005	232	[(N:bacilli):3]
+	2	4	<dep>
+178:0:014	0
+	2	[(CD:0):68]
+	178:0:015	3	[(N:·):35]
+	1	5	<num>
+178:0:015	·
+	3	[(N:·):35]
+	178:0:013	6	[(N:×):7]
+	0	4	<dep>
+178:0:016	8
+	60	[(CD:8):14]
+	178:0:017	87	[(CD:6):11]
+	1	17	<number>
+178:0:017	6
+	87	[(CD:6):11]
+	178:0:019	35	[(N:c2-motility):12]
+	4	5	<num>
+178:0:018	μm
+	9	[(N:μm):17]
+	178:0:019	35	[(N:c2-motility):12]
+	2	11	<nn>
+178:0:019	c2-motility
+	35	[(N:c2-motility):12]
+	178:0:015	3	[(N:·):35]
+	0	4	<dep>
+179:0:001	cells
+	1	[(N:cells):24]
+	179:0:005	232	[(N:bacilli):3]
+	3	3	<nsubj>
+179:0:003	c3-oxygen-use
+	197	[(J:c3-oxygen-use):4]
+	179:0:004	33	[(J:gram-negative):10]
+	0	9	<amod>
+179:0:004	gram-negative
+	33	[(J:gram-negative):10]
+	179:0:005	232	[(N:bacilli):3]
+	2	9	<amod>
+179:0:005	bacilli
+	232	[(N:bacilli):3]
+	
+	
+179:0:006	0
+	2	[(CD:0):68]
+	179:0:007	3	[(N:·):35]
+	1	5	<num>
+179:0:007	·
+	3	[(N:·):35]
+	179:0:013	6	[(N:×):7]
+	0	4	<dep>
+179:0:008	7
+	4	[(CD:7):9]
+	179:0:009	2	[(CD:0):68]
+	1	5	<num>
+179:0:009	0
+	2	[(CD:0):68]
+	179:0:007	3	[(N:·):35]
+	0	4	<dep>
+179:0:010	·
+	3	[(N:·):35]
+	179:0:013	6	[(N:×):7]
+	0	4	<dep>
+179:0:011	8
+	60	[(CD:8):14]
+	179:0:010	3	[(N:·):35]
+	1	5	<num>
+179:0:012	μm
+	9	[(N:μm):17]
+	179:0:013	6	[(N:×):7]
+	0	11	<nn>
+179:0:013	×
+	6	[(N:×):7]
+	179:0:005	232	[(N:bacilli):3]
+	2	4	<dep>
+179:0:014	0
+	2	[(CD:0):68]
+	179:0:015	3	[(N:·):35]
+	1	5	<num>
+179:0:015	·
+	3	[(N:·):35]
+	179:0:013	6	[(N:×):7]
+	0	4	<dep>
+179:0:016	8
+	60	[(CD:8):14]
+	179:0:017	87	[(CD:6):11]
+	1	17	<number>
+179:0:017	6
+	87	[(CD:6):11]
+	179:0:018	9	[(N:μm):17]
+	0	5	<num>
+179:0:018	μm
+	9	[(N:μm):17]
+	179:0:015	3	[(N:·):35]
+	0	4	<dep>
+17:0:001	optimum
+	89	[(J:optimum):5]
+	17:0:003	217	[(N:temperature):2]
+	1	9	<amod>
+17:0:002	growth
+	73	[(N:growth):17]
+	17:0:003	217	[(N:temperature):2]
+	1	11	<nn>
+17:0:003	temperature
+	217	[(N:temperature):2]
+	17:0:009	29	[(N:c7-tests):25]
+	5	3	<nsubj>
+17:0:005	30
+	81	[(CD:30):13]
+	17:0:006	77	[(CD:°):12]
+	3	17	<number>
+17:0:006	°
+	77	[(CD:°):12]
+	17:0:009	29	[(N:c7-tests):25]
+	5	5	<num>
+17:0:007	c.
+	78	[(N:c.):7]
+	17:0:009	29	[(N:c7-tests):25]
+	1	11	<nn>
+17:0:008	oxidase
+	163	[(N:oxidase):5]
+	17:0:009	29	[(N:c7-tests):25]
+	1	11	<nn>
+17:0:009	c7-tests
+	29	[(N:c7-tests):25]
+	
+	
+17:0:011	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	17:0:012	123	[(N:activities):6]
+	0	11	<nn>
+17:0:012	activities
+	123	[(N:activities):6]
+	17:0:014	109	[(J:negative):6]
+	1	3	<nsubj>
+17:0:014	negative
+	109	[(J:negative):6]
+	17:0:009	29	[(N:c7-tests):25]
+	3	6	<conj_and>
+180:0:001	6
+	87	[(CD:6):11]
+	
+	
+180:0:002	μm
+	9	[(N:μm):17]
+	180:0:001	87	[(CD:6):11]
+	1	4	<dep>
+181:0:002	4
+	76	[(CD:4):10]
+	181:0:003	148	[(N:days):5]
+	0	5	<num>
+181:0:003	days
+	148	[(N:days):5]
+	181:0:004	149	[(N:incubation):4]
+	0	11	<nn>
+181:0:004	incubation
+	149	[(N:incubation):4]
+	181:0:016	3	[(N:·):35]
+	5	33	<prep_after>
+181:0:006	faa
+	234	[(N:faa):1]
+	181:0:007	235	[(N:plates):1]
+	0	11	<nn>
+181:0:007	plates
+	235	[(N:plates):1]
+	181:0:004	149	[(N:incubation):4]
+	1	25	<prep_on>
+181:0:009	colonies
+	96	[(N:colonies):13]
+	181:0:016	3	[(N:·):35]
+	2	3	<nsubj>
+181:0:011	0
+	2	[(CD:0):68]
+	181:0:016	3	[(N:·):35]
+	1	5	<num>
+181:0:012	·
+	3	[(N:·):35]
+	181:0:016	3	[(N:·):35]
+	0	4	<dep>
+181:0:013	6
+	87	[(CD:6):11]
+	181:0:012	3	[(N:·):35]
+	1	5	<num>
+181:0:015	0
+	2	[(CD:0):68]
+	181:0:016	3	[(N:·):35]
+	1	5	<num>
+181:0:016	·
+	3	[(N:·):35]
+	
+	
+181:0:017	8
+	60	[(CD:8):14]
+	181:0:018	153	[(N:mm):5]
+	0	5	<num>
+181:0:018	mm
+	153	[(N:mm):5]
+	181:0:016	3	[(N:·):35]
+	0	4	<dep>
+181:0:020	diameter
+	68	[(N:diameter):7]
+	181:0:016	3	[(N:·):35]
+	8	14	<prep_in>
+181:0:022	circular
+	97	[(J:circular):6]
+	181:0:026	237	[(N:convex):2]
+	0	9	<amod>
+181:0:024	entire
+	236	[(J:entire):2]
+	181:0:026	237	[(N:convex):2]
+	0	9	<amod>
+181:0:026	convex
+	237	[(N:convex):2]
+	181:0:032	238	[(V:off-white):1]
+	1	3	<nsubj>
+181:0:028	opaque
+	155	[(J:opaque):3]
+	181:0:026	237	[(N:convex):2]
+	0	9	<amod>
+181:0:030	gray
+	156	[(J:gray):3]
+	181:0:028	155	[(J:opaque):3]
+	1	6	<conj_and>
+181:0:032	off-white
+	238	[(V:off-white):1]
+	181:0:016	3	[(N:·):35]
+	0	34	<xcomp>
+181:0:034	color
+	239	[(N:color):3]
+	181:0:032	238	[(V:off-white):1]
+	1	14	<prep_in>
+184:0:001	major
+	240	[(J:major):5]
+	184:0:002	241	[(N:amounts):1]
+	1	9	<amod>
+184:0:002	amounts
+	241	[(N:amounts):1]
+	184:0:015	105	[(V:produced):12]
+	1	7	<nsubjpass>
+184:0:004	c9-organic-acids
+	242	[(N:c9-organic-acids):4]
+	184:0:002	241	[(N:amounts):1]
+	1	16	<prep_of>
+184:0:006	succinic
+	243	[(J:succinic):1]
+	184:0:007	42	[(N:acids):5]
+	0	9	<amod>
+184:0:007	acids
+	42	[(N:acids):5]
+	184:0:004	242	[(N:c9-organic-acids):4]
+	0	6	<conj_and>
+184:0:010	trace
+	244	[(N:trace):1]
+	184:0:004	242	[(N:c9-organic-acids):4]
+	0	6	<conj_and>
+184:0:012	isovaleric
+	245	[(J:isovaleric):1]
+	184:0:013	117	[(N:acid):10]
+	0	9	<amod>
+184:0:013	acid
+	117	[(N:acid):10]
+	184:0:010	244	[(N:trace):1]
+	0	16	<prep_of>
+184:0:015	produced
+	105	[(V:produced):12]
+	
+	
+184:0:017	end
+	246	[(N:end):1]
+	184:0:018	247	[(N:products):1]
+	1	11	<nn>
+184:0:018	products
+	247	[(N:products):1]
+	184:0:015	105	[(V:produced):12]
+	5	40	<prep_as>
+184:0:020	metabolism
+	248	[(N:metabolism):1]
+	184:0:018	247	[(N:products):1]
+	1	16	<prep_of>
+184:0:022	pyg
+	249	[(N:pyg):2]
+	184:0:023	37	[(N:broth):2]
+	0	11	<nn>
+184:0:023	broth
+	37	[(N:broth):2]
+	184:0:015	105	[(V:produced):12]
+	0	14	<prep_in>
+185:0:002	non-hydroxylated
+	250	[(J:non-hydroxylated):1]
+	185:0:005	175	[(N:profile):3]
+	0	9	<amod>
+185:0:003	fatty
+	41	[(J:fatty):10]
+	185:0:005	175	[(N:profile):3]
+	0	9	<amod>
+185:0:004	acid
+	117	[(N:acid):10]
+	185:0:005	175	[(N:profile):3]
+	1	11	<nn>
+185:0:005	profile
+	175	[(N:profile):3]
+	185:0:008	252	[(N:iso-c14):1]
+	1	3	<nsubj>
+185:0:007	predominately
+	251	[(R:predominately):1]
+	185:0:008	252	[(N:iso-c14):1]
+	1	19	<advmod>
+185:0:008	iso-c14
+	252	[(N:iso-c14):1]
+	
+	
+185:0:010	0
+	2	[(CD:0):68]
+	185:0:008	252	[(N:iso-c14):1]
+	1	4	<dep>
+185:0:012	iso-c15
+	177	[(N:iso-c15):5]
+	185:0:010	2	[(CD:0):68]
+	4	6	<conj_and>
+185:0:014	0
+	2	[(CD:0):68]
+	185:0:010	2	[(CD:0):68]
+	4	6	<conj_and>
+185:0:016	anteiso-c15
+	183	[(N:anteiso-c15):4]
+	185:0:010	2	[(CD:0):68]
+	4	6	<conj_and>
+185:0:018	0
+	2	[(CD:0):68]
+	185:0:008	252	[(N:iso-c14):1]
+	1	4	<dep>
+186:0:001	aesculin
+	159	[(N:aesculin):4]
+	186:0:003	160	[(V:hydrolysed):6]
+	2	7	<nsubjpass>
+186:0:003	hydrolysed
+	160	[(V:hydrolysed):6]
+	
+	
+187:0:001	arginine
+	253	[(N:arginine):3]
+	187:0:002	19	[(N:c9-polysaccharides):9]
+	1	11	<nn>
+187:0:002	c9-polysaccharides
+	19	[(N:c9-polysaccharides):9]
+	187:0:007	160	[(V:hydrolysed):6]
+	2	7	<nsubjpass>
+187:0:004	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	187:0:002	19	[(N:c9-polysaccharides):9]
+	0	6	<conj_and>
+187:0:006	not
+	24	[(R:not):32]
+	187:0:007	160	[(V:hydrolysed):6]
+	1	12	<neg>
+187:0:007	hydrolysed
+	160	[(V:hydrolysed):6]
+	
+	
+188:0:001	indole
+	161	[(N:indole):3]
+	188:0:006	105	[(V:produced):12]
+	1	7	<nsubjpass>
+188:0:003	c7-tests
+	29	[(N:c7-tests):25]
+	188:0:001	161	[(N:indole):3]
+	0	6	<conj_and>
+188:0:005	not
+	24	[(R:not):32]
+	188:0:006	105	[(V:produced):12]
+	0	12	<neg>
+188:0:006	produced
+	105	[(V:produced):12]
+	
+	
+189:0:001	nitrate
+	110	[(N:nitrate):3]
+	189:0:004	15	[(V:reduced):7]
+	1	7	<nsubjpass>
+189:0:003	not
+	24	[(R:not):32]
+	189:0:004	15	[(V:reduced):7]
+	3	12	<neg>
+189:0:004	reduced
+	15	[(V:reduced):7]
+	
+	
+18:0:001	30
+	81	[(CD:30):13]
+	18:0:005	29	[(N:c7-tests):25]
+	5	5	<num>
+18:0:002	°
+	77	[(CD:°):12]
+	18:0:005	29	[(N:c7-tests):25]
+	5	5	<num>
+18:0:003	c.
+	78	[(N:c.):7]
+	18:0:005	29	[(N:c7-tests):25]
+	1	11	<nn>
+18:0:004	oxidase
+	163	[(N:oxidase):5]
+	18:0:005	29	[(N:c7-tests):25]
+	1	11	<nn>
+18:0:005	c7-tests
+	29	[(N:c7-tests):25]
+	18:0:010	109	[(J:negative):6]
+	1	3	<nsubj>
+18:0:007	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	18:0:008	123	[(N:activities):6]
+	0	11	<nn>
+18:0:008	activities
+	123	[(N:activities):6]
+	18:0:005	29	[(N:c7-tests):25]
+	3	6	<conj_and>
+18:0:010	negative
+	109	[(J:negative):6]
+	
+	
+190:0:002	is
+	211	[(V:is):4]
+	
+	
+190:0:004	growth
+	73	[(N:growth):17]
+	190:0:002	211	[(V:is):4]
+	1	3	<nsubj>
+190:0:006	20
+	157	[(CD:20):4]
+	190:0:007	58	[(N:%):20]
+	2	17	<number>
+190:0:007	%
+	58	[(N:%):20]
+	190:0:008	158	[(N:bile):3]
+	0	9	<amod>
+190:0:008	bile
+	158	[(N:bile):3]
+	190:0:004	73	[(N:growth):17]
+	7	14	<prep_in>
+191:0:002	g+c
+	51	[(N:g+c):7]
+	191:0:003	52	[(N:content):7]
+	0	11	<nn>
+191:0:003	content
+	52	[(N:content):7]
+	191:0:014	58	[(N:%):20]
+	3	3	<nsubj>
+191:0:006	dna
+	20	[(N:dna):9]
+	191:0:003	52	[(N:content):7]
+	1	16	<prep_of>
+191:0:009	type
+	53	[(N:type):7]
+	191:0:010	54	[(N:strain):7]
+	0	11	<nn>
+191:0:010	strain
+	54	[(N:strain):7]
+	191:0:006	20	[(N:dna):9]
+	0	16	<prep_of>
+191:0:012	48
+	262	[(CD:48):1]
+	191:0:013	57	[(N:mol):7]
+	0	17	<number>
+191:0:013	mol
+	57	[(N:mol):7]
+	191:0:014	58	[(N:%):20]
+	2	5	<num>
+191:0:014	%
+	58	[(N:%):20]
+	
+	
+19:0:001	species
+	55	[(N:species):3]
+	19:0:006	257	[(V:produce):1]
+	2	3	<nsubj>
+19:0:002	utilize
+	254	[(V:utilize):3]
+	
+	
+19:0:003	various
+	255	[(J:various):1]
+	19:0:004	256	[(N:sugars):1]
+	0	9	<amod>
+19:0:004	sugars
+	256	[(N:sugars):1]
+	19:0:002	254	[(V:utilize):3]
+	1	2	<dobj>
+19:0:006	produce
+	257	[(V:produce):1]
+	19:0:002	254	[(V:utilize):3]
+	3	6	<conj_and>
+19:0:007	c9-organic-acids
+	242	[(N:c9-organic-acids):4]
+	19:0:006	257	[(V:produce):1]
+	2	2	<dobj>
+19:0:009	c9-organic-acids
+	242	[(N:c9-organic-acids):4]
+	19:0:007	242	[(N:c9-organic-acids):4]
+	0	6	<conj_and>
+19:0:011	major
+	240	[(J:major):5]
+	19:0:013	259	[(N:end-products):1]
+	2	9	<amod>
+19:0:012	fermentation
+	258	[(N:fermentation):1]
+	19:0:013	259	[(N:end-products):1]
+	2	11	<nn>
+19:0:013	end-products
+	259	[(N:end-products):1]
+	19:0:006	257	[(V:produce):1]
+	2	40	<prep_as>
+19:0:015	c9-organic-acids
+	242	[(N:c9-organic-acids):4]
+	19:0:013	259	[(N:end-products):1]
+	2	23	<prep_with>
+19:0:018	minor
+	260	[(J:minor):1]
+	19:0:019	261	[(N:product):2]
+	0	9	<amod>
+19:0:019	product
+	261	[(N:product):2]
+	19:0:015	242	[(N:c9-organic-acids):4]
+	0	40	<prep_as>
+1:0:001	cells
+	1	[(N:cells):24]
+	1:0:016	10	[(V:occur):2]
+	2	3	<nsubj>
+1:0:003	0
+	2	[(CD:0):68]
+	1:0:004	3	[(N:·):35]
+	1	5	<num>
+1:0:004	·
+	3	[(N:·):35]
+	1:0:001	1	[(N:cells):24]
+	2	4	<dep>
+1:0:005	7
+	4	[(CD:7):9]
+	1:0:004	3	[(N:·):35]
+	0	4	<dep>
+1:0:007	1
+	5	[(CD:1):10]
+	1:0:008	6	[(N:×):7]
+	1	5	<num>
+1:0:008	×
+	6	[(N:×):7]
+	1:0:005	4	[(CD:7):9]
+	0	4	<dep>
+1:0:009	1
+	5	[(CD:1):10]
+	1:0:010	3	[(N:·):35]
+	1	5	<num>
+1:0:010	·
+	3	[(N:·):35]
+	1:0:008	6	[(N:×):7]
+	0	4	<dep>
+1:0:011	5
+	7	[(CD:5):7]
+	1:0:010	3	[(N:·):35]
+	0	4	<dep>
+1:0:013	2
+	8	[(CD:2):3]
+	1:0:014	9	[(N:μm):17]
+	0	5	<num>
+1:0:014	μm
+	9	[(N:μm):17]
+	1:0:005	4	[(CD:7):9]
+	0	4	<dep>
+1:0:016	occur
+	10	[(V:occur):2]
+	
+	
+1:0:017	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	1:0:016	10	[(V:occur):2]
+	1	2	<dobj>
+1:0:019	in
+	12	[(IN:in):1]
+	1:0:016	10	[(V:occur):2]
+	1	0	<conj_or>
+1:0:020	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	1:0:019	12	[(IN:in):1]
+	0	1	<pobj>
+20:0:001	major
+	240	[(J:major):5]
+	20:0:004	42	[(N:acids):5]
+	0	9	<amod>
+20:0:002	cellular
+	40	[(J:cellular):5]
+	20:0:004	42	[(N:acids):5]
+	0	9	<amod>
+20:0:003	fatty
+	41	[(J:fatty):10]
+	20:0:004	42	[(N:acids):5]
+	0	9	<amod>
+20:0:004	acids
+	42	[(N:acids):5]
+	20:0:006	183	[(N:anteiso-c15):4]
+	2	3	<nsubj>
+20:0:006	anteiso-c15
+	183	[(N:anteiso-c15):4]
+	
+	
+20:0:007	0
+	2	[(CD:0):68]
+	20:0:008	2	[(CD:0):68]
+	1	5	<num>
+20:0:008	0
+	2	[(CD:0):68]
+	20:0:006	183	[(N:anteiso-c15):4]
+	2	4	<dep>
+20:0:010	anteiso-c17
+	263	[(N:anteiso-c17):2]
+	20:0:006	183	[(N:anteiso-c15):4]
+	2	6	<conj_and>
+20:0:011	0
+	2	[(CD:0):68]
+	20:0:012	264	[(N:3-oh):3]
+	0	5	<num>
+20:0:012	3-oh
+	264	[(N:3-oh):3]
+	20:0:010	263	[(N:anteiso-c17):2]
+	0	4	<dep>
+21:0:001	0
+	2	[(CD:0):68]
+	21:0:002	2	[(CD:0):68]
+	1	5	<num>
+21:0:002	0
+	2	[(CD:0):68]
+	21:0:008	180	[(N:c15):4]
+	0	3	<nsubj>
+21:0:004	anteiso-c17
+	263	[(N:anteiso-c17):2]
+	21:0:006	264	[(N:3-oh):3]
+	2	11	<nn>
+21:0:005	0
+	2	[(CD:0):68]
+	21:0:006	264	[(N:3-oh):3]
+	0	5	<num>
+21:0:006	3-oh
+	264	[(N:3-oh):3]
+	21:0:002	2	[(CD:0):68]
+	4	6	<conj_and>
+21:0:008	c15
+	180	[(N:c15):4]
+	
+	
+22:0:002	major
+	240	[(J:major):5]
+	22:0:004	49	[(N:quinone):3]
+	0	9	<amod>
+22:0:003	respiratory
+	48	[(J:respiratory):5]
+	22:0:004	49	[(N:quinone):3]
+	0	9	<amod>
+22:0:004	quinone
+	49	[(N:quinone):3]
+	22:0:006	265	[(N:mk-8):1]
+	1	3	<nsubj>
+22:0:006	mk-8
+	265	[(N:mk-8):1]
+	
+	
+22:0:008	h4
+	266	[(N:h4):1]
+	22:0:006	265	[(N:mk-8):1]
+	1	20	<appos>
+23:0:002	genomic
+	267	[(J:genomic):1]
+	23:0:005	52	[(N:content):7]
+	2	9	<amod>
+23:0:003	dna
+	20	[(N:dna):9]
+	23:0:005	52	[(N:content):7]
+	0	11	<nn>
+23:0:004	g+c
+	51	[(N:g+c):7]
+	23:0:005	52	[(N:content):7]
+	0	11	<nn>
+23:0:005	content
+	52	[(N:content):7]
+	23:0:012	3	[(N:·):35]
+	2	3	<nsubj>
+23:0:008	type
+	53	[(N:type):7]
+	23:0:009	55	[(N:species):3]
+	0	11	<nn>
+23:0:009	species
+	55	[(N:species):3]
+	23:0:005	52	[(N:content):7]
+	1	16	<prep_of>
+23:0:011	39
+	268	[(CD:39):1]
+	23:0:012	3	[(N:·):35]
+	1	5	<num>
+23:0:012	·
+	3	[(N:·):35]
+	
+	
+23:0:013	3
+	83	[(CD:3):5]
+	23:0:015	58	[(N:%):20]
+	2	17	<number>
+23:0:014	mol
+	57	[(N:mol):7]
+	23:0:015	58	[(N:%):20]
+	3	4	<dep>
+23:0:015	%
+	58	[(N:%):20]
+	23:0:012	3	[(N:·):35]
+	0	9	<amod>
+24:0:001	cells
+	1	[(N:cells):24]
+	24:0:004	3	[(N:·):35]
+	2	3	<nsubj>
+24:0:003	0
+	2	[(CD:0):68]
+	24:0:004	3	[(N:·):35]
+	1	5	<num>
+24:0:004	·
+	3	[(N:·):35]
+	
+	
+24:0:005	5
+	7	[(CD:5):7]
+	24:0:004	3	[(N:·):35]
+	0	4	<dep>
+24:0:007	0
+	2	[(CD:0):68]
+	24:0:008	3	[(N:·):35]
+	1	5	<num>
+24:0:008	·
+	3	[(N:·):35]
+	24:0:004	3	[(N:·):35]
+	0	4	<dep>
+24:0:009	6
+	87	[(CD:6):11]
+	24:0:010	9	[(N:μm):17]
+	0	5	<num>
+24:0:010	μm
+	9	[(N:μm):17]
+	24:0:008	3	[(N:·):35]
+	0	4	<dep>
+24:0:012	diameter
+	68	[(N:diameter):7]
+	24:0:015	3	[(N:·):35]
+	8	11	<nn>
+24:0:014	1
+	5	[(CD:1):10]
+	24:0:012	68	[(N:diameter):7]
+	0	6	<conj_and>
+24:0:015	·
+	3	[(N:·):35]
+	24:0:010	9	[(N:μm):17]
+	1	14	<prep_in>
+24:0:016	3
+	83	[(CD:3):5]
+	24:0:015	3	[(N:·):35]
+	1	5	<num>
+24:0:018	1
+	5	[(CD:1):10]
+	24:0:019	3	[(N:·):35]
+	1	5	<num>
+24:0:019	·
+	3	[(N:·):35]
+	24:0:004	3	[(N:·):35]
+	0	4	<dep>
+24:0:020	7
+	4	[(CD:7):9]
+	24:0:021	9	[(N:μm):17]
+	0	5	<num>
+24:0:021	μm
+	9	[(N:μm):17]
+	24:0:019	3	[(N:·):35]
+	0	4	<dep>
+24:0:023	length
+	269	[(N:length):1]
+	24:0:004	3	[(N:·):35]
+	8	14	<prep_in>
+25:0:001	ends
+	142	[(N:ends):4]
+	25:0:006	141	[(J:round):3]
+	3	3	<nsubj>
+25:0:003	cells
+	1	[(N:cells):24]
+	25:0:001	142	[(N:ends):4]
+	0	16	<prep_of>
+25:0:005	usually
+	270	[(R:usually):1]
+	25:0:006	141	[(J:round):3]
+	3	19	<advmod>
+25:0:006	round
+	141	[(J:round):3]
+	
+	
+25:0:008	slightly
+	154	[(R:slightly):4]
+	25:0:009	25	[(J:c2-cell-shape):4]
+	2	19	<advmod>
+25:0:009	c2-cell-shape
+	25	[(J:c2-cell-shape):4]
+	25:0:012	1	[(N:cells):24]
+	2	9	<amod>
+25:0:011	c2-cell-shape
+	25	[(J:c2-cell-shape):4]
+	25:0:009	25	[(J:c2-cell-shape):4]
+	0	6	<conj_and>
+25:0:012	cells
+	1	[(N:cells):24]
+	25:0:006	141	[(J:round):3]
+	3	8	<prep_to>
+25:0:014	occasionally
+	271	[(R:occasionally):1]
+	25:0:015	272	[(V:formed):1]
+	1	19	<advmod>
+25:0:015	formed
+	272	[(V:formed):1]
+	25:0:012	1	[(N:cells):24]
+	3	18	<rcmod>
+25:0:016	both
+	273	[(CC:both):1]
+	25:0:015	272	[(V:formed):1]
+	1	22	<prep>
+25:0:017	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	25:0:016	273	[(CC:both):1]
+	0	4	<dep>
+25:0:020	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	25:0:006	141	[(J:round):3]
+	3	14	<prep_in>
+25:0:023	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	25:0:024	1	[(N:cells):24]
+	3	11	<nn>
+25:0:024	cells
+	1	[(N:cells):24]
+	25:0:020	11	[(N:c2-cell-shape):19]
+	0	16	<prep_of>
+27:0:001	grows
+	274	[(V:grows):3]
+	27:0:054	2	[(CD:0):68]
+	3	4	<dep>
+27:0:003	ph
+	86	[(N:ph):9]
+	27:0:005	3	[(N:·):35]
+	8	11	<nn>
+27:0:004	5
+	7	[(CD:5):7]
+	27:0:005	3	[(N:·):35]
+	1	5	<num>
+27:0:005	·
+	3	[(N:·):35]
+	27:0:001	274	[(V:grows):3]
+	1	24	<prep_at>
+27:0:006	0
+	2	[(CD:0):68]
+	27:0:005	3	[(N:·):35]
+	1	5	<num>
+27:0:008	7
+	4	[(CD:7):9]
+	27:0:009	3	[(N:·):35]
+	1	5	<num>
+27:0:009	·
+	3	[(N:·):35]
+	27:0:034	279	[(J:slower):1]
+	3	3	<nsubj>
+27:0:010	6
+	87	[(CD:6):11]
+	27:0:009	3	[(N:·):35]
+	0	4	<dep>
+27:0:012	optimum
+	89	[(J:optimum):5]
+	27:0:013	86	[(N:ph):9]
+	2	9	<amod>
+27:0:013	ph
+	86	[(N:ph):9]
+	27:0:010	87	[(CD:6):11]
+	1	4	<dep>
+27:0:014	6
+	87	[(CD:6):11]
+	27:0:015	3	[(N:·):35]
+	1	5	<num>
+27:0:015	·
+	3	[(N:·):35]
+	27:0:013	86	[(N:ph):9]
+	2	4	<dep>
+27:0:016	6
+	87	[(CD:6):11]
+	27:0:015	3	[(N:·):35]
+	0	4	<dep>
+27:0:020	15
+	133	[(CD:15):6]
+	27:0:009	3	[(N:·):35]
+	2	6	<conj_and>
+27:0:022	35
+	275	[(CD:35):1]
+	27:0:023	77	[(CD:°):12]
+	3	17	<number>
+27:0:023	°
+	77	[(CD:°):12]
+	27:0:029	80	[(N:c):11]
+	1	5	<num>
+27:0:024	c.
+	78	[(N:c.):7]
+	27:0:029	80	[(N:c):11]
+	0	11	<nn>
+27:0:025	even
+	276	[(R:even):1]
+	27:0:029	80	[(N:c):11]
+	5	9	<amod>
+27:0:027	33
+	277	[(CD:33):1]
+	27:0:028	77	[(CD:°):12]
+	3	5	<num>
+27:0:028	°
+	77	[(CD:°):12]
+	27:0:025	276	[(R:even):1]
+	0	24	<prep_at>
+27:0:029	c
+	80	[(N:c):11]
+	27:0:020	133	[(CD:15):6]
+	0	4	<dep>
+27:0:031	growth
+	73	[(N:growth):17]
+	27:0:029	80	[(N:c):11]
+	9	20	<appos>
+27:0:033	significantly
+	278	[(R:significantly):1]
+	27:0:034	279	[(J:slower):1]
+	3	19	<advmod>
+27:0:034	slower
+	279	[(J:slower):1]
+	27:0:001	274	[(V:grows):3]
+	2	35	<parataxis>
+27:0:036	that
+	280	[(DT:that):1]
+	27:0:034	279	[(J:slower):1]
+	3	41	<prep_than>
+27:0:038	30
+	81	[(CD:30):13]
+	27:0:039	77	[(CD:°):12]
+	3	5	<num>
+27:0:039	°
+	77	[(CD:°):12]
+	27:0:036	280	[(DT:that):1]
+	0	24	<prep_at>
+27:0:040	c.
+	78	[(N:c.):7]
+	27:0:043	281	[(V:grow):2]
+	2	3	<nsubj>
+27:0:042	not
+	24	[(R:not):32]
+	27:0:043	281	[(V:grow):2]
+	1	12	<neg>
+27:0:043	grow
+	281	[(V:grow):2]
+	27:0:034	279	[(J:slower):1]
+	3	37	<ccomp>
+27:0:045	37
+	79	[(CD:37):6]
+	27:0:046	77	[(CD:°):12]
+	3	17	<number>
+27:0:046	°
+	77	[(CD:°):12]
+	27:0:043	281	[(V:grow):2]
+	4	24	<prep_at>
+27:0:047	c.
+	78	[(N:c.):7]
+	27:0:050	283	[(N:range):3]
+	0	11	<nn>
+27:0:048	nacl
+	84	[(N:nacl):7]
+	27:0:050	283	[(N:range):3]
+	0	11	<nn>
+27:0:049	concentration
+	282	[(N:concentration):2]
+	27:0:050	283	[(N:range):3]
+	0	11	<nn>
+27:0:050	range
+	283	[(N:range):3]
+	27:0:043	281	[(V:grow):2]
+	2	2	<dobj>
+27:0:052	growth
+	73	[(N:growth):17]
+	27:0:050	283	[(N:range):3]
+	0	28	<prep_for>
+27:0:054	0
+	2	[(CD:0):68]
+	
+	
+27:0:056	0
+	2	[(CD:0):68]
+	27:0:057	3	[(N:·):35]
+	1	5	<num>
+27:0:057	·
+	3	[(N:·):35]
+	27:0:054	2	[(CD:0):68]
+	3	4	<dep>
+27:0:058	5
+	7	[(CD:5):7]
+	27:0:059	58	[(N:%):20]
+	2	5	<num>
+27:0:059	%
+	58	[(N:%):20]
+	27:0:054	2	[(CD:0):68]
+	3	3	<nsubj>
+27:0:061	w\/v
+	284	[(N:w\/v):1]
+	27:0:059	58	[(N:%):20]
+	3	20	<appos>
+27:0:064	pyg
+	249	[(N:pyg):2]
+	27:0:065	190	[(N:medium):3]
+	0	11	<nn>
+27:0:065	medium
+	190	[(N:medium):3]
+	27:0:054	2	[(CD:0):68]
+	3	14	<prep_in>
+30:0:001	aesculin
+	159	[(N:aesculin):4]
+	30:0:003	160	[(V:hydrolysed):6]
+	2	7	<nsubjpass>
+30:0:003	hydrolysed
+	160	[(V:hydrolysed):6]
+	
+	
+31:0:001	gelatin
+	285	[(N:gelatin):1]
+	31:0:002	211	[(V:is):4]
+	1	3	<nsubj>
+31:0:002	is
+	211	[(V:is):4]
+	
+	
+31:0:003	not
+	24	[(R:not):32]
+	31:0:002	211	[(V:is):4]
+	2	12	<neg>
+32:0:001	urease
+	286	[(N:urease):1]
+	32:0:003	109	[(J:negative):6]
+	1	3	<nsubj>
+32:0:003	negative
+	109	[(J:negative):6]
+	
+	
+33:0:001	hydrogen
+	287	[(N:hydrogen):1]
+	33:0:007	105	[(V:produced):12]
+	1	7	<nsubjpass>
+33:0:002	c9-inorganic
+	16	[(J:c9-inorganic):4]
+	33:0:001	287	[(N:hydrogen):1]
+	1	9	<amod>
+33:0:004	c9-other
+	288	[(N:c9-other):2]
+	33:0:001	287	[(N:hydrogen):1]
+	1	6	<conj_and>
+33:0:006	not
+	24	[(R:not):32]
+	33:0:007	105	[(V:produced):12]
+	0	12	<neg>
+33:0:007	produced
+	105	[(V:produced):12]
+	
+	
+34:0:002	not
+	24	[(R:not):32]
+	34:0:003	281	[(V:grow):2]
+	1	12	<neg>
+34:0:003	grow
+	281	[(V:grow):2]
+	
+	
+34:0:006	presence
+	289	[(N:presence):1]
+	34:0:003	281	[(V:grow):2]
+	4	14	<prep_in>
+34:0:008	c9-complex-mixtures
+	290	[(N:c9-complex-mixtures):1]
+	34:0:006	289	[(N:presence):1]
+	0	16	<prep_of>
+35:0:001	cells
+	1	[(N:cells):24]
+	35:0:004	63	[(N:c3-oxygen-use):9]
+	5	3	<nsubj>
+35:0:003	strictly
+	143	[(R:strictly):4]
+	35:0:004	63	[(N:c3-oxygen-use):9]
+	0	19	<advmod>
+35:0:004	c3-oxygen-use
+	63	[(N:c3-oxygen-use):9]
+	
+	
+35:0:006	gram-stain-negative
+	291	[(N:gram-stain-negative):1]
+	35:0:004	63	[(N:c3-oxygen-use):9]
+	2	6	<conj_and>
+35:0:008	c3-pigements
+	104	[(N:c3-pigements):11]
+	35:0:004	63	[(N:c3-oxygen-use):9]
+	2	6	<conj_and>
+35:0:010	c2-motility
+	35	[(N:c2-motility):12]
+	35:0:004	63	[(N:c3-oxygen-use):9]
+	2	6	<conj_and>
+35:0:012	c2-cell-shape
+	11	[(N:c2-cell-shape):19]
+	35:0:004	63	[(N:c3-oxygen-use):9]
+	2	6	<conj_and>
+35:0:014	supplementary
+	292	[(J:supplementary):1]
+	35:0:012	11	[(N:c2-cell-shape):19]
+	1	4	<dep>
+35:0:015	fig
+	293	[(N:fig):1]
+	35:0:014	292	[(J:supplementary):1]
+	0	4	<dep>
+36:0:001	s1
+	294	[(N:s1):1]
+	
+	
+36:0:003	available
+	295	[(J:available):1]
+	36:0:006	297	[(N:online):1]
+	0	4	<dep>
+36:0:005	ijsem
+	296	[(N:ijsem):1]
+	36:0:003	295	[(J:available):1]
+	0	14	<prep_in>
+36:0:006	online
+	297	[(N:online):1]
+	36:0:001	294	[(N:s1):1]
+	0	4	<dep>
+37:0:001	gliding
+	298	[(V:gliding):1]
+	37:0:002	299	[(N:motility):2]
+	0	9	<amod>
+37:0:002	motility
+	299	[(N:motility):2]
+	37:0:004	300	[(J:absent):5]
+	0	3	<nsubj>
+37:0:004	absent
+	300	[(J:absent):5]
+	
+	
+38:0:001	oxidase
+	163	[(N:oxidase):5]
+	38:0:004	123	[(N:activities):6]
+	0	11	<nn>
+38:0:003	c7-tests
+	29	[(N:c7-tests):25]
+	38:0:001	163	[(N:oxidase):5]
+	0	6	<conj_and>
+38:0:004	activities
+	123	[(N:activities):6]
+	38:0:006	124	[(J:present):2]
+	0	3	<nsubj>
+38:0:006	present
+	124	[(J:present):2]
+	
+	
+39:0:001	non-diffusible
+	301	[(J:non-diffusible):2]
+	39:0:003	104	[(N:c3-pigements):11]
+	0	9	<amod>
+39:0:002	carotenoid-type
+	302	[(J:carotenoid-type):2]
+	39:0:003	104	[(N:c3-pigements):11]
+	0	9	<amod>
+39:0:003	c3-pigements
+	104	[(N:c3-pigements):11]
+	39:0:005	105	[(V:produced):12]
+	1	7	<nsubjpass>
+39:0:005	produced
+	105	[(V:produced):12]
+	
+	
+3:0:002	temperature
+	217	[(N:temperature):2]
+	3:0:003	283	[(N:range):3]
+	0	11	<nn>
+3:0:003	range
+	283	[(N:range):3]
+	3:0:008	59	[(CD:40):6]
+	0	3	<nsubj>
+3:0:005	growth
+	73	[(N:growth):17]
+	3:0:003	283	[(N:range):3]
+	0	28	<prep_for>
+3:0:007	15
+	133	[(CD:15):6]
+	3:0:008	59	[(CD:40):6]
+	1	17	<number>
+3:0:008	40
+	59	[(CD:40):6]
+	
+	
+40:0:001	flexirubin
+	303	[(N:flexirubin):2]
+	40:0:002	104	[(N:c3-pigements):11]
+	2	11	<nn>
+40:0:002	c3-pigements
+	104	[(N:c3-pigements):11]
+	40:0:004	300	[(J:absent):5]
+	0	3	<nsubj>
+40:0:004	absent
+	300	[(J:absent):5]
+	
+	
+41:0:002	major
+	240	[(J:major):5]
+	41:0:004	49	[(N:quinone):3]
+	0	9	<amod>
+41:0:003	respiratory
+	48	[(J:respiratory):5]
+	41:0:004	49	[(N:quinone):3]
+	0	9	<amod>
+41:0:004	quinone
+	49	[(N:quinone):3]
+	41:0:006	50	[(N:mk-6):2]
+	0	3	<nsubj>
+41:0:006	mk-6
+	50	[(N:mk-6):2]
+	
+	
+42:0:002	cellular
+	40	[(J:cellular):5]
+	42:0:005	304	[(N:composition):1]
+	0	9	<amod>
+42:0:003	fatty
+	41	[(J:fatty):10]
+	42:0:005	304	[(N:composition):1]
+	0	9	<amod>
+42:0:004	acid
+	117	[(N:acid):10]
+	42:0:005	304	[(N:composition):1]
+	0	11	<nn>
+42:0:005	composition
+	304	[(N:composition):1]
+	42:0:007	305	[(V:dominated):1]
+	1	7	<nsubjpass>
+42:0:007	dominated
+	305	[(V:dominated):1]
+	
+	
+42:0:009	iso-c15
+	177	[(N:iso-c15):5]
+	42:0:007	305	[(V:dominated):1]
+	1	42	<agent>
+42:0:011	0
+	2	[(CD:0):68]
+	42:0:009	177	[(N:iso-c15):5]
+	0	4	<dep>
+42:0:013	iso-c15
+	177	[(N:iso-c15):5]
+	42:0:011	2	[(CD:0):68]
+	4	20	<appos>
+42:0:015	1
+	5	[(CD:1):10]
+	42:0:016	306	[(N:g):1]
+	1	5	<num>
+42:0:016	g
+	306	[(N:g):1]
+	42:0:009	177	[(N:iso-c15):5]
+	0	4	<dep>
+42:0:018	iso-c17
+	307	[(N:iso-c17):1]
+	42:0:016	306	[(N:g):1]
+	1	20	<appos>
+42:0:020	0
+	2	[(CD:0):68]
+	42:0:021	264	[(N:3-oh):3]
+	0	5	<num>
+42:0:021	3-oh
+	264	[(N:3-oh):3]
+	42:0:009	177	[(N:iso-c15):5]
+	0	4	<dep>
+42:0:023	c15
+	180	[(N:c15):4]
+	42:0:021	264	[(N:3-oh):3]
+	2	6	<conj_and>
+42:0:025	0
+	2	[(CD:0):68]
+	42:0:009	177	[(N:iso-c15):5]
+	0	4	<dep>
+43:0:001	colonies
+	96	[(N:colonies):13]
+	43:0:005	309	[(J:orange):1]
+	2	3	<nsubj>
+43:0:003	ma
+	308	[(N:ma):1]
+	43:0:001	96	[(N:colonies):13]
+	1	25	<prep_on>
+43:0:005	orange
+	309	[(J:orange):1]
+	
+	
+43:0:007	color
+	239	[(N:color):3]
+	43:0:005	309	[(J:orange):1]
+	2	14	<prep_in>
+43:0:009	circular
+	97	[(J:circular):6]
+	43:0:007	239	[(N:color):3]
+	0	20	<appos>
+43:0:011	1.0
+	64	[(CD:1.0):4]
+	43:0:009	97	[(J:circular):6]
+	3	9	<amod>
+43:0:013	3.0
+	310	[(CD:3.0):1]
+	43:0:014	153	[(N:mm):5]
+	0	5	<num>
+43:0:014	mm
+	153	[(N:mm):5]
+	43:0:009	97	[(J:circular):6]
+	3	4	<dep>
+43:0:016	diameter
+	68	[(N:diameter):7]
+	43:0:014	153	[(N:mm):5]
+	1	14	<prep_in>
+43:0:018	convex
+	237	[(N:convex):2]
+	43:0:016	68	[(N:diameter):7]
+	0	6	<conj_and>
+43:0:020	smooth
+	311	[(J:smooth):1]
+	43:0:021	312	[(N:surfaces):1]
+	1	9	<amod>
+43:0:021	surfaces
+	312	[(N:surfaces):1]
+	43:0:005	309	[(J:orange):1]
+	2	23	<prep_with>
+43:0:023	entire
+	236	[(J:entire):2]
+	43:0:024	313	[(N:margins):1]
+	0	9	<amod>
+43:0:024	margins
+	313	[(N:margins):1]
+	43:0:021	312	[(N:surfaces):1]
+	1	6	<conj_and>
+44:0:001	non-diffusible
+	301	[(J:non-diffusible):2]
+	44:0:003	104	[(N:c3-pigements):11]
+	0	9	<amod>
+44:0:002	carotenoid-type
+	302	[(J:carotenoid-type):2]
+	44:0:003	104	[(N:c3-pigements):11]
+	0	9	<amod>
+44:0:003	c3-pigements
+	104	[(N:c3-pigements):11]
+	44:0:006	315	[(V:peaks):1]
+	1	3	<nsubj>
+44:0:005	absorption
+	314	[(N:absorption):1]
+	44:0:003	104	[(N:c3-pigements):11]
+	2	23	<prep_with>
+44:0:006	peaks
+	315	[(V:peaks):1]
+	44:0:017	105	[(V:produced):12]
+	5	37	<ccomp>
+44:0:008	451
+	316	[(CD:451):1]
+	44:0:009	317	[(N:nm):4]
+	0	5	<num>
+44:0:009	nm
+	317	[(N:nm):4]
+	44:0:006	315	[(V:peaks):1]
+	1	24	<prep_at>
+44:0:011	474
+	318	[(CD:474):1]
+	44:0:012	317	[(N:nm):4]
+	0	5	<num>
+44:0:012	nm
+	317	[(N:nm):4]
+	44:0:017	105	[(V:produced):12]
+	1	7	<nsubjpass>
+44:0:014	503
+	319	[(CD:503):1]
+	44:0:015	317	[(N:nm):4]
+	0	5	<num>
+44:0:015	nm
+	317	[(N:nm):4]
+	44:0:012	317	[(N:nm):4]
+	1	6	<conj_and>
+44:0:017	produced
+	105	[(V:produced):12]
+	
+	
+45:0:001	growth
+	73	[(N:growth):17]
+	45:0:002	74	[(V:occurs):4]
+	1	3	<nsubj>
+45:0:002	occurs
+	74	[(V:occurs):4]
+	
+	
+45:0:004	20
+	157	[(CD:20):4]
+	45:0:002	74	[(V:occurs):4]
+	2	24	<prep_at>
+45:0:006	30
+	81	[(CD:30):13]
+	45:0:008	80	[(N:c):11]
+	1	5	<num>
+45:0:007	°
+	82	[(N:°):6]
+	45:0:008	80	[(N:c):11]
+	0	11	<nn>
+45:0:008	c
+	80	[(N:c):11]
+	45:0:004	157	[(CD:20):4]
+	0	4	<dep>
+45:0:010	optimum
+	85	[(N:optimum):6]
+	45:0:008	80	[(N:c):11]
+	9	4	<dep>
+45:0:012	25
+	320	[(CD:25):1]
+	45:0:010	85	[(N:optimum):6]
+	1	24	<prep_at>
+45:0:014	30
+	81	[(CD:30):13]
+	45:0:016	80	[(N:c):11]
+	1	5	<num>
+45:0:015	°
+	82	[(N:°):6]
+	45:0:016	80	[(N:c):11]
+	0	11	<nn>
+45:0:016	c
+	80	[(N:c):11]
+	45:0:012	320	[(CD:25):1]
+	0	4	<dep>
+45:0:020	ph
+	86	[(N:ph):9]
+	45:0:008	80	[(N:c):11]
+	8	24	<prep_at>
+45:0:021	6.0
+	321	[(CD:6.0):1]
+	45:0:020	86	[(N:ph):9]
+	0	5	<num>
+45:0:023	9.0
+	322	[(CD:9.0):1]
+	45:0:020	86	[(N:ph):9]
+	2	4	<dep>
+45:0:025	optimum
+	85	[(N:optimum):6]
+	45:0:020	86	[(N:ph):9]
+	2	4	<dep>
+45:0:027	ph
+	86	[(N:ph):9]
+	45:0:025	85	[(N:optimum):6]
+	1	24	<prep_at>
+45:0:028	7.0
+	323	[(CD:7.0):1]
+	45:0:030	324	[(CD:8.0):1]
+	0	5	<num>
+45:0:030	8.0
+	324	[(CD:8.0):1]
+	45:0:025	85	[(N:optimum):6]
+	1	4	<dep>
+45:0:034	2
+	8	[(CD:2):3]
+	45:0:008	80	[(N:c):11]
+	5	23	<prep_with>
+45:0:036	4
+	76	[(CD:4):10]
+	45:0:037	58	[(N:%):20]
+	2	17	<number>
+45:0:037	%
+	58	[(N:%):20]
+	45:0:038	84	[(N:nacl):7]
+	0	9	<amod>
+45:0:038	nacl
+	84	[(N:nacl):7]
+	45:0:008	80	[(N:c):11]
+	9	4	<dep>
+45:0:040	optimum
+	85	[(N:optimum):6]
+	45:0:038	84	[(N:nacl):7]
+	1	4	<dep>
+45:0:042	3
+	83	[(CD:3):5]
+	45:0:043	58	[(N:%):20]
+	2	17	<number>
+45:0:043	%
+	58	[(N:%):20]
+	45:0:044	84	[(N:nacl):7]
+	0	9	<amod>
+45:0:044	nacl
+	84	[(N:nacl):7]
+	45:0:040	85	[(N:optimum):6]
+	1	14	<prep_in>
+47:0:001	anaerobic
+	325	[(J:anaerobic):1]
+	47:0:002	73	[(N:growth):17]
+	3	9	<amod>
+47:0:002	growth
+	73	[(N:growth):17]
+	47:0:005	10	[(V:occur):2]
+	2	3	<nsubj>
+47:0:004	not
+	24	[(R:not):32]
+	47:0:005	10	[(V:occur):2]
+	4	12	<neg>
+47:0:005	occur
+	10	[(V:occur):2]
+	
+	
+47:0:007	c3-salinity-preference
+	326	[(N:c3-salinity-preference):1]
+	47:0:008	21	[(N:agar):11]
+	3	11	<nn>
+47:0:008	agar
+	21	[(N:agar):11]
+	47:0:005	10	[(V:occur):2]
+	4	25	<prep_on>
+48:0:001	acetoin
+	327	[(N:acetoin):1]
+	48:0:008	105	[(V:produced):12]
+	1	7	<nsubjpass>
+48:0:003	c9-other
+	288	[(N:c9-other):2]
+	48:0:001	327	[(N:acetoin):1]
+	0	6	<conj_and>
+48:0:005	h2s
+	328	[(N:h2s):2]
+	48:0:001	327	[(N:acetoin):1]
+	0	6	<conj_and>
+48:0:007	not
+	24	[(R:not):32]
+	48:0:008	105	[(V:produced):12]
+	0	12	<neg>
+48:0:008	produced
+	105	[(V:produced):12]
+	
+	
+49:0:001	nitrate
+	110	[(N:nitrate):3]
+	49:0:004	15	[(V:reduced):7]
+	1	7	<nsubjpass>
+49:0:003	not
+	24	[(R:not):32]
+	49:0:004	15	[(V:reduced):7]
+	3	12	<neg>
+49:0:004	reduced
+	15	[(V:reduced):7]
+	
+	
+4:0:001	°
+	82	[(N:°):6]
+	4:0:002	80	[(N:c):11]
+	0	11	<nn>
+4:0:002	c
+	80	[(N:c):11]
+	4:0:010	80	[(N:c):11]
+	9	3	<nsubj>
+4:0:005	optimum
+	85	[(N:optimum):6]
+	4:0:002	80	[(N:c):11]
+	9	6	<conj_and>
+4:0:007	37
+	79	[(CD:37):6]
+	4:0:008	59	[(CD:40):6]
+	1	17	<number>
+4:0:008	40
+	59	[(CD:40):6]
+	4:0:010	80	[(N:c):11]
+	1	5	<num>
+4:0:009	°
+	82	[(N:°):6]
+	4:0:010	80	[(N:c):11]
+	0	11	<nn>
+4:0:010	c
+	80	[(N:c):11]
+	
+	
+4:0:012	ph
+	86	[(N:ph):9]
+	4:0:014	3	[(N:·):35]
+	8	11	<nn>
+4:0:013	7
+	4	[(CD:7):9]
+	4:0:014	3	[(N:·):35]
+	1	5	<num>
+4:0:014	·
+	3	[(N:·):35]
+	4:0:010	80	[(N:c):11]
+	8	24	<prep_at>
+4:0:015	2
+	8	[(CD:2):3]
+	4:0:014	3	[(N:·):35]
+	1	5	<num>
+4:0:016	15
+	133	[(CD:15):6]
+	4:0:017	59	[(CD:40):6]
+	1	17	<number>
+4:0:017	40
+	59	[(CD:40):6]
+	4:0:010	80	[(N:c):11]
+	5	9	<amod>
+50:0:001	hydrolyses
+	18	[(N:hydrolyses):2]
+	
+	
+50:0:002	c9-polysaccharides
+	19	[(N:c9-polysaccharides):9]
+	50:0:001	18	[(N:hydrolyses):2]
+	0	4	<dep>
+50:0:004	dna
+	20	[(N:dna):9]
+	50:0:002	19	[(N:c9-polysaccharides):9]
+	0	6	<conj_and>
+50:0:008	agar
+	21	[(N:agar):11]
+	50:0:002	19	[(N:c9-polysaccharides):9]
+	1	10	<conj_negcc>
+50:0:010	c9-polysaccharides
+	19	[(N:c9-polysaccharides):9]
+	50:0:008	21	[(N:agar):11]
+	3	0	<conj_or>
+50:0:012	tween
+	22	[(N:tween):2]
+	50:0:013	23	[(N:compounds):2]
+	0	11	<nn>
+50:0:013	compounds
+	23	[(N:compounds):2]
+	50:0:008	21	[(N:agar):11]
+	3	0	<conj_or>
+51:0:001	arginine
+	253	[(N:arginine):3]
+	51:0:002	29	[(N:c7-tests):25]
+	1	11	<nn>
+51:0:002	c7-tests
+	29	[(N:c7-tests):25]
+	51:0:007	300	[(J:absent):5]
+	0	3	<nsubj>
+51:0:004	c7-tests
+	29	[(N:c7-tests):25]
+	51:0:005	123	[(N:activities):6]
+	0	11	<nn>
+51:0:005	activities
+	123	[(N:activities):6]
+	51:0:002	29	[(N:c7-tests):25]
+	3	6	<conj_and>
+51:0:007	absent
+	300	[(J:absent):5]
+	
+	
+55:0:001	none
+	329	[(N:none):1]
+	55:0:012	335	[(V:utilized):2]
+	0	7	<nsubjpass>
+55:0:004	other
+	330	[(J:other):1]
+	55:0:006	332	[(N:sources):1]
+	2	9	<amod>
+55:0:005	carbon
+	331	[(N:carbon):1]
+	55:0:006	332	[(N:sources):1]
+	2	11	<nn>
+55:0:006	sources
+	332	[(N:sources):1]
+	55:0:001	329	[(N:none):1]
+	0	16	<prep_of>
+55:0:009	gn2
+	333	[(N:gn2):1]
+	55:0:010	334	[(N:microplate):1]
+	0	11	<nn>
+55:0:010	microplate
+	334	[(N:microplate):1]
+	55:0:006	332	[(N:sources):1]
+	2	14	<prep_in>
+55:0:012	utilized
+	335	[(V:utilized):2]
+	
+	
+56:0:001	resistant
+	125	[(J:resistant):6]
+	
+	
+56:0:003	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	56:0:001	125	[(J:resistant):6]
+	2	8	<prep_to>
+56:0:005	30
+	81	[(CD:30):13]
+	56:0:006	127	[(N:μg):8]
+	1	5	<num>
+56:0:006	μg
+	127	[(N:μg):8]
+	56:0:003	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+56:0:009	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	56:0:001	125	[(J:resistant):6]
+	2	20	<appos>
+56:0:011	10
+	131	[(CD:10):9]
+	56:0:012	127	[(N:μg):8]
+	1	5	<num>
+56:0:012	μg
+	127	[(N:μg):8]
+	56:0:009	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+56:0:015	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	56:0:031	130	[(N:c4-antibiotics):31]
+	1	11	<nn>
+56:0:017	30
+	81	[(CD:30):13]
+	56:0:018	127	[(N:μg):8]
+	1	5	<num>
+56:0:018	μg
+	127	[(N:μg):8]
+	56:0:015	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+56:0:021	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	56:0:022	336	[(N:b):2]
+	2	11	<nn>
+56:0:022	b
+	336	[(N:b):2]
+	56:0:015	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+56:0:024	300
+	134	[(CD:300):2]
+	56:0:025	127	[(N:μg):8]
+	1	5	<num>
+56:0:025	μg
+	127	[(N:μg):8]
+	56:0:022	336	[(N:b):2]
+	0	20	<appos>
+56:0:029	sensitive
+	337	[(J:sensitive):3]
+	56:0:015	130	[(N:c4-antibiotics):31]
+	4	43	<conj_but>
+56:0:030	to
+	126	[(TO:to):2]
+	56:0:029	337	[(J:sensitive):3]
+	1	4	<dep>
+56:0:031	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	56:0:009	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+56:0:033	10
+	131	[(CD:10):9]
+	56:0:034	127	[(N:μg):8]
+	1	5	<num>
+56:0:034	μg
+	127	[(N:μg):8]
+	56:0:031	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+56:0:037	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	56:0:009	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+56:0:039	10
+	131	[(CD:10):9]
+	56:0:040	132	[(N:iu):2]
+	0	5	<num>
+56:0:040	iu
+	132	[(N:iu):2]
+	56:0:037	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+56:0:043	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	56:0:009	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+56:0:045	10
+	131	[(CD:10):9]
+	56:0:046	127	[(N:μg):8]
+	1	5	<num>
+56:0:046	μg
+	127	[(N:μg):8]
+	56:0:043	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+56:0:049	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	56:0:009	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+56:0:051	30
+	81	[(CD:30):13]
+	56:0:052	127	[(N:μg):8]
+	1	5	<num>
+56:0:052	μg
+	127	[(N:μg):8]
+	56:0:049	130	[(N:c4-antibiotics):31]
+	0	20	<appos>
+57:0:002	dna
+	20	[(N:dna):9]
+	57:0:004	52	[(N:content):7]
+	0	11	<nn>
+57:0:003	g+c
+	51	[(N:g+c):7]
+	57:0:004	52	[(N:content):7]
+	0	11	<nn>
+57:0:004	content
+	52	[(N:content):7]
+	57:0:012	58	[(N:%):20]
+	3	3	<nsubj>
+57:0:007	type
+	53	[(N:type):7]
+	57:0:008	54	[(N:strain):7]
+	0	11	<nn>
+57:0:008	strain
+	54	[(N:strain):7]
+	57:0:004	52	[(N:content):7]
+	1	16	<prep_of>
+57:0:010	39.4
+	338	[(CD:39.4):1]
+	57:0:011	57	[(N:mol):7]
+	0	17	<number>
+57:0:011	mol
+	57	[(N:mol):7]
+	57:0:012	58	[(N:%):20]
+	2	5	<num>
+57:0:012	%
+	58	[(N:%):20]
+	
+	
+58:0:001	rod-shaped
+	339	[(J:rod-shaped):1]
+	58:0:002	1	[(N:cells):24]
+	2	9	<amod>
+58:0:002	cells
+	1	[(N:cells):24]
+	
+	
+58:0:004	slightly
+	154	[(R:slightly):4]
+	58:0:005	25	[(J:c2-cell-shape):4]
+	2	19	<advmod>
+58:0:005	c2-cell-shape
+	25	[(J:c2-cell-shape):4]
+	58:0:006	340	[(N:sides):1]
+	0	9	<amod>
+58:0:006	sides
+	340	[(N:sides):1]
+	58:0:002	1	[(N:cells):24]
+	5	23	<prep_with>
+58:0:008	pointed
+	341	[(V:pointed):1]
+	58:0:002	1	[(N:cells):24]
+	5	6	<conj_and>
+58:0:009	ends
+	142	[(N:ends):4]
+	58:0:008	341	[(V:pointed):1]
+	1	2	<dobj>
+58:0:011	approx
+	342	[(R:approx):1]
+	58:0:008	341	[(V:pointed):1]
+	1	19	<advmod>
+59:0:001	0
+	2	[(CD:0):68]
+	59:0:002	3	[(N:·):35]
+	1	5	<num>
+59:0:002	·
+	3	[(N:·):35]
+	
+	
+59:0:003	8
+	60	[(CD:8):14]
+	59:0:002	3	[(N:·):35]
+	0	4	<dep>
+59:0:005	1
+	5	[(CD:1):10]
+	59:0:006	3	[(N:·):35]
+	1	5	<num>
+59:0:006	·
+	3	[(N:·):35]
+	59:0:002	3	[(N:·):35]
+	0	4	<dep>
+59:0:007	8
+	60	[(CD:8):14]
+	59:0:008	6	[(N:×):7]
+	1	5	<num>
+59:0:008	×
+	6	[(N:×):7]
+	59:0:006	3	[(N:·):35]
+	0	4	<dep>
+59:0:009	0
+	2	[(CD:0):68]
+	59:0:010	3	[(N:·):35]
+	1	5	<num>
+59:0:010	·
+	3	[(N:·):35]
+	59:0:006	3	[(N:·):35]
+	0	4	<dep>
+59:0:011	4
+	76	[(CD:4):10]
+	59:0:010	3	[(N:·):35]
+	0	4	<dep>
+59:0:013	0
+	2	[(CD:0):68]
+	59:0:014	3	[(N:·):35]
+	1	5	<num>
+59:0:014	·
+	3	[(N:·):35]
+	59:0:002	3	[(N:·):35]
+	0	4	<dep>
+59:0:015	9
+	139	[(CD:9):2]
+	59:0:016	9	[(N:μm):17]
+	0	5	<num>
+59:0:016	μm
+	9	[(N:μm):17]
+	59:0:014	3	[(N:·):35]
+	0	4	<dep>
+5:0:002	nacl
+	84	[(N:nacl):7]
+	5:0:004	283	[(N:range):3]
+	0	11	<nn>
+5:0:003	concentration
+	282	[(N:concentration):2]
+	5:0:004	283	[(N:range):3]
+	0	11	<nn>
+5:0:004	range
+	283	[(N:range):3]
+	5:0:006	2	[(CD:0):68]
+	3	3	<nsubj>
+5:0:006	0
+	2	[(CD:0):68]
+	
+	
+5:0:008	4
+	76	[(CD:4):10]
+	5:0:009	58	[(N:%):20]
+	2	5	<num>
+5:0:009	%
+	58	[(N:%):20]
+	5:0:006	2	[(CD:0):68]
+	3	4	<dep>
+5:0:012	optimum
+	85	[(N:optimum):6]
+	5:0:009	58	[(N:%):20]
+	3	23	<prep_with>
+5:0:014	0
+	2	[(CD:0):68]
+	5:0:015	58	[(N:%):20]
+	2	5	<num>
+5:0:015	%
+	58	[(N:%):20]
+	5:0:012	85	[(N:optimum):6]
+	1	24	<prep_at>
+61:0:002	not
+	24	[(R:not):32]
+	61:0:003	345	[(V:form):1]
+	1	12	<neg>
+61:0:003	form
+	345	[(V:form):1]
+	
+	
+61:0:004	endospores
+	346	[(N:endospores):1]
+	61:0:003	345	[(V:form):1]
+	1	2	<dobj>
+61:0:006	resting
+	347	[(V:resting):1]
+	61:0:007	348	[(N:stages):1]
+	0	9	<amod>
+61:0:007	stages
+	348	[(N:stages):1]
+	61:0:004	346	[(N:endospores):1]
+	0	0	<conj_or>
+62:0:002	not
+	24	[(R:not):32]
+	62:0:003	349	[(V:accumulate):1]
+	3	12	<neg>
+62:0:003	accumulate
+	349	[(V:accumulate):1]
+	
+	
+62:0:004	poly-β-hydroxybutyrate
+	350	[(J:poly-β-hydroxybutyrate):1]
+	62:0:003	349	[(V:accumulate):1]
+	3	31	<acomp>
+62:0:007	intracellular
+	351	[(J:intracellular):1]
+	62:0:009	261	[(N:product):2]
+	0	9	<amod>
+62:0:008	reserve
+	352	[(N:reserve):1]
+	62:0:009	261	[(N:product):2]
+	1	11	<nn>
+62:0:009	product
+	261	[(N:product):2]
+	62:0:003	349	[(V:accumulate):1]
+	3	40	<prep_as>
+62:0:012	not
+	24	[(R:not):32]
+	62:0:013	207	[(V:have):3]
+	1	12	<neg>
+62:0:013	have
+	207	[(V:have):3]
+	62:0:003	349	[(V:accumulate):1]
+	3	6	<conj_and>
+62:0:015	c9-amino-acids
+	353	[(J:c9-amino-acids):1]
+	62:0:017	354	[(N:system):1]
+	1	9	<amod>
+62:0:016	c7-tests
+	29	[(N:c7-tests):25]
+	62:0:017	354	[(N:system):1]
+	1	11	<nn>
+62:0:017	system
+	354	[(N:system):1]
+	62:0:013	207	[(V:have):3]
+	0	2	<dobj>
+67:0:001	cytochrome
+	355	[(N:cytochrome):1]
+	67:0:002	29	[(N:c7-tests):25]
+	1	11	<nn>
+67:0:002	c7-tests
+	29	[(N:c7-tests):25]
+	
+	
+68:0:001	exhibits
+	356	[(N:exhibits):1]
+	
+	
+68:0:002	c2-motility
+	357	[(J:c2-motility):1]
+	68:0:003	299	[(N:motility):2]
+	0	9	<amod>
+68:0:003	motility
+	299	[(N:motility):2]
+	68:0:001	356	[(N:exhibits):1]
+	0	4	<dep>
+69:0:001	colonies
+	96	[(N:colonies):13]
+	69:0:012	358	[(N:low-convex):1]
+	3	3	<nsubj>
+69:0:003	circular
+	97	[(J:circular):6]
+	69:0:012	358	[(N:low-convex):1]
+	3	9	<amod>
+69:0:005	1
+	5	[(CD:1):10]
+	69:0:012	358	[(N:low-convex):1]
+	3	4	<dep>
+69:0:007	3
+	83	[(CD:3):5]
+	69:0:008	153	[(N:mm):5]
+	0	5	<num>
+69:0:008	mm
+	153	[(N:mm):5]
+	69:0:005	5	[(CD:1):10]
+	2	4	<dep>
+69:0:010	diameter
+	68	[(N:diameter):7]
+	69:0:008	153	[(N:mm):5]
+	1	14	<prep_in>
+69:0:012	low-convex
+	358	[(N:low-convex):1]
+	
+	
+69:0:014	solid
+	359	[(J:solid):1]
+	69:0:015	215	[(N:media):3]
+	1	9	<amod>
+69:0:015	media
+	215	[(N:media):3]
+	69:0:012	358	[(N:low-convex):1]
+	3	25	<prep_on>
+69:0:016	containing
+	191	[(V:containing):3]
+	69:0:015	215	[(N:media):3]
+	1	27	<partmod>
+69:0:017	high
+	360	[(J:high):1]
+	69:0:019	362	[(N:concentrations):1]
+	1	9	<amod>
+69:0:018	nutrient
+	361	[(N:nutrient):1]
+	69:0:019	362	[(N:concentrations):1]
+	1	11	<nn>
+69:0:019	concentrations
+	362	[(N:concentrations):1]
+	69:0:016	191	[(V:containing):3]
+	0	2	<dobj>
+6:0:001	tryptone
+	343	[(N:tryptone):1]
+	6:0:003	344	[(V:required):1]
+	1	7	<nsubjpass>
+6:0:003	required
+	344	[(V:required):1]
+	
+	
+6:0:005	growth
+	73	[(N:growth):17]
+	6:0:003	344	[(V:required):1]
+	1	28	<prep_for>
+70:0:001	colonies
+	96	[(N:colonies):13]
+	70:0:004	102	[(J:yellow):3]
+	1	3	<nsubj>
+70:0:003	light
+	366	[(J:light):2]
+	70:0:004	102	[(J:yellow):3]
+	0	9	<amod>
+70:0:004	yellow
+	102	[(J:yellow):3]
+	
+	
+70:0:006	color
+	239	[(N:color):3]
+	70:0:004	102	[(J:yellow):3]
+	2	14	<prep_in>
+71:0:001	colonies
+	96	[(N:colonies):13]
+	71:0:004	102	[(J:yellow):3]
+	1	3	<nsubj>
+71:0:003	light
+	366	[(J:light):2]
+	71:0:004	102	[(J:yellow):3]
+	0	9	<amod>
+71:0:004	yellow
+	102	[(J:yellow):3]
+	
+	
+72:0:001	produces
+	367	[(V:produces):3]
+	
+	
+72:0:002	carotenoid
+	368	[(N:carotenoid):3]
+	72:0:003	104	[(N:c3-pigements):11]
+	2	11	<nn>
+72:0:003	c3-pigements
+	104	[(N:c3-pigements):11]
+	72:0:001	367	[(V:produces):3]
+	0	2	<dobj>
+72:0:005	absorbance
+	369	[(N:absorbance):1]
+	72:0:006	370	[(N:peaks):1]
+	0	11	<nn>
+72:0:006	peaks
+	370	[(N:peaks):1]
+	72:0:001	367	[(V:produces):3]
+	2	23	<prep_with>
+73:0:001	produces
+	367	[(V:produces):3]
+	
+	
+73:0:002	carotenoid
+	368	[(N:carotenoid):3]
+	73:0:003	104	[(N:c3-pigements):11]
+	2	11	<nn>
+73:0:003	c3-pigements
+	104	[(N:c3-pigements):11]
+	73:0:001	367	[(V:produces):3]
+	0	2	<dobj>
+73:0:005	455
+	371	[(CD:455):1]
+	73:0:008	317	[(N:nm):4]
+	0	5	<num>
+73:0:007	480
+	372	[(CD:480):1]
+	73:0:005	371	[(CD:455):1]
+	0	6	<conj_and>
+73:0:008	nm
+	317	[(N:nm):4]
+	73:0:001	367	[(V:produces):3]
+	2	24	<prep_at>
+74:0:001	produces
+	367	[(V:produces):3]
+	
+	
+74:0:002	carotenoid
+	368	[(N:carotenoid):3]
+	74:0:003	104	[(N:c3-pigements):11]
+	2	11	<nn>
+74:0:003	c3-pigements
+	104	[(N:c3-pigements):11]
+	74:0:001	367	[(V:produces):3]
+	0	2	<dobj>
+75:0:001	flexirubin
+	303	[(N:flexirubin):2]
+	75:0:002	104	[(N:c3-pigements):11]
+	2	11	<nn>
+75:0:002	c3-pigements
+	104	[(N:c3-pigements):11]
+	75:0:004	300	[(J:absent):5]
+	0	3	<nsubj>
+75:0:004	absent
+	300	[(J:absent):5]
+	
+	
+76:0:002	growth
+	73	[(N:growth):17]
+	
+	
+76:0:003	detected
+	373	[(V:detected):1]
+	76:0:002	73	[(N:growth):17]
+	7	27	<partmod>
+76:0:005	4
+	76	[(CD:4):10]
+	76:0:009	80	[(N:c):11]
+	1	5	<num>
+76:0:007	37
+	79	[(CD:37):6]
+	76:0:005	76	[(CD:4):10]
+	2	0	<conj_or>
+76:0:008	°
+	82	[(N:°):6]
+	76:0:009	80	[(N:c):11]
+	0	11	<nn>
+76:0:009	c
+	80	[(N:c):11]
+	76:0:003	373	[(V:detected):1]
+	0	24	<prep_at>
+76:0:011	optimum
+	89	[(J:optimum):5]
+	76:0:012	73	[(N:growth):17]
+	3	9	<amod>
+76:0:012	growth
+	73	[(N:growth):17]
+	76:0:009	80	[(N:c):11]
+	9	4	<dep>
+76:0:014	23
+	374	[(CD:23):1]
+	76:0:015	77	[(CD:°):12]
+	3	5	<num>
+76:0:015	°
+	77	[(CD:°):12]
+	76:0:012	73	[(N:growth):17]
+	4	24	<prep_at>
+76:0:016	c.
+	78	[(N:c.):7]
+	76:0:017	274	[(V:grows):3]
+	2	3	<nsubj>
+76:0:017	grows
+	274	[(V:grows):3]
+	76:0:012	73	[(N:growth):17]
+	7	18	<rcmod>
+76:0:019	ph
+	86	[(N:ph):9]
+	76:0:021	3	[(N:·):35]
+	8	11	<nn>
+76:0:020	5
+	7	[(CD:5):7]
+	76:0:021	3	[(N:·):35]
+	1	5	<num>
+76:0:021	·
+	3	[(N:·):35]
+	76:0:017	274	[(V:grows):3]
+	1	24	<prep_at>
+76:0:022	0
+	2	[(CD:0):68]
+	76:0:021	3	[(N:·):35]
+	1	5	<num>
+76:0:024	10
+	131	[(CD:10):9]
+	76:0:025	3	[(N:·):35]
+	1	5	<num>
+76:0:025	·
+	3	[(N:·):35]
+	76:0:002	73	[(N:growth):17]
+	4	4	<dep>
+76:0:026	0
+	2	[(CD:0):68]
+	76:0:025	3	[(N:·):35]
+	0	4	<dep>
+76:0:028	optimum
+	89	[(J:optimum):5]
+	76:0:029	73	[(N:growth):17]
+	3	9	<amod>
+76:0:029	growth
+	73	[(N:growth):17]
+	76:0:002	73	[(N:growth):17]
+	4	4	<dep>
+76:0:031	ph
+	86	[(N:ph):9]
+	76:0:033	3	[(N:·):35]
+	8	11	<nn>
+76:0:032	8
+	60	[(CD:8):14]
+	76:0:033	3	[(N:·):35]
+	1	5	<num>
+76:0:033	·
+	3	[(N:·):35]
+	76:0:029	73	[(N:growth):17]
+	4	24	<prep_at>
+76:0:034	0
+	2	[(CD:0):68]
+	76:0:033	3	[(N:·):35]
+	1	5	<num>
+76:0:036	8
+	60	[(CD:8):14]
+	76:0:037	3	[(N:·):35]
+	1	5	<num>
+76:0:037	·
+	3	[(N:·):35]
+	76:0:002	73	[(N:growth):17]
+	4	4	<dep>
+76:0:038	5
+	7	[(CD:5):7]
+	76:0:037	3	[(N:·):35]
+	0	4	<dep>
+78:0:001	grows
+	274	[(V:grows):3]
+	
+	
+78:0:003	0
+	2	[(CD:0):68]
+	78:0:001	274	[(V:grows):3]
+	1	14	<prep_in>
+78:0:005	6
+	87	[(CD:6):11]
+	78:0:006	58	[(N:%):20]
+	2	17	<number>
+78:0:006	%
+	58	[(N:%):20]
+	78:0:007	84	[(N:nacl):7]
+	0	9	<amod>
+78:0:007	nacl
+	84	[(N:nacl):7]
+	78:0:003	2	[(CD:0):68]
+	3	4	<dep>
+79:0:002	not
+	24	[(R:not):32]
+	79:0:003	375	[(V:decompose):1]
+	1	12	<neg>
+79:0:003	decompose
+	375	[(V:decompose):1]
+	
+	
+79:0:004	agar
+	21	[(N:agar):11]
+	79:0:003	375	[(V:decompose):1]
+	1	2	<dobj>
+79:0:006	c9-polysaccharides
+	19	[(N:c9-polysaccharides):9]
+	79:0:004	21	[(N:agar):11]
+	3	0	<conj_or>
+7:0:001	yeast
+	363	[(N:yeast):1]
+	7:0:005	365	[(V:stimulate):1]
+	1	3	<nsubj>
+7:0:002	extract
+	364	[(N:extract):1]
+	7:0:001	363	[(N:yeast):1]
+	0	9	<amod>
+7:0:004	c9-inorganic
+	16	[(J:c9-inorganic):4]
+	7:0:002	364	[(N:extract):1]
+	0	6	<conj_and>
+7:0:005	stimulate
+	365	[(V:stimulate):1]
+	
+	
+7:0:006	growth
+	73	[(N:growth):17]
+	7:0:005	365	[(V:stimulate):1]
+	1	2	<dobj>
+80:0:001	starch
+	376	[(N:starch):1]
+	80:0:005	160	[(V:hydrolysed):6]
+	2	7	<nsubjpass>
+80:0:003	c9-polysaccharides
+	19	[(N:c9-polysaccharides):9]
+	80:0:001	376	[(N:starch):1]
+	0	6	<conj_and>
+80:0:005	hydrolysed
+	160	[(V:hydrolysed):6]
+	
+	
+80:0:006	weakly
+	377	[(R:weakly):1]
+	80:0:005	160	[(V:hydrolysed):6]
+	1	19	<advmod>
+83:0:001	not
+	24	[(R:not):32]
+	83:0:002	378	[(J:susceptible):1]
+	1	12	<neg>
+83:0:002	susceptible
+	378	[(J:susceptible):1]
+	83:0:008	380	[(N:pe):1]
+	1	9	<amod>
+83:0:004	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	83:0:002	378	[(J:susceptible):1]
+	1	8	<prep_to>
+83:0:006	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	83:0:004	130	[(N:c4-antibiotics):31]
+	1	0	<conj_or>
+83:0:007	b.
+	379	[(N:b.):1]
+	83:0:008	380	[(N:pe):1]
+	1	11	<nn>
+83:0:008	pe
+	380	[(N:pe):1]
+	83:0:012	382	[(N:phospholipid):1]
+	2	3	<nsubj>
+83:0:011	only
+	381	[(J:only):1]
+	83:0:012	382	[(N:phospholipid):1]
+	2	9	<amod>
+83:0:012	phospholipid
+	382	[(N:phospholipid):1]
+	
+	
+83:0:013	identified
+	383	[(V:identified):1]
+	83:0:012	382	[(N:phospholipid):1]
+	2	27	<partmod>
+84:0:001	sphingophospholipids
+	384	[(N:sphingophospholipids):1]
+	84:0:003	300	[(J:absent):5]
+	0	3	<nsubj>
+84:0:003	absent
+	300	[(J:absent):5]
+	
+	
+85:0:002	predominant
+	44	[(J:predominant):3]
+	85:0:005	42	[(N:acids):5]
+	0	9	<amod>
+85:0:003	cellular
+	40	[(J:cellular):5]
+	85:0:005	42	[(N:acids):5]
+	0	9	<amod>
+85:0:004	fatty
+	41	[(J:fatty):10]
+	85:0:005	42	[(N:acids):5]
+	0	9	<amod>
+85:0:005	acids
+	42	[(N:acids):5]
+	85:0:007	385	[(CD:odd-numbered):1]
+	1	3	<nsubj>
+85:0:007	odd-numbered
+	385	[(CD:odd-numbered):1]
+	
+	
+85:0:009	15
+	133	[(CD:15):6]
+	85:0:007	385	[(CD:odd-numbered):1]
+	0	6	<conj_and>
+85:0:011	0
+	2	[(CD:0):68]
+	85:0:007	385	[(CD:odd-numbered):1]
+	0	6	<conj_and>
+85:0:013	i15
+	386	[(CD:i15):2]
+	85:0:015	2	[(CD:0):68]
+	1	5	<num>
+85:0:015	0
+	2	[(CD:0):68]
+	85:0:007	385	[(CD:odd-numbered):1]
+	0	6	<conj_and>
+85:0:017	ai15
+	387	[(CD:ai15):1]
+	85:0:019	2	[(CD:0):68]
+	1	5	<num>
+85:0:019	0
+	2	[(CD:0):68]
+	85:0:007	385	[(CD:odd-numbered):1]
+	0	6	<conj_and>
+85:0:021	i15
+	386	[(CD:i15):2]
+	85:0:023	5	[(CD:1):10]
+	1	5	<num>
+85:0:023	1
+	5	[(CD:1):10]
+	85:0:007	385	[(CD:odd-numbered):1]
+	0	6	<conj_and>
+85:0:025	15
+	133	[(CD:15):6]
+	85:0:027	5	[(CD:1):10]
+	1	5	<num>
+85:0:027	1
+	5	[(CD:1):10]
+	85:0:007	385	[(CD:odd-numbered):1]
+	0	6	<conj_and>
+85:0:029	n-6
+	388	[(N:n-6):1]
+	85:0:027	5	[(CD:1):10]
+	2	20	<appos>
+86:0:001	dna
+	20	[(N:dna):9]
+	86:0:003	52	[(N:content):7]
+	0	11	<nn>
+86:0:002	g+c
+	51	[(N:g+c):7]
+	86:0:003	52	[(N:content):7]
+	0	11	<nn>
+86:0:003	content
+	52	[(N:content):7]
+	86:0:006	3	[(N:·):35]
+	2	3	<nsubj>
+86:0:005	34
+	389	[(CD:34):2]
+	86:0:006	3	[(N:·):35]
+	1	5	<num>
+86:0:006	·
+	3	[(N:·):35]
+	
+	
+86:0:007	0
+	2	[(CD:0):68]
+	86:0:006	3	[(N:·):35]
+	0	4	<dep>
+86:0:009	34
+	389	[(CD:34):2]
+	86:0:010	3	[(N:·):35]
+	1	5	<num>
+86:0:010	·
+	3	[(N:·):35]
+	86:0:006	3	[(N:·):35]
+	0	4	<dep>
+86:0:011	4
+	76	[(CD:4):10]
+	86:0:012	57	[(N:mol):7]
+	0	17	<number>
+86:0:012	mol
+	57	[(N:mol):7]
+	86:0:013	58	[(N:%):20]
+	2	5	<num>
+86:0:013	%
+	58	[(N:%):20]
+	86:0:010	3	[(N:·):35]
+	0	4	<dep>
+87:0:001	sensitive
+	337	[(J:sensitive):3]
+	
+	
+87:0:003	azithromycin
+	390	[(N:azithromycin):1]
+	87:0:001	337	[(J:sensitive):3]
+	1	8	<prep_to>
+87:0:005	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:007	ceftizoxime
+	391	[(N:ceftizoxime):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:009	cefotaxime
+	392	[(N:cefotaxime):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:011	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:013	cefazolin
+	393	[(N:cefazolin):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:015	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:017	ofloxacin
+	394	[(N:ofloxacin):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:019	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:021	imipenem
+	395	[(N:imipenem):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:023	cefixime
+	396	[(N:cefixime):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:025	cefalexin
+	397	[(N:cefalexin):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:027	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:029	furazolidone
+	398	[(N:furazolidone):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:031	cephradine
+	399	[(N:cephradine):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:033	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:035	cefuroxime
+	400	[(N:cefuroxime):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:037	cefoperazone
+	401	[(N:cefoperazone):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:039	piperacillin
+	402	[(N:piperacillin):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:041	levofloxacin
+	403	[(N:levofloxacin):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:043	teicoplanin
+	404	[(N:teicoplanin):1]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+87:0:045	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	87:0:003	390	[(N:azithromycin):1]
+	0	6	<conj_and>
+88:0:001	resistant
+	125	[(J:resistant):6]
+	
+	
+88:0:003	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	88:0:001	125	[(J:resistant):6]
+	2	8	<prep_to>
+88:0:005	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	88:0:003	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+88:0:006	b
+	336	[(N:b):2]
+	88:0:001	125	[(J:resistant):6]
+	2	9	<amod>
+88:0:009	sensitive
+	337	[(J:sensitive):3]
+	88:0:006	336	[(N:b):2]
+	2	43	<conj_but>
+88:0:011	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	88:0:009	337	[(J:sensitive):3]
+	1	8	<prep_to>
+88:0:013	c4-antibiotics
+	130	[(N:c4-antibiotics):31]
+	88:0:011	130	[(N:c4-antibiotics):31]
+	1	6	<conj_and>
+90:0:001	arginine
+	253	[(N:arginine):3]
+	90:0:006	335	[(V:utilized):2]
+	0	7	<nsubjpass>
+90:0:003	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	90:0:001	253	[(N:arginine):3]
+	0	6	<conj_and>
+90:0:005	not
+	24	[(R:not):32]
+	90:0:006	335	[(V:utilized):2]
+	1	12	<neg>
+90:0:006	utilized
+	335	[(V:utilized):2]
+	
+	
+92:0:001	strain
+	54	[(N:strain):7]
+	92:0:012	254	[(V:utilize):3]
+	6	3	<nsubj>
+92:0:002	4.03.5
+	405	[(CD:4.03.5):1]
+	92:0:001	54	[(N:strain):7]
+	0	5	<num>
+92:0:004	reduce
+	406	[(V:reduce):1]
+	
+	
+92:0:005	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	92:0:004	406	[(V:reduce):1]
+	2	2	<dobj>
+92:0:007	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	92:0:004	406	[(V:reduce):1]
+	2	8	<prep_to>
+92:0:011	not
+	24	[(R:not):32]
+	92:0:012	254	[(V:utilize):3]
+	3	12	<neg>
+92:0:012	utilize
+	254	[(V:utilize):3]
+	92:0:004	406	[(V:reduce):1]
+	2	43	<conj_but>
+92:0:013	dmso
+	407	[(N:dmso):2]
+	92:0:012	254	[(V:utilize):3]
+	1	2	<dobj>
+92:0:016	alternative
+	408	[(J:alternative):2]
+	92:0:018	410	[(N:acceptor):1]
+	1	9	<amod>
+92:0:017	electron
+	409	[(N:electron):2]
+	92:0:018	410	[(N:acceptor):1]
+	1	11	<nn>
+92:0:018	acceptor
+	410	[(N:acceptor):1]
+	92:0:012	254	[(V:utilize):3]
+	6	40	<prep_as>
+92:0:021	strain
+	54	[(N:strain):7]
+	92:0:026	254	[(V:utilize):3]
+	6	3	<nsubj>
+92:0:022	8.8.11
+	411	[(CD:8.8.11):1]
+	92:0:023	412	[(N:t):1]
+	0	5	<num>
+92:0:023	t
+	412	[(N:t):1]
+	92:0:021	54	[(N:strain):7]
+	0	4	<dep>
+92:0:025	not
+	24	[(R:not):32]
+	92:0:026	254	[(V:utilize):3]
+	3	12	<neg>
+92:0:026	utilize
+	254	[(V:utilize):3]
+	92:0:012	254	[(V:utilize):3]
+	2	44	<advcl>
+92:0:027	either
+	413	[(CC:either):1]
+	92:0:026	254	[(V:utilize):3]
+	1	22	<prep>
+92:0:028	c9-nitrogen-compounds
+	17	[(N:c9-nitrogen-compounds):11]
+	92:0:027	413	[(CC:either):1]
+	0	4	<dep>
+92:0:030	dmso
+	407	[(N:dmso):2]
+	92:0:028	17	[(N:c9-nitrogen-compounds):11]
+	0	0	<conj_or>
+92:0:032	alternative
+	408	[(J:alternative):2]
+	92:0:034	414	[(N:acceptors):1]
+	1	9	<amod>
+92:0:033	electron
+	409	[(N:electron):2]
+	92:0:034	414	[(N:acceptors):1]
+	1	11	<nn>
+92:0:034	acceptors
+	414	[(N:acceptors):1]
+	92:0:026	254	[(V:utilize):3]
+	6	40	<prep_as>
+93:0:001	h2s
+	328	[(N:h2s):2]
+	93:0:004	105	[(V:produced):12]
+	1	7	<nsubjpass>
+93:0:003	not
+	24	[(R:not):32]
+	93:0:004	105	[(V:produced):12]
+	0	12	<neg>
+93:0:004	produced
+	105	[(V:produced):12]
+	
+	
+93:0:006	c9-inorganic
+	16	[(J:c9-inorganic):4]
+	93:0:004	105	[(V:produced):12]
+	5	26	<prep_from>
+95:0:001	cells
+	1	[(N:cells):24]
+	95:0:003	35	[(N:c2-motility):12]
+	4	3	<nsubj>
+95:0:003	c2-motility
+	35	[(N:c2-motility):12]
+	
+	
+96:0:002	cells
+	1	[(N:cells):24]
+	96:0:004	35	[(N:c2-motility):12]
+	4	3	<nsubj>
+96:0:004	c2-motility
+	35	[(N:c2-motility):12]
+	
+	
+97:0:001	cells
+	1	[(N:cells):24]
+	97:0:002	207	[(V:have):3]
+	1	3	<nsubj>
+97:0:002	have
+	207	[(V:have):3]
+	
+	
+97:0:004	c2-motility
+	35	[(N:c2-motility):12]
+	97:0:002	207	[(V:have):3]
+	0	2	<dobj>

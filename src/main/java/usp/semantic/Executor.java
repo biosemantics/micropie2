@@ -133,6 +133,8 @@ public class Executor {
 			Part pp=Part.getPartByRootNodeId(pid);
 			Part cp=Part.getPartByRootNodeId(cid);
 			int pai=cp.parArgIdx_;
+			// if (pai==null) continue;
+			
 			Argument pcarg=pp.getArguments().get(pai);
 			String dep=pcarg.path_.getDep();
 			TreeNode ptn=pp.relTreeRoot_;
