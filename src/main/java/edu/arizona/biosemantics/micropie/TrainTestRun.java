@@ -86,10 +86,12 @@ import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
+import edu.stanford.nlp.trees.GrammaticalStructure;
 import edu.stanford.nlp.trees.LabeledScoredTreeFactory;
 import edu.stanford.nlp.trees.PennTreeReader;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation;
+import edu.stanford.nlp.trees.TreePrint;
 import edu.stanford.nlp.trees.TreeReader;
 import edu.stanford.nlp.trees.tregex.TregexMatcher;
 import edu.stanford.nlp.trees.tregex.TregexPattern;
@@ -212,7 +214,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			// readNewXml();
-			
+			// testAAA();
 			
 			
 			// formal MicroPIE process
@@ -660,7 +662,7 @@ public class TrainTestRun implements IRun {
 	
 	
 	private void createUSPInputs(List<MultiClassifiedSentence> predictions)
-			throws IOException, InterruptedException, ExecutionException {
+			throws IOException, InterruptedException, ExecutionException {		
 
 		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
 		
@@ -687,9 +689,13 @@ public class TrainTestRun implements IRun {
 					
 					String character = name.substring(firstDotIndex + 1, lastDotIndex);
 					
-					character = character.replaceAll("\\s", "-");
-					character = character.replaceAll("\\(", "-");
-					character = character.replaceAll("\\)", "-");
+					// character = character.replaceAll("\\s", "-");
+					// character = character.replaceAll("\\(", "-");
+					// character = character.replaceAll("\\)", "-");
+					character = character.replaceAll("\\s", "");
+					character = character.replaceAll("\\(", "");
+					character = character.replaceAll("\\)", "");
+					character = character.replaceAll("\\&", "");
 					// character = character.substring(0,10);
 					
 					String type = name.substring(lastDotIndex + 1, name.length());
@@ -1259,6 +1265,11 @@ public class TrainTestRun implements IRun {
 							.get(CollapsedCCProcessedDependenciesAnnotation.class);
 
 					String depStringXml = dependencies.toString("xml");
+					
+					if (depStringXml.length() == 0) {
+						System.out.println("No Dependency!");	
+					}
+					
 					
 					SAXBuilder saxBuilder = new SAXBuilder();
 					try {
@@ -2032,6 +2043,26 @@ public class TrainTestRun implements IRun {
 		}
 		return returnIsCollapsedSent;
 	}	
+	
+	private void testAAA() {
+		String sent = "Sensitive to c4-Antibiotics and c4-Antibiotics , but not to c4-Antibiotics or c4-Antibiotics .";
+		// String sent = "Glycerol and starch not utilized.";
+		// String sent = "Sensitive to AAA and BBB but not to CCC and DDD.";
+		
+		Tree parseTree = lexicalizedParser.parse(sent);
+		// System.out.println(parseTree);		
+
+		// TreePrint tp = new TreePrint("penn,typedDependenciesCollapsed");
+	    // tp.printTree(parseTree);
+
+		TreePrint tp = new TreePrint("penn");
+		tp.printTree(parseTree);
+		
+		TreePrint tp2 = new TreePrint("typedDependenciesCollapsed");
+		tp2.printTree(parseTree);
+		
+		
+	}
 	
 	
 	
