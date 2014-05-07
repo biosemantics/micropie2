@@ -9,12 +9,19 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.jdom2.Attribute;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
@@ -55,6 +62,96 @@ public class CSVSentenceReader implements ISentenceReader {
 	    reader.close();
 		log(LogLevel.INFO, "Done reading sentences...");
 		return result;
+	}
+
+	public void readTaxonomicDescAndWriteToSingleTxt(String outputFileName) throws IOException {
+		log(LogLevel.INFO, "Reading txonomic descriptions...");
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF8"));
+		
+		StringBuilder filteredLineStringBuilder = new StringBuilder();
+		String thisLine;
+		
+		String blockString = "";
+		
+		while ((thisLine = br.readLine()) != null) { // while loop begins here
+			// System.out.println(thisLine);	
+			
+			if ( thisLine.length() > 0 ) {
+				/*
+				if(  thisLine.contains("Taxon name:") ) {
+					System.out.println("Taxon Name::" + thisLine);
+					blockString = "";
+				}
+				
+				if ( ! thisLine.contains("Taxon name:") ) {
+					blockString += thisLine + "\n";
+				} else {
+					System.out.println("blockString::" + blockString);
+					
+				}
+				*/
+				
+				
+				if (thisLine.contains("Description:")) {
+					if (thisLine.substring(0, 12).equals("Description:")) {
+						// System.out.println(thisLine.substring(13));
+						filteredLineStringBuilder.append(thisLine.substring(13) + " ");
+					}
+				} else {
+					if ( ! thisLine.contains("Taxon name:")) {
+						filteredLineStringBuilder.append(thisLine + " ");
+					}
+				}
+
+			}
+		} // end while
+		
+		
+		/*
+		try (PrintWriter out = new PrintWriter(new BufferedWriter(
+				new FileWriter(outputFileName, true)))) {
+			out.println(filteredLineStringBuilder);
+		} catch (IOException e) {
+			// exception handling left as an exercise for the reader
+		}
+		*/		
+				
+		br.close();
+
+		try {
+			Element treatment = new Element("treatment");
+			Document doc = new Document(treatment);
+			doc.setRootElement(treatment);
+			
+			Element taxon_identification = new Element("taxon_identification");
+			taxon_identification.setAttribute(new Attribute("status", "ACCEPTED"));
+			taxon_identification.addContent(new Element("genus_name").setText("Aus"));
+			taxon_identification.addContent(new Element("species_name").setText("bus"));
+			
+			doc.getRootElement().addContent(taxon_identification);
+		 
+			Element description = new Element("description");
+			description.setAttribute(new Attribute("type", "morphology"));
+			description.addContent(filteredLineStringBuilder.toString());
+
+			doc.getRootElement().addContent(description);
+
+		 
+			// new XMLOutputter().output(doc, System.out);
+			XMLOutputter xmlOutput = new XMLOutputter();
+		 
+			// display nice nice
+			xmlOutput.setFormat(Format.getPrettyFormat());
+			xmlOutput.output(doc, new FileWriter("123.xml"));
+		 
+			System.out.println("File Saved!");
+		} catch (IOException io) {
+			System.out.println(io.getMessage());
+		}
+		
+		
+		log(LogLevel.INFO, "Done reading taxonomic descriptions...");
 	}
 	
 	

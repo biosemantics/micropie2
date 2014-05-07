@@ -193,6 +193,8 @@ public class Parse {
 		Utils.println("<PREPROC> Filenames gathered: "+inputFileNames.size()+" files");
 		// System.out.println("<PREPROC> Filenames gathered: "+inputFileNames.size()+" files");
 		
+		// System.out.println("inputFileNames ::" + inputFileNames); // Elvis Wu's test
+		
 		Parse parse=new Parse(inputFileNames);
 		parse.parse();
 		out.close();
@@ -223,6 +225,7 @@ public class Parse {
 		for (int i=0; i<inputFileNames_.size(); i++) {
 			Article a=parseReader_.readParse(inputFileNames_.get(i));
 			// System.out.println("inputFileNames_::" + inputFileNames_);
+			System.out.println("inputFileNames_.get(i)::" + inputFileNames_.get(i).toString());
 			articles.add(a);
 		}
 		

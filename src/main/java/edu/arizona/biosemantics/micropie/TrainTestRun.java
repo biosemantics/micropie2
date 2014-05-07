@@ -216,6 +216,35 @@ public class TrainTestRun implements IRun {
 			// readNewXml();
 			// testAAA();
 			
+			// temporary use
+			// trainingSentenceReader.setInputStream(new FileInputStream("new-inputs.txt"));
+			// trainingSentenceReader.readTaxonomicDescAndWriteToSingleTxt("new-inputs-filtered.txt");
+			
+			
+			
+			// temporary use
+			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+			List<Sentence> trainingSentences = trainingSentenceReader.read();
+			classifier.train(trainingSentences);
+			
+			List<Sentence> testSentences = createTestSentences();			
+			
+			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
+			for (Sentence testSentence : testSentences) {
+				Set<ILabel> prediction = classifier.getClassification(testSentence);
+				MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence( testSentence, prediction);
+				sentenceClassificationMap.put(testSentence,classifiedSentence);
+				predictions.add(classifiedSentence);
+			}
+			
+			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
+			classifiedSentenceWriter.write(predictions);
+			
+			
+			
+			
+			
+			/*
 			
 			// formal MicroPIE process
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
@@ -230,6 +259,9 @@ public class TrainTestRun implements IRun {
 			// uspParse.runParse("usp", "usp_results");
 			// USP
 			
+			
+			
+			
 			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
 			for (Sentence testSentence : testSentences) {
 				Set<ILabel> prediction = classifier.getClassification(testSentence);
@@ -239,7 +271,11 @@ public class TrainTestRun implements IRun {
 			}
 			
 			
+
 			
+			
+			
+
 			// 
 			// USP
 			createUSPInputs(predictions);
@@ -258,7 +294,7 @@ public class TrainTestRun implements IRun {
 			// formal MicroPIE process
 			
 			
-			
+			*/
 			
 			
 
@@ -696,6 +732,7 @@ public class TrainTestRun implements IRun {
 					character = character.replaceAll("\\(", "");
 					character = character.replaceAll("\\)", "");
 					character = character.replaceAll("\\&", "");
+					
 					// character = character.substring(0,10);
 					
 					String type = name.substring(lastDotIndex + 1, name.length());
@@ -733,7 +770,7 @@ public class TrainTestRun implements IRun {
 							if( keywords.substring(keywords.length()-1, keywords.length()).equals("|")) {
 								keywords = keywords.substring(0, keywords.length()-1);
 							}
-							kwdListByCategory.put(labelName+"-"+character, keywords);
+							kwdListByCategory.put(labelName+"-"+character , keywords);
 
 						}
 						
@@ -2062,9 +2099,5 @@ public class TrainTestRun implements IRun {
 		tp2.printTree(parseTree);
 		
 		
-	}
-	
-	
-	
-	
+	}	
 }

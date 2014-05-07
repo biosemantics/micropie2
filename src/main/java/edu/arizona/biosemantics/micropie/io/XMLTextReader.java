@@ -12,7 +12,7 @@ import org.jdom2.input.SAXBuilder;
 public class XMLTextReader implements ITextReader {
 
 	private Element rootNode;
-
+	private InputStream inputStream;
 	/**
 	 * @param inputStream to read from
 	 * @throws IOException 
@@ -68,4 +68,23 @@ public class XMLTextReader implements ITextReader {
 		}	
 		throw new Exception("Could not find a taxon name");
 	}
+	
+	/*
+	@Override
+	public String read() throws Exception {
+		String text = rootNode.getChildText("description");
+		
+		if(text != null) 
+			return text;
+		throw new Exception("Could not find a description");
+	}
+
+	public String getTaxon() throws Exception {
+		String taxon = rootNode.getChildText("taxon_name");
+		
+		if(taxon != null) 
+			return taxon;
+		throw new Exception("Could not find a taxon name");
+	}
+	*/
 }
