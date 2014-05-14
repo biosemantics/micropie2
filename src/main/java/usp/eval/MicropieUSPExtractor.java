@@ -2,6 +2,7 @@ package usp.eval;
 
 import java.util.*;
 import java.io.*;
+import java.lang.reflect.Array;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.model.SentenceDependency;
@@ -194,19 +195,20 @@ public class MicropieUSPExtractor {
 		// System.out.println(output.toString());
 		
 		// Does not utilize inulin, lactose, maltose, D-mannitol, D-mannose, melibiose, rhamnose, D-ribose, sorbitol, sucrose, D-xylose or citrate.
-		output = usp.getObjectValue("Does not utilize inulin, lactose, maltose, D-mannitol, D-mannose, melibiose, rhamnose, D-ribose, sorbitol, sucrose, D-xylose or citrate.",
-				"utilize", "V", "dobj", "dep");
-		System.out.println(output.toString());
+		// output = usp.getObjectValue("Does not utilize inulin, lactose, maltose, D-mannitol, D-mannose, melibiose, rhamnose, D-ribose, sorbitol, sucrose, D-xylose or citrate.",
+		//		"utilize", "V", "dobj", "dep");
+		// System.out.println(output.toString());
 		
 		
 		// Utilizes arabinose, xylose, cellobiose, fructose, galactose, glucose, mannose, maltose, melibiose, glycogen and soluble starch as growth substrates and produces acids.
-		output = usp.getObjectValue("Utilizes arabinose, xylose, cellobiose, fructose, galactose, glucose, mannose, maltose, melibiose, glycogen and soluble starch as growth substrates and produces acids.",
-				"utilizes", "V", "dobj", "dep");
-		System.out.println(output.toString());
+		// output = usp.getObjectValue("Utilizes arabinose, xylose, cellobiose, fructose, galactose, glucose, mannose, maltose, melibiose, glycogen and soluble starch as growth substrates and produces acids.",
+		// 		"utilizes", "V", "dobj", "dep");
+		// System.out.println(output.toString());
 		
 		
 		// Cells are not flagellated.
-		// Set<String> output = usp.getObjectValue("Cells are not flagellated.",
+		// System.out.println("Cells are not flagellated.");
+		// output = usp.getObjectValue("Cells are not flagellated.",
 		// 			"Cells", "N", "amod", "dep");
 		// System.out.println(output.toString());
 		
@@ -221,10 +223,12 @@ public class MicropieUSPExtractor {
 		// 		"cells", "N", "nsubj", "dep");
 		// System.out.println(output.toString());
 		
+		System.out.println("Rule ?");
 		// The cells are not motile.
-		// Set<String> output = usp.getObjectValue("The cells are not motile.",
-		//		"cells", "N", "nsubj", "dep");
-		// System.out.println(output.toString());
+		System.out.println("The cells are not motile.");
+		output = usp.getObjectValue("The cells are not motile.",
+				"cells", "N", "amod", "dep");
+		System.out.println(output.toString());
 		
 		// It has no oxidase, arginine dihydrolase or urease activity.
 		// Set<String> output = usp.getObjectValue("It has no oxidase, arginine dihydrolase or urease activity.",
@@ -236,16 +240,23 @@ public class MicropieUSPExtractor {
 		// 		"have", "V", "dobj", "dep");
 		// System.out.println(output.toString());
 		
+		
+		// Rule 2
 		// Aggregates were never found.
-		// Set<String> output = usp.getObjectValue("Aggregates were never found.",
-		//			"found", "V", "nsubjpass", "dep");
-		// System.out.println(output.toString());
+		System.out.println("Rule 2");
+		System.out.println("Aggregates were never found.");
+		output = usp.getObjectValue("Aggregates were never found.",
+					"found", "V", "nsubjpass", "dep");
+		System.out.println(output.toString());
 		
 		
+		// Rule 3
 		// No gas produced.
-		// Set<String> output = usp.getObjectValue("No gas produced.",
-		// 		"produced", "V", "nsubjpass", "dep");
-		// System.out.println(output.toString());
+		System.out.println("Rule 3");
+		System.out.println("No gas produced.");
+		output = usp.getObjectValue("No gas produced.",
+		 		"produced", "V", "nsubj", "dep");
+		System.out.println(output.toString());
 		
 		// output = usp.getObjectValue("No gas is produced.",
 		// 		"produced", "V", "nsubjpass", "dep");
@@ -268,41 +279,43 @@ public class MicropieUSPExtractor {
 		// System.out.println(output.toString());
 		
 		// No glycerol and starch are utilized.
-		System.out.println("No glycerol and starch are utilized.");
-		output = usp.getObjectValue("No glycerol and starch are utilized.",
-				"utilized", "V", "nsubjpass", "dep");
-		System.out.println(output.toString());
+		// System.out.println("No glycerol and starch are utilized.");
+		// output = usp.getObjectValue("No glycerol and starch are utilized.",
+		//		"utilized", "V", "nsubjpass", "dep");
+		// System.out.println(output.toString());
 		
 		// Metasub1, EEE, and FFF are not utilized.
-		System.out.println("Metasub1, EEE, and FFF are not utilized.");
-		output = usp.getObjectValue("Metasub1, EEE, and FFF are not utilized.",
-				"utilized", "V", "nsubjpass", "dep");
-		System.out.println(output.toString());
+		// System.out.println("Metasub1, EEE, and FFF are not utilized.");
+		// output = usp.getObjectValue("Metasub1, EEE, and FFF are not utilized.",
+		// 		"utilized", "V", "nsubjpass", "dep");
+		// System.out.println(output.toString());
 		
 		// Metasub1, EEE, and FFF are utilized.
-		System.out.println("Metasub1, EEE, and FFF are utilized.");
-		output = usp.getObjectValue("Metasub1, EEE, and FFF are utilized.",
-				"utilized", "V", "nsubjpass", "dep");
-		System.out.println(output.toString());
+		// System.out.println("Metasub1, EEE, and FFF are utilized.");
+		// output = usp.getObjectValue("Metasub1, EEE, and FFF are utilized.",
+		//		"utilized", "V", "nsubjpass", "dep");
+		// System.out.println(output.toString());
+
 		
 		// Rule 3
 		// Glycerol and starch utilized.
-		// System.out.println("Glycerol and starch utilized.");
-		// output = usp.getObjectValue("Glycerol and starch utilized.",
-		//		"utilized", "V", "nsubj", "dep");
-		// System.out.println(output.toString());
+		System.out.println("Glycerol and starch utilized.");
+		output = usp.getObjectValue("Glycerol and starch utilized.",
+				"utilized", "V", "nsubj", "dep");
+		System.out.println(output.toString());
 		
 		// No glycerol and starch utilized.
-		// System.out.println("No glycerol and starch utilized.");
-		// output = usp.getObjectValue("No glycerol and starch utilized.",
-		//		"utilized", "V", "nsubj", "dep");
-		// System.out.println(output.toString());
+		System.out.println("No glycerol and starch utilized.");
+		output = usp.getObjectValue("No glycerol and starch utilized.",
+				"utilized", "V", "nsubj", "dep");
+		System.out.println(output.toString());
 		
 		// Glycerol and starch not utilized.
-		// System.out.println("Glycerol and starch not utilized.");
-		// output = usp.getObjectValue("Glycerol and starch not utilized.",
-		//		"utilized", "V", "nsubj", "dep");
-		// System.out.println(output.toString());
+		System.out.println("Rule 3");
+		System.out.println("Glycerol and starch not utilized.");
+		output = usp.getObjectValue("Glycerol and starch not utilized.",
+				"utilized", "V", "nsubj", "dep");
+		System.out.println(output.toString());
 		
 		// Glycerol and starch utilized.
 		// System.out.println("Glycerol and starch utilized.");
@@ -311,12 +324,25 @@ public class MicropieUSPExtractor {
 		// System.out.println(output.toString());
 		
 		
-		
+		// Rule 4
+		System.out.println("Rule 4");
 		// Sensitive to tetracycline and vancomycin, but not to norfloxacin, ciprofloxacin, streptomycin, kanamycin or ampicillin.
-		// System.out.println("Sensitive to tetracycline and vancomycin, but not to norfloxacin, ciprofloxacin, streptomycin, kanamycin or ampicillin.");
-		// output = usp.getObjectValue("Sensitive to tetracycline and vancomycin, but not to norfloxacin, ciprofloxacin, streptomycin, kanamycin or ampicillin.",
-		//		"sensitive", "J", "prep_to", "dep");
-		// System.out.println(output.toString());
+		System.out.println("Sensitive to tetracycline and vancomycin, but not to norfloxacin, ciprofloxacin, streptomycin, kanamycin or ampicillin.");
+		output = usp.getObjectValue("Sensitive to tetracycline and vancomycin, but not to norfloxacin, ciprofloxacin, streptomycin, kanamycin or ampicillin.",
+				"sensitive", "J", "prep_to", "dep");
+		System.out.println(output.toString());
+		
+		// Not sensitive to rifampin, ampicillin, and penicillin.
+		System.out.println("Not sensitive to rifampin, ampicillin, and penicillin.");
+		output = usp.getObjectValue("Not sensitive to rifampin, ampicillin, and penicillin.",
+				"sensitive", "J", "prep_to", "dep");
+		System.out.println(output.toString());
+		
+		// Sensitive to erythromycin, chloramphenicol and rifampicin.
+		System.out.println("Sensitive to erythromycin, chloramphenicol and rifampicin.");
+		output = usp.getObjectValue("Sensitive to erythromycin, chloramphenicol and rifampicin.",
+				"sensitive", "J", "prep_to", "dep");
+		System.out.println(output.toString());
 		
 		// These avian ureaplasma strains have been reported to hydrolyze urea, but not to catabolize arginine or glucose.
 		// System.out.println("These avian ureaplasma strains have been reported to hydrolyze urea, but not to catabolize arginine or glucose.");
@@ -366,14 +392,33 @@ public class MicropieUSPExtractor {
 		// System.out.println(output.toString());
 		
 		
+		// Rule 12
+		// The major glycolipid is unknown.
+		System.out.println("The major glycolipid is unknown.");
+		output = usp.getObjectValue("The major glycolipid is unknown.",
+				"unknown", "J", "nsubj", "dep");
+		System.out.println(output.toString());
 		
 		
+		// Rule 1::revisted
+		// Utilizes meta1, meta2 and meta3.
+		System.out.println("Utilizes meta1, meta2 and meta3.");
+		output = usp.getObjectValue("Utilizes meta1, meta2 and meta3.",
+				"utilizes", "V", "dobj", "dep");
+		System.out.println(output.toString());
+		
+		// Deos not utilize meta1, meta2 and meta3.
+		System.out.println("Does not utilize meta1, meta2 and meta3.");
+		output = usp.getObjectValue("Does not utilize meta1, meta2 and meta3.",
+				"utilize", "V", "dobj", "dep");
+		System.out.println(output.toString());	
 		
 		
-		
-		
-		
-		
+		// Lacking flagella or pili.
+		System.out.println("Lacking flagella or pili.");
+		output = usp.getObjectValue("Lacking flagella or pili.",
+				"lacking", "V", "dobj", "dep");
+		System.out.println(output.toString());
 		
 	}
 
@@ -492,6 +537,7 @@ public class MicropieUSPExtractor {
 										
 										
 										String dobjStringList = "";
+										String rootDobjStringList = "";
 										Map<String, String> outputMap = new HashMap<String, String>();										
 										
 										
@@ -519,6 +565,7 @@ public class MicropieUSPExtractor {
 												
 												System.out.println("dobjString::" + dobjString); 
 												dobjStringList += dobjString + "\t";
+												rootDobjStringList += dobjString + "\t";
 												
 												if (dobjString.matches("(^c\\d\\-)(.*)")) {
 													// System.out.println("This dobj is category term!!");
@@ -562,6 +609,30 @@ public class MicropieUSPExtractor {
 										}
 										
 										
+										String[] rootDobjStringListArray = rootDobjStringList.split("\t");
+										
+										for (int i = 0; i < rootDobjStringListArray.length; i++) {
+											for (SentenceDependency rowInDepList : depList) {
+												String relString = rowInDepList.getRelString();
+												String govString = rowInDepList.getGovString();
+												String govIdx = rowInDepList.getGovIdx();
+												String depString = rowInDepList.getDepString();
+												String depIdx = rowInDepList.getDepIdx();
+												
+												String rootdobjString = rootDobjStringListArray[i];
+												if ((relString.equals("conj_and") || relString.equals("conj_or")) && govString.toLowerCase().equals(rootdobjString)) {
+													dobjStringList += depString + "\t";
+													
+													outputMap.put(depIdx, depString + "::Empty");
+
+												}
+												
+											}
+										}
+										
+										
+										
+										
 										boolean isNegative = false;
 										String negString = "";
 
@@ -579,12 +650,11 @@ public class MicropieUSPExtractor {
 												// String negIdx = depIdx;
 												isNegative = true;
 											}
-										}										
+										}								
 										
 										
 										if (isNegative == true) {
 											
-											String rootNsubjpassString = ""; 
 											for (SentenceDependency rowInDepList : depList) {
 												String relString = rowInDepList.getRelString();
 												String govString = rowInDepList.getGovString();
@@ -610,7 +680,112 @@ public class MicropieUSPExtractor {
 													// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
 												}
 											}
+											
 
+											
+											for (int i = 0; i < rootDobjStringListArray.length; i++) {
+												for (SentenceDependency rowInDepList : depList) {
+													String relString = rowInDepList.getRelString();
+													String govString = rowInDepList.getGovString();
+													String govIdx = rowInDepList.getGovIdx();
+													String depString = rowInDepList.getDepString();
+													String depIdx = rowInDepList.getDepIdx();
+													
+													String rootdobjString = rootDobjStringListArray[i];
+													if ((relString.equals("conj_and") || relString.equals("conj_or")) && govString.toLowerCase().equals(rootdobjString)) {
+														
+														outputMap.put(depIdx, depString + "::" + negString);
+
+													}
+													
+												}
+											}											
+											
+											
+											
+
+										} else {
+											
+											// Additional rule: lack, lacks, lacking
+											if ( (keyword.toLowerCase().equals("lack") || keyword.toLowerCase().equals("lack") || keyword.toLowerCase().equals("lacking")) ) {
+												
+												// Example 1
+												// dobj ( lack-11 , sulfate-13 )
+												// conj_and ( sulfate-13 , glycolipids-15 )
+												
+												// Example 2
+												// dobj ( Lacking-1 , flagella-2 )
+												// conj_or ( flagella-2 , pili-4 )
+												
+												
+												String rootDobjString = "";
+
+												String lackString = "";
+												
+												for (SentenceDependency rowInDepList : depList) {
+													String relString = rowInDepList.getRelString();
+													String govString = rowInDepList.getGovString();
+													String govIdx = rowInDepList.getGovIdx();
+													String depString = rowInDepList.getDepString();
+													String depIdx = rowInDepList.getDepIdx();
+													
+													Iterator outputMapIterator = outputMap.entrySet().iterator();
+													while (outputMapIterator.hasNext()) {
+														Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+														String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+														if ( depString.equals(outputMapArray[0]) &&
+																govString.toLowerCase().equals(keyword) &&
+																relString.equals("dobj") ) { // dobj ( lack-11 , sulfate-13 )
+															
+															
+															rootDobjString = outputMapArray[0];
+															lackString = govString;
+															// 
+															// output.remove(outputIterator.next());
+															// output.add(outputArray[0] + "::elvis_Not::" + outputArray[2]);
+															// outputMap.put(key, value);
+															outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + lackString);
+														}
+														// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+														// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+													}
+												}
+												
+												for (SentenceDependency rowInDepList : depList) {
+													String relString = rowInDepList.getRelString();
+													String govString = rowInDepList.getGovString();
+													String govIdx = rowInDepList.getGovIdx();
+													String depString = rowInDepList.getDepString();
+													String depIdx = rowInDepList.getDepIdx();
+													
+													Iterator outputMapIterator = outputMap.entrySet().iterator();
+													while (outputMapIterator.hasNext()) {
+														Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+														String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+														if ( depString.equals(rootDobjString) &&
+																govString.toLowerCase().equals(outputMapArray[0]) &&
+																(relString.equals("conj_and") || relString.equals("conj_or")) ) { 
+															// Example 1
+															// dobj ( lack-11 , sulfate-13 )
+															// conj_and ( sulfate-13 , glycolipids-15 )
+															
+															// Example 2
+															// dobj ( Lacking-1 , flagella-2 )
+															// conj_or ( flagella-2 , pili-4 )
+															
+															// 
+															// output.remove(outputIterator.next());
+															// output.add(outputArray[0] + "::elvis_Not::" + outputArray[2]);
+															outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + lackString);
+														}
+														// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+														// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+													}
+												}
+												
+												
+											}
+											
 										}
 										
 										Iterator outputMapIterator = outputMap.entrySet().iterator();
@@ -632,6 +807,9 @@ public class MicropieUSPExtractor {
 
 				
 				// Rule 2:: V => nsubjpass
+				// Example 1: 
+				
+				
 				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("nsubjpass") ) {
 					if ( clustIdx_depArgClustIdx_.get(ci).get("nsubjpass") == null ) continue; // doesn't go through the following
 					int aci = clustIdx_depArgClustIdx_.get(ci).get("nsubjpass"); 
@@ -859,10 +1037,2507 @@ public class MicropieUSPExtractor {
 
 				
 
+				// Rule 3:: V => nsubj
+				// Example 1: Glycerol and starch utilized.
 				
 				
+				// Example 2: No glycerol and starch utilized.
+				// root ( ROOT-0 , utilized-5 )
+				// det ( glycerol-2 , No-1 )
+				// nsubj ( utilized-5 , glycerol-2 )
+				// conj_and ( glycerol-2 , starch-4 )
+				
+
+
+				// Example 3: No gas produced.
+				// root ( ROOT-0 , produced-3 )
+				// det ( gas-2 , No-1 )
+				// nsubj ( produced-3 , gas-2 )
+				
+				
+				
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("nsubj") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("nsubj") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("nsubj"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+										System.out.println("depFileName::" + depFileName);
+										
+										System.out.println("Rule 3::");
+										String nsubjStringList = "";
+										
+										Map<String, String> outputMap = new HashMap<String, String>();
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+											
+											if (relString.equals("nsubj") && govString.toLowerCase().equals(keyword)) {
+												String nsubjString = depString;
+												String nsubjIdx = depIdx;
+												
+												USPId = sentId;
+
+												System.out.println("nsubjString::" + nsubjString);
+												nsubjStringList +=  nsubjString + "\t";
+												
+												if (nsubjString.matches("(^c\\d\\-)(.*)")) {
+													// System.out.println("This nsubj is category term!!");
+													// output.add(nsubjString + "::" + nsubjIdx);
+													outputMap.put(nsubjIdx, nsubjString + "::Empty");
+
+													
+													
+												} else {
+													String tmpOutput = "";
+													
+													for (SentenceDependency rowInDepList2 : depList) {
+														String relString2 = rowInDepList2.getRelString();
+														String govString2 = rowInDepList2.getGovString();
+														String govIdx2 = rowInDepList2.getGovIdx();
+														String depString2 = rowInDepList2.getDepString();
+														String depIdx2 = rowInDepList2.getDepIdx();
+														
+														if (nsubjString.equals(govString2) && nsubjIdx.equals(govIdx2) ) {												
+															// System.out.println("dep::" + depString2 );
+															// System.out.println("rel::" + relString2 );
+															if (relString.equals("nn") || relString.equals("amod")) {
+																// System.out.println("dep::" + depString2 );
+																// System.out.println("rel::" + relString2 );
+																tmpOutput += depString2 + " ";
+															}
+														}
+														
+													}
+													tmpOutput += nsubjString;
+													// output.add(tmpOutput + "::" + nsubjIdx);
+													outputMap.put(nsubjIdx, tmpOutput + "::Empty");
+													
+												}
+											}
+											
+											
+											
+											
+											
+										}
+										
+										
+										boolean isNegative = false;
+										String negString = "";
+										
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();											
+											
+											
+											// if (rowInDepList.get(0).toString().equals("neg") &&
+											//		rowInDepList.get(1).toString().toLowerCase().equals(keyword) ) {
+											//	String negString = rowInDepList.get(3).toString();
+											//	String negIdx = rowInDepList.get(4).toString();
+											//	output.add(negString + "::" + negIdx);
+											// }
+											
+											String[] nsubjStringListArray = nsubjStringList.split("\t");
+											
+											// System.out.println(Arrays.toString(nsubjStringListArray));
+											
+											for (int i = 0; i < nsubjStringListArray.length; i++) {
+												if (nsubjStringListArray[i].toString().length() > 1) {
+													if (relString.equals("neg") &&
+															govString.toLowerCase().equals(nsubjStringListArray[i].toString().toLowerCase())) {
+														// output.add(depString + "::" + depIdx);
+														isNegative = true;
+														negString = depString;
+													}
+													if (relString.equals("neg") &&
+															govString.toLowerCase().equals(keyword)) {
+														// output.add(depString + "::" + depIdx);
+														isNegative = true;
+														negString = depString;
+													}
+													if (relString.equals("det") &&
+															govString.toLowerCase().equals(nsubjStringListArray[i].toString().toLowerCase())) {
+														// output.add(depString + "::" + depIdx);
+														isNegative = true;
+														negString = depString;
+													}										
+												}
+											}												
+										}
+
+										
+										if (isNegative == true) {
+											
+											String rootNsubjString = ""; 
+											for (SentenceDependency rowInDepList : depList) {
+												String relString = rowInDepList.getRelString();
+												String govString = rowInDepList.getGovString();
+												String govIdx = rowInDepList.getGovIdx();
+												String depString = rowInDepList.getDepString();
+												String depIdx = rowInDepList.getDepIdx();
+												
+												Iterator outputMapIterator = outputMap.entrySet().iterator();
+												while (outputMapIterator.hasNext()) {
+													Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+													String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+													if ( depString.equals(outputMapArray[0]) &&
+															govString.equals(keyword) &&
+															relString.equals("nsubj") ) { // nsubjpass(produced-8, Gas-1)
+														
+														rootNsubjString = outputMapArray[0];
+														// 
+														// output.remove(outputIterator.next());
+														// output.add(outputArray[0] + "::elvis_Not::" + outputArray[2]);
+														// outputMap.put(key, value);
+														outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+													}
+													// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+													// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+												}
+											}
+											for (SentenceDependency rowInDepList : depList) {
+												String relString = rowInDepList.getRelString();
+												String govString = rowInDepList.getGovString();
+												String govIdx = rowInDepList.getGovIdx();
+												String depString = rowInDepList.getDepString();
+												String depIdx = rowInDepList.getDepIdx();
+												
+												Iterator outputMapIterator = outputMap.entrySet().iterator();
+												while (outputMapIterator.hasNext()) {
+													Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+													String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+													if ( depString.equals(rootNsubjString) &&
+															govString.equals(outputMapArray[0]) &&
+															relString.equals("conj_and") ) { // conj_and(Gas-1, BBB-5)
+														// 
+														// output.remove(outputIterator.next());
+														// output.add(outputArray[0] + "::elvis_Not::" + outputArray[2]);
+														outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+													}
+													// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+													// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+												}
+											}
+										}
+										
+										Iterator outputMapIterator = outputMap.entrySet().iterator();
+										while (outputMapIterator.hasNext()) {
+											Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+											// System.out.println("The key is: " + mapEntry.getKey()
+											// 	+ ",value is :" + mapEntry.getValue());
+											output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+										}
+										
+										
+										// System.out.println("output:\n" + output);										
+									}
+								}
+							}
+						}
+					}				
+				}				
+
+				
+				// Rule 3-1
+				// Glycerol and starch not utilized.
+				// root ( ROOT-0 , Glycerol-1 )
+				// conj_and ( Glycerol-1 , starch-3 )
+				// neg ( utilized-5 , not-4 )
+				// partmod ( Glycerol-1 , utilized-5 )
+				// not in USP mln
+				// 
+			
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("nsubj") ) {
+					
+					
+					// System.out.println("pids::" + pids);
+					// System.out.println("pids.size() :: " + pids.size());
+					
+					for (String pid:pids) {
+						
+						// System.out.println("Pid::" + pid + "::" + ptId_aciChdIds_.get(pid));
+						String sentId = pid.split(":")[0];
+						// System.out.println("sentId is ::" + sentId);
+						
+						
+						String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+						String sentText = readDepFromTxtFile(txtFileName);
+						
+						String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+						String oriSentText = readDepFromTxtFile(oriTxtFileName);
+						
+						
+						// System.out.println("text::" + text);
+						// System.out.println("oriSentText::" + oriSentText);
+						// System.out.println("sentText(collapsed sentence)::" + sentText);
+						
+						if (text.equals(oriSentText)) {
+						
+							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+							
+							System.out.println("depFileName:" + depFileName);
+							
+							System.out.println("Rule 3-1::");
+							
+							USPId = sentId;
+							
+							// Glycerol and starch not utilized.
+							// -
+							// conj_and(Glycerol-1, c9-Polysaccharides-3)
+							// neg(utilized-5, not-4)
+							// partmod(Glycerol-1, utilized-5)
+
+							// String nsubjString = "";
+							String nsubjStringList = "";
+							
+							Map<String, String> outputMap = new HashMap<String, String>();
+
+							
+							
+							
+							/*
+							for (SentenceDependency rowInDepList : depList) {								
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+																					
+								if ( depString.toLowerCase().equals(keyword) ) {
+									// output.add(govString + "::" + govIdx);									
+									nsubjString += govString;
+									
+									outputMap.put(nsubjIdx, nsubjString + "::Empty");
+
+									
+								}	
+							}
+							
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
 								
+								if ( relString.equals("conj_and") && govString.toLowerCase().equals(nsubjString.toLowerCase()) ) {
+									// output.add(depString + "::" + depIdx);
+									outputMap.put(nsubjIdx, nsubjString + "::Empty");
+
+								}
+								
+								if (relString.equals("neg") && govString.toLowerCase().equals(keyword)) {
+									// output.add(depString + "::" + depIdx);
+									outputMap.put(nsubjIdx, nsubjString + "::Empty");
+
+								}
+							}
+							*/
+
+							String rootNsubjString = "";
+							String rootNsubjIdx = "";
+							String rootNsubjStringList = "";
+							
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+								
+								if (relString.equals("partmod") && depString.toLowerCase().equals(keyword)) {
+									rootNsubjString = govString;
+									rootNsubjIdx = govIdx;
+									
+									USPId = sentId;
+
+									System.out.println("rootNsubjString::" + rootNsubjString);
+									rootNsubjStringList +=  rootNsubjString + "\t";
+									
+									if (rootNsubjString.matches("(^c\\d\\-)(.*)")) {
+										// System.out.println("This nsubj is category term!!");
+										// output.add(rootNsubjString + "::" + rootNsubjIdx);
+										outputMap.put(rootNsubjIdx, rootNsubjString + "::Empty");
+
+										
+										
+									} else {
+										String tmpOutput = "";
+										
+										for (SentenceDependency rowInDepList2 : depList) {
+											String relString2 = rowInDepList2.getRelString();
+											String govString2 = rowInDepList2.getGovString();
+											String govIdx2 = rowInDepList2.getGovIdx();
+											String depString2 = rowInDepList2.getDepString();
+											String depIdx2 = rowInDepList2.getDepIdx();
+											
+											if (rootNsubjString.equals(govString2) && rootNsubjIdx.equals(govIdx2) ) {												
+												// System.out.println("dep::" + depString2 );
+												// System.out.println("rel::" + relString2 );
+												if (relString.equals("nn") || relString.equals("amod")) {
+													// System.out.println("dep::" + depString2 );
+													// System.out.println("rel::" + relString2 );
+													tmpOutput += depString2 + " ";
+												}
+											}
+											
+										}
+										tmpOutput += rootNsubjString;
+										// output.add(tmpOutput + "::" + nsubjIdx);
+										outputMap.put(rootNsubjIdx, tmpOutput + "::Empty");
+										
+									}
+								}
+								
+								// conj_and(Glycerol-1, c9-Polysaccharides-3)
+								
+							}
+							
+							
+							// System.out.println("rootNsubjStringList::" + rootNsubjStringList);
+
+							
+							
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+							
+								// Glycerol and starch not utilized.
+								// root ( ROOT-0 , Glycerol-1 )
+								// conj_and ( Glycerol-1 , starch-3 )
+								// neg ( utilized-5 , not-4 )
+								// partmod ( Glycerol-1 , utilized-5 )
+								// not in USP mln
+								
+								String[] rootNsubjStringListArray = rootNsubjStringList.split("\t");
+								// System.out.println(Arrays.toString(rootNsubjStringListArray));
+								
+								for (int i = 0; i < rootNsubjStringListArray.length; i++) {									
+									if (relString.equals("conj_and") && govString.toLowerCase().equals(rootNsubjStringListArray[i].toString().toLowerCase())) {
+										
+
+										String nsubjString = depString;
+										String nsubjIdx = depIdx;
+										
+										rootNsubjStringList += nsubjString + "\t";
+										System.out.println("rootNsubjString::" + nsubjString);
+										
+										
+										if (nsubjString.matches("(^c\\d\\-)(.*)")) {
+											// System.out.println("This nsubj is category term!!");
+											// output.add(nsubjString + "::" + nsubjIdx);
+											outputMap.put(nsubjIdx, nsubjString + "::Empty");
+
+											
+											
+										} else {
+											String tmpOutput = "";
+											
+											for (SentenceDependency rowInDepList2 : depList) {
+												String relString2 = rowInDepList2.getRelString();
+												String govString2 = rowInDepList2.getGovString();
+												String govIdx2 = rowInDepList2.getGovIdx();
+												String depString2 = rowInDepList2.getDepString();
+												String depIdx2 = rowInDepList2.getDepIdx();
+												
+												if (nsubjString.equals(govString2) && nsubjIdx.equals(govIdx2) ) {												
+													// System.out.println("dep::" + depString2 );
+													// System.out.println("rel::" + relString2 );
+													if (relString.equals("nn") || relString.equals("amod")) {
+														// System.out.println("dep::" + depString2 );
+														// System.out.println("rel::" + relString2 );
+														tmpOutput += depString2 + " ";
+													}
+												}
+												
+											}
+											tmpOutput += nsubjString;
+											// output.add(tmpOutput + "::" + nsubjIdx);
+											outputMap.put(nsubjIdx, tmpOutput + "::Empty");
+											
+										}
+									
+									}
+								}
+								
+								
+							}
+							
+							
+							
+							
+							
+							
+							
+							boolean isNegative = false;
+							String negString = "";
+							
+							
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();											
+								
+								String[] rootNsubjStringListArray = rootNsubjStringList.split("\t");
+								
+								// System.out.println(Arrays.toString(rootNsubjStringListArray));
+								
+								for (int i = 0; i < rootNsubjStringListArray.length; i++) {
+									if (rootNsubjStringListArray[i].toString().length() > 1) {
+										if (relString.equals("neg") &&
+												govString.toLowerCase().equals(rootNsubjStringListArray[i].toString().toLowerCase())) {
+											// output.add(depString + "::" + depIdx);
+											isNegative = true;
+											negString = depString;
+										}
+										if (relString.equals("neg") &&
+												govString.toLowerCase().equals(keyword)) {
+											// output.add(depString + "::" + depIdx);
+											isNegative = true;
+											negString = depString;
+										}
+										if (relString.equals("det") &&
+												govString.toLowerCase().equals(rootNsubjStringListArray[i].toString().toLowerCase())) {
+											// output.add(depString + "::" + depIdx);
+											isNegative = true;
+											negString = depString;
+										}										
+									}
+								}												
+							}
+
+							
+							if (isNegative == true) {
+								
+								rootNsubjString = ""; 
+								for (SentenceDependency rowInDepList : depList) {
+									String relString = rowInDepList.getRelString();
+									String govString = rowInDepList.getGovString();
+									String govIdx = rowInDepList.getGovIdx();
+									String depString = rowInDepList.getDepString();
+									String depIdx = rowInDepList.getDepIdx();
+									
+									Iterator outputMapIterator = outputMap.entrySet().iterator();
+									while (outputMapIterator.hasNext()) {
+										Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+										String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+										if ( govString.equals(outputMapArray[0]) &&
+												depString.equals(keyword) &&
+												relString.equals("partmod") ) { // partmod ( Glycerol-1 , utilized-5 )
+											
+											rootNsubjString = outputMapArray[0];
+											// 
+											// output.remove(outputIterator.next());
+											// output.add(outputArray[0] + "::elvis_Not::" + outputArray[2]);
+											// outputMap.put(key, value);
+											outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+										}
+										// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+										// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+									}
+								}
+								for (SentenceDependency rowInDepList : depList) {
+									String relString = rowInDepList.getRelString();
+									String govString = rowInDepList.getGovString();
+									String govIdx = rowInDepList.getGovIdx();
+									String depString = rowInDepList.getDepString();
+									String depIdx = rowInDepList.getDepIdx();
+									
+									Iterator outputMapIterator = outputMap.entrySet().iterator();
+									while (outputMapIterator.hasNext()) {
+										Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+										String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+										if ( govString.equals(rootNsubjString) &&
+												depString.equals(outputMapArray[0]) &&
+												relString.equals("conj_and") ) { // conj_and ( Glycerol-1 , starch-3 )
+											// 
+											// output.remove(outputIterator.next());
+											// output.add(outputArray[0] + "::elvis_Not::" + outputArray[2]);
+											outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+										}
+										// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+										// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+									}
+								}
+							}
+							
+							Iterator outputMapIterator = outputMap.entrySet().iterator();
+							while (outputMapIterator.hasNext()) {
+								Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+								// System.out.println("The key is: " + mapEntry.getKey()
+								// 	+ ",value is :" + mapEntry.getValue());
+								output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+							}
+							
+							
+							// System.out.println("output:\n" + output);
+						}						
+
+					}			
+				}
+
 				
+
+				// Rule 4:: J => prep_to
+				
+				// Example 1: 
+				
+				// Example 2: Not sensitive to rifampin, ampicillin, and penicillin.
+				// root ( ROOT-0 , Not-1 )
+				// dep ( Not-1 , sensitive-2 )
+				// prep_to ( sensitive-2 , rifampin-4 )
+				// conj_and ( rifampin-4 , ampicillin-6 )
+				// conj_and ( rifampin-4 , penicillin-9 )
+				
+				
+				
+				if ( pos.equals("J") && pos.equals(keywordType) && keywordObject.equals("prep_to") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("prep_to") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("prep_to"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+
+									
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
+									
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										
+										
+										// Sensitive to tetracycline and vancomycin, but not to norfloxacin, ciprofloxacin, streptomycin, kanamycin or ampicillin.
+										// -
+										// root(ROOT-0, Sensitive-1)
+										// prep_to(Sensitive-1, tetracycline-3)
+										// prep_to(Sensitive-1, vancomycin-5)
+										// conj_and(tetracycline-3, vancomycin-5)
+										// neg(Sensitive-1, not-8)
+										// prep_to(Sensitive-1, norfloxacin-10)
+										// conj_but(tetracycline-3, norfloxacin-10)
+										// conj_but(tetracycline-3, ciprofloxacin-12)
+										// conj_or(norfloxacin-10, ciprofloxacin-12)
+										// conj_but(tetracycline-3, streptomycin-14)
+										// conj_or(norfloxacin-10, streptomycin-14)
+										// conj_but(tetracycline-3, kanamycin-16)
+										// conj_or(norfloxacin-10, kanamycin-16)
+										// conj_but(tetracycline-3, ampicillin-18)
+										// conj_or(norfloxacin-10, ampicillin-18)
+										
+										
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+										
+										
+										// indexFileName = dataDir_+ "/index/0/" + sentId + ".index";
+										USPId = sentId;
+										
+										
+										System.out.println("keyword::" + keyword);
+										System.out.println("depFileName::" + depFileName);
+										System.out.println("sentText(collapsed sentence)::" + sentText);
+										
+										
+										System.out.println("Rule 4");
+										Map<String, String> outputMap = new HashMap<String, String>();
+
+										
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();											
+											// if( rowInDepList.get(0).toString().equals("nn") ) {
+											//	System.out.println("has nn::" + rowInDepList.toString());
+											// } 
+											
+											if ( relString.equals("prep_to") && govString.toLowerCase().equals(keyword) ) {
+												String prep_toString = depString;
+												String prep_toIdx = depIdx;
+												
+												// System.out.println("prep_toString::" + prep_toString); 
+												// output += prep_toString + "\n";
+												// output.add(prep_toString + "::" + prep_toIdx);
+												outputMap.put(prep_toIdx, prep_toString + "::Empty");
+												
+												
+												
+												for (SentenceDependency rowInDepList2 : depList) {
+													
+													// System.out.println("rowInDepList2::" + rowInDepList2.toString());
+													// example: [prep_to, Resistant, 1, c4_ant, 21]
+													
+													String relString2 = rowInDepList2.getRelString();
+													String govString2 = rowInDepList2.getGovString();
+													String govIdx2 = rowInDepList2.getGovIdx();
+													String depString2 = rowInDepList2.getDepString();
+													String depIdx2 = rowInDepList2.getDepIdx();	
+													
+													if (prep_toString.equals(govString2) && prep_toIdx.equals(govIdx2) ) {												
+														// System.out.println("dep::" + depString2 );
+														// System.out.println("rel::" + relString2 );
+														if (relString.equals("appos") || relString.equals("conj_and")) {  // appositional modifier
+																						  // Ex: Sam, my brother
+																						  // appos(Sam, brother)
+															
+															// System.out.println("dep::" + depString2 );
+															// System.out.println("rel::" + relString2 );
+															// output += depString2 + "\n";
+															// output.add(depString2 + "::" + depIdx2);
+															
+															outputMap.put(depIdx2, depString2 + "::Empty");
+
+														}
+													}
+													
+												}
+												
+											}
+										}
+									
+									
+										boolean isNegative = false;
+										String negString = "";
+										
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();											
+
+											if (relString.equals("neg") &&
+													depString.toLowerCase().equals(keyword)) {
+												isNegative = true;
+												negString = govString;
+											}
+											
+											if (relString.equals("dep") &&
+													depString.toLowerCase().equals(keyword)) {
+												isNegative = true;
+												negString = govString;
+											}
+											
+																							
+										}
+
+										
+										String rootPrep_toString = "";
+										if (isNegative == true) {
+																						
+											for (SentenceDependency rowInDepList : depList) {
+												String relString = rowInDepList.getRelString();
+												String govString = rowInDepList.getGovString();
+												String govIdx = rowInDepList.getGovIdx();
+												String depString = rowInDepList.getDepString();
+												String depIdx = rowInDepList.getDepIdx();
+												
+												Iterator outputMapIterator = outputMap.entrySet().iterator();
+												while (outputMapIterator.hasNext()) {
+													Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+													String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+													if ( depString.equals(outputMapArray[0]) &&
+															govString.equals(keyword) &&
+															relString.equals("prep_to") ) { // prep_to ( sensitive-2 , rifampin-4 )
+														
+														rootPrep_toString = outputMapArray[0];
+														// 
+														// output.remove(outputIterator.next());
+														// output.add(outputArray[0] + "::elvis_Not::" + outputArray[2]);
+														// outputMap.put(key, value);
+														outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+													}
+													// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+													// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+												}
+											}
+											for (SentenceDependency rowInDepList : depList) {
+												String relString = rowInDepList.getRelString();
+												String govString = rowInDepList.getGovString();
+												String govIdx = rowInDepList.getGovIdx();
+												String depString = rowInDepList.getDepString();
+												String depIdx = rowInDepList.getDepIdx();
+												
+												Iterator outputMapIterator = outputMap.entrySet().iterator();
+												while (outputMapIterator.hasNext()) {
+													Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+													String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+													if ( govString.equals(rootPrep_toString) &&
+															depString.equals(outputMapArray[0]) &&
+															relString.equals("conj_and") ) { // conj_and ( rifampin-4 , ampicillin-6 )
+																							// conj_and ( rifampin-4 , penicillin-9 )
+														// 
+														// output.remove(outputIterator.next());
+														// output.add(outputArray[0] + "::elvis_Not::" + outputArray[2]);
+														outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+													}
+													// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+													// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+												}
+											}
+										}
+										
+										Iterator outputMapIterator = outputMap.entrySet().iterator();
+										while (outputMapIterator.hasNext()) {
+											Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+											// System.out.println("The key is: " + mapEntry.getKey()
+											// 	+ ",value is :" + mapEntry.getValue());
+											output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+										}
+										
+										
+									
+									
+									}
+									// System.out.println("output:\n" + output);
+								}
+							}
+						}
+					}			
+				}
+
+				
+				
+				
+				
+				// Rule 4-1:: J => prep_to
+				// Sensitive to c4-Antibiotics and c4-Antibiotics , but not to c4-Antibiotics or c4-Antibiotics .
+
+			
+				if ( pos.equals("J") && pos.equals(keywordType) && keywordObject.equals("prep_to") ) {
+					
+					
+					// System.out.println("pids::" + pids);
+					// System.out.println("pids.size() :: " + pids.size());
+					
+					for (String pid:pids) {
+						
+						// System.out.println("Pid::" + pid + "::" + ptId_aciChdIds_.get(pid));
+						String sentId = pid.split(":")[0];
+						// System.out.println("sentId is ::" + sentId);
+						
+						
+						String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+						String sentText = readDepFromTxtFile(txtFileName);
+						
+						String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+						String oriSentText = readDepFromTxtFile(oriTxtFileName);
+						
+						
+						// System.out.println("text::" + text);
+						// System.out.println("oriSentText::" + oriSentText);
+						// System.out.println("sentText(collapsed sentence)::" + sentText);
+						
+						if (text.equals(oriSentText)) {
+						
+							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+							
+							System.out.println("depFileName:" + depFileName);
+							
+							
+							
+							USPId = sentId;
+							
+							// Sentence example: Sensitive to tetracycline and vancomycin, but not to norfloxacin, ciprofloxacin, streptomycin, kanamycin or ampicillin.
+							// Sentence example: Sensitive to c4-Antibiotics and c4-Antibiotics , but not to c4-Antibiotics or c4-Antibiotics .
+							// -
+							// prep(Sensitive-1, to-2)
+							// pobj(to-2, c4-Antibiotics-3)
+							// pobj(to-2, c4-Antibiotics-5)
+							// conj_and(c4-Antibiotics-3, c4-Antibiotics-5)
+							// prep(Sensitive-1, not-8)
+							// conj_but(to-2, not-8)
+							// dep(to-2, to-9)
+							// pobj(to-9, c4-Antibiotics-10)
+							// pobj(to-9, c4-Antibiotics-12)
+							// conj_or(c4-Antibiotics-10, c4-Antibiotics-12)
+
+							
+							
+							System.out.println("Rule 4-1");
+							Map<String, String> outputMap = new HashMap<String, String>();
+							
+							
+							// boolean isPrep_To = false;
+							// boolean isNotPrep_To = false;
+							// String prep_toIdx = "";
+							// String notPrep_toIdx = "";
+							// String notString = "";
+							// String notIdx = "";
+							
+							String prep_toList = "";
+							
+							
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+																					
+								if ( relString.equals("prep") && 
+										govString.toLowerCase().equals(keyword.toLowerCase()) ) {
+									
+									if (depString.equals("to")) {
+										prep_toList += "prep_to::" + "Empty" + "::" + depIdx + "\t"; // prep(Sensitive-1, to-2)
+										// prep(Sensitive-1, not-8)
+									} else {
+										prep_toList += "prep_to::" + depString + "::" + depIdx + "\t"; // prep(Sensitive-1, not-8)
+									}
+								}
+							}
+							
+							
+							String[] prep_toListArray = prep_toList.split("\t");
+							// System.out.println("prep_toListArray::" + Arrays.toString(prep_toListArray));
+							// System.out.println("prep_toListArray.length::" + prep_toListArray.length);
+							
+							
+							String updatePrep_toList = "";
+							
+							if (prep_toListArray.length > 1) {
+								for (int i = 0; i < prep_toListArray.length; i++ ) {
+									String[] prep_toListItemArray = prep_toListArray[i].split("::");
+									
+									String prep_toString = prep_toListItemArray[0];
+									
+									String negString = prep_toListItemArray[1];
+									
+									String negIdx = prep_toListItemArray[2];
+									
+									// System.out.println("1::negIdx::" + negIdx);
+									
+									if ( ! negString.equals("Empty") ) {
+										
+										// conj_but(to-2, not-8)
+										// dep(to-2, to-9)
+										
+										String conj_butString = "";
+										String conj_butIdx = "";
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+											
+											// conj_but(to-2, not-8)
+											if (relString.equals("conj_but") && depString.equals(negString)) {
+												conj_butString = govString;
+												conj_butIdx = govIdx;
+											}
+											
+										}
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+											
+											// dep(to-2, to-9)
+											if (relString.equals("dep") && 
+													govString.equals(conj_butString) && 
+													govIdx.equals(conj_butIdx)) {
+												negIdx = depIdx;
+											}
+											
+											
+											
+										}
+										// System.out.println("2::negIdx::" + negIdx);
+										updatePrep_toList += prep_toString + "::" + negString + "::" + negIdx + "\t";
+									}else {
+										updatePrep_toList += prep_toListArray[i] + "\t";
+									}
+									
+								}
+								
+								
+								
+								
+								/*
+								for (SentenceDependency rowInDepList : depList) {
+									String relString = rowInDepList.getRelString();
+									String govString = rowInDepList.getGovString();
+									String govIdx = rowInDepList.getGovIdx();
+									String depString = rowInDepList.getDepString();
+									String depIdx = rowInDepList.getDepIdx();
+																						
+									if ( relString.equals("prep") && 
+											govString.toLowerCase().equals(keyword.toLowerCase()) &&
+											depString.toLowerCase().equals("to") ) {
+										isPrep_To = true;
+										prep_toIdx = depIdx; // prep(Sensitive-1, to-2)
+									}
+								}							
+								
+								if (isPrep_To == true) {
+									for (SentenceDependency rowInDepList : depList) {
+										String relString = rowInDepList.getRelString();
+										String govString = rowInDepList.getGovString();
+										String govIdx = rowInDepList.getGovIdx();
+										String depString = rowInDepList.getDepString();
+										String depIdx = rowInDepList.getDepIdx();
+										
+										if ( relString.equals("pobj") && 
+												govString.toLowerCase().equals("to") &&
+												govIdx.equals(prep_toIdx) ) {
+											output.add(depString + "::" + depIdx);									
+										}
+										
+										if ( relString.equals("conj_but") && 
+												govString.toLowerCase().equals("to") &&
+												govIdx.equals(prep_toIdx) &&
+												depString.equals("not") ) { // conj_but(to-2, not-8)
+											isNotPrep_To = true;
+											notString = "not";
+											notIdx = depIdx;
+										}
+
+										if ( relString.equals("dep") && 
+												govString.toLowerCase().equals("to") &&
+												govIdx.equals(prep_toIdx) &&
+												depString.equals("to") ) { // dep(to-2, to-9)
+											notPrep_toIdx = depIdx;					
+										}									
+									}
+								}
+								
+								
+								if ( isNotPrep_To == true ) {
+									output.add(notString + "::" + notIdx);		
+									
+									for (SentenceDependency rowInDepList : depList) {
+										String relString = rowInDepList.getRelString();
+										String govString = rowInDepList.getGovString();
+										String govIdx = rowInDepList.getGovIdx();
+										String depString = rowInDepList.getDepString();
+										String depIdx = rowInDepList.getDepIdx();
+										
+										if ( relString.equals("pobj") && 
+												govString.toLowerCase().equals("to") &&
+												govIdx.equals(notPrep_toIdx) ) {
+											output.add(depString + "::" + depIdx);					
+										}
+									}
+									
+								}
+								*/								
+							}
+							
+							System.out.println("updatePrep_toList::" + updatePrep_toList);
+							
+							
+							String[] updatePrep_toListArray = updatePrep_toList.split("\t");
+							// System.out.println("updatePrep_toListArray::" + Arrays.toString(updatePrep_toListArray));
+							// System.out.println("updatePrep_toListArray.length::" + updatePrep_toListArray.length);
+							
+							if (updatePrep_toListArray.length > 1) {
+								for (int i = 0; i < updatePrep_toListArray.length; i++ ) {
+									String[] updatePrep_toListItemArray = updatePrep_toListArray[i].split("::");
+									
+									String prep_toString = updatePrep_toListItemArray[0];
+									
+									String negString = updatePrep_toListItemArray[1];
+									
+									String negIdx = updatePrep_toListItemArray[2];
+									
+									
+									for (SentenceDependency rowInDepList : depList) {
+										String relString = rowInDepList.getRelString();
+										String govString = rowInDepList.getGovString();
+										String govIdx = rowInDepList.getGovIdx();
+										String depString = rowInDepList.getDepString();
+										String depIdx = rowInDepList.getDepIdx();
+										
+										// pobj(to-2, c4-Antibiotics-3)
+										if (relString.equals("pobj") && 
+												govString.equals("to") &&
+												govIdx.equals(negIdx) ) {
+											outputMap.put(depIdx, depString + "::" + negString);
+
+										}
+										
+									}									
+								}
+							}
+							
+							Iterator outputMapIterator = outputMap.entrySet().iterator();
+							while (outputMapIterator.hasNext()) {
+								Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+								// System.out.println("The key is: " + mapEntry.getKey()
+								// 	+ ",value is :" + mapEntry.getValue());
+								output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+							}	
+							
+						}						
+						
+						
+					
+						
+					}			
+				}
+				
+				
+				
+				// Elvis note: not work very well on this rule!! 140508
+				
+				// Rule 5:: N => amod
+				// Example 1: Cells are Gram-negative rod-shaped non-sporulating and motile by swimming in broth cultures.
+				// Example 2: Cells are Gram-negative c2-Cellshape c2-Internalfeatures and c2-Motility by swimming in broth cultures .
+
+				
+				
+				if ( pos.equals("N") && pos.equals(keywordType) && keywordObject.equals("amod") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("amod") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("amod"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									//System.out.println("sentId is ::" + sentId);
+									
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
+									
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+										System.out.println("depFileName:" + depFileName);
+										
+										USPId = sentId;
+
+										System.out.println("Rule 5");
+										Map<String, String> outputMap = new HashMap<String, String>();
+										
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+											
+											// if( rowInDepList.get(0).toString().equals("nn") ) {
+											//	System.out.println("has nn::" + rowInDepList.toString());
+											// } 
+											
+											if ( relString.equals("amod") && govString.toLowerCase().equals(keyword) ) {
+												String amodString = depString;
+												String amodIdx = depIdx;
+												
+												// System.out.println("amodString::" + amodString); 
+												// output += amodString + "\n";
+												// output.add(amodString);
+
+												// output.add(amodString + "::" + amodIdx);
+												outputMap.put(amodIdx, amodString + "::Empty");
+												
+											}
+										}										
+									
+									
+										Iterator outputMapIterator = outputMap.entrySet().iterator();
+										while (outputMapIterator.hasNext()) {
+											Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+											// System.out.println("The key is: " + mapEntry.getKey()
+											// 	+ ",value is :" + mapEntry.getValue());
+											output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+										}
+										
+									}
+									//System.out.println("output:\n" + output);
+								}
+							}
+						}
+					}			
+				}				
+				
+				
+				
+				
+				// Rule 6:: V => prep_from, ex: isolated from, XXX is produced from YYY
+				// Example: Isolated from ...
+				
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("prep_from") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("prep_from") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("prep_from"); 
+					// System.out.println("aci is ::" + aci );
+
+					
+					StringBuilder rule6_outputBuilder = new StringBuilder();
+					int counter = 1;
+					
+					
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									// rule5_outputBuilder.append("\nSent " + counter + "::" + sentText + "\n");
+
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
+									
+									
+									// System.out.println("Rule 6::");
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+										
+										System.out.println("Rule 6::");
+										System.out.println("depFileName::" + depFileName);
+										
+										USPId = sentId;
+
+										
+										String parseFileName = dataDir_+ "/parse/0/" + sentId + ".parse";
+										String parseTreeText = readParseFromParseFile(parseFileName);
+										
+										TreeReader tr = new PennTreeReader(new StringReader(parseTreeText),
+												new LabeledScoredTreeFactory(new StringLabelFactory()));
+										Tree parseTree = tr.readTree();
+										
+										
+										Map<String, String> outputMap = new HashMap<String, String>();
+
+										
+										
+										switch(extractionType) {
+											case "dep":
+												// Extraction Type: dep
+												for (SentenceDependency rowInDepList : depList) {
+													String relString = rowInDepList.getRelString();
+													String govString = rowInDepList.getGovString();
+													String govIdx = rowInDepList.getGovIdx();
+													String depString = rowInDepList.getDepString();
+													String depIdx = rowInDepList.getDepIdx();
+													
+													if ( relString.equals("prep_from") && govString.toLowerCase().equals(keyword)) {
+														String prep_fromString = depString;
+														String prep_fromIdx = depIdx;
+														
+														// System.out.println("prep_fromString::" + prep_fromString); // print out the list
+														
+														String tmpOutput = "";
+														
+														for (SentenceDependency rowInDepList2 : depList) {
+															String relString2 = rowInDepList2.getRelString();
+															String govString2 = rowInDepList2.getGovString();
+															String govIdx2 = rowInDepList2.getGovIdx();
+															String depString2 = rowInDepList2.getDepString();
+															String depIdx2 = rowInDepList2.getDepIdx();
+
+															
+															if (prep_fromString.equals(govString2) && prep_fromIdx.equals(govIdx2) ) {												
+																// System.out.println("dep::" + depString2 );
+																// System.out.println("rel::" + relString2 );
+																if (relString2.equals("amod") || relString2.equals("nn")
+																		// || relString2.equals("dep")
+																		// || relString2.equals("conj_and")
+																		) {
+																	// System.out.println("dep::" + depString2 );
+																	// System.out.println("rel::" + relString2 );
+																	tmpOutput += depString2 + " ";
+																}
+															}
+															
+														}
+														tmpOutput += prep_fromString;
+														
+														//output.add(tmpOutput + "::" + prep_fromIdx);
+														
+														outputMap.put(prep_fromIdx, tmpOutput + "::Empty");
+
+														
+														// System.out.println("Output 1:" + tmpOutput);
+														// rule5_outputBuilder.append(tmpOutput + "\n");
+														
+
+													}
+												}
+												
+												
+												
+												
+												
+												
+												
+												
+												// Extraction Type: dep												
+												
+												
+												
+												
+												
+												break;
+											case "parse":
+												// Extraction Type: parse
+												
+												// Example: (VP (VBN Isolated)
+												
+												String keywordLowerCase = keyword.toLowerCase();
+												String keywordFirstCapital = keywordLowerCase.substring(0, 1).toUpperCase() + keywordLowerCase.substring(1);
+												
+												
+												TregexPattern tgrepPattern = TregexPattern.compile("VP <1 (VBN << " + keywordLowerCase + "|" + keywordFirstCapital + ")");
+												TregexMatcher m = tgrepPattern.matcher(parseTree);
+												while (m.find()) {
+													Tree subtree = m.getMatch();
+													// System.out.println("subtree::\n" + subtree.pennString() + "\n");
+													// rule5_outputBuilder.append("subtree::\n" + subtree.pennString() + "\n");
+													
+													TregexPattern tgrepPattern2 = TregexPattern.compile("PP <1 (IN << from)");
+													TregexMatcher m2 = tgrepPattern.matcher(subtree);
+													
+													
+													String extractedSubTree = "";
+													while (m2.find()) {
+														Tree subtree2 = m2.getMatch();
+														// System.out.println("subtree2.toString()::" + subtree2.toString());
+														// rule5_outputBuilder.append("subtree2::\n" + subtree2.pennString() + "\n");
+														
+														final StringBuilder sb = new StringBuilder();
+														for ( final Tree t : subtree2.getLeaves() ) {
+														     sb.append(t.toString()).append(" ");
+														}
+														
+														// extractedSubTree = sb.toString();
+														if ( ! extractedSubTree.contains(sb)) {
+															extractedSubTree = sb.toString();
+														}
+													}	
+
+													
+
+
+													String additionalString = "";
+													// go to Dependency Parse 
+													// if the grabbed part is not in the end position of the sentnece
+													// go 
+													// ex: Isolated from solar salts produced in Taiwan in earth.
+													// csubj(produced-5, Isolated-1)
+													// amod(salts-4, solar-3)
+													// prep_from(Isolated-1, salts-4)
+													// root(ROOT-0, produced-5)
+													// prep_in(produced-5, Taiwan-7)
+													// prep_in(produced-5, earth-9)
+													String[] extractedSubTreeArray = extractedSubTree.split(" ");
+													if (extractedSubTreeArray.length > 1) {
+														String lastString = extractedSubTreeArray[extractedSubTreeArray.length-1];
+														// System.out.println("lastString::" + lastString);
+														
+														String lastIdx = "";
+														for (SentenceDependency rowInDepList : depList) {
+															String relString = rowInDepList.getRelString();
+															String govString = rowInDepList.getGovString();
+															String govIdx = rowInDepList.getGovIdx();
+															String depString = rowInDepList.getDepString();
+															String depIdx = rowInDepList.getDepIdx();
+
+															
+															if (lastString.equals(depString)) {
+																lastIdx = depIdx;
+															}
+														}
+														// System.out.println("lastIdx::" + lastIdx);
+														if ( ! lastIdx.equals("") ) {
+															for (SentenceDependency rowInDepList : depList) {
+																String relString = rowInDepList.getRelString();
+																String govString = rowInDepList.getGovString();
+																String govIdx = rowInDepList.getGovIdx();
+																String depString = rowInDepList.getDepString();
+																String depIdx = rowInDepList.getDepIdx();
+
+
+																if ( Integer.parseInt(govIdx) > Integer.parseInt(lastIdx) && relString.equals("prep_in") ) {
+																	additionalString += govString + " in " + depString;	
+																}
+																if ( Integer.parseInt(govIdx) > Integer.parseInt(lastIdx) && relString.equals("prep_at") ) {
+																	additionalString += govString + " at " + depString;	
+																}
+															}
+														}
+														
+														
+														
+														
+													}
+													// System.out.println("additionalString ::" + additionalString);
+													extractedSubTree += additionalString;
+													
+													// DONE
+													// TODO:: replaceAll("-LRB-", "(")
+													// replaceAll("-RRB-", ")")
+													// -LRB- => ( 
+													// -RRB- => )
+													extractedSubTree = extractedSubTree.replaceAll("-LRB-", "(");
+													extractedSubTree = extractedSubTree.replaceAll("-RRB-", ")");
+
+													
+													// System.out.println("Output 2::" + extractedSubTree);
+													
+													// output.add(extractedSubTree + "::-1");
+													outputMap.put("-1", extractedSubTree + "::Empty");
+													
+													// rule5_outputBuilder.append("Output2::" + extractedSubTree + "\n");
+												}
+
+												// TODO:: replaceAll("-LRB-", "(")
+												// replaceAll("-RRB-", ")")
+												// -LRB- => ( 
+												// -RRB- => )
+												
+												
+												rule6_outputBuilder.append("Parse Tree::\n" + parseTree.pennString() + "\n");
+																						
+												
+												
+												// 
+												// // Using String.substring() to grab the rest of sentence
+												// // String tmpOutput = "";
+												// tmpOutput = "";
+												
+												// String kwdPlusFrom = keyword + " from ";
+												// int startIdxOfKwdPlusFrom = sentText.indexOf(kwdPlusFrom);
+												
+												// if ( startIdxOfKwdPlusFrom > 0 ) {
+												//	int afterIdx = startIdxOfKwdPlusFrom + kwdPlusFrom.length();
+												//	// System.out.println("afterIdx::" + afterIdx);
+												//	
+												//	// System.out.println("indexOf(kwdPlusFrom)::" + sentText.indexOf(kwdPlusFrom));
+												//	// System.out.println("indexOf(kwdPlusFrom) + kwdPlusFrom.length()::" + sentText.indexOf(kwdPlusFrom) + kwdPlusFrom.length());
+												//	
+												//	String subSentText = sentText.substring(startIdxOfKwdPlusFrom);
+												//	// System.out.println(sentText);
+												//	// System.out.println(subSentText);
+												//	
+												//	tmpOutput = subSentText.toLowerCase().replaceAll(kwdPlusFrom, "");
+												//	
+												//	if ( tmpOutput.substring(tmpOutput.length()-1, tmpOutput.length()).equals(".") ){
+												//		tmpOutput = tmpOutput.substring(0, tmpOutput.length()-1);
+												//	}
+												//	
+												//	
+												//	System.out.println("Output 2::" + tmpOutput);
+												// }
+												// //output.add(tmpOutput);
+												//										
+												
+				
+												// Extraction Type: Parse												
+												break;
+											
+											default:
+												break;
+										}
+
+
+
+										boolean isNegative = false;
+										String negString = "";
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+											
+											
+											if (relString.equals("neg") &&
+													govString.equals(keyword)) {
+												isNegative = true;
+												negString = depString;
+											}
+										}
+										
+										if ( isNegative == true ) {
+											Iterator outputMapIterator = outputMap.entrySet().iterator();
+											while (outputMapIterator.hasNext()) {
+												Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+												String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+
+												outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+												
+												// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+												// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+											}										
+										}
+
+
+										
+										
+										
+										Iterator outputMapIterator = outputMap.entrySet().iterator();
+										while (outputMapIterator.hasNext()) {
+											Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+											// System.out.println("The key is: " + mapEntry.getKey()
+											// 	+ ",value is :" + mapEntry.getValue());
+											output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+										}
+
+										// System.out.println("output:\n" + output);										
+									} // match to target sent
+								}
+							}
+						}
+						counter+=1;
+					}
+					
+					// try (PrintWriter out = new PrintWriter(new BufferedWriter(
+					//		new FileWriter("rule5_output.txt",
+					//				false)))) {
+					//	out.println(rule5_outputBuilder);
+					// } catch (IOException e) {
+					//	// exception handling left as an exercise for the reader
+					// }
+				}
+				
+				
+				
+				// Rule 7:: V => prep_in, ex: xxx found in, yyy located in ...
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("prep_in") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("prep_in") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("prep_in"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
+									
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+										
+										USPId = sentId;
+
+										System.out.println("Rule 7");
+										Map<String, String> outputMap = new HashMap<String, String>();
+										
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();											
+											
+											
+											if (relString.equals("prep_in") && govString.toLowerCase().equals(keyword)) {
+												String prep_inString = depString;
+												String prep_inIdx = depIdx;
+												
+												// System.out.println("prep_inString::" + prep_injString); 
+												
+												if (prep_inString.matches("(^c\\d\\-)(.*)")) {
+													// System.out.println("This prep_in is category term!!");
+													// output.add(prep_inString + "::" + prep_inIdx);
+													outputMap.put(prep_inIdx, prep_inString + "::Empty");
+													
+												} else {
+													String tmpOutput = "";
+													
+													for (SentenceDependency rowInDepList2 : depList) {
+														String relString2 = rowInDepList2.getRelString();
+														String govString2 = rowInDepList2.getGovString();
+														String govIdx2 = rowInDepList2.getGovIdx();
+														String depString2 = rowInDepList2.getDepString();
+														String depIdx2 = rowInDepList2.getDepIdx();	
+														
+														if (prep_inString.equals(govString2) && prep_inIdx.equals(govIdx2) ) {												
+															// System.out.println("dep::" + depString2 );
+															// System.out.println("rel::" + relString2 );
+															if (relString2.equals("amod")) {
+																// System.out.println("dep::" + depString2 );
+																// System.out.println("rel::" + relString2 );
+																tmpOutput += depString2 + " ";
+															}
+														}
+														
+													}
+													tmpOutput += prep_inString;
+													// output.add(tmpOutput + "::" + prep_inIdx);
+													outputMap.put(prep_inIdx, tmpOutput + "::Empty");
+												}
+												
+											}
+										}
+											
+
+										boolean isNegative = false;
+										String negString = "";
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+											
+											
+											if (relString.equals("neg") &&
+													govString.equals(keyword)) {
+												isNegative = true;
+												negString = depString;
+											}
+										}
+										
+										
+										if ( isNegative == true ) {
+											Iterator outputMapIterator = outputMap.entrySet().iterator();
+											while (outputMapIterator.hasNext()) {
+												Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+												String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+
+												outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+												
+												// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+												// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+											}										
+										}
+
+
+										Iterator outputMapIterator = outputMap.entrySet().iterator();
+										while (outputMapIterator.hasNext()) {
+											Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+											// System.out.println("The key is: " + mapEntry.getKey()
+											// 	+ ",value is :" + mapEntry.getValue());
+											output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+										}
+										
+										// System.out.println("output:\n" + output);										
+									}
+								}
+							}
+						}
+					}				
+				}				
+
+				
+				
+				
+				// Rule 8:: V => prep_as, ex: XXX be required AS YYY ...
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("prep_as") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("prep_as") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("prep_as"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
+									
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+										
+										
+										USPId = sentId;
+
+										System.out.println("Rule 8");
+										Map<String, String> outputMap = new HashMap<String, String>();
+										
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+
+											if (relString.equals("prep_as") && govString.toLowerCase().equals(keyword)) {
+												String prep_asString = depString;
+												String prep_asIdx = depIdx;
+												
+												// System.out.println("prep_asString::" + prep_injString); 
+												
+												if (prep_asString.matches("(^c\\d\\-)(.*)")) {
+													// System.out.println("This prep_in is category term!!");
+													// output.add(prep_asString + "::" + prep_asIdx);
+													outputMap.put(prep_asIdx, prep_asString + "::Empty");
+
+													
+												} else {
+													String tmpOutput = "";
+													
+													for (SentenceDependency rowInDepList2 : depList) {
+														String relString2 = rowInDepList2.getRelString();
+														String govString2 = rowInDepList2.getGovString();
+														String govIdx2 = rowInDepList2.getGovIdx();
+														String depString2 = rowInDepList2.getDepString();
+														String depIdx2 = rowInDepList2.getDepIdx();
+														
+														if (prep_asString.equals(govString2) && prep_asIdx.equals(govIdx2) ) {												
+															// System.out.println("dep::" + depString2 );
+															// System.out.println("rel::" + relString2 );
+															if (relString2.equals("nn")) {
+																// System.out.println("dep::" + depString2 );
+																// System.out.println("rel::" + relString2 );
+																tmpOutput += depString2 + " ";
+															}
+														}
+														
+													}
+													tmpOutput += prep_asString;
+													// output.add(tmpOutput + "::" + prep_asIdx);
+													outputMap.put(prep_asIdx, tmpOutput + "::Empty");
+
+													
+												}
+												
+
+											}
+										
+										}
+										
+										
+										boolean isNegative = false;
+										String negString = "";
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+											
+											
+											if (relString.equals("neg") &&
+													govString.equals(keyword)) {
+												isNegative = true;
+												negString = depString;
+											}
+										}
+										
+										
+										if ( isNegative == true ) {
+											Iterator outputMapIterator = outputMap.entrySet().iterator();
+											while (outputMapIterator.hasNext()) {
+												Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+												String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+
+												outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+												
+												// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+												// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+											}										
+										}
+
+
+										Iterator outputMapIterator = outputMap.entrySet().iterator();
+										while (outputMapIterator.hasNext()) {
+											Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+											// System.out.println("The key is: " + mapEntry.getKey()
+											// 	+ ",value is :" + mapEntry.getValue());
+											output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+										}
+										
+										// System.out.println("output:\n" + output);										
+									}
+								}
+							}
+						}
+					}				
+				}				
+				
+
+
+				// Rule 9:: V => prep_as, ex: XXX be required for Growth ...
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("prep_for") ) {
+					if ( clustIdx_depArgClustIdx_.get(ci).get("prep_for") == null ) continue; // doesn't go through the following
+					int aci = clustIdx_depArgClustIdx_.get(ci).get("prep_for"); 
+					// System.out.println("aci is ::" + aci );
+
+					for (String pid:pids) {
+						
+						if (ptId_aciChdIds_.get(pid)!=null) { 
+							// System.out.println("pid is ::" + pid);
+							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
+							
+							
+							if (ptId_aciChdIds_.get(pid).get(aci)!=null) {
+								for (String cid:ptId_aciChdIds_.get(pid).get(aci)) {
+									// System.out.println("cid is ::" + cid);
+									String sentId = cid.split(":")[0];
+									// System.out.println("sentId is ::" + sentId);
+
+									String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+									String sentText = readDepFromTxtFile(txtFileName);
+									
+									String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+									String oriSentText = readDepFromTxtFile(oriTxtFileName);
+									
+									
+									// System.out.println("text::" + text);
+									// System.out.println("oriSentText::" + oriSentText);
+									// System.out.println("sentText(collapsed sentence)::" + sentText);
+									
+									if (text.equals(oriSentText)) {
+									// if (text.equals(sentText)) {
+										// Go to .dep to grab the result back
+										// to see how much we can get								
+										
+										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+										
+										
+										USPId = sentId;
+
+										System.out.println("Rule 9");
+										Map<String, String> outputMap = new HashMap<String, String>();										
+										
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+											
+											if (relString.equals("prep_for") && govString.toLowerCase().equals(keyword)) {
+												String prep_forString = depString;
+												String prep_forIdx = depIdx;
+												
+												// System.out.println("prep_forString::" + prep_forjString); 
+
+												if (prep_forString.matches("(^c\\d\\-)(.*)")) {
+													// System.out.println("This prep_in is category term!!");
+													// output.add(prep_forString + "::" + prep_forIdx);
+													outputMap.put(prep_forIdx, prep_forString + "::Empty");
+
+													
+												} else {
+													String tmpOutput = "";
+													
+													for (SentenceDependency rowInDepList2 : depList) {
+														String relString2 = rowInDepList2.getRelString();
+														String govString2 = rowInDepList2.getGovString();
+														String govIdx2 = rowInDepList2.getGovIdx();
+														String depString2 = rowInDepList2.getDepString();
+														String depIdx2 = rowInDepList2.getDepIdx();
+														
+														if (prep_forString.equals(govString2) && prep_forIdx.equals(govIdx2) ) {												
+															// System.out.println("dep::" + depString2 );
+															// System.out.println("rel::" + relString2 );
+															if (relString2.equals("nn")) {
+																// System.out.println("dep::" + depString2 );
+																// System.out.println("rel::" + relString2 );
+																tmpOutput += depString2 + " ";
+															}
+														}
+														
+													}
+													tmpOutput += prep_forString;
+													// output.add(tmpOutput + "::" + prep_forIdx);
+													outputMap.put(prep_forIdx, tmpOutput + "::Empty");
+
+												}
+											}
+										
+										}
+										
+
+										boolean isNegative = false;
+										String negString = "";
+										for (SentenceDependency rowInDepList : depList) {
+											String relString = rowInDepList.getRelString();
+											String govString = rowInDepList.getGovString();
+											String govIdx = rowInDepList.getGovIdx();
+											String depString = rowInDepList.getDepString();
+											String depIdx = rowInDepList.getDepIdx();
+											
+											
+											if (relString.equals("neg") &&
+													govString.equals(keyword)) {
+												isNegative = true;
+												negString = depString;
+											}
+										}
+										
+										
+										if ( isNegative == true ) {
+											Iterator outputMapIterator = outputMap.entrySet().iterator();
+											while (outputMapIterator.hasNext()) {
+												Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+												String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+
+												outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+												
+												// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+												// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+											}										
+										}
+
+
+										Iterator outputMapIterator = outputMap.entrySet().iterator();
+										while (outputMapIterator.hasNext()) {
+											Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+											// System.out.println("The key is: " + mapEntry.getKey()
+											// 	+ ",value is :" + mapEntry.getValue());
+											output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+										}										
+										
+										// System.out.println("output:\n" + output);										
+									}
+								}
+							}
+						}
+					}				
+				}
+
+
+				
+				// Rule 10:: N => nsubj, nsubjpass
+				// Example: Cells are not square and heavy.
+				// -
+				// nsubj(square-4, Cells-1)
+				// nsubj(heavy-6, Cells-1)
+				// cop(square-4, are-2)
+				// neg(square-4, not-3)
+				// root(ROOT-0, square-4)
+				// conj_and(square-4, heavy-6)
+				
+				if ( pos.equals("N") && pos.equals(keywordType) && keywordObject.equals("nsubj") ) {
+					
+					// System.out.println("pids::" + pids);
+					// System.out.println("pids.size() :: " + pids.size());
+					
+					for (String pid:pids) {
+						
+						// System.out.println("Pid::" + pid + "::" + ptId_aciChdIds_.get(pid));
+						String sentId = pid.split(":")[0];
+						// System.out.println("sentId is ::" + sentId);
+						
+						
+						String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+						String sentText = readDepFromTxtFile(txtFileName);
+						
+						String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+						String oriSentText = readDepFromTxtFile(oriTxtFileName);
+						
+						
+						// System.out.println("text::" + text);
+						// System.out.println("oriSentText::" + oriSentText);
+						// System.out.println("sentText(collapsed sentence)::" + sentText);
+						
+						if (text.equals(oriSentText)) {
+
+							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+							
+							System.out.println("depFileName:" + depFileName);
+							
+							USPId = sentId;
+							
+							System.out.println("Rule 10");
+							Map<String, String> outputMap = new HashMap<String, String>();										
+							String nsubjStringList = "";
+							
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();								
+								
+								// Example: Cells are not square and heavy.
+								// -
+								// nsubj(square-4, Cells-1)
+								// nsubj(heavy-6, Cells-1)
+								// cop(square-4, are-2)
+								// neg(square-4, not-3)
+								// root(ROOT-0, square-4)
+								// conj_and(square-4, heavy-6)
+								
+
+								
+								if ( relString.equals("nsubj") && depString.toLowerCase().equals(keyword) ) {
+									nsubjStringList += govString + "\t";
+									// output.add(govString + "::" + govIdx);
+									outputMap.put(govIdx, govString + "::Empty");
+								}											
+							}
+							
+							
+							// Add negation part into outputMap (update outputMap)							
+							boolean isNegative = false;
+							String negString = "";
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+								
+								String[] nsubjStringListArray = nsubjStringList.split("\t");
+								// System.out.println(Arrays.toString(nsubjStringListArray));
+								
+								for (int i = 0; i < nsubjStringListArray.length; i++) {
+									if (nsubjStringListArray[i].toString().length() > 1) {
+										if ( relString.equals("neg") &&
+												govString.toLowerCase().equals(nsubjStringListArray[i].toString().toLowerCase())) {
+											// output.add(depString + "::" + depIdx);
+											// System.out.println("depString::" + depString);
+											isNegative = true;
+											negString = depString;
+										}
+									}
+								}
+								
+								for (int i = 0; i < nsubjStringListArray.length; i++) {
+									if (nsubjStringListArray[i].toString().length() > 1) {
+										if (relString.equals("conj_and") &&
+												govString.toLowerCase().equals(nsubjStringListArray[i].toString().toLowerCase())) {
+											// output.add(depString + "::" + depIdx);
+											outputMap.put(depIdx, depString + "::Empty");
+										}
+									}
+								}								
+								
+							}
+							
+							
+							if ( isNegative == true ) {
+								Iterator outputMapIterator = outputMap.entrySet().iterator();
+								while (outputMapIterator.hasNext()) {
+									Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+									String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+
+									outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+									
+									// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+									// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+								}										
+							}
+
+
+							Iterator outputMapIterator = outputMap.entrySet().iterator();
+							while (outputMapIterator.hasNext()) {
+								Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+								// System.out.println("The key is: " + mapEntry.getKey()
+								// 	+ ",value is :" + mapEntry.getValue());
+								output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+							}
+							
+							
+							/*
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+								
+								String[] nsubjStringArray = nsubjString.split("\t");
+								
+								// System.out.println(Arrays.toString(nsubjStringArray));
+								
+								for (int i = 0; i < nsubjStringArray.length; i++) {
+									if (nsubjStringArray[i].toString().length() > 1) {
+										if (relString.equals("neg") &&
+												govString.toLowerCase().equals(nsubjStringArray[i].toString().toLowerCase())) {
+											output.add(depString + "::" + depIdx);
+											System.out.println("depString::" + depString);
+										}
+									}
+								}
+								
+								for (int i = 0; i < nsubjStringArray.length; i++) {
+									if (nsubjStringArray[i].toString().length() > 1) {
+										if (relString.equals("conj_and") &&
+												govString.toLowerCase().equals(nsubjStringArray[i].toString().toLowerCase())) {
+											output.add(depString + "::" + depIdx);
+										}
+									}
+								}	
+							}
+							*/
+							// Add negation part into outputMap (update outputMap)
+							
+						}						
+					}			
+				}				
+				
+				
+				
+				
+				// Rule 11
+				// It has no obj1, obj2, ...
+				// Cells have no obj1, obj2, ...
+				// Rule 10:: V (has, have) => nsubj, nsubjpass
+				// Cells have no flagella.
+				// -
+				// nsubj(have-2, Cells-1)
+				// root(ROOT-0, have-2)
+				// neg(flagella-4, no-3)
+				// dobj(have-2, flagella-4)
+
+				// It has no oxidase, arginine dihydrolase or urease activity.
+				// -
+				// nsubj(has-2, It-1)
+				// root(ROOT-0, has-2)
+				// neg(dihydrolase-7, no-3)
+				// amod(dihydrolase-7, oxidase-4)
+				// amod(dihydrolase-7, arginine-6)
+				// dobj(has-2, dihydrolase-7)
+				// nn(activity-10, urease-9)
+				// dobj(has-2, activity-10)
+				// conj_or(dihydrolase-7, activity-10)
+				
+				if ( pos.equals("V") && pos.equals(keywordType) && keywordObject.equals("dobj") && (keyword.equals("have") || keyword.equals("has")) ) {
+					
+					// System.out.println("pids::" + pids);
+					// System.out.println("pids.size() :: " + pids.size());
+					
+					for (String pid:pids) {
+						
+						// System.out.println("Pid::" + pid + "::" + ptId_aciChdIds_.get(pid));
+						String sentId = pid.split(":")[0];
+						// System.out.println("sentId is ::" + sentId);
+						
+						
+						String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+						String sentText = readDepFromTxtFile(txtFileName);
+						
+						String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+						String oriSentText = readDepFromTxtFile(oriTxtFileName);
+						
+						
+						// System.out.println("text::" + text);
+						// System.out.println("oriSentText::" + oriSentText);
+						// System.out.println("sentText(collapsed sentence)::" + sentText);
+						
+						if (text.equals(oriSentText)) {
+
+							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+							
+							System.out.println("depFileName:" + depFileName);
+							
+							USPId = sentId;
+							
+							System.out.println("Rule 11");
+							Map<String, String> outputMap = new HashMap<String, String>();										
+							String dobjStringList = "";
+							
+							for (SentenceDependency rowInDepList : depList) {
+								
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+								
+
+								// Rule 11:: V (has, have) => nsubj, nsubjpass
+								// Cells have no flagella.
+								// -
+								// nsubj(have-2, Cells-1)
+								// root(ROOT-0, have-2)
+								// neg(flagella-4, no-3)
+								// dobj(have-2, flagella-4)
+
+								// It has no oxidase, arginine dihydrolase or urease activity.
+								// -
+								// nsubj(has-2, It-1)
+								// det(c7-Tests-4, no-3)
+								// dobj(has-2, c7-Tests-4)
+								// nn(c7-Tests-7, c9-Amino-Acids-6)
+								// dobj(has-2, c7-Tests-7)
+								// conj_or(c7-Tests-4, c7-Tests-7)
+								// amod(activity-10, c7-Tests-9)
+								// dobj(has-2, activity-10)
+								// conj_or(c7-Tests-4, activity-10)							
+								
+								
+								if ( relString.equals("dobj") && govString.toLowerCase().equals(keyword) ) {
+									
+									// System.out.println("relString::" + relString);
+									// System.out.println("govString::" + govString);
+									dobjStringList += depString + "\t";
+									// output.add(depString + "::" + depIdx);
+									outputMap.put(depIdx, depString + "::Empty");
+								}
+								
+								
+								
+							}
+							
+							
+							
+							// Add negation part into outputMap (update outputMap)							
+							boolean isNegative = false;
+							String negString = "";
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+								
+								
+								
+								String[] dobjStringListArray = dobjStringList.split("\t");
+								// System.out.println(Arrays.toString(dobjStringListArray));
+								
+								for (int i = 0; i < dobjStringListArray.length; i++) {
+									if (dobjStringListArray[i].toString().length() > 1) {
+										if ( (relString.equals("neg") || relString.equals("det")) &&
+												govString.toLowerCase().equals(dobjStringListArray[i].toString().toLowerCase())) {
+											// output.add(depString + "::" + depIdx);
+											// System.out.println("depString::" + depString);
+											isNegative = true;
+											negString = depString;
+										}
+									}
+								}
+								
+								for (int i = 0; i < dobjStringListArray.length; i++) {
+									if (dobjStringListArray[i].toString().length() > 1) {
+										if ((relString.equals("conj_and") || relString.equals("conj_or")) &&
+												govString.toLowerCase().equals(dobjStringListArray[i].toString().toLowerCase())) {
+											// output.add(depString + "::" + depIdx);
+											outputMap.put(depIdx, depString + "::Empty");
+										}
+									}
+								}								
+								
+							}
+							
+							
+							if ( isNegative == true ) {
+								Iterator outputMapIterator = outputMap.entrySet().iterator();
+								while (outputMapIterator.hasNext()) {
+									Map.Entry mapEntry = (Map.Entry)outputMapIterator.next();
+									String[] outputMapArray =  mapEntry.getValue().toString().split("::");
+
+									outputMap.put(mapEntry.getKey().toString(), outputMapArray[0] + "::" + negString);
+									
+									// outputMapIterator.remove(); // avoids a ConcurrentModificationException
+									// http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+								}										
+							}
+
+
+							Iterator outputMapIterator = outputMap.entrySet().iterator();
+							while (outputMapIterator.hasNext()) {
+								Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+								// System.out.println("The key is: " + mapEntry.getKey()
+								// 	+ ",value is :" + mapEntry.getValue());
+								output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+							}
+							/*
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+								
+								String[] dobjStringArray = dobjStringList.split("\t");
+								
+								// System.out.println(Arrays.toString(dobjStringArray));
+								
+								for (int i = 0; i < dobjStringArray.length; i++) {
+									if (dobjStringArray[i].toString().length() > 1) {
+										if (relString.equals("neg") &&
+												govString.toLowerCase().equals(dobjStringArray[i].toString().toLowerCase())) {
+											output.add(depString + "::" + depIdx);
+										}
+										if (relString.equals("det") &&
+												govString.toLowerCase().equals(dobjStringArray[i].toString().toLowerCase())) {
+											output.add(depString + "::" + depIdx);
+										}										
+									}
+								}
+							}
+							*/
+							// Add negation part into outputMap (update outputMap)
+						}						
+					}			
+				}				
+				// end of rule 11
+				
+				
+				
+				// rule 12
+				// Example: The major glycolipid is unknown.
+				// root ( ROOT-0 , unknown-5 )
+				// det ( glycolipid-3 , The-1 )
+				// amod ( glycolipid-3 , major-2 )
+				// nsubj ( unknown-5 , glycolipid-3 )
+				// cop ( unknown-5 , is-4 )
+				
+				// Example 2: The major glycolipid and meta2 are unknown.
+				// root ( ROOT-0 , unknown-7 )
+				// det ( glycolipid-3 , The-1 )
+				// amod ( glycolipid-3 , major-2 )
+				// nsubj ( unknown-7 , glycolipid-3 )
+				// conj_and ( glycolipid-3 , meta2-5 )
+				//cop ( unknown-7 , are-6 )
+				
+				if ( pos.equals("J") && pos.equals(keywordType) && keywordObject.equals("nsubj") && keyword.equals("unknown") ) {
+					
+					// System.out.println("pids::" + pids);
+					// System.out.println("pids.size() :: " + pids.size());
+					
+					for (String pid:pids) {
+						
+						// System.out.println("Pid::" + pid + "::" + ptId_aciChdIds_.get(pid));
+						String sentId = pid.split(":")[0];
+						// System.out.println("sentId is ::" + sentId);
+						
+						
+						String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+						String sentText = readDepFromTxtFile(txtFileName);
+						
+						String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+						String oriSentText = readDepFromTxtFile(oriTxtFileName);
+						
+						
+						// System.out.println("text::" + text);
+						// System.out.println("oriSentText::" + oriSentText);
+						// System.out.println("sentText(collapsed sentence)::" + sentText);
+						
+						if (text.equals(oriSentText)) {
+
+							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
+							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
+							
+							System.out.println("depFileName:" + depFileName);
+							
+							USPId = sentId;
+							
+							System.out.println("Rule 12");
+							Map<String, String> outputMap = new HashMap<String, String>();										
+							String nsubjStringList = "";
+							
+							for (SentenceDependency rowInDepList : depList) {
+								
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+								
+
+								// rule 12
+								// Example: The major glycolipid is unknown.
+								// root ( ROOT-0 , unknown-5 )
+								// det ( glycolipid-3 , The-1 )
+								// amod ( glycolipid-3 , major-2 )
+								// nsubj ( unknown-5 , glycolipid-3 )
+								// cop ( unknown-5 , is-4 )
+								
+								// Example 2: The major glycolipid and meta2 are unknown.
+								// root ( ROOT-0 , unknown-7 )
+								// det ( glycolipid-3 , The-1 )
+								// amod ( glycolipid-3 , major-2 )
+								// nsubj ( unknown-7 , glycolipid-3 )
+								// conj_and ( glycolipid-3 , meta2-5 )
+								// cop ( unknown-7 , are-6 )						
+								
+								
+								if ( relString.equals("nsubj") && govString.toLowerCase().equals(keyword) ) {
+									
+									// System.out.println("relString::" + relString);
+									// System.out.println("govString::" + govString);
+									nsubjStringList += depString + "\t";
+									// output.add(depString + "::" + depIdx);
+									outputMap.put(depIdx, depString + "::" + keyword);
+								}
+								
+								
+								
+							}
+							
+							for (SentenceDependency rowInDepList : depList) {
+								String relString = rowInDepList.getRelString();
+								String govString = rowInDepList.getGovString();
+								String govIdx = rowInDepList.getGovIdx();
+								String depString = rowInDepList.getDepString();
+								String depIdx = rowInDepList.getDepIdx();
+								
+								String[] nsubjStringListArray = nsubjStringList.split("\t");
+								// System.out.println(Arrays.toString(dobjStringListArray));
+								
+								for (int i = 0; i < nsubjStringListArray.length; i++) {
+									if (nsubjStringListArray[i].toString().length() > 1) {
+										if ((relString.equals("conj_and") || relString.equals("conj_or")) &&
+												govString.toLowerCase().equals(nsubjStringListArray[i].toString().toLowerCase())) {
+											// output.add(depString + "::" + depIdx);
+											outputMap.put(depIdx, depString + "::" + keyword);
+										}
+									}
+								}								
+								
+							}
+							
+							Iterator outputMapIterator = outputMap.entrySet().iterator();
+							while (outputMapIterator.hasNext()) {
+								Map.Entry mapEntry = (Map.Entry) outputMapIterator.next();
+								// System.out.println("The key is: " + mapEntry.getKey()
+								// 	+ ",value is :" + mapEntry.getValue());
+								output.add(mapEntry.getValue() + "::" + mapEntry.getKey());
+							}
+							
+							// Add negation part into outputMap (update outputMap)
+						}						
+					}			
+				}
+				// End of rule 12				
 				
 
 				

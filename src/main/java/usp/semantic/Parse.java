@@ -225,7 +225,7 @@ public class Parse {
 		for (int i=0; i<inputFileNames_.size(); i++) {
 			Article a=parseReader_.readParse(inputFileNames_.get(i));
 			// System.out.println("inputFileNames_::" + inputFileNames_);
-			System.out.println("inputFileNames_.get(i)::" + inputFileNames_.get(i).toString());
+			// System.out.println("Elvis Test::inputFileNames_.get(i)::" + inputFileNames_.get(i).toString());
 			articles.add(a);
 		}
 		
@@ -330,14 +330,24 @@ public class Parse {
 	}
 	
 	
-	void createArgs(String articleId, int sentIdx, Sentence sent, int nodeIdx) {
-//		Utils.println("createArgs: "+articleId+" sent="+sentIdx+" node="+nodeIdx);
+	void createArgs(String articleId, int sentIdx, Sentence sent, int nodeIdx) {		
+//		
+		System.out.println("articleId:"+ articleId);
+		System.out.println("sentIdx:"+ sentIdx);
+		System.out.println("nodeIdx:"+ nodeIdx);
+		
+		
+		Utils.println("createArgs: "+articleId+" sent="+sentIdx+" node="+nodeIdx);
+		System.out.println("createArgs: "+articleId+" sent="+sentIdx+" node="+nodeIdx);
+		
 		String nid=Utils.genTreeNodeId(articleId,sentIdx,nodeIdx);
 		TreeNode node=TreeNode.getTreeNode(nid);
 		Part np=Part.getPartByRootNodeId(nid);
 		Clust ncl=Clust.getClust(np.getClustIdx());
 		Set<Pair<String,Integer>> chds=sent.tkn_children_.get(nodeIdx);
+		System.out.println("chds::" + chds);
 		if (chds==null) return;
+		
 		Iterator<Pair<String,Integer>> it=chds.iterator();
 		while (it.hasNext()) {
 			Pair<String,Integer> dep_chd=it.next();
@@ -348,36 +358,71 @@ public class Parse {
 			Path p=new Path(dep);			
 			int argTypeIdx=p.getArgType();
 //			Utils.println("---> dep="+dep+" path="+p.toString()+" argTypeIdx="+argTypeIdx+" argType="+ArgType.getArgType(argTypeIdx));
+			
+			System.out.println("---> dep="+dep+" path="+p.toString()+" argTypeIdx="+argTypeIdx+" argType="+ArgType.getArgType(argTypeIdx));
+			
 			Part cp=Part.getPartByRootNodeId(cid);
+			
+			// Original code
+			// if (cp==null) Utils.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
+
+			// // TO-DO: fix this, should have unique par
+			// if (cp.parPart_!=null) {
+			//	Utils.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
+			//	continue;
+			// }
+			// Original code
+			
+			// Modified code by Elvis
 			if (cp==null) {
 				Utils.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
-				continue; // Elvis add on 3/11/2014 to prevent the parsing error
-			}
+				System.out.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
+				// continue; // Elvis add on 3/11/2014 to prevent the parsing error
+			} else{ 
+				// TO-DO: fix this, should have unique par
+				if (cp.parPart_!=null) {
+					Utils.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
+					System.out.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
+					
+				} else {
+					
+					System.out.println("Create Argument - Start");
+					Argument arg=new Argument(node,p,cp);
+					int argIdx=np.addArgument(arg);		
+					cp.setParent(np, argIdx);
+					
+					// arg
+					Set<Integer> argClustIdxs=ncl.getArgClustIdxs(argTypeIdx);
+					int argClustIdx=-1;
+					if (argClustIdxs==null) {
+						argClustIdx=ncl.createArgClust(argTypeIdx);
+						System.out.println("argClustIdxs is null");
 
-			// TO-DO: fix this, should have unique par
-			if (cp.parPart_!=null) {
-				Utils.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
-				continue;
+					}
+					else {
+						// TO-DO: multiple ones??
+						
+						System.out.println("argClustIdxs.size()::" + argClustIdxs.size());
+						
+						argClustIdx=argClustIdxs.iterator().next();
+						
+						System.out.println("iterate argClustIdx");
+						
+					}
+					System.out.println("Set ArgClust - Start");
+					np.setArgClust(argIdx, argClustIdx);
+					System.out.println("Set ArgClust - End");
+					
+					// recursive
+					System.out.println("Go to recursive createArgs() 1");
+					createArgs(articleId, sentIdx, sent, cidx);
+					System.out.println("Go to recursive createArgs() 2");
+				}
+		
 			}
+			// Modified code by Elvis
 
-			Argument arg=new Argument(node,p,cp);
-			int argIdx=np.addArgument(arg);		
-			cp.setParent(np, argIdx);
-			
-			// arg
-			Set<Integer> argClustIdxs=ncl.getArgClustIdxs(argTypeIdx);
-			int argClustIdx=-1;
-			if (argClustIdxs==null) {
-				argClustIdx=ncl.createArgClust(argTypeIdx);
-			}
-			else {
-				// TO-DO: multiple ones??
-				argClustIdx=argClustIdxs.iterator().next();
-			}
-			np.setArgClust(argIdx, argClustIdx);
-			
-			// recursive
-			createArgs(articleId, sentIdx, sent, cidx);		
+
 		}
 	}
 		

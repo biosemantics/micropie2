@@ -134,7 +134,9 @@ public class Executor {
 			Part cp=Part.getPartByRootNodeId(cid);
 			int pai=cp.parArgIdx_;
 			// if (pai==null) continue;
-			
+
+			if ( pp == null || pp.equals(null) ) continue;
+
 			Argument pcarg=pp.getArguments().get(pai);
 			String dep=pcarg.path_.getDep();
 			TreeNode ptn=pp.relTreeRoot_;

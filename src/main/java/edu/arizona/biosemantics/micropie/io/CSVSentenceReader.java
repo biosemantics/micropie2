@@ -2,6 +2,8 @@ package edu.arizona.biosemantics.micropie.io;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,6 +19,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -63,6 +69,29 @@ public class CSVSentenceReader implements ISentenceReader {
 		log(LogLevel.INFO, "Done reading sentences...");
 		return result;
 	}
+	
+	
+	
+	public List<Sentence> readAdditionalUSPInputs() throws IOException {
+		log(LogLevel.INFO, "Reading additional USP input sentences...");
+		List<Sentence> result = new LinkedList<Sentence>();
+		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
+	    List<String[]> lines = reader.readAll();
+		for(String[] line : lines) {
+			// System.out.println("line[0]::" + line[0]);
+			// System.out.println("line[1]::" + line[1]);
+			if (line[0].equals("")) {
+				line[0] = "0";
+			}
+			result.add(new Sentence(line[1], Label.getEnum(line[0])));
+
+		}
+		reader.close();
+		log(LogLevel.INFO, "Done reading additional USP input sentences...");
+		return result;
+	}
+	
+	
 
 	public void readTaxonomicDescAndWriteToSingleTxt(String outputFileName) throws IOException {
 		log(LogLevel.INFO, "Reading txonomic descriptions...");
@@ -121,8 +150,11 @@ public class CSVSentenceReader implements ISentenceReader {
 
 		try {
 			Element treatment = new Element("treatment");
+			
 			Document doc = new Document(treatment);
-			doc.setRootElement(treatment);
+			// or
+			// Document doc = new Document();
+			// doc.setRootElement(treatment);
 			
 			Element taxon_identification = new Element("taxon_identification");
 			taxon_identification.setAttribute(new Attribute("status", "ACCEPTED"));
@@ -223,6 +255,42 @@ public class CSVSentenceReader implements ISentenceReader {
 	    
 	    log(LogLevel.INFO, "Done spliting compound category...");
 	}
+	
+	
+
+	
+	
+	public void csvToXls(String outputFileName) throws IOException {
+		log(LogLevel.INFO, "Transferring csv to xls format...");
+		
+		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
+	    List<String[]> lines = reader.readAll();
+	    reader.close();
+
+		try {
+			FileOutputStream fileOut = new FileOutputStream(outputFileName);
+			HSSFWorkbook workbook = new HSSFWorkbook();
+			HSSFSheet worksheet = workbook.createSheet("sheet1");
+
+			for (int i = 0; i < lines.size(); i++) {
+				HSSFRow rowContent = worksheet.createRow(i); // create row content
+				String[] line = lines.get(i);
+				for (int j = 0; j < line.length; j++) {
+					HSSFCell cellContent = rowContent.createCell(j);
+					cellContent.setCellValue(line[j]);
+				}
+			}
+			workbook.write(fileOut);
+			fileOut.flush();
+			fileOut.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	    
+		
+		log(LogLevel.INFO, "Done transferrring csv to xml format...");
+	}	
 	
 	
 	

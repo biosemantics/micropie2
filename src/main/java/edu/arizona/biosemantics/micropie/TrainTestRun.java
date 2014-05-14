@@ -1,3 +1,5 @@
+
+
 package edu.arizona.biosemantics.micropie;
 
 
@@ -103,10 +105,14 @@ public class TrainTestRun implements IRun {
 
 	private String trainingFile;
 	private String testFolder;
+	private String uspFolder;
+	private String characterValueExtractorsFolder;
 	private String predictionsFile;
 	private String matrixFile;
 
 	private CSVSentenceReader trainingSentenceReader;
+	private CSVSentenceReader additionalUSPInputSentenceReader;
+	
 	private MultiSVMClassifier classifier;
 	private XMLTextReader textReader;
 	private ITextNormalizer textNormalizer;
@@ -129,6 +135,8 @@ public class TrainTestRun implements IRun {
 	public TrainTestRun(
 			@Named("trainingFile") String trainingFile,
 			@Named("testFolder") String testFolder,
+			@Named("uspFolder") String uspFolder,
+			@Named("characterValueExtractorsFolder") String characterValueExtractorsFolder,
 			@Named("parallelProcessing") boolean parallelProcessing,
 			@Named("maxThreads") int maxThreads,
 			@Named("predictionsFile") String predictionsFile,
@@ -148,6 +156,8 @@ public class TrainTestRun implements IRun {
 			CSVTaxonCharacterMatrixWriter matrixWriter) {
 		this.trainingFile = trainingFile;
 		this.testFolder = testFolder;
+		this.uspFolder = uspFolder;
+		this.characterValueExtractorsFolder = characterValueExtractorsFolder;
 		this.parallelProcessing = parallelProcessing;
 		this.maxThreads = maxThreads;
 		this.predictionsFile = predictionsFile;
@@ -156,7 +166,10 @@ public class TrainTestRun implements IRun {
 		this.sentenceMetadataMap = sentenceMetadataMap;
 		this.taxonSentencesMap = taxonSentencesMap;
 		this.classifier = classifier;
+		
 		this.trainingSentenceReader = trainingSentenceReader;
+		this.additionalUSPInputSentenceReader = additionalUSPInputSentenceReader;
+		
 		this.textReader = textReader;
 		this.textNormalizer = textNormalizer;
 		this.tokenizeSSplit = tokenizeSSplit;
@@ -200,17 +213,27 @@ public class TrainTestRun implements IRun {
 			// Parse uspParse = new Parse();
 			// uspParse.runParse("usp", "usp_results");
 
-			
-			
-			// Training data set statistics
+			// Small tool 1:: Split compound category from training data set
 			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
-			// trainingSentenceReader.categoryStat();
-
-			// Split compound category from training data set
-			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+			////trainingSentenceReader.setInputStream(new FileInputStream("training-base-140507.csv"));
 			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-" + trainingFile));
+			////trainingSentenceReader.setOutputStream(new FileOutputStream("split-training-base-140507.csv"));
+			//trainingSentenceReader.splitCompoundCategory();
+			
+			// trainingSentenceReader.setInputStream(new FileInputStream("additionalUSPInputs.csv"));
+			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-additionalUSPInputs.csv"));
 			// trainingSentenceReader.splitCompoundCategory();
+			
+			
+			
+			// Small tool 2:: Training data set statistics
+			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+			////trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140507.csv"));
+			// trainingSentenceReader.categoryStat();
+			
 
+
+			
 			
 			
 			// readNewXml();
@@ -221,8 +244,8 @@ public class TrainTestRun implements IRun {
 			// trainingSentenceReader.readTaxonomicDescAndWriteToSingleTxt("new-inputs-filtered.txt");
 			
 			
-			
-			// temporary use
+			/*
+			// temporary use :: build the predictions for each sentence
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
 			classifier.train(trainingSentences);
@@ -239,12 +262,25 @@ public class TrainTestRun implements IRun {
 			
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
 			classifiedSentenceWriter.write(predictions);
+			*/
+			
+			// Small tool 3:: Transformer:: CSV to Excel (2007 format)
+			// trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140507.csv"));
+			// trainingSentenceReader.csvToXls("split-training-base-140507.xls");
 			
 			
+			// USP example
+			// createUSPInputs(testSentences);
+			// Parse uspParse = new Parse();
+			// uspParse.runParse("usp", "usp_results");
+			// USP example
+			
+			// Small tool 4:: Pre-processing::Build USP inputs first
+			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
+			// List<Sentence> additionalUSPInputSentences = trainingSentenceReader.readAdditionalUSPInputs();
+			// createUSPInputsFromListSentence(additionalUSPInputSentences);
 			
 			
-			
-			/*
 			
 			// formal MicroPIE process
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
@@ -252,14 +288,6 @@ public class TrainTestRun implements IRun {
 			classifier.train(trainingSentences);
 			
 			List<Sentence> testSentences = createTestSentences();
-			
-			// USP
-			// createUSPInputs(testSentences);
-			// Parse uspParse = new Parse();
-			// uspParse.runParse("usp", "usp_results");
-			// USP
-			
-			
 			
 			
 			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
@@ -269,11 +297,7 @@ public class TrainTestRun implements IRun {
 				sentenceClassificationMap.put(testSentence,classifiedSentence);
 				predictions.add(classifiedSentence);
 			}
-			
-			
-
-			
-			
+						
 			
 
 			// 
@@ -291,10 +315,10 @@ public class TrainTestRun implements IRun {
 			TaxonCharacterMatrix matrix = matrixCreator.create();
 			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
 			matrixWriter.write(matrix);
+			
 			// formal MicroPIE process
 			
 			
-			*/
 			
 			
 
@@ -494,6 +518,26 @@ public class TrainTestRun implements IRun {
 		log(LogLevel.INFO, "Done reading test sentences...");
 		return result;
 	}
+	
+	private List<Sentence> createTestSentences2() throws IOException,
+	InterruptedException, ExecutionException {
+		List<Sentence> result = new LinkedList<Sentence>();
+
+		
+		log(LogLevel.INFO, "Reading test sentences...");
+		
+		
+		
+		// Sentence sentence = new Sentence(subsentence);
+
+		
+		
+		
+		
+		log(LogLevel.INFO, "Done reading test sentences...");
+		return result;
+	}
+	
 
 	private int getNumberOfSentences(
 			List<ListenableFuture<List<String>>> sentenceSplitsList)
@@ -694,10 +738,8 @@ public class TrainTestRun implements IRun {
 		}
 	}
 
-
-	
-	
-	private void createUSPInputs(List<MultiClassifiedSentence> predictions)
+	// createUSPInputsFromListSentence
+	private void createUSPInputsFromListSentence(List<Sentence> listSentence)
 			throws IOException, InterruptedException, ExecutionException {		
 
 		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
@@ -709,7 +751,7 @@ public class TrainTestRun implements IRun {
 		Hashtable<String, String> kwdListByCategory = new Hashtable<String, String>();
 		// Example {category1_character1,XXX|YYY|ZZZ}
 		
-		File inputDir = new File("CharacterValueExtractors");
+		File inputDir = new File(characterValueExtractorsFolder);
 		if(inputDir.exists() && !inputDir.isFile()) {
 			for(File file : inputDir.listFiles()) {
 				try {
@@ -791,12 +833,9 @@ public class TrainTestRun implements IRun {
 
 		
 		
-		
-		
 		int counter = 1;
-		for (MultiClassifiedSentence multiClassifiedSentence : predictions) {			
-			
-			
+		
+		for (Sentence sentence : listSentence) {			
 			
 			StringBuilder depStringBuilder = new StringBuilder(); // Stanford Dependency
 			StringBuilder inputStringBuilder = new StringBuilder();
@@ -804,11 +843,11 @@ public class TrainTestRun implements IRun {
 			StringBuilder parseStringBuilder = new StringBuilder(); // Parse Tree
 			StringBuilder textStringBuilder = new StringBuilder();
 
-			String sentText0 = multiClassifiedSentence.getSentence().getText();
+			String sentText0 = sentence.getText();
 			
 			
-			String sentText = multiClassifiedSentence.getSentence().getText(); // it is sentence based not text
-			Set<ILabel> sentLabels = multiClassifiedSentence.getPredictions(); // labels
+			String sentText = sentence.getText();; // it is sentence based not text
+			ILabel sentLabel = sentence.getLabel(); // labels
 			// based anymore ??
 			
 			
@@ -1032,26 +1071,7 @@ public class TrainTestRun implements IRun {
 				textStringBuilder.append(sentText0);
 				
 				
-				new File("usp").mkdirs();
-				new File("usp/morph_o").mkdirs();
-				new File("usp/morph_o/0").mkdirs();
-				new File("usp/text_o").mkdirs();
-				new File("usp/text_o/0").mkdirs();
-				
-				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph_o/0/" + counter + ".morph",
-								false)))) {
-					out.println(morphStringBuilder);
-				} catch (IOException e) {
-					// exception handling left as an exercise for the reader
-				}
-				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/text_o/0/"
-								+ counter + ".txt", false)))) {
-					out.println(textStringBuilder);
-				} catch (IOException e) {
-					// exception handling left as an exercise for the reader
-				}
+
 				
 				
 				
@@ -1382,8 +1402,38 @@ public class TrainTestRun implements IRun {
 				
 				
 				
+				if (collapsedDepStringBuilder.toString().length() == 0) continue;
+					// System.out.println("Elvis::No Dependency!");	
+				
+				
+				
 				// write string into txt files
 
+				
+				
+				new File("usp").mkdirs();
+				new File("usp/morph_o").mkdirs();
+				new File("usp/morph_o/0").mkdirs();
+				new File("usp/text_o").mkdirs();
+				new File("usp/text_o/0").mkdirs();
+				
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/morph_o/0/" + counter + ".morph",
+								false)))) {
+					out.println(morphStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(
+						new BufferedWriter(new FileWriter("usp/text_o/0/"
+								+ counter + ".txt", false)))) {
+					out.println(textStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				
+				
+				
 				new File("usp").mkdirs();
 				new File("usp/dep").mkdirs();
 				new File("usp/dep/0").mkdirs();
@@ -1396,6 +1446,9 @@ public class TrainTestRun implements IRun {
 				new File("usp/index").mkdirs();
 				new File("usp/index/0").mkdirs();
 
+				
+				
+				
 				
 				
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
@@ -1444,12 +1497,805 @@ public class TrainTestRun implements IRun {
 				
 				
 				
-				
+				counter++;
 				
 				
 			}
 			
-			counter++;
+			// counter++;
+						
+			log(LogLevel.INFO,
+					"done building pos tagger and dependency as USP inputs using stanford corenlp pipeline...");
+		}
+	}
+	
+	private void createUSPInputs(List<MultiClassifiedSentence> predictions)
+			throws IOException, InterruptedException, ExecutionException {		
+
+		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
+		
+		// if the folder "usp" exists, delete it
+		// FileUtils.deleteDirectory(new File("usp"));
+		
+		// Construct abbreviation list
+		Hashtable<String, String> kwdListByCategory = new Hashtable<String, String>();
+		// Example {category1_character1,XXX|YYY|ZZZ}
+		
+		File inputDir = new File(characterValueExtractorsFolder);
+		if(inputDir.exists() && !inputDir.isFile()) {
+			for(File file : inputDir.listFiles()) {
+				try {
+					String name = file.getName();
+					
+					// System.out.println("file name is ::" + name);
+					
+					int firstDotIndex = name.indexOf(".");
+
+					int lastDotIndex = name.lastIndexOf(".");
+					
+					String labelName = name.substring(0, firstDotIndex);
+					
+					String character = name.substring(firstDotIndex + 1, lastDotIndex);
+					
+					// character = character.replaceAll("\\s", "-");
+					// character = character.replaceAll("\\(", "-");
+					// character = character.replaceAll("\\)", "-");
+					character = character.replaceAll("\\s", "");
+					character = character.replaceAll("\\(", "");
+					character = character.replaceAll("\\)", "");
+					character = character.replaceAll("\\&", "");
+					
+					// character = character.substring(0,10);
+					
+					String type = name.substring(lastDotIndex + 1, name.length());
+					
+					// System.out.println("type is ::" + type);
+					
+					ExtractorType extractorType = ExtractorType.valueOf(type);
+					
+					String keywords = "";
+					switch(extractorType) {
+					case key:
+						BufferedReader br = new BufferedReader(new InputStreamReader(
+								new FileInputStream(file), "UTF8"));
+						
+						String strLine;
+						while ((strLine = br.readLine()) != null) {
+							
+							// System.out.println("strLine is ::" + strLine);
+							// if (name.contains("c7.")) {
+							//	System.out.println("c7 exists!");
+							//	System.out.println("strLine is ::" + strLine);
+							// }
+							if (strLine.length() > 1) {
+								
+								// remove space
+								// 
+								String keyword = strLine.trim().toLowerCase();
+								
+								keywords += keyword + "|";
+							}
+						}
+						br.close();
+						
+						if( keywords.length() > 1) {
+							if( keywords.substring(keywords.length()-1, keywords.length()).equals("|")) {
+								keywords = keywords.substring(0, keywords.length()-1);
+							}
+							kwdListByCategory.put(labelName+"-"+character , keywords);
+
+						}
+						
+
+					case usp:
+						// do nothing
+					default:
+						// throw new Exception("Could not identify extractor type from file");
+					}
+					
+				} catch(Exception e) {
+					log(LogLevel.ERROR, "Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped", e);
+				}
+			}
+		}
+		
+		
+
+		
+		
+		// TODO:: Change counter number from existing USP input folder
+		// DONE
+		
+		int maxUspInputFileId = 0;
+		File uspInputsFolder = new File(uspFolder);
+		if(uspInputsFolder.exists() && !uspInputsFolder.isFile()) {
+			File[] uspInputsFiles = uspInputsFolder.listFiles();
+			// System.out.println("uspInputsFiles.length is ::" + uspInputsFiles.length);
+			for (File uspInputsFile : uspInputsFiles) {
+				log(LogLevel.INFO, "Reading from " + uspInputsFile.getName() + "...");
+				try {
+					String uspInputsFileName = uspInputsFile.getName();
+					int firstDotIndex = uspInputsFileName.indexOf(".");
+					String uspInputFileId = uspInputsFileName.substring(0, firstDotIndex);
+					log(LogLevel.INFO, "Usp input file id: " + uspInputFileId);
+					
+					int curentUspInputFileId = Integer.parseInt(uspInputFileId);
+					if ( curentUspInputFileId > maxUspInputFileId ) {
+						maxUspInputFileId = curentUspInputFileId;
+					}
+					
+					
+				} catch (Exception e) {
+					log(LogLevel.ERROR, "Could not read usp input from "
+							+ uspInputsFile.getName(), e);
+					log(LogLevel.ERROR, "Could not read usp input in file: " + uspInputsFile.getAbsolutePath() + "\nIt will be skipped", e);
+
+				}
+			}
+		}
+		
+		
+		// System.out.println("maxUspInputFileId is ::" + maxUspInputFileId);
+		
+		
+		int counter = maxUspInputFileId + 1;
+		
+		for (MultiClassifiedSentence multiClassifiedSentence : predictions) {			
+			
+			
+			
+			StringBuilder depStringBuilder = new StringBuilder(); // Stanford Dependency
+			StringBuilder inputStringBuilder = new StringBuilder();
+			StringBuilder morphStringBuilder = new StringBuilder();
+			StringBuilder parseStringBuilder = new StringBuilder(); // Parse Tree
+			StringBuilder textStringBuilder = new StringBuilder();
+
+			String sentText0 = multiClassifiedSentence.getSentence().getText();
+			
+			
+			String sentText = multiClassifiedSentence.getSentence().getText(); // it is sentence based not text
+			Set<ILabel> sentLabels = multiClassifiedSentence.getPredictions(); // labels
+			// based anymore ??
+			
+			
+			log(LogLevel.INFO,
+					"build pos tagger and dependency as USP inputs using stanford corenlp pipeline...");
+
+			
+			
+			String depStringPlain = ""; // Dependency String
+			
+			StringTokenizer textToken = new StringTokenizer(sentText, " ");
+			if (textToken.countTokens() < 40) {
+				
+				// STEP 2: Build Original Sentence USP inputs
+				/*
+				Annotation annotation = new Annotation(sentText);
+				this.tokenizeSSplitPosParse.annotate(annotation);
+				List<CoreMap> sentenceAnnotations = annotation
+						.get(SentencesAnnotation.class);
+				for (CoreMap sentenceAnnotation : sentenceAnnotations) {
+					// result.add(sentenceAnnotation.toString());
+					for (CoreLabel token : sentenceAnnotation
+							.get(TokensAnnotation.class)) {
+
+						String pos = token.get(PartOfSpeechAnnotation.class);
+						// System.out.println(token + "_" + pos);
+
+						if (token.toString().equals("_")) {
+							inputStringBuilder.append("dash_" + pos + "\n");
+							morphStringBuilder.append("dash\n");
+						} else {
+							inputStringBuilder.append(token + "_" + pos + "\n");
+							morphStringBuilder.append(token.toString()
+									.toLowerCase() + "\n");
+						}
+
+					}
+					
+					Tree tree = sentenceAnnotation.get(TreeAnnotation.class);
+
+					//System.out.println("The first sentence parsed is:");
+					// tree.pennPrint(outputStream);
+					String treeString = tree.pennString();
+					//System.out.println(treeString);
+					parseStringBuilder.append(treeString);
+					
+					SemanticGraph dependencies = sentenceAnnotation
+							.get(CollapsedCCProcessedDependenciesAnnotation.class);
+					// the same as above
+					// SemanticGraph dependencies =
+					// sentenceAnnotation.get(CollapsedDependenciesAnnotation.class);
+
+					// Deprecated
+					// String depString = dependencies.toString("plain");
+					// depString = depString.replaceAll(",", ", ");
+					// System.out.println("Dependency String::" + depString);
+					// depStringBuilder.append(dependencies.toString("plain"));
+					// Deprecated
+
+					// System.out.println("xml format::" + dependencies.toString("xml"));
+					String depStringXml = dependencies.toString("xml");
+
+					
+					SAXBuilder saxBuilder = new SAXBuilder();
+					try {
+						Document xmlDocument = saxBuilder
+								.build(new StringReader(depStringXml));
+						// String message =
+						// xmlDocument.getRootElement().getText();
+						// System.out.println(message);
+						Element rootNode = xmlDocument.getRootElement();
+						// System.out.println(rootNode.getName());
+						// //<dependencies
+						// style="typed"> => dependencies
+						// System.out.println(rootNode.getAttributeValue("style"));
+						// // style="typed" => typed
+
+						List depList = rootNode.getChildren("dep");
+						for (int i = 0; i <= depList.size() - 1; i++) {
+							Element element = (Element) depList.get(i);
+							// System.out.println("dep type : "+
+							// element.getAttributeValue("type"));
+							depStringPlain += element.getAttributeValue("type")
+									+ "(";
+
+							// System.out.println("governor : "+
+							// element.getChildText("governor"));
+							depStringPlain += element.getChildText("governor")
+									+ "-";
+							List<Element> childrenList = element
+									.getChildren("governor");
+							for (int j = 0; j <= childrenList.size() - 1; j++) {
+								Element element2 = childrenList.get(j);
+								// System.out.println("idx : "+
+								// element2.getAttributeValue("idx"));
+								depStringPlain += element2
+										.getAttributeValue("idx");
+							}
+							depStringPlain += ", ";
+
+							// System.out.println("dependent : "+
+							// element.getChildText("dependent"));
+							depStringPlain += element.getChildText("dependent")
+									+ "-";
+							List<Element> childrenList2 = element
+									.getChildren("dependent");
+							for (int j = 0; j <= childrenList2.size() - 1; j++) {
+								Element element2 = childrenList2.get(j);
+								// System.out.println("idx : "+
+								// element2.getAttributeValue("idx"));
+								depStringPlain += element2
+										.getAttributeValue("idx");
+							}
+							depStringPlain += ")\n";
+
+						}
+						depStringBuilder.append(depStringPlain);
+						// System.out.println("dependencies::" + dependencies);
+						// System.out.println("depStringPlain:: " + depStringPlain);
+
+					} catch (JDOMException e) {
+						// handle JDOMException
+					} catch (IOException e) {
+						// handle IOException
+					}
+
+					// textStringBuilder.append(sentence.getText());
+
+				}
+
+				textStringBuilder.append(sentText);
+
+				
+				new File("usp").mkdirs();
+				new File("usp/dep_o").mkdirs();
+				new File("usp/dep_o/0").mkdirs();
+				new File("usp/morph_o").mkdirs();
+				new File("usp/morph_o/0").mkdirs();
+				new File("usp/text_o").mkdirs();
+				new File("usp/text_o/0").mkdirs();
+				new File("usp/parse_o").mkdirs();
+				new File("usp/parse_o/0").mkdirs();
+
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/dep_o/0/" + counter + ".dep", false)))) {
+					out.println(depStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/morph_o/0/" + counter + ".input",
+								false)))) {
+					out.println(inputStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/morph_o/0/" + counter + ".morph",
+								false)))) {
+					out.println(morphStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(
+						new BufferedWriter(new FileWriter("usp/text_o/0/"
+								+ counter + ".txt", false)))) {
+					out.println(textStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(
+						new BufferedWriter(new FileWriter("usp/parse_o/0/"
+								+ counter + ".parse", false)))) {
+					out.println(parseStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				*/
+				
+				
+				
+
+				
+				// STEP 3: Build sentence list with abbreviation terms
+				
+				// and build the collapseUSPSent Index
+				// build collase USP sentence
+				
+				
+				
+				
+				// System.out.println("ORI_SENT::"+ sentText);
+
+				
+				CollapseUSPSentByCategoryChar collapseUSPSentByCateogryChar = new CollapseUSPSentByCategoryChar();
+				
+				// System.out.println("ORI_SENT::"+ sentText);
+				
+				sentText = stanfordTokenizerTransformation(sentText);
+				
+				// System.out.println("sentText::2::" + sentText);
+				
+				String tagSentText = collapseUSPSentByCateogryChar.tagWithCategoryList(sentText, kwdListByCategory);
+				
+				// System.out.println("tagTestSent::" + tagSentText);
+				
+				
+				List<CollapseUSPSentIndexMapping> collapseUSPSentIndexMappingList = new ArrayList<CollapseUSPSentIndexMapping>();
+				
+				
+				
+				CollapseUSPSentByCategoryCharTokenizer collapseUSPSentByCategoryCharTokenizer = new CollapseUSPSentByCategoryCharTokenizer();
+				
+				String[] tokens = collapseUSPSentByCategoryCharTokenizer.tokenize(sentText);
+				
+				for (int i = 0; i < tokens.length; i++) {
+					morphStringBuilder.append(tokens[i].toString()
+						.toLowerCase() + "\n");
+				}
+				
+				textStringBuilder.append(sentText0);
+				
+				
+
+				
+				
+				
+				String[] tagTokens = collapseUSPSentByCategoryCharTokenizer.tokenize(tagSentText);
+				// System.out.println(Arrays.toString(tokens));
+				
+				
+				int oriIndex = 0;
+				for (int index  = 0; index < tagTokens.length;) {
+					
+					// System.out.println("\n::oriIndex::" + oriIndex);
+
+					String tagToken = tagTokens[index];
+					
+					// System.out.println("index::" + index);
+					// System.out.println("tagToken::" + tagToken);
+					
+					List<String> words = new ArrayList<String>();
+					words.add(tagToken);
+					String category = collapseUSPSentByCateogryChar.getCategoryName(tagToken, kwdListByCategory);
+					
+					if ( !category.equals("") ) {
+						// System.out.println("category::" + category + "::");
+						words = collapseUSPSentByCateogryChar.fetchSubseqTokensOfCat(index, category, tagTokens);
+						// System.out.println("fetchSubseqTokensOfCat::" + words.toString());
+						
+						int count = 0;
+						ArrayList<String> indices = new ArrayList<String>();
+						
+						for (String word : words) {
+							
+							// System.out.println("word::" + word);
+							if (word.matches("\\W+")) {
+								count++;
+								
+								// indices.add(String.valueOf(index+count));
+							} else {
+								word = collapseUSPSentByCateogryChar.removeNumAndCategory(word); //turn ‘DDD#EEE[Cat]’ to ‘DDD EEE’
+								String[] parts = word.split(" ");
+								
+								String multiIndex = ""; 
+								for ( String part: parts ){
+									multiIndex += String.valueOf(oriIndex+count) + "-";
+									// indices.add(String.valueOf(oriIndex+count));
+									count++;
+								}
+								
+								if (multiIndex.substring(multiIndex.length()-1, multiIndex.length()).equals("-")) {
+								 	multiIndex = multiIndex.substring(0, multiIndex.length()-1);
+								}
+								indices.add(multiIndex);
+							}
+						}
+						
+
+						// System.out.println("indices::" + indices.toString());
+						// System.out.println("oriIndex::" + oriIndex);
+						// System.out.println("index::" + index);
+						
+						
+						// transfer it into indiciesString
+						String indicesString = "";
+						int itemInIndicesCounter = 0;
+						for (String itemInIndices : indices) {
+							if (itemInIndicesCounter == (indices.size()-1)) {
+								indicesString += itemInIndices;
+							} else {
+								indicesString += itemInIndices + ",";
+							}
+							itemInIndicesCounter++;
+						}
+						
+						collapseUSPSentIndexMappingList.add(collapseUSPSentByCateogryChar.addMapping(category, indicesString)); //add a list of index	
+						
+						// System.out.println("tokenNumber(words)::" + tokenNumber(words) + "::words.size()::" + words.size());
+						
+						// System.out.println("old index::" + index);
+						index = index + words.size();
+						// System.out.println("new index::" + index);
+						oriIndex = oriIndex + collapseUSPSentByCateogryChar.tokenNumber(words);
+						// System.out.println("new oriIndex::" + oriIndex);
+						
+					} else {
+						
+						// System.out.println("tagToken::" + tagToken);
+						// System.out.println("oriIndex::" + oriIndex);
+						// System.out.println("index::" + index);
+						
+						collapseUSPSentIndexMappingList.add(collapseUSPSentByCateogryChar.addMapping(tagToken, String.valueOf(oriIndex))); //add single index
+						
+						index +=1;
+						// System.out.println("Update the index to " + index);
+						
+						oriIndex +=1;
+						// System.out.println("Update the oriIndex to " + oriIndex);
+						
+					}
+					// System.out.println("\n");
+				}
+				
+				
+				
+				
+				// STEP 4: Collapse the sentence and build index txt file
+				
+			
+				String collapsedSentString = "";
+				String collapsedSentIndexString = "";
+				
+				
+				int lastIndexInPreviousItem = -1;
+				int firstIndexInCurrentItem = -1;
+				int itemInCollapseUSPSentIndexMappingListCounter = 0;
+				for (CollapseUSPSentIndexMapping itemInCollapseUSPSentIndexMappingList : collapseUSPSentIndexMappingList) {
+					// System.out.println("itemInCollapseUSPSentIndexMappingList.getToken()::" + itemInCollapseUSPSentIndexMappingList.getToken());
+					// System.out.println("itemInCollapseUSPSentIndexMappingList.getIndices()::" + itemInCollapseUSPSentIndexMappingList.getIndices());
+					String curToken = itemInCollapseUSPSentIndexMappingList.getToken();
+					String curIndices = itemInCollapseUSPSentIndexMappingList.getIndices();
+					
+					String[] curIndicesArray = curIndices.split(",");
+					String[] subFirstIndexArray = curIndicesArray[0].split("-");
+					String[] subLastIndexArray = curIndicesArray[curIndicesArray.length-1].split("-");
+					
+					if (itemInCollapseUSPSentIndexMappingListCounter == 0) {
+						firstIndexInCurrentItem = Integer.parseInt(subFirstIndexArray[0]);
+					}
+					
+					if (itemInCollapseUSPSentIndexMappingListCounter > 0) {
+						firstIndexInCurrentItem = Integer.parseInt(subFirstIndexArray[0]);
+ 					}
+					
+					
+					// System.out.println("lastIndexInPreviousItem::" + lastIndexInPreviousItem);					
+					// System.out.println("firstIndexInCurrentItem::" + firstIndexInCurrentItem);
+					
+					
+					
+					if ((lastIndexInPreviousItem+1) < firstIndexInCurrentItem) {
+						collapsedSentString += " , " + itemInCollapseUSPSentIndexMappingList.getToken();
+						collapsedSentIndexString +=  ",\t\n";
+						collapsedSentIndexString += itemInCollapseUSPSentIndexMappingList.getToken() + "\t" + itemInCollapseUSPSentIndexMappingList.getIndices() + "\n";
+						
+					} else {
+						collapsedSentString += " " + itemInCollapseUSPSentIndexMappingList.getToken();
+						collapsedSentIndexString += itemInCollapseUSPSentIndexMappingList.getToken() + "\t" + itemInCollapseUSPSentIndexMappingList.getIndices() + "\n";
+					}
+					
+					lastIndexInPreviousItem = Integer.parseInt(subLastIndexArray[subLastIndexArray.length-1]);
+ 					
+					
+					itemInCollapseUSPSentIndexMappingListCounter++;
+					
+				}
+				
+				// System.out.println("collapsedSent::" + collapsedSentString);
+				// System.out.println("collapsedSentIndexString::" + collapsedSentIndexString);
+
+				
+				
+				/*
+				if ( isCollapsedSentence(sentStanfordTokenizedStringTokens) == true) {
+					CollapsedSentenceAndIndex generatedCollapsedSentence = generateCollapsedSentenceAndIndex(sentStanfordTokenizedStringTokens);
+					// System.out.println("generatedCollapsedSentence::" + generatedCollapsedSentence.getCollapsedSentence() + "\n");
+					
+					collapsedSentString = generatedCollapsedSentence.getCollapsedSentence();
+					collapsedSentIndexString = generatedCollapsedSentence.getCollapsedSentenceIndex();	
+
+					
+					
+				} else {
+					// System.out.println("sentReplacedByCategoryKwd::" + sentReplacedByCategoryKwd + "\n");
+					
+					collapsedSentString = sentReplacedByCategoryKwd; // non-collapsed sentence
+
+					
+					// reduce this
+					
+					// CollapsedSentenceAndIndex generatedCollapsedSentence = generateCollapsedSentenceAndIndex(sentStanfordTokenizedStringTokens);
+					// collapsedSentIndexString = generatedCollapsedSentence.getCollapsedSentenceIndex();	
+
+					String generatedNonCollapsedSentenceIndexString = generateNonCollapsedSentenceIndexString(sentStanfordTokenizedStringTokens);
+					
+					collapsedSentIndexString = generatedNonCollapsedSentenceIndexString;
+					
+					
+					// System.out.println("non-collapsed::collapsedSentIndexString::\n" + collapsedSentIndexString + "\n");
+					
+
+					
+					
+				}
+				*/
+				
+				
+				
+
+				
+				// STEP 5: Build USP_COLLAPSED inputs
+				// build collapsed USP inputs
+
+				
+				StringBuilder collapsedDepStringBuilder = new StringBuilder(); // Stanford Dependency
+				StringBuilder collapsedInputStringBuilder = new StringBuilder();
+				StringBuilder collapsedMorphStringBuilder = new StringBuilder();
+				StringBuilder collapsedParseStringBuilder = new StringBuilder(); // Parse Tree
+				StringBuilder collapsedTextStringBuilder = new StringBuilder();
+				StringBuilder collapsedSentIndexStringBuilder = new StringBuilder();
+				
+				String collapsedDepStringPlain = "";
+				
+				// StringTokenizer collapsedSentStringToken = new StringTokenizer(collapsedSentString, " ");
+				// if (collapsedSentStringToken.countTokens() < 100) {
+				// }
+				
+				
+				Annotation annotationCollapsedSent = new Annotation(collapsedSentString);
+				this.tokenizeSSplitPosParse.annotate(annotationCollapsedSent);
+				List<CoreMap> sentenceAnnotationsCollapsedSent = annotationCollapsedSent
+						.get(SentencesAnnotation.class);
+				for (CoreMap sentenceAnnotationCollapsedSent : sentenceAnnotationsCollapsedSent) {
+					// result.add(sentenceAnnotationCollapsedSent.toString());
+					for (CoreLabel token : sentenceAnnotationCollapsedSent
+							.get(TokensAnnotation.class)) {
+
+						String pos = token.get(PartOfSpeechAnnotation.class);
+						// System.out.println(token + "_" + pos);
+
+						if (token.toString().equals("_")) {
+							collapsedInputStringBuilder.append("dash_" + pos + "\n");
+							collapsedMorphStringBuilder.append("dash\n");
+						} else {
+							collapsedInputStringBuilder.append(token + "_" + pos + "\n");
+							collapsedMorphStringBuilder.append(token.toString()
+									.toLowerCase() + "\n");
+						}
+
+					}
+					
+					Tree tree = sentenceAnnotationCollapsedSent.get(TreeAnnotation.class);
+
+					//System.out.println("The first sentence parsed is:");
+					// tree.pennPrint(outputStream);
+					String treeString = tree.pennString();
+					//System.out.println(treeString);
+					collapsedParseStringBuilder.append(treeString);
+					
+					SemanticGraph dependencies = sentenceAnnotationCollapsedSent
+							.get(CollapsedCCProcessedDependenciesAnnotation.class);
+
+					String depStringXml = dependencies.toString("xml");
+					
+					if (depStringXml.length() == 0) {
+						System.out.println("No Dependency!");	
+					}
+					
+					
+					SAXBuilder saxBuilder = new SAXBuilder();
+					try {
+						Document xmlDocument = saxBuilder
+								.build(new StringReader(depStringXml));
+						// String message =
+						// xmlDocument.getRootElement().getText();
+						// System.out.println(message);
+						Element rootNode = xmlDocument.getRootElement();
+						// System.out.println(rootNode.getName());
+						// //<dependencies
+						// style="typed"> => dependencies
+						// System.out.println(rootNode.getAttributeValue("style"));
+						// // style="typed" => typed
+
+						List depList = rootNode.getChildren("dep");
+						for (int i = 0; i <= depList.size() - 1; i++) {
+							Element element = (Element) depList.get(i);
+							// System.out.println("dep type : "+
+							// element.getAttributeValue("type"));
+							collapsedDepStringPlain += element.getAttributeValue("type")
+									+ "(";
+
+							// System.out.println("governor : "+
+							// element.getChildText("governor"));
+							collapsedDepStringPlain += element.getChildText("governor")
+									+ "-";
+							List<Element> childrenList = element
+									.getChildren("governor");
+							for (int j = 0; j <= childrenList.size() - 1; j++) {
+								Element element2 = childrenList.get(j);
+								// System.out.println("idx : "+
+								// element2.getAttributeValue("idx"));
+								collapsedDepStringPlain += element2
+										.getAttributeValue("idx");
+							}
+							collapsedDepStringPlain += ", ";
+
+							// System.out.println("dependent : "+
+							// element.getChildText("dependent"));
+							collapsedDepStringPlain += element.getChildText("dependent")
+									+ "-";
+							List<Element> childrenList2 = element
+									.getChildren("dependent");
+							for (int j = 0; j <= childrenList2.size() - 1; j++) {
+								Element element2 = childrenList2.get(j);
+								// System.out.println("idx : "+
+								// element2.getAttributeValue("idx"));
+								collapsedDepStringPlain += element2
+										.getAttributeValue("idx");
+							}
+							collapsedDepStringPlain += ")\n";
+
+						}
+						collapsedDepStringBuilder.append(collapsedDepStringPlain);
+						// System.out.println("dependencies::" + dependencies);
+						// System.out.println("depStringPlain:: " + depStringPlain);
+
+					} catch (JDOMException e) {
+						// handle JDOMException
+					} catch (IOException e) {
+						// handle IOException
+					}
+
+					// collapsedTextStringBuilder.append(sentence.getText());
+
+				}
+
+				// System.out.println("collapsedDepStringPlain ::\n" + collapsedDepStringPlain);					
+				
+				collapsedTextStringBuilder.append(collapsedSentString);
+				collapsedSentIndexStringBuilder.append(collapsedSentIndexString);				
+				
+				if (collapsedDepStringBuilder.toString().length() == 0) continue;
+				// System.out.println("Elvis::No Dependency!");	
+				
+				
+				
+				// write string into txt files
+				new File("usp").mkdirs();
+				new File("usp/morph_o").mkdirs();
+				new File("usp/morph_o/0").mkdirs();
+				new File("usp/text_o").mkdirs();
+				new File("usp/text_o/0").mkdirs();
+				
+				
+				new File("usp").mkdirs();
+				new File("usp/dep").mkdirs();
+				new File("usp/dep/0").mkdirs();
+				new File("usp/morph").mkdirs();
+				new File("usp/morph/0").mkdirs();
+				new File("usp/text").mkdirs();
+				new File("usp/text/0").mkdirs();
+				new File("usp/parse").mkdirs();
+				new File("usp/parse/0").mkdirs();
+				new File("usp/index").mkdirs();
+				new File("usp/index/0").mkdirs();
+
+
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/morph_o/0/" + counter + ".morph",
+								false)))) {
+					out.println(morphStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(
+						new BufferedWriter(new FileWriter("usp/text_o/0/"
+								+ counter + ".txt", false)))) {
+					out.println(textStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				
+				
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/index/0/" + counter + ".index", false)))) {
+					out.println(collapsedSentIndexStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/dep/0/" + counter + ".dep", false)))) {
+					out.println(collapsedDepStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/morph/0/" + counter + ".input",
+								false)))) {
+					out.println(collapsedInputStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("usp/morph/0/" + counter + ".morph",
+								false)))) {
+					out.println(collapsedMorphStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(
+						new BufferedWriter(new FileWriter("usp/text/0/"
+								+ counter + ".txt", false)))) {
+					out.println(collapsedTextStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				try (PrintWriter out = new PrintWriter(
+						new BufferedWriter(new FileWriter("usp/parse/0/"
+								+ counter + ".parse", false)))) {
+					out.println(collapsedParseStringBuilder);
+				} catch (IOException e) {
+					// exception handling left as an exercise for the reader
+				}
+				
+				counter++;
+				
+			}
+			
+			// counter++;
 						
 			log(LogLevel.INFO,
 					"done building pos tagger and dependency as USP inputs using stanford corenlp pipeline...");

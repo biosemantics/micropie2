@@ -1,2 +1,5 @@
 cells	N	nsubj	dep
 cells	N	nusbjpass	dep
+lack	V	dobj	dep
+lacking	V	dobj	dep
+lacks	V	dobj	dep
