@@ -223,6 +223,7 @@ public class Parse {
 		Utils.println("[Parse] read syntax ...");		
 		ArrayList<Article> articles=new ArrayList<Article>();
 		for (int i=0; i<inputFileNames_.size(); i++) {
+			// System.out.println(inputFileNames_.get(i));
 			Article a=parseReader_.readParse(inputFileNames_.get(i));
 			// System.out.println("inputFileNames_::" + inputFileNames_);
 			// System.out.println("Elvis Test::inputFileNames_.get(i)::" + inputFileNames_.get(i).toString());
@@ -262,6 +263,7 @@ public class Parse {
 		for (int ai=0; ai<articles.size(); ai++) {
 			Article a=articles.get(ai);			
 			String aid=a.uid_;
+			// System.out.println("aid: " + aid);
 			
 			id_article_.put(aid, a);
 			
@@ -282,148 +284,282 @@ public class Parse {
 	} // initialize
 	
 	void initialize(String aid, int si, Sentence sent) {
-		numTkns_+=sent.tokens_.size()-1; // root
-		
-		if (sent.tkn_children_.get(0)==null || sent.tkn_children_.get(0).size()==0) return;
-						
-		// build treenode, part, clust for all nodes	// SKIP root
-		for (int ni=1; ni<sent.tokens_.size(); ni++) {
-			if (isIgnore(sent, ni)) continue;				
+
+		if (isMultiSent(sent)) {
+			System.out.println("Not parse this sentnece!");
+		} else {
+			System.out.println("\ninit::" + aid);
+			numTkns_+=sent.tokens_.size()-1; // root
 			
-			String tnId=Utils.genTreeNodeId(aid,si,ni);
-			TreeNode tn=new TreeNode(tnId,sent.tokens_.get(ni));
-			Part part=new Part(tn);
+			if (sent.tkn_children_.get(0)==null || sent.tkn_children_.get(0).size()==0) return;
 			
-			int relTypeIdx=part.getRelTypeIdx();
-			int clustIdx=-1;
-			Set<Integer> clustIdxs=Clust.getClustsWithRelType(relTypeIdx);
-			if (clustIdxs!=null) {
-				clustIdx=clustIdxs.iterator().next();
+			// build treenode, part, clust for all nodes	// SKIP root
+
+			for (int ni=1; ni<sent.tokens_.size(); ni++) {
+				// Elvis Test
+				// =>
+				// System.out.println("sent.tkn_par_.toString()::" + sent.tkn_par_.toString());
+				// System.out.println("isIgnore(sent, ni)::" + isIgnore(sent, ni) + "::ni::" + ni);
+				// Elvis Test
+				
+				if (isIgnore(sent, ni)) continue;				
+				
+				String tnId=Utils.genTreeNodeId(aid,si,ni);
+				
+				TreeNode tn=new TreeNode(tnId,sent.tokens_.get(ni));
+				Part part=new Part(tn);
+				
+				int relTypeIdx=part.getRelTypeIdx();
+				
+				int clustIdx=-1;
+				Set<Integer> clustIdxs=Clust.getClustsWithRelType(relTypeIdx);
+				
+				// Elvis Test
+				// fail => System.out.println("clustIdxs.toString()::"+ clustIdxs.toString());
+				// Elvis Test
+				
+				if (clustIdxs!=null) {
+					clustIdx=clustIdxs.iterator().next();
+				}
+				else clustIdx=Clust.createClust(relTypeIdx);
+				part.setClust(clustIdx);									
 			}
-			else clustIdx=Clust.createClust(relTypeIdx);
-			part.setClust(clustIdx);									
+			
+			// Elvis Test
+			// System.out.println("build args; link part");
+			// Elvis Test
+			
+			// build args; link part
+			Set<Pair<String,Integer>> roots=sent.tkn_children_.get(0);
+			assert roots.size()==1;		
+			Iterator<Pair<String,Integer>> it=roots.iterator();
+			while (it.hasNext()) {
+				Pair<String,Integer> dep_idx=it.next();
+				int idx=dep_idx.getSecond();
+				String nid=Utils.genTreeNodeId(aid,si,idx);
+				rootTreeNodeIds_.add(nid);
+				Part np=Part.getPartByRootNodeId(nid);
+				// Elvis Test
+				// System.out.println("si::" + si);
+				// System.out.println("idx::" + idx);
+				// Elvis Test
+				if (np==null) {Utils.println("Empty part: art="+aid+" sent="+si); continue;}
+				Clust ncl=Clust.getClust(np.getClustIdx());
+				ncl.incRootCnt();
+				createArgs(aid, si, sent, idx);					
+			}			
 		}
-		
-		// build args; link part
-		Set<Pair<String,Integer>> roots=sent.tkn_children_.get(0);
-		assert roots.size()==1;		
-		Iterator<Pair<String,Integer>> it=roots.iterator();
-		while (it.hasNext()) {
-			Pair<String,Integer> dep_idx=it.next();
-			int idx=dep_idx.getSecond();
-			String nid=Utils.genTreeNodeId(aid,si,idx);
-			rootTreeNodeIds_.add(nid);
-			Part np=Part.getPartByRootNodeId(nid);
-			if (np==null) {Utils.println("Empty part: art="+aid+" sent="+si); continue;}
-			Clust ncl=Clust.getClust(np.getClustIdx());
-			ncl.incRootCnt();
-			createArgs(aid, si, sent, idx);					
-		}
+
 	}
 	
 	boolean isIgnore(Sentence sent, int tknIdx) {
 		int ancestor=tknIdx;
+		// int initAncestorRef = 0;
+		// if (sent.tkn_par_.get(tknIdx) != null) {
+		//	initAncestorRef = sent.tkn_par_.get(tknIdx).getSecond();
+		// }
+		// System.out.println("tknIdx::" + tknIdx);
+		// System.out.println("initAncestorRef::" + initAncestorRef);
+		
+		// int initAncestorRefCounter = 0;
+		// System.out.println("Start::ancestor is::"+ ancestor + "::tknIdx" + tknIdx);
+		
+		HashMap<String, Integer> ancestorList = new HashMap<String, Integer>();
+		
+		boolean canEnd = false;
+		
 		while (sent.tkn_par_.get(ancestor)!=null) {
 			ancestor=sent.tkn_par_.get(ancestor).getSecond();
+			if ( !ancestorList.containsKey(String.valueOf(ancestor))) {
+				ancestorList.put(String.valueOf(ancestor), 1);		
+			}
+			// System.out.println("ancestor::" + ancestor);
+			
+			// if ( ancestorList.containsKey(String.valueOf("0"))) {
+			//	System.out.println("Contain this 0!!");
+			//	canEnd = true;
+			//}
+			
+			//if (canEnd == true) {
+			//	System.out.println("Stop this loop!");
+			//	break;
+			//}
+			
+			if (ancestorList.containsKey(String.valueOf(ancestor))) {
+				// System.out.println("current value::" + ancestorList.get(String.valueOf(ancestor)));
+				// System.out.println("New value::" + ancestorList.get(String.valueOf(ancestor)) + 1);
+				// System.out.println("OLD::ancestorList.get(String.valueOf(ancestor))::" + ancestorList.get(String.valueOf(ancestor)));
+				ancestorList.put(String.valueOf(ancestor), ancestorList.get(String.valueOf(ancestor)) + 1);
+				// System.out.println("NEW::ancestorList.get(String.valueOf(ancestor))::" + ancestorList.get(String.valueOf(ancestor)));
+				// System.out.println("ancestor::" + ancestor);
+			}
+			// if (ancestorList.containsKey(String.valueOf(ancestor))) {
+			//	//System.out.println("Contain this one::" + ancestor);
+			//	if ( ! ancestorList.containsKey(String.valueOf("0"))) {
+			//		break;
+			//	}
+			//
+			// }
+			
+			if ( ancestorList.get(String.valueOf(ancestor)) > sent.tokens_.size()+10 && ! ancestorList.containsKey("0") ) {
+				//System.out.println("This is an endless loop!");
+				break;
+			}
+			
+			// if ( ancestor == initAncestorRef ) {
+			//	initAncestorRefCounter +=1;
+			// }
+			
+			// if (initAncestorRefCounter > 2) {
+			//	System.out.println("Endless Loop");
+			//	break;
+			// }
 		}
+		// String[] ancestorListStringArray = ancestorList.toArray(new String[0]);
+		// System.out.println("tknIdx::" + tknIdx +"::" + Arrays.toString(ancestorListStringArray));
+		
+		//System.out.println("End::ancestor is::"+ ancestor);
 		return (ancestor>0);
+	}
+	
+	boolean isMultiSent(Sentence sent) {
+		boolean isMultiSent = false;
+		for (int ni=1; ni<sent.tokens_.size(); ni++) {			
+			int ancestor=ni; //tknIdx
+			HashMap<String, Integer> ancestorList = new HashMap<String, Integer>();
+			
+			while (sent.tkn_par_.get(ancestor)!=null) {
+				ancestor=sent.tkn_par_.get(ancestor).getSecond();
+				if ( !ancestorList.containsKey(String.valueOf(ancestor))) {
+					ancestorList.put(String.valueOf(ancestor), 1);		
+				}
+
+				
+				if (ancestorList.containsKey(String.valueOf(ancestor))) {
+					ancestorList.put(String.valueOf(ancestor), ancestorList.get(String.valueOf(ancestor)) + 1);
+
+				}
+
+				
+				if ( ancestorList.get(String.valueOf(ancestor)) > sent.tokens_.size()+10 && ! ancestorList.containsKey("0") ) {
+					isMultiSent = true;
+					break;
+				}
+				
+			}
+
+		}
+		return isMultiSent;
 	}
 	
 	
 	void createArgs(String articleId, int sentIdx, Sentence sent, int nodeIdx) {		
-//		
-		System.out.println("articleId:"+ articleId);
-		System.out.println("sentIdx:"+ sentIdx);
-		System.out.println("nodeIdx:"+ nodeIdx);
+		
+		// System.out.println("\n new");
+		// System.out.println("articleId:"+ articleId);
+		// System.out.println("sentIdx:"+ sentIdx);
+		// System.out.println("nodeIdx:"+ nodeIdx);
 		
 		
-		Utils.println("createArgs: "+articleId+" sent="+sentIdx+" node="+nodeIdx);
-		System.out.println("createArgs: "+articleId+" sent="+sentIdx+" node="+nodeIdx);
+//		Utils.println("createArgs: "+articleId+" sent="+sentIdx+" node="+nodeIdx);
+		// System.out.println("createArgs: "+articleId+" sent="+sentIdx+" node="+nodeIdx);
 		
 		String nid=Utils.genTreeNodeId(articleId,sentIdx,nodeIdx);
 		TreeNode node=TreeNode.getTreeNode(nid);
 		Part np=Part.getPartByRootNodeId(nid);
 		Clust ncl=Clust.getClust(np.getClustIdx());
 		Set<Pair<String,Integer>> chds=sent.tkn_children_.get(nodeIdx);
-		System.out.println("chds::" + chds);
-		if (chds==null) return;
-		
-		Iterator<Pair<String,Integer>> it=chds.iterator();
-		while (it.hasNext()) {
-			Pair<String,Integer> dep_chd=it.next();
-			String dep=dep_chd.getFirst();
-			
-			int cidx=dep_chd.getSecond();
-			String cid=Utils.genTreeNodeId(articleId,sentIdx,cidx);
-			Path p=new Path(dep);			
-			int argTypeIdx=p.getArgType();
-//			Utils.println("---> dep="+dep+" path="+p.toString()+" argTypeIdx="+argTypeIdx+" argType="+ArgType.getArgType(argTypeIdx));
-			
-			System.out.println("---> dep="+dep+" path="+p.toString()+" argTypeIdx="+argTypeIdx+" argType="+ArgType.getArgType(argTypeIdx));
-			
-			Part cp=Part.getPartByRootNodeId(cid);
-			
-			// Original code
-			// if (cp==null) Utils.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
+		// System.out.println("chds::" + chds);
+		if (chds==null) {
+			return;
+		} else {
+			Iterator<Pair<String,Integer>> it=chds.iterator();
+			while (it.hasNext()) {
+				Pair<String,Integer> dep_chd=it.next();
+				String dep=dep_chd.getFirst();
+				// System.out.println("dep_chd::" + dep_chd);
+				int cidx=dep_chd.getSecond();
+				// System.out.println("cidx::" + cidx);
+				if (dep_chd == null) continue;
+				
+				
+				String cid=Utils.genTreeNodeId(articleId,sentIdx,cidx);
+				Path p=new Path(dep);			
+				int argTypeIdx=p.getArgType();
+//				Utils.println("---> dep="+dep+" path="+p.toString()+" argTypeIdx="+argTypeIdx+" argType="+ArgType.getArgType(argTypeIdx));
+				
+				// System.out.println("---> dep="+dep+" path="+p.toString()+" argTypeIdx="+argTypeIdx+" argType="+ArgType.getArgType(argTypeIdx));
+				
+				Part cp=Part.getPartByRootNodeId(cid);
+				
+				// Original code
+				// if (cp==null) Utils.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
 
-			// // TO-DO: fix this, should have unique par
-			// if (cp.parPart_!=null) {
-			//	Utils.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
-			//	continue;
-			// }
-			// Original code
-			
-			// Modified code by Elvis
-			if (cp==null) {
-				Utils.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
-				System.out.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
-				// continue; // Elvis add on 3/11/2014 to prevent the parsing error
-			} else{ 
-				// TO-DO: fix this, should have unique par
-				if (cp.parPart_!=null) {
-					Utils.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
-					System.out.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
-					
-				} else {
-					
-					System.out.println("Create Argument - Start");
-					Argument arg=new Argument(node,p,cp);
-					int argIdx=np.addArgument(arg);		
-					cp.setParent(np, argIdx);
-					
-					// arg
-					Set<Integer> argClustIdxs=ncl.getArgClustIdxs(argTypeIdx);
-					int argClustIdx=-1;
-					if (argClustIdxs==null) {
-						argClustIdx=ncl.createArgClust(argTypeIdx);
-						System.out.println("argClustIdxs is null");
+				// // TO-DO: fix this, should have unique par
+				// if (cp.parPart_!=null) {
+				//	Utils.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
+				//	continue;
+				// }
+				// Original code
+				
+				// Modified code by Elvis
+				if (cp==null) {
+					Utils.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
+					// System.out.println("ERR: cp=null "+cid+" "+cidx+" "+dep+" "+nodeIdx+" "+sentIdx);
+					// continue; // Elvis add on 3/11/2014 to prevent the parsing error
+				} else{ 
+					// TO-DO: fix this, should have unique par
+					if (cp.parPart_!=null) {
+						Utils.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
+						// System.out.println("ERR: Multiple parents, skip np: cp="+cp.relTreeRoot_.getId()+" par="+cp.parPart_.relTreeRoot_.getId()+" np="+np.relTreeRoot_.getId());
+						
+					} else {
+						
+						// System.out.println("Create Argument - Start");
+						Argument arg=new Argument(node,p,cp);
+						int argIdx=np.addArgument(arg);		
+						cp.setParent(np, argIdx);
+						
+						// arg
+						Set<Integer> argClustIdxs=ncl.getArgClustIdxs(argTypeIdx);
+						int argClustIdx=-1;
+						if (argClustIdxs==null) {
+							argClustIdx=ncl.createArgClust(argTypeIdx);
+							// System.out.println("argClustIdxs is null");
 
+						}
+						else {
+							// TO-DO: multiple ones??
+							
+							// System.out.println("argClustIdxs.size()::" + argClustIdxs.size());
+							
+							argClustIdx=argClustIdxs.iterator().next();
+							
+							// System.out.println("iterate argClustIdx");
+							
+						}
+						// System.out.println("Set ArgClust - Start");
+						np.setArgClust(argIdx, argClustIdx);
+						// System.out.println("Set ArgClust - End");
+						
+						// recursive
+						// System.out.println("Go to recursive createArgs() 1");
+						
+						// System.out.println("cidx 2::" + cidx);
+						
+						createArgs(articleId, sentIdx, sent, cidx);
+						
+						// System.out.println("Go to recursive createArgs() 2");
 					}
-					else {
-						// TO-DO: multiple ones??
-						
-						System.out.println("argClustIdxs.size()::" + argClustIdxs.size());
-						
-						argClustIdx=argClustIdxs.iterator().next();
-						
-						System.out.println("iterate argClustIdx");
-						
-					}
-					System.out.println("Set ArgClust - Start");
-					np.setArgClust(argIdx, argClustIdx);
-					System.out.println("Set ArgClust - End");
-					
-					// recursive
-					System.out.println("Go to recursive createArgs() 1");
-					createArgs(articleId, sentIdx, sent, cidx);
-					System.out.println("Go to recursive createArgs() 2");
+			
 				}
-		
-			}
-			// Modified code by Elvis
+				// Modified code by Elvis
 
 
+			}			
 		}
+		
+
 	}
 		
 	// merge args for initial clusts

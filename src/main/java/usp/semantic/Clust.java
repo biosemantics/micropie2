@@ -213,34 +213,72 @@ public class Clust {
 		int argTypeIdx=arg.path_.getArgType(); 
 		int chdClustIdx=arg.argPart_.getClustIdx();
 		ArgClust ac=argClusts_.get(argClustIdx);
+		
+		// Original Code
+		// if (ac==null) {
+		//	Utils.println("part="+part.relTreeRoot_.getId()+" arg="+arg.path_+" chd="+Clust.getClust(chdClustIdx));
+		//	Utils.println("cl="+toString()+" "+clustIdx_+" argcl="+argClustIdx);
+		// }
+		// if (ac.argTypeIdx_cnt_.get(argTypeIdx)==null) ac.argTypeIdx_cnt_.put(argTypeIdx,1);
+		// else ac.argTypeIdx_cnt_.put(argTypeIdx,ac.argTypeIdx_cnt_.get(argTypeIdx).intValue()+1);
+		// if (ac.chdClustIdx_cnt_.get(chdClustIdx)==null) ac.chdClustIdx_cnt_.put(chdClustIdx,1);
+		// else ac.chdClustIdx_cnt_.put(chdClustIdx,ac.chdClustIdx_cnt_.get(chdClustIdx)+1);
+		// ac.ttlArgCnt_++;
+		//
+		// Map<Pair<Integer,Integer>,Integer> parArgs=clustIdx_parArgs_.get(chdClustIdx);
+		// if (parArgs==null) {
+		// 	parArgs=new HashMap<Pair<Integer,Integer>,Integer>();
+		//	clustIdx_parArgs_.put(chdClustIdx,parArgs);
+		// }
+		// Pair<Integer,Integer> cl_ac=new Pair<Integer,Integer>(clustIdx_,argClustIdx);
+		// if (parArgs.get(cl_ac)==null) parArgs.put(cl_ac, 1);
+		// else parArgs.put(cl_ac, parArgs.get(cl_ac)+1);
+		
+		// int newArgNum=part.argClustIdx_argIdxs_.get(argClustIdx).size();		
+		// if (ac.argNum_cnt_.get(newArgNum)==null) ac.argNum_cnt_.put(newArgNum, 1); 
+		// else ac.argNum_cnt_.put(newArgNum, ac.argNum_cnt_.get(newArgNum)+1);		
+		// if (newArgNum>1) {
+		// 	if (ac.argNum_cnt_.get(newArgNum-1)==1) ac.argNum_cnt_.remove(newArgNum-1); 
+		//	else ac.argNum_cnt_.put(newArgNum-1, ac.argNum_cnt_.get(newArgNum-1)-1);
+		// }
+		
+		// ac.partRootTreeNodeIds_.add(part.relTreeRoot_.getId());
+		// Original Code
+		
+		
+		// Elvis Modified Code
 		if (ac==null) {
 			Utils.println("part="+part.relTreeRoot_.getId()+" arg="+arg.path_+" chd="+Clust.getClust(chdClustIdx));
 			Utils.println("cl="+toString()+" "+clustIdx_+" argcl="+argClustIdx);
+		} else {
+			if (ac.argTypeIdx_cnt_.get(argTypeIdx)==null) ac.argTypeIdx_cnt_.put(argTypeIdx,1);
+			else ac.argTypeIdx_cnt_.put(argTypeIdx,ac.argTypeIdx_cnt_.get(argTypeIdx).intValue()+1);
+			if (ac.chdClustIdx_cnt_.get(chdClustIdx)==null) ac.chdClustIdx_cnt_.put(chdClustIdx,1);
+			else ac.chdClustIdx_cnt_.put(chdClustIdx,ac.chdClustIdx_cnt_.get(chdClustIdx)+1);
+			ac.ttlArgCnt_++;
+
+			Map<Pair<Integer,Integer>,Integer> parArgs=clustIdx_parArgs_.get(chdClustIdx);
+			if (parArgs==null) {
+				parArgs=new HashMap<Pair<Integer,Integer>,Integer>();
+				clustIdx_parArgs_.put(chdClustIdx,parArgs);
+			}
+			Pair<Integer,Integer> cl_ac=new Pair<Integer,Integer>(clustIdx_,argClustIdx);
+			if (parArgs.get(cl_ac)==null) parArgs.put(cl_ac, 1);
+			else parArgs.put(cl_ac, parArgs.get(cl_ac)+1);
+			
+			int newArgNum=part.argClustIdx_argIdxs_.get(argClustIdx).size();		
+			if (ac.argNum_cnt_.get(newArgNum)==null) ac.argNum_cnt_.put(newArgNum, 1); 
+			else ac.argNum_cnt_.put(newArgNum, ac.argNum_cnt_.get(newArgNum)+1);		
+			if (newArgNum>1) {
+				if (ac.argNum_cnt_.get(newArgNum-1)==1) ac.argNum_cnt_.remove(newArgNum-1); 
+				else ac.argNum_cnt_.put(newArgNum-1, ac.argNum_cnt_.get(newArgNum-1)-1);
+			}
+			
+			ac.partRootTreeNodeIds_.add(part.relTreeRoot_.getId());			
 		}
-		if (ac.argTypeIdx_cnt_.get(argTypeIdx)==null) ac.argTypeIdx_cnt_.put(argTypeIdx,1);
-		else ac.argTypeIdx_cnt_.put(argTypeIdx,ac.argTypeIdx_cnt_.get(argTypeIdx).intValue()+1);
-		if (ac.chdClustIdx_cnt_.get(chdClustIdx)==null) ac.chdClustIdx_cnt_.put(chdClustIdx,1);
-		else ac.chdClustIdx_cnt_.put(chdClustIdx,ac.chdClustIdx_cnt_.get(chdClustIdx)+1);
-		ac.ttlArgCnt_++;		
+		// Elvis Modified Code
 		
-		Map<Pair<Integer,Integer>,Integer> parArgs=clustIdx_parArgs_.get(chdClustIdx);
-		if (parArgs==null) {
-			parArgs=new HashMap<Pair<Integer,Integer>,Integer>();
-			clustIdx_parArgs_.put(chdClustIdx,parArgs);
-		}
-		Pair<Integer,Integer> cl_ac=new Pair<Integer,Integer>(clustIdx_,argClustIdx);
-		if (parArgs.get(cl_ac)==null) parArgs.put(cl_ac, 1);
-		else parArgs.put(cl_ac, parArgs.get(cl_ac)+1);
-		
-		int newArgNum=part.argClustIdx_argIdxs_.get(argClustIdx).size();		
-		if (ac.argNum_cnt_.get(newArgNum)==null) ac.argNum_cnt_.put(newArgNum, 1); 
-		else ac.argNum_cnt_.put(newArgNum, ac.argNum_cnt_.get(newArgNum)+1);		
-		if (newArgNum>1) {
-			if (ac.argNum_cnt_.get(newArgNum-1)==1) ac.argNum_cnt_.remove(newArgNum-1); 
-			else ac.argNum_cnt_.put(newArgNum-1, ac.argNum_cnt_.get(newArgNum-1)-1);
-		}
-		
-		ac.partRootTreeNodeIds_.add(part.relTreeRoot_.getId());
+
 		
 		// old
 		if (oldArgClustIdx<0) return;		

@@ -16,12 +16,14 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.PennTreebankLanguagePack;
 import edu.stanford.nlp.util.CoreMap;
 
+
 public class SentenceSplitRun implements Callable<List<String>> {
 	
 	private String text;
 	private CountDownLatch sentenceSplitLatch;
 	private ITextNormalizer normalizer;
 	private StanfordCoreNLP stanfordCoreNLP;
+
 
 	public SentenceSplitRun(String text, ITextNormalizer normalizer, StanfordCoreNLP stanfordCoreNLP, 
 			CountDownLatch sentenceSplitLatch) {
@@ -51,7 +53,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		// Sent2
 		// Sent3
 		// Sent4
-		
+		// => See getSentencesStep3(sentences2)
 		
 		
 		log(LogLevel.INFO, "Replacing abbreviation back to original sentence");
@@ -63,11 +65,16 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		}
 		log(LogLevel.INFO, "Done replacing abbreviation back to original sentence");
 
+		List<String> sentences2 = new ArrayList<String>();
+		sentences2 =  getSentencesStep2(sentencesBack);
+		sentences2 =  getSentencesStep3(sentences2);
+		
+		
 		
 		sentenceSplitLatch.countDown();
 		// return sentences;
-		return sentencesBack;
-		
+		// return sentencesBack;
+		return sentences2;
 	}
 	
 	private List<String> getSentences(String text) {
@@ -82,5 +89,58 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		log(LogLevel.INFO, "done splitting text to sentences using stanford corenlp pipeline. Created " + result.size() + " sentences");
 		return result;
 	}
+	
+	
+	
+	private List<String> getSentencesStep2(List<String> sentences) {
+		log(LogLevel.INFO, "ssplit2:: split text to sentences using stanford corenlp pipeline...");
+		List<String> result = new LinkedList<String>();
+		
+		for (String sentence : sentences) {
+			Annotation annotation = new Annotation(sentence);
+			stanfordCoreNLP.annotate(annotation);
+			List<CoreMap> sentenceAnnotations = annotation
+					.get(SentencesAnnotation.class);
+			
+			System.out.println("sentence::" + sentence);
+			for (CoreMap sentenceAnnotation : sentenceAnnotations) {
+				System.out.println("Sub-sentence::" + sentenceAnnotation.toString());
+				
+				result.add(sentenceAnnotation.toString());
+			}	
+		}			
+		
+		log(LogLevel.INFO, "done ssplit2:: splitting text to sentences using stanford corenlp pipeline. Created " + result.size() + " sentences");
+		
+		return result;
+	}
+	
+	private List<String> getSentencesStep3(List<String> sentences) {
+		log(LogLevel.INFO, "ssplit3:: split text to sentences using stanford corenlp pipeline...");
+		List<String> result = new LinkedList<String>();
+		
+		for (String sentence : sentences) {
+			String[] sentenceArray = sentence.split("\\;");
+			for ( int i = 0; i < sentenceArray.length; i++ ) {
+				String subSentence = sentenceArray[i];
+				subSentence = subSentence.trim();
+				subSentence = subSentence.substring(0, 1).toUpperCase() + subSentence.substring(1);
+				
+				String lastCharInSubSentence = subSentence.substring(subSentence.length()-1, subSentence.length());
+				System.out.println("lastCharInSubSentence::" + lastCharInSubSentence);
+				
+				if ( ! lastCharInSubSentence.equals(".")) {
+					subSentence += ".";
+				}
+				
+				result.add(subSentence);
+			}	
+		}			
+		
+		log(LogLevel.INFO, "done ssplit3:: splitting text to sentences using stanford corenlp pipeline. Created " + result.size() + " sentences");
+		
+		return result;
+	}	
+	
 
 }

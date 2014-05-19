@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
+import java.io.FileInputStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +11,7 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.io.USPClusteringReader;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 
 public class USPBasedExtractor extends AbstractCharacterValueExtractor {
@@ -34,6 +36,12 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 		Set<String> returnCharacterStrings = new HashSet<String>();
 		for (USPRequest uspRequest : uspRequests) {
 			try {
+				String originalString = uspRequest.getKeyword();
+				USPClusteringReader uspClusteringReader = new USPClusteringReader();
+				uspClusteringReader.setInputStream(new FileInputStream("usp_results/usp.clustering"));
+				Set<String> uspClusteringKeywords = uspClusteringReader.getRelatedKeywords(originalString);
+				// System.out.println("uspClusteringKeywords::" + uspClusteringKeywords.toString());
+				
 				Set<String> tmpMicropieUSPExtractorResult = micropieUSPExtractor.getObjectValue(text, 
 						uspRequest.getKeyword(), uspRequest.getKeywordType(), uspRequest.getKeywordObject(), uspRequest.getExtractionType());
 				returnCharacterStrings.addAll(tmpMicropieUSPExtractorResult);
@@ -48,6 +56,25 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 					System.out.println("tmpMicropieUSPExtractorResult::" + tmpMicropieUSPExtractorResult);
 					System.out.println("\n");
 				}
+				
+				for (String uspClusteringKeyword : uspClusteringKeywords) {
+					tmpMicropieUSPExtractorResult = micropieUSPExtractor.getObjectValue(text, 
+							uspClusteringKeyword, uspRequest.getKeywordType(), uspRequest.getKeywordObject(), uspRequest.getExtractionType());
+					returnCharacterStrings.addAll(tmpMicropieUSPExtractorResult);
+					
+					if (tmpMicropieUSPExtractorResult.size() > 1) {
+						System.out.println("\n");
+						System.out.println("Text:" + text);
+						System.out.println("kwd::" + uspClusteringKeyword);
+						System.out.println("type::" + uspRequest.getKeywordType());
+						System.out.println("keywordObject::" + uspRequest.getKeywordObject());
+						System.out.println("uspRequest.getKeyword():" + uspRequest.getKeyword());
+						System.out.println("tmpMicropieUSPExtractorResult::" + tmpMicropieUSPExtractorResult);
+						System.out.println("\n");
+					}
+				}
+				
+				
 			} catch(Exception e) {
 				log(LogLevel.ERROR, "Could not get object value from USP extractor for sentence: \"" + text + "\" with " + uspRequest);
 			}

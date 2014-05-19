@@ -244,13 +244,15 @@ public class TrainTestRun implements IRun {
 			// trainingSentenceReader.readTaxonomicDescAndWriteToSingleTxt("new-inputs-filtered.txt");
 			
 			
-			/*
+			
 			// temporary use :: build the predictions for each sentence
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
 			classifier.train(trainingSentences);
 			
-			List<Sentence> testSentences = createTestSentences();			
+			List<Sentence> testSentences = createTestSentences();
+			// Reed String testFolder from Config.java
+			// private String testFolder = "new-microbe-xml-new-inputs-from-carrine";
 			
 			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
 			for (Sentence testSentence : testSentences) {
@@ -262,7 +264,7 @@ public class TrainTestRun implements IRun {
 			
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
 			classifiedSentenceWriter.write(predictions);
-			*/
+			
 			
 			// Small tool 3:: Transformer:: CSV to Excel (2007 format)
 			// trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140507.csv"));
@@ -275,12 +277,15 @@ public class TrainTestRun implements IRun {
 			// uspParse.runParse("usp", "usp_results");
 			// USP example
 			
-			// Small tool 4:: Pre-processing::Build USP inputs first
+			// Small tool 4:: Pre-processing::Build USP inputs first from C
 			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
+			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs_short_for_testing.csv"));
 			// List<Sentence> additionalUSPInputSentences = trainingSentenceReader.readAdditionalUSPInputs();
 			// createUSPInputsFromListSentence(additionalUSPInputSentences);
 			
 			
+			
+			/*
 			
 			// formal MicroPIE process
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
@@ -318,7 +323,7 @@ public class TrainTestRun implements IRun {
 			
 			// formal MicroPIE process
 			
-			
+			*/
 			
 			
 
@@ -2675,6 +2680,24 @@ public class TrainTestRun implements IRun {
 		
 		return returnString;
 	}
+	
+	private List<String> ssplit2(String text) {
+		log(LogLevel.INFO, "ssplit2:: split text to sentences using stanford corenlp pipeline...");
+		List<String> result = new LinkedList<String>();
+		
+		Annotation annotation = new Annotation(text);
+		this.tokenizeSSplit.annotate(annotation);
+		List<CoreMap> sentenceAnnotations = annotation
+				.get(SentencesAnnotation.class);
+		
+		for (CoreMap sentenceAnnotation : sentenceAnnotations) {
+			result.add(sentenceAnnotation.toString());
+		}			
+		
+		log(LogLevel.INFO, "done ssplit2:: splitting text to sentences using stanford corenlp pipeline. Created " + result.size() + " sentences");
+		
+		return result;
+	}	
 	
 	
 	public static String[] tokenize(String sentence) {
