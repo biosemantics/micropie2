@@ -1,5 +1,9 @@
 package edu.arizona.biosemantics.micropie.transform;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,6 +11,11 @@ import java.util.Properties;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 
+
+
+import opennlp.tools.sentdetect.SentenceDetectorME;
+import opennlp.tools.sentdetect.SentenceModel;
+import opennlp.tools.util.InvalidFormatException;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
@@ -15,6 +24,15 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.PennTreebankLanguagePack;
 import edu.stanford.nlp.util.CoreMap;
+import semanticMarkup.know.lib.WordNetPOSKnowledgeBase;
+import semanticMarkup.knowledge.KnowledgeBase;
+import semanticMarkup.ling.learn.Configuration;
+import semanticMarkup.ling.learn.dataholder.DataHolder;
+import semanticMarkup.ling.learn.utility.LearnerUtility;
+import semanticMarkup.ling.Token;
+import semanticMarkup.ling.transform.ITokenizer;
+import semanticMarkup.ling.transform.lib.OpenNLPSentencesTokenizer;
+import semanticMarkup.ling.transform.lib.OpenNLPTokenizer;
 
 
 public class SentenceSplitRun implements Callable<List<String>> {
@@ -23,8 +41,12 @@ public class SentenceSplitRun implements Callable<List<String>> {
 	private CountDownLatch sentenceSplitLatch;
 	private ITextNormalizer normalizer;
 	private StanfordCoreNLP stanfordCoreNLP;
+	
+
+	private LearnerUtility tester;
 
 
+	
 	public SentenceSplitRun(String text, ITextNormalizer normalizer, StanfordCoreNLP stanfordCoreNLP, 
 			CountDownLatch sentenceSplitLatch) {
 		this.text = text;
@@ -35,6 +57,26 @@ public class SentenceSplitRun implements Callable<List<String>> {
 
 	@Override
 	public List<String> call() throws Exception {
+
+		Configuration myConfiguration = new Configuration();
+		ITokenizer sentenceDetector = new OpenNLPSentencesTokenizer(
+				myConfiguration.getOpenNLPSentenceDetectorDir());
+		ITokenizer tokenizer = new OpenNLPTokenizer(myConfiguration.getOpenNLPTokenizerDir());
+		
+		System.out.println("myConfiguration.getOpenNLPSentenceDetectorDir()::" + myConfiguration.getOpenNLPSentenceDetectorDir());
+		System.out.println("myConfiguration.getWordNetDictDir()::" + myConfiguration.getWordNetDictDir());
+		String source = myConfiguration.getOpenNLPSentenceDetectorDir();
+		// openNlpSentSplitter(source);
+		
+		
+		WordNetPOSKnowledgeBase wordNetPOSKnowledgeBase = null;
+		try {
+			wordNetPOSKnowledgeBase = new WordNetPOSKnowledgeBase(myConfiguration.getWordNetDictDir(), false);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
 		log(LogLevel.INFO, "Normalize text... : " + text);
 		text = normalizer.transform(text);
 		log(LogLevel.INFO, "Done normalizing, resulting text: " + text);
@@ -65,11 +107,15 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		}
 		log(LogLevel.INFO, "Done replacing abbreviation back to original sentence");
 
-		List<String> sentences2 = new ArrayList<String>();
-		sentences2 =  getSentencesStep2(sentencesBack);
-		sentences2 =  getSentencesStep3(sentences2);
+		// List<String> sentences2 = new ArrayList<String>();
+		List<String> sentences2 = new LinkedList<String>();
 		
+		// sentences2 = getSentencesDongyeMengSegmentSent(sentencesBack, sentenceDetector, tokenizer, wordNetPOSKnowledgeBase);
 		
+		sentences2 = getSentencesSsplit(sentencesBack); // run Stanford Corenlp again
+		sentences2 = getSentencesSemicolon(sentences2); // run ";" semicolon separator
+		sentences2 = getSentencesDongyeMengSegmentSent(sentences2, sentenceDetector, tokenizer, wordNetPOSKnowledgeBase); // run CharaParser's segmentSentence
+		sentences2 = getSentencesOpennlp(sentences2, source);
 		
 		sentenceSplitLatch.countDown();
 		// return sentences;
@@ -92,7 +138,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 	
 	
 	
-	private List<String> getSentencesStep2(List<String> sentences) {
+	private List<String> getSentencesSsplit(List<String> sentences) {
 		log(LogLevel.INFO, "ssplit2:: split text to sentences using stanford corenlp pipeline...");
 		List<String> result = new LinkedList<String>();
 		
@@ -115,8 +161,8 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		return result;
 	}
 	
-	private List<String> getSentencesStep3(List<String> sentences) {
-		log(LogLevel.INFO, "ssplit3:: split text to sentences using stanford corenlp pipeline...");
+	private List<String> getSentencesSemicolon(List<String> sentences) {
+		log(LogLevel.INFO, "ssplit3:: split text to sentences using semicolon separator...");
 		List<String> result = new LinkedList<String>();
 		
 		for (String sentence : sentences) {
@@ -127,7 +173,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 				subSentence = subSentence.substring(0, 1).toUpperCase() + subSentence.substring(1);
 				
 				String lastCharInSubSentence = subSentence.substring(subSentence.length()-1, subSentence.length());
-				System.out.println("lastCharInSubSentence::" + lastCharInSubSentence);
+				// System.out.println("lastCharInSubSentence::" + lastCharInSubSentence);
 				
 				if ( ! lastCharInSubSentence.equals(".")) {
 					subSentence += ".";
@@ -137,10 +183,110 @@ public class SentenceSplitRun implements Callable<List<String>> {
 			}	
 		}			
 		
-		log(LogLevel.INFO, "done ssplit3:: splitting text to sentences using stanford corenlp pipeline. Created " + result.size() + " sentences");
+		log(LogLevel.INFO, "done ssplit3:: splitting text to sentences using semicolon separator. Created " + result.size() + " sentences");
 		
 		return result;
 	}	
+	
+	
+	
+	private List<String> getSentencesDongyeMengSegmentSent(List<String> sentences,
+			ITokenizer sentenceDetector,
+			ITokenizer tokenizer,
+			WordNetPOSKnowledgeBase wordNetPOSKnowledgeBase) {
+		log(LogLevel.INFO, "ssplit3:: split text to sentences using Dongye Meng's segmentSentence function...");
+		
+		System.out.println("Go to getSentencesStep4()");
+		List<String> result = new LinkedList<String>();		
+
+
+		for (String sentence : sentences) {
+			System.out.println("sentence::" + sentence);
+			
+			List<Token> tokenList = new ArrayList<Token>();
+			// this.tester = new LearnerUtility(sentenceDetector, tokenizer, wordNetPOSKnowledgeBase);
+			//tokenList = this.tester.segmentSentence(sentence);
+			tester = new LearnerUtility(sentenceDetector, tokenizer, wordNetPOSKnowledgeBase);
+			tokenList = tester.segmentSentence(sentence);
+			
+			for ( int i = 0; i < tokenList.size(); i++ ) {
+				String subSent = tokenList.get(i).getContent();
+				System.out.println("segmentSentence()::" + subSent);
+				result.add(subSent);
+			}			
+		}
+		log(LogLevel.INFO, "done ssplit3:: splitting text to sentences using Dongye Meng's segmentSentence function. Created " + result.size() + " sentences");
+		return result;
+	}
+	
+	private List<String> getSentencesOpennlp(List<String> sentences, String opennlpSentDetectorSource) throws FileNotFoundException {
+		log(LogLevel.INFO, "ssplit3:: split text to sentences using Opennlp sentence detector...");
+
+		List<String> result = new LinkedList<String>();		
+
+		InputStream modelIn = new FileInputStream(opennlpSentDetectorSource);
+		try {
+			
+			SentenceModel model = new SentenceModel(modelIn);
+			SentenceDetectorME sdetector = new SentenceDetectorME(model);
+			for (String sentence : sentences) {
+				String subSentences[] = sdetector.sentDetect(sentence);
+				for ( int i = 0; i < subSentences.length; i++ ) {
+					String subSent = subSentences[i];
+					System.out.println("subSent::" + subSent);
+					result.add(subSent);
+				}
+			}
+			modelIn.close();		  
+		}
+		catch (IOException e) {
+		  e.printStackTrace();
+		}
+		finally {
+		  if (modelIn != null) {
+		    try {
+		      modelIn.close();
+		    }
+		    catch (IOException e) {
+		    }
+		  }
+		}
+		log(LogLevel.INFO, "done ssplit3:: splitting text to sentences using Opennlp sentence detector. Created " + result.size() + " sentences");
+		return result;
+	}
+	
+
+	private void openNlpSentSplitter(String source) throws InvalidFormatException, IOException {
+		// This is just for testing
+		String paragraph = "Hi. How are you? This is Mike. This is Elvis A. A cat in the hat. The type strain is KOPRI 21160T (= KCTC 23670T= JCM 18092T), isolated from a soil sample collected near the King Sejong Station on King George Island, Antarctica. The DNA G+ C content of the type strain is 30.0 mol%.";
+
+		InputStream modelIn = new FileInputStream(source);
+
+		try {
+		    // SentenceModel model = new SentenceModel(modelIn);
+			// InputStream is = new FileInputStream(myConfiguration.getOpenNLPTokenizerDir());
+			
+			SentenceModel model = new SentenceModel(modelIn);
+			SentenceDetectorME sdetector = new SentenceDetectorME(model);
+			String sentences[] = sdetector.sentDetect(paragraph);
+			for ( int i = 0; i < sentences.length; i++ ) {
+				System.out.println(sentences[i]);
+			}
+			modelIn.close();		  
+		}
+		catch (IOException e) {
+		  e.printStackTrace();
+		}
+		finally {
+		  if (modelIn != null) {
+		    try {
+		      modelIn.close();
+		    }
+		    catch (IOException e) {
+		    }
+		  }
+		}
+	}
 	
 
 }

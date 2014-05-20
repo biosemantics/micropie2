@@ -28,7 +28,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 	public Set<String> getCharacterValue(String text) {
 		// TODO Auto-generated constructor stub
 		Set<String> output = new HashSet<String>(); // Output,
-																	// format::List<String>
+		// format::List<String>
 
 		// input: the original sentnece
 		// output: String array?
