@@ -91,8 +91,28 @@ public class CSVSentenceReader implements ISentenceReader {
 		return result;
 	}
 	
-	
+	// readSentenceList
+	public List<Sentence> readSentenceList() throws IOException {
+		log(LogLevel.INFO, "Reading source sentences...");
+		List<Sentence> result = new LinkedList<Sentence>();
+		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
+	    List<String[]> lines = reader.readAll();
+		for(String[] line : lines) {
+			// System.out.println("line[0]::" + line[0]);
+			// System.out.println("line[1]::" + line[1]);
+			if (line[0].equals("")) {
+				line[0] = "0";
+			}
+			result.add(new Sentence(line[1], Label.getEnum(line[0])));
 
+		}
+		reader.close();
+		log(LogLevel.INFO, "Done reading source sentences...");
+		return result;
+	}
+	
+	
+	
 	public void readTaxonomicDescAndWriteToSingleTxt(String outputFileName) throws IOException {
 		log(LogLevel.INFO, "Reading txonomic descriptions...");
 		
