@@ -1,5 +1,7 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,9 +13,71 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 
 public class GcExtractor extends AbstractCharacterValueExtractor {
 
+	private String patternStringGc = "(" + 
+										"\\s?Guanosine plus cytosine|guanine-plus-cytosine\\s?|" +
+										"\\s?G\\s?\\+\\s?C\\s?|" + 
+										"\\s?\\(G\\s?\\+\\s?C\\s?|" + 
+										// "\\s?\\(G+C\\s?|" + 
+										// "\\s?G\\s*\\+\\s*C|" + 
+										// "\\s+G\\s*\\+\\s*C\\s+|" + 
+										// "\\s+g\\s*\\+\\s*c\\s+|" + 
+										// "\\s+GC\\s+|" + 
+										// "\\s+gc\\s+|" + 
+										// "%GC|" + 
+										// "%G+C" +
+										"\\s?GC\\s?" +
+										")";
+
+	private String targetPatternString = "(" +
+			
+			"\\d+\\.\\d+±\\s?\\d+\\.\\d+|" + 
+			"\\d+±\\s?\\d+\\.\\d+|" + 
+			"\\d+\\.\\d+±\\s?\\d+|" + 
+			"\\d+±\\s?\\d+|" + 
+			
+			"\\d+\\.\\d+\\s?-\\s?\\d+\\.\\d+\\s?|" +
+			"\\d+\\s?-\\s?\\d+\\.\\d+\\s?|" +
+			"\\d+\\.\\d+\\s?-\\s?\\d+\\s?|" +
+			"\\d+\\s?-\\s?\\d+\\s?|" +
+			
+			"\\d+\\.\\d+\\s?–\\s?\\d+\\.\\d+\\s?|" +
+			"\\d+\\s?–\\s?\\d+\\.\\d+\\s?|" +
+			"\\d+\\.\\d+\\s?–\\s?\\d+\\s?|" +
+			"\\d+\\s?–\\s?\\d+\\s?|" +
+			
+			"\\d+\\.\\d+\\s?and\\s?\\d+\\.\\d+\\s?|" +
+			"\\d+\\s?and\\s?\\d+\\.\\d+\\s?|" +
+			"\\d+\\.\\d+\\s?and\\s?\\d+\\s?|" +
+			"\\d+\\s?and\\s?\\d+\\s?|" +
+			
+			"\\d+\\.\\d+\\s?\\d+\\.\\d+|" +
+			"\\d+\\s?\\d+\\.\\d+|" +
+			"\\d+\\.\\d+\\s?\\d+|" +
+			"\\d+\\s?\\d+|" +
+			
+			"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
+			"between\\s\\d+\\.\\d+\\sand\\s\\d+|" +
+			"between\\s\\d+\\sand\\s\\d+\\.\\d+|" +
+			"between\\s\\d+\\sand\\s\\d+|" +
+			
+			"\\d+\\.\\d+|" +
+			"\\d+|" +
+			"\\d+\\s?" + 
+			")";
+	
+	public String getPatternStringGc() {
+		return patternStringGc;
+	}
+	
+	// private String patternStringGc = "\\s+G\\+C\\s+";
+	// private String patternStringGc = "G\\s*\\+\\s*C";
+	
 	public GcExtractor(ILabel label) {
 		super(label, "%G+C");
 	}
@@ -27,6 +91,8 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 	@Override
 	public Set<String> getCharacterValue(String text) {
 		// TODO Auto-generated constructor stub
+		
+		
 		Set<String> output = new HashSet<String>(); // Output,
 		// format::List<String>
 
@@ -36,123 +102,96 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		// log(LogLevel.INFO, "Original Sent : " + sent);
 		text = text.substring(0, text.length() - 1); // remove the period at the
 														// last position
-
+		
+		text = text.toLowerCase();
+		patternStringGc = patternStringGc.toLowerCase();
 		// String[] sentArray = sent.split(" ");
 		// log(LogLevel.INFO, "sentArray.length :" + sentArray.length );
 
 		// \s\d*\.\d*\s
-		String patternStringGc = "Guanosine plus cytosine|guanine-plus-cytosine|\\sG\\s\\+\\sC\\s|\\(G+C\\s|G\\s*\\+\\s*C|\\s+G\\s*\\+\\s*C\\s+|\\s+g\\s*\\+\\s*c\\s+|\\s+GC\\s+|\\s+gc\\s+|%GC|%G+C";
 
-		// String patternStringGc = "\\s+G\\+C\\s+";
-		// String patternStringGc = "G\\s*\\+\\s*C";
-
-		Pattern patternGc = Pattern.compile(patternStringGc);
+		// Case 1:: The G+C contenc of DNA is 22.3 mol% (mol %).
+		Pattern patternGc = Pattern.compile(patternStringGc + "(.*)(\\s)" + targetPatternString + "(\\s?\\s*mol\\s*\\%\\s*)");
 		Matcher matcherGc = patternGc.matcher(text);
 
-		List<String> gcStringList = new ArrayList<String>();
-		List<Integer> gcPositionList = new ArrayList<Integer>();
 		while (matcherGc.find()) {
-			String matchWord = matcherGc.group();
-			// log(LogLevel.INFO, "matchWord :: " + matchWord);
+			// System.out.println("Whloe Sent::" + matcherGc.group());
+			// System.out.println("Part 1::" + matcherGc.group(1));
+			// System.out.println("Part 2::" + matcherGc.group(2));
+			// System.out.println("Part 3::" + matcherGc.group(3));
+			// System.out.println("Part 4::" + matcherGc.group(4));
+			// System.out.println("Part 5::" + matcherGc.group(5));
+			String targetPattern = matcherGc.group(4);
+			output.add(targetPattern);
+		}
+		
+		
+		// Case 2: 
+		Pattern patternGc2 = Pattern.compile("(.*)(\\s?\\s*mol\\s*\\%\\s*)(.*)" + patternStringGc + "(\\s?.*\\s?)" + targetPatternString + "(.*)");
+		Matcher matcherGc2 = patternGc2.matcher(text);
 
-			text = text.replace(matchWord, " G+C ");
-			// log(LogLevel.INFO, "sent :: " + sent);
-
-			String[] sentArray = text.split(" ");
-			for (int i = 0; i < sentArray.length; i++) {
-				if (sentArray[i].equals("G+C")) {
-					// if (sentArray[i].equals(matchWord.trim())) {
-					boolean isIncluded = false;
-					for (Integer itemInGcPositionList : gcPositionList) {
-						if (itemInGcPositionList == i) {
-							isIncluded = true;
-						}
-					}
-					if (isIncluded == false) {
-						// log(LogLevel.INFO, "Pos :" + i );
-						gcPositionList.add(i);
-						gcStringList.add(matchWord.trim());
-					}
-				}
-			}
+		while (matcherGc2.find()) {
+			// System.out.println("Case 2::");
+			// System.out.println("Whloe Sent::" + matcherGc2.group());
+			// System.out.println("Part 1::" + matcherGc2.group(1));
+			// System.out.println("Part 2::" + matcherGc2.group(2));
+			// System.out.println("Part 3::" + matcherGc2.group(3));
+			// System.out.println("Part 4::" + matcherGc2.group(4));
+			// System.out.println("Part 5::" + matcherGc2.group(5));
+			// System.out.println("Part 6::" + matcherGc2.group(6));
+			// System.out.println("Part 7::" + matcherGc2.group(7));
+			String targetPattern = matcherGc2.group(6);
+			output.add(targetPattern);
 		}
 
-		String[] sentArray = text.split(" ");
-		for (int i = 0; i < gcPositionList.size(); i++) {
-			int itemInGcPositionList = gcPositionList.get(i);
-			// log(LogLevel.INFO, (matcherGc.group() + "\n");
-			String subSent = "";
-			int subSentStartFlag = itemInGcPositionList - 15;
-			if (subSentStartFlag <= 0) {
-				subSentStartFlag = 0;
-			}
-			int subSentEndFlag = itemInGcPositionList + 15;
-			if (subSentEndFlag >= sentArray.length) {
-				subSentEndFlag = sentArray.length;
-			}
-
-			for (int j = subSentStartFlag; j < subSentEndFlag; j++) {
-				subSent += " " + sentArray[j];
-			}
-
-			// log(LogLevel.INFO, "subSent : " + subSent);
-
-			String patternStringMolPercent = "\\s*MOL\\s*%\\s*|\\s*mol\\s*%\\s*|\\s?Mol\\s?%\\s?";
-			Pattern patternMolPercent = Pattern
-					.compile(patternStringMolPercent);
-			Matcher matcherMolPercent = patternMolPercent.matcher(subSent);
-
-			// \s\d*\.\d*\s
-			String patternString = "(" + "\\s\\d+$|" + "\\s\\d+\\s|"
-					+ "\\s\\d+\\.\\d*$|" + "\\s\\d+\\.\\d+\\s|" +
-
-					"\\s\\d+\\.\\d+\\+\\/\\-\\d+\\.\\d+\\s|"
-					+ "\\s\\d+\\+\\/\\-\\d+\\.\\d+\\s|"
-					+ "\\s\\d+\\.\\d+\\+\\/\\-\\d+\\s|"
-					+ "\\s\\d+\\+\\/\\-\\d+\\s|" +
-
-					"\\s\\d+\\.\\d+\\-\\d+\\.\\d+\\s|"
-					+ "\\s\\d+\\-\\d+\\.\\d+\\s|" + "\\s\\d+\\.\\d+\\-\\d+\\s|"
-					+ "\\s\\d+\\-\\d+\\s|" +
-
-					"\\s\\d+\\.\\d+\\–\\d+\\.\\d+\\s|"
-					+ "\\s\\d+\\–\\d+\\.\\d+\\s|" + "\\s\\d+\\.\\d+\\–\\d+\\s|"
-					+ "\\s\\d+\\–\\d+\\s" +
-
-					")";
-			// "\\s\\d*\\.*\\-\\s*\\d*\\.*\\d*\\.|" +
-			// "\\s\\d*\\.\\d*\\-\\s*\\d*\\.\\d*\\s|" +
-			// "\\s\\d*\\.*\\d*\\s\\+\\/\\-\\s\\d*\\s|" +
-			// "\\s\\d*\\s|" +
-			// "\\s\\d*\\.\\d*\\s|" +
-			// "\\s\\d*\\-\\s*\\d*\\s|" +
-			// "\\s\\d*\\.*\\d*\\.)";
-
-			// patternString =
-			// "(.*)(\\s\\d*\\s\\+\\/\\-\\s\\d*\\s|\\s\\d*\\s|\\s\\d*\\.\\d*\\s|\\s\\d*\\-\\s*\\d*\\s)(.*)";
-
-			Pattern pattern = Pattern.compile(patternString);
-			Matcher matcher = pattern.matcher(subSent);
-
-			while (matcherMolPercent.find() && matcher.find()) {
-				// log(LogLevel.INFO, (gcStringList.get(i) + "\n");
-				// log(LogLevel.INFO, (matcherMolPercent.group() + "\n");
-				// log(LogLevel.INFO, (matcher.group() + "\n");
-
-				boolean isIncluded = false;
-				for (String itemInOutputContentList : output) {
-					if (itemInOutputContentList.equals(matcher.group().trim())) {
-						isIncluded = true;
-						// log(LogLevel.INFO, ("Has this :: " +
-						// itemInGcContentList);
-					}
-				}
-				if (isIncluded == false) {
-					output.add(matcher.group().trim());
-				}
-			}
-		}
+		// Case 3::
+		// Cannot handle this kind of example: 30.6 mol%
+		// 30.6 mol% GC
+		
 
 		return output;
 	}
+	
+	// Example: 
+	public static void main(String[] args) throws IOException {		
+		System.out.println("Start::");
+		
+		GcExtractor gcExtractor = new GcExtractor(Label.c1);	
+		String patternStringGc = gcExtractor.getPatternStringGc();
+		
+		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
+		// Read sentence list
+		// 
+		sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
+		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
+		
+		int sampleSentCounter = 0;
+		int extractedValueCounter = 0;
+		
+		for (Sentence sourceSentence : sourceSentenceList) {
+			String sourceSentText = sourceSentence.getText();
+			sourceSentText = sourceSentText.toLowerCase();
+			patternStringGc = patternStringGc.toLowerCase();
+			
+			if ( sourceSentText.matches("(.*)" + patternStringGc + "(.*)")) {
+				System.out.println("\n");
+				System.out.println("sourceSentText::" + sourceSentText);
+				Set<String> gcResult = gcExtractor.getCharacterValue(sourceSentText);
+				System.out.println("gcResult::" + gcResult.toString());
+				if ( gcResult.size() > 0 ) {
+					extractedValueCounter +=1;
+				}
+				sampleSentCounter +=1;
+			}
+		
+		}
+
+		System.out.println("\n");
+		System.out.println("sampleSentCounter::" + sampleSentCounter);
+		System.out.println("extractedValueCounter::" + extractedValueCounter);
+		
+		
+	}	
+	
 }
