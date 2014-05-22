@@ -35,7 +35,9 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 	
 	@Override
 	public Set<String> getCharacterValue(String text) {
+
 		text = text.replaceAll("\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?", " celsius_degree ");
+		text = text.toLowerCase();
 		System.out.println("Modified sent::" + text);
 		
 		// input: the original sentnece
@@ -43,18 +45,18 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 		
 		int caseNumber = 0;
-		if ( text.toLowerCase().contains("temperature range")) {
+		if ( text.contains("temperature range")) {
 			caseNumber = 1;
-		} else if ( text.toLowerCase().contains("growth") || 
-				text.toLowerCase().contains("grows")
+		} else if ( text.contains("growth") || 
+				text.contains("grows")
 				) {
-		// } else if ( text.toLowerCase().contains("growth occurs") || 
-		//			text.toLowerCase().contains("grows well") ||
-		//			text.toLowerCase().contains("grows at") ||
-		//			text.toLowerCase().contains("grows at temperatures")
+		// } else if ( text.contains("growth occurs") || 
+		//			text.contains("grows well") ||
+		//			text.contains("grows at") ||
+		//			text.contains("grows at temperatures")
 		//			) {
-			// if ( ! (text.toLowerCase().contains("optimal") || text.toLowerCase().contains("optimum")) ) {
-				System.out.println("case 2");
+			// if ( ! (text.contains("optimal") || text.contains("optimum")) ) {
+				// System.out.println("case 2");
 				caseNumber = 2;
 			// }
 		}
@@ -64,106 +66,20 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 				String patternString = "(.*)(\\s?temperature range\\s?)(.*)";
 				
 				Pattern pattern = Pattern.compile(patternString);
-				Matcher matcher = pattern.matcher(text.toLowerCase());
+				Matcher matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
 					// System.out.println("Whloe Sent::" + matcher.group());
 					// System.out.println("Part 1::" + matcher.group(1));
 					// System.out.println("Part 2::" + matcher.group(2));
 					// System.out.println("temperature range::" + matcher.group(3));
-					String part3 = matcher.group(3);
-					String patternStringRange = "(" + 
-							"\\d+\\.\\d+\\sto\\s\\d+\\.\\d+|" +
-							"\\d+\\.\\d+\\sto\\s\\d+|" +
-							"\\d+\\sto\\s\\d+\\.\\d+|" +
-							"\\d+\\sto\\s\\d+|" +
-
-							"\\d+\\.\\d+-\\d+\\.\\d+|" +
-							"\\d+\\.\\d+-\\d+|" +
-							"\\d+-\\d+\\.\\d+|" +
-							"\\d+-\\d+|" +
-							
-							"\\d+\\.\\d+–\\d+\\.\\d+|" +
-							"\\d+\\.\\d+–\\d+|" +
-							"\\d+–\\d+\\.\\d+|" +						
-							"\\d+–\\d+|" +
-
-							"at least\\s\\d+\\.\\d+|" +
-							"at least\\d+–\\d+|" +
-							
-							"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
-							"between\\s\\d+\\.\\d+\\sand\\s\\d+|" +
-							"between\\s\\d+\\sand\\s\\d+\\.\\d+|" +
-							"between\\s\\d+\\sand\\s\\d+" +
-
-							")";
-					// patternString =
-					// "(.*)(\\s\\d*\\s\\+\\/\\-\\s\\d*\\s|\\s\\d*\\s|\\s\\d*\\.\\d*\\s|\\s\\d*\\-\\s*\\d*\\s)(.*)";
-
-					Pattern patternRange = Pattern.compile(patternStringRange);
-					Matcher matcherRange = patternRange.matcher(part3);			
+					String targetPattern = matcher.group(3);
 					
-					List<String> matchStringList = new ArrayList<String>();
-					int matchCounter = 0;
-					while (matcherRange.find()) {
-						matchStringList.add(matcherRange.group().trim());
-						matchCounter++;
+					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern);
+					String growTempMax = rangePatternExtractor.getRangePatternMax();
+					if ( ! growTempMax.equals("") ) {
+						output.add(growTempMax);
 					}
-					
-					// if (matchCounter > 1 ) {
-					//	// System.out.println(" ::" + matcherRange.group());
-					//	outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-					// }else {
-					//	outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-					// }
-					
-					// outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-					String growTempMin = "0";
-					String growTempMax = "0";			
-					if (matchStringList.size() > 0) {
-						String rangeString = matchStringList.get(0).toString();
-						if (rangeString.contains("to")){
-							String[] rangeStringArray = rangeString.split("to");
-							if (rangeStringArray.length > 1) {
-								growTempMin = rangeStringArray[0].trim();
-								growTempMax = rangeStringArray[1].trim();
-							}		
-						}
-						if (rangeString.contains("-")){
-							String[] rangeStringArray = rangeString.split("-");
-							if (rangeStringArray.length > 1) {
-								growTempMin = rangeStringArray[0].trim();
-								growTempMax = rangeStringArray[1].trim();
-							}		
-						}
-						if (rangeString.contains("–")){
-							String[] rangeStringArray = rangeString.split("–");
-							if (rangeStringArray.length > 1) {
-								growTempMin = rangeStringArray[0].trim();
-								growTempMax = rangeStringArray[1].trim();
-							}		
-						}			
-						if (rangeString.contains("and")){
-							String[] rangeStringArray = rangeString.split("and");
-							if (rangeStringArray.length > 1) {
-								growTempMin = rangeStringArray[0].replace("between", "");
-								growTempMin = growTempMin.trim();
-								growTempMax = rangeStringArray[1].trim();
-							}		
-						}
-						if (rangeString.contains("at least")){
-							String[] rangeStringArray = rangeString.split("at least");
-							if (rangeStringArray.length > 1) {
-								growTempMin = rangeStringArray[1].trim();
-								growTempMax = "-";
-							}		
-						}
-					}
-
-					// output.add("temperature range " + matchStringList.get(0).toString());
-					// output.add("growTempMin " + growTempMin);
-					// output.add("growTempMax " + growTempMax);
-					output.add(growTempMax);
 				}
 				break;
 			case 2:
@@ -183,7 +99,7 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 				//		+ ")(.*)";
 				
 				pattern = Pattern.compile(patternString);
-				matcher = pattern.matcher(text.toLowerCase());
+				matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
 					// System.out.println("Whloe Sent::" + matcher.group());
@@ -191,142 +107,49 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 					// System.out.println("Part 2::" + matcher.group(2));
 					// System.out.println("Part 3::" + matcher.group(3));
 					
-					String part3 = matcher.group(3);
+					String targetPattern = matcher.group(3);
+					System.out.println("targetPattern::" + targetPattern);
 					
-					int firsrCelsiusIdx = part3.indexOf("celsius_degree");
+					int firsrCelsiusIdx = targetPattern.indexOf("celsius_degree");
 					if (firsrCelsiusIdx > -1) {
-						// System.out.println("firsrCelsiusIdx:" + part3.indexOf("celsius_degree"));
-
-						String part3_sub = part3.substring(0, part3.indexOf("celsius_degree"));
-						System.out.println("part3_sub::" + part3_sub);
+						// System.out.println("firsrCelsiusIdx:" + firsrCelsiusIdx);
+						String targetPattern_sub = targetPattern.substring(0, firsrCelsiusIdx);
+						// System.out.println("targetPattern_sub::" + targetPattern_sub);
 						
-						int lastAtIdx = part3_sub.lastIndexOf("at");
+						RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern);
+						String growTempMax = rangePatternExtractor.getRangePatternMax();
+						
+						if ( ! growTempMax.equals("") ) {
+							output.add(growTempMax);
+						}						
+						/*
+						int lastAtIdx = targetPattern_sub.lastIndexOf("at");
 						if (lastAtIdx > -1) {
-							String part3_sub2 = part3_sub.substring(lastAtIdx, part3_sub.length());
-							System.out.println("part3_sub2::" + part3_sub2);
+							String targetPattern_sub2 = targetPattern_sub.substring(lastAtIdx, targetPattern_sub.length());
+							System.out.println("targetPattern_sub2::" + targetPattern_sub2);
 							
-							String patternStringRange = "(" + 
-									"\\d+\\.\\d+\\sto\\s\\d+\\.\\d+|" +
-									"\\d+\\.\\d+\\sto\\s\\d+|" +
-									"\\d+\\sto\\s\\d+\\.\\d+|" +
-									"\\d+\\sto\\s\\d+|" +
-
-									"\\d+\\.\\d+-\\d+\\.\\d+|" +
-									"\\d+\\.\\d+-\\d+|" +
-									"\\d+-\\d+\\.\\d+|" +
-									"\\d+-\\d+|" +
-									
-									"\\d+\\.\\d+–\\d+\\.\\d+|" +
-									"\\d+\\.\\d+–\\d+|" +
-									"\\d+–\\d+\\.\\d+|" +						
-									"\\d+–\\d+|" +
-
-									"at least\\s\\d+\\.\\d+|" +
-									"at least\\d+–\\d+|" +
-									
-									"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
-									"between\\s\\d+\\.\\d+\\sand\\s\\d+|" +
-									"between\\s\\d+\\sand\\s\\d+\\.\\d+|" +
-									"between\\s\\d+\\sand\\s\\d+|" +
-
-									"\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
-									"\\s\\d+\\.\\d+\\sand\\s\\d+|" +
-									"\\s\\d+\\sand\\s\\d+\\.\\d+|" +
-									"\\s\\d+\\sand\\s\\d+" +
-									")";
-							// patternString =
-							// "(.*)(\\s\\d*\\s\\+\\/\\-\\s\\d*\\s|\\s\\d*\\s|\\s\\d*\\.\\d*\\s|\\s\\d*\\-\\s*\\d*\\s)(.*)";
-
-							Pattern patternRange = Pattern.compile(patternStringRange);
-							Matcher matcherRange = patternRange.matcher(part3_sub2);			
-							
-							List<String> matchStringList = new ArrayList<String>();
-							int matchCounter = 0;
-							while (matcherRange.find()) {
-								matchStringList.add(matcherRange.group().trim());
-								matchCounter++;
-							}
-							
-							// if (matchCounter > 1 ) {
-							//	// System.out.println(" ::" + matcherRange.group());
-							//	outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-							// }else {
-							//	outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-							// }
-							
-							// outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-							String growTempMin = "0";
-							String growTempMax = "0";			
-							if (matchStringList.size() > 0) {
-								String rangeString = matchStringList.get(0).toString();
-								if (rangeString.contains("to")){
-									String[] rangeStringArray = rangeString.split("to");
-									if (rangeStringArray.length > 1) {
-										growTempMin = rangeStringArray[0].trim();
-										growTempMax = rangeStringArray[1].trim();
-									}		
-								}
-								if (rangeString.contains("-")){
-									String[] rangeStringArray = rangeString.split("-");
-									if (rangeStringArray.length > 1) {
-										growTempMin = rangeStringArray[0].trim();
-										growTempMax = rangeStringArray[1].trim();
-									}		
-								}
-								if (rangeString.contains("–")){
-									String[] rangeStringArray = rangeString.split("–");
-									if (rangeStringArray.length > 1) {
-										growTempMin = rangeStringArray[0].trim();
-										growTempMax = rangeStringArray[1].trim();
-									}		
-								}			
-								if (rangeString.contains("and")){
-									String[] rangeStringArray = rangeString.split("and");
-									if (rangeStringArray.length > 1) {
-										growTempMin = rangeStringArray[0].replace("between", "");
-										growTempMin = growTempMin.trim();
-										growTempMax = rangeStringArray[1].trim();
-									}		
-								}
-								if (rangeString.contains("at least")){
-									String[] rangeStringArray = rangeString.split("at least");
-									if (rangeStringArray.length > 1) {
-										growTempMin = rangeStringArray[1].trim();
-										growTempMax = "-";
-									}		
-								}
-							
-							}
-
-							// output.add("temperature range " + matchStringList.get(0).toString());
-							// output.add("growTempMin " + growTempMin);
-							// output.add("growTempMax " + growTempMax);
-							output.add(growTempMax);							
-							
-							
+							String growTempMax = rangePatternExtractor.getRangePatternMax(targetPattern_sub2);
+							if ( ! growTempMax.equals("") ) {
+								output.add(growTempMax);
+							}								
 						}
-						
+						*/		
 					}					
-
 				}
 				break;
 			default:
 				System.out.println("");
 				
-		}		
-		
-		
-
-		
-		
-		
+		}
 		return output;
 	}
 	
 	
-	// Growth occurs at 20–50 ˚C, with optimum growth at 37–45 ˚C.
+	// Example: Growth occurs at 20–50 ˚C, with optimum growth at 37–45 ˚C.
 	public static void main(String[] args) throws IOException {
-		GrowthTempMaxExtractor growthTempMaxExtractor = new GrowthTempMaxExtractor(Label.c3);	
+		System.out.println("Start::");
+		
+		GrowthTempMaxExtractor growthTempMaxExtractor = new GrowthTempMaxExtractor(Label.c3);
 		
 		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
 		// Read sentence list
@@ -335,8 +158,8 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
 		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
 		
-		int matchCounter = 0;
-		int matchCounter2 = 0;
+		int sampleSentCounter = 0;
+		int extractedValueCounter = 0;
 		
 		for (Sentence sourceSentence : sourceSentenceList) {
 			String sourceSentText = sourceSentence.getText();
@@ -346,23 +169,20 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 			//if (sourceSentText.contains("˚C") || sourceSentText.contains("temperature") || sourceSentText.contains("pH") || sourceSentText.contains("NaCl")) {
 				System.out.println("\n");
 				System.out.println("sourceSentText::" + sourceSentText);
-				Set<String> testingReult = growthTempMaxExtractor.getCharacterValue(sourceSentText);
-				System.out.println("testingReult::" + testingReult.toString());
-				if ( testingReult.size() > 0 ) {
-					matchCounter2 +=1;
+				Set<String> growTempMaxResult = growthTempMaxExtractor.getCharacterValue(sourceSentText);
+				System.out.println("growTempMaxResult::" + growTempMaxResult.toString());
+				if ( growTempMaxResult.size() > 0 ) {
+					extractedValueCounter +=1;
 				}
-				matchCounter +=1;
+				sampleSentCounter +=1;
 			}
-					
 		
 		}
 
-		System.out.println("matchCounter::" + matchCounter);
-		System.out.println("matchCounter2::" + matchCounter2);
-
-		
-		
-		
+		System.out.println("\n");
+		System.out.println("sampleSentCounter::" + sampleSentCounter);
+		System.out.println("extractedValueCounter::" + extractedValueCounter);
+	
 	}
 	
 	
