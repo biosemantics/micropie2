@@ -20,9 +20,9 @@ import edu.arizona.biosemantics.micropie.model.Sentence;
 public class GcExtractor extends AbstractCharacterValueExtractor {
 
 	private String patternStringGc = "(" + 
-										"\\s?Guanosine plus cytosine|guanine-plus-cytosine\\s?|" +
-										"\\s?G\\s?\\+\\s?C\\s?|" + 
-										"\\s?\\(G\\s?\\+\\s?C\\s?|" + 
+										"\\bGuanosine plus cytosine|guanine-plus-cytosine\\b|" +
+										"\\bG\\s?\\+\\s?C\\b|" + 
+										"\\b\\(G\\s?\\+\\s?C\\b|" + 
 										// "\\s?\\(G+C\\s?|" + 
 										// "\\s?G\\s*\\+\\s*C|" + 
 										// "\\s+G\\s*\\+\\s*C\\s+|" + 
@@ -31,9 +31,13 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 										// "\\s+gc\\s+|" + 
 										// "%GC|" + 
 										// "%G+C" +
-										"\\s?GC\\s?" +
+										"\\bGC\\b" +
 										")";
 
+	private String myNumberPattern = "(\\d+(\\.\\d+)?)" +
+									"";
+	
+	/*
 	private String targetPatternString = "(" +
 			
 			"\\d+\\.\\d+±\\s?\\d+\\.\\d+|" + 
@@ -70,6 +74,19 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 			"\\d+|" +
 			"\\d+\\s?" + 
 			")";
+	*/
+	private String targetPatternString = "(" +
+			"(between\\s?|from\\s?)*" +
+			myNumberPattern + "(\\s)*(\\()*(±|-|–|and|to|)*(\\s)*" + myNumberPattern + "(\\))*" + 
+			")";
+
+	public String getTargetPatternString() {
+		return targetPatternString;
+	}
+	
+	public String getMyNumberPattern() {
+		return myNumberPattern;
+	}	
 	
 	public String getPatternStringGc() {
 		return patternStringGc;
@@ -110,54 +127,184 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 
 		// \s\d*\.\d*\s
 
+
 		// Case 1:: The G+C contenc of DNA is 22.3 mol% (mol %).
-		Pattern patternGc = Pattern.compile(patternStringGc + "(.*)(\\s)" + targetPatternString + "(\\s?\\s*mol\\s*\\%\\s*)");
+		//Pattern patternGc = Pattern.compile(patternStringGc + "(.*)" + "(\\s*mol\\s*\\%\\s*|\\s*\\%\\s*|\\s*mol\\s*)");
+		Pattern patternGc = Pattern.compile(patternStringGc + "(.*)" + "(\\s*mol\\s*\\%\\s*)");
 		Matcher matcherGc = patternGc.matcher(text);
 
 		while (matcherGc.find()) {
+			System.out.println("Case 1::");
 			// System.out.println("Whloe Sent::" + matcherGc.group());
 			// System.out.println("Part 1::" + matcherGc.group(1));
 			// System.out.println("Part 2::" + matcherGc.group(2));
 			// System.out.println("Part 3::" + matcherGc.group(3));
-			// System.out.println("Part 4::" + matcherGc.group(4));
-			// System.out.println("Part 5::" + matcherGc.group(5));
-			String targetPattern = matcherGc.group(4);
-			output.add(targetPattern);
+			String matchPartString = matcherGc.group(2);
+			
+			if ( ! matchPartString.equals("") ) {
+				// adding sliding window? window size minus 5?
+				//
+				//
+				Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
+				Matcher matcher2 = pattern2.matcher(matchPartString);
+				while (matcher2.find()) {
+					String matchPartString2 = matcher2.group(1);
+					output.add(matchPartString2);
+				}
+			}
 		}
 		
 		
-		// Case 2: 
-		Pattern patternGc2 = Pattern.compile("(.*)(\\s?\\s*mol\\s*\\%\\s*)(.*)" + patternStringGc + "(\\s?.*\\s?)" + targetPatternString + "(.*)");
+		// Case 2: The mol% g+c of dna is 55–57.
+		// Pattern patternGc2 = Pattern.compile("(.*)(\\s?\\s*mol\\s*\\%\\s*)(.*(?<!between))" + patternStringGc + "(\\s?.*\\s?)" + targetPatternString + "(.*)");
+		Pattern patternGc2 = Pattern.compile("(\\s*mol\\s*\\%\\s*)" + "(.*)" + patternStringGc + "(.*)");
 		Matcher matcherGc2 = patternGc2.matcher(text);
 
 		while (matcherGc2.find()) {
-			// System.out.println("Case 2::");
+			System.out.println("Case 2::");
 			// System.out.println("Whloe Sent::" + matcherGc2.group());
 			// System.out.println("Part 1::" + matcherGc2.group(1));
 			// System.out.println("Part 2::" + matcherGc2.group(2));
 			// System.out.println("Part 3::" + matcherGc2.group(3));
 			// System.out.println("Part 4::" + matcherGc2.group(4));
-			// System.out.println("Part 5::" + matcherGc2.group(5));
-			// System.out.println("Part 6::" + matcherGc2.group(6));
-			// System.out.println("Part 7::" + matcherGc2.group(7));
-			String targetPattern = matcherGc2.group(6);
-			output.add(targetPattern);
+
+			String matchPartString = matcherGc2.group(4);
+			
+			if ( ! matchPartString.equals("") ) {
+				Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
+				Matcher matcher2 = pattern2.matcher(matchPartString);
+				while (matcher2.find()) {
+					String matchPartString2 = matcher2.group(1);
+					output.add(matchPartString2);
+				}
+			}			
 		}
 
-		// Case 3::
+		// Case 3:: The base composition is 32.5 to 34 mol % g+c is three strains.
 		// Cannot handle this kind of example: 30.6 mol%
 		// 30.6 mol% GC
-		
+		Pattern patternGc3 = Pattern.compile("(.*)(\\s*mol\\s*\\%\\s*)(" + patternStringGc + ")?");
+		Matcher matcherGc3 = patternGc3.matcher(text);
 
+		while (matcherGc3.find()) {
+			System.out.println("Case 3::");
+			// System.out.println("Whloe Sent::" + matcherGc3.group());
+			// System.out.println("Part 1::" + matcherGc3.group(1));
+			// System.out.println("Part 2::" + matcherGc3.group(2));
+			// System.out.println("Part 3::" + matcherGc3.group(3));
+			// System.out.println("Part 4::" + matcherGc3.group(4));
+
+			String matchPartString = matcherGc3.group(1);
+			
+			if ( ! matchPartString.equals("") ) {
+				Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
+				Matcher matcher2 = pattern2.matcher(matchPartString);
+				while (matcher2.find()) {
+					String matchPartString2 = matcher2.group(1);
+					output.add(matchPartString2);
+				}
+			}			
+		}
+
+
+		/*
+		Pattern patternMol = Pattern.compile("(.*)(\\s*mol\\s*\\%\\s*)(.*)");
+		Matcher matcherMol = patternMol.matcher(text);
+
+		while (matcherMol.find()) {		
+			String matchPart1String = matcherMol.group(1);
+			String matchPart3String = matcherMol.group(3);
+			
+			if ( matchPart1String.matches("(.*)(" + patternStringGc + ")(.*)")) {
+				System.out.println("Case 1");
+				Pattern patternGc = Pattern.compile(patternStringGc + "(.*)");
+				Matcher matcherGc = patternGc.matcher(matchPart1String);
+
+				while (matcherGc.find()) {
+					// System.out.println("Case 1::");
+					// System.out.println("Whloe Sent::" + matcherGc.group());
+					// System.out.println("Part 1::" + matcherGc.group(1));
+					// System.out.println("Part 2::" + matcherGc.group(2));
+					// System.out.println("Part 3::" + matcherGc.group(3));
+					String matchPartString = matcherGc.group(2);
+					
+					if ( ! matchPartString.equals("") ) {
+						// adding sliding window? window size minus 5?
+						//
+						//
+						Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
+						Matcher matcher2 = pattern2.matcher(matchPartString);
+						while (matcher2.find()) {
+							String matchPartString2 = matcher2.group(1);
+							output.add(matchPartString2);
+						}
+					}
+				}			
+			} else if ( matchPart3String.matches("(.*)(" + patternStringGc + ")(.*)") ) {
+				System.out.println("Case 2 and case 3");
+				
+				Pattern patternGc = Pattern.compile("(.*)" + patternStringGc + "(.*)");
+				Matcher matcherGc = patternGc.matcher(matchPart3String);
+				while (matcherGc.find()) {
+					String matchGcPart1String = matcherGc.group(1);
+					String matchGcPart3String = matcherGc.group(3);
+					System.out.println("matchGcPart1String::" + matchGcPart1String);
+					System.out.println("matchGcPart3String::" + matchGcPart3String);
+					
+					if ( ! matchGcPart1String.equals("") ) {
+						if (matchGcPart1String.matches("(.*)\\b" + targetPatternString + "\\b(.*)")) {
+							System.out.println("Case 3-1");
+							Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
+							Matcher matcher2 = pattern2.matcher(matchGcPart1String);
+							while (matcher2.find()) {
+								String matchPartString2 = matcher2.group(1);
+								output.add(matchPartString2);
+							}							
+						}						
+					}
+					
+					if ( ! matchGcPart3String.equals("") ) {
+						if (matchGcPart3String.matches("(.*)\\b" + targetPatternString + "\\b(.*)")) {
+							System.out.println("Case 3-2");
+							Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
+							Matcher matcher2 = pattern2.matcher(matchGcPart3String);
+							while (matcher2.find()) {
+								String matchPartString2 = matcher2.group(1);
+								output.add(matchPartString2);
+							}							
+						} else {
+							if (matchPart1String.matches("(.*)\\b" + targetPatternString + "\\b(.*)")) {
+								System.out.println("Case 2");
+								Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
+								Matcher matcher2 = pattern2.matcher(matchPart1String);
+								while (matcher2.find()) {
+									String matchPartString2 = matcher2.group(1);
+									output.add(matchPartString2);
+								}								
+							}
+						}
+					}
+					
+				}
+			}
+			
+			
+		}		
+		*/
+
+		
 		return output;
 	}
 	
 	// Example: 
 	public static void main(String[] args) throws IOException {		
+		
+		
 		System.out.println("Start::");
 		
 		GcExtractor gcExtractor = new GcExtractor(Label.c1);	
 		String patternStringGc = gcExtractor.getPatternStringGc();
+		
 		
 		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
 		// Read sentence list
@@ -190,6 +337,32 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		System.out.println("\n");
 		System.out.println("sampleSentCounter::" + sampleSentCounter);
 		System.out.println("extractedValueCounter::" + extractedValueCounter);
+		
+		
+		/*
+		// Testing on :: myNumberPattern
+		// String exText = "the range is 12.33.";
+		String exText = "The dna g+c content of representative strains varied between 35 and 36 mol %.";
+		String myNumberPattern = gcExtractor.getMyNumberPattern();
+		String targetPatternString = gcExtractor.getTargetPatternString();
+		//Pattern pattern = Pattern.compile(myNumberPattern);
+		Pattern pattern = Pattern.compile(targetPatternString);
+		Matcher matcher = pattern.matcher(exText);
+
+		System.out.println("myNumberPattern::" + myNumberPattern);
+		
+		while (matcher.find()) {
+			System.out.println("Whloe Sent::" + matcher.group());
+			System.out.println("Part 1::" + matcher.group(1));
+			// System.out.println("Part 2::" + matcherGc.group(2));
+			// System.out.println("Part 3::" + matcherGc.group(3));
+			// System.out.println("Part 4::" + matcherGc.group(4));
+			// System.out.println("Part 5::" + matcherGc.group(5));
+			String matchResult = matcher.group(1);
+			System.out.println("matchResult::" + matchResult);
+		}
+		*/
+		
 		
 		
 	}	

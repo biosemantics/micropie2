@@ -71,6 +71,7 @@ public class Config extends AbstractModule {
 	private String trainingFile = "split-training-base-140310.csv";
 	// private String testFolder = "new-microbe-xml-new-schema-2";
 	private String testFolder = "new-microbe-xml-new-inputs-from-carrine-2";
+	// private String testFolder = "new-microbe-xml-new-inputs-from-carrine";
 	private String uspFolder = "usp/dep/0";
 	private String characterValueExtractorsFolder = "CharacterValueExtractors";
 	private String abbreviationFile = "abbrevlist.csv";

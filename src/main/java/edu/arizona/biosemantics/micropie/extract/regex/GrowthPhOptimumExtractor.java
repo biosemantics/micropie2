@@ -97,8 +97,8 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 									"\\s?optimal\\s?growth\\s?|" + 
 									"\\s?optimum\\s?growth\\s?)" +
 									"(.*)(\\s?ph\\s?)" +
-				targetPatternString +
-				"(.*)";
+									targetPatternString +
+									"(.*)";
 		
 		Pattern pattern2 = Pattern.compile(patternString2);
 		Matcher matcher2 = pattern2.matcher(text);

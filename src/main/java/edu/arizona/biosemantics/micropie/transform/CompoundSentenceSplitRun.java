@@ -22,12 +22,21 @@ import edu.stanford.nlp.trees.Tree;
 public class CompoundSentenceSplitRun implements Callable<List<String>> {
 
 	private String sentence;
+	
+
 	//private CountDownLatch compoundSentenceSplitLatch;
 	private ClausIE clausIE;
 
 	public CompoundSentenceSplitRun(String sentence, LexicalizedParser lexicalizedParser, 
 			TokenizerFactory<CoreLabel> tokenizerFactory) {
+		
+		sentence = sentence.replaceAll("–", "-"); // To avoid the error parsing
+		// https://d5gate.ag5.mpi-sb.mpg.de/ClausIEGate/ClausIEGate?inputtext=Optimal+temperature+and+pH+for+growth+are+25%E2%80%9330+%CB%9AC+and+pH+7%2C+respectively.&processCcAllVerbs=true&processCcNonVerbs=true&type=true&go=Extract
+		
 		this.sentence = sentence;
+		
+		
+		
 		//this.compoundSentenceSplitLatch = compoundSentenceSplitLatch;
 		
 		//according to stanford corenlp documentation 
@@ -63,7 +72,7 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 		List<String> result = new LinkedList<String>();
 		//try {
 			log(LogLevel.INFO, "split compound sentences into subsentences using clausIE... sentence: " + sentence);
-			System.out.println("compound split " + sentence);
+			System.out.println("compound split ::" + sentence);
 			log(LogLevel.INFO, "clausIE parse...");
 					
 			clausIE.parse(sentence);
@@ -88,6 +97,9 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 					log(LogLevel.INFO, "clausIE parse complete");
 					//dependencyTree = clausIE.getDepTree();
 					//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
+					
+					System.out.println("sentenceText::" + sentenceText);
+					
 					result.add(sentenceText);
 				}
 			} else {
