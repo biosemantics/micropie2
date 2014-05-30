@@ -34,8 +34,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 										"\\bGC\\b" +
 										")";
 
-	private String myNumberPattern = "(\\d+(\\.\\d+)?)" +
-									"";
+	private String myNumberPattern = "(\\d+(\\.\\d+)?)";
 	
 	/*
 	private String targetPatternString = "(" +
@@ -77,7 +76,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 	*/
 	private String targetPatternString = "(" +
 			"(between\\s?|from\\s?)*" +
-			myNumberPattern + "(\\s)*(\\()*(±|-|–|and|to|)*(\\s)*" + myNumberPattern + "(\\))*" + 
+			myNumberPattern + "(\\s)*(\\()*(±|-|–|and|to|)*(\\s)*" + myNumberPattern + "*(\\))*" + 
 			")";
 
 	public String getTargetPatternString() {
@@ -145,11 +144,13 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 				// adding sliding window? window size minus 5?
 				//
 				//
-				Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
-				Matcher matcher2 = pattern2.matcher(matchPartString);
-				while (matcher2.find()) {
-					String matchPartString2 = matcher2.group(1);
-					output.add(matchPartString2);
+				Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
+				Matcher targetMatcher = targetPattern.matcher(matchPartString);
+				while (targetMatcher.find()) {
+					String matchPartString2 = targetMatcher.group(1);
+					if ( isAcceptValueRange(matchPartString2) == true) {
+						output.add(matchPartString2);
+					}
 				}
 			}
 		}
@@ -171,12 +172,13 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 			String matchPartString = matcherGc2.group(4);
 			
 			if ( ! matchPartString.equals("") ) {
-				Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
-				Matcher matcher2 = pattern2.matcher(matchPartString);
-				while (matcher2.find()) {
-					String matchPartString2 = matcher2.group(1);
-					output.add(matchPartString2);
-				}
+				Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
+				Matcher targetMatcher = targetPattern.matcher(matchPartString);
+				while (targetMatcher.find()) {
+					String matchPartString2 = targetMatcher.group(1);
+					if ( isAcceptValueRange(matchPartString2) == true) {
+						output.add(matchPartString2);
+					}				}
 			}			
 		}
 
@@ -197,12 +199,13 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 			String matchPartString = matcherGc3.group(1);
 			
 			if ( ! matchPartString.equals("") ) {
-				Pattern pattern2 = Pattern.compile("\\b" + targetPatternString + "\\b");
-				Matcher matcher2 = pattern2.matcher(matchPartString);
-				while (matcher2.find()) {
-					String matchPartString2 = matcher2.group(1);
-					output.add(matchPartString2);
-				}
+				Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
+				Matcher targetMatcher = targetPattern.matcher(matchPartString);
+				while (targetMatcher.find()) {
+					String matchPartString2 = targetMatcher.group(1);
+					if ( isAcceptValueRange(matchPartString2) == true) {
+						output.add(matchPartString2);
+					}				}
 			}			
 		}
 
@@ -294,6 +297,39 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 
 		
 		return output;
+	}
+	
+	public boolean isAcceptValueRange(String extractedValueText) {
+		boolean isAccept = true;
+		
+		Pattern patternNumber = Pattern.compile(myNumberPattern);
+		Matcher matcherNumber = patternNumber.matcher(extractedValueText);
+
+		int matchCounter = 0;
+		while (matcherNumber.find()) {
+			
+			// System.out.println("" + matcherNumber.group(1));
+			//System.out.println("" + matcherNumber.group(2));
+			
+			matchCounter++;
+		}
+		
+		if ( matchCounter == 1) {
+			String decimalPattern = myNumberPattern;  
+			boolean match = Pattern.matches(decimalPattern, extractedValueText);
+			// System.out.println(match); //if true then decimal else not  
+			
+			if ( match != true ) {
+				isAccept = false;
+			} else {
+				float extractedValueInt = Float.parseFloat(extractedValueText);
+				if ( extractedValueInt > 99.9 ) {
+					isAccept = false;
+				}				
+			}
+		}
+		
+		return isAccept;
 	}
 	
 	// Example: 

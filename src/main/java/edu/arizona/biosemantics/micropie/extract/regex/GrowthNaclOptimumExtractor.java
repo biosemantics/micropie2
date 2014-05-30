@@ -1,6 +1,9 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,9 +15,54 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 
 public class GrowthNaclOptimumExtractor extends AbstractCharacterValueExtractor {
+
+	private String myNumberPattern = "(\\d+(\\.\\d+)?)";
+
+	public String getMyNumberPattern() {
+		return myNumberPattern;
+	}
+	
+	private String targetPatternString = "(" +
+			"(between\\s?|from\\s?)*" +
+			myNumberPattern + "(\\s)*(\\()*(±|-|–|and|to|)*(\\s)*" + myNumberPattern + "*(\\))*" + 
+			")";	
+	
+	// private String targetPatternString = "(" +
+	//		"\\d+\\.\\d+\\s?-\\s?\\d+\\.\\d+\\s?|" +
+	//		"\\d+\\s?-\\s?\\d+\\.\\d+\\s?|" +
+	//		"\\d+\\.\\d+\\s?-\\s?\\d+\\s?|" +
+	//		"\\d+\\s?-\\s?\\d+\\s?|" +
+	//		
+	//		"\\d+\\.\\d+\\s?–\\s?\\d+\\.\\d+\\s?|" +
+	//		"\\d+\\s?–\\s?\\d+\\.\\d+\\s?|" +
+	//		"\\d+\\.\\d+\\s?–\\s?\\d+\\s?|" +
+	//		"\\d+\\s?–\\s?\\d+\\s?|" +
+	//		
+	//		"\\d+\\.\\d+\\s?and\\s?\\d+\\.\\d+\\s?|" +
+	//		"\\d+\\s?and\\s?\\d+\\.\\d+\\s?|" +
+	//		"\\d+\\.\\d+\\s?and\\s?\\d+\\s?|" +
+	//		"\\d+\\s?and\\s?\\d+\\s?|" +
+	//		
+	//		"\\d+\\.\\d+\\s?\\d+\\.\\d+|" +
+	//		"\\d+\\s?\\d+\\.\\d+|" +
+	//		"\\d+\\.\\d+\\s?\\d+|" +
+	//		"\\d+\\s?\\d+|" +
+	//		
+	//		"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
+	//		"between\\s\\d+\\.\\d+\\sand\\s\\d+|" +
+	//		"between\\s\\d+\\sand\\s\\d+\\.\\d+|" +
+	//		"between\\s\\d+\\sand\\s\\d+|" +
+	//		
+	//		"\\d+\\.\\d+|" +
+	//		"\\d+|" +
+	//		"\\d+\\s?" + 
+	//		")";
+	
 	
 	public GrowthNaclOptimumExtractor(ILabel label) {
 		super(label, "NaCl optimum");
@@ -28,99 +76,126 @@ public class GrowthNaclOptimumExtractor extends AbstractCharacterValueExtractor 
 	
 	@Override
 	public Set<String> getCharacterValue(String text) {
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
-		
 		// input: the original sentnece
 		// output: String array?
-		
-		
-		// Example: 
-		String patternString = "(.*)(\\s?optimum\\s?|\\s?optimal\\s?)(.*)(nacl)";
+		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+
+		// Example: optimal temperature is 37°c; optimal temperature is 37˚c; optimum temperature is 37°c; optimum temperature is 37˚c;
+		// Another example: String patternString = "(.*)(\\s?optimum\\s?|\\s?optimal\\s?)(.*)(nacl)";
+		String patternString = "(.*)" + 
+								"(" +
+								"(.*)(\\s?\\%\\s?optimum\\s?)|" + // ??
+								"(\\s?optimum,\\s?|\\s?optimal,\\s?)" + "(.*)" + "(\\s?\\%\\s?)|" +
+								"(\\s?optimum\\s?|\\s?optimal\\s?)" + "(.*)" + "(\\s?\\%\\s?)|" +
+								"(\\s?optimum\\s?|\\s?optimal\\s?)" + "(.*)" + "(\\s?nacl\\s?)" +
+								")" + 
+								"(.*)";
+				
 		
 		Pattern pattern = Pattern.compile(patternString);
-		Matcher matcher = pattern.matcher(text.toLowerCase());
+		Matcher matcher = pattern.matcher(text);
 
 		while (matcher.find()) {
 			// System.out.println("Whloe Sent::" + matcher.group());
 			// System.out.println("Part 1::" + matcher.group(1));
-			// System.out.println("Part 2::" + matcher.group(2));
-			System.out.println("Part 3::" + matcher.group(3));
-			String matchPart3 = matcher.group(3);
-			matchPart3 = " " + matchPart3 + " ";
-			String[] matchPart3Array = matchPart3.split(" ");				
-
-			int subMatchPart3Length = 3;
-			if (matchPart3Array.length < subMatchPart3Length) {
-				subMatchPart3Length = matchPart3Array.length;
-			}
-			StringBuilder subMatchPart3 = new StringBuilder();
-			for (int i = 0; i < subMatchPart3Length; i++) {
-				subMatchPart3.append(" " + matchPart3Array[i]);
-			}
+			System.out.println("Part 2::" + matcher.group(2));
+			// System.out.println("Part 3::" + matcher.group(3));
+			String matchPartString = matcher.group(2);
+			// System.out.println("targetPattern::" + targetPattern);
+			// output.add(targetPattern);
+			Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
+			Matcher targetMatcher = targetPattern.matcher(matchPartString);
 			
-			
-			
-			
-			// matchPart3 should be "is 3.7", "3.7", "2.3-2.5"
-
-			String patternStringRange = "(" + 
-				"\\d+\\.\\d+\\sto\\s\\d+\\.\\d+|" +
-				"\\d+\\sto\\s\\d+|" +
-
-				"\\d+\\.\\d+-\\d+\\.\\d+|" +
-				"\\d+-\\d+|" +
+			while (targetMatcher.find()) {
+			// if (matcher2.find()) { // Just choose the closest one (nearest one, first one)
+				String matchPartString2 = targetMatcher.group(1);
 				
-				"\\d+\\.\\d+–\\d+\\.\\d+|" +
-				"\\d+–\\d+|" +
-
-				"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
-				"between\\s\\d+\\sand\\s\\d+" +
-
-				")";			
-
-
-			Pattern patternRange = Pattern.compile(patternStringRange);
-			Matcher matcherRange = patternRange.matcher(subMatchPart3);			
-			
-			List<String> matchStringList = new ArrayList<String>();
-
-			int matchCounter = 0;
-			while (matcherRange.find()) {
-				matchStringList.add(matcherRange.group().trim());
-				matchCounter++;
-			}	
-			
-			if (matchCounter > 0) {
-				String rangeString = matchStringList.get(0).toString();
-				output.add(rangeString);	
-			} else {
-				if (matchPart3Array.length > 1) {
-					List<String> matchStringList2 = new ArrayList<String>();
-					String patternString2 = "(" +
-							"\\d+\\.\\d+-\\d+\\.\\d+|" +
-							"\\d+\\-\\d+|" +
-							"\\d+\\.\\d+|" +
-							"\\d+" +
-							")";
-					int loopLength = 6;
-					if (matchPart3Array.length < loopLength){
-						loopLength = matchPart3Array.length;
-					}					
-					
-					for (int i = 0; i < loopLength; i++) {
-						Pattern pattern2 = Pattern.compile(patternString2);
-						Matcher matcher2 = pattern2.matcher(matchPart3Array[i]);
-						while (matcher2.find()) {
-							matchStringList2.add(matcher2.group().trim());
-						}
-					}
-					output.addAll(matchStringList2);
+				if ( isNextToRightSymbol(matchPartString, matchPartString2, "%") ) {
+					output.add(matchPartString2);
 				}
-			}	
+				
+
+			}
+			
 		}			
 		
-		return output;
+		return output;			
 	}
+	
+	public boolean isNextToRightSymbol(String matchPartString, String matchPartString2, String symbol) {
+		
+		boolean isNextToRightSymbol = false;
+		
+		String matchPartStringArray[] = matchPartString.split(" ");
+		// System.out.println("matchPartStringArray::" + Arrays.toString(matchPartStringArray));
+		// System.out.println("matchPartString2::" + matchPartString2);
+		for ( int i = 0; i < matchPartStringArray.length; i++ ) {
+			if ( matchPartStringArray[i].contains(symbol) && matchPartStringArray[i].contains(matchPartString2) ) {
+				// System.out.println("matchPartStringArray[i]::" + matchPartStringArray[i]);
+				isNextToRightSymbol = true;
+			}
+			
+			if ( i > 0 && i < matchPartStringArray.length -1 ) {
+				if ( matchPartStringArray[i+1].contains(symbol) && matchPartStringArray[i].contains(matchPartString2) ) {
+					// System.out.println("matchPartStringArray[i+1]::" + matchPartStringArray[i+1]);
+					isNextToRightSymbol = true;
+				}
+				if ( matchPartStringArray[i-1].contains(symbol) && matchPartStringArray[i].contains(matchPartString2) ) {
+					// System.out.println("matchPartStringArray[i-1]::" + matchPartStringArray[i-1]);
+					isNextToRightSymbol = true;
+				}
+			}
+		}
+		return isNextToRightSymbol;
+	}
+	
+	// Example: Growth occurs with 1–9% (w/v) NaCl (optimum 2–3 %), at pH 5–8 (optimum pH 7) and at 10–40 ˚C (optimum 25– 35 ˚C).
+	public static void main(String[] args) throws IOException {
+		System.out.println("Start");
+		GrowthNaclOptimumExtractor growthNaClOptimumExtractor = new GrowthNaclOptimumExtractor(Label.c3);	
+		
+		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
+		// Read sentence list
+		// 
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
+		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
+		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());
+		
+		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
+		
+		int sampleSentCounter = 0;
+		int extractedValueCounter = 0;
+		
+		for (Sentence sourceSentence : sourceSentenceList) {
+			String sourceSentText = sourceSentence.getText();
+			
+			// NaCl (w/v) %
+			if ( (sourceSentText.matches("(.*)(\\%)(.*)") && sourceSentText.matches("(.*)(\\boptimal\\b)(.*)")) || 
+					(sourceSentText.matches("(.*)(\\%)(.*)") && sourceSentText.matches("(.*)(\\boptimum\\b)(.*)"))
+					) {			
+				System.out.println("\n");
+				System.out.println("sourceSentText::" + sourceSentText);
+				Set<String> growNaclOptimumResult = growthNaClOptimumExtractor.getCharacterValue(sourceSentText);
+				System.out.println("growNaclOptimumResult::" + growNaclOptimumResult.toString());
+				if ( growNaclOptimumResult.size() > 0 ) {
+					extractedValueCounter +=1;
+				}else {
+					// System.out.println("\n");
+					// System.out.println("sourceSentText::" + sourceSentText);
+					// System.out.println("growNaclOptimumResult::" + growNaclOptimumResult.toString());
+				}
+				sampleSentCounter +=1;
+			}
+		
+		}
+
+		System.out.println("\n");
+		System.out.println("sampleSentCounter::" + sampleSentCounter);
+		System.out.println("extractedValueCounter::" + extractedValueCounter);
+		
+	}	
+	
 }
 
 

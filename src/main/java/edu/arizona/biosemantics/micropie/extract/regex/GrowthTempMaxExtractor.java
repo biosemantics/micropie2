@@ -23,6 +23,17 @@ import edu.arizona.biosemantics.micropie.classify.Label;
 
 public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 	
+	private String celsius_degreeReplaceSourcePattern = "\\s?”C\\s?|\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?";
+	private String celsius_degreeReplaceTargetPattern = " celsius_degree ";
+	
+	public String getCelsius_degreeReplaceSourcePattern() {
+		return celsius_degreeReplaceSourcePattern;
+	}
+	
+	public String getCelsius_degreeReplaceTargetPattern() {
+		return celsius_degreeReplaceTargetPattern;
+	}
+	
 	public GrowthTempMaxExtractor(ILabel label) {
 		super(label, "Temperature maximum");
 	}
@@ -36,7 +47,7 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 	@Override
 	public Set<String> getCharacterValue(String text) {
 
-		text = text.replaceAll("\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?", " celsius_degree ");
+		text = text.replaceAll(celsius_degreeReplaceSourcePattern, celsius_degreeReplaceTargetPattern);
 		text = text.toLowerCase();
 		System.out.println("Modified sent::" + text);
 		
@@ -45,7 +56,7 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 		
 		int caseNumber = 0;
-		if ( text.contains("temperature range")) {
+		if ( text.matches("(.*)(temperature(.*)range|temperature range)(.*)")) {
 			caseNumber = 1;
 		} else if ( text.contains("growth") || 
 				text.contains("grows")
@@ -63,20 +74,23 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 		switch(caseNumber) {
 			case 1:
 				// Example:  ... Temperature range 5-40˚C ..., The temperature range for growth is 18 to 37°C.
-				String patternString = "(.*)(\\s?temperature range\\s?)(.*)";
+				// String patternString = "(.*)(\\s?temperature range\\s?)(.*)";
+				String patternString = "(.*)(temperature range|temperature(.*)range for growth)(.*)";
 				
 				Pattern pattern = Pattern.compile(patternString);
 				Matcher matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
+					System.out.println("Go to Case 1::");
 					// System.out.println("Whloe Sent::" + matcher.group());
 					// System.out.println("Part 1::" + matcher.group(1));
 					// System.out.println("Part 2::" + matcher.group(2));
-					// System.out.println("temperature range::" + matcher.group(3));
-					String targetPattern = matcher.group(3);
+					// System.out.println("Part 3::" + matcher.group(3));
+					// System.out.println("Part 4::" + matcher.group(4));
+					String targetPattern = matcher.group(4);
 					
-					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern);
-					String growTempMax = rangePatternExtractor.getRangePatternMax();
+					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "celsius_degree");
+					String growTempMax = rangePatternExtractor.getRangePatternMaxString();
 					if ( ! growTempMax.equals("") ) {
 						output.add(growTempMax);
 					}
@@ -88,28 +102,39 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 				// Example: °C
 				
 				// patternString = "(.*)(\\s?growth occurs\\s?)(.*)(˚c)";
+
+				// patternString = "(.*)(\\s?growth\\s?|"
+				//		+ "\\s?grows\\s?"
+				//		+ ")(.*)";
 				
-				patternString = "(.*)(\\s?growth\\s?|"
-						+ "\\s?grows\\s?"
-						+ ")(.*)";
 				// patternString = "(.*)(\\s?growth occurs\\s?|"
 				//		+ "\\s?grows well\\s?|"
 				//		+ "\\s?grows at\\s?|"
 				//		+ "\\s?grows at temperatures\\s?"
 				//		+ ")(.*)";
+
+				patternString = "(^growth\\s?|"
+						+ "^grows\\s?"
+						//+ "grows\\s?|"
+						//+ "growth\\s?"
+						+ ")(.*)";
 				
 				pattern = Pattern.compile(patternString);
 				matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
+					// System.out.println("Go to Case 2::");
 					// System.out.println("Whloe Sent::" + matcher.group());
 					// System.out.println("Part 1::" + matcher.group(1));
 					// System.out.println("Part 2::" + matcher.group(2));
 					// System.out.println("Part 3::" + matcher.group(3));
 					
-					String targetPattern = matcher.group(3);
+					String targetPattern = matcher.group(2);
 					System.out.println("targetPattern::" + targetPattern);
+					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "celsius_degree");
+					output.add(rangePatternExtractor.getRangePatternMaxString());
 					
+					/*
 					int firsrCelsiusIdx = targetPattern.indexOf("celsius_degree");
 					if (firsrCelsiusIdx > -1) {
 						// System.out.println("firsrCelsiusIdx:" + firsrCelsiusIdx);
@@ -122,23 +147,26 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 						if ( ! growTempMax.equals("") ) {
 							output.add(growTempMax);
 						}						
-						/*
-						int lastAtIdx = targetPattern_sub.lastIndexOf("at");
-						if (lastAtIdx > -1) {
-							String targetPattern_sub2 = targetPattern_sub.substring(lastAtIdx, targetPattern_sub.length());
-							System.out.println("targetPattern_sub2::" + targetPattern_sub2);
-							
-							String growTempMax = rangePatternExtractor.getRangePatternMax(targetPattern_sub2);
-							if ( ! growTempMax.equals("") ) {
-								output.add(growTempMax);
-							}								
-						}
-						*/		
-					}					
+						
+						// int lastAtIdx = targetPattern_sub.lastIndexOf("at");
+						// if (lastAtIdx > -1) {
+						//	String targetPattern_sub2 = targetPattern_sub.substring(lastAtIdx, targetPattern_sub.length());
+						//	System.out.println("targetPattern_sub2::" + targetPattern_sub2);
+						//	
+						//	String growTempMax = rangePatternExtractor.getRangePatternMax(targetPattern_sub2);
+						//	if ( ! growTempMax.equals("") ) {
+						//		output.add(growTempMax);
+						//	}								
+						// }
+								
+					}
+					*/
+					
 				}
 				break;
 			default:
-				System.out.println("");
+				// System.out.println("");
+				// System.out.println("Go to Case 0::");
 				
 		}
 		return output;
@@ -154,9 +182,16 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
 		// Read sentence list
 		// 
-		sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
+		
+		// sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
+		// List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		// System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
+
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
 		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
+		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());		
+		
 		
 		int sampleSentCounter = 0;
 		int extractedValueCounter = 0;
@@ -164,9 +199,19 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 		for (Sentence sourceSentence : sourceSentenceList) {
 			String sourceSentText = sourceSentence.getText();
 			
+			sourceSentText = sourceSentText.replaceAll(growthTempMaxExtractor.getCelsius_degreeReplaceSourcePattern(), growthTempMaxExtractor.getCelsius_degreeReplaceTargetPattern());
+			
 			// ˚C
-			if (sourceSentText.contains("˚C") || sourceSentText.contains("temperature") ) {
+			//if (sourceSentText.contains("celsius_degree") || sourceSentText.contains("temperature") ) {
 			//if (sourceSentText.contains("˚C") || sourceSentText.contains("temperature") || sourceSentText.contains("pH") || sourceSentText.contains("NaCl")) {
+			
+			if (
+					( 
+					sourceSentText.matches("(.*)(\\bcelsius_degree\\b)(.*)") || 
+					sourceSentText.matches("(.*)(\\btemperature\\b)(.*)") 
+					)
+				) {				
+			
 				System.out.println("\n");
 				System.out.println("sourceSentText::" + sourceSentText);
 				Set<String> growTempMaxResult = growthTempMaxExtractor.getCharacterValue(sourceSentText);

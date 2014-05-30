@@ -19,6 +19,17 @@ import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 
 public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
+
+	private String myNumberPattern = "(\\d+(\\.\\d+)?)";
+
+	public String getMyNumberPattern() {
+		return myNumberPattern;
+	}
+	
+	private String targetPatternString = "(" +
+			"(between\\s?|from\\s?)*" +
+			myNumberPattern + "(\\s)*(\\()*(±|-|–|and|to|)*(\\s)*" + myNumberPattern + "*(\\))*" + 
+			")";	
 	
 	public GrowthPhOptimumExtractor(ILabel label) {
 		super(label, "pH optimum");
@@ -32,15 +43,17 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 	
 	@Override
 	public Set<String> getCharacterValue(String text) {
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+
+		text = text.replaceAll("\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?", " celsius_degree ");
+		text = text.toLowerCase();
+		// System.out.println("Modified sent::" + text);
 		
 		// input: the original sentnece
 		// output: String array?
-		
-		text = text.toLowerCase();
-		// Example: 
-		
-		
+		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+
+		// Example: 	
+		/*
 		String targetPatternString = "(" +
 				"\\d+\\.\\d+\\s?-\\s?\\d+\\.\\d+\\s?|" +
 				"\\d+\\s?-\\s?\\d+\\.\\d+\\s?|" +
@@ -72,23 +85,71 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 				"\\d+\\s?" + 
 				")";
 		
-		String patternString = "(.*)(\\s?optimum ph of\\s?|\\s?optimal ph of\\s?|\\s?optimal ph for growth is about\\s?|\\s?optimum growth at ph\\s?|\\s?optimum at ph\\s?|\\s?optimal growth at ph\\s?|\\s?the optimal ph was\\s?|\\s?optimal ph for growth is \\s?|\\s?optimum\\,\\s?ph\\s?|\\s?ph\\s?optimal\\s?|\\s?ph\\s?optimum\\s?|\\s?optimum\\s?ph\\s?|\\s?optimal\\s?ph\\s?)" +
-				targetPatternString +
-				"(.*)";
+		*/
+		
+		String patternString = "(.*)" + 
+				"(" +
+				// "(\\()*" + 
+				//"(\\s|\\()*" + 
+				//"(" + 
+				//"optimum, around ph" +
+				"optimum being ph|" +
+				"optimum\\: ph|" +
+				"optimum\\), at ph|" +
+				"optimum\\s?ph|" + 
+				"optimal\\s?ph|" +
+				"optimum ph of|" + 
+				"optimal ph of|" +
+				"optimal ph for growth is about|" + 
+				"optimum growth at ph|" + 
+				"optimum at ph|" + 
+				"optimal growth at ph|" + 
+				"the optimal ph was|" + 
+				"optimal ph for growth is |" + 
 
+				"optimum\\,\\s?ph|" + 
+				"ph\\s?optimal|" + 
+				"ph\\s?optimum| " +
+				"optimum, around ph|" +
+				"optimum of ph" +
+				//")" +
+				//"(\\s|\\))*" + 
+				//"(\\))*" +
+				")" +
+				// "\\b" +
+				//targetPatternString +
+				// "(\\))*\\b" +
+				"(.*)";
+		// System.out.println("patternString::" + patternString);
 
 		
 		Pattern pattern = Pattern.compile(patternString);
 		Matcher matcher = pattern.matcher(text);
 
+		boolean isCase1= false;
+		
 		while (matcher.find()) {
+			isCase1 = true;
+			System.out.println("Go to case 1.");
+			
 			// System.out.println("Whloe Sent::" + matcher.group());
 			// System.out.println("Part 1::" + matcher.group(1));
 			// System.out.println("Part 2::" + matcher.group(2));
 			// System.out.println("Part 3::" + matcher.group(3));
-			// System.out.println("Part 4::" + matcher.group(4));
-			String targetPattern = matcher.group(3);
-			output.add(targetPattern);
+			
+			String matchPartString = matcher.group(3);
+			
+			Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
+			Matcher targetMatcher = targetPattern.matcher(matchPartString);
+			
+			// while (matcher2.find()) {
+			if (targetMatcher.find()) { // Just choose the closest one (nearest one, first one)
+				String matchPartString2 = targetMatcher.group(1);
+				output.add(matchPartString2);
+			}
+			
+			
+			// output.add(targetPattern);
 		}	
 		
 
@@ -104,14 +165,15 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		Matcher matcher2 = pattern2.matcher(text);
 
 		while (matcher2.find()) {
+			System.out.println("Go to case 2.");
 			// System.out.println("Whloe Sent::" + matcher2.group());
 			// System.out.println("Part 1::" + matcher2.group(1));
 			// System.out.println("Part 2::" + matcher2.group(2));
 			// System.out.println("Part 3::" + matcher2.group(3));
 			// System.out.println("Part 4::" + matcher2.group(4));
 			// System.out.println("Part 5::" + matcher2.group(5));
-			String targetPattern = matcher2.group(5);
-			output.add(targetPattern);
+			String matchPartString = matcher2.group(5);
+			output.add(matchPartString);
 		}		
 		
 		
@@ -127,20 +189,80 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		Matcher matcher3 = pattern3.matcher(text);
 
 		while (matcher3.find()) {
+			System.out.println("Go to case 3.");
 			// System.out.println("Whloe Sent::" + matcher3.group());
 			// System.out.println("Part 1::" + matcher3.group(1));
 			// System.out.println("Part 2::" + matcher3.group(2));
 			// System.out.println("Part 3::" + matcher3.group(3));
 			// System.out.println("Part 4::" + matcher3.group(4));
 			// System.out.println("Part 5::" + matcher3.group(5));
-			String targetPattern = matcher3.group(3);
-			output.add(targetPattern);
+			String matchPartString = matcher3.group(3);
+			output.add(matchPartString);
 		}
 		
-		 
+		
+		
+		if ( isCase1 == false ) {
+			// Case 4::
+			// sourceSentText::grows between 10 and 45˚c (optimum at 37˚c) and ph 5–9 (optimum at 7.5).
+			// ph 5–9 (optimum at 7.5)
 			
+			// String patternString4 = "(.*)(ph\\s?)" + myNumberPattern + "(\\s?\\(\\s?optimum at\\s?)" + 
+			//						myNumberPattern + "(\\))(.*)";
+			
+			// String patternString4 = "(.*)(ph\\s?)(.*)(\\s?\\(\\s?optimum\\s?)(.*)(\\))(.*)";
+			// String patternString4 = "(.*)(ph\\s?)"+myNumberPattern+"(\\s?\\(\\s?optimum\\s?)(.*)(\\))(.*)";
+			
+			
+			String patternString4 = "(ph\\s?)" + targetPatternString + "(\\s?\\()(.*)(\\s?\\))";
+			// System.out.println("patternString4::" + patternString4);
+			
+			Pattern pattern4 = Pattern.compile(patternString4);
+			Matcher matcher4 = pattern4.matcher(text);
+
+			while (matcher4.find()) {
+				System.out.println("Go to case 4.");
+				// System.out.println("Whloe Sent::" + matcher4.group());
+				// System.out.println("Part 1::" + matcher4.group(1));
+				// System.out.println("Part 2::" + matcher4.group(2));
+				// System.out.println("Part 3::" + matcher4.group(3));
+				// System.out.println("Part 4::" + matcher4.group(4));
+				// System.out.println("Part 5::" + matcher4.group(5));
+				// System.out.println("Part 6::" + matcher4.group(6));
+				// System.out.println("Part 7::" + matcher4.group(7));
+				// System.out.println("Part 8::" + matcher4.group(8));
+				// System.out.println("Part 9::" + matcher4.group(9));
+				// System.out.println("Part 10::" + matcher4.group(10));
+				// System.out.println("Part 11::" + matcher4.group(11));
+				// System.out.println("Part 12::" + matcher4.group(12));
+				// System.out.println("Part 13::" + matcher4.group(13));
+				System.out.println("Part 14::" + matcher4.group(14));
+				// System.out.println("Part 15::" + matcher4.group(15));
+				
+				String matchPartString = matcher4.group(14);
+				
+				Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
+				Matcher targetMatcher = targetPattern.matcher(matchPartString);
+				
+				while (targetMatcher.find()) {
+				// if (targetMatcher.find()) { // Just choose the closest one (nearest one, first one)
+					String matchPartString2 = targetMatcher.group(1);
+					
+					// System.out.println("matchPartString2::" + matchPartString2);
+
+					if ( isNextToRightSymbolNeg(matchPartString, matchPartString2, "%;celsius_degree") == true ) {
+						output.add(matchPartString2);
+					}
+					// } else {
+					//	System.out.println("Do not include this!");
+					// }
+				}			
+				
+				//output.add(targetPattern);
+			}			
+		}
 		
-		
+
 		
 		/*
 		// Example: optimal ph is 6.2; optimum pH is 3.3; optimum pH 3.7
@@ -232,6 +354,65 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		return output;
 	}
 
+	public boolean isNextToRightSymbolNeg(String matchPartString, String matchPartString2, String negSymbol) {
+		
+		boolean isNextToRightSymbolNeg = true;
+		
+		matchPartString2 = matchPartString2.trim();
+		String negSymbolArray[] = negSymbol.split(";");
+		
+		String matchPartStringArray[] = matchPartString.split(" ");
+		// System.out.println("matchPartStringArray::" + Arrays.toString(matchPartStringArray));
+		// System.out.println("matchPartString2::" + matchPartString2);
+		// System.out.println("matchPartStringArray.length::" + matchPartStringArray.length);
+		for ( int i = 0; i < matchPartStringArray.length; i++ ) {
+			// System.out.println("matchPartStringArray[" + i + "]::" + matchPartStringArray[i]);
+			
+			if ( matchPartStringArray[i].contains(matchPartString2) ) {
+				// System.out.println("matchPartStringArray[" + i + "]::" + matchPartStringArray[i]);
+				if ( i > 0 ) {
+					// System.out.println("matchPartStringArray[i-1]::" + matchPartStringArray[i-1]);
+					for ( int j = 0; j < negSymbolArray.length; j++ ) {
+						if (matchPartStringArray[i-1].contains(negSymbolArray[j])) {
+							isNextToRightSymbolNeg = false;
+							// System.out.println("Do not include this!");
+						}
+					}
+				}
+				if ( i < matchPartStringArray.length -1 ) {
+					// System.out.println("matchPartStringArray[i+1]::" + matchPartStringArray[i+1]);
+					for ( int j = 0; j < negSymbolArray.length; j++ ) {
+						if (matchPartStringArray[i+1].contains(negSymbolArray[j])) {
+							isNextToRightSymbolNeg = false;
+							// System.out.println("Do not include this!");
+						}
+					}					
+				}
+			}
+			
+			
+			/*
+			if ( matchPartStringArray[i].contains(symbol) && matchPartStringArray[i].contains(matchPartString2) ) {
+				// System.out.println("matchPartStringArray[i]::" + matchPartStringArray[i]);
+				isNextToRightSymbolNeg = true;
+			}
+			
+			if ( i > 0 && i < matchPartStringArray.length -1 ) {
+				if ( matchPartStringArray[i+1].contains(symbol) && matchPartStringArray[i].contains(matchPartString2) ) {
+					// System.out.println("matchPartStringArray[i+1]::" + matchPartStringArray[i+1]);
+					isNextToRightSymbolNeg = true;
+				}
+				if ( matchPartStringArray[i-1].contains(symbol) && matchPartStringArray[i].contains(matchPartString2) ) {
+					// System.out.println("matchPartStringArray[i-1]::" + matchPartStringArray[i-1]);
+					isNextToRightSymbolNeg = true;
+				}
+			}
+			*/
+		}
+		return isNextToRightSymbolNeg;
+	}	
+	
+	
 	// Example: Grows at 15–37 celsius_degree (optimum 30 celsius_degree ) and pH 5–8 (optimum pH 7).
 	public static void main(String[] args) throws IOException {
 		/*
@@ -266,8 +447,11 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
 		// Read sentence list
 		// 
-		sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
 		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
+		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());
+		
 		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
 		
 		int sampleSentCounter = 0;
@@ -275,11 +459,12 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		
 		for (Sentence sourceSentence : sourceSentenceList) {
 			String sourceSentText = sourceSentence.getText();
+			sourceSentText = sourceSentText.replaceAll("\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?", " celsius_degree ");
 			sourceSentText = sourceSentText.toLowerCase();
 			
 			// pH
-			if ( (sourceSentText.contains("ph") && sourceSentText.contains("optimal")) || 
-					(sourceSentText.contains("ph") && sourceSentText.contains("optimum"))
+			if ( (sourceSentText.matches("(.*)(\\bph\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimal\\b)(.*)")) || 
+					(sourceSentText.matches("(.*)(\\bph\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimum\\b)(.*)"))
 					) {
 				System.out.println("\n");
 				System.out.println("sourceSentText::" + sourceSentText);

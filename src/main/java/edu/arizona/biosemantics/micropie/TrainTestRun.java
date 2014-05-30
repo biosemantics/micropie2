@@ -203,26 +203,42 @@ public class TrainTestRun implements IRun {
 			// stanfordCoreNLPTest();
 			// stanfordCoreNLPTest2();
 			
+			
 			// Create USP Inputs
 			// List<Sentence> testSentences = createTestSentences();
 			// createUSPInputs(testSentences);
+			// Create USP Inputs
 
 			
 			
 			// Run USP Parse
 			// Parse uspParse = new Parse();
 			// uspParse.runParse("usp", "usp_results");
+			// Run USP Parse
 
+			
+			
+			
 			// Small tool 1:: Split compound category from training data set
 			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
-			////trainingSentenceReader.setInputStream(new FileInputStream("training-base-140507.csv"));
+			// //trainingSentenceReader.setInputStream(new FileInputStream("training-base-140507.csv"));
 			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-" + trainingFile));
-			////trainingSentenceReader.setOutputStream(new FileOutputStream("split-training-base-140507.csv"));
-			//trainingSentenceReader.splitCompoundCategory();
+			// //trainingSentenceReader.setOutputStream(new FileOutputStream("split-training-base-140507.csv"));
+			// trainingSentenceReader.splitCompoundCategory();
 			
 			// trainingSentenceReader.setInputStream(new FileInputStream("additionalUSPInputs.csv"));
 			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-additionalUSPInputs.csv"));
 			// trainingSentenceReader.splitCompoundCategory();
+			
+			// trainingSentenceReader.setInputStream(new FileInputStream("predictions-140528-3.csv"));
+			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-predictions-140528-3.csv"));
+			// trainingSentenceReader.splitCompoundCategory();
+
+			// trainingSentenceReader.setInputStream(new FileInputStream("predictions-140311-1.csv"));
+			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-predictions-140311-1.csv"));
+			// trainingSentenceReader.splitCompoundCategory();
+			
+			// Small tool 1:: Split compound category from training data set
 			
 			
 			
@@ -230,9 +246,7 @@ public class TrainTestRun implements IRun {
 			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			////trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140507.csv"));
 			// trainingSentenceReader.categoryStat();
-			
-
-
+			// Small tool 2:: Training data set statistics
 			
 			
 			
@@ -264,11 +278,21 @@ public class TrainTestRun implements IRun {
 			
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
 			classifiedSentenceWriter.write(predictions);
+			// temporary use :: build the predictions for each sentence
+			
+			
+			
+			
 			
 			
 			// Small tool 3:: Transformer:: CSV to Excel (2007 format)
 			// trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140507.csv"));
 			// trainingSentenceReader.csvToXls("split-training-base-140507.xls");
+			// Small tool 3:: Transformer:: CSV to Excel (2007 format)
+
+			
+			
+			
 			
 			
 			// USP example
@@ -282,6 +306,7 @@ public class TrainTestRun implements IRun {
 			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs_short_for_testing.csv"));
 			// List<Sentence> additionalUSPInputSentences = trainingSentenceReader.readAdditionalUSPInputs();
 			// createUSPInputsFromListSentence(additionalUSPInputSentences);
+			// Small tool 4:: Pre-processing::Build USP inputs first from C
 			
 			
 			
@@ -418,13 +443,15 @@ public class TrainTestRun implements IRun {
 			List<String> sentences = sentenceSplits.get(i).get();
 			List<ListenableFuture<List<String>>> subsentenceSplits = new LinkedList<ListenableFuture<List<String>>>();
 			for (final String sentence : sentences) {
+
 				// String[] tokens = sentence.split("\\s+");
 				// System.out.println("length " + tokens.length);
 				//int tokenSize = tokens.length;
 				// overall += size;
 				// if(size > maxSize) { maxSize = size; }
 				
-				if (sentence.length() <= 100) {
+				if (sentence.length() <= 50) {
+				//if (sentence.length() <= 100) {
 				//if (sentence.length() <= 200) {
 				//if (tokenSize <= 30) {
 

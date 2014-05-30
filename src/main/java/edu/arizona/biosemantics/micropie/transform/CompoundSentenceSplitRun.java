@@ -30,10 +30,12 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 	public CompoundSentenceSplitRun(String sentence, LexicalizedParser lexicalizedParser, 
 			TokenizerFactory<CoreLabel> tokenizerFactory) {
 		
-		sentence = sentence.replaceAll("–", "-"); // To avoid the error parsing
+		// sentence = sentence.replaceAll("–", "-"); // To avoid the error ClausIE spliter: the dash will disappear
 		// https://d5gate.ag5.mpi-sb.mpg.de/ClausIEGate/ClausIEGate?inputtext=Optimal+temperature+and+pH+for+growth+are+25%E2%80%9330+%CB%9AC+and+pH+7%2C+respectively.&processCcAllVerbs=true&processCcNonVerbs=true&type=true&go=Extract
+		// sentence = sentence.replaceAll("\\s?-\\s?", "-"); // To avoid the error ClausIE spliter: the dash will disappear
 		
 		this.sentence = sentence;
+		
 		
 		
 		
@@ -91,6 +93,7 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 			
 			if (sentenceList.size() > 1) {
 				log(LogLevel.INFO, "found subsentences: " + sentenceList.size());
+				result.add(sentence); // Keep the original sentence in the list, Elvis on May 28, 2014 Wednesday
 				for (String sentenceText : sentenceList) {
 					log(LogLevel.INFO, "clausIE parse...");
 					//clausIE.parse(sentenceText);
@@ -98,7 +101,7 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 					//dependencyTree = clausIE.getDepTree();
 					//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
 					
-					System.out.println("sentenceText::" + sentenceText);
+					// System.out.println("splittedSentenceText::" + sentenceText);
 					
 					result.add(sentenceText);
 				}

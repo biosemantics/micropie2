@@ -114,8 +114,10 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		
 		sentences2 = getSentencesSsplit(sentencesBack); // run Stanford Corenlp again
 		sentences2 = getSentencesSemicolon(sentences2); // run ";" semicolon separator
-		sentences2 = getSentencesDongyeMengSegmentSent(sentences2, sentenceDetector, tokenizer, wordNetPOSKnowledgeBase); // run CharaParser's segmentSentence
 		sentences2 = getSentencesOpennlp(sentences2, source);
+		sentences2 = getSentencesDongyeMengSegmentSent(sentences2, sentenceDetector, tokenizer, wordNetPOSKnowledgeBase); // run CharaParser's segmentSentence
+
+		sentences2 = getTransformedDash(sentences2);
 		
 		sentenceSplitLatch.countDown();
 		// return sentences;
@@ -219,6 +221,24 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		return result;
 	}
 	
+	private List<String> getTransformedDash(List<String> sentences) throws FileNotFoundException {
+		log(LogLevel.INFO, "getTransformedDash:: replace \"–\" to \"-\" ...");
+
+		List<String> result = new LinkedList<String>();		
+		
+		for (String sentence : sentences) {
+			sentence = sentence.replaceAll("–", "-"); // To avoid the error ClausIE spliter: the dash will disappear
+			// https://d5gate.ag5.mpi-sb.mpg.de/ClausIEGate/ClausIEGate?inputtext=Optimal+temperature+and+pH+for+growth+are+25%E2%80%9330+%CB%9AC+and+pH+7%2C+respectively.&processCcAllVerbs=true&processCcNonVerbs=true&type=true&go=Extract
+			sentence = sentence.replaceAll("\\s?-\\s?", "-"); // To avoid the error ClausIE spliter: the dash will disappear
+			result.add(sentence);
+		}
+
+		log(LogLevel.INFO, "done getTransformedDash:: replace \"–\" to \"-\". Transformed " + result.size() + " sentences");
+		return result;
+	}
+	
+	
+
 	private List<String> getSentencesOpennlp(List<String> sentences, String opennlpSentDetectorSource) throws FileNotFoundException {
 		log(LogLevel.INFO, "ssplit3:: split text to sentences using Opennlp sentence detector...");
 
@@ -253,8 +273,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		}
 		log(LogLevel.INFO, "done ssplit3:: splitting text to sentences using Opennlp sentence detector. Created " + result.size() + " sentences");
 		return result;
-	}
-	
+	}	
 
 	private void openNlpSentSplitter(String source) throws InvalidFormatException, IOException {
 		// This is just for testing

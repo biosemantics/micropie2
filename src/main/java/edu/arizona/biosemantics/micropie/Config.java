@@ -69,9 +69,14 @@ public class Config extends AbstractModule {
 	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Diameter|Cell Long|Cell Wide|Cell Membrane & Cell Wall Components|External features|Filterability|Internal features|Lysis Susceptibility|Physiological requirements|Antibiotics|Secreted Products|Storage Products|Tests|Pathogen Target Organ|Complex Mixtures|Inorganic|Metals|Nitrogen Compounds|Organic|Organic Acids|Other";
 
 	private String trainingFile = "split-training-base-140310.csv";
+	
 	// private String testFolder = "new-microbe-xml-new-schema-2";
-	private String testFolder = "new-microbe-xml-new-inputs-from-carrine-2";
+	// private String testFolder = "new-microbe-xml-new-inputs-from-carrine-2";
 	// private String testFolder = "new-microbe-xml-new-inputs-from-carrine";
+	// private String testFolder = "new-microbe-xml";
+	private String testFolder = "new-microbe-xml-2";
+	// private String testFolder = "new-microbe-xml-new-schema";
+	
 	private String uspFolder = "usp/dep/0";
 	private String characterValueExtractorsFolder = "CharacterValueExtractors";
 	private String abbreviationFile = "abbrevlist.csv";
