@@ -4,10 +4,10 @@
 *.jar
 *.war
 *.ear
-*.xls
-*.csv
-*.txt
-*.log*
+#*.xls
+#*.csv
+#*.txt
+#*.log*
 .DS_Store
 .classpath
 .project
