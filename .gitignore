@@ -11,4 +11,9 @@
 .classpath
 .project
 .DS_Store
-predictions.csv
+*.xls
+*.csv
+*.log*
+*.txt
+# predictions.csv #
+

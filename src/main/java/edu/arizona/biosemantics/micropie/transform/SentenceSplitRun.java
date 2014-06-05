@@ -170,7 +170,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		}
 		log(LogLevel.INFO, "Done replacing abbreviation back to original sentence");
 		
-		sentencesBack = getTransformedCelsiusDegree(sentencesBack); // °C => celsius_degree
+		// sentencesBack = getTransformedCelsiusDegree(sentencesBack); // °C => celsius_degree
 		
 		sentenceSplitLatch.countDown();
 		// return sentences;
