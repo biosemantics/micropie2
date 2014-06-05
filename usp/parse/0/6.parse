@@ -1,0 +1,22 @@
+(ROOT
+  (S
+    (PP (IN On)
+      (NP (CD 2y0) (NN agar) (NNS media)))
+    (NP (DT the) (NNS colonies))
+    (VP (VBP have)
+      (NP (DT a) (JJ different) (NN form))
+      (, ,)
+      (S
+        (VP (VBG rising)
+          (PP (IN from)
+            (NP
+              (NP (DT the) (NN surface))
+              (PP (IN as)
+                (NP (NN c2-Cellshape) (NNS knobs)))))
+          (PP (RB somewhat) (IN like)
+            (NP
+              (NP (DT the) (VBG developing) (NNS fructifications))
+              (PP (IN of)
+                (NP (DT a) (NN myxobacter))))))))
+    (. .)))
+

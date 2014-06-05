@@ -84,7 +84,7 @@ public class Config extends AbstractModule {
 			
 	
 	// private String trainingFile = "split-training-base-140310.csv";
-	private String trainingFile = "training_data/split-training-base-140603.csv";
+	private String trainingFile = "split-training-base-140603.csv";
 	
 	
 	// private String testFolder = "new-microbe-xml-new-schema-2";
@@ -97,7 +97,7 @@ public class Config extends AbstractModule {
 	
 	private String uspFolder = "usp/dep/0";
 	private String characterValueExtractorsFolder = "CharacterValueExtractors";
-	private String abbreviationFile = "abbrevlist/abbrevlist.csv";
+	private String abbreviationFile = "abbrevlist.csv";
 	private String predicitonsFile = "predictions.csv";
 	private String matrixFile = "matrix.csv";
 	

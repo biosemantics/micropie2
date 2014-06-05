@@ -1,0 +1,19 @@
+(ROOT
+  (S
+    (S
+      (NP (JJ Repeated) (NN restreaking))
+      (VP (VBZ does)
+        (NP
+          (NP (RB not) (JJ separate) (JJ distinct) (NNS types))
+          (PP (IN of)
+            (NP (NN microbe))))))
+    (, ,)
+    (CC and)
+    (S
+      (ADVP (RB unquestionably))
+      (NP (DT these) (JJ different) (NN cell) (NNS forms))
+      (VP (VBP belong)
+        (PP (TO to)
+          (NP (DT the) (JJ same) (NN clone)))))
+    (. .)))
+

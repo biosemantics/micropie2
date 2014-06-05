@@ -1,0 +1,7 @@
+(ROOT
+  (S
+    (NP (NNP Satellite) (NNS colonies))
+    (VP (VBP render)
+      (NP (DT the) (NNS margins) (NN c2-Cellshape)))
+    (. .)))
+

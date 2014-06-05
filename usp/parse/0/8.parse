@@ -1,0 +1,31 @@
+(ROOT
+  (S
+    (NP
+      (NP (DT The) (NN c2-Motility) (NNS cells))
+      (, ,)
+      (SBAR
+        (WHNP (WDT which))
+        (S
+          (VP (VBP predominate)
+            (PP (IN under)
+              (NP (JJ certain) (JJ cultural) (NNS conditions)))
+            (PP (IN in)
+              (NP (JJ liquid) (NN culture)))
+            (PRN (-LRB- -LRB-)
+              (S
+                (VP (VB see)
+                  (ADVP (IN below))))
+              (-RRB- -RRB-)))))
+      (, ,))
+    (VP (VBP are)
+      (PP (IN about)
+        (NP
+          (NP
+            (NP (CD 0.7) (NN µm))
+            (ADJP (JJ wide)))
+          (CC and)
+          (NP
+            (QP (CD 5) (TO to) (CD 15))
+            (NN µm) (NN c2-Cellshape)))))
+    (. .)))
+

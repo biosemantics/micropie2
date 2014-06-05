@@ -1,0 +1,10 @@
+(ROOT
+  (S
+    (NP (NNP Satellite) (NNS colonies))
+    (VP (VBP indicate)
+      (NP
+        (NP (DT the) (NN dispersal))
+        (PP (IN of)
+          (NP (NN c2-Motility) (NNS cells)))))
+    (. .)))
+

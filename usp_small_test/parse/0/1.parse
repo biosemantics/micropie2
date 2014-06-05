@@ -1,0 +1,10 @@
+(ROOT
+  (S
+    (NP
+      (NP (FW Flexithrix) (FW dorotheae) (NNS cells))
+      (PP (IN in)
+        (NP (NN mass))))
+    (VP (VBP are)
+      (NP (JJ bright) (JJ golden) (NN yellow)))
+    (. .)))
+

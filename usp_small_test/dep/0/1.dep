@@ -1,0 +1,8 @@
+nn(cells-3, Flexithrix-1)
+nn(cells-3, dorotheae-2)
+nsubj(yellow-9, cells-3)
+prep_in(cells-3, mass-5)
+cop(yellow-9, are-6)
+amod(yellow-9, bright-7)
+amod(yellow-9, golden-8)
+
