@@ -7,6 +7,10 @@
 /target
 /bin
 /debug.log
+
+/parsing_data
+/usp_base_big
+
 /.settings
 .classpath
 .project
