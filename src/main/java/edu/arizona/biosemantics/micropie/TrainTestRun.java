@@ -132,7 +132,8 @@ public class TrainTestRun implements IRun {
 	private Map<TaxonTextFile, List<Sentence>> taxonSentencesMap;
 
 	private String celsius_degreeReplaceSourcePattern;
-	
+	private String uspBaseString;
+	private String uspString;
 	
 	
 	@Inject
@@ -159,8 +160,9 @@ public class TrainTestRun implements IRun {
 			TaxonCharacterMatrixCreator matrixCreator,
 			CSVTaxonCharacterMatrixWriter matrixWriter,
 			
-			@Named("celsius_degreeReplaceSourcePattern") String celsius_degreeReplaceSourcePattern
-			
+			@Named("celsius_degreeReplaceSourcePattern") String celsius_degreeReplaceSourcePattern,
+			@Named("uspBaseString") String uspBaseString,
+			@Named("uspString") String uspString
 			) {
 		this.trainingFile = trainingFile;
 		this.testFolder = testFolder;
@@ -189,6 +191,9 @@ public class TrainTestRun implements IRun {
 
 		
 		this.celsius_degreeReplaceSourcePattern = celsius_degreeReplaceSourcePattern;
+		this.uspBaseString = uspBaseString;
+		this.uspString = uspString;
+		
 		
 		
 		
@@ -226,7 +231,7 @@ public class TrainTestRun implements IRun {
 			
 			// Run USP Parse
 			// Parse uspParse = new Parse();
-			// uspParse.runParse("usp", "usp_results");
+			// uspParse.runParse(uspString, "usp_results");
 			// Run USP Parse
 
 			
@@ -276,7 +281,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			
+			/*
 			// temporary use :: build the predictions for each sentence
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
@@ -297,7 +302,7 @@ public class TrainTestRun implements IRun {
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
 			classifiedSentenceWriter.write(predictions);
 			// temporary use :: build the predictions for each sentence
-			
+			*/
 			
 			
 			
@@ -321,7 +326,7 @@ public class TrainTestRun implements IRun {
 			// USP example
 			// createUSPInputs(testSentences);
 			// Parse uspParse = new Parse();
-			// uspParse.runParse("usp", "usp_results");
+			// uspParse.runParse(uspString, "usp_results");
 			// USP example
 			
 			// Small tool 4:: Pre-processing::Build USP inputs first from C
@@ -334,7 +339,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			/*
+			
 			// formal MicroPIE process
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
@@ -358,7 +363,7 @@ public class TrainTestRun implements IRun {
 			createUSPInputs(predictions);
 			
 			Parse uspParse = new Parse();
-			uspParse.runParse("usp", "usp_results");
+			uspParse.runParse(uspString, "usp_results");
 			// USP
 
 			
@@ -378,7 +383,7 @@ public class TrainTestRun implements IRun {
 			
 			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
 			trainingSentenceReader.csvToXls("matrix.xls");
-			*/
+			
 			
 			
 
@@ -812,7 +817,7 @@ public class TrainTestRun implements IRun {
 		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
 		
 		// if the folder "usp" exists, delete it
-		FileUtils.deleteDirectory(new File("usp"));
+		FileUtils.deleteDirectory(new File(uspString));
 		
 		// Construct abbreviation list
 		Hashtable<String, String> kwdListByCategory = new Hashtable<String, String>();
@@ -1048,45 +1053,45 @@ public class TrainTestRun implements IRun {
 				textStringBuilder.append(sentText);
 
 				
-				new File("usp").mkdirs();
-				new File("usp/dep_o").mkdirs();
-				new File("usp/dep_o/0").mkdirs();
-				new File("usp/morph_o").mkdirs();
-				new File("usp/morph_o/0").mkdirs();
-				new File("usp/text_o").mkdirs();
-				new File("usp/text_o/0").mkdirs();
-				new File("usp/parse_o").mkdirs();
-				new File("usp/parse_o/0").mkdirs();
+				new File(uspString).mkdirs();
+				new File(uspString + "/dep_o").mkdirs();
+				new File(uspString + "/dep_o/0").mkdirs();
+				new File(uspString + "/morph_o").mkdirs();
+				new File(uspString + "/morph_o/0").mkdirs();
+				new File(uspString + "/text_o").mkdirs();
+				new File(uspString + "/text_o/0").mkdirs();
+				new File(uspString + "/parse_o").mkdirs();
+				new File(uspString + "/parse_o/0").mkdirs();
 
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/dep_o/0/" + counter + ".dep", false)))) {
+						new FileWriter(uspString + "/dep_o/0/" + counter + ".dep", false)))) {
 					out.println(depStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph_o/0/" + counter + ".input",
+						new FileWriter(uspString + "/morph_o/0/" + counter + ".input",
 								false)))) {
 					out.println(inputStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph_o/0/" + counter + ".morph",
+						new FileWriter(uspString + "/morph_o/0/" + counter + ".morph",
 								false)))) {
 					out.println(morphStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/text_o/0/"
+						new BufferedWriter(new FileWriter(uspString + "/text_o/0/"
 								+ counter + ".txt", false)))) {
 					out.println(textStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/parse_o/0/"
+						new BufferedWriter(new FileWriter(uspString + "/parse_o/0/"
 								+ counter + ".parse", false)))) {
 					out.println(parseStringBuilder);
 				} catch (IOException e) {
@@ -1478,21 +1483,21 @@ public class TrainTestRun implements IRun {
 
 				
 				
-				new File("usp").mkdirs();
-				new File("usp/morph_o").mkdirs();
-				new File("usp/morph_o/0").mkdirs();
-				new File("usp/text_o").mkdirs();
-				new File("usp/text_o/0").mkdirs();
+				new File(uspString).mkdirs();
+				new File(uspString + "/morph_o").mkdirs();
+				new File(uspString + "/morph_o/0").mkdirs();
+				new File(uspString + "/text_o").mkdirs();
+				new File(uspString + "/text_o/0").mkdirs();
 				
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph_o/0/" + counter + ".morph",
+						new FileWriter(uspString + "/morph_o/0/" + counter + ".morph",
 								false)))) {
 					out.println(morphStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/text_o/0/"
+						new BufferedWriter(new FileWriter(uspString + "/text_o/0/"
 								+ counter + ".txt", false)))) {
 					out.println(textStringBuilder);
 				} catch (IOException e) {
@@ -1501,17 +1506,17 @@ public class TrainTestRun implements IRun {
 				
 				
 				
-				new File("usp").mkdirs();
-				new File("usp/dep").mkdirs();
-				new File("usp/dep/0").mkdirs();
-				new File("usp/morph").mkdirs();
-				new File("usp/morph/0").mkdirs();
-				new File("usp/text").mkdirs();
-				new File("usp/text/0").mkdirs();
-				new File("usp/parse").mkdirs();
-				new File("usp/parse/0").mkdirs();
-				new File("usp/index").mkdirs();
-				new File("usp/index/0").mkdirs();
+				new File(uspString).mkdirs();
+				new File(uspString + "/dep").mkdirs();
+				new File(uspString + "/dep/0").mkdirs();
+				new File(uspString + "/morph").mkdirs();
+				new File(uspString + "/morph/0").mkdirs();
+				new File(uspString + "/text").mkdirs();
+				new File(uspString + "/text/0").mkdirs();
+				new File(uspString + "/parse").mkdirs();
+				new File(uspString + "/parse/0").mkdirs();
+				new File(uspString + "/index").mkdirs();
+				new File(uspString + "/index/0").mkdirs();
 
 				
 				
@@ -1519,41 +1524,41 @@ public class TrainTestRun implements IRun {
 				
 				
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/index/0/" + counter + ".index", false)))) {
+						new FileWriter(uspString + "/index/0/" + counter + ".index", false)))) {
 					out.println(collapsedSentIndexStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/dep/0/" + counter + ".dep", false)))) {
+						new FileWriter(uspString + "/dep/0/" + counter + ".dep", false)))) {
 					out.println(collapsedDepStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph/0/" + counter + ".input",
+						new FileWriter(uspString + "/morph/0/" + counter + ".input",
 								false)))) {
 					out.println(collapsedInputStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph/0/" + counter + ".morph",
+						new FileWriter(uspString + "/morph/0/" + counter + ".morph",
 								false)))) {
 					out.println(collapsedMorphStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/text/0/"
+						new BufferedWriter(new FileWriter(uspString + "/text/0/"
 								+ counter + ".txt", false)))) {
 					out.println(collapsedTextStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/parse/0/"
+						new BufferedWriter(new FileWriter(uspString + "/parse/0/"
 								+ counter + ".parse", false)))) {
 					out.println(collapsedParseStringBuilder);
 				} catch (IOException e) {
@@ -1582,9 +1587,10 @@ public class TrainTestRun implements IRun {
 		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
 		
 		// if the folder "usp" exists, delete it
-		FileUtils.deleteDirectory(new File("usp"));
+		FileUtils.deleteDirectory(new File(uspString));
 		
-		FileUtils.copyDirectory(new File("usp_base"), new File("usp"));
+		FileUtils.copyDirectory(new File(uspBaseString), new File(uspString));
+		// FileUtils.copyDirectory(new File(uspBaseString), new File(uspString));
 		
 		
 		
@@ -1860,45 +1866,45 @@ public class TrainTestRun implements IRun {
 				textStringBuilder.append(sentText);
 
 				
-				new File("usp").mkdirs();
-				new File("usp/dep_o").mkdirs();
-				new File("usp/dep_o/0").mkdirs();
-				new File("usp/morph_o").mkdirs();
-				new File("usp/morph_o/0").mkdirs();
-				new File("usp/text_o").mkdirs();
-				new File("usp/text_o/0").mkdirs();
-				new File("usp/parse_o").mkdirs();
-				new File("usp/parse_o/0").mkdirs();
+				new File(uspString).mkdirs();
+				new File(uspString + "/dep_o").mkdirs();
+				new File(uspString + "/dep_o/0").mkdirs();
+				new File(uspString + "/morph_o").mkdirs();
+				new File(uspString + "/morph_o/0").mkdirs();
+				new File(uspString + "/text_o").mkdirs();
+				new File(uspString + "/text_o/0").mkdirs();
+				new File(uspString + "/parse_o").mkdirs();
+				new File(uspString + "/parse_o/0").mkdirs();
 
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/dep_o/0/" + counter + ".dep", false)))) {
+						new FileWriter(uspString + "/dep_o/0/" + counter + ".dep", false)))) {
 					out.println(depStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph_o/0/" + counter + ".input",
+						new FileWriter(uspString + "/morph_o/0/" + counter + ".input",
 								false)))) {
 					out.println(inputStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph_o/0/" + counter + ".morph",
+						new FileWriter(uspString + "/morph_o/0/" + counter + ".morph",
 								false)))) {
 					out.println(morphStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/text_o/0/"
+						new BufferedWriter(new FileWriter(uspString + "/text_o/0/"
 								+ counter + ".txt", false)))) {
 					out.println(textStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/parse_o/0/"
+						new BufferedWriter(new FileWriter(uspString + "/parse_o/0/"
 								+ counter + ".parse", false)))) {
 					out.println(parseStringBuilder);
 				} catch (IOException e) {
@@ -2285,35 +2291,35 @@ public class TrainTestRun implements IRun {
 				
 				
 				// write string into txt files
-				new File("usp").mkdirs();
-				new File("usp/morph_o").mkdirs();
-				new File("usp/morph_o/0").mkdirs();
-				new File("usp/text_o").mkdirs();
-				new File("usp/text_o/0").mkdirs();
+				new File(uspString).mkdirs();
+				new File(uspString + "/morph_o").mkdirs();
+				new File(uspString + "/morph_o/0").mkdirs();
+				new File(uspString + "/text_o").mkdirs();
+				new File(uspString + "/text_o/0").mkdirs();
 				
 				
-				new File("usp").mkdirs();
-				new File("usp/dep").mkdirs();
-				new File("usp/dep/0").mkdirs();
-				new File("usp/morph").mkdirs();
-				new File("usp/morph/0").mkdirs();
-				new File("usp/text").mkdirs();
-				new File("usp/text/0").mkdirs();
-				new File("usp/parse").mkdirs();
-				new File("usp/parse/0").mkdirs();
-				new File("usp/index").mkdirs();
-				new File("usp/index/0").mkdirs();
+				new File(uspString).mkdirs();
+				new File(uspString + "/dep").mkdirs();
+				new File(uspString + "/dep/0").mkdirs();
+				new File(uspString + "/morph").mkdirs();
+				new File(uspString + "/morph/0").mkdirs();
+				new File(uspString + "/text").mkdirs();
+				new File(uspString + "/text/0").mkdirs();
+				new File(uspString + "/parse").mkdirs();
+				new File(uspString + "/parse/0").mkdirs();
+				new File(uspString + "/index").mkdirs();
+				new File(uspString + "/index/0").mkdirs();
 
 
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph_o/0/" + counter + ".morph",
+						new FileWriter(uspString + "/morph_o/0/" + counter + ".morph",
 								false)))) {
 					out.println(morphStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/text_o/0/"
+						new BufferedWriter(new FileWriter(uspString + "/text_o/0/"
 								+ counter + ".txt", false)))) {
 					out.println(textStringBuilder);
 				} catch (IOException e) {
@@ -2322,41 +2328,41 @@ public class TrainTestRun implements IRun {
 				
 				
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/index/0/" + counter + ".index", false)))) {
+						new FileWriter(uspString + "/index/0/" + counter + ".index", false)))) {
 					out.println(collapsedSentIndexStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/dep/0/" + counter + ".dep", false)))) {
+						new FileWriter(uspString + "/dep/0/" + counter + ".dep", false)))) {
 					out.println(collapsedDepStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph/0/" + counter + ".input",
+						new FileWriter(uspString + "/morph/0/" + counter + ".input",
 								false)))) {
 					out.println(collapsedInputStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter("usp/morph/0/" + counter + ".morph",
+						new FileWriter(uspString + "/morph/0/" + counter + ".morph",
 								false)))) {
 					out.println(collapsedMorphStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/text/0/"
+						new BufferedWriter(new FileWriter(uspString + "/text/0/"
 								+ counter + ".txt", false)))) {
 					out.println(collapsedTextStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
 				}
 				try (PrintWriter out = new PrintWriter(
-						new BufferedWriter(new FileWriter("usp/parse/0/"
+						new BufferedWriter(new FileWriter(uspString + "/parse/0/"
 								+ counter + ".parse", false)))) {
 					out.println(collapsedParseStringBuilder);
 				} catch (IOException e) {

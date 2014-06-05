@@ -170,7 +170,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		}
 		log(LogLevel.INFO, "Done replacing abbreviation back to original sentence");
 		
-		sentencesBack = getTransformedCelsiusDegree(sentencesBack); // °C => celsius_degree
+		// sentencesBack = getTransformedCelsiusDegree(sentencesBack); // °C => celsius_degree
 		
 		sentenceSplitLatch.countDown();
 		// return sentences;
@@ -325,7 +325,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		
 		for (String sentence : sentences) {
 			log(LogLevel.INFO, "replacAll::3:: " + sentence);
-			sentence = sentence.replaceAll(celsius_degreeReplaceSourcePattern, "celsius_degree"); // To avoid the error ClausIE spliter: the dash will disappear
+			sentence = sentence.replaceAll(celsius_degreeReplaceSourcePattern, " celsius_degree "); // To avoid the error ClausIE spliter: the dash will disappear
 			// https://d5gate.ag5.mpi-sb.mpg.de/ClausIEGate/ClausIEGate?inputtext=Optimal+temperature+and+pH+for+growth+are+25%E2%80%9330+%CB%9AC+and+pH+7%2C+respectively.&processCcAllVerbs=true&processCcNonVerbs=true&type=true&go=Extract
 			
 			// System.out.println("getTransformedCelsiusDegree::" + sentence);
