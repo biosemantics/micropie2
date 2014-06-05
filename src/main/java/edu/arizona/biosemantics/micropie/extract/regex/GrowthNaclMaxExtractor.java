@@ -1,5 +1,8 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,9 +15,24 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.classify.Label;
+
 
 public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
+	
+	private String celsius_degreeReplaceSourcePattern = "\\s?”C\\s?|\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?";
+	private String celsius_degreeReplaceTargetPattern = " celsius_degree ";
+	
+	public String getCelsius_degreeReplaceSourcePattern() {
+		return celsius_degreeReplaceSourcePattern;
+	}
+	
+	public String getCelsius_degreeReplaceTargetPattern() {
+		return celsius_degreeReplaceTargetPattern;
+	}
 	
 	public GrowthNaclMaxExtractor(ILabel label) {
 		super(label, "NaCl maximum");
@@ -28,190 +46,161 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 	
 	@Override
 	public Set<String> getCharacterValue(String text) {
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+
+		text = text.replaceAll(celsius_degreeReplaceSourcePattern, celsius_degreeReplaceTargetPattern);
+		text = text.toLowerCase();
+		System.out.println("Modified sent::" + text);
 		
 		// input: the original sentnece
 		// output: String array?
+		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 		
-		// Example: The NaCl range for growth is 2.2 M to saturation , with an optimum of 3.4 M NaCl.
-		// Example: Growth requires at least 1.7 M NaCl , optimally 2.6–4.3 M NaCl.
-		// Example: Requires 15 to 30% NaCl for growth; optimum , 20% ( 3.5 M NaCl ).
-		
-		// Regular expression logic expression
-		// first, find the sentence containing "NaCl"
-		// in general, this sentence will contain two chunks
-		// check if it contains "," or ";"
-		// if yes, divide it into two parts
-		// choose the part without "optimal" or "optimum"
-		// 
-		
-		int naclCount = 0;
-		String patternString = "(nacl|\\s?nacl\\s?)";
-		Pattern pattern = Pattern.compile(patternString);
-		Matcher matcher = pattern.matcher(text.toLowerCase());
-
-		while (matcher.find()) {
-			naclCount+=1;
-		}
-		
-		String targetString = "";
-		String[] textArray;
-		if (naclCount > 1) {
-
-			// detect "," or ";"
-			int caseNumber = 0;
-			if (text.contains(",")) {
-				caseNumber = 1;
-			} else if (text.contains(";")) {
+		int caseNumber = 0;
+		if ( text.matches("(.*)(nacl(.*)range|nacl range)(.*)")) {
+			caseNumber = 1;
+		} else if ( text.contains("growth") || 
+				text.contains("grows")
+				) {
+		// } else if ( text.contains("growth occurs") || 
+		//			text.contains("grows well") ||
+		//			text.contains("grows at") ||
+		//			text.contains("grows at temperatures")
+		//			) {
+			// if ( ! (text.contains("optimal") || text.contains("optimum")) ) {
+				// System.out.println("case 2");
 				caseNumber = 2;
-			} else if (text.contains("\\(")) {
-				caseNumber = 3;
-			}
-							
-			switch (caseNumber) {
-			case 1:				
-				textArray = text.split(",");
-				if (textArray.length > 1) {
-					targetString = textArray[0];
-				} 
-			case 2:
-				textArray = text.split(";");
-				if (textArray.length > 1) {
-					targetString = textArray[0];
-				}
-			case 3:
-				textArray = text.split("\\(");
-				if (textArray.length > 1) {
-					targetString = textArray[0];
-				}
-			default:
-				// return null;
-			}
-		} else {
-			targetString = text;
+			// }
 		}
-		
-		
-		targetString = " " + targetString + " ";
-		
-		if ( !targetString.contains("optimal") && !targetString.contains("optimum")) {
-			// System.out.println("targetString::" + targetString);
+		switch(caseNumber) {
+			case 1:
+				// Example: 
 
-			patternString = "(.*)(m\\s?nacl\\s?|%\\s?nacl\\s?)";
-			pattern = Pattern.compile(patternString);
-			matcher = pattern.matcher(targetString.toLowerCase());			
-			
-			while (matcher.find()) {
-				String naclRangeDesc = matcher.group(1);
-				String patternStringRange = "(" + 
-						"\\d+\\.\\d+\\sto\\s\\d+\\.\\d+|" +
-						"\\d+\\.\\d+\\sto\\s\\d+|" +
-						"\\d+\\sto\\s\\d+\\.\\d+|" +
-						"\\d+\\sto\\s\\d+|" +
-
-						"\\d+\\.\\d+-\\d+\\.\\d+|" +
-						"\\d+\\.\\d+-\\d+|" +
-						"\\d+-\\d+\\.\\d+|" +
-						"\\d+-\\d+|" +
-						
-						"\\d+\\.\\d+–\\d+\\.\\d+|" +
-						"\\d+\\.\\d+–\\d+|" +
-						"\\d+–\\d+\\.\\d+|" +						
-						"\\d+–\\d+|" +
-
-						"at least\\s\\d+\\.\\d+|" +
-						"at least\\d+–\\d+|" +
-						
-						"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
-						"between\\s\\d+\\.\\d+\\sand\\s\\d+|" +
-						"between\\s\\d+\\sand\\s\\d+\\.\\d+|" +
-						"between\\s\\d+\\sand\\s\\d+" +
-
-						")";
-
-				Pattern patternRange = Pattern.compile(patternStringRange);
-				Matcher matcherRange = patternRange.matcher(naclRangeDesc);			
+				// String patternString = "(.*)(\\s?nacl range\\s?)(.*)";
+				String patternString = "(.*)(nacl range|nacl(.*)range for growth|nacl occurs)(.*)";
 				
-				List<String> matchStringList = new ArrayList<String>();
-				int matchCounter = 0;
-				while (matcherRange.find()) {
-					matchStringList.add(matcherRange.group().trim());
-					matchCounter++;
+				Pattern pattern = Pattern.compile(patternString);
+				Matcher matcher = pattern.matcher(text);
+
+				while (matcher.find()) {
+					System.out.println("Go to Case 1::");
+					// System.out.println("Whloe Sent::" + matcher.group());
+					// System.out.println("Part 1::" + matcher.group(1));
+					// System.out.println("Part 2::" + matcher.group(2));
+					// System.out.println("Part 3::" + matcher.group(3));
+					// System.out.println("Part 4::" + matcher.group(4));
+					String targetPattern = matcher.group(4);
+					
+					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "nacl;salinity;%");
+					String growNaclMax = rangePatternExtractor.getRangePatternMaxString();
+					if ( ! growNaclMax.equals("") ) {
+						output.add(growNaclMax);
+					}
+					
 				}
+				break;
+			case 2:
+				// Example: Growth occurs between 70 and 100 celsius_degree (optimum, 90 to 95 celsius_degree ), at pH 5 to 9 (optimum, pH 7.0), and at 1.8 to 7.0% salinity (optimum, 3.5% salinity).
+				// Example: Growth occurs between pH 5.0 and 10.0 (pH 7.0–9.0 optimum) and between 4.0 and 28.0 ˚C (12.0–20.0 ˚C optimum), but not at 36.0 ˚C or higher.
+				// Example: °C
 				
-				// if (matchCounter > 1 ) {
-				//	// System.out.println(" ::" + matcherRange.group());
-				//	outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-				// }else {
-				//	outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-				// }
-				
-				// outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-				String growNaclMin = "0";
-				String growNaclMax = "0";			
-				if (matchStringList.size() > 0) {
-					String rangeString = matchStringList.get(matchStringList.size()-1).toString();
+				// patternString = "(.*)(\\s?growth occurs\\s?)(.*)(˚c)";
 
-					if (rangeString.contains("to")){
-						String[] rangeStringArray = rangeString.split("to");
-						if (rangeStringArray.length > 1) {
-							growNaclMin = rangeStringArray[0].trim();
-							growNaclMax = rangeStringArray[1].trim();
-						}		
-					}
-					if (rangeString.contains("-")){
-						String[] rangeStringArray = rangeString.split("-");
-						if (rangeStringArray.length > 1) {
-							growNaclMin = rangeStringArray[0].trim();
-							growNaclMax = rangeStringArray[1].trim();
-						}		
-					}
-					if (rangeString.contains("–")){
-						String[] rangeStringArray = rangeString.split("–");
-						if (rangeStringArray.length > 1) {
-							growNaclMin = rangeStringArray[0].trim();
-							growNaclMax = rangeStringArray[1].trim();
-						}		
-					}			
-					if (rangeString.contains("and")){
-						String[] rangeStringArray = rangeString.split("and");
-						if (rangeStringArray.length > 1) {
-							growNaclMin = rangeStringArray[0].trim();
-							growNaclMax = rangeStringArray[1].trim();
-						}		
-					}
-					if (rangeString.contains("at least")){
-						String[] rangeStringArray = rangeString.split("at least");
-						if (rangeStringArray.length > 1) {
-							growNaclMin = rangeStringArray[1].trim();
-							growNaclMax = "-";
-						}		
-					}
+				// patternString = "(.*)(\\s?growth\\s?|"
+				//		+ "\\s?grows\\s?"
+				//		+ ")(.*)";
+				
+				// patternString = "(.*)(\\s?growth occurs\\s?|"
+				//		+ "\\s?grows well\\s?|"
+				//		+ "\\s?grows at\\s?|"
+				//		+ "\\s?grows at temperatures\\s?"
+				//		+ ")(.*)";
+
+				patternString = "(^growth\\s?|"
+						+ "^grows\\s?"
+						//+ "grows\\s?|"
+						//+ "growth\\s?"
+						+ ")(.*)";
+				
+				pattern = Pattern.compile(patternString);
+				matcher = pattern.matcher(text);
+
+				while (matcher.find()) {
+					// System.out.println("Go to Case 2::");
+					// System.out.println("Whloe Sent::" + matcher.group());
+					// System.out.println("Part 1::" + matcher.group(1));
+					// System.out.println("Part 2::" + matcher.group(2));
+					// System.out.println("Part 3::" + matcher.group(3));
+					
+					String targetPattern = matcher.group(2);
+					System.out.println("targetPattern::" + targetPattern);
+					
+					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "m;nacl;salinity;%");
+					output.add(rangePatternExtractor.getRangePatternMaxString());
+					
+					
 				}
+				break;
+			default:
+				// System.out.println("");
+				// System.out.println("Go to Case 0::");
 				
-				// System.out.println("growNaclMin" + growNaclMin);
-				// System.out.println("growNaclMax" + growNaclMax);
-				if (patternString.toLowerCase().contains("m nacl")) {
-					growNaclMin += growNaclMin + " M";
-					growNaclMax += growNaclMax + " M";
-				} else if (patternString.toLowerCase().contains("% nacl")) {
-					growNaclMin += growNaclMin + " %";
-					growNaclMax += growNaclMax + " %";
-				}
-				// (\\s?nacl\\s?)(.*)(%\\s?)(.*)|(\\s?nacl\\s?)(.*)(\\sm\\s)(.*)
-
-				
-				
-				// output.add("NaCl range " + matchStringList.get(matchStringList.size()-1).toString());
-				// output.add("growNaclMin " + growNaclMin);
-				// output.add("growNaclMax " + growNaclMax);
-				output.add(growNaclMax);				
-			}
-
-		}		
-		
+		}
 		return output;
 	}
+	
+	
+	// Example: 
+	public static void main(String[] args) throws IOException {
+		System.out.println("Start::");
+		
+		GrowthNaclMaxExtractor growthNaclMaxExtractor = new GrowthNaclMaxExtractor(Label.c3);
+		
+		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
+		// Read sentence list
+		// 
+		
+		// sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
+		// List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		// System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
+
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
+		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
+		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());		
+		
+		
+		int sampleSentCounter = 0;
+		int extractedValueCounter = 0;
+		
+		for (Sentence sourceSentence : sourceSentenceList) {
+			String sourceSentText = sourceSentence.getText();
+			
+			sourceSentText = sourceSentText.replaceAll(growthNaclMaxExtractor.getCelsius_degreeReplaceSourcePattern(), growthNaclMaxExtractor.getCelsius_degreeReplaceTargetPattern());
+			sourceSentText = sourceSentText.toLowerCase();
+			// pH
+			
+			if (
+					sourceSentText.matches("(.*)(\\bnacl\\b|\\bsalinity\\b)(.*)") 
+				) {				
+			
+				System.out.println("\n");
+				System.out.println("sourceSentText::" + sourceSentText);
+				Set<String> growNaclMaxResult = growthNaclMaxExtractor.getCharacterValue(sourceSentText);
+				System.out.println("growNaclMaxResult::" + growNaclMaxResult.toString());
+				if ( growNaclMaxResult.size() > 0 ) {
+					extractedValueCounter +=1;
+				}
+				sampleSentCounter +=1;
+			}
+		
+		}
+
+		System.out.println("\n");
+		System.out.println("sampleSentCounter::" + sampleSentCounter);
+		System.out.println("extractedValueCounter::" + extractedValueCounter);
+	
+	}
+	
+	
+	
 }
-
-

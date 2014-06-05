@@ -399,7 +399,57 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		}
 		*/
 		
+		/*
+		String newString = "";
+		String testString = "AAA is bbb C. BBB is ccc D. The strain number is 123.";
+		String testStringArray[] = testString.split("\\s+");
+		String targetString = "";
+		for ( int i = 0; i < testStringArray.length; i++ ) {
+			String itemString = testStringArray[i];
+			if ( itemString.matches("[A-Z]\\.") ) {
+				System.out.println("111::222::itemString::" + itemString);
+				targetString = itemString;
+				for ( int j = 0; j < itemString.length(); j++ ) {
+					newString += itemString.substring(j, j+1) + " ";
+				}
+			}
+		}
+		System.out.println("333::444::newString::" + newString);
 		
+		testString = testString.replaceAll(targetString, newString);
+		
+		System.out.println("555::666::testString::" + testString);
+		*/
+	
+		/*
+		String testString = "AAA is bbb C. BBB is ccc D. The strain number is 123.";
+		System.out.println("testString::Before::" + testString);
+		
+		String targetPatternString = "(\\s[A-Z]\\.\\s)";
+		Pattern pattern = Pattern.compile(targetPatternString);
+		Matcher matcher = pattern.matcher(testString);
+		
+		while (matcher.find()) {
+			System.out.println("Whloe Sent::" + matcher.group());
+			System.out.println("Part 1::" + matcher.group(1));
+			// System.out.println("Part 2::" + matcher.group(2));
+			// System.out.println("Part 3::" + matcher.group(3));
+			
+			String matchString = matcher.group(1);
+			
+			String newMatchString = "";
+			for ( int j = 0; j < matchString.length(); j++ ) {
+				newMatchString += matchString.substring(j, j+1) + " ";
+			}
+			
+			
+			testString = testString.replaceAll(matcher.group(1), newMatchString);
+			
+			// String matchResult = matcher.group(1);
+			// System.out.println("matchResult::" + matchResult);
+		}
+		System.out.println("testString::After::" + testString);
+		*/
 		
 	}	
 	

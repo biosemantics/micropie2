@@ -5,13 +5,20 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 
 
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.google.inject.name.Named;
 
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
@@ -41,6 +48,8 @@ public class SentenceSplitRun implements Callable<List<String>> {
 	private CountDownLatch sentenceSplitLatch;
 	private ITextNormalizer normalizer;
 	private StanfordCoreNLP stanfordCoreNLP;
+	private String celsius_degreeReplaceSourcePattern;
+	
 	
 
 	private LearnerUtility tester;
@@ -48,11 +57,13 @@ public class SentenceSplitRun implements Callable<List<String>> {
 
 	
 	public SentenceSplitRun(String text, ITextNormalizer normalizer, StanfordCoreNLP stanfordCoreNLP, 
-			CountDownLatch sentenceSplitLatch) {
+			CountDownLatch sentenceSplitLatch,
+			@Named("celsius_degreeReplaceSourcePattern") String celsius_degreeReplaceSourcePattern) {
 		this.text = text;
 		this.sentenceSplitLatch = sentenceSplitLatch;
 		this.normalizer = normalizer;
 		this.stanfordCoreNLP = stanfordCoreNLP;
+		this.celsius_degreeReplaceSourcePattern = celsius_degreeReplaceSourcePattern;
 	}
 
 	@Override
@@ -78,13 +89,18 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		}		
 		
 		log(LogLevel.INFO, "Normalize text... : " + text);
+		
 		text = normalizer.transform(text);
+		// System.out.println("normalized text::" + text);
+		
 		log(LogLevel.INFO, "Done normalizing, resulting text: " + text);
 		
+		Set<String> termWithPeriod = getTermWithPeriod(text);
 		
+		String text2 = getSplitCapitalPeriodSent(text); // => add explanation here!!
 		
 		log(LogLevel.INFO, "Splitting text into sentences");
-		List<String> sentences =  getSentences(text);
+		List<String> sentences =  getSentences(text2);
 		log(LogLevel.INFO, "Done splitting text into sentences. Created " + sentences.size() + " + sentences");
 		
 		
@@ -98,6 +114,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		// => See getSentencesStep3(sentences2)
 		
 		
+		/*
 		log(LogLevel.INFO, "Replacing abbreviation back to original sentence");
 		// replace abbreviation back to original sentence
 		List<String> sentencesBack = new ArrayList<String>();
@@ -114,15 +131,53 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		
 		sentences2 = getSentencesSsplit(sentencesBack); // run Stanford Corenlp again
 		sentences2 = getSentencesSemicolon(sentences2); // run ";" semicolon separator
-		sentences2 = getSentencesOpennlp(sentences2, source);
-		sentences2 = getSentencesDongyeMengSegmentSent(sentences2, sentenceDetector, tokenizer, wordNetPOSKnowledgeBase); // run CharaParser's segmentSentence
+		// sentences2 = getSentencesOpennlp(sentences2, source);
+		// sentences2 = getSentencesDongyeMengSegmentSent(sentences2, sentenceDetector, tokenizer, wordNetPOSKnowledgeBase); // run CharaParser's segmentSentence
 
 		sentences2 = getTransformedDash(sentences2);
+		sentences2 = getTransformedPeriod(sentences2);
 		
 		sentenceSplitLatch.countDown();
 		// return sentences;
 		// return sentencesBack;
 		return sentences2;
+		*/
+
+
+		// List<String> sentences2 = new ArrayList<String>();
+		List<String> sentences2 = new LinkedList<String>();
+		
+		// sentences2 = getSentencesDongyeMengSegmentSent(sentencesBack, sentenceDetector, tokenizer, wordNetPOSKnowledgeBase);
+		
+		sentences = getSentencesSsplit(sentences); // run Stanford Corenlp again
+		sentences = getSentencesSemicolon(sentences); // run ";" semicolon separator
+		// sentences = getSentencesOpennlp(sentences, source);
+		// sentences = getSentencesDongyeMengSegmentSent(sentences, sentenceDetector, tokenizer, wordNetPOSKnowledgeBase); // run CharaParser's segmentSentence
+
+		sentences = getTransformedDash(sentences);
+		sentences = getTransformedPeriod(sentences); // · => .
+		
+		
+
+		
+		
+		log(LogLevel.INFO, "Replacing abbreviation back to original sentence");
+		// replace abbreviation back to original sentence
+		List<String> sentencesBack = new ArrayList<String>();
+		for (String sentence: sentences) {
+			sentence = normalizer.transformBack(sentence);
+			sentencesBack.add(sentence);
+		}
+		log(LogLevel.INFO, "Done replacing abbreviation back to original sentence");
+		
+		sentencesBack = getTransformedCelsiusDegree(sentencesBack); // °C => celsius_degree
+		
+		sentenceSplitLatch.countDown();
+		// return sentences;
+		// return sentencesBack;
+		return sentencesBack;		
+		
+		
 	}
 	
 	private List<String> getSentences(String text) {
@@ -138,6 +193,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		return result;
 	}
 	
+
 	
 	
 	private List<String> getSentencesSsplit(List<String> sentences) {
@@ -227,6 +283,9 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		List<String> result = new LinkedList<String>();		
 		
 		for (String sentence : sentences) {
+			
+			log(LogLevel.INFO, "replacAll:: " + sentence);
+			
 			sentence = sentence.replaceAll("–", "-"); // To avoid the error ClausIE spliter: the dash will disappear
 			// https://d5gate.ag5.mpi-sb.mpg.de/ClausIEGate/ClausIEGate?inputtext=Optimal+temperature+and+pH+for+growth+are+25%E2%80%9330+%CB%9AC+and+pH+7%2C+respectively.&processCcAllVerbs=true&processCcNonVerbs=true&type=true&go=Extract
 			sentence = sentence.replaceAll("\\s?-\\s?", "-"); // To avoid the error ClausIE spliter: the dash will disappear
@@ -236,6 +295,49 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		log(LogLevel.INFO, "done getTransformedDash:: replace \"–\" to \"-\". Transformed " + result.size() + " sentences");
 		return result;
 	}
+
+	
+	private List<String> getTransformedPeriod(List<String> sentences) throws FileNotFoundException {
+		log(LogLevel.INFO, "getTransformedPeriod:: replace \"·\" to \".\" ...");
+
+		List<String> result = new LinkedList<String>();		
+		
+		for (String sentence : sentences) {
+			log(LogLevel.INFO, "replacAll::2:: " + sentence);
+			sentence = sentence.replaceAll("\\·", "."); // To avoid the error ClausIE spliter: the dash will disappear
+			// https://d5gate.ag5.mpi-sb.mpg.de/ClausIEGate/ClausIEGate?inputtext=Optimal+temperature+and+pH+for+growth+are+25%E2%80%9330+%CB%9AC+and+pH+7%2C+respectively.&processCcAllVerbs=true&processCcNonVerbs=true&type=true&go=Extract
+			sentence = sentence.replaceAll("\\s?\\·\\s?", "."); // To avoid the error ClausIE spliter: the dash will disappear
+			result.add(sentence);
+		}
+
+		log(LogLevel.INFO, "done getTransformedPeriod:: replace \"·\" to \".\". Transformed " + result.size() + " sentences");
+		return result;
+	}
+	
+	
+	private List<String> getTransformedCelsiusDegree(List<String> sentences) {
+		log(LogLevel.INFO, "getTransformedCelsiusDegree:: replace \"°C\" to \"celsius_degree\" ...");
+
+		List<String> result = new LinkedList<String>();		
+		
+		// System.out.println("celsius_degreeReplaceSourcePattern::" + celsius_degreeReplaceSourcePattern);
+		
+		
+		for (String sentence : sentences) {
+			log(LogLevel.INFO, "replacAll::3:: " + sentence);
+			sentence = sentence.replaceAll(celsius_degreeReplaceSourcePattern, "celsius_degree"); // To avoid the error ClausIE spliter: the dash will disappear
+			// https://d5gate.ag5.mpi-sb.mpg.de/ClausIEGate/ClausIEGate?inputtext=Optimal+temperature+and+pH+for+growth+are+25%E2%80%9330+%CB%9AC+and+pH+7%2C+respectively.&processCcAllVerbs=true&processCcNonVerbs=true&type=true&go=Extract
+			
+			// System.out.println("getTransformedCelsiusDegree::" + sentence);
+			
+			result.add(sentence);
+		}
+		
+
+		log(LogLevel.INFO, "done getTransformedCelsiusDegree:: replace \"°C\" to \"celsius_degree\". Transformed " + result.size() + " sentences");
+		return result;
+	}
+	
 	
 	
 
@@ -305,6 +407,72 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		    }
 		  }
 		}
+	}
+	
+	private String getSplitCapitalPeriodSent(String text) {
+		// String testString = "AAA is bbb C. BBB is ccc D. The strain number is 123.";
+		
+		String testString = text;
+		
+		/*
+		testString = testString.replaceAll("\\·", "."); // To avoid the error ClausIE spliter: the dash will disappear
+		// https://d5gate.ag5.mpi-sb.mpg.de/ClausIEGate/ClausIEGate?inputtext=Optimal+temperature+and+pH+for+growth+are+25%E2%80%9330+%CB%9AC+and+pH+7%2C+respectively.&processCcAllVerbs=true&processCcNonVerbs=true&type=true&go=Extract
+		testString = testString.replaceAll("\\s?\\·\\s?", "."); // To avoid the error ClausIE spliter: the dash will disappear
+		
+		testString = testString.replaceAll("–", "-"); // To avoid the error ClausIE spliter: the dash will disappear
+		// https://d5gate.ag5.mpi-sb.mpg.de/ClausIEGate/ClausIEGate?inputtext=Optimal+temperature+and+pH+for+growth+are+25%E2%80%9330+%CB%9AC+and+pH+7%2C+respectively.&processCcAllVerbs=true&processCcNonVerbs=true&type=true&go=Extract
+		testString = testString.replaceAll("\\s?-\\s?", "-"); // To avoid the error ClausIE spliter: the dash will disappear
+		*/
+		
+		// System.out.println("testString::Before::" + testString);
+		
+		String targetPatternString = "(\\s[A-Z]\\.\\s)";
+		Pattern pattern = Pattern.compile(targetPatternString);
+		Matcher matcher = pattern.matcher(testString);
+		
+		while (matcher.find()) {
+			// System.out.println("Whloe Sent::" + matcher.group());
+			// System.out.println("Part 1::" + matcher.group(1));
+			// System.out.println("Part 2::" + matcher.group(2));
+			// System.out.println("Part 3::" + matcher.group(3));
+			
+			String matchString = matcher.group(1);
+			
+			String newMatchString = "";
+			for ( int j = 0; j < matchString.length(); j++ ) {
+				newMatchString += matchString.substring(j, j+1) + " ";
+			}
+			
+			log(LogLevel.INFO, "matchString:: " + matchString);
+			log(LogLevel.INFO, "newMatchString:: " + newMatchString);
+			
+			testString = testString.replaceAll(matcher.group(1), newMatchString);
+			
+			// String matchResult = matcher.group(1);
+			// System.out.println("matchResult::" + matchResult);
+		}
+		
+		// System.out.println("testString::After::" + testString);
+		
+		return testString;
+		
+	}
+	
+	private Set<String> getTermWithPeriod(String text) {
+		Set<String> termWithPeriod = new HashSet();
+		
+		String textTokens[] = text.split(" ");
+		
+		for ( int i = 0; i < textTokens.length; i++ ) {
+			String tokenString = textTokens[i];
+			
+			if ( tokenString.matches("(.*)([A-Z]+\\.)(.*)")) {
+				System.out.println("tokenString::" + tokenString);
+			}
+			
+		}
+		
+		return termWithPeriod;
 	}
 	
 

@@ -15,7 +15,7 @@ public class RangePatternExtractor {
 	
 	private String targetPatternString = "(" +
 			"(between\\s?|from\\s?)*" +
-			myNumberPattern + "(\\s)*(\\()*(±|-|–|and|to|or)*(\\s)*" + myNumberPattern + "*(\\))*" + 
+			myNumberPattern + "(\\%|ph|celsius_degree)*(\\s)*(\\()*(±|-|–|and|to|or)*(\\s)*" + myNumberPattern + "*(\\))*" + 
 			")";	
 	
 	private String rangePatternMaxString;
@@ -221,12 +221,13 @@ public class RangePatternExtractor {
 					}					
 				}
 				
-				if ( i > 4) {
-					for ( int j = 0; j < 4; j++ ) {
+				if ( i > 5) {
+					for ( int j = 0; j < 5; j++ ) {
 						// System.out.println("matchPartStringArray[" + (i-j-1) + "]::" + matchPartStringArray[i-j-1]);
 						if ( matchPartStringArray[i-j-1].contains("no") ||
 								matchPartStringArray[i-j-1].contains("not") ||
 								matchPartStringArray[i-j-1].contains("optimal") ||
+								matchPartStringArray[i-j-1].contains("optimally") ||
 								matchPartStringArray[i-j-1].contains("optimum")
 								) {
 							isNextToRightSymbol = false;

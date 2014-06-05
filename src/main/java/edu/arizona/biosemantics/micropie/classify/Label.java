@@ -32,6 +32,9 @@ public enum Label implements ILabel {
 	 * @return the label associated with the value
 	 */
 	public static Label getEnum(String value) {
+		
+		// System.out.println("value::" + value);
+		
 		if(value == null)
             throw new IllegalArgumentException();
         for(Label label : values())

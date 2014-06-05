@@ -1,5 +1,8 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,138 +15,191 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.classify.Label;
+
 
 public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
+	
+	private String celsius_degreeReplaceSourcePattern = "\\s?”C\\s?|\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?";
+	private String celsius_degreeReplaceTargetPattern = " celsius_degree ";
+	
+	public String getCelsius_degreeReplaceSourcePattern() {
+		return celsius_degreeReplaceSourcePattern;
+	}
+	
+	public String getCelsius_degreeReplaceTargetPattern() {
+		return celsius_degreeReplaceTargetPattern;
+	}
 	
 	public GrowthPhMinExtractor(ILabel label) {
 		super(label, "pH minimum");
 	}
 	
 	@Inject
-	public GrowthPhMinExtractor(@Named("GrowthPhMinExtractor_Label")Label label, 
+	public GrowthPhMinExtractor(@Named("GrowthPhMExtractor_Label")Label label, 
 			@Named("GrowthPhMinExtractor_Character")String character) {
 		super(label, character);
 	}
 	
 	@Override
 	public Set<String> getCharacterValue(String text) {
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+
+		text = text.replaceAll(celsius_degreeReplaceSourcePattern, celsius_degreeReplaceTargetPattern);
+		text = text.toLowerCase();
+		System.out.println("Modified sent::" + text);
 		
 		// input: the original sentnece
 		// output: String array?
+		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 		
-		// Example:  ... pH range 5-40˚C ..., The pH range for growth is 18 to 37°C.
-		String patternString = "(.*)(\\s?ph range\\s?)(.*)";
-		
-		Pattern pattern = Pattern.compile(patternString);
-		Matcher matcher = pattern.matcher(text.toLowerCase());
-
-		while (matcher.find()) {
-			// System.out.println("Whloe Sent::" + matcher.group());
-			// System.out.println("Part 1::" + matcher.group(1));
-			// System.out.println("Part 2::" + matcher.group(2));
-			// System.out.println("pH range::" + matcher.group(3));
-			String part3 = matcher.group(3);
-			String patternStringRange = "(" + 
-					"\\d+\\.\\d+\\sto\\s\\d+\\.\\d+|" +
-					"\\d+\\.\\d+\\sto\\s\\d+|" +
-					"\\d+\\sto\\s\\d+\\.\\d+|" +
-					"\\d+\\sto\\s\\d+|" +
-
-					"\\d+\\.\\d+-\\d+\\.\\d+|" +
-					"\\d+\\.\\d+-\\d+|" +
-					"\\d+-\\d+\\.\\d+|" +
-					"\\d+-\\d+|" +
-					
-					"\\d+\\.\\d+–\\d+\\.\\d+|" +
-					"\\d+\\.\\d+–\\d+|" +
-					"\\d+–\\d+\\.\\d+|" +						
-					"\\d+–\\d+|" +
-
-					"at least\\s\\d+\\.\\d+|" +
-					"at least\\d+–\\d+|" +
-					
-					"between\\s\\d+\\.\\d+\\sand\\s\\d+\\.\\d+|" +
-					"between\\s\\d+\\.\\d+\\sand\\s\\d+|" +
-					"between\\s\\d+\\sand\\s\\d+\\.\\d+|" +
-					"between\\s\\d+\\sand\\s\\d+" +
-
-					")";
-			// patternString =
-			// "(.*)(\\s\\d*\\s\\+\\/\\-\\s\\d*\\s|\\s\\d*\\s|\\s\\d*\\.\\d*\\s|\\s\\d*\\-\\s*\\d*\\s)(.*)";
-
-			Pattern patternRange = Pattern.compile(patternStringRange);
-			Matcher matcherRange = patternRange.matcher(part3);			
-			
-			List<String> matchStringList = new ArrayList<String>();
-			int matchCounter = 0;
-			while (matcherRange.find()) {
-				matchStringList.add(matcherRange.group().trim());
-				matchCounter++;
-			}
-			
-			// if (matchCounter > 1 ) {
-			//	// System.out.println(" ::" + matcherRange.group());
-			//	outpputContentList.add("temperature range " + matchStringList.get(0).toString());
-			// }else {
-			//	outpputContentList.add("temperature range " + matchStringList.get(0).toString());
+		int caseNumber = 0;
+		if ( text.matches("(.*)(ph(.*)range|ph range)(.*)")) {
+			caseNumber = 1;
+		} else if ( text.contains("growth") || 
+				text.contains("grows")
+				) {
+		// } else if ( text.contains("growth occurs") || 
+		//			text.contains("grows well") ||
+		//			text.contains("grows at") ||
+		//			text.contains("grows at temperatures")
+		//			) {
+			// if ( ! (text.contains("optimal") || text.contains("optimum")) ) {
+				// System.out.println("case 2");
+				caseNumber = 2;
 			// }
-			
-			// outpputContentList.add("temperature range " + matchStringList.get(0).toString());
+		}
+		switch(caseNumber) {
+			case 1:
+				// Example: Temperature and pH ranges for growth are 15–65 celsius_degree (optimum 42–45 celsius_degree ) and pH 0–4 (optimum pH 1.4–1.6).
+				// ... Temperature range 5-40˚C ...
+				// The temperature range for growth is 18 to 37°C.
+				// String patternString = "(.*)(\\s?ph range\\s?)(.*)";
+				String patternString = "(.*)(ph range|ph(.*)range for growth)(.*)";
+				
+				Pattern pattern = Pattern.compile(patternString);
+				Matcher matcher = pattern.matcher(text);
 
-			String growPhMin = "0";
-			String growPhMax = "0";			
-			if (matchStringList.size() > 0) {
-				String rangeString = matchStringList.get(0).toString();
-				if (rangeString.contains("to")){
-					String[] rangeStringArray = rangeString.split("to");
-					if (rangeStringArray.length > 1) {
-						growPhMin = rangeStringArray[0].trim();
-						growPhMax = rangeStringArray[1].trim();
-					}		
+				while (matcher.find()) {
+					System.out.println("Go to Case 1::");
+					// System.out.println("Whloe Sent::" + matcher.group());
+					// System.out.println("Part 1::" + matcher.group(1));
+					// System.out.println("Part 2::" + matcher.group(2));
+					// System.out.println("Part 3::" + matcher.group(3));
+					// System.out.println("Part 4::" + matcher.group(4));
+					String targetPattern = matcher.group(4);
+					
+					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "ph");
+					String growPhMin = rangePatternExtractor.getRangePatternMinString();
+					if ( ! growPhMin.equals("") ) {
+						output.add(growPhMin);
+					}
 				}
-				if (rangeString.contains("-")){
-					String[] rangeStringArray = rangeString.split("-");
-					if (rangeStringArray.length > 1) {
-						growPhMin = rangeStringArray[0].trim();
-						growPhMax = rangeStringArray[1].trim();
-					}		
-				}
-				if (rangeString.contains("–")){
-					String[] rangeStringArray = rangeString.split("–");
-					if (rangeStringArray.length > 1) {
-						growPhMin = rangeStringArray[0].trim();
-						growPhMax = rangeStringArray[1].trim();
-					}		
-				}			
-				if (rangeString.contains("and")){
-					String[] rangeStringArray = rangeString.split("and");
-					if (rangeStringArray.length > 1) {
-						growPhMin = rangeStringArray[0].replace("between", "");
-						growPhMin = growPhMin.trim();
-						growPhMax = rangeStringArray[1].trim();
-					}		
-				}
-				if (rangeString.contains("at least")){
-					String[] rangeStringArray = rangeString.split("at least");
-					if (rangeStringArray.length > 1) {
-						growPhMin = rangeStringArray[1].trim();
-						growPhMax = "-";
-					}		
-				}				
-			}	
+				break;
+			case 2:
+				// Example: Growth occurs between 70 and 100 celsius_degree (optimum, 90 to 95 celsius_degree ), at pH 5 to 9 (optimum, pH 7.0), and at 1.8 to 7.0% salinity (optimum, 3.5% salinity).
+				// Example: Growth occurs between pH 5.0 and 10.0 (pH 7.0–9.0 optimum) and between 4.0 and 28.0 ˚C (12.0–20.0 ˚C optimum), but not at 36.0 ˚C or higher.
+				// Example: °C
 				
+				// patternString = "(.*)(\\s?growth occurs\\s?)(.*)(˚c)";
+
+				// patternString = "(.*)(\\s?growth\\s?|"
+				//		+ "\\s?grows\\s?"
+				//		+ ")(.*)";
 				
-			// output.add("pH range " + matchStringList.get(0).toString());
-			// output.add("growPhMin " + growTempMin);
-			// output.add("growPhMax " + growTempMax);
-			output.add(growPhMin);
-		}		
-		
+				// patternString = "(.*)(\\s?growth occurs\\s?|"
+				//		+ "\\s?grows well\\s?|"
+				//		+ "\\s?grows at\\s?|"
+				//		+ "\\s?grows at temperatures\\s?"
+				//		+ ")(.*)";
+
+				patternString = "(^growth\\s?|"
+						+ "^grows\\s?"
+						//+ "grows\\s?|"
+						//+ "growth\\s?"
+						+ ")(.*)";
+				
+				pattern = Pattern.compile(patternString);
+				matcher = pattern.matcher(text);
+
+				while (matcher.find()) {
+					// System.out.println("Go to Case 2::");
+					// System.out.println("Whloe Sent::" + matcher.group());
+					// System.out.println("Part 1::" + matcher.group(1));
+					// System.out.println("Part 2::" + matcher.group(2));
+					// System.out.println("Part 3::" + matcher.group(3));
+					
+					String targetPattern = matcher.group(2);
+					System.out.println("targetPattern::" + targetPattern);
+					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "ph");
+					output.add(rangePatternExtractor.getRangePatternMinString());
+					
+					
+				}
+				break;
+			default:
+				// System.out.println("");
+				// System.out.println("Go to Case 0::");
+				
+		}
 		return output;
 	}
+	
+	
+	// Example: Grows well at 30-37 celsius_degree and at ph 7.0-8.0.
+	public static void main(String[] args) throws IOException {
+		System.out.println("Start::");
+		
+		GrowthPhMinExtractor growthPhMinExtractor = new GrowthPhMinExtractor(Label.c3);
+		
+		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
+		// Read sentence list
+		// 
+		
+		// sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
+		// List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		// System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
+
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
+		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
+		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());		
+		
+		
+		int sampleSentCounter = 0;
+		int extractedValueCounter = 0;
+		
+		for (Sentence sourceSentence : sourceSentenceList) {
+			String sourceSentText = sourceSentence.getText();
+			
+			sourceSentText = sourceSentText.replaceAll(growthPhMinExtractor.getCelsius_degreeReplaceSourcePattern(), growthPhMinExtractor.getCelsius_degreeReplaceTargetPattern());
+			sourceSentText = sourceSentText.toLowerCase();
+			// pH
+			
+			if (
+					sourceSentText.matches("(.*)(\\bph\\b)(.*)") 
+				) {				
+			
+				System.out.println("\n");
+				System.out.println("sourceSentText::" + sourceSentText);
+				Set<String> growPhMinResult = growthPhMinExtractor.getCharacterValue(sourceSentText);
+				System.out.println("growPhMinResult::" + growPhMinResult.toString());
+				if ( growPhMinResult.size() > 0 ) {
+					extractedValueCounter +=1;
+				}
+				sampleSentCounter +=1;
+			}
+		
+		}
+
+		System.out.println("\n");
+		System.out.println("sampleSentCounter::" + sampleSentCounter);
+		System.out.println("extractedValueCounter::" + extractedValueCounter);
+	
+	}
+	
+	
+	
 }
-
-
-

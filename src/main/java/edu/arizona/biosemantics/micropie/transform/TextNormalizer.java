@@ -13,6 +13,10 @@ public class TextNormalizer implements ITextNormalizer {
 	
 	private LinkedHashMap<String, String> abbreviations;
 	
+	public LinkedHashMap<String, String> getAbbreviations() {
+		return abbreviations;
+	}	
+	
 	@Inject
 	public TextNormalizer(@Named("Abbreviations")LinkedHashMap<String, String> abbreviations) throws IOException {
 		this.abbreviations = abbreviations;
@@ -134,6 +138,9 @@ public class TextNormalizer implements ITextNormalizer {
 		
 		text = replace(text, this.abbreviations);
 		
+		System.out.println("TextNormalizer::Text::" + text);
+		
+		
 		// text = replace(text, parenthesisReplacements); // mark it first since this one doesn't work very well
 		
 		// "DNA base composition 45 mol% G + C.  Temperature optimum 30 to 37˚C."
@@ -151,7 +158,7 @@ public class TextNormalizer implements ITextNormalizer {
 	}
 	
 	public String replace(String text, LinkedHashMap<String, String> replacements) {
-		for (String original : replacements.keySet()) {
+		for (String original : replacements.keySet()) {			
 			//or was this meant to work as regex replace? (.replace vs .replaceAll)
 			text = text.replace(original, replacements.get(original));
 		}
@@ -175,6 +182,14 @@ public class TextNormalizer implements ITextNormalizer {
 		}
 		return sent;
 	}	
+	
+	
+	
+	public static void main(String[] args) throws IOException {
+	
+
+		
+	}
 	
 	
 }

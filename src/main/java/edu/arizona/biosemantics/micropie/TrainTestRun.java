@@ -131,6 +131,10 @@ public class TrainTestRun implements IRun {
 	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
 	private Map<TaxonTextFile, List<Sentence>> taxonSentencesMap;
 
+	private String celsius_degreeReplaceSourcePattern;
+	
+	
+	
 	@Inject
 	public TrainTestRun(
 			@Named("trainingFile") String trainingFile,
@@ -153,7 +157,11 @@ public class TrainTestRun implements IRun {
 			LexicalizedParser lexicalizedParser,
 			CSVClassifiedSentenceWriter classifiedSentenceWriter,
 			TaxonCharacterMatrixCreator matrixCreator,
-			CSVTaxonCharacterMatrixWriter matrixWriter) {
+			CSVTaxonCharacterMatrixWriter matrixWriter,
+			
+			@Named("celsius_degreeReplaceSourcePattern") String celsius_degreeReplaceSourcePattern
+			
+			) {
 		this.trainingFile = trainingFile;
 		this.testFolder = testFolder;
 		this.uspFolder = uspFolder;
@@ -179,6 +187,11 @@ public class TrainTestRun implements IRun {
 		this.matrixCreator = matrixCreator;
 		this.matrixWriter = matrixWriter;
 
+		
+		this.celsius_degreeReplaceSourcePattern = celsius_degreeReplaceSourcePattern;
+		
+		
+		
 		if (!this.parallelProcessing)
 			executorService = MoreExecutors.listeningDecorator(Executors
 					.newSingleThreadExecutor());
@@ -246,6 +259,10 @@ public class TrainTestRun implements IRun {
 			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			////trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140507.csv"));
 			// trainingSentenceReader.categoryStat();
+			// 
+			// Calculation on June 04, 2014 Wednesday
+			// trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140603.csv"));
+			// trainingSentenceReader.categoryStat();
 			// Small tool 2:: Training data set statistics
 			
 			
@@ -259,6 +276,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
+			/*
 			// temporary use :: build the predictions for each sentence
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
@@ -279,7 +297,7 @@ public class TrainTestRun implements IRun {
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
 			classifiedSentenceWriter.write(predictions);
 			// temporary use :: build the predictions for each sentence
-			
+			*/
 			
 			
 			
@@ -288,10 +306,15 @@ public class TrainTestRun implements IRun {
 			// Small tool 3:: Transformer:: CSV to Excel (2007 format)
 			// trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140507.csv"));
 			// trainingSentenceReader.csvToXls("split-training-base-140507.xls");
-			// Small tool 3:: Transformer:: CSV to Excel (2007 format)
+			
+			
+			// xls2csv.csv
+			// trainingSentenceReader.setInputStream(new FileInputStream("xls2csv.csv"));
+			// trainingSentenceReader.csvToXls("xls2csv.xls");
+			// trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140603.csv"));
+			// trainingSentenceReader.csvToXls("split-training-base-140603.xls");
 
-			
-			
+			// Small tool 3:: Transformer:: CSV to Excel (2007 format)
 			
 			
 			
@@ -310,7 +333,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			/*
+			
 			
 			// formal MicroPIE process
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
@@ -348,7 +371,15 @@ public class TrainTestRun implements IRun {
 			
 			// formal MicroPIE process
 			
-			*/
+			
+			// Using small tool 3:: Transformer:: CSV to Excel (2007 format)
+			// trainingSentenceReader.setInputStream(new FileInputStream("140604-20more-sentences-to-be-determined.csv"));
+			// trainingSentenceReader.csvToXls("140604-20more-sentences-to-be-determined.xls");
+			
+			
+			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
+			trainingSentenceReader.csvToXls("matrix.xls");
+			
 			
 			
 
@@ -388,7 +419,10 @@ public class TrainTestRun implements IRun {
 		for (TaxonTextFile textFile : textFiles) {
 			SentenceSplitRun splitRun = new SentenceSplitRun(
 					textFile.getText(), textNormalizer, tokenizeSSplit,
-					sentenceSplitLatch);
+					sentenceSplitLatch,
+					celsius_degreeReplaceSourcePattern
+					
+					);
 			ListenableFuture<List<String>> futureResult = executorService
 					.submit(splitRun);
 			sentenceSplits.add(futureResult);
@@ -450,10 +484,10 @@ public class TrainTestRun implements IRun {
 				// overall += size;
 				// if(size > maxSize) { maxSize = size; }
 				
-				if (sentence.length() <= 50) {
-				//if (sentence.length() <= 100) {
-				//if (sentence.length() <= 200) {
-				//if (tokenSize <= 30) {
+				// if (sentence.length() <= 50) {
+				if (sentence.length() <= 100) {
+				// if (sentence.length() <= 200) {
+				// if (tokenSize <= 30) {
 
 					CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(
 							sentence, lexicalizedParser, PTBTokenizer.factory(

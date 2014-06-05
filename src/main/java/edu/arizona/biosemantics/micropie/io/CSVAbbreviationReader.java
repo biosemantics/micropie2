@@ -26,8 +26,8 @@ public class CSVAbbreviationReader implements IAbbreviationReader {
 		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
 	    List<String[]> lines = reader.readAll();
 		for(String[] line : lines)
-			result.put(line[0], line[1]);
-	    reader.close();
+			result.put(line[0], line[1]);	
+		reader.close();
 		return result;
 	}
 }
