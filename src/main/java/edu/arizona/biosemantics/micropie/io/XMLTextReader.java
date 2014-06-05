@@ -28,16 +28,34 @@ public class XMLTextReader implements ITextReader {
 	// New schema
 	@Override
 	public String read() throws Exception {
+		String returnText = "";
+
+		Element meta = rootNode.getChild("meta");
+		Element source = meta.getChild("source");
+		// Element title = source.getChild("title");
+		String titleText = source.getChildText("title");
+		
+		if ( titleText != null && ! titleText.equals("") ) {
+			
+			String lastCharOfTitleText = titleText.substring(titleText.length()-1, titleText.length());
+			if ( ! lastCharOfTitleText.equals(".") ) {
+				titleText += ".";
+			}
+			
+			System.out.println("Adding title:" + titleText);
+			returnText += titleText + " ";
+		}
+		
 		String text = rootNode.getChildText("description");
 		Element desc = rootNode.getChild("description");
 		String descType = desc.getAttributeValue("type");
 		
 		// System.out.println("descType:" + descType);
 		// System.out.println("text:" + text);
-		
 		if(text != null && descType.equals("morphology")) {  
 			System.out.println("text:" + text);
-			return text;
+			returnText += text;
+			return returnText;
 		}	
 		throw new Exception("Could not find a description");
 		

@@ -276,7 +276,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			/*
+			
 			// temporary use :: build the predictions for each sentence
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
@@ -297,7 +297,7 @@ public class TrainTestRun implements IRun {
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
 			classifiedSentenceWriter.write(predictions);
 			// temporary use :: build the predictions for each sentence
-			*/
+			
 			
 			
 			
@@ -334,7 +334,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			
+			/*
 			// formal MicroPIE process
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
@@ -376,10 +376,9 @@ public class TrainTestRun implements IRun {
 			// trainingSentenceReader.setInputStream(new FileInputStream("140604-20more-sentences-to-be-determined.csv"));
 			// trainingSentenceReader.csvToXls("140604-20more-sentences-to-be-determined.xls");
 			
-			
 			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
 			trainingSentenceReader.csvToXls("matrix.xls");
-			
+			*/
 			
 			
 
@@ -402,6 +401,8 @@ public class TrainTestRun implements IRun {
 			log(LogLevel.INFO, "Reading from " + inputFile.getName() + "...");
 			try {
 				textReader.setInputStream(new FileInputStream(inputFile));
+				log(LogLevel.INFO, "XML file name: " + inputFile.getName());
+				System.out.println("XML file name: " + inputFile.getName());
 				String taxon = textReader.getTaxon();
 				log(LogLevel.INFO, "Taxon: " + taxon);
 				String text = textReader.read();
@@ -1581,7 +1582,12 @@ public class TrainTestRun implements IRun {
 		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
 		
 		// if the folder "usp" exists, delete it
-		// FileUtils.deleteDirectory(new File("usp"));
+		FileUtils.deleteDirectory(new File("usp"));
+		
+		FileUtils.copyDirectory(new File("usp_base"), new File("usp"));
+		
+		
+		
 		
 		// Construct abbreviation list
 		Hashtable<String, String> kwdListByCategory = new Hashtable<String, String>();
