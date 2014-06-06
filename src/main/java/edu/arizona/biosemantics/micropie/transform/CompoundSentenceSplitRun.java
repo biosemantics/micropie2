@@ -112,8 +112,12 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 			}
 		} catch(Exception e) {
 			result.add(sentence);
-			System.out.println("Problem running compoundSentenceSplitRun");
-			log(LogLevel.ERROR, "Problem running compoundSentenceSplitRun", e);
+			System.out.println("Problem running compoundSentenceSplitRun: Null Exception");
+			log(LogLevel.ERROR, "Problem running compoundSentenceSplitRun: Null Exception", e);
+		} catch(OutOfMemoryError e) {
+			result.add(sentence);
+			System.out.println("Problem running compoundSentenceSplitRun: Out of Memory");
+			log(LogLevel.ERROR, "Problem running compoundSentenceSplitRun: Out of Memory", e);
 		}
 		
 		// compoundSentenceSplitLatch.countDown();
