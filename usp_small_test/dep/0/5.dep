@@ -1,7 +1,0 @@
-nn(colonies-2, Satellite-1)
-nsubj(indicate-3, colonies-2)
-det(dispersal-5, the-4)
-dobj(indicate-3, dispersal-5)
-nn(cells-8, c2-Motility-7)
-prep_of(dispersal-5, cells-8)
-

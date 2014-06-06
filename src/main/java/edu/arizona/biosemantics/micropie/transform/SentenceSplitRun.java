@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -96,11 +97,12 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		log(LogLevel.INFO, "Done normalizing, resulting text: " + text);
 		
 		Set<String> termWithPeriod = getTermWithPeriod(text);
+		String[] termWithPeriodArray = termWithPeriod.toArray(new String[0]);
+		System.out.println(Arrays.toString(termWithPeriodArray));
 		
-		String text2 = getSplitCapitalPeriodSent(text); // => add explanation here!!
 		
 		log(LogLevel.INFO, "Splitting text into sentences");
-		List<String> sentences =  getSentences(text2);
+		List<String> sentences =  getSentences(text);
 		log(LogLevel.INFO, "Done splitting text into sentences. Created " + sentences.size() + " + sentences");
 		
 		
@@ -170,7 +172,7 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		}
 		log(LogLevel.INFO, "Done replacing abbreviation back to original sentence");
 		
-		// sentencesBack = getTransformedCelsiusDegree(sentencesBack); // °C => celsius_degree
+		sentencesBack = getTransformedCelsiusDegree(sentencesBack); // °C => celsius_degree
 		
 		sentenceSplitLatch.countDown();
 		// return sentences;
@@ -201,6 +203,9 @@ public class SentenceSplitRun implements Callable<List<String>> {
 		List<String> result = new LinkedList<String>();
 		
 		for (String sentence : sentences) {
+			
+			sentence = getSplitCapitalPeriodSent(sentence); // => add explanation here!!
+			
 			Annotation annotation = new Annotation(sentence);
 			stanfordCoreNLP.annotate(annotation);
 			List<CoreMap> sentenceAnnotations = annotation
@@ -443,6 +448,11 @@ public class SentenceSplitRun implements Callable<List<String>> {
 				newMatchString += matchString.substring(j, j+1) + " ";
 			}
 			
+			System.out.println("getSplitCapitalPeriodSent::OriginalSent::" + text);
+			System.out.println("matchString:: " + matchString);
+			System.out.println("newMatchString:: " + newMatchString);
+			
+			log(LogLevel.INFO, "getSplitCapitalPeriodSent::OriginalSent::" + text);
 			log(LogLevel.INFO, "matchString:: " + matchString);
 			log(LogLevel.INFO, "newMatchString:: " + newMatchString);
 			
@@ -467,7 +477,8 @@ public class SentenceSplitRun implements Callable<List<String>> {
 			String tokenString = textTokens[i];
 			
 			if ( tokenString.matches("(.*)([A-Z]+\\.)(.*)")) {
-				System.out.println("tokenString::" + tokenString);
+				// System.out.println("getTermWithPeriod::" + tokenString);
+				termWithPeriod.add(tokenString);
 			}
 			
 		}

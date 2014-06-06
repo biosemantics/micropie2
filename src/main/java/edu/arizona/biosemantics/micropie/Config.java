@@ -84,19 +84,21 @@ public class Config extends AbstractModule {
 	
 	
 	// private String uspBaseString = "usp_small_test";
+	// private String uspBaseString = "usp_base_new";
 	private String uspBaseString = "usp_base";
 	private String uspString= "usp";
 	
 	// private String trainingFile = "split-training-base-140310.csv";
 	private String trainingFile = "training_data/split-training-base-140603.csv";
-	
-	
-	// private String testFolder = "parsing_data/new-microbe-xml-new-schema-2";
-	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine-2";
-	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine";
-	// private String testFolder = "parsing_data/new-microbe-xml";
-	// private String testFolder = "parsing_data/new-microbe-xml-2";
-	private String testFolder = "parsing_data/new-microbe-xml-new-schema"; // student inputs: 65 files
+
+	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine"; // just for building additional USP inputs, one file, more than 8000 sentences
+	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine-2"; // just for building additional USP inputs, one file, less than 10 sentences
+
+	private String testFolder = "parsing_data/new-microbe-xml"; // Old schema, 625 files
+	// private String testFolder = "parsing_data/new-microbe-xml-1"; // Old schema, 5 files + 1 fake file
+	// private String testFolder = "parsing_data/new-microbe-xml-2"; // Old schema, 624 files
+
+	// private String testFolder = "parsing_data/new-microbe-xml-new-schema"; // student inputs: 65 files
 	// private String testFolder = "parsing_data/new-microbe-xml-new-schema-2"; // student inputs: 7 files
 	
 	private String uspFolder = "usp/dep/0";

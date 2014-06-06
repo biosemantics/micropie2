@@ -25,6 +25,7 @@ public class XMLTextReader implements ITextReader {
 	}
 	
 	
+	/*
 	// New schema
 	@Override
 	public String read() throws Exception {
@@ -89,11 +90,11 @@ public class XMLTextReader implements ITextReader {
 		throw new Exception("Could not find a taxon name");
 	}
 	// New Schema
+	*/
 	
 	
 	
 	
-	/*
 	// Old Schema
 	@Override
 	public String read() throws Exception {
@@ -112,6 +113,6 @@ public class XMLTextReader implements ITextReader {
 		throw new Exception("Could not find a taxon name");
 	}
 	// Old Schema
-	*/
+	
 	
 }

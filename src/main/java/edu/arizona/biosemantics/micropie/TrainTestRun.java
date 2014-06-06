@@ -254,6 +254,10 @@ public class TrainTestRun implements IRun {
 
 			// trainingSentenceReader.setInputStream(new FileInputStream("predictions-140311-1.csv"));
 			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-predictions-140311-1.csv"));
+			
+			// trainingSentenceReader.setInputStream(new FileInputStream("additionalUSPInputs-140605-1.csv"));
+			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-additionalUSPInputs-140605-1.csv"));
+			
 			// trainingSentenceReader.splitCompoundCategory();
 			
 			// Small tool 1:: Split compound category from training data set
@@ -329,12 +333,14 @@ public class TrainTestRun implements IRun {
 			// uspParse.runParse(uspString, "usp_results");
 			// USP example
 			
-			// Small tool 4:: Pre-processing::Build USP inputs first from C
+			// Small tool 4:: Pre-processing::Build USP inputs first from CSV
 			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
 			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs_short_for_testing.csv"));
+			
+			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs-140605-1.csv"));
 			// List<Sentence> additionalUSPInputSentences = trainingSentenceReader.readAdditionalUSPInputs();
 			// createUSPInputsFromListSentence(additionalUSPInputSentences);
-			// Small tool 4:: Pre-processing::Build USP inputs first from C
+			// Small tool 4:: Pre-processing::Build USP inputs first from CSV
 			
 			
 			
