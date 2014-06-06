@@ -79,17 +79,17 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 					
 			clausIE.parse(sentence);
 			log(LogLevel.INFO, "clausIE parse complete");
-			Tree dependencyTree = clausIE.getDepTree();
-			log(LogLevel.INFO, "Dependency parse : ");
-			log(LogLevel.INFO, dependencyTree.pennString());
-			log(LogLevel.INFO, "Semantic graph   : ");
-			log(LogLevel.INFO, clausIE.getSemanticGraph().toFormattedString());
+			// Tree dependencyTree = clausIE.getDepTree();
+			// log(LogLevel.INFO, "Dependency parse : ");
+			// log(LogLevel.INFO, dependencyTree.pennString());
+			// log(LogLevel.INFO, "Semantic graph   : ");
+			// log(LogLevel.INFO, clausIE.getSemanticGraph().toFormattedString());
 			//.replaceAll("\n", "\n                   ").trim());
 			//.replaceAll("\n", "\n                   ").trim());
 			
 			List<String> sentenceList = new ArrayList<String>();
-			handleCaseA(sentence, sentenceList, clausIE);
-			handleCaseB(sentence, sentenceList, clausIE);	
+			// handleCaseA(sentence, sentenceList, clausIE);
+			// handleCaseB(sentence, sentenceList, clausIE);	
 			
 			if (sentenceList.size() > 1) {
 				log(LogLevel.INFO, "found subsentences: " + sentenceList.size());
