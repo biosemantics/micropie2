@@ -94,11 +94,11 @@ public class Config extends AbstractModule {
 	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine"; // just for building additional USP inputs, one file, more than 8000 sentences
 	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine-2"; // just for building additional USP inputs, one file, less than 10 sentences
 
-	private String testFolder = "parsing_data/new-microbe-xml"; // Old schema, 625 files
+	// private String testFolder = "parsing_data/new-microbe-xml"; // Old schema, 625 files
 	// private String testFolder = "parsing_data/new-microbe-xml-1"; // Old schema, 5 files + 1 fake file
 	// private String testFolder = "parsing_data/new-microbe-xml-2"; // Old schema, 624 files
 
-	// private String testFolder = "parsing_data/new-microbe-xml-new-schema"; // student inputs: 65 files
+	private String testFolder = "parsing_data/new-microbe-xml-new-schema"; // student inputs: 65 files
 	// private String testFolder = "parsing_data/new-microbe-xml-new-schema-2"; // student inputs: 7 files
 	
 	private String uspFolder = "usp/dep/0";

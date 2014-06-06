@@ -72,7 +72,7 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 	@Override
 	public List<String> call() throws Exception {
 		List<String> result = new LinkedList<String>();
-		//try {
+		try {
 			log(LogLevel.INFO, "split compound sentences into subsentences using clausIE... sentence: " + sentence);
 			System.out.println("compound split ::" + sentence);
 			log(LogLevel.INFO, "clausIE parse...");
@@ -110,11 +110,15 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 				//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
 				result.add(sentence);
 			}
-		/*} catch(Exception e) {
+		} catch(Exception e) {
+			result.add(sentence);
+			System.out.println("Problem running compoundSentenceSplitRun");
 			log(LogLevel.ERROR, "Problem running compoundSentenceSplitRun", e);
-		}*/
-		//compoundSentenceSplitLatch.countDown();
-		//System.out.println(compoundSentenceSplitLatch.getCount());
+		}
+		
+		// compoundSentenceSplitLatch.countDown();
+		// System.out.println(compoundSentenceSplitLatch.getCount());
+		
 		System.out.println("done compound split");
 		return result;
 	}

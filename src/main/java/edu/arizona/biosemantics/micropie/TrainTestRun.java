@@ -258,6 +258,9 @@ public class TrainTestRun implements IRun {
 			// trainingSentenceReader.setInputStream(new FileInputStream("additionalUSPInputs-140605-1.csv"));
 			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-additionalUSPInputs-140605-1.csv"));
 			
+			// trainingSentenceReader.setInputStream(new FileInputStream("predictions-140606-old-schema-9324-sents.csv"));
+			// trainingSentenceReader.setOutputStream(new FileOutputStream("split-predictions-140606-old-schema-9324-sents.csv"));
+			
 			// trainingSentenceReader.splitCompoundCategory();
 			
 			// Small tool 1:: Split compound category from training data set
@@ -334,10 +337,10 @@ public class TrainTestRun implements IRun {
 			// USP example
 			
 			// Small tool 4:: Pre-processing::Build USP inputs first from CSV
-			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
-			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs_short_for_testing.csv"));
-			
-			// trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs-140605-1.csv"));
+			// source sentence list 1:: // trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
+			// source sentence list 2:: // trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs_short_for_testing.csv"));
+			// source sentence list 3:: // trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs-140605-1.csv"));
+			// source sentence list 4:: // trainingSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs-old-and-new-dataset-combined-140606-1.csv"));
 			// List<Sentence> additionalUSPInputSentences = trainingSentenceReader.readAdditionalUSPInputs();
 			// createUSPInputsFromListSentence(additionalUSPInputSentences);
 			// Small tool 4:: Pre-processing::Build USP inputs first from CSV
@@ -389,6 +392,7 @@ public class TrainTestRun implements IRun {
 			
 			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
 			trainingSentenceReader.csvToXls("matrix.xls");
+			
 			
 			
 			
@@ -496,6 +500,7 @@ public class TrainTestRun implements IRun {
 				// overall += size;
 				// if(size > maxSize) { maxSize = size; }
 				
+				// if (sentence.length() <= 1) {
 				// if (sentence.length() <= 50) {
 				if (sentence.length() <= 100) {
 				// if (sentence.length() <= 200) {
