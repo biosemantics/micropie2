@@ -101,6 +101,10 @@ import edu.stanford.nlp.trees.tregex.tsurgeon.Tsurgeon;
 import edu.stanford.nlp.trees.tregex.tsurgeon.TsurgeonPattern;
 import edu.stanford.nlp.util.CoreMap;
 
+import com.google.common.collect.Lists;
+import com.google.common.math.IntMath;
+import java.math.RoundingMode;
+
 public class TrainTestRun implements IRun {
 
 	private String trainingFile;
@@ -348,11 +352,71 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			
-			// formal MicroPIE process
+			// Train and Build Knowledge Base 
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
 			classifier.train(trainingSentences);
+			
+			
+			List<TaxonTextFile> taxonTextFiles = getTaxonTextFiles(testFolder);
+			System.out.println("taxonTextFiles.size()::" + taxonTextFiles.size());
+			
+			int dividedNumebr = 3;
+			int partitionSize = IntMath.divide(taxonTextFiles.size(), dividedNumebr, RoundingMode.UP);
+			List<List<TaxonTextFile>> partitions = Lists.partition(taxonTextFiles, partitionSize);
+			System.out.println("partitions.size()::" + partitions.size());
+			for ( int i = 0; i < partitions.size(); i++ ) {
+				System.out.println("partitions.get(i).size()::" + partitions.get(i).size());
+				
+				List<TaxonTextFile> subTaxonTextFiles = partitions.get(i);
+				List<Sentence> testSentences = createTestSentences2(subTaxonTextFiles);
+				
+				
+				List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
+				for (Sentence testSentence : testSentences) {
+					Set<ILabel> prediction = classifier.getClassification(testSentence);
+					MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence( testSentence, prediction);
+					sentenceClassificationMap.put(testSentence,classifiedSentence);
+					predictions.add(classifiedSentence);
+				}
+							
+				
+
+				// 
+				// USP
+				createUSPInputs(predictions);
+				
+				Parse uspParse = new Parse();
+				uspParse.runParse(uspString, "usp_results");
+				// USP
+
+				
+				
+				classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile, true));
+				classifiedSentenceWriter.write(predictions);
+				TaxonCharacterMatrix matrix = matrixCreator.create();
+				matrixWriter.setOutputStream(new FileOutputStream(matrixFile, true));
+				matrixWriter.write(matrix);
+				
+				
+				
+				
+			}
+			
+			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
+			trainingSentenceReader.csvToXls("matrix.xls");
+			
+			/*
+			// formal MicroPIE process
+			
+			// Train and Build Knowledge Base 
+			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+			List<Sentence> trainingSentences = trainingSentenceReader.read();
+			classifier.train(trainingSentences);
+			
+			
+			
+			// Batch processing
 			
 			List<Sentence> testSentences = createTestSentences();
 			
@@ -386,14 +450,20 @@ public class TrainTestRun implements IRun {
 			// formal MicroPIE process
 			
 			
+			
+			
+			// End of Batch processing
+			
 			// Using small tool 3:: Transformer:: CSV to Excel (2007 format)
 			// trainingSentenceReader.setInputStream(new FileInputStream("140604-20more-sentences-to-be-determined.csv"));
 			// trainingSentenceReader.csvToXls("140604-20more-sentences-to-be-determined.xls");
 			
+			
+			
 			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
 			trainingSentenceReader.csvToXls("matrix.xls");
 			
-			
+			*/
 			
 			
 
@@ -406,6 +476,31 @@ public class TrainTestRun implements IRun {
 				+ ((long) System.currentTimeMillis() - startTime) + " ms");
 	}
 
+	private List<TaxonTextFile> getTaxonTextFiles(String folderName) throws IOException,
+	InterruptedException, ExecutionException {
+		log(LogLevel.INFO, "Reading test sentences...");
+		File inputFolder = new File(folderName);
+		File[] inputFiles = inputFolder.listFiles();
+		List<TaxonTextFile> textFiles = new LinkedList<TaxonTextFile>();
+		for (File inputFile : inputFiles) {
+			log(LogLevel.INFO, "Reading from " + inputFile.getName() + "...");
+			try {
+				textReader.setInputStream(new FileInputStream(inputFile));
+				log(LogLevel.INFO, "XML file name: " + inputFile.getName());
+				System.out.println("XML file name: " + inputFile.getName());
+				String taxon = textReader.getTaxon();
+				log(LogLevel.INFO, "Taxon: " + taxon);
+				String text = textReader.read();
+				log(LogLevel.INFO, "Text: " + text);
+				textFiles.add(new TaxonTextFile(taxon, text, inputFile));
+			} catch (Exception e) {
+				log(LogLevel.ERROR, "Could not read test sentences from "
+						+ inputFile.getName(), e);
+			}
+		}	
+		return textFiles;
+	}
+	
 	private List<Sentence> createTestSentences() throws IOException,
 			InterruptedException, ExecutionException {
 		log(LogLevel.INFO, "Reading test sentences...");
@@ -428,6 +523,185 @@ public class TrainTestRun implements IRun {
 						+ inputFile.getName(), e);
 			}
 		}
+
+		List<ListenableFuture<List<String>>> sentenceSplits = new ArrayList<ListenableFuture<List<String>>>(
+				textFiles.size());
+		CountDownLatch sentenceSplitLatch = new CountDownLatch(textFiles.size());
+		for (TaxonTextFile textFile : textFiles) {
+			SentenceSplitRun splitRun = new SentenceSplitRun(
+					textFile.getText(), textNormalizer, tokenizeSSplit,
+					sentenceSplitLatch,
+					celsius_degreeReplaceSourcePattern
+					
+					);
+			ListenableFuture<List<String>> futureResult = executorService
+					.submit(splitRun);
+			sentenceSplits.add(futureResult);
+		}
+
+		try {
+			sentenceSplitLatch.await();
+		} catch (InterruptedException e) {
+			log(LogLevel.ERROR, "Problem with latch", e);
+		}
+
+		// TODO Parallel processing doesn't work right, gives
+		// NullPointerException in getBestParse() from LexicalizedParser and
+		// NoSuchParseException also
+		// They should
+		// - not occur if enough memory is used
+		// - or something is not set up right with threads competing for the use
+		// of them? However Stanford CoreNLP claims to be thread safe? Is
+		// ClausIE not?
+		// - these exceptions, if not treated right, and a countdownlatch is
+		// used, can cause the latch to not count to zero and thus make main
+		// thread continue
+		// - Try to cut down on sentence length for the sentences passed to
+		// ClausIE to reduce computation time and memory necessary to get best
+		// parse (exponential complexity?)
+		// - Try to pre-pos tag things known
+		// --e.g. replace phrases such as L-arabinose, fructose, sucrose,
+		// L-sorbitol, glucose-1-phosphate, glucose-6-phosphate, maltose, ... by
+		// ENUMERATION to allow easy parse?
+		// --then whatever outcome parse has use it on all the elements?
+
+		// http://stackoverflow.com/questions/19243260/stanford-corenlp-failing-only-on-windows
+		// http://stackoverflow.com/questions/12305667/how-is-exception-handling-done-in-a-callable
+		// http://nlp.stanford.edu/downloads/parser-faq.shtml#n
+		// http://nlp.stanford.edu/downloads/parser-faq.shtml#k
+		// -> sort sentences according to length buckets and use number of
+		// threads according to
+		// approx memory usage for the buckets, e.g. can do 4 of max length 20
+		// at once if ~1024M Heap.
+		// http://nlp.stanford.edu/downloads/corenlp-faq.shtml#memory
+		// http://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/parser/lexparser/LexicalizedParser.html
+
+		int numberOfSentences = getNumberOfSentences(sentenceSplits);
+		List<List<ListenableFuture<List<String>>>> subsentenceSplitsPerFile = new LinkedList<List<ListenableFuture<List<String>>>>();
+		// final CountDownLatch compoundSentenceSplitLatch = new
+		// CountDownLatch(numberOfSentences);
+		// final CountDownLatch compoundSentenceSplitLatchDummy = new
+		// CountDownLatch(numberOfSentences);
+		// int overall = 0;
+		// int maxSize = 0;
+		for (int i = 0; i < textFiles.size(); i++) {
+			List<String> sentences = sentenceSplits.get(i).get();
+			List<ListenableFuture<List<String>>> subsentenceSplits = new LinkedList<ListenableFuture<List<String>>>();
+			for (final String sentence : sentences) {
+
+				// String[] tokens = sentence.split("\\s+");
+				// System.out.println("length " + tokens.length);
+				//int tokenSize = tokens.length;
+				// overall += size;
+				// if(size > maxSize) { maxSize = size; }
+				
+				if (sentence.length() <= 1) {
+				// if (sentence.length() <= 50) {
+				// if (sentence.length() <= 100) {
+				// if (sentence.length() <= 200) {
+				// if (tokenSize <= 30) {
+
+					CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(
+							sentence, lexicalizedParser, PTBTokenizer.factory(
+									new CoreLabelTokenFactory(), ""));
+					ListenableFuture<List<String>> futureResult = executorService
+							.submit(splitRun);
+					/*
+					 * futureResult.addListener(new Runnable() {
+					 * 
+					 * @Override public void run() { System.out.println("done");
+					 * // compoundSentenceSplitLatch.countDown(); //
+					 * System.out.println
+					 * (compoundSentenceSplitLatch.getCount()); } },
+					 * this.executorService);
+					 */
+					subsentenceSplits.add(futureResult);
+				} else {
+					ListenableFuture<List<String>> futureResult = executorService
+							.submit(new Callable<List<String>>() {
+								@Override
+								public List<String> call() throws Exception {
+									List<String> result = new LinkedList<String>();
+									result.add(sentence);
+									return result;
+								}
+							});
+					subsentenceSplits.add(futureResult);
+				}
+			}
+			subsentenceSplitsPerFile.add(subsentenceSplits);
+		}
+		// double avgLength = (double)overall / numberOfSentences;
+		// System.out.println("avg: " + avgLength);
+		// System.out.println("maxSize: " + maxSize);
+
+		for (List<ListenableFuture<List<String>>> fileFutures : subsentenceSplitsPerFile) {
+			for (ListenableFuture<List<String>> future : fileFutures) {
+				try {
+					System.out.println("get");
+					List<String> result = future.get();
+				} catch (Exception e) {
+					System.out.println("something went wrong with this guy");
+					e.printStackTrace();
+				}
+			}
+		}
+
+		/*
+		 * try { compoundSentenceSplitLatch.await(); } catch
+		 * (InterruptedException e) { log(LogLevel.ERROR, "Problem with latch",
+		 * e); }
+		 */
+
+		// non-threaded
+		/*
+		 * int numberOfSentences = getNumberOfSentences(sentenceSplits);
+		 * List<List<List<String>>> subsentenceSplitsPerFile = new
+		 * LinkedList<List<List<String>>>(); for(int i=0; i<textFiles.size();
+		 * i++) { List<String> sentences = sentenceSplits.get(i).get();
+		 * List<List<String>> subsentenceSplits = new
+		 * LinkedList<List<String>>(); for(String sentence : sentences) {
+		 * CompoundSentenceSplitRun splitRun = new
+		 * CompoundSentenceSplitRun(sentence, lexicalizedParser,
+		 * tokenizerFactory); try { List<String> result = splitRun.call();
+		 * subsentenceSplits.add(result);
+		 * System.out.println(numberOfSentences--); } catch(Exception e) {
+		 * e.printStackTrace(); } }
+		 * subsentenceSplitsPerFile.add(subsentenceSplits); }
+		 */
+		List<Sentence> result = new LinkedList<Sentence>();
+		for (int i = 0; i < textFiles.size(); i++) {
+			List<ListenableFuture<List<String>>> fileFuture = subsentenceSplitsPerFile
+					.get(i);
+			for (int j = 0; j < fileFuture.size(); j++) {
+				List<String> subsentences = fileFuture.get(j).get();// .get();
+				for (String subsentence : subsentences) {
+					Sentence sentence = new Sentence(subsentence);
+					result.add(sentence);
+					SentenceMetadata metadata = new SentenceMetadata();
+					metadata.setSourceId(j);
+					metadata.setTaxonTextFile(textFiles.get(i));
+					metadata.setCompoundSplitSentence(subsentences.size() > 1);
+					// metadata.setParseResult(textSentenceTransformer.getCachedParseResult(sentence));
+					sentenceMetadataMap.put(sentence, metadata);
+					TaxonTextFile taxon = textFiles.get(i);
+					if (!taxonSentencesMap.containsKey(taxon))
+						taxonSentencesMap
+								.put(taxon, new LinkedList<Sentence>());
+					taxonSentencesMap.get(taxon).add(sentence);
+				}
+			}
+		}
+
+		log(LogLevel.INFO, "Done reading test sentences...");
+		return result;
+	}
+	
+	private List<Sentence> createTestSentences2(List<TaxonTextFile> subTaxonTextFiles) throws IOException,
+	InterruptedException, ExecutionException {
+		log(LogLevel.INFO, "Reading test sentences...");
+
+		List<TaxonTextFile> textFiles = subTaxonTextFiles;
 
 		List<ListenableFuture<List<String>>> sentenceSplits = new ArrayList<ListenableFuture<List<String>>>(
 				textFiles.size());
@@ -598,25 +872,6 @@ public class TrainTestRun implements IRun {
 			}
 		}
 
-		log(LogLevel.INFO, "Done reading test sentences...");
-		return result;
-	}
-	
-	private List<Sentence> createTestSentences2() throws IOException,
-	InterruptedException, ExecutionException {
-		List<Sentence> result = new LinkedList<Sentence>();
-
-		
-		log(LogLevel.INFO, "Reading test sentences...");
-		
-		
-		
-		// Sentence sentence = new Sentence(subsentence);
-
-		
-		
-		
-		
 		log(LogLevel.INFO, "Done reading test sentences...");
 		return result;
 	}
