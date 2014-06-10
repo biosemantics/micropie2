@@ -351,7 +351,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			
+			/*
 			// Train and Build Knowledge Base 
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
@@ -361,7 +361,7 @@ public class TrainTestRun implements IRun {
 			List<TaxonTextFile> taxonTextFiles = getTaxonTextFiles(testFolder);
 			System.out.println("taxonTextFiles.size()::" + taxonTextFiles.size());
 			
-			int dividedNumebr = 3;
+			int dividedNumebr = 2;
 			int partitionSize = IntMath.divide(taxonTextFiles.size(), dividedNumebr, RoundingMode.UP);
 			List<List<TaxonTextFile>> partitions = Lists.partition(taxonTextFiles, partitionSize);
 			System.out.println("partitions.size()::" + partitions.size());
@@ -405,8 +405,10 @@ public class TrainTestRun implements IRun {
 			
 			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
 			trainingSentenceReader.csvToXls("matrix.xls");
+			*/
 			
-			/*
+			
+			
 			// formal MicroPIE process
 			
 			// Train and Build Knowledge Base 
@@ -463,8 +465,7 @@ public class TrainTestRun implements IRun {
 			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
 			trainingSentenceReader.csvToXls("matrix.xls");
 			
-			*/
-			
+				
 			
 
 		} catch (Exception e) {

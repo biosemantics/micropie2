@@ -64,6 +64,8 @@ public class Agenda {
 			timer.timerStart();
 			int as=0;
 			for (SearchOp op: agendaToScore_) {
+				
+				
 				double score=parse_.scorer_.scoreOp(op);
 				Utils.println("<Score> "+op+" score="+(score));
 				as++;

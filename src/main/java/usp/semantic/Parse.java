@@ -191,8 +191,11 @@ public class Parse {
 			}
 		}
 		Utils.println("<PREPROC> Filenames gathered: "+inputFileNames.size()+" files");
+		
+		// Elvis Test
 		// System.out.println("<PREPROC> Filenames gathered: "+inputFileNames.size()+" files");
 		
+		// Elvis Test
 		// System.out.println("inputFileNames ::" + inputFileNames); // Elvis Wu's test
 		
 		Parse parse=new Parse(inputFileNames);
@@ -288,7 +291,7 @@ public class Parse {
 		if (isMultiSent(sent)) {
 			System.out.println("Not parse this sentnece!");
 		} else {
-			System.out.println("\ninit::" + aid);
+			// System.out.println("\ninit::" + aid);
 			numTkns_+=sent.tokens_.size()-1; // root
 			
 			if (sent.tkn_children_.get(0)==null || sent.tkn_children_.get(0).size()==0) return;
