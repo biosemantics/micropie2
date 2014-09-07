@@ -327,9 +327,17 @@ public class TrainTestRun implements IRun {
 			// xls2csv.csv
 			// trainingSentenceReader.setInputStream(new FileInputStream("xls2csv.csv"));
 			// trainingSentenceReader.csvToXls("xls2csv.xls");
+			// 
 			// trainingSentenceReader.setInputStream(new FileInputStream("split-training-base-140603.csv"));
 			// trainingSentenceReader.csvToXls("split-training-base-140603.xls");
+			// 
+			// trainingSentenceReader.setInputStream(new FileInputStream("140709-predictions-BacteroidetesTaxonomicDescriptions.docx.csv"));
+			// trainingSentenceReader.csvToXls("140709-predictions-BacteroidetesTaxonomicDescriptions.docx.xls");
 
+			// trainingSentenceReader.setInputStream(new FileInputStream("training_data/split-training-base-140603.csv"));
+			// trainingSentenceReader.csvToXls("split-training-base-140603.xls");
+
+			
 			// Small tool 3:: Transformer:: CSV to Excel (2007 format)
 			
 			
@@ -352,6 +360,8 @@ public class TrainTestRun implements IRun {
 			
 			
 			/*
+			// Batch processing
+
 			// Train and Build Knowledge Base 
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
@@ -405,6 +415,8 @@ public class TrainTestRun implements IRun {
 			
 			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
 			trainingSentenceReader.csvToXls("matrix.xls");
+			
+			// End of Batch processing
 			*/
 			
 			
@@ -418,7 +430,6 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			// Batch processing
 			
 			List<Sentence> testSentences = createTestSentences();
 			
@@ -454,7 +465,6 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			// End of Batch processing
 			
 			// Using small tool 3:: Transformer:: CSV to Excel (2007 format)
 			// trainingSentenceReader.setInputStream(new FileInputStream("140604-20more-sentences-to-be-determined.csv"));
@@ -465,7 +475,8 @@ public class TrainTestRun implements IRun {
 			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
 			trainingSentenceReader.csvToXls("matrix.xls");
 			
-				
+			// formal MicroPIE process
+			
 			
 
 		} catch (Exception e) {

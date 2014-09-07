@@ -136,7 +136,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 			System.out.println("Case 1::");
 			// System.out.println("Whloe Sent::" + matcherGc.group());
 			// System.out.println("Part 1::" + matcherGc.group(1));
-			// System.out.println("Part 2::" + matcherGc.group(2));
+			System.out.println("Part 2::" + matcherGc.group(2));
 			// System.out.println("Part 3::" + matcherGc.group(3));
 			String matchPartString = matcherGc.group(2);
 			
@@ -148,8 +148,10 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 				Matcher targetMatcher = targetPattern.matcher(matchPartString);
 				while (targetMatcher.find()) {
 					String matchPartString2 = targetMatcher.group(1);
+					System.out.println("matchPartString2::" + matchPartString2);
 					if ( isAcceptValueRange(matchPartString2) == true) {
-						output.add(matchPartString2);
+						System.out.println("Add::" + matchPartString2);
+						output.add(matchPartString2 + " mol%");
 					}
 				}
 			}
@@ -177,7 +179,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 				while (targetMatcher.find()) {
 					String matchPartString2 = targetMatcher.group(1);
 					if ( isAcceptValueRange(matchPartString2) == true) {
-						output.add(matchPartString2);
+						output.add(matchPartString2 + " mol%");
 					}				}
 			}			
 		}
@@ -191,7 +193,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		while (matcherGc3.find()) {
 			System.out.println("Case 3::");
 			// System.out.println("Whloe Sent::" + matcherGc3.group());
-			// System.out.println("Part 1::" + matcherGc3.group(1));
+			System.out.println("Part 1::" + matcherGc3.group(1));
 			// System.out.println("Part 2::" + matcherGc3.group(2));
 			// System.out.println("Part 3::" + matcherGc3.group(3));
 			// System.out.println("Part 4::" + matcherGc3.group(4));
@@ -203,8 +205,10 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 				Matcher targetMatcher = targetPattern.matcher(matchPartString);
 				while (targetMatcher.find()) {
 					String matchPartString2 = targetMatcher.group(1);
+					System.out.println("matchPartString2::" + matchPartString2);
 					if ( isAcceptValueRange(matchPartString2) == true) {
-						output.add(matchPartString2);
+						System.out.println("Add::" + matchPartString2);
+						output.add(matchPartString2 + " mol%");
 					}				}
 			}			
 		}
@@ -302,6 +306,8 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 	public boolean isAcceptValueRange(String extractedValueText) {
 		boolean isAccept = true;
 		
+		System.out.println("extractedValueText::0::" + extractedValueText); 
+		
 		Pattern patternNumber = Pattern.compile(myNumberPattern);
 		Matcher matcherNumber = patternNumber.matcher(extractedValueText);
 
@@ -317,7 +323,8 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		if ( matchCounter == 1) {
 			String decimalPattern = myNumberPattern;  
 			boolean match = Pattern.matches(decimalPattern, extractedValueText);
-			// System.out.println(match); //if true then decimal else not  
+			System.out.println("extractedValueText::" + extractedValueText);
+			System.out.println("match::" + match); //if true then decimal else not  
 			
 			if ( match != true ) {
 				isAccept = false;
@@ -341,7 +348,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		GcExtractor gcExtractor = new GcExtractor(Label.c1);	
 		String patternStringGc = gcExtractor.getPatternStringGc();
 		
-		
+		/*
 		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
 		// Read sentence list
 		// 
@@ -373,6 +380,21 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		System.out.println("\n");
 		System.out.println("sampleSentCounter::" + sampleSentCounter);
 		System.out.println("extractedValueCounter::" + extractedValueCounter);
+		*/
+		
+		// Test on June 10, 2014 Wednesday
+		String testSent = "G +C content range is 3 1-33 mol%.";
+		testSent = testSent.toLowerCase();
+		patternStringGc = patternStringGc.toLowerCase();
+		
+		if ( testSent.matches("(.*)" + patternStringGc + "(.*)")) {
+			System.out.println("\n");
+			System.out.println("sourceSentText::" + testSent);
+			Set<String> gcResult = gcExtractor.getCharacterValue(testSent);
+			System.out.println("gcResult::" + gcResult.toString());
+		}
+		
+		
 		
 		
 		/*

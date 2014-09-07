@@ -70,7 +70,22 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 			for(Sentence sentence : sentences) {
 				SentenceMetadata metadata = sentenceMetadataMap.get(sentence);
 				MultiClassifiedSentence classifiedSentence = classifiedSentencesMap.get(sentence);
-				Set<ILabel> predictions = classifiedSentence.getPredictions();
+				
+				// Set<ILabel> predictions = classifiedSentence.getPredictions();
+				Set<ILabel> predictions = new HashSet<ILabel>();
+				predictions.add(Label.c1);
+				predictions.add(Label.c2);
+				predictions.add(Label.c3);
+				predictions.add(Label.c4);
+				predictions.add(Label.c5);
+				predictions.add(Label.c6);
+				predictions.add(Label.c7);
+				predictions.add(Label.c8);
+				predictions.add(Label.c9);
+				predictions.add(Label.c10);
+				predictions.add(Label.c11);
+				
+				// Reference: 
 				
 				Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
 				for(ILabel label : predictions) {

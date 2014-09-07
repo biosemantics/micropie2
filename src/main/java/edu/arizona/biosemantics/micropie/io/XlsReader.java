@@ -26,8 +26,8 @@ public class XlsReader implements IXlsReader {
 		// TODO Auto-generated method stub
 		XlsReader xlsReader = new XlsReader();
 		// xlsReader.read("AdditionalSentences.xls");
-		xlsReader.read("xls2csv-1.xls");
-		
+		// xlsReader.read("xls2csv-1.xls");
+		xlsReader.read("matrix-140616-semigold-standard.xls");
 	}
 
 	
@@ -81,13 +81,19 @@ public class XlsReader implements IXlsReader {
 								
 								csvStringBuilder.append("\"" + intValue + "\",");
 								
-								
-								
-								
 								break;
+								
 							case Cell.CELL_TYPE_STRING:
 								System.out.print(cell.getStringCellValue() + "\t\t");
 								// csvStringBuilder.append(cell.getStringCellValue() + "\t");
+								
+								String cellValueString = cell.getStringCellValue();
+								cellValueString = cellValueString.replace("mol%", "");
+								cellValueString = cellValueString.replace("mol %", "");
+								cellValueString = cellValueString.replace("°C", "");
+								cellValueString = cellValueString.replace("%", "");
+								cellValueString = cellValueString.replace("(w/v)", "");
+								
 								csvStringBuilder.append("\"" + cell.getStringCellValue() + "\",");
 								break;
 						}

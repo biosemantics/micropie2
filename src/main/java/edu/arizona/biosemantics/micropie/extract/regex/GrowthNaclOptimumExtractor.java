@@ -76,7 +76,7 @@ public class GrowthNaclOptimumExtractor extends AbstractCharacterValueExtractor 
 	
 	@Override
 	public Set<String> getCharacterValue(String text) {
-		// input: the original sentnece
+		// input: the original sentence
 		// output: String array?
 		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 

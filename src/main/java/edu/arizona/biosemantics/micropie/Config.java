@@ -100,9 +100,11 @@ public class Config extends AbstractModule {
 
 	// private String testFolder = "parsing_data/new-microbe-xml-new-schema"; // student inputs: 65 files
 	// private String testFolder = "parsing_data/new-microbe-xml-new-schema-2"; // student inputs: 7 files
-	// private String testFolder = "parsing_data/Microbial Phenomics Project Experiment1 papers-part1"; // student experiment 1::part 1:: 123 files
+	private String testFolder = "parsing_data/Microbial Phenomics Project Experiment1 papers-part1"; // student experiment 1::part 1:: 123 files
 	// private String testFolder = "parsing_data/Microbial Phenomics Project Experiment1 papers-part2"; // student experiment 1::part 2:: 112 files
-	private String testFolder = "parsing_data/Microbial Phenomics Project Experiment1 papers-part3"; // student experiment 1::part 3:: 109 files
+	// private String testFolder = "parsing_data/Microbial Phenomics Project Experiment1 papers-part3"; // student experiment 1::part 3:: 109 files
+	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine"; // taxonomic description: BacteroidetesTaxonomicDescriptions.docx
+
 
 	
 	private String uspFolder = "usp/dep/0";
