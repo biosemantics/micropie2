@@ -213,10 +213,14 @@ public class TrainTestRun implements IRun {
 	}
 
 	@Override
-	public void run() {
+	public void run(String testFolderNameFromCommandLine) {
 		long startTime = System.currentTimeMillis();
 		try {
-
+			testFolder = testFolderNameFromCommandLine;
+			System.out.println("testFolder::" + testFolder);
+			
+			uspString = testFolderNameFromCommandLine + "_usp";
+			
 			// NFolder Cross Validation
 			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			// List<Sentence> trainingSentences = trainingSentenceReader.read();
@@ -421,6 +425,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
+			
 			// formal MicroPIE process
 			
 			// Train and Build Knowledge Base 
@@ -453,12 +458,16 @@ public class TrainTestRun implements IRun {
 			// USP
 
 			
-			
+			System.out.println("after uspParse");
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
+			System.out.println("after setOutputStream");
+			
 			classifiedSentenceWriter.write(predictions);
+			System.out.println("after write predictions");
 			TaxonCharacterMatrix matrix = matrixCreator.create();
 			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
 			matrixWriter.write(matrix);
+			System.out.println("after write matrix");
 			
 			// formal MicroPIE process
 			
@@ -472,8 +481,8 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
-			trainingSentenceReader.csvToXls("matrix.xls");
+			// trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
+			// trainingSentenceReader.csvToXls("matrix.xls");
 			
 			// formal MicroPIE process
 			

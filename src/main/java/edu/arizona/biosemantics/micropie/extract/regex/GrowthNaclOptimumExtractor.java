@@ -110,17 +110,69 @@ public class GrowthNaclOptimumExtractor extends AbstractCharacterValueExtractor 
 			// if (matcher2.find()) { // Just choose the closest one (nearest one, first one)
 				String matchPartString2 = targetMatcher.group(1);
 				
+				// if ( isNextToRightSymbol(matchPartString, matchPartString2, "%") ) {
+				//	output.add(matchPartString2);
+				// }
 				if ( isNextToRightSymbol(matchPartString, matchPartString2, "%") ) {
-					output.add(matchPartString2);
+					output.add(matchPartString2 + " %");
 				}
 				
-
+				/*
+				if ( isNextToRightSymbol(matchPartString, matchPartString2, "m") ) {
+					output.add(matchPartString2 + " M");
+				}
+				if ( isNextToRightSymbol(matchPartString, matchPartString2, "% (w/v)") ) {
+					output.add(matchPartString2 + " % (w/v)");
+				}
+				if ( isNextToRightSymbol(matchPartString, matchPartString2, "g/l") ) {
+					output.add(matchPartString2 + " g/l");
+				}				
+				if ( isNextToRightSymbol(matchPartString, matchPartString2, "g per liter") ) {
+					output.add(matchPartString2 + " g per liter");
+				}
+				*/
+				
 			}
 			
 		}			
 		
 		return output;			
 	}
+
+	public String getUnitString(String targetPattern) {	
+		String returnUnitValue = "";
+		
+		// sourceSentText::the nacl range for growth is 0.3-5.0 % nacl (w/v), with the optimal nacl being 0.6-2.0 %.
+		// can tolerate a wide range of salt concentration, from 0 to 30 g/l nacl.
+		
+		
+		if (targetPattern.contains("% (w/v)")) {
+			returnUnitValue = "% (w/v)";
+		}
+
+		if (targetPattern.contains("% nacl")) {
+			if (targetPattern.contains("% nacl (w/v)")) {
+				returnUnitValue = "% (w/v)";
+			} else {
+				returnUnitValue = "%";
+			}
+		}
+		
+		if (targetPattern.contains("m nacl")) {
+			returnUnitValue = "M";
+		}
+
+		if (targetPattern.contains("g/l nacl")) {
+			returnUnitValue = "g/l";
+		}
+		
+		if (targetPattern.contains("g per liter")) {
+			returnUnitValue = "g per liter";
+		}
+		
+		
+		return returnUnitValue;
+	}	
 	
 	public boolean isNextToRightSymbol(String matchPartString, String matchPartString2, String symbol) {
 		

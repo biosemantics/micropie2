@@ -100,6 +100,8 @@ public class CSVSentenceReader implements ISentenceReader {
 		for(String[] line : lines) {
 			// System.out.println("line[0]::" + line[0]);
 			// System.out.println("line[1]::" + line[1]);
+			// can't deal with => line[0]::8,3
+			
 			if (line[0].equals("")) {
 				line[0] = "0";
 			}
@@ -312,7 +314,6 @@ public class CSVSentenceReader implements ISentenceReader {
 		log(LogLevel.INFO, "Done transferrring csv to xml format...");
 	}	
 	
-	
-	
+
 	
 }

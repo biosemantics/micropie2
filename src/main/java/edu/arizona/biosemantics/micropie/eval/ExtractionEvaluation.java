@@ -89,8 +89,33 @@ public class ExtractionEvaluation {
 		
 		// Microbial Phenomics Project Data Form experiment output 040214 - Microbial Phenomics Project Data Form experiment output 040214-1.csv
 		
-		String goldStandardMatrixFileName = "140819-StudentExperimentGoldStandardMatrix-111.csv";
-		String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-1.csv";
+		
+		// This is Okay!!
+		// String goldStandardMatrixFileName = "140819-StudentExperimentGoldStandardMatrix-111.csv";
+		// String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-1.csv";
+		// Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-1.csv
+		
+		
+		
+		// Matrix without SVM
+		// String goldStandardMatrixFileName = "140819-StudentExperimentGoldStandardMatrix-111.csv";
+		// String microPIEMatrixFileName = "matrix-140907.csv"; => Matrix without SVM
+		
+		
+		
+		// Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-2-141015.csv
+		// String goldStandardMatrixFileName = "140819-StudentExperimentGoldStandardMatrix-111.csv";
+		// String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-2-141015.csv";
+		
+		// 140819-StudentExperimentGoldStandardMatrix.xlsx - Sheet1.csv
+		// String goldStandardMatrixFileName = "140819-StudentExperimentGoldStandardMatrix.xlsx - Sheet1.csv";
+		// String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-2-141015.csv";
+		
+		// 140819-StudentExperimentGoldStandardMatrix-111.xls - Sheet1.csv
+		String goldStandardMatrixFileName = "140819-StudentExperimentGoldStandardMatrix-111.xls - Sheet1.csv";
+		String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-2-141015.csv";
+
+		
 		
 		runExtractionEvaluation(goldStandardMatrixFileName, microPIEMatrixFileName);
 		
@@ -124,12 +149,14 @@ public class ExtractionEvaluation {
 
 			
 			List<String[]> linesGold2 = new ArrayList<String[]>();
+			List<String[]> lines2 = new ArrayList<String[]>();
 
+			
 
 			for (String[] rowOfLinesGold : linesGold) {
 				
 				String[] newRowOfLineGold = new String[rowOfLinesGold.length];
-				int newRowOfLineGoldCounter = 0;
+				int newRowOfLinesGoldCounter = 0;
 				for (String goldCellValue : rowOfLinesGold) {
 					// if ( goldCellValue.contains("·")) {
 					// System.out.println("goldCellValue::" +
@@ -154,11 +181,47 @@ public class ExtractionEvaluation {
 					goldCellValue = goldCellValue.replace("·", ".");
 					goldCellValue = goldCellValue.replace("°C", "");
 					goldCellValue = goldCellValue.replace("% (w/v)", " ");
-					newRowOfLineGold[newRowOfLineGoldCounter] = goldCellValue;
-					newRowOfLineGoldCounter++;
+					newRowOfLineGold[newRowOfLinesGoldCounter] = goldCellValue;
+					newRowOfLinesGoldCounter++;
 				}
 				linesGold2.add(newRowOfLineGold);
 			}
+			
+			for (String[] rowOfLines : lines) {
+				
+				String[] newRowOfLines = new String[rowOfLines.length];
+				int newRowOfLinesCounter = 0;
+				for (String cellValue : rowOfLines) {
+					// if ( cellValue.contains("·")) {
+					// System.out.println("cellValue::" +
+					// cellValue);
+					// }
+
+					// if ( cellValue.contains("°C")) {
+					// System.out.println("cellValue::" +
+					// cellValue);
+					// }
+
+					// if (cellValue.contains("% (w/v)")) {
+					//	System.out.println("cellValue::"
+					//			+ cellValue);
+					//	// 2% (w/v)
+					//	// NaCl minimum
+					//	// NaCl optimum
+					//	// NaCl maximum
+					// }
+					
+					cellValue = cellValue.replace("mol%", "");
+					cellValue = cellValue.replace("·", ".");
+					cellValue = cellValue.replace("°C", "");
+					cellValue = cellValue.replace("% (w/v)", " ");
+					newRowOfLines[newRowOfLinesCounter] = cellValue;
+					newRowOfLinesCounter++;
+				}
+				lines2.add(newRowOfLines);
+			}			
+			
+			
 			System.out.println("Done on transformation!");
 			
 			
@@ -172,30 +235,34 @@ public class ExtractionEvaluation {
 			StringBuilder totalStatOutputStringBuilder = new StringBuilder("");
 
 			// First file
-			outputStringBuilder.append(goldStandardMatrixFileName + "\n");
+			outputStringBuilder.append("goldStandardMatrixFileName: " + goldStandardMatrixFileName + "," + "\n");
+			outputStringBuilder.append("matrixFileName: " + microPIEMatrixFileName + "," + "\n");
 			
 			outputStringBuilder.append("\"Taxon Name\","
 					+ "\"File Name\","
 					+ "\"Character Name\"," + "\"Gold Standard\","
 					+ "\"Extracted Output\"," + "\"Precision(%)\","
 					+ "\"Recall(%)\"," + "\"Similarity(F-Value(%))\","
-					+ "\"Extracted Date\"" + "\n");
+					+ "\"Extracted Date\"" + "," + "\n");
 
 			
 			// Second file
-			charStatOutputStringBuilder.append(goldStandardMatrixFileName + "\n");
+			charStatOutputStringBuilder.append("goldStandardMatrixFileName: " + goldStandardMatrixFileName + "," + "\n");
+			charStatOutputStringBuilder.append("matrixFileName: " + microPIEMatrixFileName + "," + "\n");
+
 			
 			charStatOutputStringBuilder.append("\"Character Name\","
 					+ "\"Precision(%)\"," + "\"Recall(%)\","
 					+ "\"Similarity(F-Value(%))\"," + "\"Extracted Date\""
-					+ "\n");
+					+ "," + "\n");
 
 			// Third file
-			totalStatOutputStringBuilder.append(goldStandardMatrixFileName + "\n");
+			totalStatOutputStringBuilder.append("goldStandardMatrixFileName: " + goldStandardMatrixFileName + "," + "\n");
+			totalStatOutputStringBuilder.append("matrixFileName: " + microPIEMatrixFileName + "," + "\n");
 			
 			totalStatOutputStringBuilder.append("\"Precision(%)\","
 					+ "\"Recall(%)\"," + "\"Similarity(F-Value(%))\","
-					+ "\"Extracted Date\"" + "\n");
+					+ "\"Extracted Date\"" + "," + "\n");
 
 			float totalPrecsionValue = 0;
 			float totalRecallValue = 0;
@@ -206,8 +273,8 @@ public class ExtractionEvaluation {
 			// System.out.println(date.toString());
 
 			// for (int i = 1; i < linesGold.get(0).length; i++) {
-			for (int i = 2; i < lines.get(0).length; i++) { // Go through to each column
-				String targetCharName = lines.get(0)[i];
+			for (int i = 2; i < lines2.get(0).length; i++) { // Go through to each column
+				String targetCharName = lines2.get(0)[i];
 
 				float charTotalPrecsionValue = 0;
 				float charTotalRecallValue = 0;
@@ -215,16 +282,16 @@ public class ExtractionEvaluation {
 				int charTotalCounter = 0;
 
 				// System.out.println(targetCharName); // Target column name
-				// System.out.println(lines.size()); // Target Number of rows
+				// System.out.println(lines2.size()); // Target Number of rows
 
-				for (int j = 1; j < lines.size(); j++) { // Go through to each row
+				for (int j = 1; j < lines2.size(); j++) { // Go through to each row
 					// Start from first row
-					// System.out.println(lines.get(j));
-					String targetTaxonName = lines.get(j)[0]; // Target taxon name
-					String targetXMLFileName = lines.get(j)[1]; // Target file name
+					// System.out.println(lines2.get(j));
+					String targetTaxonName = lines2.get(j)[0]; // Target taxon name
+					String targetXMLFileName = lines2.get(j)[1]; // Target file name
 					
 					
-					String targetCellValue = lines.get(j)[i];
+					String targetCellValue = lines2.get(j)[i];
 
 					// the position of gold standard is not the same as target
 					// so you need to
@@ -302,7 +369,7 @@ public class ExtractionEvaluation {
 
 								outputStringBuilder.append("\""
 										+ date.toString() + "\"");
-								outputStringBuilder.append("\n");
+								outputStringBuilder.append("," + "\n");
 
 
 								
@@ -369,7 +436,7 @@ public class ExtractionEvaluation {
 
 				charStatOutputStringBuilder.append("\"" + date.toString()
 						+ "\"");
-				charStatOutputStringBuilder.append("\n");
+				charStatOutputStringBuilder.append("," + "\n");
 
 			}
 
@@ -388,7 +455,7 @@ public class ExtractionEvaluation {
 					+ "\",");
 			totalStatOutputStringBuilder.append("\"" + averageFValue + "\",");
 			totalStatOutputStringBuilder.append("\"" + date.toString() + "\"");
-			totalStatOutputStringBuilder.append("\n");
+			totalStatOutputStringBuilder.append("," + "\n");
 
 			
 			try (PrintWriter out = new PrintWriter(new BufferedWriter(

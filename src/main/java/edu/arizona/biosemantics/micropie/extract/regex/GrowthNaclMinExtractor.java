@@ -91,11 +91,19 @@ public class GrowthNaclMinExtractor extends AbstractCharacterValueExtractor {
 					String targetPattern = matcher.group(4);
 					
 					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "nacl;salinity;%");
-					String growNaclMin = rangePatternExtractor.getRangePatternMinString();
-					if ( ! growNaclMin.equals("") ) {
-						output.add(growNaclMin);
-					}
-					
+					// String growNaclMin = rangePatternExtractor.getRangePatternMinString();
+					// if ( ! growNaclMin.equals("") ) {
+					//	output.add(growNaclMin);
+					// }
+					if ( !targetPattern.contains("optimally") || !targetPattern.contains("optimal")) {
+						String growNaclMin = rangePatternExtractor.getRangePatternMinString();
+
+						String unitString = getUnitString(targetPattern);
+						// System.out.println("unitString::" + unitString);						
+						if ( ! growNaclMin.equals("") ) {
+							output.add(growNaclMin + " " + unitString);
+						}			
+					}					
 				}
 				break;
 			case 2:
@@ -135,8 +143,12 @@ public class GrowthNaclMinExtractor extends AbstractCharacterValueExtractor {
 					System.out.println("targetPattern::" + targetPattern);
 					
 					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "m;nacl;salinity;%");
-					output.add(rangePatternExtractor.getRangePatternMinString());
-					
+					// output.add(rangePatternExtractor.getRangePatternMinString());
+					if ( !targetPattern.contains("optimally") || !targetPattern.contains("optimal")) {
+						String unitString = getUnitString(targetPattern);
+						// System.out.println("unitString::" + unitString);
+						output.add(rangePatternExtractor.getRangePatternMinString() + " " + unitString);					
+					}					
 					
 				}
 				break;
@@ -147,7 +159,41 @@ public class GrowthNaclMinExtractor extends AbstractCharacterValueExtractor {
 		}
 		return output;
 	}
-	
+
+	public String getUnitString(String targetPattern) {	
+		String returnUnitValue = "";
+		
+		// sourceSentText::the nacl range for growth is 0.3-5.0 % nacl (w/v), with the optimal nacl being 0.6-2.0 %.
+		// can tolerate a wide range of salt concentration, from 0 to 30 g/l nacl.
+		
+		
+		if (targetPattern.contains("% (w/v)")) {
+			returnUnitValue = "% (w/v)";
+		}
+
+		if (targetPattern.contains("% nacl")) {
+			if (targetPattern.contains("% nacl (w/v)")) {
+				returnUnitValue = "% (w/v)";
+			} else {
+				returnUnitValue = "%";
+			}
+		}
+		
+		if (targetPattern.contains("m nacl")) {
+			returnUnitValue = "M";
+		}
+
+		if (targetPattern.contains("g/l nacl")) {
+			returnUnitValue = "g/l";
+		}
+		
+		if (targetPattern.contains("g per liter")) {
+			returnUnitValue = "g per liter";
+		}
+		
+		
+		return returnUnitValue;
+	}	
 	
 	// Example: 
 	public static void main(String[] args) throws IOException {

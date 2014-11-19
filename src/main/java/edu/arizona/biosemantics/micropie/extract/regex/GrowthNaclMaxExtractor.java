@@ -91,11 +91,19 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 					String targetPattern = matcher.group(4);
 					
 					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "nacl;salinity;%");
-					String growNaclMax = rangePatternExtractor.getRangePatternMaxString();
-					if ( ! growNaclMax.equals("") ) {
-						output.add(growNaclMax);
-					}
-					
+					// String growNaclMax = rangePatternExtractor.getRangePatternMaxString();
+					// if ( ! growNaclMax.equals("") ) {
+					//	output.add(growNaclMax);
+					// }
+					if ( !targetPattern.contains("optimally") || !targetPattern.contains("optimal")) {
+						String growNaclMax = rangePatternExtractor.getRangePatternMaxString();
+
+						String unitString = getUnitString(targetPattern);
+						// System.out.println("unitString::" + unitString);						
+						if ( ! growNaclMax.equals("") ) {
+							output.add(growNaclMax + " " + unitString);
+						}			
+					}					
 				}
 				break;
 			case 2:
@@ -125,7 +133,7 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 				matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
-					// System.out.println("Go to Case 2::");
+					System.out.println("Go to Case 2::");
 					// System.out.println("Whloe Sent::" + matcher.group());
 					// System.out.println("Part 1::" + matcher.group(1));
 					// System.out.println("Part 2::" + matcher.group(2));
@@ -135,7 +143,16 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 					System.out.println("targetPattern::" + targetPattern);
 					
 					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "m;nacl;salinity;%");
-					output.add(rangePatternExtractor.getRangePatternMaxString());
+					
+					// output.add(rangePatternExtractor.getRangePatternMaxString());
+					if ( !targetPattern.contains("optimally") || !targetPattern.contains("optimal")) {
+						String unitString = getUnitString(targetPattern);
+						// System.out.println("unitString::" + unitString);
+						output.add(rangePatternExtractor.getRangePatternMaxString() + " " + unitString);					
+					}
+					
+					
+					
 					
 					
 				}
@@ -147,7 +164,42 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 		}
 		return output;
 	}
+
 	
+	public String getUnitString(String targetPattern) {	
+		String returnUnitValue = "";
+		
+		// sourceSentText::the nacl range for growth is 0.3-5.0 % nacl (w/v), with the optimal nacl being 0.6-2.0 %.
+		// can tolerate a wide range of salt concentration, from 0 to 30 g/l nacl.
+		
+		
+		if (targetPattern.contains("% (w/v)")) {
+			returnUnitValue = "% (w/v)";
+		}
+
+		if (targetPattern.contains("% nacl")) {
+			if (targetPattern.contains("% nacl (w/v)")) {
+				returnUnitValue = "% (w/v)";
+			} else {
+				returnUnitValue = "%";
+			}
+		}
+		
+		if (targetPattern.contains("m nacl")) {
+			returnUnitValue = "M";
+		}
+
+		if (targetPattern.contains("g/l nacl")) {
+			returnUnitValue = "g/l";
+		}
+		
+		if (targetPattern.contains("g per liter")) {
+			returnUnitValue = "g per liter";
+		}
+		
+		
+		return returnUnitValue;
+	}
 	
 	// Example: 
 	public static void main(String[] args) throws IOException {
@@ -163,10 +215,15 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 		// List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
 		// System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
 
+		// sourceSentenceReader.setInputStream(new FileInputStream("predictions-140907-run-part-3.csv"));
+		// line[0]::8,3
 		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
 		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
-		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());		
+		// sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
+		// sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());		
+		
+
+		
 		
 		
 		int sampleSentCounter = 0;
@@ -174,6 +231,7 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 		
 		for (Sentence sourceSentence : sourceSentenceList) {
 			String sourceSentText = sourceSentence.getText();
+			// System.out.println("sourceSentText::" + sourceSentText);
 			
 			sourceSentText = sourceSentText.replaceAll(growthNaclMaxExtractor.getCelsius_degreeReplaceSourcePattern(), growthNaclMaxExtractor.getCelsius_degreeReplaceTargetPattern());
 			sourceSentText = sourceSentText.toLowerCase();

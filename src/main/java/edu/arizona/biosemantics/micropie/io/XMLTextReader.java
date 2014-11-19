@@ -3,6 +3,7 @@ package edu.arizona.biosemantics.micropie.io;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -24,8 +25,83 @@ public class XMLTextReader implements ITextReader {
 		rootNode = xmlDocument.getRootElement();
 	}
 	
+
+	// New Schema 2:: 141111
+	@Override
+	public String read() throws Exception {
+		String returnText = "";
+
+		Element meta = rootNode.getChild("meta");
+		Element source = meta.getChild("source");
+		// Element title = source.getChild("title");
+		String titleText = source.getChildText("title");
+		
+		if ( titleText != null && ! titleText.equals("") ) {
+			
+			String lastCharOfTitleText = titleText.substring(titleText.length()-1, titleText.length());
+			if ( ! lastCharOfTitleText.equals(".") ) {
+				titleText += ".";
+			}
+			
+			System.out.println("Adding title:" + titleText);
+			returnText += titleText + " ";
+		}
+		
+		String text = rootNode.getChildText("description");
+		Element desc = rootNode.getChild("description");
+		String descType = desc.getAttributeValue("type");
+		
+		// System.out.println("descType:" + descType);
+		// System.out.println("text:" + text);
+		if(text != null && descType.equals("morphology")) {  
+			System.out.println("text:" + text);
+			returnText += text;
+			return returnText;
+		}	
+		throw new Exception("Could not find a description");
+		
+		
+	}
+
+	public String getTaxon() throws Exception {
+		// String taxon = rootNode.getChildText("taxon_name");
+		
+		
+		//<taxon_identification status="ACCEPTED">
+		//  <taxon_name rank="genus">Leeuwenhoekiella</taxon_name>
+		//  <strain_number equivalent_strain_numbers="ATCC 19326">LMG 1345</strain_number>
+		//</taxon_identification>
+		
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		
+		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
+		
+		String taxon = "";
+		for(Element taxon_nameElement : taxon_nameListOfElement) {
+			String rank = taxon_nameElement.getAttributeValue("rank");
+			
+			
+			if( rank.equals("genus")) {
+				taxon += taxon_nameElement.getText();
+			}
+			
+			if( rank.equals("species")) {
+				taxon += " " + taxon_nameElement.getText();
+			}
+			
+		}
+		
 	
+		
+		if(taxon != null) {
+			System.out.println("taxon:" + taxon);
+			return taxon;
+		}	
+		throw new Exception("Could not find a taxon name");
+	}
+	// New Schema 2:: 141111	
 	
+	/*
 	// New schema
 	@Override
 	public String read() throws Exception {
@@ -90,7 +166,7 @@ public class XMLTextReader implements ITextReader {
 		throw new Exception("Could not find a taxon name");
 	}
 	// New Schema
-	
+	*/
 	
 	
 	

@@ -71,7 +71,11 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 				SentenceMetadata metadata = sentenceMetadataMap.get(sentence);
 				MultiClassifiedSentence classifiedSentence = classifiedSentencesMap.get(sentence);
 				
-				// Set<ILabel> predictions = classifiedSentence.getPredictions();
+				// Method 1: With SVM
+				Set<ILabel> predictions = classifiedSentence.getPredictions();
+				
+				// Method 2: Without SVM
+				/*
 				Set<ILabel> predictions = new HashSet<ILabel>();
 				predictions.add(Label.c1);
 				predictions.add(Label.c2);
@@ -86,6 +90,7 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 				predictions.add(Label.c11);
 				
 				// Reference: 
+				*/
 				
 				Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
 				for(ILabel label : predictions) {
