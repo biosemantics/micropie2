@@ -54,8 +54,8 @@ public class CollapseUSPSentByCategoryChar {
 
 		while (kwdListByCategoryIterator.hasNext()) {
 			Map.Entry<String, String> entry = kwdListByCategoryIterator.next();
-			// System.out.println("Category and Character Name is ::" + entry.getKey());
-			// System.out.println("Keyword List is ::" + entry.getValue());
+			System.out.println("Category and Character Name is ::" + entry.getKey());
+			System.out.println("Keyword List is ::" + entry.getValue());
 
 			String category_char_name = entry.getKey();
 			String patternString = entry.getValue();
@@ -101,7 +101,7 @@ public class CollapseUSPSentByCategoryChar {
 			}
 		}
 		
-		// System.out.println("111::" + tagWithCategoryListSent );
+		System.out.println("111::" + tagWithCategoryListSent );
 		return tagWithCategoryListSent;
 		
 	}

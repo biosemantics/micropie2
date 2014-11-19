@@ -17,6 +17,7 @@ import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -103,6 +104,7 @@ import edu.stanford.nlp.util.CoreMap;
 
 import com.google.common.collect.Lists;
 import com.google.common.math.IntMath;
+
 import java.math.RoundingMode;
 
 public class TrainTestRun implements IRun {
@@ -446,12 +448,13 @@ public class TrainTestRun implements IRun {
 				sentenceClassificationMap.put(testSentence,classifiedSentence);
 				predictions.add(classifiedSentence);
 			}
-						
+			System.out.println("before createUSPInputs(predictions)");			
 			
 
 			// 
 			// USP
 			createUSPInputs(predictions);
+			System.out.println("after createUSPInputs(predictions)");
 			
 			Parse uspParse = new Parse();
 			uspParse.runParse(uspString, "usp_results");
@@ -1116,72 +1119,84 @@ public class TrainTestRun implements IRun {
 				try {
 					String name = file.getName();
 					
-					// System.out.println("file name is ::" + name);
+					// ignore ._filename
+					// ex: ._.DS_Store
+					// ex: ._c2.Pigments.key
 					
-					int firstDotIndex = name.indexOf(".");
-
-					int lastDotIndex = name.lastIndexOf(".");
+					// also ignore this file => ".DS_Store"
 					
-					String labelName = name.substring(0, firstDotIndex);
-					
-					String character = name.substring(firstDotIndex + 1, lastDotIndex);
-					
-					// character = character.replaceAll("\\s", "-");
-					// character = character.replaceAll("\\(", "-");
-					// character = character.replaceAll("\\)", "-");
-					character = character.replaceAll("\\s", "");
-					character = character.replaceAll("\\(", "");
-					character = character.replaceAll("\\)", "");
-					character = character.replaceAll("\\&", "");
-					
-					// character = character.substring(0,10);
-					
-					String type = name.substring(lastDotIndex + 1, name.length());
-					
-					// System.out.println("type is ::" + type);
-					
-					ExtractorType extractorType = ExtractorType.valueOf(type);
-					
-					String keywords = "";
-					switch(extractorType) {
-					case key:
-						BufferedReader br = new BufferedReader(new InputStreamReader(
-								new FileInputStream(file), "UTF8"));
+					if (name.substring(0,2).equals("._") || name.equals(".DS_Store")) {
+						// Do nothing
+					} else {
+						// System.out.println("file name is ::" + name);
 						
-						String strLine;
-						while ((strLine = br.readLine()) != null) {
+						int firstDotIndex = name.indexOf(".");
+
+						int lastDotIndex = name.lastIndexOf(".");
+						
+						String labelName = name.substring(0, firstDotIndex);
+						
+						String character = name.substring(firstDotIndex + 1, lastDotIndex);
+						
+						// character = character.replaceAll("\\s", "-");
+						// character = character.replaceAll("\\(", "-");
+						// character = character.replaceAll("\\)", "-");
+						character = character.replaceAll("\\s", "");
+						character = character.replaceAll("\\(", "");
+						character = character.replaceAll("\\)", "");
+						character = character.replaceAll("\\&", "");
+						
+						// character = character.substring(0,10);
+						
+						String type = name.substring(lastDotIndex + 1, name.length());
+						
+						// System.out.println("type is ::" + type);
+						
+						ExtractorType extractorType = ExtractorType.valueOf(type);
+						
+						String keywords = "";
+						switch(extractorType) {
+						case key:
+							BufferedReader br = new BufferedReader(new InputStreamReader(
+									new FileInputStream(file), "UTF8"));
 							
-							// System.out.println("strLine is ::" + strLine);
-							// if (name.contains("c7.")) {
-							//	System.out.println("c7 exists!");
-							//	System.out.println("strLine is ::" + strLine);
-							// }
-							if (strLine.length() > 1) {
+							String strLine;
+							while ((strLine = br.readLine()) != null) {
 								
-								// remove space
-								// 
-								String keyword = strLine.trim().toLowerCase();
-								
-								keywords += keyword + "|";
+								// System.out.println("strLine is ::" + strLine);
+								// if (name.contains("c7.")) {
+								//	System.out.println("c7 exists!");
+								//	System.out.println("strLine is ::" + strLine);
+								// }
+								if (strLine.length() > 1) {
+									
+									// remove space
+									// 
+									String keyword = strLine.trim().toLowerCase();
+									
+									keywords += keyword + "|";
+								}
 							}
-						}
-						br.close();
-						
-						if( keywords.length() > 1) {
-							if( keywords.substring(keywords.length()-1, keywords.length()).equals("|")) {
-								keywords = keywords.substring(0, keywords.length()-1);
+							br.close();
+							
+							if( keywords.length() > 1) {
+								if( keywords.substring(keywords.length()-1, keywords.length()).equals("|")) {
+									keywords = keywords.substring(0, keywords.length()-1);
+								}
+								kwdListByCategory.put(labelName+"-"+character , keywords);
+
 							}
-							kwdListByCategory.put(labelName+"-"+character , keywords);
+							
 
+						case usp:
+							// do nothing
+						default:
+							// throw new Exception("Could not identify extractor type from file");
 						}
-						
-
-					case usp:
-						// do nothing
-					default:
-						// throw new Exception("Could not identify extractor type from file");
+												
 					}
 					
+
 				} catch(Exception e) {
 					log(LogLevel.ERROR, "Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped", e);
 				}
@@ -1861,6 +1876,9 @@ public class TrainTestRun implements IRun {
 				
 			}
 			
+			
+			System.out.println("Finish creating USPInputs");
+			
 			// counter++;
 						
 			log(LogLevel.INFO,
@@ -1879,7 +1897,7 @@ public class TrainTestRun implements IRun {
 		FileUtils.copyDirectory(new File(uspBaseString), new File(uspString));
 		// FileUtils.copyDirectory(new File(uspBaseString), new File(uspString));
 		
-		
+		System.out.println("After Copying");
 		
 		
 		// Construct abbreviation list
@@ -1892,7 +1910,7 @@ public class TrainTestRun implements IRun {
 				try {
 					String name = file.getName();
 					
-					// System.out.println("file name is ::" + name);
+					System.out.println("file name is ::" + name);
 					
 					int firstDotIndex = name.indexOf(".");
 
@@ -1975,7 +1993,7 @@ public class TrainTestRun implements IRun {
 		File uspInputsFolder = new File(uspFolder);
 		if(uspInputsFolder.exists() && !uspInputsFolder.isFile()) {
 			File[] uspInputsFiles = uspInputsFolder.listFiles();
-			// System.out.println("uspInputsFiles.length is ::" + uspInputsFiles.length);
+			System.out.println("uspInputsFiles.length is ::" + uspInputsFiles.length);
 			for (File uspInputsFile : uspInputsFiles) {
 				log(LogLevel.INFO, "Reading from " + uspInputsFile.getName() + "...");
 				try {
@@ -2000,7 +2018,7 @@ public class TrainTestRun implements IRun {
 		}
 		
 		
-		// System.out.println("maxUspInputFileId is ::" + maxUspInputFileId);
+		System.out.println("maxUspInputFileId is ::" + maxUspInputFileId);
 		
 		
 		int counter = maxUspInputFileId + 1;
@@ -2216,15 +2234,15 @@ public class TrainTestRun implements IRun {
 				
 				CollapseUSPSentByCategoryChar collapseUSPSentByCateogryChar = new CollapseUSPSentByCategoryChar();
 				
-				// System.out.println("ORI_SENT::"+ sentText);
+				System.out.println("ORI_SENT::"+ sentText);
 				
 				sentText = stanfordTokenizerTransformation(sentText);
 				
-				// System.out.println("sentText::2::" + sentText);
+				System.out.println("sentText::2::" + sentText);
 				
 				String tagSentText = collapseUSPSentByCateogryChar.tagWithCategoryList(sentText, kwdListByCategory);
 				
-				// System.out.println("tagTestSent::" + tagSentText);
+				System.out.println("tagTestSent::" + tagSentText);
 				
 				
 				List<CollapseUSPSentIndexMapping> collapseUSPSentIndexMappingList = new ArrayList<CollapseUSPSentIndexMapping>();
@@ -2248,13 +2266,13 @@ public class TrainTestRun implements IRun {
 				
 				
 				String[] tagTokens = collapseUSPSentByCategoryCharTokenizer.tokenize(tagSentText);
-				// System.out.println(Arrays.toString(tokens));
+				System.out.println(Arrays.toString(tokens));
 				
 				
 				int oriIndex = 0;
 				for (int index  = 0; index < tagTokens.length;) {
 					
-					// System.out.println("\n::oriIndex::" + oriIndex);
+					System.out.println("\n::oriIndex::" + oriIndex);
 
 					String tagToken = tagTokens[index];
 					
@@ -2299,9 +2317,9 @@ public class TrainTestRun implements IRun {
 						}
 						
 
-						// System.out.println("indices::" + indices.toString());
-						// System.out.println("oriIndex::" + oriIndex);
-						// System.out.println("index::" + index);
+						System.out.println("indices::" + indices.toString());
+						System.out.println("oriIndex::" + oriIndex);
+						System.out.println("index::" + index);
 						
 						
 						// transfer it into indiciesString
@@ -2604,6 +2622,7 @@ public class TrainTestRun implements IRun {
 					out.println(morphStringBuilder);
 				} catch (IOException e) {
 					// exception handling left as an exercise for the reader
+					System.out.println("ElvisElvis");
 				}
 				try (PrintWriter out = new PrintWriter(
 						new BufferedWriter(new FileWriter(uspString + "/text_o/0/"
@@ -2660,6 +2679,8 @@ public class TrainTestRun implements IRun {
 				
 			}
 			
+			System.out.println("Finish Creating USPInputs");
+
 			// counter++;
 						
 			log(LogLevel.INFO,
