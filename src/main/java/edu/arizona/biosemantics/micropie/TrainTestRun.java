@@ -140,6 +140,8 @@ public class TrainTestRun implements IRun {
 	private String celsius_degreeReplaceSourcePattern;
 	private String uspBaseString;
 	private String uspString;
+	private String usp_resultsString;
+	
 	
 	
 	@Inject
@@ -199,7 +201,7 @@ public class TrainTestRun implements IRun {
 		this.celsius_degreeReplaceSourcePattern = celsius_degreeReplaceSourcePattern;
 		this.uspBaseString = uspBaseString;
 		this.uspString = uspString;
-		
+		this.usp_resultsString = usp_resultsString;
 		
 		
 		
@@ -222,6 +224,21 @@ public class TrainTestRun implements IRun {
 			System.out.println("testFolder::" + testFolder);
 			
 			uspString = testFolderNameFromCommandLine + "_usp";
+			
+			// usp_resultsString = testFolderNameFromCommandLine + "_usp_results";
+			
+			new File(testFolderNameFromCommandLine + "_output").mkdirs();
+			
+			predictionsFile = testFolderNameFromCommandLine + "_output/" + predictionsFile;
+			
+			matrixFile = testFolderNameFromCommandLine + "_output/" + matrixFile;
+			
+			// predicitonsFile
+			// matrixFile
+			// 
+			// private String predicitonsFile = "predictions.csv";
+			// private String matrixFile = "matrix.csv";
+			
 			
 			// NFolder Cross Validation
 			// trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
@@ -458,6 +475,7 @@ public class TrainTestRun implements IRun {
 			
 			Parse uspParse = new Parse();
 			uspParse.runParse(uspString, "usp_results");
+			// uspParse.runParse(uspString, usp_resultsString);
 			// USP
 
 			
@@ -484,8 +502,8 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			// trainingSentenceReader.setInputStream(new FileInputStream("matrix.csv"));
-			// trainingSentenceReader.csvToXls("matrix.xls");
+			trainingSentenceReader.setInputStream(new FileInputStream(matrixFile));
+			trainingSentenceReader.csvToXls(matrixFile.replace("csv", "xls"));
 			
 			// formal MicroPIE process
 			

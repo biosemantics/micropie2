@@ -109,7 +109,7 @@ public class Config extends AbstractModule {
 	
 
 	
-	private String uspFolder = "usp/dep/0";
+	private String uspFolder = "usp_base/dep/0";
 	private String characterValueExtractorsFolder = "CharacterValueExtractors";
 	private String abbreviationFile = "abbrevlist/abbrevlist.csv";
 	private String predicitonsFile = "predictions.csv";
