@@ -21,6 +21,7 @@ import com.google.inject.TypeLiteral;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 
+import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.regex.AbstractCharacterValueExtractor;
@@ -50,7 +51,6 @@ import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.io.ISentenceReader;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
@@ -83,53 +83,41 @@ public class Config extends AbstractModule {
 			")";
 	
 	
-	// private String uspBaseString = "usp_small_test";
-	// private String uspBaseString = "usp_base_new";
-	private String uspBaseString = "usp_base";
-	private String uspString= "usp";
-	
+
+	/** INPUT DATA **/
 	// private String trainingFile = "split-training-base-140310.csv";
 	private String trainingFile = "training_data/split-training-base-140603.csv";
 
-	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine"; // just for building additional USP inputs, one file, more than 8000 sentences
-	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine-2"; // just for building additional USP inputs, one file, less than 10 sentences
-
-	// private String testFolder = "parsing_data/new-microbe-xml"; // Old schema, 625 files
-	// private String testFolder = "parsing_data/new-microbe-xml-1"; // Old schema, 5 files + 1 fake file
-	// private String testFolder = "parsing_data/new-microbe-xml-2"; // Old schema, 624 files
-
-	// private String testFolder = "parsing_data/new-microbe-xml-new-schema"; // student inputs: 65 files
-	// private String testFolder = "parsing_data/new-microbe-xml-new-schema-2"; // student inputs: 7 files
-	// private String testFolder = "parsing_data/Microbial Phenomics Project Experiment1 papers-part1"; // student experiment 1::part 1:: 123 files
-	// private String testFolder = "parsing_data/Microbial Phenomics Project Experiment1 papers-part2"; // student experiment 1::part 2:: 112 files
-	// private String testFolder = "parsing_data/Microbial Phenomics Project Experiment1 papers-part3"; // student experiment 1::part 3:: 109 files
-	// private String testFolder = "parsing_data/new-microbe-xml-new-inputs-from-carrine"; // taxonomic description: BacteroidetesTaxonomicDescriptions.docx
-	// private String testFolder = "parsing_data/LisaNew66BacteroidetesPapers"; // Lisa and Marcia's new 66 Bacteroidetes Papers
-	private String testFolder = "parsing_data/LisaNew66BacteroidetesPapers-1paper";
-	
-
-	
-	private String uspFolder = "usp_base/dep/0";
+	private String testFolder = "input";
 	private String characterValueExtractorsFolder = "CharacterValueExtractors";
 	private String abbreviationFile = "abbrevlist/abbrevlist.csv";
-	private String predicitonsFile = "predictions.csv";
-	private String matrixFile = "matrix.csv";
+	private String resFolder = "res";
+	private String kbFolder = "kb";
+	private String dataHolderFolder = "dataholder";
+
+	// private String uspBaseString = "usp_small_test";
+	// private String uspBaseString = "usp_base_new";
+	private String uspBaseString = "usp_base";
+	private String uspFolder = "usp_base/dep/0";
 	
 	private int nGramMinSize = 1;
 	private int nGramMaxSize = 1;
 	private int nGramMinFrequency = 1;
-	
-	private boolean parallelProcessing = false;
-	private int maxThreads = 1;
-	
 	private String nGramTokenizerOptions = "-delimiters ' ' -max 1 -min 1";
 	private String stringToWordVectorOptions = "-W " + Integer.MAX_VALUE + " -T -L -M 1 -tokenizer weka.core.tokenizer.NGramTokenizer " + nGramTokenizerOptions + "";
 	private String multiFilterOptions = "-D -F weka.filters.unsupervised.attribute.StringToWordVector " + stringToWordVectorOptions + "";
 	private String libSVMOptions = "-S 0 -D 3 -K 2 -G 0 -R 0 -N 0.5 -M 100 -C 2048 -P 1e-3";
 	
-	private Set<ICharacterValueExtractor> characterValueExtractors = 
-			getCharacterValueExtractors("CharacterValueExtractors");
+	/** OUTPUT DATA **/
+	private String predicitonsFile = "predictions.csv";
+	private String matrixFile = "matrix.csv";
+	private String uspString= "usp";
+	private String uspResultsDirectory = "usp_results";
 	
+	/** PROCESSING **/
+	private boolean parallelProcessing = false;
+	private int maxThreads = 1;
+		
 	@Override
 	protected void configure() {
 		bind(IRun.class).to(TrainTestRun.class).in(Singleton.class);
@@ -142,6 +130,10 @@ public class Config extends AbstractModule {
 				}
 		}).in(Singleton.class);
 
+		bind(String.class).annotatedWith(Names.named("resFolder")).toInstance(resFolder);
+		bind(String.class).annotatedWith(Names.named("kbFolder")).toInstance(kbFolder);
+		bind(String.class).annotatedWith(Names.named("dataHolderFolder")).toInstance(dataHolderFolder);
+		
 		bind(String.class).annotatedWith(Names.named("celsius_degreeReplaceSourcePattern")).toInstance(
 				celsius_degreeReplaceSourcePattern);
 		
@@ -150,6 +142,8 @@ public class Config extends AbstractModule {
 		
 		bind(String.class).annotatedWith(Names.named("uspString")).toInstance(
 				uspString);
+		
+		bind(String.class).annotatedWith(Names.named("uspResultsDirectory")).toInstance(uspResultsDirectory);
 		
 		bind(String.class).annotatedWith(Names.named("trainingFile")).toInstance(
 				trainingFile);
@@ -191,7 +185,8 @@ public class Config extends AbstractModule {
 		
 		bind(String.class).annotatedWith(Names.named("LibSVMOptions")).toInstance(libSVMOptions);
 				
-		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(characterValueExtractors);
+		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(getCharacterValueExtractors(characterValueExtractorsFolder, 
+				uspResultsDirectory, uspString));
 		
 		bind(ISentenceReader.class).to(CSVSentenceReader.class).in(Singleton.class);
 		
@@ -285,14 +280,16 @@ public class Config extends AbstractModule {
 		weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO, "Weka Logging started"); 
 	}
 
-	private Set<ICharacterValueExtractor> getCharacterValueExtractors(String extratorsDirectory) {
+	private Set<ICharacterValueExtractor> getCharacterValueExtractors(String extratorsDirectory, String uspResultsDirectory, 
+			String uspString) {
 		Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
 		
 		File inputDir = new File(extratorsDirectory);
 		if(!inputDir.exists() || inputDir.isFile()) 
 			return extractors;
 		
-		ICharacterValueExtractorReader extractorReader = new CharacterValueExtractorReader();
+		ICharacterValueExtractorReader extractorReader = new CharacterValueExtractorReader(
+				uspResultsDirectory, uspString);
 		for(File file : inputDir.listFiles()) {
 			try {
 				ICharacterValueExtractor extractor = extractorReader.read(file);
@@ -325,8 +322,27 @@ public class Config extends AbstractModule {
 		// extractors.add(new AntibioticSensitivityExtractor(Label.c4));
 		
 		
-		
 		return extractors;
+	}
+
+	public void setInputDirectory(String inputDirectory) {
+		testFolder = inputDirectory + File.separator + "input";
+		characterValueExtractorsFolder = inputDirectory + File.separator + "CharacterValueExtractors";
+		abbreviationFile = inputDirectory + File.separator + "abbrevlist/abbrevlist.csv";
+		resFolder = inputDirectory + File.separator + "res";
+		kbFolder = inputDirectory + File.separator + "kb";
+		dataHolderFolder = inputDirectory + File.separator + "dataholder";
+		uspBaseString = inputDirectory + File.separator + "usp_base";
+		uspFolder = inputDirectory + File.separator + "usp_base/dep/0";
+	}
+	
+	public void setOutputDirectory(String outputDirectory) {
+		predicitonsFile = outputDirectory + File.separator + "predictions.csv";
+		matrixFile = outputDirectory + File.separator + "matrix.csv";
+		uspString= outputDirectory + File.separator + "usp";
+		new File(uspString).mkdirs();
+		uspResultsDirectory = outputDirectory + File.separator + "usp_results";
+		new File(uspResultsDirectory).mkdirs();
 	}
 
 }

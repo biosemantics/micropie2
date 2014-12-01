@@ -10,7 +10,7 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 
 public class GrowthPhExtractor extends AbstractCharacterValueExtractor {
 	

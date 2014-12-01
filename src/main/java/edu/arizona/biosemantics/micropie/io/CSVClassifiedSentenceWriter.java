@@ -11,7 +11,7 @@ import java.util.Set;
 
 import au.com.bytecode.opencsv.CSVWriter;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;

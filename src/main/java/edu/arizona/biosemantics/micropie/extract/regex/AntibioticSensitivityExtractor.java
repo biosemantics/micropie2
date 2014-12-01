@@ -17,14 +17,20 @@ import edu.arizona.biosemantics.micropie.classify.Label;
 
 public class AntibioticSensitivityExtractor extends AbstractCharacterValueExtractor {
 
+	private String uspResultsDirectory;
+	private String uspString;
+
 	public AntibioticSensitivityExtractor(ILabel label) {
 		super(label, "Antibiotic Sensitivity");
 	}
 	
 	@Inject
 	public AntibioticSensitivityExtractor(@Named("AntibioticSensitivityExtractor_Label")Label label, 
-			@Named("AntibioticSensitivityExtractor_Character")String character) {
+			@Named("AntibioticSensitivityExtractor_Character")String character, 
+			@Named("uspResultsDirectory")String uspResultsDirectory, @Named("uspString") String uspString) {
 		super(label, character);
+		this.uspResultsDirectory = uspResultsDirectory;
+		this.uspString = uspString;
 	}
 	
 	@Override
@@ -36,7 +42,7 @@ public class AntibioticSensitivityExtractor extends AbstractCharacterValueExtrac
 		// output: String array?
 		
 		// Example:  ??
-		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor();
+		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor(uspResultsDirectory, uspString);
 		try {
 			output = micropieUSPExtractor.getObjectValue(text, "sensitive", "J", "prep_to", "Dep");
 			System.out.println("Antibiotic Sensitivity::" + output.toString());

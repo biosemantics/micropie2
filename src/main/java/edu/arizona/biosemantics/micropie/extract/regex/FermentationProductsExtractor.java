@@ -17,14 +17,20 @@ import edu.arizona.biosemantics.micropie.classify.Label;
 
 public class FermentationProductsExtractor extends AbstractCharacterValueExtractor {
 
+	private String uspResultsDirectory;
+	private String uspString;
+
 	public FermentationProductsExtractor(ILabel label) {
 		super(label, "Fermentation Products");
 	}
 	
 	@Inject
 	public FermentationProductsExtractor(@Named("FermentationProductsExtractor_Label")Label label, 
-			@Named("FermentationProductsExtractor_Character")String character) {
+			@Named("FermentationProductsExtractor_Character")String character, 
+			@Named("uspResultsDirectory")String uspResultsDirectory, @Named("uspString") String uspString) {
 		super(label, character);
+		this.uspResultsDirectory = uspResultsDirectory;
+		this.uspString = uspString;
 	}
 	
 	@Override
@@ -36,7 +42,7 @@ public class FermentationProductsExtractor extends AbstractCharacterValueExtract
 		// output: String array?
 		
 		// Example:  ??
-		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor();
+		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor(uspResultsDirectory, uspString);
 		try {
 			output = micropieUSPExtractor.getObjectValue(text, "produces", "V", "dobj", "Dep");
 			output.addAll(micropieUSPExtractor.getObjectValue(text, "produced", "V", "nsubjpass", "Dep"));

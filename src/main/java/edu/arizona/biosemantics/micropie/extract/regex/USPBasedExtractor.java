@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,12 +13,13 @@ import com.google.inject.name.Named;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.io.USPClusteringReader;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 
 public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 	
 	private Set<USPRequest> uspRequests;
-	private MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor();
+	private MicropieUSPExtractor micropieUSPExtractor;
+	private String uspResultsDirectory;
 
 	// public USPBasedExtractor(ILabel label) {
 	//	super(label, "Antibiotic Sensitivity");
@@ -26,9 +28,13 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 	@Inject
 	public USPBasedExtractor(@Named("USPBasedExtractor_Label")Label label, 
 			@Named("USPBasedExtractor_Character")String character,
-			@Named("USPBasedExtractor_")Set<USPRequest> uspRequests) {
+			@Named("USPBasedExtractor_")Set<USPRequest> uspRequests,
+			@Named("uspResultsDirectory")String uspResultsDirectory, 
+			@Named("uspString") String uspString) {
 		super(label, character);
 		this.uspRequests = uspRequests;
+		this.uspResultsDirectory = uspResultsDirectory;
+		this.micropieUSPExtractor = new MicropieUSPExtractor(uspResultsDirectory, uspString);
 	}
 	
 	@Override
@@ -38,7 +44,7 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 			try {
 				String originalString = uspRequest.getKeyword();
 				USPClusteringReader uspClusteringReader = new USPClusteringReader();
-				uspClusteringReader.setInputStream(new FileInputStream("usp_results/usp.clustering"));
+				uspClusteringReader.setInputStream(new FileInputStream(uspResultsDirectory + File.separator + "usp.clustering"));
 				Set<String> uspClusteringKeywords = uspClusteringReader.getRelatedKeywords(originalString);
 				// System.out.println("uspClusteringKeywords::" + uspClusteringKeywords.toString());
 				

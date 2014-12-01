@@ -2,7 +2,7 @@ package weka.core.logging;
 
 import java.util.Date;
 
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 
 public class LoggerBridge extends Logger {
 
@@ -14,7 +14,7 @@ public class LoggerBridge extends Logger {
 	@Override
 	protected void doLog(Level level, String msg, String cls, String method,
 			int lineno) {
-		edu.arizona.biosemantics.micropie.log.LogLevel newLevel = LogLevel.FATAL;
+		edu.arizona.biosemantics.common.log.LogLevel newLevel = LogLevel.FATAL;
 		switch(level) {
 		case ALL:
 			newLevel = LogLevel.TRACE;

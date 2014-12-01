@@ -38,8 +38,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringEscapeUtils;
-
-
 import org.apache.commons.io.FileUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -61,7 +59,7 @@ import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.CollapseUSPSentByCategoryCharTokenizer;
 import edu.arizona.biosemantics.micropie.model.CollapseUSPSentIndexMapping;
 import edu.arizona.biosemantics.micropie.model.CollapsedSentenceAndIndex;
@@ -141,6 +139,8 @@ public class TrainTestRun implements IRun {
 	private String uspBaseString;
 	private String uspString;
 	private String usp_resultsString;
+	private String uspResultsDirectory;
+	private String resFolder;
 	
 	
 	
@@ -149,6 +149,7 @@ public class TrainTestRun implements IRun {
 			@Named("trainingFile") String trainingFile,
 			@Named("testFolder") String testFolder,
 			@Named("uspFolder") String uspFolder,
+			@Named("uspResultsDirectory") String uspResultsDirectory,
 			@Named("characterValueExtractorsFolder") String characterValueExtractorsFolder,
 			@Named("parallelProcessing") boolean parallelProcessing,
 			@Named("maxThreads") int maxThreads,
@@ -170,11 +171,13 @@ public class TrainTestRun implements IRun {
 			
 			@Named("celsius_degreeReplaceSourcePattern") String celsius_degreeReplaceSourcePattern,
 			@Named("uspBaseString") String uspBaseString,
-			@Named("uspString") String uspString
+			@Named("uspString") String uspString,
+			@Named("resFolder") String resFolder
 			) {
 		this.trainingFile = trainingFile;
 		this.testFolder = testFolder;
 		this.uspFolder = uspFolder;
+		this.uspResultsDirectory = uspResultsDirectory;
 		this.characterValueExtractorsFolder = characterValueExtractorsFolder;
 		this.parallelProcessing = parallelProcessing;
 		this.maxThreads = maxThreads;
@@ -202,6 +205,7 @@ public class TrainTestRun implements IRun {
 		this.uspBaseString = uspBaseString;
 		this.uspString = uspString;
 		this.usp_resultsString = usp_resultsString;
+		this.resFolder = resFolder;
 		
 		
 		
@@ -217,22 +221,9 @@ public class TrainTestRun implements IRun {
 	}
 
 	@Override
-	public void run(String testFolderNameFromCommandLine) {
+	public void run() {
 		long startTime = System.currentTimeMillis();
 		try {
-			testFolder = testFolderNameFromCommandLine;
-			System.out.println("testFolder::" + testFolder);
-			
-			uspString = testFolderNameFromCommandLine + "_usp";
-			
-			// usp_resultsString = testFolderNameFromCommandLine + "_usp_results";
-			
-			new File(testFolderNameFromCommandLine + "_output").mkdirs();
-			
-			predictionsFile = testFolderNameFromCommandLine + "_output/" + predictionsFile;
-			
-			matrixFile = testFolderNameFromCommandLine + "_output/" + matrixFile;
-			
 			// predicitonsFile
 			// matrixFile
 			// 
@@ -474,7 +465,7 @@ public class TrainTestRun implements IRun {
 			System.out.println("after createUSPInputs(predictions)");
 			
 			Parse uspParse = new Parse();
-			uspParse.runParse(uspString, "usp_results");
+			uspParse.runParse(uspString, uspResultsDirectory);
 			// uspParse.runParse(uspString, usp_resultsString);
 			// USP
 
@@ -573,8 +564,8 @@ public class TrainTestRun implements IRun {
 			SentenceSplitRun splitRun = new SentenceSplitRun(
 					textFile.getText(), textNormalizer, tokenizeSSplit,
 					sentenceSplitLatch,
-					celsius_degreeReplaceSourcePattern
-					
+					celsius_degreeReplaceSourcePattern,
+					resFolder
 					);
 			ListenableFuture<List<String>> futureResult = executorService
 					.submit(splitRun);
@@ -752,8 +743,8 @@ public class TrainTestRun implements IRun {
 			SentenceSplitRun splitRun = new SentenceSplitRun(
 					textFile.getText(), textNormalizer, tokenizeSSplit,
 					sentenceSplitLatch,
-					celsius_degreeReplaceSourcePattern
-					
+					celsius_degreeReplaceSourcePattern,
+					resFolder
 					);
 			ListenableFuture<List<String>> futureResult = executorService
 					.submit(splitRun);

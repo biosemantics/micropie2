@@ -10,6 +10,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.ExtractorType;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
@@ -20,6 +23,15 @@ import edu.arizona.biosemantics.micropie.extract.regex.USPRequest;
 public class CharacterValueExtractorReader implements
 		ICharacterValueExtractorReader {
 
+	private String uspResultsDirectory;
+	private String uspString;
+	
+	@Inject
+	public CharacterValueExtractorReader(@Named("uspResultsDirectory") String uspResultsDirectory, @Named("uspString") String uspString) {
+		this.uspResultsDirectory = uspResultsDirectory;
+		this.uspString = uspString;
+	}
+	
 	@Override
 	public ICharacterValueExtractor read(File file) throws Exception {
 		String name = file.getName();
@@ -59,7 +71,7 @@ public class CharacterValueExtractorReader implements
 			uspRequests.add(new USPRequest(requestParameters[0], requestParameters[1], requestParameters[2], requestParameters[3]));
 		}
 		br.close();
-		return new USPBasedExtractor(Label.valueOf(labelName), character, uspRequests);
+		return new USPBasedExtractor(Label.valueOf(labelName), character, uspRequests, uspResultsDirectory, uspString);
 	}
 
 	private ICharacterValueExtractor createKeywordBasedExtractor(File file, String labelName, String character) throws IOException {

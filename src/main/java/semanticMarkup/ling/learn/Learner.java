@@ -12,6 +12,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import com.google.inject.name.Named;
+
 import semanticMarkup.core.Treatment;
 import semanticMarkup.know.IGlossary;
 import semanticMarkup.knowledge.KnowledgeBase;
@@ -108,7 +110,9 @@ public class Learner {
 	AnnotationNormalizer annotationNormalizer; 
 
 	public Learner(Configuration configuration, ITokenizer tokenizer,
-			LearnerUtility learnerUtility) {
+			LearnerUtility learnerUtility, 
+			@Named("kbFolder")String kbFolder,
+			@Named("dataHolderFolder")String dataHolderFolder) {
 		PropertyConfigurator.configure("conf/log4j.properties");
 		Logger myLogger = Logger.getLogger("Learner");
 
@@ -119,7 +123,7 @@ public class Learner {
 		this.myLearnerUtility = learnerUtility;
 
 		// Data holder
-		this.myDataHolder = new DataHolder(myConfiguration,
+		this.myDataHolder = new DataHolder(dataHolderFolder, myConfiguration,
 				myLearnerUtility.getConstant(), myLearnerUtility.getWordFormUtility());
 
 		// Class variables
@@ -130,7 +134,7 @@ public class Learner {
 		myLogger.info("\tMax Tag Lengthr: " + myConfiguration.getMaxTagLength());
 		myLogger.info("\n");
 
-		this.knowledgeBase = new KnowledgeBase();
+		this.knowledgeBase = new KnowledgeBase(kbFolder);
 		
 		this.initializer = new Initializer(this.myLearnerUtility,
 				this.myConfiguration.getNumLeadWords());
@@ -190,7 +194,7 @@ public class Learner {
 		myLogger.trace(String.format("Learning Mode: %s",
 				this.myConfiguration.getLearningMode()));
 
-		this.knowledgeBase.importKnowledgeBase(this.myDataHolder, "kb", this.myLearnerUtility.getConstant());
+		this.knowledgeBase.importKnowledgeBase(this.myDataHolder, this.myLearnerUtility.getConstant());
 		
 		this.initializer.loadTreatments(treatments);
 		this.initializer.run(myDataHolder);
@@ -266,7 +270,7 @@ public class Learner {
 		
 		this.prepareTablesForParser(myDataHolder);
 
-		myDataHolder.writeToFile("dataholder", "");
+		myDataHolder.writeToFile("");
 
 		myLogger.info("Learning done!");
 

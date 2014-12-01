@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 
 public class TextNormalizer implements ITextNormalizer {
 	

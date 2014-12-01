@@ -3,8 +3,8 @@ package edu.arizona.biosemantics.micropie.classify;
 import java.util.LinkedList;
 import java.util.List;
 
-import edu.arizona.biosemantics.micropie.log.LogLevel;
-import edu.arizona.biosemantics.micropie.log.ObjectStringifier;
+import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.common.log.ObjectStringifier;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.Attribute;

@@ -18,7 +18,7 @@ import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractorProvider;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.Sentence;

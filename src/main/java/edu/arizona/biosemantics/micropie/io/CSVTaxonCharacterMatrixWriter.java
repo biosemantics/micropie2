@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 import au.com.bytecode.opencsv.CSVWriter;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 

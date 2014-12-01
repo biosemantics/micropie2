@@ -4,6 +4,9 @@ import java.util.*;
 import java.io.*;
 import java.lang.reflect.Array;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.model.SentenceDependency;
 import edu.stanford.nlp.ling.StringLabelFactory;
@@ -95,7 +98,7 @@ public class MicropieUSPExtractor {
 		// TODO Auto-generated method stub
 		
 		
-		MicropieUSPExtractor usp = new MicropieUSPExtractor();
+		MicropieUSPExtractor usp = new MicropieUSPExtractor("usp_results", "usp");
 		
 		Set<String> output = new HashSet<String>();
 		
@@ -423,8 +426,10 @@ public class MicropieUSPExtractor {
 	}
 
 	
-	public MicropieUSPExtractor() {
-		
+	@Inject
+	public MicropieUSPExtractor(@Named("uspResultsDirectory")String uspResultsDirectory, @Named("uspString") String uspString) {
+		rstDir_ = uspResultsDirectory;
+		dataDir_ = uspString;	
 	}
 	
 	
@@ -432,9 +437,6 @@ public class MicropieUSPExtractor {
 		
 		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 		String USPId = "";
-				
-		rstDir_ = "usp_results";
-		dataDir_ = "usp";		
 
 		Map<String, Map<String,Integer>> keywordList_ = new TreeMap<String,Map<String,Integer>>();
 		keywordList_.put(keyword, new HashMap<String, Integer>());

@@ -132,8 +132,6 @@ public class Parse {
 		// System.out.println("dataDir_::" + dataDir_);
 		// System.out.println("rstDir_::" + rstDir_);
 		
-		new File("usp_results").mkdirs();
-		
 		usp.util.Timer timer=new usp.util.Timer();
 
 		PrintStream out=null;	

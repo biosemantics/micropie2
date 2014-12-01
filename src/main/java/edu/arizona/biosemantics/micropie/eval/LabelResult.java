@@ -1,8 +1,8 @@
 package edu.arizona.biosemantics.micropie.eval;
 
+import edu.arizona.biosemantics.common.log.ObjectStringifier;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
-import edu.arizona.biosemantics.micropie.log.ObjectStringifier;
 
 /**
  * LabelResult stores the precision, recall, accuracy, f1 measures calculated for a specific label

@@ -11,7 +11,7 @@ import java.util.concurrent.CountDownLatch;
 import de.mpii.clausie.ClausIE;
 import de.mpii.clausie.Clause;
 import de.mpii.clausie.Proposition;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;

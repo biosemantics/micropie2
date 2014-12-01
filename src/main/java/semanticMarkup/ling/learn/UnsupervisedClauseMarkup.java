@@ -15,6 +15,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import com.google.inject.name.Named;
+
 import semanticMarkup.core.Treatment;
 import semanticMarkup.io.input.lib.db.ParentTagProvider;
 import semanticMarkup.know.IGlossary;
@@ -78,7 +80,10 @@ public class UnsupervisedClauseMarkup implements ITerminologyLearner {
 			ParentTagProvider parentTagProvider,
 			Set<String> selectedSources,
 			ITokenizer sentenceDetector, 
-			ITokenizer tokenizer) {		
+			ITokenizer tokenizer, 
+			@Named("resFolder")String resFolder, 
+			@Named("kbFolder") String kbFolder,
+			@Named("dataHolderFolder")String dataHolderFolder) {		
 		//this.chrDir = desDir.replaceAll("descriptions.*", "characters/");
 		
 		this.glossary = glossary;
@@ -91,7 +96,7 @@ public class UnsupervisedClauseMarkup implements ITerminologyLearner {
 		
 		this.tokenizer = tokenizer;
 		
-		this.myConfiguration = new Configuration();
+		this.myConfiguration = new Configuration(resFolder);
 		
 		WordNetPOSKnowledgeBase wordNetPOSKnowledgeBase = null;
 		try {
@@ -101,8 +106,9 @@ public class UnsupervisedClauseMarkup implements ITerminologyLearner {
 			e.printStackTrace();
 		}
 		this.myLearnerUtility = new LearnerUtility(this.sentenceDetector, this.tokenizer, wordNetPOSKnowledgeBase);
-		this.myDataHolder = new DataHolder(this.myConfiguration, this.myLearnerUtility.getConstant(), this.myLearnerUtility.getWordFormUtility());
-		this.myLearner = new Learner(this.myConfiguration, this.tokenizer, this.myLearnerUtility);
+		this.myDataHolder = new DataHolder(dataHolderFolder, 
+				this.myConfiguration, this.myLearnerUtility.getConstant(), this.myLearnerUtility.getWordFormUtility());
+		this.myLearner = new Learner(this.myConfiguration, this.tokenizer, this.myLearnerUtility, kbFolder, dataHolderFolder);
 	}
 
 	// learn

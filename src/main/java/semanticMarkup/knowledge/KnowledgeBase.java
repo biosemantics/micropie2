@@ -6,22 +6,26 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import semanticMarkup.know.lib.WordNetPOSKnowledgeBase;
 import semanticMarkup.ling.learn.Configuration;
 import semanticMarkup.ling.learn.dataholder.DataHolder;
-
 import semanticMarkup.ling.learn.knowledge.Constant;
 import semanticMarkup.ling.learn.utility.StringUtility;
 import semanticMarkup.ling.learn.utility.WordFormUtility;
 
 public class KnowledgeBase {
 
-	public KnowledgeBase() {
-		// TODO Auto-generated constructor stub
+	private String kbFolder;
+
+	@Inject
+	public KnowledgeBase(@Named("kbFolder") String kbFolder) {
+		this.kbFolder = kbFolder;
 	}
 
-	public void importKnowledgeBase(DataHolder dataholderHandler, String kb,
-			Constant constants) {
+	public void importKnowledgeBase(DataHolder dataholderHandler, Constant constants) {
 		// forbidden words
 		for (String forbiddenWord : constants.forbiddenWords) {
 			dataholderHandler.addToWordPOSHolder(forbiddenWord, "f", "", 1, 1,
@@ -30,8 +34,7 @@ public class KnowledgeBase {
 
 		// learnedboundarywords_ini_pato_singleword -> WordPOS
 		FileReader file1Reader = null;
-		String fileNameAndPath1 = kb
-				+ "/learnedboundarywords_ini_pato_singleword.csv";
+		String fileNameAndPath1 = kbFolder + File.separator + "learnedboundarywords_ini_pato_singleword.csv";
 		File file1 = new File(fileNameAndPath1);
 		if (file1.exists()) {
 			try {
@@ -65,7 +68,7 @@ public class KnowledgeBase {
 
 		// learnedmodifiers_initial -> Modifiers
 		FileReader file2Reader = null;
-		String fileNameAndPath2 = kb + "/learnedmodifiers_initial.csv";
+		String fileNameAndPath2 = kbFolder + File.separator + "learnedmodifiers_initial.csv";
 		File file2 = new File(fileNameAndPath2);
 		if (file2.exists()) {
 			try {
@@ -97,8 +100,7 @@ public class KnowledgeBase {
 		}
 		// learnedstructurewords_ini_onto_lastword -> WordPOS
 		FileReader file3Reader = null;
-		String fileNameAndPath3 = kb
-				+ "/learnedstructurewords_ini_onto_lastword.csv";
+		String fileNameAndPath3 = kbFolder + File.separator + "learnedstructurewords_ini_onto_lastword.csv";
 		File file3 = new File(fileNameAndPath3);
 		if (file3.exists()) {
 			try {
@@ -141,7 +143,7 @@ public class KnowledgeBase {
 	public static void main(String[] args) {
 		DataHolder tester;
 
-		Configuration myConfiguration = new Configuration();
+		Configuration myConfiguration = new Configuration("res");
 		WordNetPOSKnowledgeBase wordNetPOSKnowledgeBase = null;
 		try {
 			wordNetPOSKnowledgeBase = new WordNetPOSKnowledgeBase(
@@ -154,12 +156,12 @@ public class KnowledgeBase {
 		WordFormUtility wordFormUtility = new WordFormUtility(
 				wordNetPOSKnowledgeBase);
 		Constant myConstant = new Constant();
-		tester = new DataHolder(myConfiguration, myConstant, wordFormUtility);
+		tester = new DataHolder("dataholder", myConfiguration, myConstant, wordFormUtility);
 
 		Constant myConts = new Constant();
-		KnowledgeBase myKB = new KnowledgeBase();
-		myKB.importKnowledgeBase(tester, "kb", myConts);
+		KnowledgeBase myKB = new KnowledgeBase("kb");
+		myKB.importKnowledgeBase(tester, myConts);
 
-		tester.writeToFile("dataholder", "");
+		tester.writeToFile("");
 	}
 }

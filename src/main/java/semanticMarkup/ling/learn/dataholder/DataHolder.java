@@ -22,6 +22,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import semanticMarkup.ling.learn.Configuration;
 import semanticMarkup.ling.learn.auxiliary.POSInfo;
 import semanticMarkup.ling.learn.auxiliary.StringPair;
@@ -87,8 +90,13 @@ public class DataHolder {
 	private Configuration myConfiguration;
 	private Constant myConstant;
 	private WordFormUtility myWordFormUtility;
+
+	private String dataHolderFolder;
 	
-	public DataHolder(Configuration myConfiguration, Constant myConstant, WordFormUtility myWordFormUtility) {
+	@Inject
+	public DataHolder(@Named("dataHolderFolder") String dataHolderFolder, 
+			Configuration myConfiguration, Constant myConstant, WordFormUtility myWordFormUtility) {
+		this.dataHolderFolder = dataHolderFolder;
 		this.myConfiguration = myConfiguration;
 		this.myConstant = myConstant;
 		this.myWordFormUtility = myWordFormUtility;
@@ -2156,7 +2164,7 @@ public class DataHolder {
 		return isUpdated;
 	}
 	
-	public void writeToFile(String dir, String fileNamePrefix) {
+	public void writeToFile(String fileNamePrefix) {
 		if (fileNamePrefix == null) {
 			fileNamePrefix = "";
 		}
@@ -2170,7 +2178,7 @@ public class DataHolder {
 
 		// Discounted Holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "Discounted.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "Discounted.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");
@@ -2200,7 +2208,7 @@ public class DataHolder {
 		
 		// HeuristicNouns Holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "HeuristicNouns.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "HeuristicNouns.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");
@@ -2229,7 +2237,7 @@ public class DataHolder {
 		
 		// IsA Holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "IsA.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "IsA.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");
@@ -2259,7 +2267,7 @@ public class DataHolder {
 		
 		// Modifiers Holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "Modifiers.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "Modifiers.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");
@@ -2289,7 +2297,7 @@ public class DataHolder {
 		
 		// Sentence Holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "Sentence.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "Sentence.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");
@@ -2322,7 +2330,7 @@ public class DataHolder {
 		
 		// SingularPlural Holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "SingularPlural.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "SingularPlural.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");
@@ -2348,7 +2356,7 @@ public class DataHolder {
 		
 		// TermCategory Holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "TermCategory.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "TermCategory.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");
@@ -2374,7 +2382,7 @@ public class DataHolder {
 		
 		// UnknownWord Holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "UnknownWords.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "UnknownWords.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");
@@ -2403,7 +2411,7 @@ public class DataHolder {
 
 		// WordPOS holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "WordPOS.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "WordPOS.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");
@@ -2438,7 +2446,7 @@ public class DataHolder {
 		
 		// WordRole holder
 		try {
-			String fullPath = dir + "/" + fileNamePrefix + "WordRole.csv";
+			String fullPath = dataHolderFolder + "/" + fileNamePrefix + "WordRole.csv";
 			File file = new File(fullPath);
 			file.getParentFile().mkdirs();
 			writer = new PrintWriter(fullPath, "UTF-8");

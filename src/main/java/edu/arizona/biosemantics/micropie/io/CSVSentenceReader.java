@@ -30,7 +30,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import edu.arizona.biosemantics.micropie.classify.Label;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import au.com.bytecode.opencsv.CSVReader;

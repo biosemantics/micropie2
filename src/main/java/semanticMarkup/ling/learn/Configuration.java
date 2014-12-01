@@ -1,5 +1,9 @@
 package semanticMarkup.ling.learn;
 
+import java.io.File;
+
+import com.google.inject.name.Named;
+
 public class Configuration {
 	private String wordNetDictDir = null;
 	private String openNLPModelDir = null;
@@ -11,13 +15,11 @@ public class Configuration {
 	private int numLeadWords; 
 	private String defaultGeneralTag;
 	
-	private static final String defaultWordNetDictDir = "res/WordNet/WordNet-3.0/dict";
-	private static final String defaultOpenNLPModelDir = "res";
 	private static final String defaultLearningMode = "plain";
 	private static final int defaultTagLength = 150;
 	private static final int defaultNumLeadWords = 3;
 
-	public Configuration() {
+	public Configuration(@Named("resFolder")String resFolder) {
 		//this.learningMode = learningMode;
 		this.learningMode = System.getProperty("charaparser.learningmode");
 		if (this.learningMode == null){
@@ -31,7 +33,7 @@ public class Configuration {
 		
 		this.wordNetDictDir = System.getProperty("charaparser.wordnet.dict.dir");
 		if (this.wordNetDictDir == null) {
-			this.wordNetDictDir = Configuration.defaultWordNetDictDir;
+			this.wordNetDictDir = resFolder + File.separator + "WordNet" + File.separator + "WordNet-3.0" + File.separator + "dict";
 		}
 		
 		String tempTagLength = System.getProperty("charaparser.taglength");
@@ -55,12 +57,12 @@ public class Configuration {
 		if ( tempOpenNLPModelDir==null){
 			this.openNLPSentenceDetectorDir=System.getProperty("charaparser.opennlp.model.sent.dir");
 			if (this.openNLPSentenceDetectorDir==null){
-				this.openNLPSentenceDetectorDir = Configuration.defaultOpenNLPModelDir+"//en-sent.bin";
+				this.openNLPSentenceDetectorDir = resFolder + File.separator + "en-sent.bin";
 			}
 			
 			this.openNLPTokenizerDir=System.getProperty("charaparser.opennlp.model.token.dir");
 			if (this.openNLPTokenizerDir==null){
-				this.openNLPTokenizerDir=Configuration.defaultOpenNLPModelDir+"//en-token.bin";
+				this.openNLPTokenizerDir= resFolder + File.separator + "en-token.bin";
 			}			
 		}
 		else{

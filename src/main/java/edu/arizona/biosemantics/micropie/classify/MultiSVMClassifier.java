@@ -10,8 +10,8 @@ import java.util.Set;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-import edu.arizona.biosemantics.micropie.log.LogLevel;
-import edu.arizona.biosemantics.micropie.log.ObjectStringifier;
+import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.common.log.ObjectStringifier;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 
 //TODO: Make weka log things such as filtered data (e.g. matrix actually passed into SVM)

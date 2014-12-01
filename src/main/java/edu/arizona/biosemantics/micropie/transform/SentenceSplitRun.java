@@ -24,7 +24,7 @@ import com.google.inject.name.Named;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.util.InvalidFormatException;
-import edu.arizona.biosemantics.micropie.log.LogLevel;
+import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
@@ -54,23 +54,27 @@ public class SentenceSplitRun implements Callable<List<String>> {
 	
 
 	private LearnerUtility tester;
+	private String resFolder;
+	private String kbFolder;
 
 
 	
 	public SentenceSplitRun(String text, ITextNormalizer normalizer, StanfordCoreNLP stanfordCoreNLP, 
 			CountDownLatch sentenceSplitLatch,
-			@Named("celsius_degreeReplaceSourcePattern") String celsius_degreeReplaceSourcePattern) {
+			@Named("celsius_degreeReplaceSourcePattern") String celsius_degreeReplaceSourcePattern,
+			@Named("resFolder") String resFolder) {
 		this.text = text;
 		this.sentenceSplitLatch = sentenceSplitLatch;
 		this.normalizer = normalizer;
 		this.stanfordCoreNLP = stanfordCoreNLP;
 		this.celsius_degreeReplaceSourcePattern = celsius_degreeReplaceSourcePattern;
+		this.resFolder = resFolder;
 	}
 
 	@Override
 	public List<String> call() throws Exception {
 
-		Configuration myConfiguration = new Configuration();
+		Configuration myConfiguration = new Configuration(resFolder);
 		ITokenizer sentenceDetector = new OpenNLPSentencesTokenizer(
 				myConfiguration.getOpenNLPSentenceDetectorDir());
 		ITokenizer tokenizer = new OpenNLPTokenizer(myConfiguration.getOpenNLPTokenizerDir());
