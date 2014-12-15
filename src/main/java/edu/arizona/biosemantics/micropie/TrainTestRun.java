@@ -58,6 +58,7 @@ import edu.arizona.biosemantics.micropie.extract.TaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
+import edu.arizona.biosemantics.micropie.io.UnZip;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.CollapseUSPSentByCategoryCharTokenizer;
@@ -137,6 +138,9 @@ public class TrainTestRun implements IRun {
 
 	private String celsius_degreeReplaceSourcePattern;
 	private String uspBaseString;
+	
+	private String uspBaseZipFileName;
+	
 	private String uspString;
 	private String usp_resultsString;
 	private String uspResultsDirectory;
@@ -171,6 +175,7 @@ public class TrainTestRun implements IRun {
 			
 			@Named("celsius_degreeReplaceSourcePattern") String celsius_degreeReplaceSourcePattern,
 			@Named("uspBaseString") String uspBaseString,
+			@Named("uspBaseZipFileName") String uspBaseZipFileName,			
 			@Named("uspString") String uspString,
 			@Named("resFolder") String resFolder
 			) {
@@ -203,6 +208,10 @@ public class TrainTestRun implements IRun {
 		
 		this.celsius_degreeReplaceSourcePattern = celsius_degreeReplaceSourcePattern;
 		this.uspBaseString = uspBaseString;
+		
+		this.uspBaseZipFileName = uspBaseZipFileName;
+
+		
 		this.uspString = uspString;
 		this.usp_resultsString = usp_resultsString;
 		this.resFolder = resFolder;
@@ -1903,8 +1912,24 @@ public class TrainTestRun implements IRun {
 		// if the folder "usp" exists, delete it
 		FileUtils.deleteDirectory(new File(uspString));
 		
-		FileUtils.copyDirectory(new File(uspBaseString), new File(uspString));
+		
+		
+		// Logic change on Dec 15, 2014:: copy usp_base folder => copy usp_base.zip and then unzip it
+		// I plan to modify one part of MicroPIE (copy usp_base folder => copy usp_base.zip and then unzip it) today and then do the stress test on Gateway Desktop's tomcat again.
+
+		// Mark it
 		// FileUtils.copyDirectory(new File(uspBaseString), new File(uspString));
+		// FileUtils.copyDirectory(new File(uspBaseString), new File(uspString));
+		// Mark it
+		
+		
+		// System.out.println("uspBaseZipFileName::" + uspBaseZipFileName);
+		// System.out.println("uspString::" + uspString);
+		
+		UnZip unZip = new UnZip();
+    	unZip.unZipIt(uspBaseZipFileName, uspString);
+		
+		
 		
 		System.out.println("After Copying");
 		
@@ -1997,6 +2022,14 @@ public class TrainTestRun implements IRun {
 		
 		// TODO:: Change counter number from existing USP input folder
 		// DONE
+		
+		// uspFolder
+		System.out.println("uspFolder::" + uspFolder);
+		
+		uspFolder = uspString + File.separator + "dep" + File.separator + "0";
+		
+		System.out.println("uspFolder::after::" + uspFolder);
+
 		
 		int maxUspInputFileId = 0;
 		File uspInputsFolder = new File(uspFolder);

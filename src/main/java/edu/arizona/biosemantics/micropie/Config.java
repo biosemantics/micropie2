@@ -100,6 +100,10 @@ public class Config extends AbstractModule {
 	private String uspBaseString = "usp_base";
 	private String uspFolder = "usp_base/dep/0";
 	
+	// => don't useFolder anymore !!
+	
+	private String uspBaseZipFileName = "usp_base.zip";
+	
 	private int nGramMinSize = 1;
 	private int nGramMaxSize = 1;
 	private int nGramMinFrequency = 1;
@@ -139,6 +143,11 @@ public class Config extends AbstractModule {
 		
 		bind(String.class).annotatedWith(Names.named("uspBaseString")).toInstance(
 				uspBaseString);
+		
+		bind(String.class).annotatedWith(Names.named("uspBaseZipFileName")).toInstance(
+				uspBaseZipFileName);
+
+		
 		
 		bind(String.class).annotatedWith(Names.named("uspString")).toInstance(
 				uspString);
@@ -334,6 +343,9 @@ public class Config extends AbstractModule {
 		kbFolder = inputDirectory + File.separator + "kb";
 		dataHolderFolder = inputDirectory + File.separator + "dataholder";
 		uspBaseString = inputDirectory + File.separator + "usp_base";
+		uspBaseZipFileName = inputDirectory + File.separator + "usp_base.zip";
+		
+		
 		uspFolder = inputDirectory + File.separator + "usp_base/dep/0";
 	}
 	
