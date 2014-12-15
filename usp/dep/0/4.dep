@@ -1,6 +1,0 @@
-nn(colonies-2, Satellite-1)
-nsubj(render-3, colonies-2)
-det(c2-Cellshape-6, the-4)
-nn(c2-Cellshape-6, margins-5)
-dobj(render-3, c2-Cellshape-6)
-

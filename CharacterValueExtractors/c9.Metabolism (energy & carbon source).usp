@@ -1,5 +1,0 @@
-utilize	V	dobj	dep
-utilizes	V	dobj	dep
-utilized	V nsubjpass	dep
-required	V nsubjpass	dep
-
