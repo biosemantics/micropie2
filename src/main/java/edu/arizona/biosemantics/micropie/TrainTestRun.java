@@ -1909,10 +1909,12 @@ public class TrainTestRun implements IRun {
 
 		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
 		
+		System.out.println("uspString::" + uspString);
+		
 		// if the folder "usp" exists, delete it
 		FileUtils.deleteDirectory(new File(uspString));
 		
-		
+		System.out.println("No FileUtils.copyDirectory()");
 		
 		// Logic change on Dec 15, 2014:: copy usp_base folder => copy usp_base.zip and then unzip it
 		// I plan to modify one part of MicroPIE (copy usp_base folder => copy usp_base.zip and then unzip it) today and then do the stress test on Gateway Desktop's tomcat again.
@@ -1922,9 +1924,12 @@ public class TrainTestRun implements IRun {
 		// FileUtils.copyDirectory(new File(uspBaseString), new File(uspString));
 		// Mark it
 		
+		System.out.println("Go to unZip.unZipIt()");
+		System.out.println("uspBaseZipFileName::" + uspBaseZipFileName);
+		System.out.println("uspString::" + uspString);
 		
-		// System.out.println("uspBaseZipFileName::" + uspBaseZipFileName);
-		// System.out.println("uspString::" + uspString);
+		System.out.println("Go to unZip.unZipIt()");
+
 		
 		UnZip unZip = new UnZip();
     	unZip.unZipIt(uspBaseZipFileName, uspString);
