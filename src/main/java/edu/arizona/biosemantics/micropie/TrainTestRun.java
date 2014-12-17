@@ -466,12 +466,16 @@ public class TrainTestRun implements IRun {
 				predictions.add(classifiedSentence);
 			}
 			System.out.println("before createUSPInputs(predictions)");			
-			
+			log(LogLevel.INFO, "before createUSPInputs(predictions)");
 
+			System.out.println("Version::0.0.4-SNAPSHOT");			
+			log(LogLevel.INFO, "Version::0.0.4-SNAPSHOT");
+			
 			// 
 			// USP
 			createUSPInputs(predictions);
 			System.out.println("after createUSPInputs(predictions)");
+			log(LogLevel.INFO, "after createUSPInputs(predictions)");
 			
 			Parse uspParse = new Parse();
 			uspParse.runParse(uspString, uspResultsDirectory);
@@ -1910,11 +1914,13 @@ public class TrainTestRun implements IRun {
 		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
 		
 		System.out.println("uspString::" + uspString);
+		log(LogLevel.INFO, "uspString::" + uspString);
 		
 		// if the folder "usp" exists, delete it
 		FileUtils.deleteDirectory(new File(uspString));
 		
 		System.out.println("No FileUtils.copyDirectory()");
+		log(LogLevel.INFO, "No FileUtils.copyDirectory()");
 		
 		// Logic change on Dec 15, 2014:: copy usp_base folder => copy usp_base.zip and then unzip it
 		// I plan to modify one part of MicroPIE (copy usp_base folder => copy usp_base.zip and then unzip it) today and then do the stress test on Gateway Desktop's tomcat again.
@@ -1925,18 +1931,23 @@ public class TrainTestRun implements IRun {
 		// Mark it
 		
 		System.out.println("Go to unZip.unZipIt()");
+		log(LogLevel.INFO, "Go to unZip.unZipIt()");
 		System.out.println("uspBaseZipFileName::" + uspBaseZipFileName);
+		log(LogLevel.INFO, "uspBaseZipFileName::" + uspBaseZipFileName);
 		System.out.println("uspString::" + uspString);
+		log(LogLevel.INFO, "uspString::" + uspString);
 		
 		System.out.println("Go to unZip.unZipIt()");
+		log(LogLevel.INFO, "Go to unZip.unZipIt()");
 
 		
 		UnZip unZip = new UnZip();
     	unZip.unZipIt(uspBaseZipFileName, uspString);
 		
-		
+    	log(LogLevel.INFO, "Finish unZip.unZipIt(uspBaseZipFileName, uspString)");
 		
 		System.out.println("After Copying");
+		log(LogLevel.INFO, "After Copying");
 		
 		
 		// Construct abbreviation list
