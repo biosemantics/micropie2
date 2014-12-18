@@ -1,8 +1,4 @@
-
-
 package edu.arizona.biosemantics.micropie;
-
-
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -55,6 +51,7 @@ import com.google.inject.name.Named;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
 import edu.arizona.biosemantics.micropie.extract.TaxonCharacterMatrixCreator;
+import edu.arizona.biosemantics.micropie.io.AddZip;
 import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
@@ -477,6 +474,8 @@ public class TrainTestRun implements IRun {
 			System.out.println("after createUSPInputs(predictions)");
 			log(LogLevel.INFO, "after createUSPInputs(predictions)");
 			
+			
+			
 			Parse uspParse = new Parse();
 			uspParse.runParse(uspString, uspResultsDirectory);
 			// uspParse.runParse(uspString, usp_resultsString);
@@ -494,8 +493,28 @@ public class TrainTestRun implements IRun {
 			matrixWriter.write(matrix);
 			System.out.println("after write matrix");
 			
-			// formal MicroPIE process
 			
+			trainingSentenceReader.setInputStream(new FileInputStream(matrixFile));
+			trainingSentenceReader.csvToXls(matrixFile.replace("csv", "xls"));
+
+			
+			System.out.println("uspString:: " + uspString);
+			System.out.println("uspString + \".zip\":: " + uspString + ".zip");
+
+			
+			
+			// Clear folder: usp => previously folder: usp_base			
+	    	// AddZip addZip = new AddZip();
+			// addZip.generateFileList(new File(uspString));
+			// addZip.zipIt(uspString, uspString + ".zip");
+			// http://www.mkyong.com/java/how-to-compress-files-in-zip-format/
+			
+			
+			// Delete "usp" folder
+			FileUtils.deleteDirectory(new File(uspString));
+			
+			
+			// formal MicroPIE process
 			
 			
 			
@@ -506,10 +525,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			trainingSentenceReader.setInputStream(new FileInputStream(matrixFile));
-			trainingSentenceReader.csvToXls(matrixFile.replace("csv", "xls"));
-			
-			// formal MicroPIE process
+
 			
 			
 
@@ -1937,8 +1953,7 @@ public class TrainTestRun implements IRun {
 		System.out.println("uspString::" + uspString);
 		log(LogLevel.INFO, "uspString::" + uspString);
 		
-		System.out.println("Go to unZip.unZipIt()");
-		log(LogLevel.INFO, "Go to unZip.unZipIt()");
+
 
 		
 		UnZip unZip = new UnZip();
@@ -1949,7 +1964,11 @@ public class TrainTestRun implements IRun {
 		System.out.println("After Copying");
 		log(LogLevel.INFO, "After Copying");
 		
-		
+
+
+
+
+
 		// Construct abbreviation list
 		Hashtable<String, String> kwdListByCategory = new Hashtable<String, String>();
 		// Example {category1_character1,XXX|YYY|ZZZ}
@@ -2743,7 +2762,7 @@ public class TrainTestRun implements IRun {
 						
 			log(LogLevel.INFO,
 					"done building pos tagger and dependency as USP inputs using stanford corenlp pipeline...");
-		}
+		}		
 	}	
 	
 	/*
