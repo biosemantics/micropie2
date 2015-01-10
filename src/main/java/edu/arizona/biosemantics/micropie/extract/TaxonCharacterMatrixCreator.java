@@ -1,6 +1,7 @@
 package edu.arizona.biosemantics.micropie.extract;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -102,6 +103,16 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 					String character = extractor.getCharacter();
 					if(characters.contains(character)) {
 						Set<String> content = extractor.getCharacterValue(sentence.getText());
+						
+						System.out.println("character::" + character + " => content::Before::" + Arrays.toString(content.toArray()));
+						content.remove(null);
+						
+						content.removeAll(Collections.singleton(null));
+						content.removeAll(Collections.singleton(""));
+						
+						System.out.println("character::" + character + " => content::After::" + Arrays.toString(content.toArray()));
+
+						
 						characterMap.get(character).addAll(content);
 					}
 				}

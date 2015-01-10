@@ -86,7 +86,11 @@ public class Config extends AbstractModule {
 
 	/** INPUT DATA **/
 	// private String trainingFile = "split-training-base-140310.csv";
-	private String trainingFile = "training_data/split-training-base-140603.csv";
+	
+	// private String trainingFile = "training_data/split-training-base-140603.csv";
+	// split-training-base-150110.csv
+	private String trainingFile = "training_data/split-training-base-150110.csv";
+	
 	
 	private String testFolder = "input";
 	private String characterValueExtractorsFolder = "CharacterValueExtractors";
