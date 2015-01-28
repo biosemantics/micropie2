@@ -340,7 +340,12 @@ public class Config extends AbstractModule {
 
 	public void setInputDirectory(String inputDirectory) {
 		testFolder = inputDirectory + File.separator + "input";
-		trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "split-training-base-140603.csv";
+		
+		// trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "split-training-base-140603.csv";
+		// 150123-Training-Sentences.csv
+		trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "150123-Training-Sentences.csv";
+
+		
 		characterValueExtractorsFolder = inputDirectory + File.separator + "CharacterValueExtractors";
 		abbreviationFile = inputDirectory + File.separator + "abbrevlist/abbrevlist.csv";
 		resFolder = inputDirectory + File.separator + "res";

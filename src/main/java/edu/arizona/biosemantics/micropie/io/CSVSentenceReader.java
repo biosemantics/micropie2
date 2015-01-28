@@ -63,9 +63,11 @@ public class CSVSentenceReader implements ISentenceReader {
 		List<Sentence> result = new LinkedList<Sentence>();
 		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
 	    List<String[]> lines = reader.readAll();
-		for(String[] line : lines)
+		for(String[] line : lines) {
+			// System.out.println("line[0]::" + line[0]);
 			result.add(new Sentence(line[5], Label.getEnum(line[0])));
-	    reader.close();
+		}
+		reader.close();
 		log(LogLevel.INFO, "Done reading sentences...");
 		return result;
 	}

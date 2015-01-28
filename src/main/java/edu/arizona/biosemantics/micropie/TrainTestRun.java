@@ -447,6 +447,10 @@ public class TrainTestRun implements IRun {
 			// Train and Build Knowledge Base 
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
+			
+			System.out.println("trainingFile::" + trainingFile);
+			System.out.println("trainingSentences.size()::" + trainingSentences.size());
+			
 			classifier.train(trainingSentences);
 			
 			
@@ -462,6 +466,9 @@ public class TrainTestRun implements IRun {
 				sentenceClassificationMap.put(testSentence,classifiedSentence);
 				predictions.add(classifiedSentence);
 			}
+			
+			
+			/*
 			System.out.println("before createUSPInputs(predictions)");			
 			log(LogLevel.INFO, "before createUSPInputs(predictions)");
 
@@ -480,14 +487,16 @@ public class TrainTestRun implements IRun {
 			uspParse.runParse(uspString, uspResultsDirectory);
 			// uspParse.runParse(uspString, usp_resultsString);
 			// USP
-
+			*/
 			
-			System.out.println("after uspParse");
+			// System.out.println("after uspParse");
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
-			System.out.println("after setOutputStream");
+			// System.out.println("after setOutputStream");
 			
 			classifiedSentenceWriter.write(predictions);
 			System.out.println("after write predictions");
+			
+			/*
 			TaxonCharacterMatrix matrix = matrixCreator.create();
 			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
 			matrixWriter.write(matrix);
@@ -513,7 +522,7 @@ public class TrainTestRun implements IRun {
 			// Delete "usp" folder
 			FileUtils.deleteDirectory(new File(uspString));
 			
-			
+			*/
 			// formal MicroPIE process
 			
 			
