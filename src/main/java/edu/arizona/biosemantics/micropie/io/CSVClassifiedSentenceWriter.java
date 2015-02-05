@@ -1,14 +1,20 @@
 package edu.arizona.biosemantics.micropie.io;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.common.log.LogLevel;
@@ -19,11 +25,37 @@ import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 
 	private OutputStream outputStream;
+	private InputStream inputStream;
+
+	private Map<String, String> svmLabelAndCategoryMappingMap;
+
 	
 	public void setOutputStream(OutputStream outputStream) {
 		this.outputStream = outputStream;
 	}
+	
+	/**
+	 * @param inputStream to read SVMLabelSubcategoryMapping.txt
+	 */	
+	
+	public void setInputStream(InputStream inputStream) {
+		this.inputStream = inputStream;
+	}
 
+	public Map<String, String> readSVMLabelAndCategoryMapping() throws IOException {
+		CSVReader readerOfSVMLabelAndCategoryMapping = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
+		List<String[]> linesOfSVMLabelAndCategoryMapping = readerOfSVMLabelAndCategoryMapping.readAll();
+		
+		svmLabelAndCategoryMappingMap = new HashMap<String, String>();
+		for(String[] lineOfSVMLabelAndCategoryMapping : linesOfSVMLabelAndCategoryMapping) {
+			System.out.println("lineOfSVMLabelAndCategoryMapping.toString():" + lineOfSVMLabelAndCategoryMapping.toString());
+			System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[0]);
+			System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[1]);
+			svmLabelAndCategoryMappingMap.put(lineOfSVMLabelAndCategoryMapping[0],lineOfSVMLabelAndCategoryMapping[1]);
+		}
+		return svmLabelAndCategoryMappingMap;
+	}	
+	
 	@Override
 	public void write(List<MultiClassifiedSentence> classifiedSentences) throws Exception {
 		log(LogLevel.INFO, "Writing prediciton results...");
@@ -32,9 +64,56 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 		
 		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
 		List<String[]> lines = new LinkedList<String[]>();
-		for(MultiClassifiedSentence classifiedSentence : classifiedSentences) 
-			lines.add(new String[] { getPredicitionsString(classifiedSentence.getPredictions()), 
+		for(MultiClassifiedSentence classifiedSentence : classifiedSentences) {
+			String categoryLabel = "";
+			String predictions = getPredicitionsString(classifiedSentence.getPredictions());
+			String[] predictionList = predictions.split(",");
+			
+			System.out.println("predictionsList.length::" + predictionList.length);
+			
+			if ( predictionList.length == 1 ) {
+				System.out.println("predictions::" + predictions);
+				for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
+					// System.out.println("Key : " + entry.getKey() + " Value : "
+					// 	+ entry.getValue());
+					
+					if ( predictions.equals(entry.getKey()) ) {
+						System.out.println("svmLabelAndCategoryMappingMap.getKey()::" + entry.getKey());
+						System.out.println("svmLabelAndCategoryMappingMap.getValue()::" + entry.getValue());
+						categoryLabel = entry.getValue();
+					}
+					
+				}				
+			} else {
+				for (String prediction : predictionList ) {
+					System.out.println("prediction::" + prediction);
+					for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
+						// System.out.println("Key : " + entry.getKey() + " Value : "
+						// 	+ entry.getValue());
+						
+						if ( prediction.equals(entry.getKey()) ) {
+							categoryLabel += entry.getValue() + ",";
+						}	
+					}				
+				}
+			}
+
+			
+			if ( categoryLabel.equals("") ) {
+				categoryLabel = "0";
+			} else {
+				
+				categoryLabel = categoryLabel.substring(0, categoryLabel.length()-1);
+			}
+			
+			
+			// lines.add(new String[] { getPredicitionsString(classifiedSentence.getPredictions()), 
+			// 		classifiedSentence.getSentence().getText()});
+			lines.add(new String[] { categoryLabel, 
 					classifiedSentence.getSentence().getText()});
+			
+		}
+			
 		writer.writeAll(lines);
 		writer.flush();
 		writer.close();

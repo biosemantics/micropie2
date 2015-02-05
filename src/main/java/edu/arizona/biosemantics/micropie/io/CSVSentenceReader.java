@@ -46,6 +46,11 @@ public class CSVSentenceReader implements ISentenceReader {
 	private InputStream inputStream;
 	private OutputStream outputStream;
 	
+	private InputStream inputStream2;
+	private OutputStream outputStream2;
+	
+	private Map<String, String> svmLabelAndCategoryMappingMap;
+	
 	/**
 	 * @param inputStream to read from
 	 */
@@ -55,17 +60,67 @@ public class CSVSentenceReader implements ISentenceReader {
 	
 	public void setOutputStream(OutputStream outputStream) {
 		this.outputStream = outputStream;
-	}	
+	}
+	/**
+	 * @param inputStream2 to read SVMLabelSubcategoryMapping.txt
+	 */	
+	public void setInputStream2(InputStream inputStream2) {
+		this.inputStream2 = inputStream2;
+	}
+	
+	public void setOutputStream2(OutputStream outputStream2) {
+		this.outputStream2 = outputStream2;
+	}
+	
+	
+	
+	
+	
+	public Map<String, String> readSVMLabelAndCategoryMapping() throws IOException {
+		CSVReader readerOfSVMLabelAndCategoryMapping = new CSVReader(new BufferedReader(new InputStreamReader(inputStream2, "UTF8")));
+		List<String[]> linesOfSVMLabelAndCategoryMapping = readerOfSVMLabelAndCategoryMapping.readAll();
+		
+		svmLabelAndCategoryMappingMap = new HashMap<String, String>();
+		for(String[] lineOfSVMLabelAndCategoryMapping : linesOfSVMLabelAndCategoryMapping) {
+			// System.out.println("lineOfSVMLabelAndCategoryMapping.toString():" + lineOfSVMLabelAndCategoryMapping.toString());
+			// System.out.println("lineOfSVMLabelAndCategoryMapping[0]::" + lineOfSVMLabelAndCategoryMapping[0]);
+			// System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[1]);
+			svmLabelAndCategoryMappingMap.put(lineOfSVMLabelAndCategoryMapping[0],lineOfSVMLabelAndCategoryMapping[1]);
+		}
+		return svmLabelAndCategoryMappingMap;
+	}
+	
 	
 	@Override
 	public List<Sentence> read() throws IOException {
 		log(LogLevel.INFO, "Reading sentences...");
 		List<Sentence> result = new LinkedList<Sentence>();
+		
+		
+		
 		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
 	    List<String[]> lines = reader.readAll();
 		for(String[] line : lines) {
-			// System.out.println("line[0]::" + line[0]);
-			result.add(new Sentence(line[5], Label.getEnum(line[0])));
+			// System.out.println("line[0]::" + line[0]); 
+			// line[0] => label
+			// 
+			String svmLabel = "0";
+			for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
+				// System.out.println("Key : " + entry.getKey() + " Value : "
+				// 	+ entry.getValue());
+				
+				if ( line[0].equals(entry.getValue()) ) {
+					svmLabel = entry.getKey();
+				}
+				
+			}
+
+			// System.out.println("Original Category Label::" + line[0]);
+			// System.out.println("Mapping SVM Label::" + svmLabel);			
+			
+			// result.add(new Sentence(line[5], Label.getEnum(line[0])));
+			result.add(new Sentence(line[5], Label.getEnum(svmLabel)));
+			
 		}
 		reader.close();
 		log(LogLevel.INFO, "Done reading sentences...");
@@ -100,6 +155,8 @@ public class CSVSentenceReader implements ISentenceReader {
 		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
 	    List<String[]> lines = reader.readAll();
 		for(String[] line : lines) {
+			
+			/*
 			// System.out.println("line[0]::" + line[0]);
 			// System.out.println("line[1]::" + line[1]);
 			// can't deal with => line[0]::8,3
@@ -108,7 +165,31 @@ public class CSVSentenceReader implements ISentenceReader {
 				line[0] = "0";
 			}
 			result.add(new Sentence(line[1], Label.getEnum(line[0])));
+			*/
+			
+			
+			
+			// System.out.println("line[0]::" + line[0]); 
+			// line[0] => label
+			// 
+			String svmLabel = "0";
+			for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
+				// System.out.println("Key : " + entry.getKey() + " Value : "
+				// 	+ entry.getValue());
+				
+				if ( line[0].equals(entry.getValue()) ) {
+					svmLabel = entry.getKey();
+				}
+				
+			}
 
+			// System.out.println("Original Category Label::" + line[0]);
+			// System.out.println("Mapping SVM Label::" + svmLabel);			
+			
+			// result.add(new Sentence(line[5], Label.getEnum(line[0])));
+			result.add(new Sentence(line[5], Label.getEnum(svmLabel)));
+
+			
 		}
 		reader.close();
 		log(LogLevel.INFO, "Done reading source sentences...");

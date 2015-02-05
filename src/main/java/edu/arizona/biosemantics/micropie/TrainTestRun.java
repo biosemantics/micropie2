@@ -106,6 +106,9 @@ import java.math.RoundingMode;
 public class TrainTestRun implements IRun {
 
 	private String trainingFile;
+	
+	private String svmLabelAndCategoryMappingFile;
+	
 	private String testFolder;
 	private String uspFolder;
 	private String characterValueExtractorsFolder;
@@ -148,6 +151,8 @@ public class TrainTestRun implements IRun {
 	@Inject
 	public TrainTestRun(
 			@Named("trainingFile") String trainingFile,
+			@Named("svmLabelAndCategoryMappingFile") String svmLabelAndCategoryMappingFile,
+			
 			@Named("testFolder") String testFolder,
 			@Named("uspFolder") String uspFolder,
 			@Named("uspResultsDirectory") String uspResultsDirectory,
@@ -177,6 +182,8 @@ public class TrainTestRun implements IRun {
 			@Named("resFolder") String resFolder
 			) {
 		this.trainingFile = trainingFile;
+		this.svmLabelAndCategoryMappingFile = svmLabelAndCategoryMappingFile;
+		
 		this.testFolder = testFolder;
 		this.uspFolder = uspFolder;
 		this.uspResultsDirectory = uspResultsDirectory;
@@ -441,13 +448,60 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			
-			// formal MicroPIE process
-			
-			// Train and Build Knowledge Base 
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+			trainingSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
+			trainingSentenceReader.readSVMLabelAndCategoryMapping();
 			List<Sentence> trainingSentences = trainingSentenceReader.read();
 			
+			System.out.println("trainingFile::" + trainingFile);
+			System.out.println("svmLabelAndCategoryMappingFile::" + svmLabelAndCategoryMappingFile);
+			System.out.println("trainingFile::" + trainingFile);
+			System.out.println("trainingSentences.size()::" + trainingSentences.size());
+			
+			
+			classifier.train(trainingSentences);
+			
+			
+			
+			
+			List<Sentence> testSentences = createTestSentences();
+			
+			
+			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
+			for (Sentence testSentence : testSentences) {
+				Set<ILabel> prediction = classifier.getClassification(testSentence);
+				MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence( testSentence, prediction);
+				sentenceClassificationMap.put(testSentence,classifiedSentence);
+				predictions.add(classifiedSentence);
+			}
+			
+			/*
+			for ( MultiClassifiedSentence prediction: predictions ) {
+		    	String[] array =  prediction.getPredictions().toArray(new String[0]);
+				// System.out.println("Prediction::" + prediction.getPredictions().toArray().toString());
+				System.out.println("Prediction::" + Arrays.toString(array));
+				System.out.println("Sentence::" + prediction.getSentence().toString());
+			}
+			*/
+
+			classifiedSentenceWriter.setInputStream(new FileInputStream(svmLabelAndCategoryMappingFile));
+			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
+			classifiedSentenceWriter.readSVMLabelAndCategoryMapping();
+			classifiedSentenceWriter.write(predictions);
+
+			
+			
+			
+			/*
+			// formal MicroPIE process
+			
+			// Train and Build Knowledge Base
+			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+			trainingSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
+			List<Sentence> trainingSentences = trainingSentenceReader.read();
+			
+			System.out.println("trainingFile::" + trainingFile);
+			System.out.println("svmLabelAndCategoryMappingFile::" + svmLabelAndCategoryMappingFile);
 			System.out.println("trainingFile::" + trainingFile);
 			System.out.println("trainingSentences.size()::" + trainingSentences.size());
 			
@@ -468,7 +522,7 @@ public class TrainTestRun implements IRun {
 			}
 			
 			
-			/*
+			
 			System.out.println("before createUSPInputs(predictions)");			
 			log(LogLevel.INFO, "before createUSPInputs(predictions)");
 
@@ -487,7 +541,7 @@ public class TrainTestRun implements IRun {
 			uspParse.runParse(uspString, uspResultsDirectory);
 			// uspParse.runParse(uspString, usp_resultsString);
 			// USP
-			*/
+			
 			
 			// System.out.println("after uspParse");
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
@@ -496,7 +550,7 @@ public class TrainTestRun implements IRun {
 			classifiedSentenceWriter.write(predictions);
 			System.out.println("after write predictions");
 			
-			/*
+			
 			TaxonCharacterMatrix matrix = matrixCreator.create();
 			matrixWriter.setOutputStream(new FileOutputStream(matrixFile));
 			matrixWriter.write(matrix);
@@ -522,9 +576,9 @@ public class TrainTestRun implements IRun {
 			// Delete "usp" folder
 			FileUtils.deleteDirectory(new File(uspString));
 			
-			*/
-			// formal MicroPIE process
 			
+			// formal MicroPIE process
+			*/
 			
 			
 			

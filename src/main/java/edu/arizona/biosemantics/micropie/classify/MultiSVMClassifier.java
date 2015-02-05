@@ -45,8 +45,14 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 				result.add(label);
 		}
 		
-		log(LogLevel.INFO, "Prediction for " + sentence.toString() + "\n"
+		log(LogLevel.INFO, "Prediction for " + sentence.getText() + "\n"
 				+ " -> " + ObjectStringifier.getInstance().stringify(result));
+		
+		System.out.println("Prediction for " + sentence.getText() + "\n"
+				+ " -> " + ObjectStringifier.getInstance().stringify(result));
+		
+
+		
 		return result;
 	}
 

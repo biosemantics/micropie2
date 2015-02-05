@@ -92,6 +92,8 @@ public class Config extends AbstractModule {
 	private String trainingFile = "training_data/split-training-base-150110.csv";
 	
 	
+	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
+	
 	private String testFolder = "input";
 	private String characterValueExtractorsFolder = "CharacterValueExtractors";
 	private String abbreviationFile = "abbrevlist/abbrevlist.csv";
@@ -160,6 +162,9 @@ public class Config extends AbstractModule {
 		
 		bind(String.class).annotatedWith(Names.named("trainingFile")).toInstance(
 				trainingFile);
+		
+		bind(String.class).annotatedWith(Names.named("svmLabelAndCategoryMappingFile")).toInstance(
+				svmLabelAndCategoryMappingFile);
 		
 		bind(String.class).annotatedWith(Names.named("testFolder")).toInstance(
 				testFolder);
@@ -343,8 +348,14 @@ public class Config extends AbstractModule {
 		
 		// trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "split-training-base-140603.csv";
 		// 150123-Training-Sentences.csv
-		trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "150123-Training-Sentences.csv";
+		// trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "150123-Training-Sentences.csv";
+		// 150130-Training-Sentences-new.csv
+		trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "150130-Training-Sentences-new.csv";
 
+		
+		svmLabelAndCategoryMappingFile = inputDirectory + File.separator + "svmlabelandcategorymapping_data" + File.separator + "SVMLabelAndCategoryMapping.txt";
+		
+		
 		
 		characterValueExtractorsFolder = inputDirectory + File.separator + "CharacterValueExtractors";
 		abbreviationFile = inputDirectory + File.separator + "abbrevlist/abbrevlist.csv";
