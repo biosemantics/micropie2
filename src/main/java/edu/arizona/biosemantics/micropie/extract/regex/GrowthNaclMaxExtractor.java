@@ -1,14 +1,23 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import au.com.bytecode.opencsv.CSVWriter;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -25,6 +34,15 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 	
 	private String celsius_degreeReplaceSourcePattern = "\\s?”C\\s?|\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?";
 	private String celsius_degreeReplaceTargetPattern = " celsius_degree ";
+	
+	// Add Map<String, String> on Feb 09, 2015 MON
+	private Map<String, String> regexResultWithMappingCaseMap;
+
+	public Map<String, String> getRegexResultWithMappingCaseMap() {
+		return regexResultWithMappingCaseMap;
+	}
+	// Add Map<String, String> on Feb 09, 2015 MON
+
 	
 	public String getCelsius_degreeReplaceSourcePattern() {
 		return celsius_degreeReplaceSourcePattern;
@@ -50,6 +68,9 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 		text = text.replaceAll(celsius_degreeReplaceSourcePattern, celsius_degreeReplaceTargetPattern);
 		text = text.toLowerCase();
 		System.out.println("Modified sent::" + text);
+		
+		// Add Map<String, String> on Feb 09, 2015 MON
+		regexResultWithMappingCaseMap = new HashMap<String, String>();
 		
 		// input: the original sentnece
 		// output: String array?
@@ -102,6 +123,7 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 						// System.out.println("unitString::" + unitString);						
 						if ( ! growNaclMax.equals("") ) {
 							output.add(growNaclMax + " " + unitString);
+							regexResultWithMappingCaseMap.put("Case 1", growNaclMax + " " + unitString);
 						}			
 					}					
 				}
@@ -148,7 +170,8 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 					if ( !targetPattern.contains("optimally") || !targetPattern.contains("optimal")) {
 						String unitString = getUnitString(targetPattern);
 						// System.out.println("unitString::" + unitString);
-						output.add(rangePatternExtractor.getRangePatternMaxString() + " " + unitString);					
+						output.add(rangePatternExtractor.getRangePatternMaxString() + " " + unitString);
+						regexResultWithMappingCaseMap.put("Case 2", rangePatternExtractor.getRangePatternMaxString() + " " + unitString);
 					}
 					
 					
@@ -207,6 +230,7 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 		
 		GrowthNaclMaxExtractor growthNaclMaxExtractor = new GrowthNaclMaxExtractor(Label.c3);
 		
+		/*
 		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
 		// Read sentence list
 		// 
@@ -256,7 +280,103 @@ public class GrowthNaclMaxExtractor extends AbstractCharacterValueExtractor {
 		System.out.println("\n");
 		System.out.println("sampleSentCounter::" + sampleSentCounter);
 		System.out.println("extractedValueCounter::" + extractedValueCounter);
-	
+		
+		*/
+
+		// Test on February 09, 2015 Mon
+		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
+		// Read sentence list
+		// 
+		String sourceFile = "micropieInput_zip/training_data/150130-Training-Sentences-new.csv";
+		String svmLabelAndCategoryMappingFile = "micropieInput_zip/svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
+		sourceSentenceReader.setInputStream(new FileInputStream(sourceFile));
+		sourceSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
+		sourceSentenceReader.readSVMLabelAndCategoryMapping();
+		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
+
+		
+		String outputFile = "micropieInput_zip_output/GrowthNaClMax_Regex.csv";
+		OutputStream outputStream = new FileOutputStream(outputFile);
+		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
+		List<String[]> lines = new LinkedList<String[]>();
+		
+		
+		int sampleSentCounter = 0;
+		int extractedValueCounter = 0;
+		
+		for (Sentence sourceSentence : sourceSentenceList) {
+			String sourceSentText = sourceSentence.getText();
+			sourceSentText = sourceSentText.replaceAll(growthNaclMaxExtractor.getCelsius_degreeReplaceSourcePattern(), growthNaclMaxExtractor.getCelsius_degreeReplaceTargetPattern());
+			sourceSentText = sourceSentText.toLowerCase();
+			// NaCl
+			
+			
+			
+			if ( sourceSentText.matches("(.*)(\\bnacl\\b|\\bsalinity\\b)(.*)") ) {	
+				System.out.println("\n");
+				System.out.println("sourceSentText::" + sourceSentText);
+				
+				
+				
+				Set<String> growthNaclMaxResult = growthNaclMaxExtractor.getCharacterValue(sourceSentText);
+				
+				System.out.println("growthNaclMaxExtractor.getRegexResultWithMappingCaseMap()::" + growthNaclMaxExtractor.getRegexResultWithMappingCaseMap().toString());
+				
+				String regexResultWithMappingCaseMapString = "";
+				
+				for (Map.Entry<String, String> entry : growthNaclMaxExtractor.getRegexResultWithMappingCaseMap().entrySet()) {
+					System.out.println("Key : " + entry.getKey() + " Value : "
+					 	+ entry.getValue());
+				
+					regexResultWithMappingCaseMapString += entry.getKey() + ":" + entry.getValue() + ", ";
+					
+				}
+				
+				System.out.println("growthNaclMaxResult::" + growthNaclMaxResult.toString());
+				if ( growthNaclMaxResult.size() > 0 ) {
+					extractedValueCounter +=1;
+				}
+				sampleSentCounter +=1;
+				
+				System.out.println("regexResultWithMappingCaseMapString::" + regexResultWithMappingCaseMapString);
+
+				
+				lines.add(new String[] { sourceSentText,
+						regexResultWithMappingCaseMapString
+						} );
+				
+			} /*else {
+				String sentLabel = sourceSentence.getLabel().getValue();
+				
+				if ( sentLabel.equals("1") ) {
+					System.out.println("sentLabel::" + sentLabel);
+					System.out.println("sourceSentText::" + sourceSentText);
+					System.out.println("no case");
+					lines.add(new String[] { sourceSentText,
+							"No Case"
+							} );
+				}
+				
+				
+				
+
+			}*/
+			
+		
+		
+		} 
+
+		System.out.println("\n");
+		System.out.println("sampleSentCounter::" + sampleSentCounter);
+		System.out.println("extractedValueCounter::" + extractedValueCounter);
+
+		
+		writer.writeAll(lines);
+		writer.flush();
+		writer.close();			
+		
+		
 	}
 	
 	

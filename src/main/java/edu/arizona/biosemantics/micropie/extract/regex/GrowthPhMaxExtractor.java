@@ -35,12 +35,14 @@ public class GrowthPhMaxExtractor extends AbstractCharacterValueExtractor {
 	private String celsius_degreeReplaceSourcePattern = "\\s?”C\\s?|\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?";
 	private String celsius_degreeReplaceTargetPattern = " celsius_degree ";
 	
-	
+	// Add Map<String, String> on Feb 04, 2015 WED
 	private Map<String, String> regexResultWithMappingCaseMap;
 
 	public Map<String, String> getRegexResultWithMappingCaseMap() {
 		return regexResultWithMappingCaseMap;
 	}
+	// Add Map<String, String> on Feb 04, 2015 WED
+	
 	
 	public String getCelsius_degreeReplaceSourcePattern() {
 		return celsius_degreeReplaceSourcePattern;
@@ -264,7 +266,7 @@ public class GrowthPhMaxExtractor extends AbstractCharacterValueExtractor {
 				
 				Set<String> growPhMaxResult = growthPhMaxExtractor.getCharacterValue(sourceSentText);
 				
-				System.out.println("gcExtractor.getRegexResultWithMappingCaseMap()::" + growthPhMaxExtractor.getRegexResultWithMappingCaseMap().toString());
+				System.out.println("growthPhMaxExtractor.getRegexResultWithMappingCaseMap()::" + growthPhMaxExtractor.getRegexResultWithMappingCaseMap().toString());
 				
 				String regexResultWithMappingCaseMapString = "";
 				
@@ -276,7 +278,7 @@ public class GrowthPhMaxExtractor extends AbstractCharacterValueExtractor {
 					
 				}
 				
-				System.out.println("gcResult::" + growPhMaxResult.toString());
+				System.out.println("growPhMaxResult::" + growPhMaxResult.toString());
 				if ( growPhMaxResult.size() > 0 ) {
 					extractedValueCounter +=1;
 				}
@@ -317,7 +319,7 @@ public class GrowthPhMaxExtractor extends AbstractCharacterValueExtractor {
 		
 		writer.writeAll(lines);
 		writer.flush();
-		writer.close();			
+		writer.close();		
 		
 		
 	}

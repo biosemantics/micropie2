@@ -1,13 +1,22 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import au.com.bytecode.opencsv.CSVWriter;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -22,6 +31,27 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 
 	private String myNumberPattern = "(\\d+(\\.\\d+)?)";
 
+	// Add Map<String, String> on Feb 09, 2015 MON
+	private Map<String, String> regexResultWithMappingCaseMap;
+
+	public Map<String, String> getRegexResultWithMappingCaseMap() {
+		return regexResultWithMappingCaseMap;
+	}
+
+	private String celsius_degreeReplaceSourcePattern = "\\s?”C\\s?|\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?";
+	private String celsius_degreeReplaceTargetPattern = " celsius_degree ";
+
+	public String getCelsius_degreeReplaceSourcePattern() {
+		return celsius_degreeReplaceSourcePattern;
+	}
+	
+	public String getCelsius_degreeReplaceTargetPattern() {
+		return celsius_degreeReplaceTargetPattern;
+	}	
+	
+	// Add Map<String, String> on Feb 09, 2015 MON
+	
+	
 	public String getMyNumberPattern() {
 		return myNumberPattern;
 	}
@@ -47,6 +77,10 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		text = text.replaceAll("\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?", " celsius_degree ");
 		text = text.toLowerCase();
 		// System.out.println("Modified sent::" + text);
+		
+		// Add Map<String, String> on Feb 09, 2015 MON
+		regexResultWithMappingCaseMap = new HashMap<String, String>();
+
 		
 		// input: the original sentnece
 		// output: String array?
@@ -146,6 +180,8 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 			if (targetMatcher.find()) { // Just choose the closest one (nearest one, first one)
 				String matchPartString2 = targetMatcher.group(1);
 				output.add(matchPartString2);
+				regexResultWithMappingCaseMap.put("Case 1", matchPartString2);
+
 			}
 			
 			
@@ -174,6 +210,8 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 			// System.out.println("Part 5::" + matcher2.group(5));
 			String matchPartString = matcher2.group(5);
 			output.add(matchPartString);
+			regexResultWithMappingCaseMap.put("Case 2", matchPartString);
+
 		}		
 		
 		
@@ -198,6 +236,8 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 			// System.out.println("Part 5::" + matcher3.group(5));
 			String matchPartString = matcher3.group(3);
 			output.add(matchPartString);
+			regexResultWithMappingCaseMap.put("Case 3", matchPartString);
+
 		}
 		
 		
@@ -252,6 +292,8 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 
 					if ( isNextToRightSymbolNeg(matchPartString, matchPartString2, "%;celsius_degree") == true ) {
 						output.add(matchPartString2);
+						regexResultWithMappingCaseMap.put("Case 4", matchPartString2);
+
 					}
 					// } else {
 					//	System.out.println("Do not include this!");
@@ -444,6 +486,8 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		
 		GrowthPhOptimumExtractor growthPhOptimumExtractor = new GrowthPhOptimumExtractor(Label.c3);	
 		
+		
+		/*
 		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
 		// Read sentence list
 		// 
@@ -481,6 +525,103 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		System.out.println("\n");
 		System.out.println("sampleSentCounter::" + sampleSentCounter);
 		System.out.println("extractedValueCounter::" + extractedValueCounter);
+		
+		*/
+
+		// Test on February 09, 2015 Mon
+		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
+		// Read sentence list
+		// 
+		String sourceFile = "micropieInput_zip/training_data/150130-Training-Sentences-new.csv";
+		String svmLabelAndCategoryMappingFile = "micropieInput_zip/svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
+		sourceSentenceReader.setInputStream(new FileInputStream(sourceFile));
+		sourceSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
+		sourceSentenceReader.readSVMLabelAndCategoryMapping();
+		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
+		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
+
+		
+		String outputFile = "micropieInput_zip_output/GrowthPhOptimum_Regex.csv";
+		OutputStream outputStream = new FileOutputStream(outputFile);
+		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
+		List<String[]> lines = new LinkedList<String[]>();
+		
+		
+		int sampleSentCounter = 0;
+		int extractedValueCounter = 0;
+		
+		for (Sentence sourceSentence : sourceSentenceList) {
+			String sourceSentText = sourceSentence.getText();
+			sourceSentText = sourceSentText.replaceAll(growthPhOptimumExtractor.getCelsius_degreeReplaceSourcePattern(), growthPhOptimumExtractor.getCelsius_degreeReplaceTargetPattern());
+			sourceSentText = sourceSentText.toLowerCase();
+			// NaCl Optimum
+			// NaCl (w/v) %
+			
+			
+			if ( (sourceSentText.matches("(.*)(\\bph\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimal\\b)(.*)")) || 
+					(sourceSentText.matches("(.*)(\\bph\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimum\\b)(.*)"))
+					) {	
+				System.out.println("\n");
+				System.out.println("sourceSentText::" + sourceSentText);
+				
+				
+				
+				Set<String> growthPhOptimumResult = growthPhOptimumExtractor.getCharacterValue(sourceSentText);
+				
+				System.out.println("growthNaClOptimumExtractor.getRegexResultWithMappingCaseMap()::" + growthPhOptimumExtractor.getRegexResultWithMappingCaseMap().toString());
+				
+				String regexResultWithMappingCaseMapString = "";
+				
+				for (Map.Entry<String, String> entry : growthPhOptimumExtractor.getRegexResultWithMappingCaseMap().entrySet()) {
+					System.out.println("Key : " + entry.getKey() + " Value : "
+					 	+ entry.getValue());
+				
+					regexResultWithMappingCaseMapString += entry.getKey() + ":" + entry.getValue() + ", ";
+					
+				}
+				
+				System.out.println("growthPhOptimumResult::" + growthPhOptimumResult.toString());
+				if ( growthPhOptimumResult.size() > 0 ) {
+					extractedValueCounter +=1;
+				}
+				sampleSentCounter +=1;
+				
+				System.out.println("regexResultWithMappingCaseMapString::" + regexResultWithMappingCaseMapString);
+
+				
+				lines.add(new String[] { sourceSentText,
+						regexResultWithMappingCaseMapString
+						} );
+				
+			} /*else {
+				String sentLabel = sourceSentence.getLabel().getValue();
+				
+				if ( sentLabel.equals("1") ) {
+					System.out.println("sentLabel::" + sentLabel);
+					System.out.println("sourceSentText::" + sourceSentText);
+					System.out.println("no case");
+					lines.add(new String[] { sourceSentText,
+							"No Case"
+							} );
+				}
+				
+				
+				
+
+			}*/
+			
+		
+		
+		} 
+
+		System.out.println("\n");
+		System.out.println("sampleSentCounter::" + sampleSentCounter);
+		System.out.println("extractedValueCounter::" + extractedValueCounter);
+
+		
+		writer.writeAll(lines);
+		writer.flush();
+		writer.close();		
 		
 		
 	}
