@@ -70,7 +70,18 @@ public class GrowthNaclMinExtractor extends AbstractCharacterValueExtractor {
 				// System.out.println("case 2");
 				caseNumber = 2;
 			// }
+		} else if ( text.matches("(.*)(nacl is not (required|needed)(.*)") ) {
+			// Case 3
+			// xx-=> minimum: 0% => pattern: "nacl is not needed" and "is not required" => "cells are halotolerant and alkaliphilic, but nacl is not needed for growth.",""
+			caseNumber = 3;
+		} else if ( text.matches("(.*)(grows without nacl or sea salts)(.*)") ) {
+			// Case 4
+			// xx- => minimum 0% nacl and 0% sea salt => add it into "grows without nacl or sea salts.","Case 2: , "
+
+			caseNumber = 4;
 		}
+		
+
 		switch(caseNumber) {
 			case 1:
 				// Example: 
@@ -152,6 +163,12 @@ public class GrowthNaclMinExtractor extends AbstractCharacterValueExtractor {
 					
 				}
 				break;
+			
+			case 3:	
+				output.add("0% NaCl");
+			case 4:
+				// xx- => minimum 0% nacl and 0% sea salt => add it into "grows without nacl or sea salts.","Case 2: , "
+				output.add("0% NaCl and 0% sea salt");
 			default:
 				// System.out.println("");
 				// System.out.println("Go to Case 0::");

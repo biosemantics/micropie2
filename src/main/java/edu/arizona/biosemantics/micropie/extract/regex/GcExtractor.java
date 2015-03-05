@@ -31,9 +31,12 @@ import edu.arizona.biosemantics.micropie.model.Sentence;
 public class GcExtractor extends AbstractCharacterValueExtractor {
 
 	private String patternStringGc = "(" + 
-										"\\bGuanosine plus cytosine|guanine-plus-cytosine\\b|" +
-										"\\bG\\s?\\+\\s?C\\b|" + 
-										"\\b\\(G\\s?\\+\\s?C\\b|" + 
+										"\\bguanine plus cytosine|Guanosine plus cytosine|Guanosine plus cytosine|guanine-plus-cytosine\\b|" +
+										"\\b\\(G\\s?\\+\\s?C\\b|" +
+										"\\bG\\s?\\+\\s?C\\b|" + //zero or one
+										"\\bG\\s*\\+\\s*C\\b|" + // zero or many // \\s+ => one or many
+										
+										// "\\bg\\s+\\+\\s+c\\b|" +
 										// "\\s?\\(G+C\\s?|" + 
 										// "\\s?G\\s*\\+\\s*C|" + 
 										// "\\s+G\\s*\\+\\s*C\\s+|" + 
@@ -42,11 +45,13 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 										// "\\s+gc\\s+|" + 
 										// "%GC|" + 
 										// "%G+C" +
-										"\\bGC\\b" +
+										"\\bGC\\b|" +
+										"\\bguanine\\s?\\+\\s?cytosine\\b" +
 										")";
 
 	private String myNumberPattern = "(\\d+(\\.\\d+)?)";
 	
+
 	/*
 	private String targetPatternString = "(" +
 			
@@ -85,11 +90,18 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 			"\\d+\\s?" + 
 			")";
 	*/
-	private String targetPatternString = "(" +
-			"(between\\s?|from\\s?)*" +
-			myNumberPattern + "(\\s)*(\\()*(±|-|–|and|to|)*(\\s)*" + myNumberPattern + "*(\\))*" + 
-			")";
+	// private String targetPatternString = "(" +
+	//		"(between\\s?|from\\s?)*" +
+	//		myNumberPattern + "(\\s)*(\\()*(±|-|–|and|to|)*(\\s)*" + myNumberPattern + "*(\\))*" + 
+	//		")";
 
+	private String targetPatternString = "(" +
+			"(between\\s*|from\\s*)?" + myNumberPattern + "\\s*(±|-|–|and|to|)?\\s*" + myNumberPattern + "|" +
+			myNumberPattern + "\\s*(±|-|–|and|to|)?\\s*" + myNumberPattern +
+			")";
+	
+	
+	
 	private Map<String, String> regexResultWithMappingCaseMap;
 
 	public Map<String, String> getRegexResultWithMappingCaseMap() {
@@ -189,16 +201,20 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 			// System.out.println("Part 1::" + matcherGc2.group(1));
 			// System.out.println("Part 2::" + matcherGc2.group(2));
 			// System.out.println("Part 3::" + matcherGc2.group(3));
-			// System.out.println("Part 4::" + matcherGc2.group(4));
+			System.out.println("Part 4::" + matcherGc2.group(4));
+			// System.out.println("Part 5::" + matcherGc2.group(5 ));
 
 			String matchPartString = matcherGc2.group(4);
 			
 			if ( ! matchPartString.equals("") ) {
+				System.out.println("targetPatternString::" + targetPatternString);
 				Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
 				Matcher targetMatcher = targetPattern.matcher(matchPartString);
 				while (targetMatcher.find()) {
 					String matchPartString2 = targetMatcher.group(1);
+					System.out.println("matchPartString2::" + matchPartString2);
 					if ( isAcceptValueRange(matchPartString2) == true) {
+						System.out.println("Add::" + matchPartString2);
 						output.add(matchPartString2 + " mol%");
 						regexResultWithMappingCaseMap.put("Case 2", matchPartString2 + " mol%");
 					}
@@ -208,8 +224,12 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 
 		// Case 3:: The base composition is 32.5 to 34 mol % g+c is three strains.
 		// Cannot handle this kind of example: 30.6 mol%
-		// 30.6 mol% GC
-		Pattern patternGc3 = Pattern.compile("(.*)(\\s*mol\\s*\\%\\s*)(" + patternStringGc + ")?");
+		// Cannot handle this kind of example: 30.6 mol% GC
+		
+		//Pattern patternGc3 = Pattern.compile("(.*)(\\s*mol\\s*\\%\\s*)(" + patternStringGc + ")?");
+		// => this one is too wider
+		Pattern patternGc3 = Pattern.compile("(.*)(\\s*mol\\s*\\%\\s*)" + patternStringGc);
+
 		Matcher matcherGc3 = patternGc3.matcher(text);
 
 		while (matcherGc3.find()) {
@@ -238,6 +258,65 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 			}			
 		}
 
+		
+		// Case 4:: dna base composition: 63.4 moles guanine + cytosine.
+		Pattern patternGc4 = Pattern.compile("(.*)(\\s*moles\\s*\\s*)(" + patternStringGc + ")?");
+		Matcher matcherGc4 = patternGc4.matcher(text);
+		while (matcherGc4.find()) {
+			System.out.println("Case 4::");
+			// System.out.println("Whloe Sent::" + matcherGc4.group());
+			System.out.println("Part 1::" + matcherGc4.group(1));
+			// System.out.println("Part 2::" + matcherGc4.group(2));
+			// System.out.println("Part 3::" + matcherGc4.group(3));
+			// System.out.println("Part 4::" + matcherGc4.group(4));
+
+			String matchPartString = matcherGc4.group(1);
+			
+			if ( ! matchPartString.equals("") ) {
+				Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
+				Matcher targetMatcher = targetPattern.matcher(matchPartString);
+				while (targetMatcher.find()) {
+					String matchPartString2 = targetMatcher.group(1);
+					System.out.println("matchPartString2::" + matchPartString2);
+					if ( isAcceptValueRange(matchPartString2) == true) {
+						System.out.println("Add::" + matchPartString2);
+						output.add(matchPartString2 + " mol%");
+						regexResultWithMappingCaseMap.put("Case 4", matchPartString2 + " mol%");
+
+					}				
+				}
+			}			
+		}
+		
+		// Case 5: dna g + c content (mol%): 31.7-35.7 (bd, tm).
+		Pattern patternGc5 = Pattern.compile(patternStringGc + "(.*)" + "(\\(?\\s*mol\\s*\\%\\s*\\)?\\:?)" + "(.*)");
+		Matcher matcherGc5 = patternGc5.matcher(text);
+		while (matcherGc5.find()) {
+			System.out.println("Case 5::");
+			// System.out.println("Whloe Sent::" + matcherGc5.group());
+			// System.out.println("Part 1::" + matcherGc5.group(1));
+			// System.out.println("Part 2::" + matcherGc5.group(2));
+			// System.out.println("Part 3::" + matcherGc5.group(3));
+			System.out.println("Part 4::" + matcherGc5.group(4));
+
+			String matchPartString = matcherGc5.group(4);
+			
+			if ( ! matchPartString.equals("") ) {
+				Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
+				Matcher targetMatcher = targetPattern.matcher(matchPartString);
+				while (targetMatcher.find()) {
+					String matchPartString2 = targetMatcher.group(1);
+					System.out.println("matchPartString2::" + matchPartString2);
+					if ( isAcceptValueRange(matchPartString2) == true) {
+						System.out.println("Add::" + matchPartString2);
+						output.add(matchPartString2 + " mol%");
+						regexResultWithMappingCaseMap.put("Case 5", matchPartString2 + " mol%");
+
+					}				
+				}
+			}			
+		}		
+		
 
 		/*
 		Pattern patternMol = Pattern.compile("(.*)(\\s*mol\\s*\\%\\s*)(.*)");
@@ -513,7 +592,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
 
 		
-		String outputFile = "micropieInput_zip_output/GC_Regex.csv";
+		String outputFile = "micropieInput_zip_output/GC_Regex-150304.csv";
 		OutputStream outputStream = new FileOutputStream(outputFile);
 		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
 		List<String[]> lines = new LinkedList<String[]>();

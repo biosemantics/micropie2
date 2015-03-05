@@ -7,16 +7,28 @@ import java.util.regex.Pattern;
 
 public class RangePatternExtractor {
 
-	private String myNumberPattern = "(\\d+(\\.\\d+)?)";
-
+	// private String myNumberPattern = "(\\d+(\\.\\d+)?)"; 
+	private String myNumberPattern = "(\\d+\\.?\\d+?)";
+	
 	public String getMyNumberPattern() {
 		return myNumberPattern;
 	}
 	
+	//
+	// private String targetPatternString = "(" +
+	//		"(between\\s?|from\\s?)*" +
+	//		myNumberPattern + "(\\%|ph|celsius_degree)*(\\s)*(\\()*(±|-|–|and|to|or)*(\\s)*" + myNumberPattern + "*(\\))*" + 
+	//		")";
+	
+	// The pH range for growth is 5.0-9.0, with an optimum between pH 6.0 and 7.0.
+	// 
+	// 
+	// Add on March 04, 2015 Wednesday
+	
 	private String targetPatternString = "(" +
-			"(between\\s?|from\\s?)*" +
-			myNumberPattern + "(\\%|ph|celsius_degree)*(\\s)*(\\()*(±|-|–|and|to|or)*(\\s)*" + myNumberPattern + "*(\\))*" + 
-			")";	
+			"(between\\s*|from\\s*)?(pH)?" + myNumberPattern + "\\s*(±|-|–|and|to|)?\\s*" + myNumberPattern + "|" +
+			myNumberPattern + "\\s*(±|-|–|and|to|)?\\s*" + myNumberPattern + 
+			")";
 	
 	private String rangePatternMaxString;
 	private String rangePatternMinString;
