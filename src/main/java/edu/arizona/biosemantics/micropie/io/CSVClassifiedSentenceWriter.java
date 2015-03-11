@@ -48,10 +48,12 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 		
 		svmLabelAndCategoryMappingMap = new HashMap<String, String>();
 		for(String[] lineOfSVMLabelAndCategoryMapping : linesOfSVMLabelAndCategoryMapping) {
-			System.out.println("lineOfSVMLabelAndCategoryMapping.toString():" + lineOfSVMLabelAndCategoryMapping.toString());
-			System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[0]);
-			System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[1]);
-			svmLabelAndCategoryMappingMap.put(lineOfSVMLabelAndCategoryMapping[0],lineOfSVMLabelAndCategoryMapping[1]);
+			if ( lineOfSVMLabelAndCategoryMapping.length > 2 ) {
+				System.out.println("lineOfSVMLabelAndCategoryMapping.toString():" + lineOfSVMLabelAndCategoryMapping.toString());
+				System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[0]);
+				System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[1]);
+				svmLabelAndCategoryMappingMap.put(lineOfSVMLabelAndCategoryMapping[0],lineOfSVMLabelAndCategoryMapping[1]);
+			}	
 		}
 		return svmLabelAndCategoryMappingMap;
 	}	
@@ -69,9 +71,9 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 			String predictions = getPredicitionsString(classifiedSentence.getPredictions());
 			String[] predictionList = predictions.split(",");
 			
-			System.out.println("predictionsList.length::" + predictionList.length);
 			
 			if ( predictionList.length == 1 ) {
+				System.out.println("predictionsList.length::" + predictionList.length);
 				System.out.println("predictions::" + predictions);
 				for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
 					// System.out.println("Key : " + entry.getKey() + " Value : "
@@ -80,12 +82,15 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 					if ( predictions.equals(entry.getKey()) ) {
 						System.out.println("svmLabelAndCategoryMappingMap.getKey()::" + entry.getKey());
 						System.out.println("svmLabelAndCategoryMappingMap.getValue()::" + entry.getValue());
+						// svmLabelAndCategoryMappingMap.getKey()::31
+						// svmLabelAndCategoryMappingMap.getValue()::2.11
 						categoryLabel = entry.getValue();
 					}
 					
 				}				
 			} else {
 				for (String prediction : predictionList ) {
+					System.out.println("predictionsList.length::" + predictionList.length);
 					System.out.println("prediction::" + prediction);
 					for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
 						// System.out.println("Key : " + entry.getKey() + " Value : "
@@ -100,11 +105,12 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 
 			
 			if ( categoryLabel.equals("") ) {
-				categoryLabel = "0";
-			} else {
-				
-				categoryLabel = categoryLabel.substring(0, categoryLabel.length()-1);
-			}
+				categoryLabel = "0"; // no category
+			} // else {
+				// 1.1,2.3,3.7, => 1.1,2.3,3.7
+				// will \"1.1,2.3,3.7 matters??? => not sure\"
+				// categoryLabel = categoryLabel.substring(0, categoryLabel.length()-1);
+			// }
 			
 			
 			// lines.add(new String[] { getPredicitionsString(classifiedSentence.getPredictions()), 

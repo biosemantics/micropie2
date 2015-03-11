@@ -1,7 +1,9 @@
 package edu.arizona.biosemantics.micropie;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+
+import au.com.bytecode.opencsv.CSVReader;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provider;
@@ -27,10 +31,10 @@ import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.regex.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.AntibioticSensitivityExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellDiameterExtractor;
-import edu.arizona.biosemantics.micropie.extract.regex.CellLongExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.CellLengthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellShapeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
-import edu.arizona.biosemantics.micropie.extract.regex.CellWideExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.CellWidthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.extract.regex.FermentationProductsExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
@@ -66,8 +70,14 @@ import edu.stanford.nlp.process.TokenizerFactory;
 
 public class Config extends AbstractModule {
 
-	private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Diameter|Cell Long|Cell Wide|Cell Membrane & Cell Wall Components|External features|Filterability|Internal features|Lysis Susceptibility|Physiological requirements|Antibiotics|Secreted Products|Storage Products|Tests|Pathogen Target Organ|Complex Mixtures|Inorganic|Metals|Nitrogen Compounds|Organic|Organic Acids|Other";
 
+	
+	// private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Diameter|Cell Long|Cell Wide|Cell Membrane & Cell Wall Components|External features|Filterability|Internal features|Lysis Susceptibility|Physiological requirements|Antibiotics|Secreted Products|Storage Products|Tests|Pathogen Target Organ|Complex Mixtures|Inorganic|Metals|Nitrogen Compounds|Organic|Organic Acids|Other";
+	
+	// Verison 2, March 08, 2015 Sunday
+	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used|Other genetic characteristics|Other physiological characteristics";
+
+	
 	private String celsius_degreeReplaceSourcePattern = "(" +
 			"\\s?˚C\\s?|" +
 			"\\s?˚ C\\s?|" +
@@ -204,7 +214,7 @@ public class Config extends AbstractModule {
 		bind(String.class).annotatedWith(Names.named("LibSVMOptions")).toInstance(libSVMOptions);
 				
 		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(getCharacterValueExtractors(characterValueExtractorsFolder, 
-				uspResultsDirectory, uspString));
+		 		uspResultsDirectory, uspString));
 		
 		bind(ISentenceReader.class).to(CSVSentenceReader.class).in(Singleton.class);
 		
@@ -323,19 +333,25 @@ public class Config extends AbstractModule {
 		//extractors.add(new CellSizeExtractor(Label.c2));
 		
 		extractors.add(new GcExtractor(Label.c1));
-		extractors.add(new CellDiameterExtractor(Label.c2));
-		extractors.add(new CellLongExtractor(Label.c2));
-		extractors.add(new CellWideExtractor(Label.c2));
+		extractors.add(new CellDiameterExtractor(Label.c3));
+		extractors.add(new CellLengthExtractor(Label.c4));
+		extractors.add(new CellWidthExtractor(Label.c5));
+
+		extractors.add(new GrowthNaclMinExtractor(Label.c17));
+		extractors.add(new GrowthNaclOptimumExtractor(Label.c18));
+		extractors.add(new GrowthNaclMaxExtractor(Label.c19));
 		
-		extractors.add(new GrowthTempMaxExtractor(Label.c3));
-		extractors.add(new GrowthTempMinExtractor(Label.c3));
-		extractors.add(new GrowthPhMaxExtractor(Label.c3));
-		extractors.add(new GrowthPhMinExtractor(Label.c3));
-		extractors.add(new GrowthPhOptimumExtractor(Label.c3));
-		extractors.add(new GrowthTempOptimumExtractor(Label.c3));
-		extractors.add(new GrowthNaclOptimumExtractor(Label.c3));
-		extractors.add(new GrowthNaclMaxExtractor(Label.c3));
-		extractors.add(new GrowthNaclMinExtractor(Label.c3));
+		extractors.add(new GrowthPhMinExtractor(Label.c20));
+		extractors.add(new GrowthPhOptimumExtractor(Label.c21));
+		extractors.add(new GrowthPhMaxExtractor(Label.c22));		
+		
+		
+		extractors.add(new GrowthTempMinExtractor(Label.c23));
+		extractors.add(new GrowthTempOptimumExtractor(Label.c24));
+		extractors.add(new GrowthTempMaxExtractor(Label.c25));
+		
+		
+
 		// extractors.add(new FermentationProductsExtractor(Label.c6));
 		// extractors.add(new AntibioticSensitivityExtractor(Label.c4));
 		

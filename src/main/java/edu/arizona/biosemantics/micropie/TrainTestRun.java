@@ -521,7 +521,7 @@ public class TrainTestRun implements IRun {
 				predictions.add(classifiedSentence);
 			}
 			
-			
+			*/
 			
 			System.out.println("before createUSPInputs(predictions)");			
 			log(LogLevel.INFO, "before createUSPInputs(predictions)");
@@ -529,6 +529,8 @@ public class TrainTestRun implements IRun {
 			System.out.println("Version::0.0.4-SNAPSHOT");			
 			log(LogLevel.INFO, "Version::0.0.4-SNAPSHOT");
 			
+			
+			/*
 			// 
 			// USP
 			createUSPInputs(predictions);
@@ -537,18 +539,27 @@ public class TrainTestRun implements IRun {
 			
 			
 			
+			
+			// ???
 			Parse uspParse = new Parse();
 			uspParse.runParse(uspString, uspResultsDirectory);
 			// uspParse.runParse(uspString, usp_resultsString);
 			// USP
+			*/
 			
 			
+			
+			
+			
+			/*
 			// System.out.println("after uspParse");
 			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
 			// System.out.println("after setOutputStream");
 			
 			classifiedSentenceWriter.write(predictions);
 			System.out.println("after write predictions");
+			*/
+			
 			
 			
 			TaxonCharacterMatrix matrix = matrixCreator.create();
@@ -578,7 +589,8 @@ public class TrainTestRun implements IRun {
 			
 			
 			// formal MicroPIE process
-			*/
+			
+			/**/
 			
 			
 			
@@ -610,14 +622,35 @@ public class TrainTestRun implements IRun {
 		for (File inputFile : inputFiles) {
 			log(LogLevel.INFO, "Reading from " + inputFile.getName() + "...");
 			try {
+
 				textReader.setInputStream(new FileInputStream(inputFile));
 				log(LogLevel.INFO, "XML file name: " + inputFile.getName());
 				System.out.println("XML file name: " + inputFile.getName());
 				String taxon = textReader.getTaxon();
 				log(LogLevel.INFO, "Taxon: " + taxon);
+
+				String family = textReader.getFamily();
+				log(LogLevel.INFO, "Family: " + family);
+
+				String genus = textReader.getGenus();
+				log(LogLevel.INFO, "Genus: " + genus);				
+
+				String species = textReader.getSpecies();
+				log(LogLevel.INFO, "Species: " + species);					
+
+				String strain_number = textReader.getStrain_number();
+				log(LogLevel.INFO, "Strain_number: " + strain_number);					
+
+				String the16SrRNAAccessionNumber = textReader.get16SrRNAAccessionNumber();
+				log(LogLevel.INFO, "16S rRNA Accession Number: " + the16SrRNAAccessionNumber);	
+				
 				String text = textReader.read();
 				log(LogLevel.INFO, "Text: " + text);
-				textFiles.add(new TaxonTextFile(taxon, text, inputFile));
+				
+				
+				textFiles.add(new TaxonTextFile(taxon, family, genus, species, strain_number, the16SrRNAAccessionNumber, text, inputFile));
+				
+				
 			} catch (Exception e) {
 				log(LogLevel.ERROR, "Could not read test sentences from "
 						+ inputFile.getName(), e);
@@ -640,9 +673,29 @@ public class TrainTestRun implements IRun {
 				System.out.println("XML file name: " + inputFile.getName());
 				String taxon = textReader.getTaxon();
 				log(LogLevel.INFO, "Taxon: " + taxon);
+
+				String family = textReader.getFamily();
+				log(LogLevel.INFO, "Family: " + family);
+
+				String genus = textReader.getGenus();
+				log(LogLevel.INFO, "Genus: " + genus);				
+
+				String species = textReader.getSpecies();
+				log(LogLevel.INFO, "Species: " + species);					
+
+				String strain_number = textReader.getStrain_number();
+				log(LogLevel.INFO, "Strain_number: " + strain_number);					
+
+				String the16SrRNAAccessionNumber = textReader.get16SrRNAAccessionNumber();
+				log(LogLevel.INFO, "16S rRNA Accession Number: " + the16SrRNAAccessionNumber);	
+				
 				String text = textReader.read();
 				log(LogLevel.INFO, "Text: " + text);
-				textFiles.add(new TaxonTextFile(taxon, text, inputFile));
+				
+				
+				textFiles.add(new TaxonTextFile(taxon, family, genus, species, strain_number, the16SrRNAAccessionNumber, text, inputFile));
+				
+				
 			} catch (Exception e) {
 				log(LogLevel.ERROR, "Could not read test sentences from "
 						+ inputFile.getName(), e);
@@ -2177,8 +2230,16 @@ public class TrainTestRun implements IRun {
 			
 			
 			String sentText = multiClassifiedSentence.getSentence().getText(); // it is sentence based not text
+			
+			
+			
 			Set<ILabel> sentLabels = multiClassifiedSentence.getPredictions(); // labels
 			// based anymore ??
+			
+			// => no need to change, March 07, 2015 Saturday
+			// 
+			
+			
 			
 			
 			log(LogLevel.INFO,
@@ -3163,13 +3224,35 @@ public class TrainTestRun implements IRun {
 		for (File inputFile : inputFiles) {
 			log(LogLevel.INFO, "Reading from " + inputFile.getName() + "...");
 			try {
+
 				textReader.setInputStream(new FileInputStream(inputFile));
+				log(LogLevel.INFO, "XML file name: " + inputFile.getName());
+				System.out.println("XML file name: " + inputFile.getName());
 				String taxon = textReader.getTaxon();
 				log(LogLevel.INFO, "Taxon: " + taxon);
+
+				String family = textReader.getFamily();
+				log(LogLevel.INFO, "Family: " + family);
+
+				String genus = textReader.getGenus();
+				log(LogLevel.INFO, "Genus: " + genus);				
+
+				String species = textReader.getSpecies();
+				log(LogLevel.INFO, "Species: " + species);					
+
+				String strain_number = textReader.getStrain_number();
+				log(LogLevel.INFO, "Strain_number: " + strain_number);					
+
+				String the16SrRNAAccessionNumber = textReader.get16SrRNAAccessionNumber();
+				log(LogLevel.INFO, "16S rRNA Accession Number: " + the16SrRNAAccessionNumber);	
 				
 				String text = textReader.read();
 				log(LogLevel.INFO, "Text: " + text);
-				textFiles.add(new TaxonTextFile(taxon, text, inputFile));
+				
+				
+				textFiles.add(new TaxonTextFile(taxon, family, genus, species, strain_number, the16SrRNAAccessionNumber, text, inputFile));
+				
+				
 			} catch (Exception e) {
 				log(LogLevel.ERROR, "Could not read test sentences from "
 						+ inputFile.getName(), e);

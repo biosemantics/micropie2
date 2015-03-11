@@ -37,6 +37,7 @@ public class CharacterValueExtractorReader implements
 		String name = file.getName();
 		int firstDotIndex = name.indexOf(".");
 		
+		// Example: file name: c2.Cell wall.key
 		
 		int lastDotIndex = name.lastIndexOf(".");
 		
@@ -49,7 +50,7 @@ public class CharacterValueExtractorReader implements
 		case key:
 			return createKeywordBasedExtractor(file, labelName, character);
 		case usp:
-			return createUSPBasedExtractor(file, labelName, character);
+			// return createUSPBasedExtractor(file, labelName, character);
 		default:
 			throw new Exception("Could not identify extractor type from file");
 		}

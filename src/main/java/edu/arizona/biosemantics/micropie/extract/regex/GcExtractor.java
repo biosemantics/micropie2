@@ -137,6 +137,9 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 	public Set<String> getCharacterValue(String text) {
 		// TODO Auto-generated constructor stub
 		
+		
+		// System.out.println("Hello, welcome to GC extractor!!");
+		// System.out.println("text is :: " + text);
 		// Add Map<String, String> on Feb 04, 2015 WED
 		regexResultWithMappingCaseMap = new HashMap<String, String>();
 		

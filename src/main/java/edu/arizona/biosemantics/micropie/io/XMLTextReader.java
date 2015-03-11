@@ -99,6 +99,102 @@ public class XMLTextReader implements ITextReader {
 		}	
 		throw new Exception("Could not find a taxon name");
 	}
+
+	
+	// add on March 07, 2015 Saturday
+	// 16S rRNA accession #
+	// Family
+	// Genus
+	// Species
+	// Strain
+	
+	public String getFamily() throws Exception {
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
+		String familyName = "";
+		for(Element taxon_nameElement : taxon_nameListOfElement) {
+			String rank = taxon_nameElement.getAttributeValue("rank");
+			if( rank.equals("family")) {
+				familyName = taxon_nameElement.getText();
+			}
+		}
+		if(familyName != null) {
+			System.out.println("familyName:" + familyName);
+			return familyName;
+		}	
+		throw new Exception("Could not find a family name");
+	}	
+	
+	public String getGenus() throws Exception {
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
+		String genusName = "";
+		for(Element taxon_nameElement : taxon_nameListOfElement) {
+			String rank = taxon_nameElement.getAttributeValue("rank");
+			if( rank.equals("genus")) {
+				genusName = taxon_nameElement.getText();
+			}
+		}
+		if(genusName != null) {
+			System.out.println("genusName:" + genusName);
+			return genusName;
+		}	
+		throw new Exception("Could not find a genus name");
+	}		
+
+	public String getSpecies() throws Exception {
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
+		String speciesName = "";
+		for(Element taxon_nameElement : taxon_nameListOfElement) {
+			String rank = taxon_nameElement.getAttributeValue("rank");
+			if( rank.equals("species")) {
+				speciesName = taxon_nameElement.getText();
+			}
+		}
+		if(speciesName != null) {
+			System.out.println("speciesName:" + speciesName);
+			return speciesName;
+		}	
+		throw new Exception("Could not find a species name");
+	}	
+
+	public String getStrain_number() throws Exception {
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		List<Element> strain_numberListOfElement = taxon_identification.getChildren("strain_number");
+		String strain_number = "";
+		for(Element strain_numberElement : strain_numberListOfElement) {
+			strain_number = strain_numberElement.getText();
+			
+			// will we add "equivalent_strain_numbers"
+			// String equivalent_strain_numbers = strain_numberElement.getAttributeValue("equivalent_strain_numbers");
+			// strain_number += ";" + equivalent_strain_numbers;
+			
+		}
+		if(strain_number != null) {
+			System.out.println("strain_number:" + strain_number);
+			return strain_number;
+		}	
+		throw new Exception("Could not find a strain number");
+	}
+	
+	
+	public String get16SrRNAAccessionNumber() throws Exception {
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		List<Element> strain_numberListOfElement = taxon_identification.getChildren("strain_number");
+		String the16SrRNAAccessionNumber = "";
+		for(Element strain_numberElement : strain_numberListOfElement) {
+			the16SrRNAAccessionNumber = strain_numberElement.getAttributeValue("accession_number_16s_rrna");	
+		}
+		if(the16SrRNAAccessionNumber != null) {
+			System.out.println("the16SrRNAAccessionNumber:" + the16SrRNAAccessionNumber);
+			return the16SrRNAAccessionNumber;
+		}	
+		throw new Exception("Could not find a strain number");
+	}	
+	
+	
+	
 	// New Schema 2:: 141111	
 	
 	/*

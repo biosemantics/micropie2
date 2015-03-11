@@ -71,9 +71,28 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 			for(Sentence sentence : sentences) {
 				SentenceMetadata metadata = sentenceMetadataMap.get(sentence);
 				MultiClassifiedSentence classifiedSentence = classifiedSentencesMap.get(sentence);
+
+				Set<ILabel> predictions = classifiedSentence.getPredictions();
+				
+				System.out.println("predictions.size()::" + predictions.size());
+				if ( predictions.size() == 0 ) {
+					System.out.println("Did not predict anything!");
+					// for(ILabel label : predictions) {
+						// if ( label.toString().equals("") ) {
+							Label[] labelList = Label.values();
+							for ( int i = 0; i < labelList.length; i++ ) {
+								predictions.add(labelList[i]);
+							}
+						// }
+					// }
+				} // else {
+					// String[] predictionsArray = predictions.toArray(new String[0]);
+					// System.out.println("predictionsArray::" + Arrays.toString(predictionsArray));
+				// }
+				 
 				
 				// Method 1: With SVM
-				Set<ILabel> predictions = classifiedSentence.getPredictions();
+				// Set<ILabel> predictions = classifiedSentence.getPredictions();
 				
 				// Method 2: Without SVM
 				/*
@@ -96,6 +115,7 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 				Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
 				for(ILabel label : predictions) {
 					if(label instanceof Label) {
+						System.out.println("label::" + label);
 						extractors.addAll(contentExtractorProvider.getContentExtractor((Label)label));
 					}
 				}

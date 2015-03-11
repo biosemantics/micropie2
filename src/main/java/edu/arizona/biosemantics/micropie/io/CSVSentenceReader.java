@@ -85,7 +85,9 @@ public class CSVSentenceReader implements ISentenceReader {
 			// System.out.println("lineOfSVMLabelAndCategoryMapping.toString():" + lineOfSVMLabelAndCategoryMapping.toString());
 			// System.out.println("lineOfSVMLabelAndCategoryMapping[0]::" + lineOfSVMLabelAndCategoryMapping[0]);
 			// System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[1]);
-			svmLabelAndCategoryMappingMap.put(lineOfSVMLabelAndCategoryMapping[0],lineOfSVMLabelAndCategoryMapping[1]);
+			if ( lineOfSVMLabelAndCategoryMapping.length > 2 ) {
+				svmLabelAndCategoryMappingMap.put(lineOfSVMLabelAndCategoryMapping[0],lineOfSVMLabelAndCategoryMapping[1]);
+			}
 		}
 		return svmLabelAndCategoryMappingMap;
 	}
