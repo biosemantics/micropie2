@@ -50,7 +50,7 @@ public class CharacterValueExtractorReader implements
 		case key:
 			return createKeywordBasedExtractor(file, labelName, character);
 		case usp:
-			// return createUSPBasedExtractor(file, labelName, character);
+			return createUSPBasedExtractor(file, labelName, character);
 		default:
 			throw new Exception("Could not identify extractor type from file");
 		}

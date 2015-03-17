@@ -16,12 +16,12 @@ import edu.arizona.biosemantics.micropie.classify.Label;
 public class CellWidthExtractor extends AbstractCharacterValueExtractor {
 
 	public CellWidthExtractor(ILabel label) {
-		super(label, "Cell wide");
+		super(label, "Cell width");
 	}
 	
 	@Inject
-	public CellWidthExtractor(@Named("CellWideExtractor_Label")Label label, 
-			@Named("CellWideExtractor_Character")String character) {
+	public CellWidthExtractor(@Named("CellWidthExtractor_Label")Label label, 
+			@Named("CellWidthExtractor_Character")String character) {
 		super(label, character);
 	}
 	

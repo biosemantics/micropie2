@@ -20,8 +20,8 @@ public class CellLengthExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Inject
-	public CellLengthExtractor(@Named("CellLongExtractor_Label")Label label, 
-			@Named("CellLongExtractor_Character")String character) {
+	public CellLengthExtractor(@Named("CellLengthExtractor_Label")Label label, 
+			@Named("CellLengthExtractor_Character")String character) {
 		super(label, character);
 	}
 	

@@ -37,6 +37,7 @@ import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellWidthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.extract.regex.FermentationProductsExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.FermentationSubstratesNotUsed;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclMaxExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclMinExtractor;
@@ -50,6 +51,8 @@ import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempMinExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempOptimumExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractorProvider;
+import edu.arizona.biosemantics.micropie.extract.regex.InorganicSubstancesNotUsedExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.OrganicCompoundsNotUsedOrNotHydrolyzedExtractor;
 import edu.arizona.biosemantics.micropie.io.CSVAbbreviationReader;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CharacterValueExtractorReader;
@@ -350,7 +353,9 @@ public class Config extends AbstractModule {
 		extractors.add(new GrowthTempOptimumExtractor(Label.c24));
 		extractors.add(new GrowthTempMaxExtractor(Label.c25));
 		
-		
+		extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
+		extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
+		extractors.add(new FermentationSubstratesNotUsed(Label.c56));
 
 		// extractors.add(new FermentationProductsExtractor(Label.c6));
 		// extractors.add(new AntibioticSensitivityExtractor(Label.c4));

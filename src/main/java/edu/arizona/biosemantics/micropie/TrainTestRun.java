@@ -530,7 +530,7 @@ public class TrainTestRun implements IRun {
 			log(LogLevel.INFO, "Version::0.0.4-SNAPSHOT");
 			
 			
-			/*
+			
 			// 
 			// USP
 			createUSPInputs(predictions);
@@ -545,7 +545,7 @@ public class TrainTestRun implements IRun {
 			uspParse.runParse(uspString, uspResultsDirectory);
 			// uspParse.runParse(uspString, usp_resultsString);
 			// USP
-			*/
+			
 			
 			
 			
