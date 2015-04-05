@@ -174,7 +174,9 @@ public class XMLTextReader implements ITextReader {
 		if(strain_number != null) {
 			System.out.println("strain_number:" + strain_number);
 			return strain_number;
-		}	
+		} // else {
+		// 	return strain_number;
+		// }
 		throw new Exception("Could not find a strain number");
 	}
 	
@@ -189,8 +191,10 @@ public class XMLTextReader implements ITextReader {
 		if(the16SrRNAAccessionNumber != null) {
 			System.out.println("the16SrRNAAccessionNumber:" + the16SrRNAAccessionNumber);
 			return the16SrRNAAccessionNumber;
-		}	
-		throw new Exception("Could not find a strain number");
+		} // else {
+		//	return the16SrRNAAccessionNumber;
+		// }
+		throw new Exception("16S rRNA Accession Number");
 	}	
 	
 	
