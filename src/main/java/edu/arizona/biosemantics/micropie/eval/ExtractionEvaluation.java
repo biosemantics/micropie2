@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -112,10 +113,34 @@ public class ExtractionEvaluation {
 		// String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-2-141015.csv";
 		
 		// 140819-StudentExperimentGoldStandardMatrix-111.xls - Sheet1.csv
-		String goldStandardMatrixFileName = "140819-StudentExperimentGoldStandardMatrix-111.xls - Sheet1.csv";
-		String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-2-141015.csv";
+		// String goldStandardMatrixFileName = "140819-StudentExperimentGoldStandardMatrix-111.xls - Sheet1.csv";
+		// String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214-xml-name-added-2-141015.csv";
 
+		// 150423 Test 1: micropie_matrix_filtered_150423.csv versus gold_matrix_total_150423.csv
+		// String goldStandardMatrixFileName = "gold_matrix_total_150423.csv";
+		// String microPIEMatrixFileName = "micropie_matrix_filtered_150423.csv";
+
+		// 150423 Test 2: Microbial Phenomics Project Data Form experiment output 040214_filename_corrected_3_EW_add_column_taxon.csv versus gold_matrix_total_150423.csv
+		// String goldStandardMatrixFileName = "gold_matrix_total_150423.csv";
+		// String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214_filename_corrected_3_EW_add_column_taxon.csv";
 		
+		// 150426 Sunday test 1 and test 2
+		String goldStandardMatrixFileName = "gold_matrix_total_150425.csv";
+		String microPIEMatrixFileName = "micropie_matrix_filtered_150427.csv";
+		// String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214_filename_corrected_3_EW_add_column_taxon.csv";
+		
+		// 140907 micropie matrix :: comparison :: SVM versus NoSVM
+		// String microPIEMatrixFileName = "matrix-140907-nosvm-150427.csv";
+		// String microPIEMatrixFileName = "micropie_matrix_filtered_to_nosvm_comparison_150427.csv";
+		
+		// 150425 Saturday Test 1: micropie_matrix_filtered_150423.csv versus filtered_gold_matrix_total_150425.csv
+		// String goldStandardMatrixFileName = "filtered_gold_matrix_total_150425.csv";
+		// String microPIEMatrixFileName = "micropie_matrix_filtered_150423.csv";
+		
+		
+		// 150425 Saturday Test 1: Microbial Phenomics Project Data Form experiment output 040214_filename_corrected_3_EW_add_column_taxon.csv versus filtered_gold_matrix_total_150425.csv
+		// String goldStandardMatrixFileName = "filtered_gold_matrix_total_150425.csv";
+		// String microPIEMatrixFileName = "Microbial Phenomics Project Data Form experiment output 040214_filename_corrected_3_EW_add_column_taxon.csv";
 		
 		runExtractionEvaluation(goldStandardMatrixFileName, microPIEMatrixFileName);
 		
@@ -187,9 +212,16 @@ public class ExtractionEvaluation {
 				linesGold2.add(newRowOfLineGold);
 			}
 			
+			System.out.println("linesGold.size()::" + linesGold.size());
+			System.out.println("lines.size()::" + lines.size());
+			
 			for (String[] rowOfLines : lines) {
 				
+				
 				String[] newRowOfLines = new String[rowOfLines.length];
+				
+				// System.out.println("newRowOfLines.length::" + newRowOfLines.length);
+				
 				int newRowOfLinesCounter = 0;
 				for (String cellValue : rowOfLines) {
 					// if ( cellValue.contains("·")) {
@@ -291,8 +323,19 @@ public class ExtractionEvaluation {
 					String targetXMLFileName = lines2.get(j)[1]; // Target file name
 					
 					
+					//  null
+					targetTaxonName = targetTaxonName.replace(" null", "");
+					
+					/*
+					System.out.println("llines2.get(0).length::" + lines2.get(0).length);
+					System.out.println("lines2.size()::" + lines2.size());
+					System.out.println("i::" + i);
+					System.out.println("j::" + j);
+					System.out.println("lines2.get(j)[i]::" + lines2.get(j)[i]);
+					*/
 					String targetCellValue = lines2.get(j)[i];
-
+					
+					
 					// the position of gold standard is not the same as target
 					// so you need to
 					// go through and find it out
@@ -309,86 +352,96 @@ public class ExtractionEvaluation {
 							
 							String goldCellValue = linesGold2.get(l)[k];
 
+							if ( !goldCellValue.equals("") ) {
 
-							
-							if (targetCharName.equals(goldCharName)
-									&& targetTaxonName.equals(goldTaxonName)
-									&& targetXMLFileName.equals(goldXMLFileName)
-									) {
-								// System.out.println("Yes, we have!!");
+								if (targetCharName.equals(goldCharName)
+										&& targetTaxonName.equals(goldTaxonName)
+										&& targetXMLFileName.equals(goldXMLFileName)
+										// && goldXMLFileName.contains(targetXMLFileName)
+										) { 
+									// System.out.println("Yes, we have!!");
+									
+									// System.out.println(targetTaxonName);
+									// System.out.println(goldTaxonName);
+									
+									
+									extractedOutputSimilarityResults = similarityComparison(
+											targetCellValue, goldCellValue);
+									float precisionValue = extractedOutputSimilarityResults
+											.getPrecisionValue();
+									float recallValue = extractedOutputSimilarityResults
+											.getRecallValue();
+									float similarityFValue = extractedOutputSimilarityResults
+											.getFValue();
+
+									
+									// 
+									// Float precisionValueFloat = precisionValue;
+									// if ( precisionValueFloat.isNaN() == true ) {
+									//	System.out.println("goldCellValue:: " + goldCellValue);
+									//	System.out.println("targetCellValue:: " + targetCellValue);
+									// }
+									
+									
+									targetXMLFileName = targetXMLFileName.replace("\"", "");
+									
+									
+									
+									if (precisionValue > 1)
+										System.out.println("precisionValue:"
+												+ precisionValue + " > 1");
+
+									if (recallValue > 1)
+										System.out.println("recallValue:"
+												+ recallValue + " > 1");
+									// System.out.println(similarityFValue);
+
+									outputStringBuilder.append("\""
+											+ targetTaxonName + "\",");
+									outputStringBuilder.append("\""
+											+ targetXMLFileName + "\",");
+									
+									outputStringBuilder.append("\""
+											+ targetCharName + "\",");
+
+									outputStringBuilder.append("\"" + goldCellValue
+											+ "\",");
+									outputStringBuilder.append("\""
+											+ targetCellValue + "\",");
+
+									outputStringBuilder.append("\""
+											+ precisionValue + "\",");
+									outputStringBuilder.append("\"" + recallValue
+											+ "\",");
+									outputStringBuilder.append("\""
+											+ similarityFValue + "\",");
+
+									outputStringBuilder.append("\""
+											+ date.toString() + "\"");
+									outputStringBuilder.append("," + "\n");
+
+
+									
+									charTotalPrecsionValue += precisionValue;
+									charTotalRecallValue += recallValue;
+									charTotalFValue += similarityFValue;
+									charTotalCounter += 1;
+
+									// if ( targetCharName.equals("Cell shape")) {
+									//	System.out.println("precisionValue: " + precisionValue);
+									//	System.out.println("charTotalPrecsionValue: " + charTotalPrecsionValue);
+									// }
+									
+									totalPrecsionValue += precisionValue;
+									totalRecallValue += recallValue;
+									totalFValue += similarityFValue;
+									totalCounter += 1;
+
+								}								
 								
-								// System.out.println(targetTaxonName);
-								// System.out.println(goldTaxonName);
-								
-								
-								extractedOutputSimilarityResults = similarityComparison(
-										targetCellValue, goldCellValue);
-								float precisionValue = extractedOutputSimilarityResults
-										.getPrecisionValue();
-								float recallValue = extractedOutputSimilarityResults
-										.getRecallValue();
-								float similarityFValue = extractedOutputSimilarityResults
-										.getFValue();
-
-								
-								// 
-								// Float precisionValueFloat = precisionValue;
-								// if ( precisionValueFloat.isNaN() == true ) {
-								//	System.out.println("goldCellValue:: " + goldCellValue);
-								//	System.out.println("targetCellValue:: " + targetCellValue);
-								// }
-								
-								if (precisionValue > 1)
-									System.out.println("precisionValue:"
-											+ precisionValue + " > 1");
-
-								if (recallValue > 1)
-									System.out.println("recallValue:"
-											+ recallValue + " > 1");
-								// System.out.println(similarityFValue);
-
-								outputStringBuilder.append("\""
-										+ targetTaxonName + "\",");
-								outputStringBuilder.append("\""
-										+ targetXMLFileName + "\",");
-								
-								outputStringBuilder.append("\""
-										+ targetCharName + "\",");
-
-								outputStringBuilder.append("\"" + goldCellValue
-										+ "\",");
-								outputStringBuilder.append("\""
-										+ targetCellValue + "\",");
-
-								outputStringBuilder.append("\""
-										+ precisionValue + "\",");
-								outputStringBuilder.append("\"" + recallValue
-										+ "\",");
-								outputStringBuilder.append("\""
-										+ similarityFValue + "\",");
-
-								outputStringBuilder.append("\""
-										+ date.toString() + "\"");
-								outputStringBuilder.append("," + "\n");
-
-
-								
-								charTotalPrecsionValue += precisionValue;
-								charTotalRecallValue += recallValue;
-								charTotalFValue += similarityFValue;
-								charTotalCounter += 1;
-
-								// if ( targetCharName.equals("Cell shape")) {
-								//	System.out.println("precisionValue: " + precisionValue);
-								//	System.out.println("charTotalPrecsionValue: " + charTotalPrecsionValue);
-								// }
-								
-								totalPrecsionValue += precisionValue;
-								totalRecallValue += recallValue;
-								totalFValue += similarityFValue;
-								totalCounter += 1;
-
 							}
+							
+							
 
 						}
 						
@@ -505,30 +558,46 @@ public class ExtractionEvaluation {
 	private static ExtractedOutputSimilarityResults similarityComparison(
 			String targetCellValue, String goldCellValue) {
 
+		
+		// System.out.println("similarityComparison(targetCellValue::goldCellValue)::" + targetCellValue + "::" + goldCellValue);
+		
+		targetCellValue = targetCellValue.toLowerCase();
+		goldCellValue = goldCellValue.toLowerCase();
+		
 		ExtractedOutputSimilarityResults extractedOutputSimilarityResults = new ExtractedOutputSimilarityResults();
 
 		String[] targetCellValueArray = targetCellValue.split(",");
 		String[] goldCellValueArray = goldCellValue.split(",");
 
+		// http://stackoverflow.com/questions/10366856/delete-duplicate-strings-in-string-array
+		// Set<String> uniqueWords = new HashSet<String>(Arrays.asList(array));
+		
 
-		// remove empty item in array
+		// remove empty and duplicated items in array
 		// ArrayList<String> list = new ArrayList<String>();
 		Set<String> setList = new HashSet<String>();
 		for (String s : targetCellValueArray)
 			if (!s.equals("")) {
+				s = s.trim();
 				// list.add(s);
 				setList.add(s);
 			}
 		// targetCellValueArray = list.toArray(new String[list.size()]);
 		targetCellValueArray = setList.toArray(new String[setList.size()]);
-
+		// System.out.println("targetCellValueArray::" + Arrays.toString(targetCellValueArray));
+		
 		// ArrayList<String> list2 = new ArrayList<String>();
 		Set<String> setList2 = new HashSet<String>();
 		for (String s : goldCellValueArray)
-			if (!s.equals(""))
+			if (!s.equals("")) {
+				s = s.trim();
 				setList2.add(s);
+			}
 		goldCellValueArray = setList2.toArray(new String[setList2.size()]);
-
+		// System.out.println("goldCellValueArray::" + Arrays.toString(goldCellValueArray));
+		// remove empty and duplicated items in array
+		
+		
 		float similarityValue = 0;
 		float precisionFloat = 0;
 		float recallFloat = 0;
@@ -555,9 +624,19 @@ public class ExtractionEvaluation {
 						// System.out.println("cosineSimilarityCalculation::" +
 						// cosineSimilarityCalculation(targetCellValueArray[j],
 						// goldCellValueArray[i]));
-						correctNumber += cosineSimilarityCalculation(
-								targetCellValueArray[j], goldCellValueArray[i]);
 						
+						
+						
+						// replaced by generalSimilarityCalculation(targetCellValueArray[j], goldCellValueArray[i])
+						// correctNumber += cosineSimilarityCalculation(
+						// 		targetCellValueArray[j], goldCellValueArray[i]);
+						correctNumber += generalSimilarityCalculation(targetCellValueArray[j], goldCellValueArray[i]);
+						
+						// replace with match or dismatch => remove stop words
+						// =>
+						// =>
+						// 
+					
 						// Float correctNumberFloat = correctNumber;
 						// if ( correctNumberFloat.isNaN() == true ) {
 						//	System.out.println("targetCellValueArray[j]:: " + targetCellValueArray[j]);
@@ -574,6 +653,11 @@ public class ExtractionEvaluation {
 
 			}
 
+			
+			// System.out.println("correctNumber::" + correctNumber);
+			// System.out.println("targetCellValueArray.length::" + targetCellValueArray.length);
+			// System.out.println("goldCellValueArray.length::" + goldCellValueArray.length);
+			
 			int targetCellValueArrayLength = targetCellValueArray.length;
 			if (targetCellValueArray.length == 0) {
 				targetCellValueArrayLength = 1;
@@ -602,11 +686,21 @@ public class ExtractionEvaluation {
 			// System.out.println("precisionFloat:" + precisionFloat);
 			// System.out.println("recallFloat:" + recallFloat);
 
-			if (precisionFloat > 1)
+			// please check why I use this?? 2015-04-26
+			// no need to use
+			/*
+			if (precisionFloat > 1) {
+				System.out.println("precisionFloat > 1");
 				precisionFloat = 1;
-			if (recallFloat > 1)
+			}
+			if (recallFloat > 1) {
+				System.out.println("recallFloat > 1");
 				recallFloat = 1;
-
+			}
+			*/
+			// no need to use
+			
+			
 			float precisionFloatPlusRecallFloat = precisionFloat + recallFloat;
 			if (precisionFloatPlusRecallFloat == 0) {
 				precisionFloatPlusRecallFloat = Float.parseFloat(String
@@ -735,6 +829,34 @@ public class ExtractionEvaluation {
 
 		return returnFloat;
 	}
+	
+	
+	
+	private static float generalSimilarityCalculation(String targetCellValue,
+			String goldCellValue) {
+
+		// String stopword = "a|about|above|after|again|against|all|am|an|and|any|are|aren't|as|at|be|because|been|before|being|below|between|both|but|by|can't|cannot|could|couldn't|did|didn't|do|does|doesn't|doing|don't|down|during|each|few|for|from|further|had|hadn't|has|hasn't|have|haven't|having|he|he'd|he'll|he's|her|here|here's|hers|herself|him|himself|his|how|how's|i|i'd|i'll|i'm|i've|if|in|into|is|isn't|it|it's|its|itself|let's|me|more|most|mustn't|my|myself|no|nor|not|of|off|on|once|only|or|other|ought|our|ours	ourselves|out|over|own|same|shan't|she|she'd|she'll|she's|should|shouldn't|so|some|such|than|that|that's|the|their|theirs|them|themselves|then|there|there's|these|they|they'd|they'll|they're|they've|this|those|through|to|too|under|until|up|very|was|wasn't|we|we'd|we'll|we're|we've|were|weren't|what|what's|when|when's|where|where's|which|while|who|who's|whom|why|why's|with|won't|would|wouldn't|you|you'd|you'll|you're|you've|your|yours|yourself|yourselves";
+		
+		// remove stop words
+		// targetCellValue = targetCellValue.replace(stopword, "");
+		// goldCellValue = goldCellValue.replace(stopword, "");
+		
+		targetCellValue = targetCellValue.trim();
+		goldCellValue = goldCellValue.trim();
+		
+		float returnFloat = 0;
+		
+		if ( targetCellValue.equals(goldCellValue) ) {
+			returnFloat = 1;
+		} else {
+			returnFloat = 0;
+		}
+		
+		// System.out.println("generalSimilarityCalculation(targetCellValue::goldCellValue)::" + targetCellValue + "::" + goldCellValue + "::returnFloat::" + returnFloat);
+		return returnFloat;
+	}	
+	
+	
 	
 	// goldStandardCharacterCounter
 	static void goldStandardCharacterCounter(String goldStandardMatrixFileName) {
