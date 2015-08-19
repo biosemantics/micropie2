@@ -20,6 +20,7 @@ import au.com.bytecode.opencsv.CSVReader;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provider;
+import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Named;
@@ -71,6 +72,11 @@ import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 import edu.stanford.nlp.process.TokenizerFactory;
 
+
+/**
+ * The read main Class
+ *
+ */
 public class Config extends AbstractModule {
 
 
@@ -103,6 +109,7 @@ public class Config extends AbstractModule {
 	// private String trainingFile = "training_data/split-training-base-140603.csv";
 	// split-training-base-150110.csv
 	private String trainingFile = "training_data/split-training-base-150110.csv";
+	private String trainedModelFile = "models";
 	
 	
 	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
@@ -144,6 +151,8 @@ public class Config extends AbstractModule {
 	@Override
 	protected void configure() {
 		bind(IRun.class).to(TrainTestRun.class).in(Singleton.class);
+		bind(IRun.class).annotatedWith(Names.named("TrainSentenceSpliter")).to(TrainSentenceSpliter.class).in(Singleton.class);
+		
 		
 		bind(new TypeLiteral<LinkedHashSet<String>>() {}).annotatedWith(Names.named("Characters"))
 			.toProvider(new Provider<LinkedHashSet<String>>() {
@@ -175,6 +184,9 @@ public class Config extends AbstractModule {
 		
 		bind(String.class).annotatedWith(Names.named("trainingFile")).toInstance(
 				trainingFile);
+		bind(String.class).annotatedWith(Names.named("trainedModelFile")).toInstance(
+				trainedModelFile);
+		
 		
 		bind(String.class).annotatedWith(Names.named("svmLabelAndCategoryMappingFile")).toInstance(
 				svmLabelAndCategoryMappingFile);
@@ -326,7 +338,8 @@ public class Config extends AbstractModule {
 				ICharacterValueExtractor extractor = extractorReader.read(file);
 				extractors.add(extractor);
 			} catch(Exception e) {
-				log(LogLevel.ERROR, "Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped", e);
+				//log(LogLevel.ERROR, "Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped", e);
+				log(LogLevel.ERROR, "Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped");
 			}
 		}
 		
@@ -372,7 +385,7 @@ public class Config extends AbstractModule {
 		// trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "150123-Training-Sentences.csv";
 		// 150130-Training-Sentences-new.csv
 		trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "150130-Training-Sentences-new.csv";
-
+		trainedModelFile = inputDirectory + File.separator + "models";
 		
 		svmLabelAndCategoryMappingFile = inputDirectory + File.separator + "svmlabelandcategorymapping_data" + File.separator + "SVMLabelAndCategoryMapping.txt";
 		
@@ -399,4 +412,21 @@ public class Config extends AbstractModule {
 		new File(uspResultsDirectory).mkdirs();
 	}
 
+	/*
+	@Provides @Named("TokenizeSSplit") @Singleton
+	StanfordCoreNLP provideStanfordCoreNLP(){
+		Properties stanfordCoreProperties = new Properties();
+		stanfordCoreProperties.put("annotators", "tokenize, ssplit");
+		return new StanfordCoreNLP(stanfordCoreProperties);
+	}
+	
+	bind(StanfordCoreNLP.class).annotatedWith(Names.named("TokenizeSSplit")).toProvider(new Provider<StanfordCoreNLP>() {
+		@Override
+		public StanfordCoreNLP get() {
+			Properties stanfordCoreProperties = new Properties();
+			stanfordCoreProperties.put("annotators", "tokenize, ssplit");
+			return new StanfordCoreNLP(stanfordCoreProperties);
+		}
+	}).in(Singleton.class);
+	*/
 }

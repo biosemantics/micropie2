@@ -6,6 +6,7 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import weka.classifiers.functions.LibSVM;
+import weka.classifiers.meta.FilteredClassifier;
 
 /**
  * SVMClassifier wraps a support vector machine classifier of the weka toolkit
@@ -30,5 +31,12 @@ public class SVMClassifier extends WekaClassifierWrapper {
 		LibSVM svm = new LibSVM();
 		svm.setOptions(weka.core.Utils.splitOptions(libSVMOptions));
 		return svm;
+	}
+	
+	/**
+	 * add by maojin
+	 */
+	public FilteredClassifier getFilteredClassifier(){
+		return super.filteredClassifier;
 	}
 }

@@ -89,4 +89,16 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		return result;
 	}
 
+	
+	
+	public List<ILabel> getLabels() {
+		return labels;
+	}
+
+	public Map<ILabel, SVMClassifier> getClassifiers() {
+		return classifiers;
+	}
+	
+	
+
 }

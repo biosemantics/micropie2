@@ -147,7 +147,6 @@ public class TrainTestRun implements IRun {
 	private String resFolder;
 	
 	
-	
 	@Inject
 	public TrainTestRun(
 			@Named("trainingFile") String trainingFile,
@@ -448,6 +447,10 @@ public class TrainTestRun implements IRun {
 			
 			
 			
+			//train the classifier
+			/*
+			 * TO-DO:It can not be trained each time. 
+			 */
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			trainingSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
 			trainingSentenceReader.readSVMLabelAndCategoryMapping();
@@ -463,7 +466,7 @@ public class TrainTestRun implements IRun {
 			
 			
 			
-			
+			//use the trained classifiers to predict sentences
 			List<Sentence> testSentences = createTestSentences();
 			
 			
@@ -489,8 +492,6 @@ public class TrainTestRun implements IRun {
 			classifiedSentenceWriter.readSVMLabelAndCategoryMapping();
 			classifiedSentenceWriter.write(predictions);
 
-			
-			
 			
 			/*
 			// formal MicroPIE process
