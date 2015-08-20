@@ -64,6 +64,7 @@ import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
+import edu.arizona.biosemantics.micropie.transform.SentenceSpliter;
 import edu.arizona.biosemantics.micropie.transform.TextNormalizer;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
@@ -151,7 +152,9 @@ public class Config extends AbstractModule {
 	@Override
 	protected void configure() {
 		bind(IRun.class).to(TrainTestRun.class).in(Singleton.class);
-		bind(IRun.class).annotatedWith(Names.named("TrainSentenceSpliter")).to(TrainSentenceSpliter.class).in(Singleton.class);
+		bind(IRun.class).annotatedWith(Names.named("TrainSentenceClassifier")).to(TrainSentenceClassifier.class).in(Singleton.class);
+		bind(SentenceSpliter.class).in(Singleton.class);
+		bind(SentencePredictor.class).in(Singleton.class);
 		
 		
 		bind(new TypeLiteral<LinkedHashSet<String>>() {}).annotatedWith(Names.named("Characters"))

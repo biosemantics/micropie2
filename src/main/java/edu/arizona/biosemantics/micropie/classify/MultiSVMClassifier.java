@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie.classify;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -7,11 +8,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import weka.classifiers.Classifier;
+import weka.core.FastVector;
+import weka.core.Instance;
+import weka.core.Instances;
+import weka.filters.Filter;
+
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.common.log.ObjectStringifier;
+import edu.arizona.biosemantics.micropie.io.WekaModelCaller;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 
 //TODO: Make weka log things such as filtered data (e.g. matrix actually passed into SVM)
@@ -20,16 +28,22 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 
 	private List<ILabel> labels;
 	private Map<ILabel, SVMClassifier> classifiers = new HashMap<ILabel, SVMClassifier>();
-	private boolean trained = false;
+	protected boolean trained = false;
 	private String multiFilterOptions;
 	private String libSVMOptions;
+	
+	private String trainedModelFile;
+	
 
 	@Inject
 	public MultiSVMClassifier(@Named("MultiSVMClassifier_Labels") List<ILabel> labels, 
-			@Named("MultiFilterOptions")String multiFilterOptions, @Named("LibSVMOptions")String libSVMOptions) {
+			@Named("MultiFilterOptions")String multiFilterOptions, @Named("LibSVMOptions")String libSVMOptions,
+			@Named("trainedModelFile") String trainedModelFile) {
 		this.labels = labels;
 		this.multiFilterOptions = multiFilterOptions;
 		this.libSVMOptions = libSVMOptions;
+		
+		this.trainedModelFile = trainedModelFile;
 	}
 	
 	@Override
@@ -55,7 +69,7 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		
 		return result;
 	}
-
+	
 	@Override
 	public void train(List<Sentence> trainingData) throws Exception {
 		log(LogLevel.INFO, "Training classifier...");
@@ -88,8 +102,73 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 				result.setLabel(BinaryLabel.NO);
 		return result;
 	}
-
 	
+	/**
+	 * add by maojin
+	 * Load the trained classifiers
+	 */
+	public void loadClassifier(@Named("trainedModelFile")String trainedModelFile) throws Exception {
+		log(LogLevel.INFO, "Loading classifier from files...");
+		for(ILabel label : labels) {
+			log(LogLevel.INFO, "Loading SVM classifier for label " + label.getValue());
+			
+			SVMClassifier svmClassifier = new SVMClassifier(BinaryLabel.valuesList(), multiFilterOptions, libSVMOptions);
+			svmClassifier.setupFilteredClassifier();
+			
+			//recover the classifier
+			Classifier wekaClfer =  (Classifier)WekaModelCaller.readModel(trainedModelFile+File.separator+label.getValue()+".model");
+			svmClassifier.getFilteredClassifier().setClassifier(wekaClfer);
+			
+			//recover the filter
+			Filter filter = (Filter)WekaModelCaller.readModel(trainedModelFile+File.separator+label.getValue()+".filter");
+			svmClassifier.getFilteredClassifier().setFilter(filter);
+			
+			//recover instances
+			svmClassifier.instances = WekaModelCaller.loadArff(trainedModelFile+File.separator+label.getValue()+".arff");
+			svmClassifier.labelAttribute = svmClassifier.instances.attribute(0);
+			svmClassifier.textAttribute  = svmClassifier.instances.attribute(1);
+			svmClassifier.instances.setClassIndex(0);
+			//svmClassifier.getFilteredClassifier().getFilter().setInputFormat(svmClassifier.instances);
+			
+			svmClassifier.trained = true;
+			classifiers.put(label, svmClassifier);
+			//break;
+		}
+		
+		
+		trained = true;
+		
+		System.out.println(this.trained);
+		log(LogLevel.INFO, "Done training");
+	}
+
+	/**
+	 * predict the categories for the sentence
+	 * @param sentence
+	 * @return
+	 * @throws Exception
+	 */
+	public  Set<ILabel> predictClassification(Sentence sentence) throws Exception{
+		Set<ILabel> result = new HashSet<ILabel>();
+		for(ILabel label : labels) {
+			Sentence twoClassSentence = this.createTwoClassData(label, sentence);
+			ILabel prediction = classifiers.get(label).predictClassification(twoClassSentence);
+			if(prediction.equals(BinaryLabel.YES))
+				result.add(label);
+			//break;
+		}
+		
+		log(LogLevel.INFO, "Prediction for " + sentence.getText() + "\n"
+				+ " -> " + ObjectStringifier.getInstance().stringify(result));
+		
+		System.out.println("Prediction for " + sentence.getText() + "\n"
+				+ " -> " + ObjectStringifier.getInstance().stringify(result));
+		
+
+		
+		return result;
+		
+	}
 	
 	public List<ILabel> getLabels() {
 		return labels;

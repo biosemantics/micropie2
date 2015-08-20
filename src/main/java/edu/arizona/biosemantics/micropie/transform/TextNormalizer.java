@@ -9,6 +9,12 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
 
+
+/**
+ * Preprocessing the texts before anything is about to do.
+ * @author 
+ *
+ */
 public class TextNormalizer implements ITextNormalizer {
 	
 	private LinkedHashMap<String, String> abbreviations;
@@ -157,6 +163,13 @@ public class TextNormalizer implements ITextNormalizer {
 		return text;
 	}
 	
+	
+	/**
+	 * replace the text by using the replacements
+	 * @param text
+	 * @param replacements
+	 * @return
+	 */
 	public String replace(String text, LinkedHashMap<String, String> replacements) {
 		for (String original : replacements.keySet()) {			
 			//or was this meant to work as regex replace? (.replace vs .replaceAll)

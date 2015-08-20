@@ -5,12 +5,14 @@ import java.util.List;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.common.log.ObjectStringifier;
+import edu.arizona.biosemantics.micropie.io.WekaModelCaller;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
+import weka.filters.Filter;
 import weka.filters.MultiFilter;
 
 /**
@@ -143,6 +145,7 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 		instance.setDataset(instances);
 		return instance;
 	}
+	
 
 	@Override
 	public ILabel getClassification(Sentence sentence) throws Exception {
@@ -164,5 +167,40 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 				+ " -> " + ObjectStringifier.getInstance().stringify(result));
 		return result;
 	}
+	
+	
+	public ILabel predictClassification(Sentence sentence) throws Exception {
+		if(!trained)
+			throw new Exception("Classifier is not trained");
+		
+		
+		
+		Instance instance = createInstance(sentence.getText());
+		/*
+		Instances testinstances = new Instances(instances,0);
+		testinstances.setClassIndex(0);
+		testinstances.add(instance);
+		
+		long b = System.currentTimeMillis();
+		filteredClassifier.getFilter().setInputFormat(testinstances);
+		Filter.useFilter(testinstances, filteredClassifier.getFilter());
+		long e = System.currentTimeMillis();
+		System.out.println(e-b);*/
+		log(LogLevel.TRACE, "Test data in ARFF format: \n" + instance.toString());
+		double[] resultDistribution = filteredClassifier.distributionForInstance(instance);
+		int maxPropabilityIndex = 0;
+		double maxPropability = 0.0;
+		for(int i=0; i<resultDistribution.length; i++) {
+			if(resultDistribution[i] > maxPropability) {
+				maxPropability = resultDistribution[i];
+				maxPropabilityIndex = i;
+			}
+		}
+		ILabel result = labels.get(maxPropabilityIndex);
+		log(LogLevel.INFO, "Prediction for " + sentence.toString() + "\n"
+				+ " -> " + ObjectStringifier.getInstance().stringify(result));
+		return result;
+	}
+	
 		
 }

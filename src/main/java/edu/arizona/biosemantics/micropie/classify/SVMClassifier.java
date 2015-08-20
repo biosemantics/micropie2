@@ -1,12 +1,16 @@
 package edu.arizona.biosemantics.micropie.classify;
 
+import java.io.File;
 import java.util.List;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
+import edu.arizona.biosemantics.micropie.io.WekaModelCaller;
 import weka.classifiers.functions.LibSVM;
 import weka.classifiers.meta.FilteredClassifier;
+import weka.core.Instances;
+import weka.filters.MultiFilter;
 
 /**
  * SVMClassifier wraps a support vector machine classifier of the weka toolkit
@@ -33,10 +37,17 @@ public class SVMClassifier extends WekaClassifierWrapper {
 		return svm;
 	}
 	
+	
 	/**
 	 * add by maojin
 	 */
 	public FilteredClassifier getFilteredClassifier(){
 		return super.filteredClassifier;
 	}
+	
+	
+	public Instances getInstances(){
+		return this.instances; 
+	}
+	
 }

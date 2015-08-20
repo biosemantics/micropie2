@@ -19,6 +19,11 @@ import edu.stanford.nlp.parser.lexparser.LexicalizedParserQuery;
 import edu.stanford.nlp.process.TokenizerFactory;
 import edu.stanford.nlp.trees.Tree;
 
+/**
+ * Split compound sentences into simple sentences
+ * #maojin add the comments
+ *
+ */
 public class CompoundSentenceSplitRun implements Callable<List<String>> {
 
 	private String sentence;
