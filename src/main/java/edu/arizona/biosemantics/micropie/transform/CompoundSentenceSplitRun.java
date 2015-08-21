@@ -93,7 +93,7 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 			//.replaceAll("\n", "\n                   ").trim());
 			
 			List<String> sentenceList = new ArrayList<String>();
-			// handleCaseA(sentence, sentenceList, clausIE);
+			handleCaseA(sentence, sentenceList, clausIE);
 			// handleCaseB(sentence, sentenceList, clausIE);	
 			
 			if (sentenceList.size() > 1) {
@@ -106,7 +106,7 @@ public class CompoundSentenceSplitRun implements Callable<List<String>> {
 					//dependencyTree = clausIE.getDepTree();
 					//cachedParseResults.put(sentence, getParseResult(dependencyTree, clausIE));
 					
-					// System.out.println("splittedSentenceText::" + sentenceText);
+					System.out.println("splittedSentenceText::" + sentenceText);
 					
 					result.add(sentenceText);
 				}

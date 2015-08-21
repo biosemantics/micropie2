@@ -18,22 +18,19 @@ import joptsimple.OptionSet;
 import de.mpii.clausie.Constituent.Flag;
 import edu.stanford.nlp.io.EncodingPrintWriter.out;
 import edu.stanford.nlp.ling.CoreLabel;
-//import edu.stanford.nlp.objectbank.TokenizerFactory;
+/** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+/** import edu.stanford.nlp.objectbank.TokenizerFactory;**/
 import edu.stanford.nlp.process.TokenizerFactory;
-
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParserQuery;
 import edu.stanford.nlp.pipeline.ParserAnnotatorUtils;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
+import edu.stanford.nlp.semgraph.SemanticGraphFactory;
 import edu.stanford.nlp.trees.Tree;
+/** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
 //import edu.stanford.nlp.trees.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraph;
-import edu.stanford.nlp.semgraph.SemanticGraphFactory;
-
-
-
-
 
 public class ClausIE {
 	Tree depTree;
@@ -94,26 +91,22 @@ public class ClausIE {
 
 	/** Initializes the Stanford parser. */
 	public void initParser() {
-		lp = LexicalizedParser
-				.loadModel("edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz");
+		lp = LexicalizedParser.loadModel("edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz");
 		tokenizerFactory = PTBTokenizer.factory(new CoreLabelTokenFactory(), "");
-		//lpq = lp.parserQuery();
-		lpq = (LexicalizedParserQuery) lp.parserQuery();
-		
-
-		
+		lpq = lp.lexicalizedParserQuery(); //.parserQuery();
+		/** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
 	}
 
 	/** Clears and parses a new sentence. */
 	public void parse(String sentence) {
 		clear();
-		List<CoreLabel> tokenizedSentence = tokenizerFactory.getTokenizer(new StringReader(sentence)).tokenize();
+		List<CoreLabel> tokenizedSentence = tokenizerFactory.getTokenizer(
+				new StringReader(sentence)).tokenize();
 		lpq.parse(tokenizedSentence); // what about the confidence?
-		
 		depTree = lpq.getBestParse();
-		
 		// use uncollapsed dependencies to facilitate tree creation
 		//semanticGraph = ParserAnnotatorUtils.generateUncollapsedDependencies(depTree);
+		
 		semanticGraph = SemanticGraphFactory.generateUncollapsedDependencies(depTree);
 	}
 

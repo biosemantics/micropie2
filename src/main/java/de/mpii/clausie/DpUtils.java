@@ -10,8 +10,6 @@ import java.util.TreeSet;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.trees.EnglishGrammaticalRelations;
 import edu.stanford.nlp.trees.GrammaticalRelation;
-//import edu.stanford.nlp.trees.semgraph.SemanticGraph;
-//import edu.stanford.nlp.trees.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 
@@ -100,10 +98,10 @@ public class DpUtils {
         return EnglishGrammaticalRelations.NOMINAL_PASSIVE_SUBJECT.equals(edge.getRelation());
     }
 
-    /** Checks if a given edge holds an external subject relation of an xcomp relation */
+    /** Checks if a given edge holds an external subject relation of an xcomp relation 
     public static boolean isXsubj(SemanticGraphEdge edge) {
         return EnglishGrammaticalRelations.CONTROLLING_SUBJECT.equals(edge.getRelation());
-    }
+    }*/
 
     /** Checks if a given edge holds an object relation */
     public static boolean isAnyObj(SemanticGraphEdge edge) {
@@ -145,20 +143,26 @@ public class DpUtils {
         return EnglishGrammaticalRelations.APPOSITIONAL_MODIFIER.equals(edge.getRelation());
     }
 
-    /** Checks if a given edge holds an purpose clause modifier relation */
-    //public static boolean isPurpcl(SemanticGraphEdge edge) {
-    //    return EnglishGrammaticalRelations.PURPOSE_CLAUSE_MODIFIER.equals(edge.getRelation());
-    //}
+    /** Checks if a given edge holds an purpose clause modifier relation
+     * It is now just seen as a special case of an advcl
+    public static boolean isPurpcl(SemanticGraphEdge edge) {
+    	//return EnglishGrammaticalRelations.PURPOSE_CLAUSE_MODIFIER.equals(edge.getRelation());
+        return EnglishGrammaticalRelations.VERBAL_MODIFIER.equals(edge.getRelation());
+    } */
 
     /** Checks if a given edge holds a xcomp relation */
     public static boolean isXcomp(SemanticGraphEdge edge) {
         return EnglishGrammaticalRelations.XCLAUSAL_COMPLEMENT.equals(edge.getRelation());
     }
 
-    /** Checks if a given edge holds a complementizer relation */
-    //public static boolean isComplm(SemanticGraphEdge edge) {
-    //   return EnglishGrammaticalRelations.COMPLEMENTIZER.equals(edge.getRelation());
-    //}
+    /** Checks if a given edge holds a complementizer relation
+     *  that or whether 
+    public static boolean isComplm(SemanticGraphEdge edge) {
+    	//edge.getDependent().word().equals("that")||edge.getDependent().word().equals("whether")
+        return EnglishGrammaticalRelations.MARKER.equals(edge.getRelation());
+        //return EnglishGrammaticalRelations.COMPLEMENTIZER.equals(edge.getRelation());
+    }
+    */
 
     /** Checks if a given edge holds an agent relation */
     public static boolean isAgent(SemanticGraphEdge edge) {
@@ -232,7 +236,8 @@ public class DpUtils {
 
     /** Checks if a given edge holds a participial modifier relation */
     public static boolean isPartMod(SemanticGraphEdge edge) {
-        return EnglishGrammaticalRelations.PARTICIPIAL_MODIFIER.equals(edge.getRelation());
+        //return EnglishGrammaticalRelations.PARTICIPIAL_MODIFIER.equals(edge.getRelation());
+        return EnglishGrammaticalRelations.VERBAL_MODIFIER.equals(edge.getRelation());
     }
 
     /** Checks if a given edge holds a temporal modifier relation */
@@ -280,10 +285,11 @@ public class DpUtils {
         return EnglishGrammaticalRelations.PARATAXIS.equals(edge.getRelation());
     }
     
-    /** Checks if a given edge holds an infinitival modifier relation */
+    /** Checks if a given edge holds an infinitival modifier relation
     public static boolean isInfmod(SemanticGraphEdge edge) {
 		return EnglishGrammaticalRelations.INFINITIVAL_MODIFIER.equals(edge.getRelation());
 	}
+     */
     
     /** Checks if a given edge holds a predeterminer relation */
     public static boolean isPredet(SemanticGraphEdge edge) {

@@ -11,8 +11,6 @@ import de.mpii.clausie.Constituent.Type;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.trees.EnglishGrammaticalRelations;
 import edu.stanford.nlp.trees.GrammaticalRelation;
-//import edu.stanford.nlp.trees.semgraph.SemanticGraph;
-//import edu.stanford.nlp.trees.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 
@@ -53,8 +51,7 @@ class ClauseDetector {
 
     /** Detects clauses in the input sentence */
     static void detectClauses(ClausIE clausIE) {
-        //SemanticGraph sentSemanticGraph = clausIE.semanticGraph;
-    	//IndexedConstituent.sentSemanticGraph = clausIE.semanticGraph;
+        IndexedConstituent.sentSemanticGraph = clausIE.semanticGraph;
         List<IndexedWord> roots = new ArrayList<IndexedWord>();
         for (SemanticGraphEdge edge : clausIE.semanticGraph.edgeIterable()) {
             // check whether the edge identifies a clause
@@ -198,15 +195,14 @@ class ClauseDetector {
             Constituent constRoot = null;
             if (cop != null) {
                 clause.complement = clause.constituents.size();
-                constRoot = new IndexedConstituent(clausIE.semanticGraph, semanticGraph, root,
+                constRoot = new IndexedConstituent(semanticGraph, root,
                         Collections.<IndexedWord> emptySet(), exclude, Constituent.Type.COMPLEMENT);
                 clause.constituents.add(constRoot);
 
                 clause.verb = clause.constituents.size();
                 if (!partmod) {
-                    clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph, 
-                    		semanticGraph, cop.getDependent(), include, 
-                    		Collections.<IndexedWord> emptySet(),
+                    clause.constituents.add(new IndexedConstituent(semanticGraph, cop
+                            .getDependent(), include, Collections.<IndexedWord> emptySet(),
                             Constituent.Type.VERB));
                 } else {
                     clause.constituents.add(new TextConstituent("be " + clauseRoot.word(),
@@ -216,7 +212,7 @@ class ClauseDetector {
             } else {
                 clause.verb = clause.constituents.size();
                 if (!partmod) {
-                    constRoot = new IndexedConstituent(clausIE.semanticGraph, semanticGraph, root,
+                    constRoot = new IndexedConstituent(semanticGraph, root,
                             Collections.<IndexedWord> emptySet(), exclude, Constituent.Type.VERB);
                 } else {
                     constRoot = new TextConstituent("be " + clauseRoot.word(),
@@ -228,12 +224,12 @@ class ClauseDetector {
 
             clause.subject = clause.constituents.size();
             if (subject.tag().charAt(0) == 'W' && rcmod != null) {
-                clause.constituents.add(createRelConstituent(clausIE.semanticGraph, semanticGraph, rcmod.getGovernor(),
+                clause.constituents.add(createRelConstituent(semanticGraph, rcmod.getGovernor(),
                         Type.SUBJECT));
                 ((IndexedConstituent) constRoot).getExcludedVertexes().add(subject);
                 rcmod = null;
             } else if (poss != null && poss.getGovernor().equals(subject) && rcmod != null) {
-                clause.constituents.add(createPossConstituent(clausIE.semanticGraph, semanticGraph, poss, rcmod, subject,
+                clause.constituents.add(createPossConstituent(semanticGraph, poss, rcmod, subject,
                         Type.SUBJECT));
                 rcmod = null;
             } else if (partmod && subject.tag().charAt(0) == 'V') {
@@ -241,14 +237,14 @@ class ClauseDetector {
                 SemanticGraphEdge sub = DpUtils.findFirstOfRelationOrDescendent(outsub,
                         EnglishGrammaticalRelations.SUBJECT);
                 if (sub != null)
-                    clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph,semanticGraph, sub
+                    clause.constituents.add(new IndexedConstituent(semanticGraph, sub
                             .getDependent(), Constituent.Type.SUBJECT));
                 else
-                    clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph,semanticGraph, subject,
+                    clause.constituents.add(new IndexedConstituent(semanticGraph, subject,
                             Constituent.Type.SUBJECT));
 
             } else
-                clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph,semanticGraph, subject,
+                clause.constituents.add(new IndexedConstituent(semanticGraph, subject,
                         Constituent.Type.SUBJECT));
             
            //If the clause comes from a partmod construction exclude necesary vertex
@@ -275,59 +271,48 @@ class ClauseDetector {
                 IndexedWord dependent = outgoingEdge.getDependent();
 
                 // to avoid compl or mark in a main clause. "I doubt if she was sure whether this was important".
-                /* Marked by Elvis Hsin-Hui Wu
-                 * Since stanford-core-nlp never support those two functions
-                 * Checks if a given edge holds an purpose clause modifier relation
-                 * public static boolean isPurpcl(SemanticGraphEdge edge) {
-                 *   return EnglishGrammaticalRelations.PURPOSE_CLAUSE_MODIFIER.equals(edge.getRelation());
-                 * }
-				 * Checks if a given edge holds a complementizer relation
-				 * public static boolean isComplm(SemanticGraphEdge edge) {
-				 *   return EnglishGrammaticalRelations.COMPLEMENTIZER.equals(edge.getRelation());
-				 * }
-                if (DpUtils.isComplm(outgoingEdge) || DpUtils.isMark(outgoingEdge)) {
+                //if (DpUtils.isComplm(outgoingEdge) || DpUtils.isMark(outgoingEdge)) {
+                if (DpUtils.isMark(outgoingEdge)) {//They are merged in the new version of SP. maojin added this
                     ((IndexedConstituent) constRoot).getExcludedVertexes().add(dependent);
                 //Indirect Object
                 } else if (DpUtils.isIobj(outgoingEdge)) {
-                */
-                if (DpUtils.isIobj(outgoingEdge)) {
-                	clause.iobjects.add(clause.constituents.size());
+                    clause.iobjects.add(clause.constituents.size());
                     //If it is a relative clause headed by a relative pronoun.
                     if (dependent.tag().charAt(0) == 'W' && rcmod != null) {
-                        clause.constituents.add(createRelConstituent(clausIE.semanticGraph,semanticGraph,
+                        clause.constituents.add(createRelConstituent(semanticGraph,
                                 rcmod.getGovernor(), Type.IOBJ));
                         ((IndexedConstituent) constRoot).getExcludedVertexes().add(dependent);
                         rcmod = null;
                     //to deal with the possessive relative pronoun     
                     } else if (poss != null && poss.getGovernor().equals(dependent)
                             && rcmod != null) {
-                        clause.constituents.add(createPossConstituent(clausIE.semanticGraph,semanticGraph, poss, rcmod,
+                        clause.constituents.add(createPossConstituent(semanticGraph, poss, rcmod,
                                 dependent, Type.IOBJ));
                         rcmod = null;
                     // "regular case"    
                     } else
-                        clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph,semanticGraph, dependent,
+                        clause.constituents.add(new IndexedConstituent(semanticGraph, dependent,
                                 Constituent.Type.IOBJ));
                 //Direct Object
                 } else if (DpUtils.isDobj(outgoingEdge)) {
                     clause.dobjects.add(clause.constituents.size());
                     if (dependent.tag().charAt(0) == 'W' && rcmod != null) {
-                        clause.constituents.add(createRelConstituent(clausIE.semanticGraph,semanticGraph,
+                        clause.constituents.add(createRelConstituent(semanticGraph,
                                 rcmod.getGovernor(), Type.DOBJ));
                         ((IndexedConstituent) constRoot).getExcludedVertexes().add(dependent);
                         rcmod = null;
                     } else if (poss != null && poss.getGovernor().equals(dependent)
                             && rcmod != null) {
-                        clause.constituents.add(createPossConstituent(clausIE.semanticGraph, semanticGraph, poss, rcmod,
+                        clause.constituents.add(createPossConstituent(semanticGraph, poss, rcmod,
                                 dependent, Type.DOBJ));
                         rcmod = null;
                     } else
-                        clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph,semanticGraph, dependent,
+                        clause.constituents.add(new IndexedConstituent(semanticGraph, dependent,
                                 Constituent.Type.DOBJ));
                 //CCOMPS
                 } else if (DpUtils.isCcomp(outgoingEdge)) {
                     clause.ccomps.add(clause.constituents.size());
-                    clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph,semanticGraph, dependent,
+                    clause.constituents.add(new IndexedConstituent(semanticGraph, dependent,
                             Constituent.Type.CCOMP));
                 //XCOMPS (Note: Need special treatment, they won't form a new clause so optional/obligatory constituents
                 // are managed within the context of its parent clause)
@@ -352,54 +337,42 @@ class ClauseDetector {
                         excludeVertexes(cl);
                     }
                     clause.xcomps.add(clause.constituents.size());
-                    clause.constituents.add(new XcompConstituent(clausIE.semanticGraph, 
-                    		semanticGraph, dependent,
+                    clause.constituents.add(new XcompConstituent(semanticGraph, dependent,
                             Constituent.Type.XCOMP, xcompclauses));
                  //Adjective complement
                 } else if (DpUtils.isAcomp(outgoingEdge)) { 
                     clause.acomps.add(clause.constituents.size());
-                    clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph, semanticGraph, dependent,
+                    clause.constituents.add(new IndexedConstituent(semanticGraph, dependent,
                             Constituent.Type.ACOMP));
                  //Various Adverbials
-                /* Marked by Elvis Hsin-Hui Wu since it never support is
-                
                 } else if ((DpUtils.isAnyPrep(outgoingEdge)
 						|| DpUtils.isPobj(outgoingEdge)
 						|| DpUtils.isTmod(outgoingEdge)
 						|| DpUtils.isAdvcl(outgoingEdge)
-						|| DpUtils.isNpadvmod(outgoingEdge) || DpUtils
-							.isPurpcl(outgoingEdge))
+						|| DpUtils.isNpadvmod(outgoingEdge))// || DpUtils.isPurpcl(outgoingEdge)
 
 				) {
-				*/
-                } else if ((DpUtils.isAnyPrep(outgoingEdge)
-						|| DpUtils.isPobj(outgoingEdge)
-						|| DpUtils.isTmod(outgoingEdge)
-						|| DpUtils.isAdvcl(outgoingEdge)
-						|| DpUtils.isNpadvmod(outgoingEdge)) 
-
-				) {    
 					int constint = clause.constituents.size();
 					clause.adverbials.add(constint);
-					clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph,
+					clause.constituents.add(new IndexedConstituent(
 							semanticGraph, dependent,
 							Constituent.Type.ADVERBIAL));
 				//Advmod
 				} else if (DpUtils.isAdvmod(outgoingEdge)) {
                     int constint = clause.constituents.size();
                     clause.adverbials.add(constint);
-                    clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph,semanticGraph, dependent,
+                    clause.constituents.add(new IndexedConstituent(semanticGraph, dependent,
                             Constituent.Type.ADVERBIAL));
                  //Partmod    
                 } else if (DpUtils.isPartMod(outgoingEdge)) { 
                     int constint = clause.constituents.size();
                     clause.adverbials.add(constint);
-                    clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph,semanticGraph, dependent,
+                    clause.constituents.add(new IndexedConstituent(semanticGraph, dependent,
                             Constituent.Type.ADVERBIAL));
                  //Rel appears in certain cases when relative pronouns act as prepositional objects "I saw the house in which I grew".
                  // We generate a new clause out of the relative clause   
                 } else if (DpUtils.isRel(outgoingEdge)) {
-                	processRel(clausIE.semanticGraph, outgoingEdge, semanticGraph, dependent, rcmod, clause);
+                	processRel(outgoingEdge, semanticGraph, dependent, rcmod, clause);
                 	rcmod = null;
                 	
                 //To process passive voice (!Not done here)
@@ -420,11 +393,16 @@ class ClauseDetector {
                 if (candidate != null) {
                     SemanticGraph newSemanticGraph = new SemanticGraph(
                             ((IndexedConstituent) candidate).getSemanticGraph());
-                    IndexedConstituent tmpconst = createRelConstituent(clausIE.semanticGraph, newSemanticGraph,
+                    IndexedConstituent tmpconst = createRelConstituent(newSemanticGraph,
                             rcmod.getGovernor(), Type.ADVERBIAL);
+                    /** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+                    /*newSemanticGraph.addEdge(((IndexedConstituent) candidate).getRoot(),
+                            rcmod.getGovernor(), EnglishGrammaticalRelations.PREPOSITIONAL_OBJECT,
+                            rcmod.getWeight());
+                    */
                     newSemanticGraph.addEdge(((IndexedConstituent) candidate).getRoot(),
                             rcmod.getGovernor(), EnglishGrammaticalRelations.PREPOSITIONAL_OBJECT,
-                            rcmod.getWeight(), false);
+                            rcmod.getWeight(),false);
                     ((IndexedConstituent) candidate).getExcludedVertexes().addAll(
                             tmpconst.getExcludedVertexes());
                     ((IndexedConstituent) candidate).setSemanticGraph(newSemanticGraph);
@@ -432,13 +410,13 @@ class ClauseDetector {
                 } else if (DpUtils.findFirstOfRelation(outgoingEdges,
                         EnglishGrammaticalRelations.DIRECT_OBJECT) == null) {
                     clause.dobjects.add(clause.constituents.size());
-                    clause.constituents.add(createRelConstituent(clausIE.semanticGraph,semanticGraph,
+                    clause.constituents.add(createRelConstituent(semanticGraph,
                             rcmod.getGovernor(), Type.DOBJ));
                     rcmod = null;
                 } else if (DpUtils.findFirstOfRelation(outgoingEdges,
                         EnglishGrammaticalRelations.INDIRECT_OBJECT) == null) {
                     clause.iobjects.add(clause.constituents.size());
-                    clause.constituents.add(createRelConstituent(clausIE.semanticGraph,semanticGraph,
+                    clause.constituents.add(createRelConstituent(semanticGraph,
                             rcmod.getGovernor(), Type.IOBJ));
                     rcmod = null;
                 }
@@ -471,13 +449,12 @@ class ClauseDetector {
     }
 
     /** Process relation rel, it creates a new clause out of the relative clause 
-     * @param semanticGraph2 
      * @param outgoingEdge The rel labeled edge
      * @param semanticGraph The semantic graph
      * @param dependent The dependent of the relation
      * @param rcmod The relative clause modifier of the relation refered by rel
      * @param clause A clause*/
-    private static void processRel(SemanticGraph sentSemanticGraph, SemanticGraphEdge outgoingEdge, SemanticGraph semanticGraph, IndexedWord dependent, SemanticGraphEdge rcmod, Clause clause) {
+    private static void processRel(SemanticGraphEdge outgoingEdge, SemanticGraph semanticGraph, IndexedWord dependent, SemanticGraphEdge rcmod, Clause clause) {
     	 SemanticGraph newSemanticGraph = new SemanticGraph(semanticGraph);
          List<SemanticGraphEdge> outdep = newSemanticGraph.getOutEdgesSorted(dependent);
          SemanticGraphEdge pobed = DpUtils.findFirstOfRelation(outdep,
@@ -493,27 +470,36 @@ class ClauseDetector {
 
          if (pobed != null && pobed.getDependent().tag().charAt(0) == 'W'
                  && rcmod != null) {
+        	 /** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+             /*newSemanticGraph.addEdge(dependent, rcmod.getGovernor(),
+                     EnglishGrammaticalRelations.PREPOSITIONAL_OBJECT,
+                     pobed.getWeight());
+                     */
              newSemanticGraph.addEdge(dependent, rcmod.getGovernor(),
                      EnglishGrammaticalRelations.PREPOSITIONAL_OBJECT,
-                     pobed.getWeight(), false);
+                     pobed.getWeight(),false);
              newSemanticGraph.removeEdge(pobed);
              int constint = clause.constituents.size();
              clause.adverbials.add(constint);
-             clause.constituents.add(createRelConstituent(sentSemanticGraph, newSemanticGraph,
+             clause.constituents.add(createRelConstituent(newSemanticGraph,
                      rcmod.getGovernor(), Type.SUBJECT));
              ((IndexedConstituent) clause.constituents.get(constint))
                      .setRoot(dependent);
              clause.relativeAdverbial = true;
              rcmod = null;
          } else if (pobed != null && posspobj != null && rcmod != null) {
+        	 /** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+             /*newSemanticGraph.addEdge(posspobj.getGovernor(), rcmod.getGovernor(),
+                     EnglishGrammaticalRelations.POSSESSION_MODIFIER,
+                     posspobj.getWeight());*/
              newSemanticGraph.addEdge(posspobj.getGovernor(), rcmod.getGovernor(),
                      EnglishGrammaticalRelations.POSSESSION_MODIFIER,
-                     posspobj.getWeight(), false);
+                     posspobj.getWeight(),false);
              newSemanticGraph.removeEdge(posspobj);
              int constint = clause.constituents.size();
              clause.adverbials.add(constint);
              // search pobj copy edge.
-             clause.constituents.add(createRelConstituent(sentSemanticGraph, newSemanticGraph,
+             clause.constituents.add(createRelConstituent(newSemanticGraph,
                      rcmod.getGovernor(), Type.SUBJECT));
              ((IndexedConstituent) clause.constituents.get(constint))
                      .setRoot(dependent);
@@ -539,19 +525,21 @@ class ClauseDetector {
     * @param rcmod The relative clause modifier of the relation
     * @param constGovernor The root of the constituent
     * @param type The type of the constituent*/
-    private static Constituent createPossConstituent(SemanticGraph sentSemanticGraph,
-    		SemanticGraph semanticGraph,
+    private static Constituent createPossConstituent(SemanticGraph semanticGraph,
             SemanticGraphEdge poss, SemanticGraphEdge rcmod, IndexedWord constGovernor, Type type) {
 
         SemanticGraph newSemanticGraph = new SemanticGraph(semanticGraph);
         double weight = poss.getWeight();
+        /** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+        /*newSemanticGraph.addEdge(poss.getGovernor(), rcmod.getGovernor(),
+                EnglishGrammaticalRelations.POSSESSION_MODIFIER, weight);*/
         newSemanticGraph.addEdge(poss.getGovernor(), rcmod.getGovernor(),
-                EnglishGrammaticalRelations.POSSESSION_MODIFIER, weight, false);
+                EnglishGrammaticalRelations.POSSESSION_MODIFIER, weight,false);
         Set<IndexedWord> exclude = DpUtils.exclude(newSemanticGraph, EXCLUDE_RELATIONS_COMPLEMENT,
                 rcmod.getGovernor());
         newSemanticGraph.removeEdge(poss);
         newSemanticGraph.removeEdge(rcmod);
-        return new IndexedConstituent(sentSemanticGraph, newSemanticGraph, constGovernor,
+        return new IndexedConstituent(newSemanticGraph, constGovernor,
                 Collections.<IndexedWord> emptySet(), exclude, type);
     }
 
@@ -559,7 +547,7 @@ class ClauseDetector {
     * @param semanticGraph The semantic graph
     * @param root The root of the constituent
     * @param type The type of the constituent*/
-    private static IndexedConstituent createRelConstituent(SemanticGraph sentSemanticGraph, SemanticGraph semanticGraph,
+    private static IndexedConstituent createRelConstituent(SemanticGraph semanticGraph,
             IndexedWord root, Type type) {
 
         List<SemanticGraphEdge> outrcmod = semanticGraph.getOutEdgesSorted(root);
@@ -568,10 +556,10 @@ class ClauseDetector {
         if (rccop != null) {
             Set<IndexedWord> excludercmod = DpUtils.exclude(semanticGraph,
                     EXCLUDE_RELATIONS_COMPLEMENT, root);
-            return new IndexedConstituent(sentSemanticGraph, semanticGraph, root,
+            return new IndexedConstituent(semanticGraph, root,
                     Collections.<IndexedWord> emptySet(), excludercmod, type);
         } else
-            return new IndexedConstituent(sentSemanticGraph, semanticGraph, root, type);
+            return new IndexedConstituent(semanticGraph, root, type);
     }
 
     /** Generates a clause from an apposition 
@@ -582,11 +570,11 @@ class ClauseDetector {
         clause.subject = 0;
         clause.verb = 1;
         clause.complement = 2;
-        clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph, clausIE.semanticGraph, subject,
+        clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph, subject,
                 Constituent.Type.SUBJECT));
         clause.constituents.add(new TextConstituent(clausIE.options.appositionVerb,
                 Constituent.Type.VERB));
-        clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph, clausIE.semanticGraph, object,
+        clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph, object,
                 Constituent.Type.COMPLEMENT));
         clause.type = Clause.Type.SVC;
         clausIE.clauses.add(clause);
@@ -626,19 +614,17 @@ class ClauseDetector {
         }
 
         if (rcmod != null) {
-            clause.constituents.add(createRelConstituent(clausIE.semanticGraph, newSemanticGraph, rcmod.getGovernor(),
+            clause.constituents.add(createRelConstituent(newSemanticGraph, rcmod.getGovernor(),
                     Type.SUBJECT));
             ((IndexedConstituent) clause.constituents.get(0)).getExcludedVertexes().addAll(
                     excludesub); // to avoid the s in  "Bill's clothes are great".
         } else {
-            clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph, 
-            		newSemanticGraph, subject, Collections
+            clause.constituents.add(new IndexedConstituent(newSemanticGraph, subject, Collections
                     .<IndexedWord> emptySet(), excludesub, Type.SUBJECT));
         }
         clause.constituents.add(new TextConstituent(clausIE.options.possessiveVerb,
                 Constituent.Type.VERB));
-        clause.constituents.add(new IndexedConstituent(clausIE.semanticGraph, 
-        		newSemanticGraph, object, Collections
+        clause.constituents.add(new IndexedConstituent(newSemanticGraph, object, Collections
                 .<IndexedWord> emptySet(), excludeobj, Constituent.Type.DOBJ));
         clause.type = Clause.Type.SVO;
         clausIE.clauses.add(clause);
@@ -678,15 +664,14 @@ class ClauseDetector {
     * @param roots List of clause roots*/
     private static void addParataxisClause(ClausIE clausIE, IndexedWord root, IndexedWord parroot,
             List<IndexedWord> roots) {
-        Constituent verb = new IndexedConstituent(clausIE.semanticGraph, clausIE.semanticGraph, parroot, Type.VERB);
+        Constituent verb = new IndexedConstituent(clausIE.semanticGraph, parroot, Type.VERB);
         List<SemanticGraphEdge> outedges = clausIE.semanticGraph.getOutEdgesSorted(parroot);
         SemanticGraphEdge subject = DpUtils.findFirstOfRelationOrDescendent(outedges,
                 EnglishGrammaticalRelations.SUBJECT);
         if (subject != null) {
-            Constituent subjectConst = new IndexedConstituent(clausIE.semanticGraph, 
-            		clausIE.semanticGraph,
+            Constituent subjectConst = new IndexedConstituent(clausIE.semanticGraph,
                     subject.getDependent(), Type.SUBJECT);
-            Constituent object = new IndexedConstituent(clausIE.semanticGraph, clausIE.semanticGraph, root, Type.DOBJ);
+            Constituent object = new IndexedConstituent(clausIE.semanticGraph, root, Type.DOBJ);
             ((IndexedConstituent) object).excludedVertexes.add(parroot);
             Clause clause = new Clause();
             clause.subject = 0;

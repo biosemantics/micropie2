@@ -10,6 +10,9 @@ import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.trees.EnglishGrammaticalRelations;
 import edu.stanford.nlp.trees.GrammaticalRelation;
 import edu.stanford.nlp.trees.Tree;
+/** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+//import edu.stanford.nlp.trees.semgraph.SemanticGraph;
+//import edu.stanford.nlp.trees.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 
@@ -115,7 +118,9 @@ public class ProcessConjunctions {
                 for (IndexedWord parent : parents) {
                     GrammaticalRelation reln = newSemanticGraph.reln(parent, root);
                     double weight = newSemanticGraph.getEdge(parent, root).getWeight();
-                    newSemanticGraph.addEdge(parent, newRoot, reln, weight, false);
+                    //newSemanticGraph.addEdge(parent, newRoot, reln, weight);
+                    /** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+                    newSemanticGraph.addEdge(parent, newRoot, reln, weight,false);//isExtra
                 }
 
                 // Checks if the children also belong to the conjoint and if they do, it assignes
@@ -128,7 +133,9 @@ public class ProcessConjunctions {
                             && isDescendant(depTree, newRoot.index(), root.index(), child.index())) {
                         GrammaticalRelation reln = newSemanticGraph.reln(root, child);
                         double weight = newSemanticGraph.getEdge(root, child).getWeight();
-                        newSemanticGraph.addEdge(newRoot, child, reln, weight, false);
+                        /** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+                        //newSemanticGraph.addEdge(newRoot, child, reln, weight);
+                        newSemanticGraph.addEdge(newRoot, child, reln, weight,false);
                     }
                 }
 
@@ -253,7 +260,9 @@ public class ProcessConjunctions {
     			//Connect each node in ccs to its parent
     	        for (SemanticGraphEdge ed : semanticGraph.getIncomingEdgesSorted(ccs.get(i))) {
     	        	if(semanticGraph.getParents(ccs.get(j)).contains(ed.getGovernor())) continue;
-    	            semanticGraph.addEdge(ed.getGovernor(), ccs.get(j), ed.getRelation(), ed.getWeight(), false);
+    	        	/** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+    	            //semanticGraph.addEdge(ed.getGovernor(), ccs.get(j), ed.getRelation(), ed.getWeight());
+    	            semanticGraph.addEdge(ed.getGovernor(), ccs.get(j), ed.getRelation(), ed.getWeight(),false);
     	        }
 
     	       //Check if the dependents of the main conjoint are also dependent on each of the conjoints
@@ -263,7 +272,9 @@ public class ProcessConjunctions {
     	            if(semanticGraph.getChildren(ccs.get(j)).contains(child)) continue;
     	            if (!DpUtils.isAnyConj(ed) && !DpUtils.isCc(ed)
     	                    && isDescendant(depTree, ccs.get(j).index(), ccs.get(i).index(), child.index())) {
-    	                semanticGraph.addEdge(ccs.get(j), child, ed.getRelation(), ed.getWeight(), false);
+    	            	/** modified by maojin upgrade the stanford parser from 3.2.0 to 3.5.1 **/
+    	                //semanticGraph.addEdge(ccs.get(j), child, ed.getRelation(), ed.getWeight());
+    	                semanticGraph.addEdge(ccs.get(j), child, ed.getRelation(), ed.getWeight(),false);
     	            }
     	        }
     			

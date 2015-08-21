@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import edu.stanford.nlp.ling.IndexedWord;
-//import edu.stanford.nlp.trees.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 
 
@@ -33,9 +32,9 @@ public class XcompConstituent extends IndexedConstituent {
      * @param root The root vertex of this constituent ({@see {@link #root})
      * @param type type of this constituent 
      * @param clauses derived from this constituent*/
-	public XcompConstituent(SemanticGraph sentSemanticGraph, SemanticGraph semanticGraph, IndexedWord root,
+	public XcompConstituent(SemanticGraph semanticGraph, IndexedWord root,
 			Type type, List<Clause> clauses) {
-		super(sentSemanticGraph, semanticGraph, root, type);
+		super(semanticGraph, root, type);
 		this.setClauses(clauses);
 	}
 	/** Constructs a new indexed constituent for the xcomp relation.
@@ -48,10 +47,10 @@ public class XcompConstituent extends IndexedConstituent {
      *            {@link #excludedVertexes})
      * @param type type of this constituent
      * * @param clauses derived from this constituent*/
-	public XcompConstituent(SemanticGraph sentSemanticGraph, SemanticGraph semanticGraph, IndexedWord root,
+	public XcompConstituent(SemanticGraph semanticGraph, IndexedWord root,
 			Set<IndexedWord> additionalVertexes,
 			Set<IndexedWord> excludedVertexes, Type type, List<Clause> clauses) {
-		super(sentSemanticGraph, semanticGraph, root, additionalVertexes, excludedVertexes, type);
+		super(semanticGraph, root, additionalVertexes, excludedVertexes, type);
 		this.setClauses(clauses);
 	}
 
@@ -69,7 +68,6 @@ public class XcompConstituent extends IndexedConstituent {
 	public XcompConstituent clone() {
     	XcompConstituent clone = new XcompConstituent();
         clone.type = type;
-        clone.sentSemanticGraph = new SemanticGraph(this.sentSemanticGraph);
         clone.semanticGraph = new SemanticGraph(this.getSemanticGraph());
         clone.root = this.getRoot();
         clone.additionalVertexes = new TreeSet<IndexedWord>(this.additionalVertexes);

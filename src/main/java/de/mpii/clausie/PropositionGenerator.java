@@ -10,9 +10,7 @@ import java.util.TreeSet;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.trees.EnglishGrammaticalRelations;
 import edu.stanford.nlp.trees.GrammaticalRelation;
-//import edu.stanford.nlp.trees.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraph;
-
 
 /** Handles the generation of propositions out of a given clause
  * 
