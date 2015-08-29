@@ -33,6 +33,15 @@ public class CharacterValueExtractorReader implements
 	}
 	
 	@Override
+	/**
+	 * create ValueExtractor from the file name, either USP or Keyword-based
+	 * 
+	 * Example : 
+	 * 	file name: c2.Cell wall.key
+	 * 	labelName: c2
+	 * 	character: Cell wall
+	 *  type:key
+	 */
 	public ICharacterValueExtractor read(File file) throws Exception {
 		String name = file.getName();
 		int firstDotIndex = name.indexOf(".");
@@ -56,6 +65,15 @@ public class CharacterValueExtractorReader implements
 		}
 	}
 
+	
+	/**
+	 * Create  value extractor which extracts values by USP
+	 * @param file : contains the initial USP request
+	 * @param labelName
+	 * @param character
+	 * @return
+	 * @throws IOException
+	 */
 	private ICharacterValueExtractor createUSPBasedExtractor(File file,
 			String labelName, String character) throws IOException {
 		Set<USPRequest> uspRequests = new HashSet<USPRequest>();
@@ -75,6 +93,15 @@ public class CharacterValueExtractorReader implements
 		return new USPBasedExtractor(Label.valueOf(labelName), character, uspRequests, uspResultsDirectory, uspString);
 	}
 
+	
+	/**
+	 * Create keyword based extractor
+	 * @param file: contains the initial keywords
+	 * @param labelName
+	 * @param character
+	 * @return
+	 * @throws IOException
+	 */
 	private ICharacterValueExtractor createKeywordBasedExtractor(File file, String labelName, String character) throws IOException {
 		Set<String> keywords = new HashSet<String>();
 		BufferedReader br = new BufferedReader(new InputStreamReader(

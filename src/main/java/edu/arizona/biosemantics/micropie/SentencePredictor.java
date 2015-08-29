@@ -46,7 +46,11 @@ public class SentencePredictor{
 		}
 	}
 	
-	
+	/**
+	 * Predict the categories for the text
+	 * @param text
+	 * @return
+	 */
 	public Set<ILabel> predict(String text) {
 		
 		//Habitat is not known.
@@ -60,11 +64,23 @@ public class SentencePredictor{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(testSentence + "====" + prediction);
 		return prediction;
 	}
-
 	
+	/**
+	 * Predict the categories for the sentence
+	 * @param sent
+	 * @return
+	 */
+	public Set<ILabel> predict(Sentence sent) {
+		Set<ILabel> prediction = null;
+		try {
+			prediction = msvmClassifier.getClassification(sent);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prediction;
+	}
 	
 	
 }

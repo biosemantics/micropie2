@@ -4,6 +4,13 @@ import java.io.File;
 
 import com.google.inject.name.Named;
 
+
+/**
+ * Configuration for some settings
+ * 
+ * @author maojin
+ *
+ */
 public class Configuration {
 	private String wordNetDictDir = null;
 	private String openNLPModelDir = null;
@@ -20,6 +27,7 @@ public class Configuration {
 	private static final int defaultNumLeadWords = 3;
 
 	public Configuration(@Named("resFolder")String resFolder) {
+		System.out.println(resFolder);
 		//this.learningMode = learningMode;
 		this.learningMode = System.getProperty("charaparser.learningmode");
 		if (this.learningMode == null){

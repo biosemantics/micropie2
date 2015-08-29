@@ -137,7 +137,7 @@ public class GrowthTempOptimumExtractor extends AbstractCharacterValueExtractor 
 		while (matcher.find()) {
 			// System.out.println("Whloe Sent::" + matcher.group());
 			// System.out.println("Part 1::" + matcher.group(1));
-			System.out.println("Part 2::" + matcher.group(2));
+			//System.out.println("Part 2::" + matcher.group(2));
 			// System.out.println("Part 3::" + matcher.group(3));
 			String matchPartString = matcher.group(2);
 			// System.out.println("targetPattern::" + targetPattern);
@@ -159,7 +159,7 @@ public class GrowthTempOptimumExtractor extends AbstractCharacterValueExtractor 
 	
 	// Example: Growth occurs at 20–50 ˚C, with optimum growth at 37–45 ˚C.
 	public static void main(String[] args) throws IOException {
-		System.out.println("Start");
+		//System.out.println("Start");
 		GrowthTempOptimumExtractor growthTempOptimumExtractor = new GrowthTempOptimumExtractor(Label.c3);	
 		
 		
@@ -224,7 +224,7 @@ public class GrowthTempOptimumExtractor extends AbstractCharacterValueExtractor 
 		sourceSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
 		sourceSentenceReader.readSVMLabelAndCategoryMapping();
 		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
+		//System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
 
 		
 		String outputFile = "micropieInput_zip_output/GrowthTempOptimum_Regex.csv";

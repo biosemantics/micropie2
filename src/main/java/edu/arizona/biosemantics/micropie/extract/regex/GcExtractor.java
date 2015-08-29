@@ -167,10 +167,10 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		Matcher matcherGc = patternGc.matcher(text);
 
 		while (matcherGc.find()) {
-			System.out.println("Case 1::");
+			//System.out.println("Case 1::");
 			// System.out.println("Whloe Sent::" + matcherGc.group());
 			// System.out.println("Part 1::" + matcherGc.group(1));
-			System.out.println("Part 2::" + matcherGc.group(2));
+			//System.out.println("Part 2::" + matcherGc.group(2));
 			// System.out.println("Part 3::" + matcherGc.group(3));
 			String matchPartString = matcherGc.group(2);
 			
@@ -182,9 +182,9 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 				Matcher targetMatcher = targetPattern.matcher(matchPartString);
 				while (targetMatcher.find()) {
 					String matchPartString2 = targetMatcher.group(1);
-					System.out.println("matchPartString2::" + matchPartString2);
+					//System.out.println("matchPartString2::" + matchPartString2);
 					if ( isAcceptValueRange(matchPartString2) == true) {
-						System.out.println("Add::" + matchPartString2);
+						//System.out.println("Add::" + matchPartString2);
 						output.add(matchPartString2 + " mol%");
 						regexResultWithMappingCaseMap.put("Case 1", matchPartString2 + " mol%");
 					}
@@ -199,25 +199,25 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		Matcher matcherGc2 = patternGc2.matcher(text);
 
 		while (matcherGc2.find()) {
-			System.out.println("Case 2::");
+			//System.out.println("Case 2::");
 			// System.out.println("Whloe Sent::" + matcherGc2.group());
 			// System.out.println("Part 1::" + matcherGc2.group(1));
 			// System.out.println("Part 2::" + matcherGc2.group(2));
 			// System.out.println("Part 3::" + matcherGc2.group(3));
-			System.out.println("Part 4::" + matcherGc2.group(4));
+			//System.out.println("Part 4::" + matcherGc2.group(4));
 			// System.out.println("Part 5::" + matcherGc2.group(5 ));
 
 			String matchPartString = matcherGc2.group(4);
 			
 			if ( ! matchPartString.equals("") ) {
-				System.out.println("targetPatternString::" + targetPatternString);
+				//System.out.println("targetPatternString::" + targetPatternString);
 				Pattern targetPattern = Pattern.compile("\\b" + targetPatternString + "\\b");
 				Matcher targetMatcher = targetPattern.matcher(matchPartString);
 				while (targetMatcher.find()) {
 					String matchPartString2 = targetMatcher.group(1);
-					System.out.println("matchPartString2::" + matchPartString2);
+					//System.out.println("matchPartString2::" + matchPartString2);
 					if ( isAcceptValueRange(matchPartString2) == true) {
-						System.out.println("Add::" + matchPartString2);
+						//System.out.println("Add::" + matchPartString2);
 						output.add(matchPartString2 + " mol%");
 						regexResultWithMappingCaseMap.put("Case 2", matchPartString2 + " mol%");
 					}
@@ -236,9 +236,9 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		Matcher matcherGc3 = patternGc3.matcher(text);
 
 		while (matcherGc3.find()) {
-			System.out.println("Case 3::");
+			//System.out.println("Case 3::");
 			// System.out.println("Whloe Sent::" + matcherGc3.group());
-			System.out.println("Part 1::" + matcherGc3.group(1));
+			//System.out.println("Part 1::" + matcherGc3.group(1));
 			// System.out.println("Part 2::" + matcherGc3.group(2));
 			// System.out.println("Part 3::" + matcherGc3.group(3));
 			// System.out.println("Part 4::" + matcherGc3.group(4));
@@ -250,9 +250,9 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 				Matcher targetMatcher = targetPattern.matcher(matchPartString);
 				while (targetMatcher.find()) {
 					String matchPartString2 = targetMatcher.group(1);
-					System.out.println("matchPartString2::" + matchPartString2);
+					//System.out.println("matchPartString2::" + matchPartString2);
 					if ( isAcceptValueRange(matchPartString2) == true) {
-						System.out.println("Add::" + matchPartString2);
+						//System.out.println("Add::" + matchPartString2);
 						output.add(matchPartString2 + " mol%");
 						regexResultWithMappingCaseMap.put("Case 3", matchPartString2 + " mol%");
 
@@ -266,9 +266,9 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		Pattern patternGc4 = Pattern.compile("(.*)(\\s*moles\\s*\\s*)(" + patternStringGc + ")?");
 		Matcher matcherGc4 = patternGc4.matcher(text);
 		while (matcherGc4.find()) {
-			System.out.println("Case 4::");
+			//System.out.println("Case 4::");
 			// System.out.println("Whloe Sent::" + matcherGc4.group());
-			System.out.println("Part 1::" + matcherGc4.group(1));
+			//System.out.println("Part 1::" + matcherGc4.group(1));
 			// System.out.println("Part 2::" + matcherGc4.group(2));
 			// System.out.println("Part 3::" + matcherGc4.group(3));
 			// System.out.println("Part 4::" + matcherGc4.group(4));
@@ -280,9 +280,9 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 				Matcher targetMatcher = targetPattern.matcher(matchPartString);
 				while (targetMatcher.find()) {
 					String matchPartString2 = targetMatcher.group(1);
-					System.out.println("matchPartString2::" + matchPartString2);
+					//System.out.println("matchPartString2::" + matchPartString2);
 					if ( isAcceptValueRange(matchPartString2) == true) {
-						System.out.println("Add::" + matchPartString2);
+						//System.out.println("Add::" + matchPartString2);
 						output.add(matchPartString2 + " mol%");
 						regexResultWithMappingCaseMap.put("Case 4", matchPartString2 + " mol%");
 
@@ -295,12 +295,12 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		Pattern patternGc5 = Pattern.compile(patternStringGc + "(.*)" + "(\\(?\\s*mol\\s*\\%\\s*\\)?\\:?)" + "(.*)");
 		Matcher matcherGc5 = patternGc5.matcher(text);
 		while (matcherGc5.find()) {
-			System.out.println("Case 5::");
+			//System.out.println("Case 5::");
 			// System.out.println("Whloe Sent::" + matcherGc5.group());
 			// System.out.println("Part 1::" + matcherGc5.group(1));
 			// System.out.println("Part 2::" + matcherGc5.group(2));
 			// System.out.println("Part 3::" + matcherGc5.group(3));
-			System.out.println("Part 4::" + matcherGc5.group(4));
+			//System.out.println("Part 4::" + matcherGc5.group(4));
 
 			String matchPartString = matcherGc5.group(4);
 			
@@ -309,9 +309,9 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 				Matcher targetMatcher = targetPattern.matcher(matchPartString);
 				while (targetMatcher.find()) {
 					String matchPartString2 = targetMatcher.group(1);
-					System.out.println("matchPartString2::" + matchPartString2);
+					//System.out.println("matchPartString2::" + matchPartString2);
 					if ( isAcceptValueRange(matchPartString2) == true) {
-						System.out.println("Add::" + matchPartString2);
+					//	System.out.println("Add::" + matchPartString2);
 						output.add(matchPartString2 + " mol%");
 						regexResultWithMappingCaseMap.put("Case 5", matchPartString2 + " mol%");
 
@@ -413,7 +413,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 	public boolean isAcceptValueRange(String extractedValueText) {
 		boolean isAccept = true;
 		
-		System.out.println("extractedValueText::0::" + extractedValueText); 
+		//System.out.println("extractedValueText::0::" + extractedValueText); 
 		
 		Pattern patternNumber = Pattern.compile(myNumberPattern);
 		Matcher matcherNumber = patternNumber.matcher(extractedValueText);
@@ -430,8 +430,8 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		if ( matchCounter == 1) {
 			String decimalPattern = myNumberPattern;  
 			boolean match = Pattern.matches(decimalPattern, extractedValueText);
-			System.out.println("extractedValueText::" + extractedValueText);
-			System.out.println("match::" + match); //if true then decimal else not  
+			//System.out.println("extractedValueText::" + extractedValueText);
+			//System.out.println("match::" + match); //if true then decimal else not  
 			
 			if ( match != true ) {
 				isAccept = false;

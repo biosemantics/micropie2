@@ -211,18 +211,18 @@ public class GrowthNaclMinExtractor extends AbstractCharacterValueExtractor {
 						// System.out.println("matcher.group(14)::" + matcher.group(14));
 						
 						
-						System.out.println("matcher.group(0)::" + matcher.group(0));
-						System.out.println("matcher.group(1)::" + matcher.group(1));
-						System.out.println("matcher.group(2)::" + matcher.group(2));
-						System.out.println("matcher.group(3)::" + matcher.group(3));
-						System.out.println("matcher.group(4)::" + matcher.group(4));
-						System.out.println("matcher.group(5)::" + matcher.group(5));
-						System.out.println("matcher.group(6)::" + matcher.group(6));
-						System.out.println("matcher.group(7)::" + matcher.group(7));
-						System.out.println("matcher.group(8)::" + matcher.group(8));
-						System.out.println("matcher.group(9)::" + matcher.group(9));
-						System.out.println("matcher.group(10)::" + matcher.group(10));
-						System.out.println("matcher.group(11)::" + matcher.group(11));
+//						System.out.println("matcher.group(0)::" + matcher.group(0));
+//						System.out.println("matcher.group(1)::" + matcher.group(1));
+//						System.out.println("matcher.group(2)::" + matcher.group(2));
+//						System.out.println("matcher.group(3)::" + matcher.group(3));
+//						System.out.println("matcher.group(4)::" + matcher.group(4));
+//						System.out.println("matcher.group(5)::" + matcher.group(5));
+//						System.out.println("matcher.group(6)::" + matcher.group(6));
+//						System.out.println("matcher.group(7)::" + matcher.group(7));
+//						System.out.println("matcher.group(8)::" + matcher.group(8));
+//						System.out.println("matcher.group(9)::" + matcher.group(9));
+//						System.out.println("matcher.group(10)::" + matcher.group(10));
+//						System.out.println("matcher.group(11)::" + matcher.group(11));
 						// System.out.println("matcher.group(12)::" + matcher.group(12));
 						// System.out.println("matcher.group(13)::" + matcher.group(13));
 						// System.out.println("matcher.group(14)::" + matcher.group(14));
@@ -263,7 +263,7 @@ public class GrowthNaclMinExtractor extends AbstractCharacterValueExtractor {
 						
 						
 						if ( isCorrectNaClUnit == true && isOptimumNaClDesc == false ) {
-							System.out.println(equatorString + " " + stringNaClMin + unitString);
+							//System.out.println(equatorString + " " + stringNaClMin + unitString);
 							output.add(stringNaClMin + "" + unitString);
 							regexResultWithMappingCaseMap.put("Case 1", equatorString + " " + stringNaClMin + unitString);
 						}
@@ -339,14 +339,14 @@ public class GrowthNaclMinExtractor extends AbstractCharacterValueExtractor {
 				matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
-					System.out.println("Go to Case 2::");
+					//System.out.println("Go to Case 2::");
 					// System.out.println("Whloe Sent::" + matcher.group());
 					// System.out.println("Part 1::" + matcher.group(1));
 					// System.out.println("Part 2::" + matcher.group(2));
 					// System.out.println("Part 3::" + matcher.group(3));
 					
 					String targetPattern = matcher.group(2);
-					System.out.println("targetPattern::" + targetPattern);
+					//System.out.println("targetPattern::" + targetPattern);
 					
 					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "m;nacl;salinity;%");
 					

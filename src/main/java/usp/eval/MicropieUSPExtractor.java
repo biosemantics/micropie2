@@ -433,6 +433,17 @@ public class MicropieUSPExtractor {
 	}
 	
 	
+	/**
+	 * get words related to the keywords from the text
+	 * 
+	 * @param text
+	 * @param keyword
+	 * @param keywordType
+	 * @param keywordObject
+	 * @param extractionType
+	 * @return
+	 * @throws Exception
+	 */
 	public Set<String> getObjectValue(String text, String keyword, String keywordType, String keywordObject, String extractionType) throws Exception {
 		
 		Set<String> output = new HashSet<String>(); // Output, format::List<String>

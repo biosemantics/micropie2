@@ -1,8 +1,14 @@
 package edu.arizona.biosemantics.micropie.model;
 
-public class CollapseUSPSentIndexMapping {
 
-	public CollapseUSPSentIndexMapping() {
+/**
+ * used in USP map the indexes before and after category replacement
+ * @author maojin
+ *
+ */
+public class IndexMapping {
+
+	public IndexMapping() {
 		// TODO Auto-generated constructor stub
 	}
 

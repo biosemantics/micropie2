@@ -41,7 +41,7 @@ public class CellLengthExtractor extends AbstractCharacterValueExtractor {
 
 		while (matcher.find()) {			
 			String matchSubString = matcher.group(1);
-			System.out.println("matchSubString::" + matchSubString);
+			//System.out.println("matchSubString::" + matchSubString);
 			String patternStringRange = "(" + 
 					"\\d+\\.\\d+\\sto\\s\\d+\\.\\d+|" +
 					"\\d+\\.\\d+\\sto\\s\\d+|" +

@@ -2,6 +2,8 @@ package edu.arizona.biosemantics.micropie.transform;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import com.google.inject.Inject;
@@ -12,10 +14,14 @@ import edu.arizona.biosemantics.common.log.LogLevel;
 
 /**
  * Preprocessing the texts before anything is about to do.
+ * 1: replace the celsius_degree
+ * 2: replace the abbreviations
+ * 
  * @author 
  *
  */
 public class TextNormalizer implements ITextNormalizer {
+	private String celsius_degreeReplaceSourcePattern;
 	
 	private LinkedHashMap<String, String> abbreviations;
 	
@@ -24,8 +30,10 @@ public class TextNormalizer implements ITextNormalizer {
 	}	
 	
 	@Inject
-	public TextNormalizer(@Named("Abbreviations")LinkedHashMap<String, String> abbreviations) throws IOException {
+	public TextNormalizer(@Named("Abbreviations")LinkedHashMap<String, String> abbreviations, 
+			@Named("celsius_degreeReplaceSourcePattern") String celsius_degreeReplaceSourcePattern){
 		this.abbreviations = abbreviations;
+		this.celsius_degreeReplaceSourcePattern = celsius_degreeReplaceSourcePattern;
 	}
 
 	@Override
@@ -181,28 +189,106 @@ public class TextNormalizer implements ITextNormalizer {
 	
 	
 	public String transformBack(String sent) {
-		
 		sent = replaceBack(sent, this.abbreviations);
-		
-		
 		return sent;
 	}
 
+	
 	public String replaceBack(String sent, LinkedHashMap<String, String> replacements) {
 		for (String original : replacements.keySet()) {
-			//or was this meant to work as regex replace? (.replace vs .replaceAll)
 			sent = sent.replace(replacements.get(original), original);
 		}
 		return sent;
 	}	
 	
 	
-	
-	public static void main(String[] args) throws IOException {
-	
-
-		
+	/**
+	 * transform celsius_degreeReplaceSourcePattern into " celsius_degree "
+	 * @param sentences
+	 * @return
+	 */
+	public List<String> transformCelsiusDegree(List<String> sentences) {
+		List<String> result = new LinkedList<String>();		
+		for (String sentence : sentences) {
+			sentence = sentence.replaceAll(celsius_degreeReplaceSourcePattern, " celsius_degree "); // To avoid the error ClausIE spliter: the dash will disappear
+			result.add(transformCelsiusDegree(sentence));
+		}
+		return result;
 	}
 	
+	/**
+	 * transform celsius_degreeReplaceSourcePattern into " celsius_degree "
+	 * @param sentences
+	 * @return
+	 */
+	public String transformCelsiusDegree(String sentence) {
+		return sentence.replaceAll(celsius_degreeReplaceSourcePattern, " celsius_degree ");
+	}
+	
+	/**
+	 * For sentence list:
+	 * replace \"–\" to \"-\" ..."
+	 * @param sentences
+	 * @return
+	 */
+	public List<String> transformDash(List<String> sentences){
+		List<String> result = new LinkedList<String>();		
+		for (String sentence : sentences) {
+			result.add(transformDash(sentence));
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * For a sentence
+	 * replace \"–\" to \"-\" ..."
+	 * @param sentence
+	 * @return
+	 */
+	public String transformDash(String sentence){
+		sentence = sentence.replaceAll("–", "-"); // To avoid the error ClausIE spliter: the dash will disappear
+		sentence = sentence.replaceAll("\\s?-\\s?", "-"); // To avoid the error ClausIE spliter: the dash will disappear
+		return sentence;
+	}
+	
+	/**
+	 * To avoid the error ClausIE spliter: the dash will disappear
+	 * for sentence list
+	 * replace \"·\" to \".\" ..."
+	 * @param sentences
+	 * @return
+	 */
+	public List<String> transformPeriod(List<String> sentences){
+		List<String> result = new LinkedList<String>();		
+		for (String sentence : sentences) {
+			result.add(transformPeriod(sentence));
+		}
+		return result;
+	}
+	
+	/**
+	 * To avoid the error ClausIE spliter: the dash will disappear
+	 * for sentence
+	 * replace \"·\" to \".\" ..."
+	 * @param sentences
+	 * @return
+	 */
+	public String transformPeriod(String sentence){
+		sentence = sentence.replaceAll("\\·", "."); // 
+		sentence = sentence.replaceAll("\\s?\\·\\s?", ".");
+		return sentence;
+	}
+
+	@Override
+	public String transformEntity(String sentence) {
+		// TODO Auto-generated method stub
+		sentence = sentence.replaceAll("&lt;", "<"); // 
+		sentence = sentence.replaceAll("&gt;", ">"); // 
+		sentence = sentence.replaceAll("&amp;", "&"); // 
+		sentence = sentence.replaceAll("&apos;", "'"); // 
+		sentence = sentence.replaceAll("&quot;", "\""); // 
+		return sentence;
+	}
 	
 }

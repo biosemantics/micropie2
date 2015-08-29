@@ -48,7 +48,7 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 
 		text = text.replaceAll(celsius_degreeReplaceSourcePattern, celsius_degreeReplaceTargetPattern);
 		text = text.toLowerCase();
-		System.out.println("Modified sent::" + text);
+		//System.out.println("Modified sent::" + text);
 		
 		// input: the original sentnece
 		// output: String array?
@@ -80,12 +80,12 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 				Matcher matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
-					System.out.println("Go to Case 1::");
-					System.out.println("Whloe Sent::" + matcher.group());
-					System.out.println("Part 1::" + matcher.group(1));
-					System.out.println("Part 2::" + matcher.group(2));
-					System.out.println("Part 3::" + matcher.group(3));
-					System.out.println("Part 4::" + matcher.group(4));
+//					System.out.println("Go to Case 1::");
+//					System.out.println("Whloe Sent::" + matcher.group());
+//					System.out.println("Part 1::" + matcher.group(1));
+//					System.out.println("Part 2::" + matcher.group(2));
+//					System.out.println("Part 3::" + matcher.group(3));
+//					System.out.println("Part 4::" + matcher.group(4));
 					String targetPattern = matcher.group(4);
 					
 					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "celsius_degree");
@@ -129,7 +129,7 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 					// System.out.println("Part 3::" + matcher.group(3));
 					
 					String targetPattern = matcher.group(2);
-					System.out.println("targetPattern::" + targetPattern);
+					//System.out.println("targetPattern::" + targetPattern);
 					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "celsius_degree");
 					output.add(rangePatternExtractor.getRangePatternMinString());
 					
@@ -208,10 +208,10 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 					)
 				) {	
 				
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
+				//System.out.println("\n");
+				//System.out.println("sourceSentText::" + sourceSentText);
 				Set<String> growTempMinResult = growthTempMinExtractor.getCharacterValue(sourceSentText);
-				System.out.println("growTempMinResult::" + growTempMinResult.toString());
+				//System.out.println("growTempMinResult::" + growTempMinResult.toString());
 				if ( growTempMinResult.size() > 0 ) {
 					extractedValueCounter +=1;
 				}
@@ -220,9 +220,9 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 		
 		}
 
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-		
+		//System.out.println("\n");
+		//System.out.println("sampleSentCounter::" + sampleSentCounter);
+		//System.out.println("extractedValueCounter::" + extractedValueCounter);
+		//
 	}
 }

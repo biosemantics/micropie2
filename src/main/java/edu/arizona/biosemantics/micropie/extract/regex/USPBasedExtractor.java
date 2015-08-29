@@ -51,33 +51,33 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 				Set<String> tmpMicropieUSPExtractorResult = micropieUSPExtractor.getObjectValue(text, 
 						uspRequest.getKeyword(), uspRequest.getKeywordType(), uspRequest.getKeywordObject(), uspRequest.getExtractionType());
 				returnCharacterStrings.addAll(tmpMicropieUSPExtractorResult);
-				
-				if (tmpMicropieUSPExtractorResult.size() > 1) {
-					System.out.println("\n");
-					System.out.println("Text:" + text);
-					System.out.println("kwd::" + uspRequest.getKeyword());
-					System.out.println("type::" + uspRequest.getKeywordType());
-					System.out.println("keywordObject::" + uspRequest.getKeywordObject());
-					System.out.println("uspRequest.getKeyword():" + uspRequest.getKeyword());
-					System.out.println("tmpMicropieUSPExtractorResult::" + tmpMicropieUSPExtractorResult);
-					System.out.println("\n");
-				}
+//				
+//				if (tmpMicropieUSPExtractorResult.size() > 1) {
+//					System.out.println("\n");
+//					System.out.println("Text:" + text);
+//					System.out.println("kwd::" + uspRequest.getKeyword());
+//					System.out.println("type::" + uspRequest.getKeywordType());
+//					System.out.println("keywordObject::" + uspRequest.getKeywordObject());
+//					System.out.println("uspRequest.getKeyword():" + uspRequest.getKeyword());
+//					System.out.println("tmpMicropieUSPExtractorResult::" + tmpMicropieUSPExtractorResult);
+//					System.out.println("\n");
+//				}
 				
 				for (String uspClusteringKeyword : uspClusteringKeywords) {
 					tmpMicropieUSPExtractorResult = micropieUSPExtractor.getObjectValue(text, 
 							uspClusteringKeyword, uspRequest.getKeywordType(), uspRequest.getKeywordObject(), uspRequest.getExtractionType());
 					returnCharacterStrings.addAll(tmpMicropieUSPExtractorResult);
-					
-					if (tmpMicropieUSPExtractorResult.size() > 1) {
-						System.out.println("\n");
-						System.out.println("Text:" + text);
-						System.out.println("kwd::" + uspClusteringKeyword);
-						System.out.println("type::" + uspRequest.getKeywordType());
-						System.out.println("keywordObject::" + uspRequest.getKeywordObject());
-						System.out.println("uspRequest.getKeyword():" + uspRequest.getKeyword());
-						System.out.println("tmpMicropieUSPExtractorResult::" + tmpMicropieUSPExtractorResult);
-						System.out.println("\n");
-					}
+//					
+//					if (tmpMicropieUSPExtractorResult.size() > 1) {
+//						System.out.println("\n");
+//						System.out.println("Text:" + text);
+//						System.out.println("kwd::" + uspClusteringKeyword);
+//						System.out.println("type::" + uspRequest.getKeywordType());
+//						System.out.println("keywordObject::" + uspRequest.getKeywordObject());
+//						System.out.println("uspRequest.getKeyword():" + uspRequest.getKeyword());
+//						System.out.println("tmpMicropieUSPExtractorResult::" + tmpMicropieUSPExtractorResult);
+//						System.out.println("\n");
+//					}
 				}
 				
 				

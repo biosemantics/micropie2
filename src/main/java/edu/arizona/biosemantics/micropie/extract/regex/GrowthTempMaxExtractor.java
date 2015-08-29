@@ -67,7 +67,7 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 
 		text = text.replaceAll(celsius_degreeReplaceSourcePattern, celsius_degreeReplaceTargetPattern);
 		text = text.toLowerCase();
-		System.out.println("Modified sent::" + text);
+		//System.out.println("Modified sent::" + text);
 		
 		// Add Map<String, String> on Feb 09, 2015 MON
 		regexResultWithMappingCaseMap = new HashMap<String, String>();
@@ -103,7 +103,7 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 				Matcher matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
-					System.out.println("Go to Case 1::");
+					//System.out.println("Go to Case 1::");
 					// System.out.println("Whloe Sent::" + matcher.group());
 					// System.out.println("Part 1::" + matcher.group(1));
 					// System.out.println("Part 2::" + matcher.group(2));
@@ -154,7 +154,7 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 					// System.out.println("Part 3::" + matcher.group(3));
 					
 					String targetPattern = matcher.group(2);
-					System.out.println("targetPattern::" + targetPattern);
+					//System.out.println("targetPattern::" + targetPattern);
 					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "celsius_degree");
 					output.add(rangePatternExtractor.getRangePatternMaxString());
 					regexResultWithMappingCaseMap.put("Case 2", rangePatternExtractor.getRangePatternMaxString());

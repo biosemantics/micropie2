@@ -70,12 +70,12 @@ public class InorganicSubstancesNotUsedExtractor extends AbstractCharacterValueE
 		
 		// String[] sentenceArray = text.split("\\.|\\band\\b");
 		String[] sentenceArray = text.split("\\.");
-		System.out.println("sentenceArray.length :" + sentenceArray.length);
+		//System.out.println("sentenceArray.length :" + sentenceArray.length);
 		
 		for ( int i = 0; i < sentenceArray.length; i++ ) {
 			
 			String subText = sentenceArray[i] + ".";
-			System.out.println("subText :" + subText);
+			//System.out.println("subText :" + subText);
 
 			int caseNumber = 0;
 
@@ -87,8 +87,8 @@ public class InorganicSubstancesNotUsedExtractor extends AbstractCharacterValueE
 			
 			switch(caseNumber) {
 			case 1:
-				System.out.println("Case 1:");
-				System.out.println("subText :" + subText);
+				//System.out.println("Case 1:");
+				//System.out.println("subText :" + subText);
 				subText = subText.substring(0, subText.length()-1);
 				subText = " " + subText + " ";		
 
@@ -109,7 +109,7 @@ public class InorganicSubstancesNotUsedExtractor extends AbstractCharacterValueE
 							matchString = matchString.substring(0, matchString.length()-1);
 						}
 						returnCharacterStrings.add(matchString);
-						System.out.println(keywordString + "::" + matchString);
+						//System.out.println(keywordString + "::" + matchString);
 					}
 				}
 				output.addAll(returnCharacterStrings);

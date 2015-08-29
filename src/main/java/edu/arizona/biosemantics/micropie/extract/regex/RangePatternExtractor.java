@@ -37,7 +37,7 @@ public class RangePatternExtractor {
 	public RangePatternExtractor(String rangePatternString, String symbol) {
 		// TODO Auto-generated constructor stub
 		
-		System.out.println("Symbol::" + symbol);
+		//System.out.println("Symbol::" + symbol);
 		
 		getRangePattern(rangePatternString, symbol);
 		

@@ -9,7 +9,7 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import edu.arizona.biosemantics.micropie.model.CollapseUSPSentIndexMapping;
+import edu.arizona.biosemantics.micropie.model.IndexMapping;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
@@ -108,8 +108,8 @@ public class CollapseUSPSentByCategoryChar {
 	
 	
 	
-	public CollapseUSPSentIndexMapping addMapping(String category, String indices) {
-		CollapseUSPSentIndexMapping collapseUSPSentIndexMapping = new CollapseUSPSentIndexMapping();
+	public IndexMapping addMapping(String category, String indices) {
+		IndexMapping collapseUSPSentIndexMapping = new IndexMapping();
 		collapseUSPSentIndexMapping.setToken(category);
 		collapseUSPSentIndexMapping.setIndices(indices);
 		return collapseUSPSentIndexMapping;

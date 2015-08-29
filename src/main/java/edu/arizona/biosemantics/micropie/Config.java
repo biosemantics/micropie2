@@ -146,8 +146,8 @@ public class Config extends AbstractModule {
 	private String uspResultsDirectory = "usp_results";
 	
 	/** PROCESSING **/
-	private boolean parallelProcessing = false;
-	private int maxThreads = 1;
+	private boolean parallelProcessing = true;
+	private int maxThreads = 3;
 		
 	@Override
 	protected void configure() {
@@ -155,7 +155,7 @@ public class Config extends AbstractModule {
 		bind(IRun.class).annotatedWith(Names.named("TrainSentenceClassifier")).to(TrainSentenceClassifier.class).in(Singleton.class);
 		bind(SentenceSpliter.class).in(Singleton.class);
 		bind(SentencePredictor.class).in(Singleton.class);
-		
+		bind(MicroPIEProcessor.class);
 		
 		bind(new TypeLiteral<LinkedHashSet<String>>() {}).annotatedWith(Names.named("Characters"))
 			.toProvider(new Provider<LinkedHashSet<String>>() {
@@ -326,6 +326,15 @@ public class Config extends AbstractModule {
 		weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO, "Weka Logging started"); 
 	}
 
+	/**
+	 * create extractors from the configuration folder: characterValueExtractorsFolder; 
+	 * e.g., micropieInput\CharacterValueExtractors
+	 * 
+	 * @param extratorsDirectory
+	 * @param uspResultsDirectory
+	 * @param uspString
+	 * @return
+	 */
 	private Set<ICharacterValueExtractor> getCharacterValueExtractors(String extratorsDirectory, String uspResultsDirectory, 
 			String uspString) {
 		Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
@@ -380,6 +389,12 @@ public class Config extends AbstractModule {
 		return extractors;
 	}
 
+	
+	/**
+	 * set input directory and project directories
+	 * This method should be called first before all the processes
+	 * @param inputDirectory
+	 */
 	public void setInputDirectory(String inputDirectory) {
 		testFolder = inputDirectory + File.separator + "input";
 		
@@ -404,6 +419,8 @@ public class Config extends AbstractModule {
 		
 		
 		uspFolder = inputDirectory + File.separator + "usp_base/dep/0";
+		
+		System.out.println("resFolder = "+resFolder);
 	}
 	
 	public void setOutputDirectory(String outputDirectory) {

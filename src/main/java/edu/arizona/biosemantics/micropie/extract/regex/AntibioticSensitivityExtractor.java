@@ -45,7 +45,7 @@ public class AntibioticSensitivityExtractor extends AbstractCharacterValueExtrac
 		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor(uspResultsDirectory, uspString);
 		try {
 			output = micropieUSPExtractor.getObjectValue(text, "sensitive", "J", "prep_to", "Dep");
-			System.out.println("Antibiotic Sensitivity::" + output.toString());
+			//System.out.println("Antibiotic Sensitivity::" + output.toString());
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

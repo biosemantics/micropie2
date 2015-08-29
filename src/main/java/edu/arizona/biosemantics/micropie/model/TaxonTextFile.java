@@ -2,6 +2,10 @@ package edu.arizona.biosemantics.micropie.model;
 
 import java.io.File;
 
+/**
+ * The model of taxon XML file
+ *
+ */
 public class TaxonTextFile {
 
 	private String taxon;

@@ -53,30 +53,31 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 	
 	@Override
 	public TaxonCharacterMatrix create() {
-			TaxonCharacterMatrix result = new TaxonCharacterMatrix();
+		TaxonCharacterMatrix result = new TaxonCharacterMatrix();
 		log(LogLevel.INFO, "Creating matrix...");
 		result.setTaxonFiles(taxonSentencesMap.keySet());
 		result.setCharacters(characters);
 		
 		//<Taxon, <Character, Set<Value>>>
 		Map<TaxonTextFile, Map<String, Set<String>>> taxonCharacterMap = new HashMap<TaxonTextFile, Map<String, Set<String>>>();
-		for(TaxonTextFile taxonFile : taxonSentencesMap.keySet()) {
+		for(TaxonTextFile taxonFile : taxonSentencesMap.keySet()) {//process one file
 			HashMap<String, Set<String>> characterMap = new HashMap<String, Set<String>>();
 			for(String character : characters) {
 				characterMap.put(character, new HashSet<String>());
 			}
 			taxonCharacterMap.put(taxonFile, characterMap);
 			
+			//the sentences in the file
 			List<Sentence> sentences = taxonSentencesMap.get(taxonFile);
-			for(Sentence sentence : sentences) {
+			for(Sentence sentence : sentences) {//process one sentence
 				SentenceMetadata metadata = sentenceMetadataMap.get(sentence);
 				MultiClassifiedSentence classifiedSentence = classifiedSentencesMap.get(sentence);
 
 				Set<ILabel> predictions = classifiedSentence.getPredictions();
 				
-				System.out.println("predictions.size()::" + predictions.size());
-				if ( predictions.size() == 0 ) {
-					System.out.println("Did not predict anything!");
+				//System.out.println("predictions.size()::" + predictions.size());
+				if (predictions.size() == 0 ) {//it can be any character
+					//System.out.println("Did not predict anything!");
 					// for(ILabel label : predictions) {
 						// if ( label.toString().equals("") ) {
 							Label[] labelList = Label.values();
@@ -113,9 +114,9 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 				*/
 				
 				Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
-				for(ILabel label : predictions) {
+				for(ILabel label : predictions) {//get all the extractors ready
 					if(label instanceof Label) {
-						System.out.println("label::" + label);
+						//System.out.println("label::" + label);
 						extractors.addAll(contentExtractorProvider.getContentExtractor((Label)label));
 					}
 				}
@@ -124,13 +125,13 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 					if(characters.contains(character)) {
 						Set<String> content = extractor.getCharacterValue(sentence.getText());
 						
-						System.out.println("character::" + character + " => content::Before::" + Arrays.toString(content.toArray()));
+						//System.out.println("character::" + character + " => content::Before::" + Arrays.toString(content.toArray()));
 						content.remove(null);
 						
 						content.removeAll(Collections.singleton(null));
 						content.removeAll(Collections.singleton(""));
 						
-						System.out.println("character::" + character + " => content::After::" + Arrays.toString(content.toArray()));
+						//System.out.println("character::" + character + " => content::After::" + Arrays.toString(content.toArray()));
 
 						
 						characterMap.get(character).addAll(content);

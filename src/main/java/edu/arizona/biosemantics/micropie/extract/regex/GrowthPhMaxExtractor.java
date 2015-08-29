@@ -107,7 +107,7 @@ public class GrowthPhMaxExtractor extends AbstractCharacterValueExtractor {
 				Matcher matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
-					System.out.println("Go to Case 1::");
+					//System.out.println("Go to Case 1::");
 					// System.out.println("Whloe Sent::" + matcher.group());
 					// System.out.println("Part 1::" + matcher.group(1));
 					// System.out.println("Part 2::" + matcher.group(2));
@@ -150,16 +150,16 @@ public class GrowthPhMaxExtractor extends AbstractCharacterValueExtractor {
 				matcher = pattern.matcher(text);
 
 				while (matcher.find()) {
-					System.out.println("Go to Case 2::");
+					//System.out.println("Go to Case 2::");
 					// System.out.println("Whloe Sent::" + matcher.group());
 					// System.out.println("Part 1::" + matcher.group(1));
 					// System.out.println("Part 2::" + matcher.group(2));
 					// System.out.println("Part 3::" + matcher.group(3));
 					
 					String targetPattern = matcher.group(2);
-					System.out.println("targetPattern::" + targetPattern);
+					//System.out.println("targetPattern::" + targetPattern);
 					RangePatternExtractor rangePatternExtractor = new RangePatternExtractor(targetPattern, "ph");
-					System.out.println("rangePatternExtractor.getRangePatternMaxString()::" + rangePatternExtractor.getRangePatternMaxString());
+					//System.out.println("rangePatternExtractor.getRangePatternMaxString()::" + rangePatternExtractor.getRangePatternMaxString());
 					output.add(rangePatternExtractor.getRangePatternMaxString());
 					regexResultWithMappingCaseMap.put("Case 2", rangePatternExtractor.getRangePatternMaxString().toString());
 

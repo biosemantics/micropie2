@@ -130,7 +130,7 @@ public class GrowthNaclOptimumExtractor extends AbstractCharacterValueExtractor 
 		while (matcher.find()) {
 			// System.out.println("Whloe Sent::" + matcher.group());
 			// System.out.println("Part 1::" + matcher.group(1));
-			System.out.println("Part 2::" + matcher.group(2));
+			//System.out.println("Part 2::" + matcher.group(2));
 			// System.out.println("Part 3::" + matcher.group(3));
 			String matchPartString = matcher.group(2);
 			// System.out.println("targetPattern::" + targetPattern);

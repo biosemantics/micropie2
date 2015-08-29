@@ -164,7 +164,7 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		
 		while (matcher.find()) {
 			isCase1 = true;
-			System.out.println("Go to case 1.");
+			//System.out.println("Go to case 1.");
 			
 			// System.out.println("Whloe Sent::" + matcher.group());
 			// System.out.println("Part 1::" + matcher.group(1));
@@ -201,7 +201,7 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		Matcher matcher2 = pattern2.matcher(text);
 
 		while (matcher2.find()) {
-			System.out.println("Go to case 2.");
+			//System.out.println("Go to case 2.");
 			// System.out.println("Whloe Sent::" + matcher2.group());
 			// System.out.println("Part 1::" + matcher2.group(1));
 			// System.out.println("Part 2::" + matcher2.group(2));
@@ -227,7 +227,7 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		Matcher matcher3 = pattern3.matcher(text);
 
 		while (matcher3.find()) {
-			System.out.println("Go to case 3.");
+			//System.out.println("Go to case 3.");
 			// System.out.println("Whloe Sent::" + matcher3.group());
 			// System.out.println("Part 1::" + matcher3.group(1));
 			// System.out.println("Part 2::" + matcher3.group(2));
@@ -261,7 +261,7 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 			Matcher matcher4 = pattern4.matcher(text);
 
 			while (matcher4.find()) {
-				System.out.println("Go to case 4.");
+				//System.out.println("Go to case 4.");
 				// System.out.println("Whloe Sent::" + matcher4.group());
 				// System.out.println("Part 1::" + matcher4.group(1));
 				// System.out.println("Part 2::" + matcher4.group(2));
@@ -276,7 +276,7 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 				// System.out.println("Part 11::" + matcher4.group(11));
 				// System.out.println("Part 12::" + matcher4.group(12));
 				// System.out.println("Part 13::" + matcher4.group(13));
-				System.out.println("Part 14::" + matcher4.group(14));
+				//System.out.println("Part 14::" + matcher4.group(14));
 				// System.out.println("Part 15::" + matcher4.group(15));
 				
 				String matchPartString = matcher4.group(14);
