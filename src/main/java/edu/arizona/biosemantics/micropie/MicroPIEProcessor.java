@@ -24,6 +24,7 @@ import com.google.inject.name.Named;
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.extract.TaxonCharacterMatrixCreator;
+import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
@@ -32,19 +33,26 @@ import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.arizona.biosemantics.micropie.transform.CompoundSentenceSplitRun;
-import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.SentenceSplitRun;
 import edu.arizona.biosemantics.micropie.transform.SentenceSpliter;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
-import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 
+
+/**
+ * Run the major processes to extract characters from characters
+ * @author maojin
+ *
+ */
 public class MicroPIEProcessor{
 	//System Resources
 	private LexicalizedParser lexicalizedParser;
 	private SentencePredictor sentencePredictor;
 	private SentenceSpliter sentenceSpliter;
+	private CSVClassifiedSentenceWriter classifiedSentenceWriter;
+	
+	//System Parameters
 	private boolean parallelProcessing;
 	private int maxThreads;
 	
@@ -52,7 +60,6 @@ public class MicroPIEProcessor{
 	private ListeningExecutorService executorService;
 	private TaxonCharacterMatrixCreator matrixCreator;
 	private CSVTaxonCharacterMatrixWriter matrixWriter;
-	private String matrixFile;
 	
 	//Running members?
 	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
@@ -62,7 +69,6 @@ public class MicroPIEProcessor{
 	@Inject
 	public MicroPIEProcessor(TaxonCharacterMatrixCreator matrixCreator,
 			CSVTaxonCharacterMatrixWriter matrixWriter,
-			@Named("matrixFile") String matrixFile,
 			@Named("parallelProcessing") boolean parallelProcessing,
 			@Named("maxThreads") int maxThreads,
 			@Named("SentenceMetadataMap") Map<Sentence, SentenceMetadata> sentenceMetadataMap,
@@ -70,20 +76,21 @@ public class MicroPIEProcessor{
 			@Named("SentenceClassificationMap") Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap,
 			LexicalizedParser lexicalizedParser,
 			SentencePredictor sentencePredictor,
-			SentenceSpliter sentenceSpliter) {
+			SentenceSpliter sentenceSpliter,
+			CSVClassifiedSentenceWriter classifiedSentenceWriter) {
 		this.matrixCreator = matrixCreator;
 		this.matrixWriter = matrixWriter;
-		this.matrixFile = matrixFile;
+		this.lexicalizedParser = lexicalizedParser;
+		this.sentencePredictor = sentencePredictor;
+		this.sentenceSpliter = sentenceSpliter;
+		this.classifiedSentenceWriter = classifiedSentenceWriter;
+		
 		this.parallelProcessing = parallelProcessing;
-		this.maxThreads = maxThreads;		
+		this.maxThreads = maxThreads;
 		
 		this.sentenceMetadataMap = sentenceMetadataMap;
 		this.taxonSentencesMap = taxonSentencesMap;
 		this.sentenceClassificationMap = sentenceClassificationMap;
-		
-		this.lexicalizedParser = lexicalizedParser;
-		this.sentencePredictor = sentencePredictor;
-		this.sentenceSpliter = sentenceSpliter;
 		
 		if (!this.parallelProcessing)
 			executorService = MoreExecutors.listeningDecorator(Executors
@@ -97,16 +104,24 @@ public class MicroPIEProcessor{
 	}
 
 	
-	public void processFolder(String folder) {
+	/**
+	 * 
+	 * @param inputFolder: input folder, including files
+	 * @param svmLabelAndCategoryMappingFile
+	 * @param predictionsFile: records the predicted characters of the sentences
+	 * @param outputMatrixFile: the output matrix file
+	 */
+	public void processFolder(String inputFolder, String svmLabelAndCategoryMappingFile, String predictionsFile, String outputMatrixFile) {
 		
 		try {
-			// splite sentences
-
-			long b = System.currentTimeMillis();
-			List<Sentence> testSentences = this.createSentencesFromFolder(folder);
-			long e = System.currentTimeMillis();
-			System.out.println("splitting the sentences costs "+(e-b)+" ms");
-			b = System.currentTimeMillis();
+			//STEP 1: split sentences
+			//long b = System.currentTimeMillis();
+			List<Sentence> testSentences = this.createSentencesFromFolder(inputFolder);
+			//long e = System.currentTimeMillis();
+			//System.out.println("splitting the sentences costs "+(e-b)+" ms");
+			//b = System.currentTimeMillis();
+			
+			//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
 			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
 			for (Sentence testSentence : testSentences) {
 				Set<ILabel> prediction = sentencePredictor.predict(testSentence);
@@ -114,8 +129,10 @@ public class MicroPIEProcessor{
 				sentenceClassificationMap.put(testSentence,classifiedSentence);
 				predictions.add(classifiedSentence);
 			}
-			e = System.currentTimeMillis();
-			System.out.println("predicting categories of the sentences costs "+(e-b)+" ms");
+			
+			
+			//e = System.currentTimeMillis();
+			//System.out.println("predicting categories of the sentences costs "+(e-b)+" ms");
 			
 			/*
 			for ( MultiClassifiedSentence prediction: predictions ) {
@@ -125,20 +142,18 @@ public class MicroPIEProcessor{
 				System.out.println("Sentence::" + prediction.getSentence().toString());
 			}
 			*/
-
-			/*
-			classifiedSentenceWriter.setInputStream(new FileInputStream(svmLabelAndCategoryMappingFile));
-			classifiedSentenceWriter.setOutputStream(new FileOutputStream(predictionsFile));
-			classifiedSentenceWriter.readSVMLabelAndCategoryMapping();
-			classifiedSentenceWriter.write(predictions);
-			 */
 			
-			b = System.currentTimeMillis();
+			//out put the prediction results
+			classifiedSentenceWriter.setLabelMappingFile(svmLabelAndCategoryMappingFile);
+			classifiedSentenceWriter.setOutputFile(predictionsFile);
+			classifiedSentenceWriter.write(predictions);
+			
+			//b = System.currentTimeMillis();
 			TaxonCharacterMatrix matrix = matrixCreator.create();
-			matrixWriter.setOutputStream(new FileOutputStream(matrixFile, true));
+			matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
 			matrixWriter.write(matrix);
-			e = System.currentTimeMillis();
-			System.out.println("extracting characters from the sentences costs "+(e-b)+" ms");
+			//e = System.currentTimeMillis();
+			//System.out.println("extracting characters from the sentences costs "+(e-b)+" ms");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -205,19 +220,15 @@ public class MicroPIEProcessor{
 		
 		//System.out.println(folder+" is read ! ");
 		
-		//split sentences by parallel processing
-		List<ListenableFuture<List<String>>> sentenceSplits = new ArrayList<ListenableFuture<List<String>>>(
-				textFiles.size());
+		//split sentences by parallel processing， using Stanford Parser
+		List<ListenableFuture<List<String>>> sentenceSplits = new ArrayList<ListenableFuture<List<String>>>(textFiles.size());
 		CountDownLatch sentenceSplitLatch = new CountDownLatch(textFiles.size());
-		for(int i=0;i<10;i++){
 		for (TaxonTextFile textFile : textFiles) {
 			//build new thread
 			SentenceSplitRun splitRun = new SentenceSplitRun(
 					textFile.getText(), sentenceSplitLatch, sentenceSpliter);
 			ListenableFuture<List<String>> futureResult = executorService.submit(splitRun);
 			sentenceSplits.add(futureResult);
-			//System.out.println(" threads added! ");
-		}
 		}
 		try {
 			sentenceSplitLatch.await();
@@ -229,23 +240,21 @@ public class MicroPIEProcessor{
 		//int numberOfSentences = getNumberOfSentences(sentenceSplits);
 		List<List<ListenableFuture<List<String>>>> subsentenceSplitsPerFile = new LinkedList<List<ListenableFuture<List<String>>>>();
 
+		
+		//split each sentences further using ClausIE
+		//TODO: fix this problem
 		for (int i = 0; i < textFiles.size(); i++) {
 			List<String> sentences = sentenceSplits.get(i).get();//sentences for each file
 			List<ListenableFuture<List<String>>> subsentenceSplits = new LinkedList<ListenableFuture<List<String>>>();
+			
 			for (final String sentence : sentences) {
-
-				// String[] tokens = sentence.split("\\s+");
-				// System.out.println("length " + tokens.length);
-				// int tokenSize = tokens.length;
-				// overall += size;
-				// if(size > maxSize) { maxSize = size; }
-
+				/**
+				 * what's this weird process?
+				 * sentence length() <=1? it means that there is only one or zero character in the sentence?
+				 * if so, why should it be devided further?
+				 * 
+				 */
 				if (sentence.length() <= 1) {
-					// if (sentence.length() <= 50) {
-					// if (sentence.length() <= 100) {
-					// if (sentence.length() <= 200) {
-					// if (tokenSize <= 30) {
-
 					CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(
 							sentence, lexicalizedParser, PTBTokenizer.factory(
 									new CoreLabelTokenFactory(), ""));
@@ -276,10 +285,8 @@ public class MicroPIEProcessor{
 			}
 			subsentenceSplitsPerFile.add(subsentenceSplits);
 		}
-		// double avgLength = (double)overall / numberOfSentences;
-		// System.out.println("avg: " + avgLength);
-		// System.out.println("maxSize: " + maxSize);
 
+		/*
 		for (List<ListenableFuture<List<String>>> fileFutures : subsentenceSplitsPerFile) {
 			for (ListenableFuture<List<String>> future : fileFutures) {
 				try {
@@ -291,13 +298,15 @@ public class MicroPIEProcessor{
 				}
 			}
 		}
-
+	   */
+		
 		List<Sentence> result = new LinkedList<Sentence>();
 		for (int i = 0; i < textFiles.size(); i++) {//each file
 			List<ListenableFuture<List<String>>> fileFuture = subsentenceSplitsPerFile.get(i);
-			for (int j = 0; j < fileFuture.size(); j++) {//sentences in the file
+			for (int j = 0; j < fileFuture.size(); j++) {//sentences in the file, each file
 				List<String> subsentences = fileFuture.get(j).get();// .get();
 				for (String subsentence : subsentences) {//subsentences of the sentence
+					
 					Sentence sentence = new Sentence(subsentence);
 					result.add(sentence);
 					SentenceMetadata metadata = new SentenceMetadata();
@@ -306,6 +315,8 @@ public class MicroPIEProcessor{
 					metadata.setCompoundSplitSentence(subsentences.size() > 1);
 					// metadata.setParseResult(textSentenceTransformer.getCachedParseResult(sentence));
 					sentenceMetadataMap.put(sentence, metadata);
+					
+					//System.out.println(j+" "+sentence.getText());
 					
 					//TODO: if taxon file is the key, more memory is needed.
 					TaxonTextFile taxon = textFiles.get(i);

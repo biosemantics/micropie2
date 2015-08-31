@@ -2,12 +2,16 @@ package edu.arizona.biosemantics.micropie.io;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,111 +26,130 @@ import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 
+
+/**
+ * store the predicted results into the CSV file
+ * @author maojin
+ * 
+ */
 public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 
 	private OutputStream outputStream;
 	private InputStream inputStream;
+	private File labelMappingFile;
 
+	/**
+	 * in the file, the fields are:
+	 * categoryNo, categoryLabel, categoryName
+	 * "1","1.1","%G+C"
+	 */
 	private Map<String, String> svmLabelAndCategoryMappingMap;
 
-	
-	public void setOutputStream(OutputStream outputStream) {
-		this.outputStream = outputStream;
+	/**
+	 * specify where to store the prediction file
+	 * @param outputFile
+	 */
+	public void setOutputFile(String predictionFile) {
+		try {
+			this.outputStream = new FileOutputStream(predictionFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
 	 * @param inputStream to read SVMLabelSubcategoryMapping.txt
 	 */	
-	
-	public void setInputStream(InputStream inputStream) {
-		this.inputStream = inputStream;
+	public void setLabelMappingFile(String labelMappingFilePath) {
+		this.labelMappingFile = new File(labelMappingFilePath);
+		try {
+			this.inputStream = new FileInputStream(labelMappingFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public Map<String, String> readSVMLabelAndCategoryMapping() throws IOException {
-		CSVReader readerOfSVMLabelAndCategoryMapping = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
-		List<String[]> linesOfSVMLabelAndCategoryMapping = readerOfSVMLabelAndCategoryMapping.readAll();
-		
-		svmLabelAndCategoryMappingMap = new HashMap<String, String>();
-		for(String[] lineOfSVMLabelAndCategoryMapping : linesOfSVMLabelAndCategoryMapping) {
-			if ( lineOfSVMLabelAndCategoryMapping.length > 2 ) {
-				System.out.println("lineOfSVMLabelAndCategoryMapping.toString():" + lineOfSVMLabelAndCategoryMapping.toString());
-				System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[0]);
-				System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[1]);
-				svmLabelAndCategoryMappingMap.put(lineOfSVMLabelAndCategoryMapping[0],lineOfSVMLabelAndCategoryMapping[1]);
-			}	
+	
+	/**
+	 * read the label category mapping pairs
+	 * @return
+	 * @throws IOException
+	 */
+	public Map<String, String> readSVMLabelAndCategoryMapping(){
+		CSVReader readerOfSVMLabelAndCategoryMapping;
+		try {
+			readerOfSVMLabelAndCategoryMapping = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
+			List<String[]> linesOfSVMLabelAndCategoryMapping = readerOfSVMLabelAndCategoryMapping.readAll();
+			
+			svmLabelAndCategoryMappingMap = new HashMap<String, String>();
+			for(String[] lineOfSVMLabelAndCategoryMapping : linesOfSVMLabelAndCategoryMapping) {
+				if ( lineOfSVMLabelAndCategoryMapping.length > 2 ) {
+					String catNo = lineOfSVMLabelAndCategoryMapping[0];
+					String catLabel = lineOfSVMLabelAndCategoryMapping[1];
+					svmLabelAndCategoryMappingMap.put(catNo,catLabel);
+				}	
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		
 		return svmLabelAndCategoryMappingMap;
 	}	
 	
 	@Override
-	public void write(List<MultiClassifiedSentence> classifiedSentences) throws Exception {
+	/**
+	 * output the results in a CSV file
+	 * Format: categoryLabel,sentence
+	 * 
+	 */
+	public void write(List<MultiClassifiedSentence> classifiedSentences){
 		log(LogLevel.INFO, "Writing prediciton results...");
 		
-		
-		
-		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
-		List<String[]> lines = new LinkedList<String[]>();
-		for(MultiClassifiedSentence classifiedSentence : classifiedSentences) {
-			String categoryLabel = "";
-			String predictions = getPredicitionsString(classifiedSentence.getPredictions());
-			String[] predictionList = predictions.split(",");
-			
-			
-			if ( predictionList.length == 1 ) {
-				System.out.println("predictionsList.length::" + predictionList.length);
-				System.out.println("predictions::" + predictions);
-				for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
-					// System.out.println("Key : " + entry.getKey() + " Value : "
-					// 	+ entry.getValue());
-					
-					if ( predictions.equals(entry.getKey()) ) {
-						System.out.println("svmLabelAndCategoryMappingMap.getKey()::" + entry.getKey());
-						System.out.println("svmLabelAndCategoryMappingMap.getValue()::" + entry.getValue());
-						// svmLabelAndCategoryMappingMap.getKey()::31
-						// svmLabelAndCategoryMappingMap.getValue()::2.11
-						categoryLabel = entry.getValue();
-					}
-					
-				}				
-			} else {
-				for (String prediction : predictionList ) {
-					System.out.println("predictionsList.length::" + predictionList.length);
-					System.out.println("prediction::" + prediction);
-					for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
-						// System.out.println("Key : " + entry.getKey() + " Value : "
-						// 	+ entry.getValue());
-						
-						if ( prediction.equals(entry.getKey()) ) {
-							categoryLabel += entry.getValue() + ",";
-						}	
-					}				
-				}
-			}
-
-			
-			if ( categoryLabel.equals("") ) {
-				categoryLabel = "0"; // no category
-			} // else {
-				// 1.1,2.3,3.7, => 1.1,2.3,3.7
-				// will \"1.1,2.3,3.7 matters??? => not sure\"
-				// categoryLabel = categoryLabel.substring(0, categoryLabel.length()-1);
-			// }
-			
-			
-			// lines.add(new String[] { getPredicitionsString(classifiedSentence.getPredictions()), 
-			// 		classifiedSentence.getSentence().getText()});
-			lines.add(new String[] { categoryLabel, 
-					classifiedSentence.getSentence().getText()});
-			
+		if(svmLabelAndCategoryMappingMap==null){
+			this.readSVMLabelAndCategoryMapping();
 		}
+		
+		CSVWriter writer = null;
+		try {
+			writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
+			List<String[]> lines = new LinkedList<String[]>();
 			
-		writer.writeAll(lines);
-		writer.flush();
-		writer.close();
-		log(LogLevel.INFO, "Done writing prediciton results");
+			//output for each sentence
+			for(MultiClassifiedSentence classifiedSentence : classifiedSentences) {
+				
+				Set<ILabel> predictions = classifiedSentence.getPredictions();
+				StringBuffer multiCatLabelsb = new StringBuffer();
+				for(ILabel label : predictions) {
+					String labelNo = label.toString();
+					String categoryLabel = svmLabelAndCategoryMappingMap.get(labelNo);
+					categoryLabel = categoryLabel==null?"0":categoryLabel;
+					multiCatLabelsb.append(categoryLabel).append(",");
+				}
+				
+				String multiCatLabel = multiCatLabelsb.toString();
+				if( multiCatLabel.length() == 0)
+					multiCatLabel = "0";
+				else
+					multiCatLabel = multiCatLabel.substring(0, multiCatLabel.length() - 1);
+				lines.add(new String[] { multiCatLabel, classifiedSentence.getSentence().getText()});
+			}
+				
+			writer.writeAll(lines);
+			writer.flush();
+			writer.close();
+			
+			log(LogLevel.INFO, "Done writing prediciton results");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
-	private String getPredicitionsString(Set<ILabel> predictions) {
+	public String getPredicitionsString(Set<ILabel> predictions) {
 		StringBuilder stringBuilder = new StringBuilder();
 		for(ILabel label : predictions) {
 			stringBuilder.append(label + ",");
