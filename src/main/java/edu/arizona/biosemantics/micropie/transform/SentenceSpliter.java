@@ -47,29 +47,30 @@ public class SentenceSpliter {
 	}
 	
 	public List<String> split(String text){
-		long b = System.currentTimeMillis();
-		long b1 = System.currentTimeMillis();
+		//long b = System.currentTimeMillis();
+		//long b1 = System.currentTimeMillis();
 		text = textNormalizer.transform(text);
 		text = textNormalizer.transformEntity(text);
 		text = textNormalizer.transformDash(text); // replace \"–\" to \"-\" ..."
 		text = textNormalizer.transformPeriod(text); // · =>.
 		text = replaceCapitalPeriod(text);
-		long e = System.currentTimeMillis();
-		System.out.println("long replacements costs "+(e-b)+" ms");
+		//long e = System.currentTimeMillis();
+		//System.out.println("long replacements costs "+(e-b)+" ms");
 		
-		b = System.currentTimeMillis();
+		//b = System.currentTimeMillis();
 		//Standford parser for long text 
-		String[] preSents = preSplit(text);
+		List<String> preSents = preSplit(text);
 		List<String> sentences = new LinkedList();
 		for(String sent: preSents){
+			System.out.println(sent);
 			//if(sent.split("\\s+").length>13){//what should it be?
 				sentences.addAll(stanfordWrapper.getSentences(sent));
 			//}else{
 			//	sentences.add(sent);
 			//}
 		}
-		e = System.currentTimeMillis();
-		System.out.println("stanford parser costs "+(e-b)+" ms");
+		//e = System.currentTimeMillis();
+		//System.out.println("stanford parser costs "+(e-b)+" ms");
 		
 		//pipeline 
 		sentences = splitSentencesBySemicolon(sentences); // run ";" semicolon separator
@@ -86,8 +87,8 @@ public class SentenceSpliter {
 			System.out.println(sentence);
 		}
 		
-		long e1 = System.currentTimeMillis();
-		System.out.println("all spliting costs "+(e1-b1)+" ms");
+		//long e1 = System.currentTimeMillis();
+		//System.out.println("all spliting costs "+(e1-b1)+" ms");
 		return sentences;
 	}
 	
@@ -210,9 +211,22 @@ public class SentenceSpliter {
 	 * @param text
 	 * @return
 	 */
-	public String[] preSplit(String text){
+	public List<String> preSplit(String text){
 		String reg = "[.?]\\s+[A-Z]";
-		return text.split(reg);
+		Pattern p = Pattern.compile(reg);
+		Matcher m = p.matcher(text);
+		int start = 0;
+		int end = 0;
+		List<String> sentences = new ArrayList<String>();
+		while(m.find())
+		{
+			end = m.start()+1;
+			sentences.add(text.substring(start,end).trim());
+			start = end;
+		}
+		end = text.length();
+		sentences.add(text.substring(start,end).trim());
+		return sentences;
 	}
 	
 }
