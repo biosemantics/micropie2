@@ -17,7 +17,7 @@ import edu.arizona.biosemantics.micropie.classify.BinaryLabel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
 import edu.arizona.biosemantics.micropie.classify.SVMClassifier;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import weka.classifiers.Classifier;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
@@ -31,28 +31,41 @@ import weka.core.converters.ArffSaver;
 public class WekaModelCaller {
 
 	/**
-	 * save the trained classifier into a model file
+	 * save all the trained classifiers into a model file
 	 */
 	public static void saveModel(MultiSVMClassifier mutliClassifier, String modelPath) {
-	    try {
-	    	List<ILabel> labels  = mutliClassifier.getLabels();
-	    	Map<ILabel, SVMClassifier> classifiers = mutliClassifier.getClassifiers();
-	    	for(ILabel label : labels) {
-				SVMClassifier classifier =  classifiers.get(label);
-				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(modelPath+File.separator+label.getValue()+".model"));
-		        oos.writeObject(classifier.getFilteredClassifier().getClassifier());
-			    oos.flush();
-			    oos.close();
-			    
-			    saveArff(modelPath+File.separator+label+".arff", classifier.getInstances());
-			    serilize(modelPath+File.separator+label+".filter",classifier.getFilteredClassifier().getFilter());
-			}
-	    	
-	    } catch (FileNotFoundException e1) {
-	        e1.printStackTrace();
-	    } catch (IOException e1) {
-	        e1.printStackTrace();
-	    }
+    	List<ILabel> labels  = mutliClassifier.getLabels();
+    	Map<ILabel, SVMClassifier> classifiers = mutliClassifier.getClassifiers();
+    	for(ILabel label : labels) {
+			SVMClassifier classifier =  classifiers.get(label);
+			saveModel(classifier, label, modelPath);
+		}
+	}
+	
+	/**
+	 * save one model 
+	 * @param classifier
+	 * @param label
+	 * @param modelPath
+	 * @return 
+	 */
+	public static void saveModel(SVMClassifier classifier, ILabel label, String modelPath){
+		ObjectOutputStream oos = null;
+		try {
+			//save the model
+			oos = new ObjectOutputStream(new FileOutputStream(modelPath+File.separator+label.getValue()+".model"));
+			oos.writeObject(classifier.getFilteredClassifier().getClassifier());
+			oos.flush();
+			oos.close();
+			
+			//save the arff
+			saveArff(modelPath+File.separator+label+".arff", classifier.getInstances());
+			
+			//save the filter
+			serilize(modelPath+File.separator+label+".filter",classifier.getFilteredClassifier().getFilter());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -116,6 +129,4 @@ public class WekaModelCaller {
 		
 		return dataset;	
 	}
-	
-
 }

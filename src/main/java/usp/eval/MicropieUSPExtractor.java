@@ -3069,17 +3069,23 @@ public class MicropieUSPExtractor {
 					
 					for (String pid:pids) {
 						
-						// System.out.println("Pid::" + pid + "::" + ptId_aciChdIds_.get(pid));
+						System.out.println("Pid::" + pid + "::" + ptId_aciChdIds_.get(pid));
 						String sentId = pid.split(":")[0];
-						// System.out.println("sentId is ::" + sentId);
+						System.out.println("sentId is ::" + sentId);
+						String txtFileName =  null;
+						String sentText = null;
 						
+						String oriTxtFileName = null;
+						String oriSentText = null;
+						try{
+							txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
+							sentText = readDepFromTxtFile(txtFileName);
 						
-						String txtFileName = dataDir_+ "/text/0/" + sentId + ".txt";
-						String sentText = readDepFromTxtFile(txtFileName);
-						
-						String oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
-						String oriSentText = readDepFromTxtFile(oriTxtFileName);
-						
+							 oriTxtFileName = dataDir_+ "/text_o/0/" + sentId + ".txt";
+							 oriSentText = readDepFromTxtFile(oriTxtFileName);
+						}catch(Exception e){
+							continue;
+						}
 						
 						// System.out.println("text::" + text);
 						// System.out.println("oriSentText::" + oriSentText);

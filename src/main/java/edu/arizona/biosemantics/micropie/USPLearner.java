@@ -16,18 +16,14 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.concurrent.ExecutionException;
 
-import org.apache.commons.io.FileUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import edu.arizona.biosemantics.common.log.LogLevel;
-import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.extract.ExtractorType;
-import edu.arizona.biosemantics.micropie.model.CollapseUSPSentByCategoryCharTokenizer;
 import edu.arizona.biosemantics.micropie.model.IndexMapping;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.transform.CollapseUSPSentByCategoryChar;
 import edu.arizona.biosemantics.micropie.transform.SeperatorTokenizer;
 import edu.arizona.biosemantics.micropie.transform.StanfordWrapper;
@@ -86,12 +82,12 @@ public class USPLearner {
 	/**
 	 * Create input folders for USP from list sentences
 	 */
-	public void addSentenceList(List<Sentence> listSentence)
+	public void addSentenceList(List<RawSentence> listSentence)
 			throws IOException, InterruptedException, ExecutionException {
 		if(kwdListByCategory==null) this.initialize();
 		
 		//iteratively process all the train sentences
-		for (Sentence sentence : listSentence) {
+		for (RawSentence sentence : listSentence) {
 			addASentence(sentence);
 			counter++;
 		}
@@ -110,7 +106,7 @@ public class USPLearner {
 				BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(datasetFile)));
 				String line = null;
 				while((line = br.readLine())!=null){
-					addASentence(new Sentence(line.trim()));
+					addASentence(new RawSentence(line.trim()));
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -123,7 +119,7 @@ public class USPLearner {
 	 * add a sentence to the dataset
 	 * @param sentence
 	 */
-	public void addASentence(Sentence sentence) {
+	public void addASentence(RawSentence sentence) {
 		//StringBuilder depStringBuilder = new StringBuilder(); // Stanford Dependency
 		//StringBuilder inputStringBuilder = new StringBuilder();
 		StringBuilder morphStringBuilder = new StringBuilder();
@@ -368,6 +364,8 @@ public class USPLearner {
 	/**
 	 * create basic folders for USP
 	 * including: text, text_o, morph, morph_o, dep,parse,
+	 * 
+	 * TODO: let each folder hold 1000 files at most
 	 */
 	public void createBasicFolders() {
 		new File(uspBaseFolder).mkdirs();

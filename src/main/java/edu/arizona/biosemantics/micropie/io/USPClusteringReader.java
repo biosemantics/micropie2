@@ -15,9 +15,9 @@ import java.util.Set;
 
 import au.com.bytecode.opencsv.CSVReader;
 import edu.arizona.biosemantics.micropie.classify.Label;
-import edu.arizona.biosemantics.micropie.extract.regex.KeywordBasedExtractor;
+import edu.arizona.biosemantics.micropie.extract.keyword.KeywordBasedExtractor;
 import edu.arizona.biosemantics.common.log.LogLevel;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 
 
 /**

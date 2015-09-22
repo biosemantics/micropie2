@@ -17,6 +17,8 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.SubSentence;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -62,7 +64,7 @@ public class SentenceSpliter {
 		List<String> preSents = preSplit(text);
 		List<String> sentences = new LinkedList();
 		for(String sent: preSents){
-			System.out.println(sent);
+			//System.out.println(sent);
 			//if(sent.split("\\s+").length>13){//what should it be?
 				sentences.addAll(stanfordWrapper.getSentences(sent));
 			//}else{
@@ -83,8 +85,8 @@ public class SentenceSpliter {
 			//what's the purpose?....
 			sentence = textNormalizer.transformBack(sentence);
 			
-			sentence = textNormalizer.transformCelsiusDegree(sentence); // °C => celsius_degree
-			System.out.println(sentence);
+			//sentence = textNormalizer.transformCelsiusDegree(sentence); // °C => celsius_degree
+			//System.out.println(sentence);
 		}
 		
 		//long e1 = System.currentTimeMillis();
@@ -228,5 +230,75 @@ public class SentenceSpliter {
 		sentences.add(text.substring(start,end).trim());
 		return sentences;
 	}
+	
+	
+	/**
+	 * 1, seprate by ; 
+	 * 2, extract the inner clause embedded by brackets.
+	 * @return
+	 */
+	public List<SubSentence> detectSnippet(Sentence sentence){
+		List<SubSentence> sentArr = new ArrayList();
+		String[] sentences = splitBySemicolon(sentence.getText());
+		for(String sent: sentences){
+			//int leftBracket = sent.indexOf("(");
+			//int rightBracket = sent.indexOf(")");
+			Pattern pattern = Pattern.compile("(?<=\\()(.+?)(?=\\))");
+	        Matcher matcher = pattern.matcher(sent);
+	        while(matcher.find()){
+	        	String innerClause = matcher.group();
+	        	
+	        	SubSentence ic = new SubSentence();
+				ic.setContent(innerClause);
+				ic.setLength(innerClause.length());
+				ic.setMainSentence(sentence);
+				//ic.setStart(leftBracket+1);
+				sentArr.add(ic);
+				sent = sent.replace(innerClause, "");
+	        }
+	        sent = sent.replace("(", "");
+	        sent = sent.replace(")", "");
+	        /*
+			if(leftBracket>-1&&rightBracket>-1){
+				//System.out.println(sent);
+				String innerClause = sent.substring(leftBracket+1, rightBracket);
+				String outerClause  = sent.substring(0, leftBracket)+sent.substring(rightBracket+1, sent.length());
+				
+				StringSnippet ic = new StringSnippet();
+				ic.setContent(innerClause);
+				ic.setDocId(docId);
+				ic.setSentId(sentId);
+				ic.setLength(innerClause.length());
+				ic.setStart(leftBracket+1);
+				sentArr.add(ic);
+				
+				StringSnippet oc = new StringSnippet();
+				oc.setContent(outerClause);
+				oc.setDocId(docId);
+				oc.setSentId(sentId);
+				oc.setLength(outerClause.length());
+				oc.setStart(0);
+				sentArr.add(oc);
+			}
+	         */
+				SubSentence oc = new SubSentence();
+				oc.setContent(sent);
+				oc.setMainSentence(sentence);
+				oc.setLength(sent.length());
+				oc.setStart(0);
+				sentArr.add(oc);
+		}
+		return sentArr;
+	}
+	
+	/**
+	 * split a sentence into sentences
+	 * @param sentence
+	 * @return
+	 */
+	public String[] splitBySemicolon(String sentence){
+		return sentence.split(";");
+	}
+	
 	
 }

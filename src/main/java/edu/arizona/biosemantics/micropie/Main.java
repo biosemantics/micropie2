@@ -1,5 +1,8 @@
 package edu.arizona.biosemantics.micropie;
 
+import java.util.List;
+import java.util.Set;
+
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -8,10 +11,25 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+import weka.core.FastVector;
+import weka.core.Instance;
+import weka.core.Instances;
+
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Key;
+import com.google.inject.TypeLiteral;
+import com.google.inject.name.Names;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
+import edu.arizona.biosemantics.micropie.transform.CompoundSentenceSplitRun;
+import edu.arizona.biosemantics.micropie.transform.SentenceSpliter;
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+import edu.stanford.nlp.process.CoreLabelTokenFactory;
+import edu.stanford.nlp.process.PTBTokenizer;
 
 public class Main {
 	
@@ -19,7 +37,9 @@ public class Main {
 	
 	public static void main(String[] args) throws Throwable {
 		Main main = new Main();
-		main.parse(args);
+		
+		args = "-i F:/MicroPIE/micropieInput -o F:/MicroPIE/micropieInput/output".split("\\s+");
+		//main.parse(args);
 		main.run();
 	}
 	
@@ -61,11 +81,76 @@ public class Main {
 
 	
 	private void run() throws Exception {
-		Injector injector = Guice.createInjector(config);
-		IRun run = injector.getInstance(IRun.class);	
+		config = new Config();
+		String prjInputFolder = "F:/MicroPIE/micropieInput";
+		String prjOutputFolder ="F:/MicroPIE/micropieInput/output";
+		config.setInputDirectory(prjInputFolder);
+		config.setOutputDirectory(prjOutputFolder);
 		
-		log(LogLevel.INFO, "running " + run.getClass() + "...");
-		run.run();		
-	}	
-
+		Injector injector = Guice.createInjector(config);
+		//IRun run = injector.getInstance(IRun.class);	
+		//IRun run = injector.getInstance(IRun.class);
+		
+		//Train the sentence splitter
+		//TrainSentenceClassifier run = (TrainSentenceClassifier)injector.getInstance(TrainSentenceClassifier.class,  Names.named("TrainSentenceClassifier")));
+		
+		//log(LogLevel.INFO, "running " + run.getClass() + "...");
+		//run.run();
+		//TrainSentenceClassifier run = (TrainSentenceClassifier)injector.getInstance(TrainSentenceClassifier.class);
+		
+		//String testSentFile = "F:\\MicroPIE\\micropieInput\\training_data\\150130-Training-Sentences-new-2col.csv";
+		//String savedModelFolder = "F:\\MicroPIE\\micropieInput\\models\\";
+		
+		//injector.getInstance(Key.get(new TypeLiteral<GenericDbClass<Integer>>(){});
+		//List<ILabel> labels = injector.getInstance(Key.get(new TypeLiteral<List<ILabel>>() {},  Names.named("MultiSVMClassifier_Labels")));
+		//run.train(testSentFile,savedModelFolder,labels);
+		//run.testTruePositive(testSentFile,savedModelFolder,labels);
+		//run.testTrueNegative(testSentFile,savedModelFolder,labels);
+		
+		//SentenceSpliter sspliter = injector.getInstance(SentenceSpliter.class);
+		/*
+		long b = System.currentTimeMillis();
+		SentencePredictor sentPred1 = injector.getInstance(SentencePredictor.class);
+		SentencePredictor sentPred2 = injector.getInstance(SentencePredictor.class);
+		SentencePredictor sentPred3 = injector.getInstance(SentencePredictor.class);
+		*/
+		//Habitat is not known.
+		//Colonies are 0.2 to 0.3 mm in diameter on blood-enriched Columbia agar and Brain Heart Infusion (BHI) agar.
+		
+		/*sentPred1.predict("Habitat is not known.");
+		sentPred2.predict("Colonies are 0.2 to 0.3 mm in diameter on blood-enriched Columbia agar and Brain Heart Infusion (BHI) agar.");
+		sentPred3.predict("Cells are rod-shaped with a mean diameter of 0.56 µm.");
+		long e = System.currentTimeMillis();
+		System.out.println(e-b);
+		List<String> sents = sspliter.split("Colonies are 0.2 to 0.3 mm in diameter on blood-enriched Columbia agar and Brain Heart Infusion (BHI) agar. Cells are rod-shaped with a mean diameter of 0.56 µm; optimal growth is achieved anaerobically. Weak growth is observed in microaerophilic conditions. No growth is observed in aerobic conditions. Growth occurred between 30-37°C, with optimal growth observed at 37°C, in BHI medium + 5% NaCl. Cells stain Gram negative and are non-motile. Catalase, α-galactosidase, β-galactosidase, β-glucuronidase, arginine arlyamidase, glycine arylamidase, proline arylimidase, leucyl glycine arylamidase, and alanine arylamidase activities are present. Mannose fermentation and indole production are also present. Oxidase activity is absent. Cells are susceptible to penicillin G, amoxicillin + clavulanic acid, imipeneme and clindamycin but resistant to metronidazole. The G+C content of the genome is 58.40%.");
+		SentencePredictor predictor = injector.getInstance(SentencePredictor.class);
+		for(String sent : sents){
+			predictor.predict(sent);
+		}
+		String sentence = "Cells are rod-shaped with a mean diameter of 0.56 µm; optimal growth is achieved anaerobically.";
+		//String sentence = "Questions asking us to recommend or find a tool, library or favorite off-site resource are off-topic for Stack Overflow as they tend to attract opinionated answers and spam.";
+		LexicalizedParser lexicalizedParser = injector.getInstance(LexicalizedParser.class);
+		CompoundSentenceSplitRun splitRun = new CompoundSentenceSplitRun(
+				sentence, lexicalizedParser, PTBTokenizer.factory(
+						new CoreLabelTokenFactory(), ""));
+		splitRun.call();
+		*/
+		
+		
+		String inputFolder = "F:\\MicroPIE\\micropieInput\\input";
+		String svmLabelAndCategoryMappingFile = injector.getInstance(Key.get(String.class,  Names.named("svmLabelAndCategoryMappingFile")));
+		String predictionsFile = "F:/MicroPIE/micropieInput/sentences/1.1prediction.csv";
+		String outputMatrixFile = "F:\\MicroPIE\\micropieInput\\output\\matrix.csv";
+		/*MicroPIEProcessor microPIEProcessor = injector.getInstance(MicroPIEProcessor.class);
+		long b = System.currentTimeMillis();
+		microPIEProcessor.processFolder(inputFolder, svmLabelAndCategoryMappingFile, predictionsFile, outputMatrixFile);
+		long e2 = System.currentTimeMillis();
+		System.out.println("get the splitter costs:"+(e2-b)+" ms");
+		*/
+		
+		
+		SentenceBatchProcessor sentBatPIEProcessor = injector.getInstance(SentenceBatchProcessor.class);
+		String lineFile = "F:/MicroPIE/micropieInput/sentences/1.1 G+C.csv";
+		sentBatPIEProcessor.processLineFile(lineFile, svmLabelAndCategoryMappingFile, predictionsFile, outputMatrixFile);
+	}
 }

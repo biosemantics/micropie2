@@ -17,12 +17,11 @@ import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthPhExtractor;
-import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
-import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractorProvider;
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 
@@ -32,21 +31,20 @@ import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
  */
 public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator {
 
-	private LinkedHashSet<String> characters;
-	private ICharacterValueExtractorProvider contentExtractorProvider;
-	private Map<TaxonTextFile, List<Sentence>> taxonSentencesMap;
-	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
-	private Map<Sentence, MultiClassifiedSentence> classifiedSentencesMap;
+	private LinkedHashSet<String> characters;//the characters need to be parsed
+	private ICharacterValueExtractorProvider contentExtractorProvider;// extractors
+	
+	//it's better to send to this class as parameters
+	private Map<TaxonTextFile, List<MultiClassifiedSentence>> taxonSentencesMap;
+	private Map<RawSentence, MultiClassifiedSentence> classifiedSentencesMap;
 
 	@Inject
 	public TaxonCharacterMatrixCreator(@Named("Characters")LinkedHashSet<String> characters, 
-			@Named("TaxonSentencesMap")Map<TaxonTextFile, List<Sentence>> taxonSentencesMap, 
-			@Named("SentenceMetadataMap")Map<Sentence, SentenceMetadata> sentenceMetadataMap, 
-			@Named("SentenceClassificationMap")Map<Sentence, MultiClassifiedSentence> classifiedSentencesMap,
+			@Named("TaxonSentencesMap")Map<TaxonTextFile, List<MultiClassifiedSentence>> taxonSentencesMap, 
+			@Named("SentenceClassificationMap")Map<RawSentence, MultiClassifiedSentence> classifiedSentencesMap,
 			ICharacterValueExtractorProvider contentExtractorProvider) {
 		this.characters = characters;
 		this.taxonSentencesMap = taxonSentencesMap;
-		this.sentenceMetadataMap = sentenceMetadataMap;
 		this.classifiedSentencesMap = classifiedSentencesMap;
 		this.contentExtractorProvider = contentExtractorProvider;
 	}
@@ -59,78 +57,46 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 		result.setCharacters(characters);
 		
 		//<Taxon, <Character, Set<Value>>>
-		Map<TaxonTextFile, Map<String, Set<String>>> taxonCharacterMap = new HashMap<TaxonTextFile, Map<String, Set<String>>>();
+		Map<TaxonTextFile, Map<String, Set<CharacterValue>>> taxonCharacterMap = new HashMap<TaxonTextFile, Map<String, Set<CharacterValue>>>();
 		for(TaxonTextFile taxonFile : taxonSentencesMap.keySet()) {//process one file
-			HashMap<String, Set<String>> characterMap = new HashMap<String, Set<String>>();
+			//initialize all the characters
+			HashMap<String, Set<CharacterValue>> characterMap = new HashMap<String, Set<CharacterValue>>();
 			for(String character : characters) {
-				characterMap.put(character, new HashSet<String>());
+				characterMap.put(character, new HashSet<CharacterValue>());
 			}
 			taxonCharacterMap.put(taxonFile, characterMap);
 			
 			//the sentences in the file
-			List<Sentence> sentences = taxonSentencesMap.get(taxonFile);
-			for(Sentence sentence : sentences) {//process one sentence
-				SentenceMetadata metadata = sentenceMetadataMap.get(sentence);
-				MultiClassifiedSentence classifiedSentence = classifiedSentencesMap.get(sentence);
-
-				Set<ILabel> predictions = classifiedSentence.getPredictions();
+			List<MultiClassifiedSentence> sentences = taxonSentencesMap.get(taxonFile);
+			for(MultiClassifiedSentence sentence : sentences) {//process one sentence
+				Set<ILabel> predictions = sentence.getPredictions();
 				
-				//System.out.println("predictions.size()::" + predictions.size());
 				if (predictions.size() == 0 ) {//it can be any character
-					//System.out.println("Did not predict anything!");
-					// for(ILabel label : predictions) {
-						// if ( label.toString().equals("") ) {
-							Label[] labelList = Label.values();
-							for ( int i = 0; i < labelList.length; i++ ) {
-								predictions.add(labelList[i]);
-							}
-						// }
-					// }
-				} // else {
-					// String[] predictionsArray = predictions.toArray(new String[0]);
-					// System.out.println("predictionsArray::" + Arrays.toString(predictionsArray));
-				// }
+					Label[] labelList = Label.values();
+					for ( int i = 0; i < labelList.length; i++ ) {
+						predictions.add(labelList[i]);
+					}
+				}
 				 
-				
-				// Method 1: With SVM
-				// Set<ILabel> predictions = classifiedSentence.getPredictions();
-				
-				// Method 2: Without SVM
-				/*
-				Set<ILabel> predictions = new HashSet<ILabel>();
-				predictions.add(Label.c1);
-				predictions.add(Label.c2);
-				predictions.add(Label.c3);
-				predictions.add(Label.c4);
-				predictions.add(Label.c5);
-				predictions.add(Label.c6);
-				predictions.add(Label.c7);
-				predictions.add(Label.c8);
-				predictions.add(Label.c9);
-				predictions.add(Label.c10);
-				predictions.add(Label.c11);
-				
 				// Reference: 
-				*/
-				
+				// get the character extractors for this sentence
 				Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
 				for(ILabel label : predictions) {//get all the extractors ready
 					if(label instanceof Label) {
-						//System.out.println("label::" + label);
 						extractors.addAll(contentExtractorProvider.getContentExtractor((Label)label));
 					}
 				}
+				
+				//call the extractors one by one
 				for(ICharacterValueExtractor extractor : extractors) {
-					String character = extractor.getCharacter();
-					if(characters.contains(character)) {
-						Set<String> content = extractor.getCharacterValue(sentence.getText());
+					String character = extractor.getCharacterName();
+					if(characters.contains(character)) {//will one have many characters?
+						List<CharacterValue> content = extractor.getCharacterValue(sentence);
 						
-						//System.out.println("character::" + character + " => content::Before::" + Arrays.toString(content.toArray()));
+						System.out.println("character::" + character + " => content::Before::" + Arrays.toString(content.toArray()));
 						content.remove(null);
-						
 						content.removeAll(Collections.singleton(null));
 						content.removeAll(Collections.singleton(""));
-						
 						//System.out.println("character::" + character + " => content::After::" + Arrays.toString(content.toArray()));
 
 						

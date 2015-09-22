@@ -17,10 +17,22 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 
-
+/**
+ * Extract the character 3.5 PH Minimum
+ * Sample sentences:
+ * 	1. Grows between pH 7.0 and 10.0, with an optimum at pH 9, and between 30 and 46  degree_celsius_1, with an optimum at 37  degree_celsius_1.
+ * 	2. Cells were able to grow and produce methane within a temperature range of 23–35 degree_celsius_1 (lower temperatures not tested) and a pH range of 6.5–8.3 on methanol or trimethylamine.
+ *	
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
 	
 	private String celsius_degreeReplaceSourcePattern = "\\s?”C\\s?|\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?";
@@ -45,15 +57,16 @@ public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 
 		text = text.replaceAll(celsius_degreeReplaceSourcePattern, celsius_degreeReplaceTargetPattern);
 		text = text.toLowerCase();
 		//System.out.println("Modified sent::" + text);
-		
-		// input: the original sentnece
-		// output: String array?
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 		
 		int caseNumber = 0;
 		if ( text.matches("(.*)(ph(.*)range|ph range)(.*)")) {
@@ -144,62 +157,8 @@ public class GrowthPhMinExtractor extends AbstractCharacterValueExtractor {
 				// System.out.println("Go to Case 0::");
 				
 		}
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
-	
-	
-	// Example: Grows well at 30-37 celsius_degree and at ph 7.0-8.0.
-	public static void main(String[] args) throws IOException {
-		System.out.println("Start::");
-		
-		GrowthPhMinExtractor growthPhMinExtractor = new GrowthPhMinExtractor(Label.c3);
-		
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		
-		// sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
-		// List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		// System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
-		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());		
-		
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			
-			sourceSentText = sourceSentText.replaceAll(growthPhMinExtractor.getCelsius_degreeReplaceSourcePattern(), growthPhMinExtractor.getCelsius_degreeReplaceTargetPattern());
-			sourceSentText = sourceSentText.toLowerCase();
-			// pH
-			
-			if (
-					sourceSentText.matches("(.*)(\\bph\\b)(.*)") 
-				) {				
-			
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				Set<String> growPhMinResult = growthPhMinExtractor.getCharacterValue(sourceSentText);
-				System.out.println("growPhMinResult::" + growPhMinResult.toString());
-				if ( growPhMinResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-			}
-		
-		}
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-	
-	}
-	
-	
 	
 }

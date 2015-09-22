@@ -23,10 +23,24 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 
+
+/**
+ * Extract the character 3.9 Temperature optimum
+ * Sample sentences:
+ * 	1. Cells are mesophilic (range 15 degree_celsius_1 to 45 degree_celsius_1) with an optimum at 40  degree_celsius_1.
+ * 	2. Grows at 20–40  degree_celsius_1 (optimum 35  degree_celsius_1), at pH 5.5–9.0 (optimum pH 6.5) and with 0–1.2 M NaCl (optimum 0–0.68 M NaCl).
+ *	
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class GrowthTempOptimumExtractor extends AbstractCharacterValueExtractor {
 
 	// Add Map<String, String> on Feb 09, 2015 MON
@@ -106,19 +120,19 @@ public class GrowthTempOptimumExtractor extends AbstractCharacterValueExtractor 
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 
 		text = text.replaceAll("\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?", " celsius_degree ");
 		text = text.toLowerCase();
-		// System.out.println("Modified sent::" + text);
 
 		// Add Map<String, String> on Feb 09, 2015 MON
 		regexResultWithMappingCaseMap = new HashMap<String, String>();
 		
-		// input: the original sentnece
-		// output: String array?
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
-
 		// Example: optimal temperature is 37°c; optimal temperature is 37˚c; optimum temperature is 37°c; optimum temperature is 37˚c;
 		String patternString = "(.*)" + 
 								"(" +
@@ -154,164 +168,9 @@ public class GrowthTempOptimumExtractor extends AbstractCharacterValueExtractor 
 			}
 		}			
 		
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
-	
-	// Example: Growth occurs at 20–50 ˚C, with optimum growth at 37–45 ˚C.
-	public static void main(String[] args) throws IOException {
-		//System.out.println("Start");
-		GrowthTempOptimumExtractor growthTempOptimumExtractor = new GrowthTempOptimumExtractor(Label.c3);	
-		
-		
-		/*
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		// sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
-		
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
-		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());
-		
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-
-			sourceSentText = sourceSentText.replaceAll("\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?", " celsius_degree ");
-			
-			// ˚C
-			// if ( (sourceSentText.contains("celsius_degree") && sourceSentText.contains("optimal")) || 
-			//		(sourceSentText.contains("celsius_degree") && sourceSentText.contains("optimum"))
-			//		) {
-			if ( (sourceSentText.matches("(.*)(\\bcelsius_degree\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimal\\b)(.*)")) || 
-					(sourceSentText.matches("(.*)(\\bcelsius_degree\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimum\\b)(.*)"))
-					) {			
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				Set<String> growTempOptimumResult = growthTempOptimumExtractor.getCharacterValue(sourceSentText);
-				System.out.println("growTempOptimumResult::" + growTempOptimumResult.toString());
-				if ( growTempOptimumResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}else {
-					// System.out.println("\n");
-					// System.out.println("sourceSentText::" + sourceSentText);
-					// System.out.println("growTempOptimumResult::" + growTempOptimumResult.toString());
-				}
-				sampleSentCounter +=1;
-			}
-		
-		}
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-		*/
-		
-
-		
-		// Test on February 09, 2015 Mon
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		String sourceFile = "micropieInput_zip/training_data/150130-Training-Sentences-new.csv";
-		String svmLabelAndCategoryMappingFile = "micropieInput_zip/svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
-		sourceSentenceReader.setInputStream(new FileInputStream(sourceFile));
-		sourceSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
-		sourceSentenceReader.readSVMLabelAndCategoryMapping();
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		//System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-
-		
-		String outputFile = "micropieInput_zip_output/GrowthTempOptimum_Regex.csv";
-		OutputStream outputStream = new FileOutputStream(outputFile);
-		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
-		List<String[]> lines = new LinkedList<String[]>();
-		
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			sourceSentText = sourceSentText.replaceAll(growthTempOptimumExtractor.getCelsius_degreeReplaceSourcePattern(), growthTempOptimumExtractor.getCelsius_degreeReplaceTargetPattern());
-			sourceSentText = sourceSentText.toLowerCase();
-			// NaCl
-			
-			
-			
-			if ( 
-					sourceSentText.matches("(.*)(\\bcelsius_degree\\b)(.*)") || sourceSentText.matches("(.*)(\\btemperature\\b)(.*)") 
-					) {	
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				
-				
-				
-				Set<String> growthTempOptimumResult = growthTempOptimumExtractor.getCharacterValue(sourceSentText);
-				
-				System.out.println("growthNaclMaxExtractor.getRegexResultWithMappingCaseMap()::" + growthTempOptimumExtractor.getRegexResultWithMappingCaseMap().toString());
-				
-				String regexResultWithMappingCaseMapString = "";
-				
-				for (Map.Entry<String, String> entry : growthTempOptimumExtractor.getRegexResultWithMappingCaseMap().entrySet()) {
-					System.out.println("Key : " + entry.getKey() + " Value : "
-					 	+ entry.getValue());
-				
-					regexResultWithMappingCaseMapString += entry.getKey() + ":" + entry.getValue() + ", ";
-					
-				}
-				
-				System.out.println("growthTempOptimumResult::" + growthTempOptimumResult.toString());
-				if ( growthTempOptimumResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-				
-				System.out.println("regexResultWithMappingCaseMapString::" + regexResultWithMappingCaseMapString);
-
-				
-				lines.add(new String[] { sourceSentText,
-						regexResultWithMappingCaseMapString
-						} );
-				
-			} /*else {
-				String sentLabel = sourceSentence.getLabel().getValue();
-				
-				if ( sentLabel.equals("1") ) {
-					System.out.println("sentLabel::" + sentLabel);
-					System.out.println("sourceSentText::" + sourceSentText);
-					System.out.println("no case");
-					lines.add(new String[] { sourceSentText,
-							"No Case"
-							} );
-				}
-				
-				
-				
-
-			}*/
-			
-		
-		
-		} 
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-
-		
-		writer.writeAll(lines);
-		writer.flush();
-		writer.close();		
-		
-		
-		
-	}	
 	
 }
 

@@ -152,7 +152,7 @@ public class TextNormalizer implements ITextNormalizer {
 		
 		text = replace(text, this.abbreviations);
 		
-		System.out.println("TextNormalizer::Text::" + text);
+		//System.out.println("TextNormalizer::Text::" + text);
 		
 		
 		// text = replace(text, parenthesisReplacements); // mark it first since this one doesn't work very well

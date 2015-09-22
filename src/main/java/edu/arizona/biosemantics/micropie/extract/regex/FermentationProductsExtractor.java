@@ -14,7 +14,20 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 
+/**
+ * Extract the character 6.1 Fermentation Products
+ * Sample sentences:
+ * 	1. Metabolism is fermentative, with glucose fermented to succinic and acetic acids, or respiratory, with glucose metabolized to CO2 and water by using oxygen as the terminal electron acceptor.  
+ *	2. Major products of glucose fermentation are propionic, lactic and succinic acids.  
+ *
+ *	Method:
+ *	1.	USP
+ */
 public class FermentationProductsExtractor extends AbstractCharacterValueExtractor {
 
 	private String uspResultsDirectory;
@@ -34,14 +47,13 @@ public class FermentationProductsExtractor extends AbstractCharacterValueExtract
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
 		
-		// input: the original sentnece
-		// output: String array?
-		
-		// Example:  ??
+		String text = sentence.getText();
+
 		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor(uspResultsDirectory, uspString);
 		try {
 			output = micropieUSPExtractor.getObjectValue(text, "produces", "V", "dobj", "Dep");
@@ -50,11 +62,10 @@ public class FermentationProductsExtractor extends AbstractCharacterValueExtract
 			//System.out.println("Fermentation Products::" + output.toString());
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
 }

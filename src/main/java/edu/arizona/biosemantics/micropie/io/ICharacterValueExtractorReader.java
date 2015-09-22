@@ -2,7 +2,7 @@ package edu.arizona.biosemantics.micropie.io;
 
 import java.io.File;
 
-import edu.arizona.biosemantics.micropie.extract.regex.ICharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractor;
 
 public interface ICharacterValueExtractorReader {
 

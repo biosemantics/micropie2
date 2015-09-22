@@ -14,10 +14,23 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 
+/**
+ * Extract the character 3.10 Temperature maximum
+ * Sample sentences:
+ * 	1. Grows at 20–40  degree_celsius_1 (optimum 35  degree_celsius_1), at pH 5.5–9.0 (optimum pH 6.5) and with 0–1.2 M NaCl (optimum 
+ * 	2. Grows between pH 7.0 and 10.0, with an optimum at pH 9, and between 30 and 46  degree_celsius_1, with an optimum at 37  
+ *	
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 
 	private String celsius_degreeReplaceSourcePattern = "\\s?”C\\s?|\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?";
@@ -42,17 +55,15 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	
-	
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 		text = text.replaceAll(celsius_degreeReplaceSourcePattern, celsius_degreeReplaceTargetPattern);
 		text = text.toLowerCase();
-		//System.out.println("Modified sent::" + text);
-		
-		// input: the original sentnece
-		// output: String array?
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 		
 		int caseNumber = 0;
 		if ( text.matches("(.*)(temperature(.*)range|temperature range)(.*)")) {
@@ -168,61 +179,7 @@ public class GrowthTempMinExtractor extends AbstractCharacterValueExtractor {
 				// System.out.println("Go to Case 0::");
 				
 		}
-		return output;
-	}
-	
-	// Example: Growth occurs at 20–50 ˚C, with optimum growth at 37–45 ˚C.
-	public static void main(String[] args) throws IOException {
-		GrowthTempMinExtractor growthTempMinExtractor = new GrowthTempMinExtractor(Label.c3);	
-		
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		
-		// sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
-		// List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		// System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-		
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
-		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			
-			sourceSentText = sourceSentText.replaceAll(growthTempMinExtractor.getCelsius_degreeReplaceSourcePattern(), growthTempMinExtractor.getCelsius_degreeReplaceTargetPattern());
-
-			
-			// ˚C
-			//if (sourceSentText.contains("celsius_degree") || sourceSentText.contains("temperature") ) {
-			//if (sourceSentText.contains("˚C") || sourceSentText.contains("temperature") || sourceSentText.contains("pH") || sourceSentText.contains("NaCl")) {
-			
-			if (
-					( 
-					sourceSentText.matches("(.*)(\\bcelsius_degree\\b)(.*)") || 
-					sourceSentText.matches("(.*)(\\btemperature\\b)(.*)") 
-					)
-				) {	
-				
-				//System.out.println("\n");
-				//System.out.println("sourceSentText::" + sourceSentText);
-				Set<String> growTempMinResult = growthTempMinExtractor.getCharacterValue(sourceSentText);
-				//System.out.println("growTempMinResult::" + growTempMinResult.toString());
-				if ( growTempMinResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-			}
-		
-		}
-
-		//System.out.println("\n");
-		//System.out.println("sampleSentCounter::" + sampleSentCounter);
-		//System.out.println("extractedValueCounter::" + extractedValueCounter);
-		//
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
 }

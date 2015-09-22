@@ -1,5 +1,9 @@
 package edu.arizona.biosemantics.micropie.model;
 
+
+/**
+ * USP term index model
+ */
 public class USPTermIndex {
 	private int collapsedTermIndex;
 	private String collapsedTermName;

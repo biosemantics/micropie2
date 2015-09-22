@@ -19,6 +19,12 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 
+
+/**
+ * used in USP
+ * @author maojin
+ *
+ */
 public class CollapseUSPSentByCategoryChar {
 
 	public CollapseUSPSentByCategoryChar() {

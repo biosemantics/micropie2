@@ -23,10 +23,24 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 
+
+/**
+ * Extract the character 3.6 PH Maximum
+ * Sample sentences:
+ * 	1. Grows between pH 7.0 and 10.0, with an optimum at pH 9, and between 30 and 46  degree_celsius_1, with an optimum at 37  degree_celsius_1.
+ * 	2. Grows at 20–40  degree_celsius_1 (optimum 35  degree_celsius_1), at pH 5.5–9.0 (optimum pH 6.5) and with 0–1.2 M NaCl (optimum 0–0.68 M NaCl).
+ *	
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 
 	private String myNumberPattern = "(\\d+(\\.\\d+)?)";
@@ -72,19 +86,17 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 
 		text = text.replaceAll("\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?", " celsius_degree ");
 		text = text.toLowerCase();
-		// System.out.println("Modified sent::" + text);
 		
-		// Add Map<String, String> on Feb 09, 2015 MON
 		regexResultWithMappingCaseMap = new HashMap<String, String>();
-
-		
-		// input: the original sentnece
-		// output: String array?
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 
 		// Example: 	
 		/*
@@ -393,7 +405,8 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		}			
 		*/
 		
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
 
 	public boolean isNextToRightSymbolNeg(String matchPartString, String matchPartString2, String negSymbol) {
@@ -454,181 +467,4 @@ public class GrowthPhOptimumExtractor extends AbstractCharacterValueExtractor {
 		return isNextToRightSymbolNeg;
 	}	
 	
-	
-	// Example: Grows at 15–37 celsius_degree (optimum 30 celsius_degree ) and pH 5–8 (optimum pH 7).
-	public static void main(String[] args) throws IOException {
-		/*
-		String exampleSent = "Grows at 15–37 celsius_degree (optimum 30 celsius_degree ) and pH 5–8 (optimum pH 7).";
-		String patternString = "(.*)(\\s?optimum pH\\s?)" +
-								"(" +
-								"\\d+|" +
-								"\\d+\\s?|" + 
-								"\\d+\\s?-\\s?\\d+\\s?|" +
-								"\\d+\\s?–\\s?\\d+\\s?|" +
-								"\\d+\\.\\d+\\s?-\\s?\\d+\\.\\d+\\s?|" +
-								"\\d+\\.\\d+\\s?–\\s?\\d+\\.\\d+\\s?" +
-								")" +
-								"(.*)";
-		
-		Pattern pattern = Pattern.compile(patternString);
-		Matcher matcher = pattern.matcher(exampleSent);
-
-		while (matcher.find()) {
-			System.out.println("Whloe Sent::" + matcher.group());
-			System.out.println("Part 1::" + matcher.group(1));
-			System.out.println("Part 2::" + matcher.group(2));
-			System.out.println("Part 3::" + matcher.group(3));
-			System.out.println("Part 4::" + matcher.group(4));
-		}
-		*/
-		
-		System.out.println("Start::");
-		
-		GrowthPhOptimumExtractor growthPhOptimumExtractor = new GrowthPhOptimumExtractor(Label.c3);	
-		
-		
-		/*
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
-		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());
-		
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			sourceSentText = sourceSentText.replaceAll("\\s?u C\\s?|\\s?°C\\s?|\\s?° C\\s?|\\s?˚C\\s?|\\s?◦C\\s?", " celsius_degree ");
-			sourceSentText = sourceSentText.toLowerCase();
-			
-			// pH
-			if ( (sourceSentText.matches("(.*)(\\bph\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimal\\b)(.*)")) || 
-					(sourceSentText.matches("(.*)(\\bph\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimum\\b)(.*)"))
-					) {
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				Set<String> growPhOptimumResult = growthPhOptimumExtractor.getCharacterValue(sourceSentText);
-				System.out.println("growPhOptimumResult::" + growPhOptimumResult.toString());
-				if ( growPhOptimumResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-			}
-		
-		}
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-		
-		*/
-
-		// Test on February 09, 2015 Mon
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		String sourceFile = "micropieInput_zip/training_data/150130-Training-Sentences-new.csv";
-		String svmLabelAndCategoryMappingFile = "micropieInput_zip/svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
-		sourceSentenceReader.setInputStream(new FileInputStream(sourceFile));
-		sourceSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
-		sourceSentenceReader.readSVMLabelAndCategoryMapping();
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-
-		
-		String outputFile = "micropieInput_zip_output/GrowthPhOptimum_Regex.csv";
-		OutputStream outputStream = new FileOutputStream(outputFile);
-		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
-		List<String[]> lines = new LinkedList<String[]>();
-		
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			sourceSentText = sourceSentText.replaceAll(growthPhOptimumExtractor.getCelsius_degreeReplaceSourcePattern(), growthPhOptimumExtractor.getCelsius_degreeReplaceTargetPattern());
-			sourceSentText = sourceSentText.toLowerCase();
-			// NaCl Optimum
-			// NaCl (w/v) %
-			
-			
-			if ( (sourceSentText.matches("(.*)(\\bph\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimal\\b)(.*)")) || 
-					(sourceSentText.matches("(.*)(\\bph\\b)(.*)") && sourceSentText.matches("(.*)(\\boptimum\\b)(.*)"))
-					) {	
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				
-				
-				
-				Set<String> growthPhOptimumResult = growthPhOptimumExtractor.getCharacterValue(sourceSentText);
-				
-				System.out.println("growthNaClOptimumExtractor.getRegexResultWithMappingCaseMap()::" + growthPhOptimumExtractor.getRegexResultWithMappingCaseMap().toString());
-				
-				String regexResultWithMappingCaseMapString = "";
-				
-				for (Map.Entry<String, String> entry : growthPhOptimumExtractor.getRegexResultWithMappingCaseMap().entrySet()) {
-					System.out.println("Key : " + entry.getKey() + " Value : "
-					 	+ entry.getValue());
-				
-					regexResultWithMappingCaseMapString += entry.getKey() + ":" + entry.getValue() + ", ";
-					
-				}
-				
-				System.out.println("growthPhOptimumResult::" + growthPhOptimumResult.toString());
-				if ( growthPhOptimumResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-				
-				System.out.println("regexResultWithMappingCaseMapString::" + regexResultWithMappingCaseMapString);
-
-				
-				lines.add(new String[] { sourceSentText,
-						regexResultWithMappingCaseMapString
-						} );
-				
-			} /*else {
-				String sentLabel = sourceSentence.getLabel().getValue();
-				
-				if ( sentLabel.equals("1") ) {
-					System.out.println("sentLabel::" + sentLabel);
-					System.out.println("sourceSentText::" + sourceSentText);
-					System.out.println("no case");
-					lines.add(new String[] { sourceSentText,
-							"No Case"
-							} );
-				}
-				
-				
-				
-
-			}*/
-			
-		
-		
-		} 
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-
-		
-		writer.writeAll(lines);
-		writer.flush();
-		writer.close();		
-		
-		
-	}
-
-
-
 }
-
-
-

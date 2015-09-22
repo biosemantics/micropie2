@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -20,15 +21,18 @@ import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import com.google.inject.name.Names;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.extract.NewTaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.extract.TaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
+import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
@@ -52,28 +56,29 @@ public class MicroPIEProcessor{
 	private SentenceSpliter sentenceSpliter;
 	private CSVClassifiedSentenceWriter classifiedSentenceWriter;
 	
+	private Map<String, ILabel> categoryNameLabelMap;
+	
 	//System Parameters
 	private boolean parallelProcessing;
 	private int maxThreads;
+	private LinkedHashSet<String> characterNames;
 	
 	//Class Members
 	private ListeningExecutorService executorService;
-	private TaxonCharacterMatrixCreator matrixCreator;
+	private NewTaxonCharacterMatrixCreator matrixCreator;
 	private CSVTaxonCharacterMatrixWriter matrixWriter;
 	
 	//Running members?
-	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
-	private Map<TaxonTextFile, List<Sentence>> taxonSentencesMap;
-	private Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap;
+	private Map<TaxonTextFile, List<MultiClassifiedSentence>> taxonSentencesMap;
 
 	@Inject
-	public MicroPIEProcessor(TaxonCharacterMatrixCreator matrixCreator,
+	public MicroPIEProcessor(NewTaxonCharacterMatrixCreator matrixCreator,
 			CSVTaxonCharacterMatrixWriter matrixWriter,
 			@Named("parallelProcessing") boolean parallelProcessing,
 			@Named("maxThreads") int maxThreads,
-			@Named("SentenceMetadataMap") Map<Sentence, SentenceMetadata> sentenceMetadataMap,
-			@Named("TaxonSentencesMap") Map<TaxonTextFile, List<Sentence>> taxonSentencesMap,
-			@Named("SentenceClassificationMap") Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap,
+			@Named("Characters") LinkedHashSet<String> characterNames,
+			@Named("categoryNameLabelMap") Map<String, ILabel> categoryNameLabelMap,
+			@Named("TaxonSentencesMap") Map<TaxonTextFile, List<MultiClassifiedSentence>> taxonSentencesMap,
 			LexicalizedParser lexicalizedParser,
 			SentencePredictor sentencePredictor,
 			SentenceSpliter sentenceSpliter,
@@ -87,10 +92,10 @@ public class MicroPIEProcessor{
 		
 		this.parallelProcessing = parallelProcessing;
 		this.maxThreads = maxThreads;
+		this.characterNames = characterNames;
+		this.categoryNameLabelMap = categoryNameLabelMap;
 		
-		this.sentenceMetadataMap = sentenceMetadataMap;
 		this.taxonSentencesMap = taxonSentencesMap;
-		this.sentenceClassificationMap = sentenceClassificationMap;
 		
 		if (!this.parallelProcessing)
 			executorService = MoreExecutors.listeningDecorator(Executors
@@ -105,55 +110,46 @@ public class MicroPIEProcessor{
 
 	
 	/**
+	 * What are the system configuration?
 	 * 
-	 * @param inputFolder: input folder, including files
+	 * @param inputFolder  input folder, including files
 	 * @param svmLabelAndCategoryMappingFile
+	 * @param characters  the characters that need to extract in the file
 	 * @param predictionsFile: records the predicted characters of the sentences
 	 * @param outputMatrixFile: the output matrix file
 	 */
-	public void processFolder(String inputFolder, String svmLabelAndCategoryMappingFile, String predictionsFile, String outputMatrixFile) {
-		
+	public void processFolder(String inputFolder, 
+			String svmLabelAndCategoryMappingFile, 
+			String predictionsFile, 
+			String outputMatrixFile) {
 		try {
 			//STEP 1: split sentences
-			//long b = System.currentTimeMillis();
-			List<Sentence> testSentences = this.createSentencesFromFolder(inputFolder);
-			//long e = System.currentTimeMillis();
-			//System.out.println("splitting the sentences costs "+(e-b)+" ms");
-			//b = System.currentTimeMillis();
+			List<MultiClassifiedSentence> testSentences = this.createSentencesFromFolder(inputFolder);
 			
 			//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
-			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
-			for (Sentence testSentence : testSentences) {
+			for (MultiClassifiedSentence testSentence : testSentences) {
 				Set<ILabel> prediction = sentencePredictor.predict(testSentence);
-				MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence( testSentence, prediction);
-				sentenceClassificationMap.put(testSentence,classifiedSentence);
-				predictions.add(classifiedSentence);
+				testSentence.setPredictions(prediction);
 			}
 			
-			
-			//e = System.currentTimeMillis();
-			//System.out.println("predicting categories of the sentences costs "+(e-b)+" ms");
-			
-			/*
-			for ( MultiClassifiedSentence prediction: predictions ) {
-		    	String[] array =  prediction.getPredictions().toArray(new String[0]);
-				// System.out.println("Prediction::" + prediction.getPredictions().toArray().toString());
-				System.out.println("Prediction::" + Arrays.toString(array));
-				System.out.println("Sentence::" + prediction.getSentence().toString());
-			}
-			*/
-			
-			//out put the prediction results
+			//output the prediction results
 			classifiedSentenceWriter.setLabelMappingFile(svmLabelAndCategoryMappingFile);
 			classifiedSentenceWriter.setOutputFile(predictionsFile);
-			classifiedSentenceWriter.write(predictions);
+			classifiedSentenceWriter.write(testSentences);
 			
-			//b = System.currentTimeMillis();
-			TaxonCharacterMatrix matrix = matrixCreator.create();
+			LinkedHashSet<ILabel> characterLabels = new LinkedHashSet();
+			for(String characterName : characterNames){
+				ILabel label = categoryNameLabelMap.get(characterName.trim().toLowerCase());
+				characterLabels.add(label);
+			}
+			
+			matrixCreator.setCharacterLabels(characterLabels);
+			matrixCreator.setCharacterNames(characterNames);
+			matrixCreator.setTaxonSentencesMap(taxonSentencesMap);
+			
+			NewTaxonCharacterMatrix matrix = (NewTaxonCharacterMatrix)matrixCreator.create();
 			matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
 			matrixWriter.write(matrix);
-			//e = System.currentTimeMillis();
-			//System.out.println("extracting characters from the sentences costs "+(e-b)+" ms");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -161,6 +157,8 @@ public class MicroPIEProcessor{
 		}
 	}
 
+	
+	
 	
 	/**
 	 * create sentences from the test folders
@@ -170,7 +168,7 @@ public class MicroPIEProcessor{
 	 * @throws InterruptedException
 	 * @throws ExecutionException
 	 */
-	private List<Sentence> createSentencesFromFolder(String folder) throws IOException,
+	private List<MultiClassifiedSentence> createSentencesFromFolder(String folder) throws IOException,
 			InterruptedException, ExecutionException {
 		log(LogLevel.INFO, "Reading test sentences...");
 		
@@ -300,52 +298,34 @@ public class MicroPIEProcessor{
 		}
 	   */
 		
-		List<Sentence> result = new LinkedList<Sentence>();
+		List<MultiClassifiedSentence> result = new LinkedList<MultiClassifiedSentence>();
 		for (int i = 0; i < textFiles.size(); i++) {//each file
 			List<ListenableFuture<List<String>>> fileFuture = subsentenceSplitsPerFile.get(i);
 			for (int j = 0; j < fileFuture.size(); j++) {//sentences in the file, each file
 				List<String> subsentences = fileFuture.get(j).get();// .get();
 				for (String subsentence : subsentences) {//subsentences of the sentence
-					
-					Sentence sentence = new Sentence(subsentence);
+					MultiClassifiedSentence sentence = new MultiClassifiedSentence(subsentence);
 					result.add(sentence);
+					
 					SentenceMetadata metadata = new SentenceMetadata();
 					metadata.setSourceId(j);
 					metadata.setTaxonTextFile(textFiles.get(i));
 					metadata.setCompoundSplitSentence(subsentences.size() > 1);
 					// metadata.setParseResult(textSentenceTransformer.getCachedParseResult(sentence));
-					sentenceMetadataMap.put(sentence, metadata);
-					
-					//System.out.println(j+" "+sentence.getText());
 					
 					//TODO: if taxon file is the key, more memory is needed.
 					TaxonTextFile taxon = textFiles.get(i);
 					if (!taxonSentencesMap.containsKey(taxon))
 						taxonSentencesMap
-								.put(taxon, new LinkedList<Sentence>());
+								.put(taxon, new LinkedList<MultiClassifiedSentence>());
 					taxonSentencesMap.get(taxon).add(sentence);
 				}
 			}
 		}
+		
+		executorService.shutdown();
 
 		log(LogLevel.INFO, "Done reading test sentences...");
 		return result;
-	}
-
-	/**
-	 * @param sentenceSplitsList
-	 * @return
-	 * @throws InterruptedException
-	 * @throws ExecutionException
-	 */
-	private int getNumberOfSentences(
-			List<ListenableFuture<List<String>>> sentenceSplitsList)
-			throws InterruptedException, ExecutionException {
-		int i = 0;
-		for (ListenableFuture<List<String>> sentenceSplits : sentenceSplitsList) {
-			List<String> sentences = sentenceSplits.get();
-			i += sentences.size();
-		}
-		return i;
 	}
 }

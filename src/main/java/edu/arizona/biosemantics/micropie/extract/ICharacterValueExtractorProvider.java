@@ -1,4 +1,4 @@
-package edu.arizona.biosemantics.micropie.extract.regex;
+package edu.arizona.biosemantics.micropie.extract;
 
 import java.util.Set;
 

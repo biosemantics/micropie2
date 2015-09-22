@@ -12,7 +12,20 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 
+/**
+ * Extract the character 2.4 Cell Width
+ * Sample sentences:
+ * 	1. Cells are strictly aerobic, non-motile straight rods, approximately 1.5-2.0 µm in length and 0.5 µm in width, and form cream to light pink circular colonies with regular edges on TSA and 10-fold diluted LB agar.
+ * 	2. Cells are approximately 0.3-0.4 x 2.5-6.3 µm.
+ *	
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class CellWidthExtractor extends AbstractCharacterValueExtractor {
 
 	public CellWidthExtractor(ILabel label) {
@@ -26,20 +39,18 @@ public class CellWidthExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
-
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
-		
-		// input: the original sentnece
-		// output: String array?
-		
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		String text = sentence.getText();
+		System.out.println(text);
 		// Example: Cells are slender , cylindrical , sometimes crooked rods that are 0.35-0.5 µm wide and 2.5 µm long and occur singly or in pairs , or in longer chains.
 		String patternString = "(.*)(\\s?µm\\swide\\s?)(.*)";
 		
 		Pattern pattern = Pattern.compile(patternString);
 		Matcher matcher = pattern.matcher(text.toLowerCase());
 
-		while (matcher.find()) {			
+		while (matcher.find()) {
 			String matchSubString = matcher.group(1);
 			//System.out.println("matchSubString::" + matchSubString);
 			String patternStringRange = "(" + 
@@ -93,10 +104,9 @@ public class CellWidthExtractor extends AbstractCharacterValueExtractor {
 			rangeString += " µm";
 
 			output.add(rangeString);	
-			
-
 		}
-		
-		return output;
+		System.out.println(output);
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
 }

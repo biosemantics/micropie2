@@ -25,7 +25,7 @@ import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.util.InvalidFormatException;
 import edu.arizona.biosemantics.common.log.LogLevel;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -68,24 +68,6 @@ public class SentenceSplitRun implements Callable<List<String>> {
 
 	@Override
 	public List<String> call() throws Exception {
-		//Configuration myConfiguration = new Configuration(resFolder);
-		//ITokenizer sentenceDetector = new OpenNLPSentencesTokenizer(
-		//		myConfiguration.getOpenNLPSentenceDetectorDir());
-		//ITokenizer tokenizer = new OpenNLPTokenizer(myConfiguration.getOpenNLPTokenizerDir());
-		
-		//System.out.println("myConfiguration.getOpenNLPSentenceDetectorDir()::" + myConfiguration.getOpenNLPSentenceDetectorDir());
-		//System.out.println("myConfiguration.getWordNetDictDir()::" + myConfiguration.getWordNetDictDir());
-		// String source = myConfiguration.getOpenNLPSentenceDetectorDir();
-		// openNlpSentSplitter(source);
-		//System.out.println(" before normalizing::" + text);
-		/*
-		WordNetPOSKnowledgeBase wordNetPOSKnowledgeBase = null;
-		try {
-			wordNetPOSKnowledgeBase = new WordNetPOSKnowledgeBase(myConfiguration.getWordNetDictDir(), false);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
-		//System.out.println("knowledge base load over ::");
 		List sentencesBack = sentenceSpliter.split(text);
 		sentenceSplitLatch.countDown();
 		return sentencesBack;		

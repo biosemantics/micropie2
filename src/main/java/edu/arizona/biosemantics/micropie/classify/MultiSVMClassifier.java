@@ -20,7 +20,7 @@ import com.google.inject.name.Named;
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.common.log.ObjectStringifier;
 import edu.arizona.biosemantics.micropie.io.WekaModelCaller;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 
 //TODO: Make weka log things such as filtered data (e.g. matrix actually passed into SVM)
 //TODO: Evaluate this classifier to work correct on small example training/test data
@@ -32,28 +32,68 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 	private String multiFilterOptions;
 	private String libSVMOptions;
 	
-	private String trainedModelFile;
-	
-
 	@Inject
 	public MultiSVMClassifier(@Named("MultiSVMClassifier_Labels") List<ILabel> labels, 
-			@Named("MultiFilterOptions")String multiFilterOptions, @Named("LibSVMOptions")String libSVMOptions,
-			@Named("trainedModelFile") String trainedModelFile) {
+			@Named("MultiFilterOptions")String multiFilterOptions, @Named("LibSVMOptions")String libSVMOptions
+			//,
+			//@Named("trainedModelFile") String trainedModelFile
+			) {
 		this.labels = labels;
 		this.multiFilterOptions = multiFilterOptions;
 		this.libSVMOptions = libSVMOptions;
 		
-		this.trainedModelFile = trainedModelFile;
+		//this.trainedModelFile = trainedModelFile;
 	}
 	
+	/*
+	@Inject
+	public MultiSVMClassifier(@Named("MultiFilterOptions")String multiFilterOptions, @Named("LibSVMOptions")String libSVMOptions) {
+		this.multiFilterOptions = multiFilterOptions;
+		this.libSVMOptions = libSVMOptions;
+	}*/
+	
+	public void setLabels(List<ILabel> labels){
+		this.labels = labels;
+	}
+	
+	public List<ILabel> getLabels() {
+		return labels;
+	}
+
+	
+	
+	public Map<ILabel, SVMClassifier> getClassifiers() {
+		return classifiers;
+	}
+
+	public void setClassifiers(Map<ILabel, SVMClassifier> classifiers) {
+		this.classifiers = classifiers;
+	}
+
+	public boolean isTrained() {
+		return trained;
+	}
+
+	public void setTrained(boolean trained) {
+		this.trained = trained;
+	}
+
+	public void setMultiFilterOptions(String multiFilterOptions) {
+		this.multiFilterOptions = multiFilterOptions;
+	}
+
+	public void setLibSVMOptions(String libSVMOptions) {
+		this.libSVMOptions = libSVMOptions;
+	}
+
 	@Override
-	public Set<ILabel> getClassification(Sentence sentence) throws Exception {
+	public Set<ILabel> predict(RawSentence sentence) throws Exception {
 		if(!trained)
 			throw new Exception("Classifier is not trained");
-				
+		if(labels==null)  throw new Exception("Classifier labels are not specified");
 		Set<ILabel> result = new HashSet<ILabel>();
 		for(ILabel label : labels) {
-			Sentence twoClassSentence = this.createTwoClassData(label, sentence);
+			RawSentence twoClassSentence = this.createTwoClassData(label, sentence);
 			ILabel prediction = classifiers.get(label).getClassification(twoClassSentence);
 			if(prediction.equals(BinaryLabel.YES))
 				result.add(label);
@@ -62,39 +102,74 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		log(LogLevel.INFO, "Prediction for " + sentence.getText() + "\n"
 				+ " -> " + ObjectStringifier.getInstance().stringify(result));
 		
-		//System.out.println("Prediction for " + sentence.getText() + "\n"
+		// System.out.println("Prediction for " + sentence.getText() + "\n"
 		//		+ " -> " + ObjectStringifier.getInstance().stringify(result));
-		
-
-		
 		return result;
 	}
 	
+	
+	
 	@Override
-	public void train(List<Sentence> trainingData) throws Exception {
+	/**
+	 * train the data
+	 * Alert: label list should be specified
+	 */
+	public void train(List<RawSentence> trainingData) throws Exception {
 		log(LogLevel.INFO, "Training classifier...");
+		if(labels==null)  throw new Exception("Classifier labels are not specified");
 		for(ILabel label : labels) {
 			log(LogLevel.INFO, "Training SVM for label " + label.getValue());
+			System.out.println("Training SVM for label " + label.getValue());
 			SVMClassifier classifier = new SVMClassifier(BinaryLabel.valuesList(), multiFilterOptions, libSVMOptions);
 			classifiers.put(label, classifier);
 			
-			List<Sentence> twoClassData = createTwoClassData(label, trainingData);
+			//divide into two classes
+			List<RawSentence> twoClassData = createTwoClassData(label, trainingData);
 			classifier.train(twoClassData);
+			//
+			
 		}
 		trained = true;
 		log(LogLevel.INFO, "Done training");
 	}
 
-	private List<Sentence> createTwoClassData(ILabel label, List<Sentence> sentences) {
-		List<Sentence> result = new LinkedList<Sentence>();
-		for(Sentence sentence : sentences) {
+	
+	/**
+	 * train the data
+	 * Alert: label list should be specified
+	 */
+	public void trainAndSave(List<RawSentence> trainingData, String modelPath) throws Exception {
+		log(LogLevel.INFO, "Training classifier...");
+		if(labels==null)  throw new Exception("Classifier labels are not specified");
+		for(ILabel label : labels) {
+			log(LogLevel.INFO, "Training SVM for label " + label.getValue());
+			System.out.println("Training SVM for label " + label.getValue());
+			SVMClassifier svmClassifier = new SVMClassifier(BinaryLabel.valuesList(), multiFilterOptions, libSVMOptions);
+			classifiers.put(label, svmClassifier);
+			
+			//divide into two classes
+			List<RawSentence> twoClassData = createTwoClassData(label, trainingData);
+			svmClassifier.train(twoClassData);
+			//
+			//save the trained files
+			//WekaModelCaller wmc = new WekaModelCaller();
+			WekaModelCaller.saveModel(svmClassifier, label, modelPath);
+		}
+		trained = true;
+		log(LogLevel.INFO, "Done training");
+	}
+	
+	
+	private List<RawSentence> createTwoClassData(ILabel label, List<RawSentence> sentences) {
+		List<RawSentence> result = new LinkedList<RawSentence>();
+		for(RawSentence sentence : sentences) {
 			result.add(this.createTwoClassData(label, sentence));
 		}
 		return result;
 	}
 	
-	private Sentence createTwoClassData(ILabel label, Sentence sentence) {
-		Sentence result = (Sentence)sentence.clone();
+	private RawSentence createTwoClassData(ILabel label, RawSentence sentence) {
+		RawSentence result = (RawSentence)sentence.clone();
 		if(result.getLabel() != null)
 			if(result.getLabel().equals(label))
 				result.setLabel(BinaryLabel.YES);
@@ -107,7 +182,7 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 	 * add by maojin
 	 * Load the trained classifiers
 	 */
-	public void loadClassifier(@Named("trainedModelFile")String trainedModelFile) throws Exception {
+	public void loadClassifier(String trainedModelFileFolder){
 		log(LogLevel.INFO, "Loading classifier from files...");
 		for(ILabel label : labels) {
 			log(LogLevel.INFO, "Loading SVM classifier for label " + label.getValue());
@@ -116,15 +191,15 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 			svmClassifier.setupFilteredClassifier();
 			
 			//recover the classifier
-			Classifier wekaClfer =  (Classifier)WekaModelCaller.readModel(trainedModelFile+File.separator+label.getValue()+".model");
+			Classifier wekaClfer =  (Classifier)WekaModelCaller.readModel(trainedModelFileFolder+File.separator+label.getValue()+".model");
 			svmClassifier.getFilteredClassifier().setClassifier(wekaClfer);
 			
 			//recover the filter
-			Filter filter = (Filter)WekaModelCaller.readModel(trainedModelFile+File.separator+label.getValue()+".filter");
+			Filter filter = (Filter)WekaModelCaller.readModel(trainedModelFileFolder+File.separator+label.getValue()+".filter");
 			svmClassifier.getFilteredClassifier().setFilter(filter);
 			
 			//recover instances
-			svmClassifier.instances = WekaModelCaller.loadArff(trainedModelFile+File.separator+label.getValue()+".arff");
+			svmClassifier.instances = WekaModelCaller.loadArff(trainedModelFileFolder+File.separator+label.getValue()+".arff");
 			svmClassifier.labelAttribute = svmClassifier.instances.attribute(0);
 			svmClassifier.textAttribute  = svmClassifier.instances.attribute(1);
 			svmClassifier.instances.setClassIndex(0);
@@ -141,43 +216,5 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		System.out.println(this.trained);
 		log(LogLevel.INFO, "Done training");
 	}
-
-	/**
-	 * predict the categories for the sentence
-	 * @param sentence
-	 * @return
-	 * @throws Exception
-	 */
-	public  Set<ILabel> predictClassification(Sentence sentence) throws Exception{
-		Set<ILabel> result = new HashSet<ILabel>();
-		for(ILabel label : labels) {
-			Sentence twoClassSentence = this.createTwoClassData(label, sentence);
-			ILabel prediction = classifiers.get(label).predictClassification(twoClassSentence);
-			if(prediction.equals(BinaryLabel.YES))
-				result.add(label);
-			//break;
-		}
-		
-		log(LogLevel.INFO, "Prediction for " + sentence.getText() + "\n"
-				+ " -> " + ObjectStringifier.getInstance().stringify(result));
-		
-		System.out.println("Prediction for " + sentence.getText() + "\n"
-				+ " -> " + ObjectStringifier.getInstance().stringify(result));
-		
-
-		
-		return result;
-		
-	}
-	
-	public List<ILabel> getLabels() {
-		return labels;
-	}
-
-	public Map<ILabel, SVMClassifier> getClassifiers() {
-		return classifiers;
-	}
-	
-	
 
 }

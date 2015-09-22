@@ -15,6 +15,14 @@ public class SeperatorTokenizer implements ITokenizer {
 		this.seperator = seperator;
 	}
 	
+
+	/**
+	 * @param seperator
+	 */
+	public SeperatorTokenizer() {
+		this.seperator = "\\s+";
+	}
+	
 	@Override
 	public String[] tokenize(String text) {
 		return text.split(seperator);

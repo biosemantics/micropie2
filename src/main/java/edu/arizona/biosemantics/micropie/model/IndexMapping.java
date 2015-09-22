@@ -3,7 +3,6 @@ package edu.arizona.biosemantics.micropie.model;
 
 /**
  * used in USP map the indexes before and after category replacement
- * @author maojin
  *
  */
 public class IndexMapping {

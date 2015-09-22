@@ -26,10 +26,22 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 
-
+/**
+ * Extract the character 3.10 Temperature maximum
+ * Sample sentences:
+ * 	1. Grows at 20–40  degree_celsius_1 (optimum 35  degree_celsius_1), at pH 5.5–9.0 (optimum pH 6.5) and with 0–1.2 M NaCl (optimum 
+ * 	2. Grows between pH 7.0 and 10.0, with an optimum at pH 9, and between 30 and 46  degree_celsius_1, with an optimum at 37  
+ *	
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 	
 	// Add Map<String, String> on Feb 09, 2015 MON
@@ -63,7 +75,12 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 
 		text = text.replaceAll(celsius_degreeReplaceSourcePattern, celsius_degreeReplaceTargetPattern);
 		text = text.toLowerCase();
@@ -72,11 +89,6 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 		// Add Map<String, String> on Feb 09, 2015 MON
 		regexResultWithMappingCaseMap = new HashMap<String, String>();
 
-		
-		// input: the original sentnece
-		// output: String array?
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
-		
 		int caseNumber = 0;
 		if ( text.matches("(.*)(temperature(.*)range|temperature range)(.*)")) {
 			caseNumber = 1;
@@ -191,170 +203,10 @@ public class GrowthTempMaxExtractor extends AbstractCharacterValueExtractor {
 				}
 				break;
 			default:
-				// System.out.println("");
-				// System.out.println("Go to Case 0::");
-				
-		}
-		return output;
-	}
-	
-	
-	// Example: Growth occurs at 20–50 ˚C, with optimum growth at 37–45 ˚C.
-	public static void main(String[] args) throws IOException {
-		System.out.println("Start::");
-		
-		GrowthTempMaxExtractor growthTempMaxExtractor = new GrowthTempMaxExtractor(Label.c3);
-		
-		
-		/*
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		
-		// sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
-		// List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		// System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140311-1.csv"));
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		sourceSentenceReader.setInputStream(new FileInputStream("split-predictions-140528-3.csv"));
-		sourceSentenceList.addAll(sourceSentenceReader.readSentenceList());		
-		
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			
-			sourceSentText = sourceSentText.replaceAll(growthTempMaxExtractor.getCelsius_degreeReplaceSourcePattern(), growthTempMaxExtractor.getCelsius_degreeReplaceTargetPattern());
-			
-			// ˚C
-			//if (sourceSentText.contains("celsius_degree") || sourceSentText.contains("temperature") ) {
-			//if (sourceSentText.contains("˚C") || sourceSentText.contains("temperature") || sourceSentText.contains("pH") || sourceSentText.contains("NaCl")) {
-			
-			if (
-					( 
-					sourceSentText.matches("(.*)(\\bcelsius_degree\\b)(.*)") || 
-					sourceSentText.matches("(.*)(\\btemperature\\b)(.*)") 
-					)
-				) {				
-			
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				Set<String> growTempMaxResult = growthTempMaxExtractor.getCharacterValue(sourceSentText);
-				System.out.println("growTempMaxResult::" + growTempMaxResult.toString());
-				if ( growTempMaxResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-			}
-		
 		}
 
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-		*/
-
-		// Test on February 09, 2015 Mon
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		String sourceFile = "micropieInput_zip/training_data/150130-Training-Sentences-new.csv";
-		String svmLabelAndCategoryMappingFile = "micropieInput_zip/svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
-		sourceSentenceReader.setInputStream(new FileInputStream(sourceFile));
-		sourceSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
-		sourceSentenceReader.readSVMLabelAndCategoryMapping();
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-
-		
-		String outputFile = "micropieInput_zip_output/GrowthTempMax_Regex.csv";
-		OutputStream outputStream = new FileOutputStream(outputFile);
-		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
-		List<String[]> lines = new LinkedList<String[]>();
-		
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			sourceSentText = sourceSentText.replaceAll(growthTempMaxExtractor.getCelsius_degreeReplaceSourcePattern(), growthTempMaxExtractor.getCelsius_degreeReplaceTargetPattern());
-			sourceSentText = sourceSentText.toLowerCase();
-			// NaCl
-			
-			
-			
-			if ( 
-					sourceSentText.matches("(.*)(\\bcelsius_degree\\b)(.*)") || sourceSentText.matches("(.*)(\\btemperature\\b)(.*)") 
-					) {	
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				
-				
-				
-				Set<String> growthTempMaxResult = growthTempMaxExtractor.getCharacterValue(sourceSentText);
-				
-				System.out.println("growthNaclMaxExtractor.getRegexResultWithMappingCaseMap()::" + growthTempMaxExtractor.getRegexResultWithMappingCaseMap().toString());
-				
-				String regexResultWithMappingCaseMapString = "";
-				
-				for (Map.Entry<String, String> entry : growthTempMaxExtractor.getRegexResultWithMappingCaseMap().entrySet()) {
-					System.out.println("Key : " + entry.getKey() + " Value : "
-					 	+ entry.getValue());
-				
-					regexResultWithMappingCaseMapString += entry.getKey() + ":" + entry.getValue() + ", ";
-					
-				}
-				
-				System.out.println("growthTempMaxResult::" + growthTempMaxResult.toString());
-				if ( growthTempMaxResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-				
-				System.out.println("regexResultWithMappingCaseMapString::" + regexResultWithMappingCaseMapString);
-
-				
-				lines.add(new String[] { sourceSentText,
-						regexResultWithMappingCaseMapString
-						} );
-				
-			} /*else {
-				String sentLabel = sourceSentence.getLabel().getValue();
-				
-				if ( sentLabel.equals("1") ) {
-					System.out.println("sentLabel::" + sentLabel);
-					System.out.println("sourceSentText::" + sourceSentText);
-					System.out.println("no case");
-					lines.add(new String[] { sourceSentText,
-							"No Case"
-							} );
-				}
-				
-				
-				
-
-			}*/
-			
-		
-		
-		} 
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-
-		
-		writer.writeAll(lines);
-		writer.flush();
-		writer.close();		
-		
-	
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
-	
-	
 	
 }

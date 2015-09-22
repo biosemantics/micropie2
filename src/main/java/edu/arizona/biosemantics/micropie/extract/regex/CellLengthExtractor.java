@@ -12,7 +12,20 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 
+/**
+ * Extract the character 2.3 Cell Length
+ * Sample sentences:
+ * 	1.They are from 0.8 to 1.5 µm wide and 2.0 to 3.0 µm long.
+ * 	2.Cells are strictly aerobic, non-motile straight rods, approximately 1.5-2.0 µm in length and 0.5 µm in width, and form cream to light pink circular colonies with regular edges on TSA and 10-fold diluted LB agar.
+ *	
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class CellLengthExtractor extends AbstractCharacterValueExtractor {
 
 	public CellLengthExtractor(ILabel label) {
@@ -26,12 +39,12 @@ public class CellLengthExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
 		
-		// input: the original sentnece
-		// output: String array?
+		String text = sentence.getText();
 		
 		// Example: Cells are slender , cylindrical , sometimes crooked rods that are 0.35-0.5 µm wide and 2.5 µm long and occur singly or in pairs , or in longer chains.
 		String patternString = "(.*)(\\s?µm\\slong\\s?)(.*)";
@@ -97,6 +110,7 @@ public class CellLengthExtractor extends AbstractCharacterValueExtractor {
 
 		}
 		
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
 }

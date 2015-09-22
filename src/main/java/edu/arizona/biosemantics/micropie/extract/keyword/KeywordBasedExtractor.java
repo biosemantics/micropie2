@@ -1,6 +1,7 @@
-package edu.arizona.biosemantics.micropie.extract.regex;
+package edu.arizona.biosemantics.micropie.extract.keyword;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,7 +9,17 @@ import java.util.regex.Pattern;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 
+
+
+/**
+ * Extractors for many keyword based character value
+ * 
+ */
 public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 
 	private Set<String> keywords;
@@ -21,7 +32,11 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 	}
 
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 		// TODO 
 		// use keywords and regex to extract character values
 		text = text.substring(0, text.length()-1);
@@ -43,8 +58,10 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 				returnCharacterStrings.add(matchString);
 				// System.out.println(keywordString + "::" + matchString);
 			}
-		}			
-		return returnCharacterStrings;
+		}
+		
+		charValueList = CharacterValueFactory.createList(this.getLabel(), returnCharacterStrings);
+		return charValueList;
 	}
 
 }

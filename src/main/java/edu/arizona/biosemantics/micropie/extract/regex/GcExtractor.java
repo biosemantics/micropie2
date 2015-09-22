@@ -17,25 +17,46 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import au.com.bytecode.opencsv.CSVWriter;
-
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
-import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
+import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
 import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.SubSentence;
+import edu.arizona.biosemantics.micropie.transform.PosTagger;
+import edu.arizona.biosemantics.micropie.transform.SentenceSpliter;
+import edu.stanford.nlp.ling.TaggedWord;
 
+
+/**
+ * Extract the character 1.1 G+C
+ * Sample sentences:
+ * 	1.Mol % G+C ranges from 39-44.
+ * 	2.DNA G+C content is 64.2–64.9 mol% (Tm method).
+ *	
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class GcExtractor extends AbstractCharacterValueExtractor {
+	
+
+	public GcExtractor(ILabel label, String characterName) {
+		super(label, characterName);
+	}
+
+
 
 	private String patternStringGc = "(" + 
 										"\\bguanine plus cytosine|Guanosine plus cytosine|Guanosine plus cytosine|guanine-plus-cytosine\\b|" +
 										"\\b\\(G\\s?\\+\\s?C\\b|" +
 										"\\bG\\s?\\+\\s?C\\b|" + //zero or one
 										"\\bG\\s*\\+\\s*C\\b|" + // zero or many // \\s+ => one or many
-										
 										// "\\bg\\s+\\+\\s+c\\b|" +
 										// "\\s?\\(G+C\\s?|" + 
 										// "\\s?G\\s*\\+\\s*C|" + 
@@ -46,7 +67,7 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 										// "%GC|" + 
 										// "%G+C" +
 										"\\bGC\\b|" +
-										"\\bguanine\\s?\\+\\s?cytosine\\b" +
+										"\\bguanine\\s*\\+\\s*cytosine\\b" +
 										")";
 
 	private String myNumberPattern = "(\\d+(\\.\\d+)?)";
@@ -122,56 +143,41 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 	
 	// private String patternStringGc = "\\s+G\\+C\\s+";
 	// private String patternStringGc = "G\\s*\\+\\s*C";
-	
+	/*@Inject
 	public GcExtractor(ILabel label) {
 		super(label, "%G+C");
 	}
-	
-	@Inject
-	public GcExtractor(@Named("GcExtractor_Label")ILabel label, 
-			@Named("GcExtractor_Label")String character) {
-		super(label, character);
-	}
+	*/
 
 	@Override
-	public Set<String> getCharacterValue(String text) {
-		// TODO Auto-generated constructor stub
+	
+	/**
+	 * questions:
+	 * 	35-36 mol% (Tm)??
+	 *  
+	 * 
+	 * 
+	 */
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
 		
-		
-		// System.out.println("Hello, welcome to GC extractor!!");
-		// System.out.println("text is :: " + text);
-		// Add Map<String, String> on Feb 04, 2015 WED
+		String text = sentence.getText();
 		regexResultWithMappingCaseMap = new HashMap<String, String>();
 		
-		Set<String> output = new HashSet<String>(); // Output,
-		// format::List<String>
-
-		// input: the original sentnece
-		// output: String array?
-
-		// log(LogLevel.INFO, "Original Sent : " + sent);
-		text = text.substring(0, text.length() - 1); // remove the period at the
-														// last position
-		
+		text = text.substring(0, text.length() - 1); // remove the period at the last position
 		text = text.toLowerCase();
 		patternStringGc = patternStringGc.toLowerCase();
-		// String[] sentArray = sent.split(" ");
-		// log(LogLevel.INFO, "sentArray.length :" + sentArray.length );
 
 		// \s\d*\.\d*\s
 
-
-		// Case 1:: The G+C contenc of DNA is 22.3 mol% (mol %).
+		// Case 1:: The G+C content of DNA is 22.3 mol% (mol %).
 		//Pattern patternGc = Pattern.compile(patternStringGc + "(.*)" + "(\\s*mol\\s*\\%\\s*|\\s*\\%\\s*|\\s*mol\\s*)");
 		Pattern patternGc = Pattern.compile(patternStringGc + "(.*)" + "(\\s*mol\\s*\\%\\s*)");
 		Matcher matcherGc = patternGc.matcher(text);
 
 		while (matcherGc.find()) {
-			//System.out.println("Case 1::");
-			// System.out.println("Whloe Sent::" + matcherGc.group());
-			// System.out.println("Part 1::" + matcherGc.group(1));
-			//System.out.println("Part 2::" + matcherGc.group(2));
-			// System.out.println("Part 3::" + matcherGc.group(3));
 			String matchPartString = matcherGc.group(2);
 			
 			if ( ! matchPartString.equals("") ) {
@@ -406,9 +412,14 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		}		
 		*/
 
-		
-		return output;
+		System.out.println(output);
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
+	
+	
+	
+	
 	
 	public boolean isAcceptValueRange(String extractedValueText) {
 		boolean isAccept = true;
@@ -445,236 +456,4 @@ public class GcExtractor extends AbstractCharacterValueExtractor {
 		
 		return isAccept;
 	}
-	
-	// Example: 
-	public static void main(String[] args) throws IOException {		
-		
-		
-		System.out.println("Start::");
-		
-		GcExtractor gcExtractor = new GcExtractor(Label.c1);	
-		String patternStringGc = gcExtractor.getPatternStringGc();
-		
-		/*
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		sourceSentenceReader.setInputStream(new FileInputStream("split-additionalUSPInputs.csv"));
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			sourceSentText = sourceSentText.toLowerCase();
-			patternStringGc = patternStringGc.toLowerCase();
-			
-			if ( sourceSentText.matches("(.*)" + patternStringGc + "(.*)")) {
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				Set<String> gcResult = gcExtractor.getCharacterValue(sourceSentText);
-				System.out.println("gcResult::" + gcResult.toString());
-				if ( gcResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-			}
-		
-		}
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-		*/
-		
-		// Test on June 10, 2014 Wednesday
-		/*
-		String testSent = "G +C content range is 3 1-33 mol%.";
-		testSent = testSent.toLowerCase();
-		patternStringGc = patternStringGc.toLowerCase();
-		
-		if ( testSent.matches("(.*)" + patternStringGc + "(.*)")) {
-			System.out.println("\n");
-			System.out.println("sourceSentText::" + testSent);
-			Set<String> gcResult = gcExtractor.getCharacterValue(testSent);
-			System.out.println("gcResult::" + gcResult.toString());
-		}
-		*/
-		
-		
-		
-		
-		/*
-		// Testing on :: myNumberPattern
-		// String exText = "the range is 12.33.";
-		String exText = "The dna g+c content of representative strains varied between 35 and 36 mol %.";
-		String myNumberPattern = gcExtractor.getMyNumberPattern();
-		String targetPatternString = gcExtractor.getTargetPatternString();
-		//Pattern pattern = Pattern.compile(myNumberPattern);
-		Pattern pattern = Pattern.compile(targetPatternString);
-		Matcher matcher = pattern.matcher(exText);
-
-		System.out.println("myNumberPattern::" + myNumberPattern);
-		
-		while (matcher.find()) {
-			System.out.println("Whloe Sent::" + matcher.group());
-			System.out.println("Part 1::" + matcher.group(1));
-			// System.out.println("Part 2::" + matcherGc.group(2));
-			// System.out.println("Part 3::" + matcherGc.group(3));
-			// System.out.println("Part 4::" + matcherGc.group(4));
-			// System.out.println("Part 5::" + matcherGc.group(5));
-			String matchResult = matcher.group(1);
-			System.out.println("matchResult::" + matchResult);
-		}
-		*/
-		
-		/*
-		String newString = "";
-		String testString = "AAA is bbb C. BBB is ccc D. The strain number is 123.";
-		String testStringArray[] = testString.split("\\s+");
-		String targetString = "";
-		for ( int i = 0; i < testStringArray.length; i++ ) {
-			String itemString = testStringArray[i];
-			if ( itemString.matches("[A-Z]\\.") ) {
-				System.out.println("111::222::itemString::" + itemString);
-				targetString = itemString;
-				for ( int j = 0; j < itemString.length(); j++ ) {
-					newString += itemString.substring(j, j+1) + " ";
-				}
-			}
-		}
-		System.out.println("333::444::newString::" + newString);
-		
-		testString = testString.replaceAll(targetString, newString);
-		
-		System.out.println("555::666::testString::" + testString);
-		*/
-	
-		/*
-		String testString = "AAA is bbb C. BBB is ccc D. The strain number is 123.";
-		System.out.println("testString::Before::" + testString);
-		
-		String targetPatternString = "(\\s[A-Z]\\.\\s)";
-		Pattern pattern = Pattern.compile(targetPatternString);
-		Matcher matcher = pattern.matcher(testString);
-		
-		while (matcher.find()) {
-			System.out.println("Whloe Sent::" + matcher.group());
-			System.out.println("Part 1::" + matcher.group(1));
-			// System.out.println("Part 2::" + matcher.group(2));
-			// System.out.println("Part 3::" + matcher.group(3));
-			
-			String matchString = matcher.group(1);
-			
-			String newMatchString = "";
-			for ( int j = 0; j < matchString.length(); j++ ) {
-				newMatchString += matchString.substring(j, j+1) + " ";
-			}
-			
-			
-			testString = testString.replaceAll(matcher.group(1), newMatchString);
-			
-			// String matchResult = matcher.group(1);
-			// System.out.println("matchResult::" + matchResult);
-		}
-		System.out.println("testString::After::" + testString);
-		*/
-		
-		// Test on February 04, 2015 Wed
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		String sourceFile = "micropieInput_zip/training_data/150130-Training-Sentences-new.csv";
-		String svmLabelAndCategoryMappingFile = "micropieInput_zip/svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
-		sourceSentenceReader.setInputStream(new FileInputStream(sourceFile));
-		sourceSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
-		sourceSentenceReader.readSVMLabelAndCategoryMapping();
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-
-		
-		String outputFile = "micropieInput_zip_output/GC_Regex-150304.csv";
-		OutputStream outputStream = new FileOutputStream(outputFile);
-		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
-		List<String[]> lines = new LinkedList<String[]>();
-		
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			sourceSentText = sourceSentText.toLowerCase();
-			patternStringGc = patternStringGc.toLowerCase();
-			
-			if ( sourceSentText.matches("(.*)" + patternStringGc + "(.*)")) {
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				
-				
-				
-				Set<String> gcResult = gcExtractor.getCharacterValue(sourceSentText);
-				
-				System.out.println("gcExtractor.getRegexResultWithMappingCaseMap()::" + gcExtractor.getRegexResultWithMappingCaseMap().toString());
-				
-				String regexResultWithMappingCaseMapString = "";
-				
-				for (Map.Entry<String, String> entry : gcExtractor.getRegexResultWithMappingCaseMap().entrySet()) {
-					System.out.println("Key : " + entry.getKey() + " Value : "
-					 	+ entry.getValue());
-				
-					regexResultWithMappingCaseMapString += entry.getKey() + ":" + entry.getValue() + ", ";
-					
-				}
-				
-				System.out.println("gcResult::" + gcResult.toString());
-				if ( gcResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-				
-				System.out.println("regexResultWithMappingCaseMapString::" + regexResultWithMappingCaseMapString);
-
-				
-				lines.add(new String[] { sourceSentText,
-						regexResultWithMappingCaseMapString
-						} );
-				
-			} else {
-				String sentLabel = sourceSentence.getLabel().getValue();
-				
-				if ( sentLabel.equals("1") ) {
-					System.out.println("sentLabel::" + sentLabel);
-					System.out.println("sourceSentText::" + sourceSentText);
-					System.out.println("no case");
-					lines.add(new String[] { sourceSentText,
-							"No Case"
-							} );
-				}
-				
-				
-				
-
-			}
-			
-		
-		
-		} 
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-
-		
-		writer.writeAll(lines);
-		writer.flush();
-		writer.close();			
-		
-		
-	}	
-	
-	
-	
 }

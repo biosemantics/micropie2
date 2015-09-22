@@ -1,5 +1,18 @@
-package edu.arizona.biosemantics.micropie.extract.regex;
+package edu.arizona.biosemantics.micropie.extract.usp;
 
+
+/**
+ * 
+ * 
+ * isolated	V	prep_from	parse
+ * found	V	prep_in	parse
+ * located V prep_in	parse
+ * pigmented	J	amod	dep
+ * keyword: pigmented
+ * keywordType: J
+ * keywordObject:amod
+ * extractionType: dep
+ */
 public class USPRequest {
 
 	private String keyword;

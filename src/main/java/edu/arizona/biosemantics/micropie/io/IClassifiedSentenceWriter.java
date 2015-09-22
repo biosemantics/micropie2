@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 
 /**

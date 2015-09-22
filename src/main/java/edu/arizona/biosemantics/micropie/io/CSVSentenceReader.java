@@ -2,6 +2,8 @@ package edu.arizona.biosemantics.micropie.io;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -11,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,10 +32,10 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.common.log.LogLevel;
-import edu.arizona.biosemantics.micropie.model.Sentence;
-import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -45,11 +48,7 @@ public class CSVSentenceReader implements ISentenceReader {
 	
 	private InputStream inputStream;
 	private OutputStream outputStream;
-	
-	private InputStream inputStream2;
-	private OutputStream outputStream2;
-	
-	private Map<String, String> svmLabelAndCategoryMappingMap;
+	private Map<String, ILabel> categoryCodeLabelMap;
 	
 	/**
 	 * @param inputStream to read from
@@ -58,70 +57,38 @@ public class CSVSentenceReader implements ISentenceReader {
 		this.inputStream = inputStream;
 	}
 	
+	
+	/**
+	 * @param inputStream to read from
+	 */
+	public void setInputStream(String inputFile) {
+		try {
+			this.inputStream = new FileInputStream(inputFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void setOutputStream(OutputStream outputStream) {
 		this.outputStream = outputStream;
 	}
-	/**
-	 * @param inputStream2 to read SVMLabelSubcategoryMapping.txt
-	 */	
-	public void setInputStream2(InputStream inputStream2) {
-		this.inputStream2 = inputStream2;
+	
+	public void setCategoryCodeLabelMap(Map<String, ILabel> categoryCodeLabelMap) {
+		this.categoryCodeLabelMap = categoryCodeLabelMap;
 	}
-	
-	public void setOutputStream2(OutputStream outputStream2) {
-		this.outputStream2 = outputStream2;
-	}
-	
-	
-	
-	
-	
-	public Map<String, String> readSVMLabelAndCategoryMapping() throws IOException {
-		CSVReader readerOfSVMLabelAndCategoryMapping = new CSVReader(new BufferedReader(new InputStreamReader(inputStream2, "UTF8")));
-		List<String[]> linesOfSVMLabelAndCategoryMapping = readerOfSVMLabelAndCategoryMapping.readAll();
-		
-		svmLabelAndCategoryMappingMap = new HashMap<String, String>();
-		for(String[] lineOfSVMLabelAndCategoryMapping : linesOfSVMLabelAndCategoryMapping) {
-			// System.out.println("lineOfSVMLabelAndCategoryMapping.toString():" + lineOfSVMLabelAndCategoryMapping.toString());
-			// System.out.println("lineOfSVMLabelAndCategoryMapping[0]::" + lineOfSVMLabelAndCategoryMapping[0]);
-			// System.out.println("lineOfSVMLabelAndCategoryMapping[1]::" + lineOfSVMLabelAndCategoryMapping[1]);
-			if ( lineOfSVMLabelAndCategoryMapping.length > 2 ) {
-				svmLabelAndCategoryMappingMap.put(lineOfSVMLabelAndCategoryMapping[0],lineOfSVMLabelAndCategoryMapping[1]);
-			}
-		}
-		return svmLabelAndCategoryMappingMap;
-	}
-	
-	
+
 	@Override
-	public List<Sentence> read() throws IOException {
+	public List<RawSentence> read() throws IOException {
 		log(LogLevel.INFO, "Reading sentences...");
-		List<Sentence> result = new LinkedList<Sentence>();
-		
-		
+		List<RawSentence> result = new LinkedList<RawSentence>();
 		
 		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
 	    List<String[]> lines = reader.readAll();
 		for(String[] line : lines) {
-			// System.out.println("line[0]::" + line[0]); 
-			// line[0] => label
-			// 
-			String svmLabel = "0";
-			for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
-				// System.out.println("Key : " + entry.getKey() + " Value : "
-				// 	+ entry.getValue());
-				
-				if ( line[0].equals(entry.getValue()) ) {
-					svmLabel = entry.getKey();
-				}
-				
-			}
-
-			// System.out.println("Original Category Label::" + line[0]);
-			// System.out.println("Mapping SVM Label::" + svmLabel);			
+			ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
+			if(svmLabel==null) svmLabel = Label.c0;		
 			
-			// result.add(new Sentence(line[5], Label.getEnum(line[0])));
-			result.add(new Sentence(line[5], Label.getEnum(svmLabel)));
+			result.add(new RawSentence(line[5], svmLabel));
 			
 		}
 		reader.close();
@@ -131,9 +98,9 @@ public class CSVSentenceReader implements ISentenceReader {
 	
 	
 	
-	public List<Sentence> readAdditionalUSPInputs() throws IOException {
+	public List<RawSentence> readAdditionalUSPInputs() throws IOException {
 		log(LogLevel.INFO, "Reading additional USP input sentences...");
-		List<Sentence> result = new LinkedList<Sentence>();
+		List<RawSentence> result = new LinkedList<RawSentence>();
 		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
 	    List<String[]> lines = reader.readAll();
 		for(String[] line : lines) {
@@ -142,7 +109,7 @@ public class CSVSentenceReader implements ISentenceReader {
 			if (line[0].equals("")) {
 				line[0] = "0";
 			}
-			result.add(new Sentence(line[1], Label.getEnum(line[0])));
+			result.add(new RawSentence(line[1], Label.getEnum(line[0])));
 
 		}
 		reader.close();
@@ -151,53 +118,60 @@ public class CSVSentenceReader implements ISentenceReader {
 	}
 	
 	// readSentenceList
-	public List<Sentence> readSentenceList() throws IOException {
+	public List<RawSentence> readSentenceList() throws IOException {
 		log(LogLevel.INFO, "Reading source sentences...");
-		List<Sentence> result = new LinkedList<Sentence>();
+		List<RawSentence> result = new LinkedList<RawSentence>();
 		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
 	    List<String[]> lines = reader.readAll();
 		for(String[] line : lines) {
+			ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
+			if(svmLabel==null) svmLabel = Label.c0;		
 			
-			/*
-			// System.out.println("line[0]::" + line[0]);
-			// System.out.println("line[1]::" + line[1]);
-			// can't deal with => line[0]::8,3
-			
-			if (line[0].equals("")) {
-				line[0] = "0";
-			}
-			result.add(new Sentence(line[1], Label.getEnum(line[0])));
-			*/
-			
-			
-			
-			// System.out.println("line[0]::" + line[0]); 
-			// line[0] => label
-			// 
-			String svmLabel = "0";
-			for (Map.Entry<String, String> entry : svmLabelAndCategoryMappingMap.entrySet()) {
-				// System.out.println("Key : " + entry.getKey() + " Value : "
-				// 	+ entry.getValue());
-				
-				if ( line[0].equals(entry.getValue()) ) {
-					svmLabel = entry.getKey();
-				}
-				
-			}
-
-			// System.out.println("Original Category Label::" + line[0]);
-			// System.out.println("Mapping SVM Label::" + svmLabel);			
-			
-			// result.add(new Sentence(line[5], Label.getEnum(line[0])));
-			result.add(new Sentence(line[5], Label.getEnum(svmLabel)));
-
-			
+			result.add(new RawSentence(line[5], svmLabel));
 		}
 		reader.close();
 		log(LogLevel.INFO, "Done reading source sentences...");
 		return result;
 	}
 	
+	/**
+	 * two column sentences:
+	 *  col 1: category
+	 *  col 2: sentence
+	 * @return
+	 * @throws IOException
+	 */
+	public List<RawSentence> readTwoColumnSentenceList() throws IOException {
+		List<RawSentence> result = new LinkedList<RawSentence>();
+		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
+	    List<String[]> lines = reader.readAll();
+		for(String[] line : lines) {
+			ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
+			if(svmLabel==null) svmLabel = Label.c0;		
+			
+			result.add(new RawSentence(line[1], svmLabel));
+		}
+		reader.close();
+		return result;
+	}
+	
+	
+	/**
+	 * One column sentences:
+	 *  col 1: sentence
+	 * @return
+	 * @throws IOException
+	 */
+	public List<RawSentence> readOneColumnSentenceList() throws IOException {
+		List<RawSentence> result = new LinkedList<RawSentence>();
+		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
+	    List<String[]> lines = reader.readAll();
+		for(String[] line : lines) {
+			result.add(new RawSentence(line[0]));
+		}
+		reader.close();
+		return result;
+	}
 	
 	
 	public void readTaxonomicDescAndWriteToSingleTxt(String outputFileName) throws IOException {

@@ -1,8 +1,11 @@
 package edu.arizona.biosemantics.micropie.model;
 
-public class SentenceDependency {
 
-	
+/**
+ * used in USP
+ *
+ */
+public class SentenceDependency {
 	
 	private String relString;
 	private String govString;

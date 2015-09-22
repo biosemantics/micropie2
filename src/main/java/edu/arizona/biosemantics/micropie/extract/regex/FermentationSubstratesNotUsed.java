@@ -25,11 +25,24 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 
+/**
+ * Extract the character 9.6 fermentation substrates not used 
+ * Sample sentences:
+ * 	1. Produces acid from glucosamine and ribose but not from L-or D-arabinose, xylose, rhamnose, cellobiose, melibiose, sucrose, raffinose, trehalose, glucose, lactose, maltose, fructose, galactose, mannose, inulin, mannitol, methyl a-D-glucoside, melezitose, methyl a-D-mannoside, malonate, adonitol, sodium gluconate, glycerol, salicin, dulcitol, inositol, sorbitol or xylitol after 1 week of incubation at optimum temperature and pH.  
+ *	2. No production of acid in ammonium salt medium under aerobic conditions from adonitol, cellobiose, dulcitol, inositol, mannitol, raffinose, rhamnose, salicin, sorbitol, or sucrose.  
+ *
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class FermentationSubstratesNotUsed extends AbstractCharacterValueExtractor {
 
 	public FermentationSubstratesNotUsed(@Named("FermentationSubstratesNotUsed_Label")ILabel label) {
@@ -42,10 +55,12 @@ public class FermentationSubstratesNotUsed extends AbstractCharacterValueExtract
 	}
 
 	@Override
-	public Set<String> getCharacterValue(String text) {
-		// TODO Auto-generated constructor stub
-		Set<String> output = new HashSet<String>(); // Output,
-		// format::List<String>
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 
 		String keywords = "Acidification|Gas|Acid|Acidified|pH lowered|pH drops";
 
@@ -126,106 +141,8 @@ public class FermentationSubstratesNotUsed extends AbstractCharacterValueExtract
 		
 		
 		
-
-
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
-
-
-	// Example: 
-	public static void main(String[] args) throws IOException {
-		
-		
-		
-		System.out.println("Start::");
-		
-		
-		OrganicCompoundsNotUsedOrNotHydrolyzedExtractor organicCompoundsNotUsedOrNotHydrolyzedExtractor = new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52);
-		
-		// Test on February 09, 2015 Mon
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		String sourceFile = "micropieInput_zip/training_data/150130-Training-Sentences-new.csv";
-		String svmLabelAndCategoryMappingFile = "micropieInput_zip/svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
-		sourceSentenceReader.setInputStream(new FileInputStream(sourceFile));
-		sourceSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
-		sourceSentenceReader.readSVMLabelAndCategoryMapping();
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-
-		
-		String outputFile = "micropieOutput/organicCompoundsNotUsedOrNotHydrolyzedExtractor-150317.csv";
-		OutputStream outputStream = new FileOutputStream(outputFile);
-		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
-		List<String[]> lines = new LinkedList<String[]>();
-		
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			sourceSentText = sourceSentText.toLowerCase();
-			// "organic compounds used or hydrolyzed"
-			
-			
-			
-			if ( sourceSentText.matches("(.+)(\\bare not used|is not useed\\b)(.+)") ) {	
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				
-				
-				
-				Set<String> organicCompoundsNotUsedOrNotHydrolyzedResult = organicCompoundsNotUsedOrNotHydrolyzedExtractor.getCharacterValue(sourceSentText);
-				
-				// System.out.println("growthNaclMaxExtractor.getRegexResultWithMappingCaseMap()::" + organicCompoundsNotUsedOrNotHydrolyzedExtractor.getRegexResultWithMappingCaseMap().toString());
-				
-				String regexResultWithMappingCaseMapString = "";
-				
-				// for (Map.Entry<String, String> entry : organicCompoundsNotUsedOrNotHydrolyzedExtractor.getRegexResultWithMappingCaseMap().entrySet()) {
-				//	System.out.println("Key : " + entry.getKey() + " Value : "
-				//	 	+ entry.getValue());
-				// 
-				//	regexResultWithMappingCaseMapString += entry.getKey() + ":" + entry.getValue() + ", ";
-				//	
-				// }
-				
-				System.out.println("organicCompoundsNotUsedOrNotHydrolyzedResult::" + organicCompoundsNotUsedOrNotHydrolyzedResult.toString());
-				if ( organicCompoundsNotUsedOrNotHydrolyzedResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-				
-				System.out.println("regexResultWithMappingCaseMapString::" + regexResultWithMappingCaseMapString);
-
-				
-				// lines.add(new String[] { sourceSentText,
-				//		regexResultWithMappingCaseMapString
-				//		} );
-				lines.add(new String[] { sourceSentText } );
-				
-			}
-			
-		
-		
-		} 
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-
-		
-		writer.writeAll(lines);
-		writer.flush();
-		writer.close();	
-		
-
-		
-	}
-	
-	
-	
-
 
 }

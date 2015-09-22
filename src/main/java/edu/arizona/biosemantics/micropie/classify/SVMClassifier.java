@@ -7,8 +7,10 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.io.WekaModelCaller;
+import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.LibSVM;
 import weka.classifiers.meta.FilteredClassifier;
+import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.filters.MultiFilter;
 
@@ -34,6 +36,12 @@ public class SVMClassifier extends WekaClassifierWrapper {
 	protected weka.classifiers.Classifier getWekaClassifier() throws Exception {
 		LibSVM svm = new LibSVM();
 		svm.setOptions(weka.core.Utils.splitOptions(libSVMOptions));
+		
+		//J48 svm = new J48();//C4.5算法的Java实现
+		//svm.setBinarySplits(true);
+		
+		//NaiveBayes svm = new NaiveBayes();//
+		//svm.setUseKernelEstimator(true);
 		return svm;
 	}
 	

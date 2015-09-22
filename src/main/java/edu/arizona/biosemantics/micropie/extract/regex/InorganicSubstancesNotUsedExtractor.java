@@ -25,11 +25,26 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 
+
+/**
+ * Extract the character 9.4 inorganic substances not used
+ * Sample sentences:
+ * 	1.Forms sulfides from thiosulfate, but not sulfur.
+ *	2.Nitrate reduction to nitrite and gas formation from nitrate are not observed.
+ *
+ *	Methods:
+ *	1.USP
+ *
+ */
 public class InorganicSubstancesNotUsedExtractor extends AbstractCharacterValueExtractor {
 
 	public InorganicSubstancesNotUsedExtractor(@Named("InorganicSubstancesNotUsedExtractor_Label")ILabel label) {
@@ -42,10 +57,12 @@ public class InorganicSubstancesNotUsedExtractor extends AbstractCharacterValueE
 	}
 
 	@Override
-	public Set<String> getCharacterValue(String text) {
-		// TODO Auto-generated constructor stub
-		Set<String> output = new HashSet<String>(); // Output,
-		// format::List<String>
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 
 		String keywords = "ACC|Acetamide|Ammonia|Ammonium|Ammonium nitrate|Ammonium sulfate|Arsenate|Arsenite|Arsenopyrite|Bentonite|Carbon dioxide|CH4|chalcopyrite|Chromate|Chromite|Chromium|Carbon monoxide|CO|CO2|Covellite|CuFeS2|CuS|Dihydrogen|Dimenthylamine|Dimethylamine|Dimethylamines|Dimethylselenide|Dinitrogen|Dinitrogen oxide|Dioxygen|Disodium selenate|DMA|Elemental selenium|Elemental sulfur|Elemental sulphur|Fe(II)|Fe(II)SO4|Fe(III)|Fe2O3|Fe3O4|FeCl3|FeCO3|Ferric iron|Ferrihydrite|Ferrous carbonate|Ferrous iron|FeS|FeS2|FeSO4|Formamide|greigite|H2|H2/CO2|H2/S|H2S|H2SO4|H2SO4|hematite|Hydrogen|Hydrogen gas|Hydrogen sulfide|Hydrogen sulphide|Iron oxidation|iron oxide|Iron-reducing|K2S4O6|Kaolin|KCN|KH2PO4|Magnetite|Manganese(IV)|Methane|Methylamine|Methylamines|Methylated amines|MMA|Mn(II)|Mn(IV)|Mn2+|Mn4+|MnSO4|Molecular nitrogen|Molybdate|Monomethylamine|N2|Na2S2O3|Na2S2O3|NH3|NH4|NH4Cl|Nitrate|Nitrate|nitric oxide|Nitrite|Nitrite|Nitrogen|Nitrogen dioxide|Nitrogen oxide|Nitrogen-Carbon dioxide|Nitrous oxide|NO2|NO3|O2|Oxygen|Poly(sulfide)|poly(sulphide)|Polyphosphate|Polysulfide|polysulfides|Polysulphide|polysulphides|potassium cyanate |Potassium nitrate|potassium thiocyanate|pyrite|Pyrrhotite|Realgar|S|S2O3|S2O3|Selenate|Selenite|Selenium|Senenite|Siderite|SO3|SO4|Sodium bicarbonate|Sodium bisulfite|Sodium bisulphate|Sodium nitrate|Sodium selenate|Sphalerite|Sulfate|Sulfide|Sulfidic ores|Sulfite|Sulfur|Sulfuric acid|Sulphate|Sulphite|Sulphur|Sulphur-reducing|Sulfur-reducing|Tetramethylammonium|Tetrathionate|Thiosulfate|Thiosulfite|Thiosulphate|TMA|TMAO|Trimethylamine|Trimethylamine N-oxide|Trimethylamines|Tungstate|Tungsten|Tungstite|ZnS";
 		
@@ -125,107 +142,8 @@ public class InorganicSubstancesNotUsedExtractor extends AbstractCharacterValueE
 		}
 		
 		
-		
-
-
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
-
-
-	// Example: 
-	public static void main(String[] args) throws IOException {
-		
-		
-		
-		System.out.println("Start::");
-		
-		
-		OrganicCompoundsNotUsedOrNotHydrolyzedExtractor organicCompoundsNotUsedOrNotHydrolyzedExtractor = new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52);
-		
-		// Test on February 09, 2015 Mon
-		CSVSentenceReader sourceSentenceReader = new CSVSentenceReader();
-		// Read sentence list
-		// 
-		String sourceFile = "micropieInput_zip/training_data/150130-Training-Sentences-new.csv";
-		String svmLabelAndCategoryMappingFile = "micropieInput_zip/svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
-		sourceSentenceReader.setInputStream(new FileInputStream(sourceFile));
-		sourceSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
-		sourceSentenceReader.readSVMLabelAndCategoryMapping();
-		List<Sentence> sourceSentenceList = sourceSentenceReader.readSentenceList();
-		System.out.println("sourceSentenceList.size()::" + sourceSentenceList.size());
-
-		
-		String outputFile = "micropieOutput/organicCompoundsNotUsedOrNotHydrolyzedExtractor-150317.csv";
-		OutputStream outputStream = new FileOutputStream(outputFile);
-		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
-		List<String[]> lines = new LinkedList<String[]>();
-		
-		
-		int sampleSentCounter = 0;
-		int extractedValueCounter = 0;
-		
-		for (Sentence sourceSentence : sourceSentenceList) {
-			String sourceSentText = sourceSentence.getText();
-			sourceSentText = sourceSentText.toLowerCase();
-			// "organic compounds used or hydrolyzed"
-			
-			
-			
-			if ( sourceSentText.matches("(.+)(\\bare not used|is not useed\\b)(.+)") ) {	
-				System.out.println("\n");
-				System.out.println("sourceSentText::" + sourceSentText);
-				
-				
-				
-				Set<String> organicCompoundsNotUsedOrNotHydrolyzedResult = organicCompoundsNotUsedOrNotHydrolyzedExtractor.getCharacterValue(sourceSentText);
-				
-				// System.out.println("growthNaclMaxExtractor.getRegexResultWithMappingCaseMap()::" + organicCompoundsNotUsedOrNotHydrolyzedExtractor.getRegexResultWithMappingCaseMap().toString());
-				
-				String regexResultWithMappingCaseMapString = "";
-				
-				// for (Map.Entry<String, String> entry : organicCompoundsNotUsedOrNotHydrolyzedExtractor.getRegexResultWithMappingCaseMap().entrySet()) {
-				//	System.out.println("Key : " + entry.getKey() + " Value : "
-				//	 	+ entry.getValue());
-				// 
-				//	regexResultWithMappingCaseMapString += entry.getKey() + ":" + entry.getValue() + ", ";
-				//	
-				// }
-				
-				System.out.println("organicCompoundsNotUsedOrNotHydrolyzedResult::" + organicCompoundsNotUsedOrNotHydrolyzedResult.toString());
-				if ( organicCompoundsNotUsedOrNotHydrolyzedResult.size() > 0 ) {
-					extractedValueCounter +=1;
-				}
-				sampleSentCounter +=1;
-				
-				System.out.println("regexResultWithMappingCaseMapString::" + regexResultWithMappingCaseMapString);
-
-				
-				// lines.add(new String[] { sourceSentText,
-				//		regexResultWithMappingCaseMapString
-				//		} );
-				lines.add(new String[] { sourceSentText } );
-				
-			}
-			
-		
-		
-		} 
-
-		System.out.println("\n");
-		System.out.println("sampleSentCounter::" + sampleSentCounter);
-		System.out.println("extractedValueCounter::" + extractedValueCounter);
-
-		
-		writer.writeAll(lines);
-		writer.flush();
-		writer.close();	
-		
-
-		
-	}
-	
-	
-	
-
 
 }

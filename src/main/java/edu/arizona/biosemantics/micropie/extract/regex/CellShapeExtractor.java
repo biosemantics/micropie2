@@ -17,8 +17,22 @@ import java.util.regex.Pattern;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 import au.com.bytecode.opencsv.CSVReader;
 
+/**
+ * Extract the character 2.1 Cell Shape
+ * Sample sentences:
+ * 	1. On blood agar, this organism usually appears as an oval bacillus, 0.7 to 2.5 microns long.
+ * 	2. On blood agar, the bacilli are single, 1 to 2.5 microns long, about 0.5 microns thick.
+ * 
+ *	Method:
+ *	1.	Keyword
+ *	2.  USP
+ */
 public class CellShapeExtractor extends AbstractCharacterValueExtractor {
 
 	public CellShapeExtractor(@Named("CellShapeExtractor_Label")ILabel label) {
@@ -31,10 +45,12 @@ public class CellShapeExtractor extends AbstractCharacterValueExtractor {
 	}
 
 	@Override
-	public Set<String> getCharacterValue(String text) {
-		// TODO Auto-generated constructor stub
-		Set<String> output = new HashSet<String>(); // Output,
-		// format::List<String>
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 
 		List<String> keywordList = new ArrayList<String>();
 		
@@ -76,6 +92,7 @@ public class CellShapeExtractor extends AbstractCharacterValueExtractor {
 			}
 		}
 
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
 }

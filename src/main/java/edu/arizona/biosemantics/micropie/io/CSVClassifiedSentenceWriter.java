@@ -23,7 +23,7 @@ import au.com.bytecode.opencsv.CSVWriter;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 
 
@@ -133,7 +133,7 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 					multiCatLabel = "0";
 				else
 					multiCatLabel = multiCatLabel.substring(0, multiCatLabel.length() - 1);
-				lines.add(new String[] { multiCatLabel, classifiedSentence.getSentence().getText()});
+				lines.add(new String[] { multiCatLabel, classifiedSentence.getText()});
 			}
 				
 			writer.writeAll(lines);
@@ -146,7 +146,6 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	public String getPredicitionsString(Set<ILabel> predictions) {

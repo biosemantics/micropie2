@@ -5,12 +5,16 @@ import java.util.Collection;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TypedDependency;
 
-public class ParseResult {
+/**
+ * The results of Stanford parser
+ *
+ */
+public class StanfordParseResult {
 
 	private Tree tree;
 	private Collection<TypedDependency> typedDependencies;
 	
-	public ParseResult(Tree tree, Collection<TypedDependency> typedDependencies) {
+	public StanfordParseResult(Tree tree, Collection<TypedDependency> typedDependencies) {
 		super();
 		this.tree = tree;
 		this.typedDependencies = typedDependencies;

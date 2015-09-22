@@ -1,11 +1,20 @@
 package edu.arizona.biosemantics.micropie.model;
 
+import java.util.List;
+
+import edu.stanford.nlp.ling.TaggedWord;
+
+/**
+ * sentence metadata
+ * 
+ */
 public class SentenceMetadata {
-	
 	private int sourceId;
-	private ParseResult parseResult;
+	private StanfordParseResult parseResult;
 	private boolean compoundSplitSentence;
 	private TaxonTextFile taxonTextFile;
+	private String taxon;
+	private List<TaggedWord> taggedWords;
 	
 	public SentenceMetadata() {
 		
@@ -19,11 +28,11 @@ public class SentenceMetadata {
 		this.sourceId = sourceId;
 	}
 
-	public ParseResult getParseResult() {
+	public StanfordParseResult getParseResult() {
 		return parseResult;
 	}
 
-	public void setParseResult(ParseResult parseResult) {
+	public void setParseResult(StanfordParseResult parseResult) {
 		this.parseResult = parseResult;
 	}
 
@@ -42,7 +51,12 @@ public class SentenceMetadata {
 	public TaxonTextFile getTaxonTextFile() {
 		return taxonTextFile;
 	}
-		
-	
-	
+
+	public String getTaxon() {
+		return taxon;
+	}
+
+	public void setTaxon(String taxon) {
+		this.taxon = taxon;
+	}
 }

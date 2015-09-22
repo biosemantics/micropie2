@@ -1,23 +1,28 @@
-package edu.arizona.biosemantics.micropie.extract.regex;
+package edu.arizona.biosemantics.micropie.extract;
 
 import com.google.inject.Inject;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 
+/**
+ * Extractors
+ * @author maojin
+ *
+ */
 public abstract class AbstractCharacterValueExtractor implements ICharacterValueExtractor {
 
-	private String character;
+	private String characterName;
 	private ILabel label;
 	
 	@Inject
-	public AbstractCharacterValueExtractor(ILabel label, String character) {
+	public AbstractCharacterValueExtractor(ILabel label, String characterName) {
 		this.label = label;
-		this.character = character;
+		this.characterName = characterName;
 	}
 	
 	@Override
-	public String getCharacter() {
-		return character;
+	public String getCharacterName() {
+		return characterName;
 	}
 
 	@Override

@@ -59,10 +59,10 @@ import edu.arizona.biosemantics.micropie.io.UnZip;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.CollapseUSPSentByCategoryCharTokenizer;
-import edu.arizona.biosemantics.micropie.model.CollapseUSPSentIndexMapping;
+import edu.arizona.biosemantics.micropie.model.IndexMapping;
 import edu.arizona.biosemantics.micropie.model.CollapsedSentenceAndIndex;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
@@ -71,6 +71,7 @@ import edu.arizona.biosemantics.micropie.transform.CollapseUSPSentByCategoryChar
 import edu.arizona.biosemantics.micropie.transform.CompoundSentenceSplitRun;
 import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.transform.SentenceSplitRun;
+import edu.arizona.biosemantics.micropie.transform.SeperatorTokenizer;
 import edu.arizona.biosemantics.micropie.extract.ExtractorType;
 import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
@@ -132,9 +133,9 @@ public class TrainTestRun implements IRun {
 	private int maxThreads;
 	private ListeningExecutorService executorService;
 
-	private Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap;
-	private Map<Sentence, SentenceMetadata> sentenceMetadataMap;
-	private Map<TaxonTextFile, List<Sentence>> taxonSentencesMap;
+	private Map<RawSentence, MultiClassifiedSentence> sentenceClassificationMap;
+	private Map<RawSentence, SentenceMetadata> sentenceMetadataMap;
+	private Map<TaxonTextFile, List<RawSentence>> taxonSentencesMap;
 
 	private String celsius_degreeReplaceSourcePattern;
 	private String uspBaseString;
@@ -160,9 +161,9 @@ public class TrainTestRun implements IRun {
 			@Named("maxThreads") int maxThreads,
 			@Named("predictionsFile") String predictionsFile,
 			@Named("matrixFile") String matrixFile,
-			@Named("SentenceClassificationMap") Map<Sentence, MultiClassifiedSentence> sentenceClassificationMap,
-			@Named("SentenceMetadataMap") Map<Sentence, SentenceMetadata> sentenceMetadataMap,
-			@Named("TaxonSentencesMap") Map<TaxonTextFile, List<Sentence>> taxonSentencesMap,
+			@Named("SentenceClassificationMap") Map<RawSentence, MultiClassifiedSentence> sentenceClassificationMap,
+			@Named("SentenceMetadataMap") Map<RawSentence, SentenceMetadata> sentenceMetadataMap,
+			@Named("TaxonSentencesMap") Map<TaxonTextFile, List<RawSentence>> taxonSentencesMap,
 			MultiSVMClassifier classifier,
 			CSVSentenceReader trainingSentenceReader,
 			XMLTextReader textReader,
@@ -454,7 +455,7 @@ public class TrainTestRun implements IRun {
 			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			trainingSentenceReader.setInputStream2(new FileInputStream(svmLabelAndCategoryMappingFile));
 			trainingSentenceReader.readSVMLabelAndCategoryMapping();
-			List<Sentence> trainingSentences = trainingSentenceReader.read();
+			List<RawSentence> trainingSentences = trainingSentenceReader.read();
 			
 			System.out.println("trainingFile::" + trainingFile);
 			System.out.println("svmLabelAndCategoryMappingFile::" + svmLabelAndCategoryMappingFile);
@@ -467,11 +468,11 @@ public class TrainTestRun implements IRun {
 			
 			
 			//use the trained classifiers to predict sentences
-			List<Sentence> testSentences = createTestSentences();
+			List<RawSentence> testSentences = createTestSentences();
 			
 			
 			List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>(); // TODO possibly parallelize here
-			for (Sentence testSentence : testSentences) {
+			for (RawSentence testSentence : testSentences) {
 				Set<ILabel> prediction = classifier.getClassification(testSentence);
 				MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence( testSentence, prediction);
 				sentenceClassificationMap.put(testSentence,classifiedSentence);
@@ -660,7 +661,7 @@ public class TrainTestRun implements IRun {
 		return textFiles;
 	}
 	
-	private List<Sentence> createTestSentences() throws IOException,
+	private List<RawSentence> createTestSentences() throws IOException,
 			InterruptedException, ExecutionException {
 		log(LogLevel.INFO, "Reading test sentences...");
 		File inputFolder = new File(testFolder);
@@ -848,14 +849,14 @@ public class TrainTestRun implements IRun {
 		 * e.printStackTrace(); } }
 		 * subsentenceSplitsPerFile.add(subsentenceSplits); }
 		 */
-		List<Sentence> result = new LinkedList<Sentence>();
+		List<RawSentence> result = new LinkedList<RawSentence>();
 		for (int i = 0; i < textFiles.size(); i++) {
 			List<ListenableFuture<List<String>>> fileFuture = subsentenceSplitsPerFile
 					.get(i);
 			for (int j = 0; j < fileFuture.size(); j++) {
 				List<String> subsentences = fileFuture.get(j).get();// .get();
 				for (String subsentence : subsentences) {
-					Sentence sentence = new Sentence(subsentence);
+					RawSentence sentence = new RawSentence(subsentence);
 					result.add(sentence);
 					SentenceMetadata metadata = new SentenceMetadata();
 					metadata.setSourceId(j);
@@ -866,7 +867,7 @@ public class TrainTestRun implements IRun {
 					TaxonTextFile taxon = textFiles.get(i);
 					if (!taxonSentencesMap.containsKey(taxon))
 						taxonSentencesMap
-								.put(taxon, new LinkedList<Sentence>());
+								.put(taxon, new LinkedList<RawSentence>());
 					taxonSentencesMap.get(taxon).add(sentence);
 				}
 			}
@@ -876,7 +877,7 @@ public class TrainTestRun implements IRun {
 		return result;
 	}
 	
-	private List<Sentence> createTestSentences2(List<TaxonTextFile> subTaxonTextFiles) throws IOException,
+	private List<RawSentence> createTestSentences2(List<TaxonTextFile> subTaxonTextFiles) throws IOException,
 	InterruptedException, ExecutionException {
 		log(LogLevel.INFO, "Reading test sentences...");
 
@@ -1027,14 +1028,14 @@ public class TrainTestRun implements IRun {
 		 * e.printStackTrace(); } }
 		 * subsentenceSplitsPerFile.add(subsentenceSplits); }
 		 */
-		List<Sentence> result = new LinkedList<Sentence>();
+		List<RawSentence> result = new LinkedList<RawSentence>();
 		for (int i = 0; i < textFiles.size(); i++) {
 			List<ListenableFuture<List<String>>> fileFuture = subsentenceSplitsPerFile
 					.get(i);
 			for (int j = 0; j < fileFuture.size(); j++) {
 				List<String> subsentences = fileFuture.get(j).get();// .get();
 				for (String subsentence : subsentences) {
-					Sentence sentence = new Sentence(subsentence);
+					RawSentence sentence = new RawSentence(subsentence);
 					result.add(sentence);
 					SentenceMetadata metadata = new SentenceMetadata();
 					metadata.setSourceId(j);
@@ -1045,7 +1046,7 @@ public class TrainTestRun implements IRun {
 					TaxonTextFile taxon = textFiles.get(i);
 					if (!taxonSentencesMap.containsKey(taxon))
 						taxonSentencesMap
-								.put(taxon, new LinkedList<Sentence>());
+								.put(taxon, new LinkedList<RawSentence>());
 					taxonSentencesMap.get(taxon).add(sentence);
 				}
 			}
@@ -1068,7 +1069,7 @@ public class TrainTestRun implements IRun {
 	}
 
 	private void nFolderCrossValidation(int numberOfFold,
-			List<Sentence> trainingSentences) throws Exception {
+			List<RawSentence> trainingSentences) throws Exception {
 
 		StringBuilder outputStringBuilder = new StringBuilder();
 		outputStringBuilder
@@ -1099,8 +1100,8 @@ public class TrainTestRun implements IRun {
 			System.out.println("testing data is :: " + startFlag + " to :: "
 					+ endFlag);
 
-			List<Sentence> subTrainingSentences = new LinkedList<Sentence>();
-			List<Sentence> subTestingSentences = new LinkedList<Sentence>();
+			List<RawSentence> subTrainingSentences = new LinkedList<RawSentence>();
+			List<RawSentence> subTestingSentences = new LinkedList<RawSentence>();
 			subTrainingSentences.addAll(trainingSentences);
 
 			for (int j = startFlag; j <= endFlag; j++) {
@@ -1116,10 +1117,10 @@ public class TrainTestRun implements IRun {
 
 			classifier.train(subTrainingSentences);
 
-			List<Sentence> testSentences = subTestingSentences;
+			List<RawSentence> testSentences = subTestingSentences;
 
 			// TODO possibly parallelize here
-			for (Sentence testSentence : testSentences) {
+			for (RawSentence testSentence : testSentences) {
 				Set<ILabel> prediction = classifier
 						.getClassification(testSentence);
 				String predictionString = "";
@@ -1256,7 +1257,7 @@ public class TrainTestRun implements IRun {
 	}
 
 	// createUSPInputsFromListSentence
-	private void createUSPInputsFromListSentence(List<Sentence> listSentence)
+	private void createUSPInputsFromListSentence(List<RawSentence> listSentence)
 			throws IOException, InterruptedException, ExecutionException {		
 
 		// STEP 1: Read Abbreviation (Keyword) List First and But HashTable<String, String>
@@ -1364,7 +1365,7 @@ public class TrainTestRun implements IRun {
 		
 		int counter = 1;
 		
-		for (Sentence sentence : listSentence) {			
+		for (RawSentence sentence : listSentence) {			
 			
 			StringBuilder depStringBuilder = new StringBuilder(); // Stanford Dependency
 			StringBuilder inputStringBuilder = new StringBuilder();
@@ -1584,13 +1585,13 @@ public class TrainTestRun implements IRun {
 				// System.out.println("tagTestSent::" + tagSentText);
 				
 				
-				List<CollapseUSPSentIndexMapping> collapseUSPSentIndexMappingList = new ArrayList<CollapseUSPSentIndexMapping>();
+				List<IndexMapping> collapseUSPSentIndexMappingList = new ArrayList<IndexMapping>();
 				
 				
 				
-				CollapseUSPSentByCategoryCharTokenizer collapseUSPSentByCategoryCharTokenizer = new CollapseUSPSentByCategoryCharTokenizer();
+				SeperatorTokenizer spaceTokenizer = new SeperatorTokenizer();
 				
-				String[] tokens = collapseUSPSentByCategoryCharTokenizer.tokenize(sentText);
+				String[] tokens = spaceTokenizer.tokenize(sentText);
 				
 				for (int i = 0; i < tokens.length; i++) {
 					morphStringBuilder.append(tokens[i].toString()
@@ -1714,7 +1715,7 @@ public class TrainTestRun implements IRun {
 				int lastIndexInPreviousItem = -1;
 				int firstIndexInCurrentItem = -1;
 				int itemInCollapseUSPSentIndexMappingListCounter = 0;
-				for (CollapseUSPSentIndexMapping itemInCollapseUSPSentIndexMappingList : collapseUSPSentIndexMappingList) {
+				for (IndexMapping itemInCollapseUSPSentIndexMappingList : collapseUSPSentIndexMappingList) {
 					// System.out.println("itemInCollapseUSPSentIndexMappingList.getToken()::" + itemInCollapseUSPSentIndexMappingList.getToken());
 					// System.out.println("itemInCollapseUSPSentIndexMappingList.getIndices()::" + itemInCollapseUSPSentIndexMappingList.getIndices());
 					String curToken = itemInCollapseUSPSentIndexMappingList.getToken();
@@ -1850,7 +1851,8 @@ public class TrainTestRun implements IRun {
 					SemanticGraph dependencies = sentenceAnnotationCollapsedSent
 							.get(CollapsedCCProcessedDependenciesAnnotation.class);
 
-					String depStringXml = dependencies.toString("xml");
+					String depStringXml = dependencies.toFormattedString();
+							//。.toString("xml");
 					
 					if (depStringXml.length() == 0) {
 						System.out.println("No Dependency!");	
@@ -2447,13 +2449,12 @@ public class TrainTestRun implements IRun {
 				System.out.println("tagTestSent::" + tagSentText);
 				
 				
-				List<CollapseUSPSentIndexMapping> collapseUSPSentIndexMappingList = new ArrayList<CollapseUSPSentIndexMapping>();
+				List<IndexMapping> collapseUSPSentIndexMappingList = new ArrayList<IndexMapping>();
 				
 				
+				SeperatorTokenizer spaceTokenizer = new SeperatorTokenizer();
 				
-				CollapseUSPSentByCategoryCharTokenizer collapseUSPSentByCategoryCharTokenizer = new CollapseUSPSentByCategoryCharTokenizer();
-				
-				String[] tokens = collapseUSPSentByCategoryCharTokenizer.tokenize(sentText);
+				String[] tokens = spaceTokenizer.tokenize(sentText);
 				
 				for (int i = 0; i < tokens.length; i++) {
 					morphStringBuilder.append(tokens[i].toString()
@@ -2577,7 +2578,7 @@ public class TrainTestRun implements IRun {
 				int lastIndexInPreviousItem = -1;
 				int firstIndexInCurrentItem = -1;
 				int itemInCollapseUSPSentIndexMappingListCounter = 0;
-				for (CollapseUSPSentIndexMapping itemInCollapseUSPSentIndexMappingList : collapseUSPSentIndexMappingList) {
+				for (IndexMapping itemInCollapseUSPSentIndexMappingList : collapseUSPSentIndexMappingList) {
 					// System.out.println("itemInCollapseUSPSentIndexMappingList.getToken()::" + itemInCollapseUSPSentIndexMappingList.getToken());
 					// System.out.println("itemInCollapseUSPSentIndexMappingList.getIndices()::" + itemInCollapseUSPSentIndexMappingList.getIndices());
 					String curToken = itemInCollapseUSPSentIndexMappingList.getToken();
@@ -2713,7 +2714,7 @@ public class TrainTestRun implements IRun {
 					SemanticGraph dependencies = sentenceAnnotationCollapsedSent
 							.get(CollapsedCCProcessedDependenciesAnnotation.class);
 
-					String depStringXml = dependencies.toString("xml");
+					String depStringXml = dependencies.toFormattedString();//toString("xml");
 					
 					if (depStringXml.length() == 0) {
 						System.out.println("No Dependency!");	

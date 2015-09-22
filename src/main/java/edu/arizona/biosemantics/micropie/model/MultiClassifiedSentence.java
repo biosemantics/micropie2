@@ -1,16 +1,32 @@
 package edu.arizona.biosemantics.micropie.model;
 
+import java.util.List;
 import java.util.Set;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.stanford.nlp.ling.TaggedWord;
 
-public class MultiClassifiedSentence {
+/**
+ * Multi Classified Sentence and its Metadata
+ * 
+ * @author maojin
+ *
+ */
+public class MultiClassifiedSentence extends Sentence{
 
-	private Set<ILabel> predictions;
-	private Sentence sentence;
+	private Set<ILabel> predictions;// the predicted categories
+	private SentenceMetadata sentMetadata; // some metadata
+	private List<SubSentence> subSentence;
+	private List<List<TaggedWord>> subSentTaggedWords;
 	
-	public MultiClassifiedSentence(Sentence sentence, Set<ILabel> predictions) {
-		this.sentence = sentence;
+	
+	public MultiClassifiedSentence(String text) {
+		this.text = text;
+	}
+	
+	
+	public MultiClassifiedSentence(RawSentence sentence, Set<ILabel> predictions) {
+		this.text = sentence.getText();
 		this.predictions = predictions;
 	}
 
@@ -22,14 +38,29 @@ public class MultiClassifiedSentence {
 		this.predictions = predictions;
 	}
 
-	public Sentence getSentence() {
-		return sentence;
+
+	public SentenceMetadata getSentMetadata() {
+		return sentMetadata;
 	}
 
-	public void setSentence(Sentence sentence) {
-		this.sentence = sentence;
+	public void setSentMetadata(SentenceMetadata sentMetadata) {
+		this.sentMetadata = sentMetadata;
 	}
-	
-	
+
+	public List getSubSentence() {
+		return subSentence;
+	}
+
+	public void setSubSentence(List subSentence) {
+		this.subSentence = subSentence;
+	}
+
+	public List getSubSentTaggedWords() {
+		return subSentTaggedWords;
+	}
+
+	public void setSubSentTaggedWords(List subSentTaggedWords) {
+		this.subSentTaggedWords = subSentTaggedWords;
+	}
 	
 }

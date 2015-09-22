@@ -1,6 +1,7 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,7 +11,18 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 
+/**
+ * Extract the character ?>?
+ * Sample sentences:
+ *	
+ *	Method:
+ *	1.	Regular Expression
+ */
 public class CellSizeExtractor extends AbstractCharacterValueExtractor {
 
 	public CellSizeExtractor(ILabel label) {
@@ -24,14 +36,12 @@ public class CellSizeExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
-		Set<String> output = new HashSet<String>(); // Output,
-																	// format::List<String>
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 
-		// input: the original sentnece
-		// output: String array?
-
-		// log(LogLevel.INFO, "Original Sent : " + sent);
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 		text = text.substring(0, text.length() - 1); // remove the period at the
 														// last position
 
@@ -159,6 +169,7 @@ public class CellSizeExtractor extends AbstractCharacterValueExtractor {
 			output.add(part2 + " " + part3);
 
 		}
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
 }

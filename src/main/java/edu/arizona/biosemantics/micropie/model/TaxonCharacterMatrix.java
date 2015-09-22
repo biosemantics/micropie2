@@ -4,10 +4,16 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class TaxonCharacterMatrix {
+
+/**
+ * 
+ * the model of taxon character matrix
+ * 
+ */
+public class TaxonCharacterMatrix implements Matrix{
 
 	private Set<TaxonTextFile> taxonFiles;
-	private Map<TaxonTextFile, Map<String, Set<String>>> taxonCharacterMap;
+	private Map<TaxonTextFile, Map<String, Set<CharacterValue>>> taxonCharacterMap;
 	private LinkedHashSet<String> characters;
 	
 	public void setTaxonFiles(Set<TaxonTextFile> taxonFiles) {
@@ -18,7 +24,7 @@ public class TaxonCharacterMatrix {
 		this.characters = characters;
 	}
 
-	public void setTaxonCharacterMap(Map<TaxonTextFile, Map<String, Set<String>>> taxonCharacterMap) {
+	public void setTaxonCharacterMap(Map<TaxonTextFile, Map<String, Set<CharacterValue>>> taxonCharacterMap) {
 		this.taxonCharacterMap = taxonCharacterMap;
 	}
 
@@ -26,7 +32,7 @@ public class TaxonCharacterMatrix {
 		return taxonFiles;
 	}
 
-	public Map<TaxonTextFile, Map<String, Set<String>>> getTaxonCharacterMap() {
+	public Map<TaxonTextFile, Map<String, Set<CharacterValue>>> getTaxonCharacterMap() {
 		return taxonCharacterMap;
 	}
 

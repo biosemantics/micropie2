@@ -18,7 +18,7 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
-import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 
 /**
@@ -56,11 +56,11 @@ public class SentencePredictor{
 		//Habitat is not known.
 		//Colonies are 0.2 to 0.3 mm in diameter on blood-enriched Columbia agar and Brain Heart Infusion (BHI) agar.
 		
-		Sentence testSentence = new Sentence(text);
+		RawSentence testSentence = new RawSentence(text);
 
 		Set<ILabel> prediction = null;
 		try {
-			prediction = msvmClassifier.getClassification(testSentence);
+			prediction = msvmClassifier.predict(testSentence);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -72,15 +72,31 @@ public class SentencePredictor{
 	 * @param sent
 	 * @return
 	 */
-	public Set<ILabel> predict(Sentence sent) {
+	public Set<ILabel> predict(RawSentence sent) {
 		Set<ILabel> prediction = null;
 		try {
-			prediction = msvmClassifier.getClassification(sent);
+			prediction = msvmClassifier.predict(sent);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return prediction;
 	}
 	
+	
+	/**
+	 * Predict the categories for the sentence
+	 * @param sent
+	 * @return
+	 */
+	public Set<ILabel> predict(MultiClassifiedSentence sent) {
+		Set<ILabel> prediction = null;
+		try {
+			prediction = this.predict(sent.getText());
+			sent.setPredictions(prediction);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prediction;
+	}
 	
 }

@@ -12,7 +12,21 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 
+/**
+ * Extract the character 2.2 Cell diameter
+ * Sample sentences: 
+ * 	1.The spherical heterocysts, 3-5 _ m in diameter, were usually located in the middle of the trichome, but also occasionally at the tip.
+ *  2.Round cells, usually occurring in pairs, tetrads and clusters, about 1.0 µm in diameter.
+ *
+ *	Methods:
+ *	1.Regular Expression
+ *
+ */
 public class CellDiameterExtractor extends AbstractCharacterValueExtractor {
 
 	public CellDiameterExtractor(ILabel label) {
@@ -26,12 +40,12 @@ public class CellDiameterExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 
-		Set<String> output = new HashSet<String>(); // Output, format::List<String>
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
 		
-		// input: the original sentnece
-		// output: String array?
+		String text = sentence.getText();
 		
 		// Example:  Exponentially growing cells are 1-2-1.5 µm in diameter.
 		String patternString = "(.*)(\\s?in\\sdiameter\\s?|\\s?diameter\\sof\\s?|\\s?diameters\\sof\\s?)(.*)";
@@ -39,7 +53,7 @@ public class CellDiameterExtractor extends AbstractCharacterValueExtractor {
 		Pattern pattern = Pattern.compile(patternString);
 		Matcher matcher = pattern.matcher(text.toLowerCase());
 
-		while (matcher.find()) {			
+		while (matcher.find()) {
 			String matchSubString;
 			if (text.toLowerCase().contains("in diameter")) {
 				matchSubString = matcher.group(1);
@@ -187,10 +201,9 @@ public class CellDiameterExtractor extends AbstractCharacterValueExtractor {
 				
 			}
 			
-			
-
-		}		
+		}
 		
-		return output;
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
 }

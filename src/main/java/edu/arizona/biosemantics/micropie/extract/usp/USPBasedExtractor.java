@@ -1,8 +1,9 @@
-package edu.arizona.biosemantics.micropie.extract.regex;
+package edu.arizona.biosemantics.micropie.extract.usp;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import usp.eval.MicropieUSPExtractor;
@@ -12,9 +13,19 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.io.USPClusteringReader;
+import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.common.log.LogLevel;
 
+
+
+/**
+ * Extractors for many keyword based character value
+ *
+ */
 public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 	
 	private Set<USPRequest> uspRequests;
@@ -38,7 +49,12 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	@Override
-	public Set<String> getCharacterValue(String text) {
+	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+
+		Set<String> output = new HashSet();
+		List<CharacterValue> charValueList = null;
+		
+		String text = sentence.getText();
 		Set<String> returnCharacterStrings = new HashSet<String>();
 		for (USPRequest uspRequest : uspRequests) {
 			try {
@@ -82,9 +98,12 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 				
 				
 			} catch(Exception e) {
+				e.printStackTrace();
 				log(LogLevel.ERROR, "Could not get object value from USP extractor for sentence: \"" + text + "\" with " + uspRequest);
 			}
 		}
-		return returnCharacterStrings;
+		
+		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+		return charValueList;
 	}
 }

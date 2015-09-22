@@ -1,6 +1,11 @@
 package edu.arizona.biosemantics.micropie.model;
 
-public class ExtractedOutputSimilarityResults {
+/**
+ * evaluation results
+ * @author maojin
+ *
+ */
+public class EvalResult {
 
 	
 	private float precisionValue;
@@ -33,7 +38,7 @@ public class ExtractedOutputSimilarityResults {
 	
 	
 	
-	public ExtractedOutputSimilarityResults() {
+	public EvalResult() {
 		// TODO Auto-generated constructor stub
 	}
 
