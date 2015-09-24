@@ -97,7 +97,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		header[3] = "Species";
 		header[4] = "Strain";
 		header[5] = "16S rRNA accession #";
-		header[6] = "File Name";
+		header[6] = "XML file";
 		
 		// add 16S rRNA accession #|Family|Genus|Species|Strain
 		// March 07, 2015 Saturday

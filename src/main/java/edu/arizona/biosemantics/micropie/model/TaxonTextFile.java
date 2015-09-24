@@ -15,6 +15,7 @@ public class TaxonTextFile {
 	private String species;
 	private String strain_number;
 	private String the16SrRNAAccessionNumber;
+	private String xmlFile;
 
 	
 	private String text;
@@ -32,6 +33,23 @@ public class TaxonTextFile {
 		this.text = text;
 		this.inputFile = inputFile;
 	}
+	
+	public TaxonTextFile(String taxon, String family, String genus, String species, String strain_number, String the16SrRNAAccessionNumber, String text) {
+		this.taxon = taxon;
+		
+		this.family = family;
+		this.genus = genus;
+		this.species = species;
+		this.strain_number = strain_number;
+		this.the16SrRNAAccessionNumber = the16SrRNAAccessionNumber;
+		
+		this.text = text;
+	}
+	
+	public TaxonTextFile(){
+		
+	}
+	
 
 	public String getTaxon() {
 		return taxon;
@@ -99,6 +117,14 @@ public class TaxonTextFile {
 
 	public void setInputFile(File inputFile) {
 		this.inputFile = inputFile;
+	}
+
+	public String getXmlFile() {
+		return xmlFile;
+	}
+
+	public void setXmlFile(String xmlFile) {
+		this.xmlFile = xmlFile;
 	}
 	
 	

@@ -4,14 +4,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
+
+import edu.arizona.biosemantics.micropie.transform.StringUtil;
 
 public class UnZip {
 	List<String> fileList;
-	private static final String INPUT_ZIP_FILE = "C:\\MyFile.zip";
-	private static final String OUTPUT_FOLDER = "C:\\outputzip";
+	private static final String INPUT_ZIP_FILE = "F:\\MicroPIE\\datasets\\Microbial_Phenomics_Project_Experiment1_papers-2015-09-14.zip";
+	private static final String OUTPUT_FOLDER = "F:\\MicroPIE\\datasets\\exp1";
 
 	public static void main(String[] args) {
 		UnZip unZip = new UnZip();
@@ -26,7 +30,7 @@ public class UnZip {
 	 * @param output
 	 *            zip file output folder
 	 */
-	public void unZipIt(String zipFile, String outputFolder) {
+	public void unZipIt(String zipFileStr, String outputFolder) {
 
 		byte[] buffer = new byte[1024];
 
@@ -40,21 +44,24 @@ public class UnZip {
 			if (!folder.exists()) {
 				folder.mkdir();
 			}
+			
+			 Charset charset = Charset.forName("CP866");//CP866
+			//ZipFile zipFile = new ZipFile(zipFileStr, CP866);
 
 			// get the zip file content
 			ZipInputStream zis = new ZipInputStream(
-					new FileInputStream(zipFile));
+					new FileInputStream(zipFileStr),charset);
 			// get the zipped file list entry
 			ZipEntry ze = zis.getNextEntry();
 
 			while (ze != null) {
 
 				String fileName = ze.getName();
+				fileName = fileName.replace("Microbial Phenomics Project Experiment1 papers", "");
 				File newFile = new File(outputFolder + File.separator
-						+ fileName);
+						+ StringUtil.standFileName(fileName));
 
-				// System.out.println("file unzip : "+
-				// newFile.getAbsoluteFile());
+				System.out.println("file unzip : "+ newFile.getName());
 
 				// create all non exists folders
 				// else you will hit FileNotFoundException for compressed folder

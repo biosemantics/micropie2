@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -158,8 +159,98 @@ public class MicroPIEProcessor{
 	}
 
 	
+	public void processFolder(String inputFolder,String outputMatrixFile){
+		LinkedHashSet<ILabel> characterLabels = new LinkedHashSet();
+		for(String characterName : characterNames){
+			ILabel label = categoryNameLabelMap.get(characterName.trim().toLowerCase());
+			characterLabels.add(label);
+		}
+		
+		// <Taxon, <Character, List<Value>>>
+		NewTaxonCharacterMatrix matrix = new NewTaxonCharacterMatrix();
+		matrix.setCharacterLabels(characterLabels);
+		matrix.setCharacterNames(characterNames);
+		
+		matrixCreator.setCharacterLabels(characterLabels);
+		matrixCreator.setCharacterNames(characterNames);
+		
+		File inputFolderFile = new File(inputFolder);
+		File[] inputFiles = inputFolderFile.listFiles();
+		Set taxonSet = new LinkedHashSet();
+		for (File inputFile : inputFiles) {
+			TaxonTextFile taxonFile = processFile(inputFile,matrix);
+			taxonSet.add(taxonFile);
+		}
+		matrix.setTaxonFiles(taxonSet);
+		
+		try {
+			matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
+			matrixWriter.write(matrix);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	/**
+	 * 
+	 * @param inputFile
+	 * @param matrix
+	 */
+	public TaxonTextFile processFile(File inputFile, NewTaxonCharacterMatrix matrix) {
+		TaxonTextFile taxonFile = readTaxonFile(inputFile);
+		//STEP 1: split sentences
+		List<MultiClassifiedSentence> sentences = this.createSentencesFromFile(taxonFile);
+		
+		//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
+		for (MultiClassifiedSentence testSentence : sentences) {
+			Set<ILabel> prediction = sentencePredictor.predict(testSentence);
+			testSentence.setPredictions(prediction);
+		}
+		
+		matrixCreator.create(matrix,taxonFile,sentences);
+		
+		return taxonFile;
+	}
 	
 	
+	/**
+	 * read a taxonfile
+	 * @param inputFile
+	 * @return
+	 */
+	private TaxonTextFile readTaxonFile(File inputFile) {
+		XMLTextReader textReader = new XMLTextReader();
+		textReader.setInputStream(inputFile);
+		TaxonTextFile taxonFile = textReader.readFile();
+		String text = textReader.read();
+		taxonFile.setInputFile(null);
+		taxonFile.setText(text);
+		
+		return taxonFile;
+	}
+
+
+	/**
+	 * Split sentences from a single file
+	 * @param inputFile
+	 * @return
+	 */
+	private List<MultiClassifiedSentence> createSentencesFromFile(TaxonTextFile taxonFile) {
+		List<String> sentences = sentenceSpliter.split(taxonFile.getText());
+		List<MultiClassifiedSentence> result = new LinkedList<MultiClassifiedSentence>();
+		for (String subsentence : sentences) {
+			MultiClassifiedSentence sentence = new MultiClassifiedSentence(subsentence);
+			result.add(sentence);
+		}
+		
+		return result;
+	}
+
+
 	/**
 	 * create sentences from the test folders
 	 * @param folder

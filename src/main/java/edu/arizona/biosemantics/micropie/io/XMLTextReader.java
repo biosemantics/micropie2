@@ -1,14 +1,21 @@
 package edu.arizona.biosemantics.micropie.io;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+
+import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 
 public class XMLTextReader implements ITextReader {
 
@@ -19,16 +26,54 @@ public class XMLTextReader implements ITextReader {
 	 * @throws IOException 
 	 * @throws JDOMException 
 	 */
-	public void setInputStream(InputStream inputStream) throws JDOMException, IOException {		
+	public void setInputStream(InputStream inputStream) {		
 		SAXBuilder builder = new SAXBuilder();
-		Document xmlDocument = (Document) builder.build(new InputStreamReader(inputStream, "UTF8"));
-		rootNode = xmlDocument.getRootElement();
+		Document xmlDocument;
+		try {
+			xmlDocument = (Document) builder.build(new InputStreamReader(inputStream, "UTF8"));
+			rootNode = xmlDocument.getRootElement();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (JDOMException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * @param inputStream to read from
+	 * @throws IOException 
+	 * @throws JDOMException 
+	 */
+	public void setInputStream(String file) {	
+		try {
+			InputStream inputstream = new FileInputStream(file);
+			this.setInputStream(inputstream);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * @param inputStream to read from
+	 * @throws IOException 
+	 * @throws JDOMException 
+	 */
+	public void setInputStream(File file) {	
+		try {
+			InputStream inputstream = new FileInputStream(file);
+			this.setInputStream(inputstream);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 
 	// New Schema 2:: 141111
 	@Override
-	public String read() throws Exception {
+	public String read(){
 		String returnText = "";
 
 		Element meta = rootNode.getChild("meta");
@@ -58,12 +103,38 @@ public class XMLTextReader implements ITextReader {
 			returnText += text;
 			return returnText;
 		}	
-		throw new Exception("Could not find a description");
+		return null;
+		//throw new Exception("Could not find a description");
 		
 		
 	}
-
-	public String getTaxon() throws Exception {
+	
+	/**
+	 * read a TaxonTextFile
+	 * @return
+	 */
+	public TaxonTextFile readFile(){
+		if(rootNode==null) return null;
+		
+		TaxonTextFile taxonFile = new TaxonTextFile();
+		String taxon = this.getTaxon();
+		taxonFile.setTaxon(taxon);
+		String family = this.getFamily();
+		taxonFile.setFamily(family);
+		String genus = this.getGenus();
+		taxonFile.setGenus(genus);
+		String species = this.getSpecies();
+		taxonFile.setSpecies(species);
+		String strain_number = this.getStrain_number();
+		taxonFile.setStrain_number(strain_number);
+		String the16SrRNAAccessionNumber = this.get16SrRNAAccessionNumber();
+		taxonFile.setThe16SrRNAAccessionNumber(the16SrRNAAccessionNumber);
+		
+		return taxonFile;
+	}
+	
+	
+	public String getTaxon(){
 		// String taxon = rootNode.getChildText("taxon_name");
 		
 		
@@ -92,12 +163,12 @@ public class XMLTextReader implements ITextReader {
 		}
 		
 	
-		
-		if(taxon != null) {
-			System.out.println("taxon:" + taxon);
+//		
+//		if(taxon != null) {
+//			System.out.println("taxon:" + taxon);
 			return taxon;
-		}	
-		throw new Exception("Could not find a taxon name");
+//		}	
+//		throw new Exception("Could not find a taxon name");
 	}
 
 	
@@ -108,7 +179,7 @@ public class XMLTextReader implements ITextReader {
 	// Species
 	// Strain
 	
-	public String getFamily() throws Exception {
+	public String getFamily(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
 		String familyName = "";
@@ -118,14 +189,14 @@ public class XMLTextReader implements ITextReader {
 				familyName = taxon_nameElement.getText();
 			}
 		}
-		if(familyName != null) {
-			System.out.println("familyName:" + familyName);
+//		if(familyName != null) {
+//			System.out.println("familyName:" + familyName);
 			return familyName;
-		}	
-		throw new Exception("Could not find a family name");
+//		}	
+//		throw new Exception("Could not find a family name");
 	}	
 	
-	public String getGenus() throws Exception {
+	public String getGenus(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
 		String genusName = "";
@@ -135,14 +206,14 @@ public class XMLTextReader implements ITextReader {
 				genusName = taxon_nameElement.getText();
 			}
 		}
-		if(genusName != null) {
-			System.out.println("genusName:" + genusName);
+//		if(genusName != null) {
+//			System.out.println("genusName:" + genusName);
 			return genusName;
-		}	
-		throw new Exception("Could not find a genus name");
+//		}	
+		//throw new Exception("Could not find a genus name");
 	}		
 
-	public String getSpecies() throws Exception {
+	public String getSpecies(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
 		String speciesName = "";
@@ -152,14 +223,14 @@ public class XMLTextReader implements ITextReader {
 				speciesName = taxon_nameElement.getText();
 			}
 		}
-		if(speciesName != null) {
-			System.out.println("speciesName:" + speciesName);
+//		if(speciesName != null) {
+//			System.out.println("speciesName:" + speciesName);
 			return speciesName;
-		}	
-		throw new Exception("Could not find a species name");
+//		}	
+		//throw new Exception("Could not find a species name");
 	}	
 
-	public String getStrain_number() throws Exception {
+	public String getStrain_number() {
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> strain_numberListOfElement = taxon_identification.getChildren("strain_number");
 		String strain_number = "";
@@ -171,30 +242,30 @@ public class XMLTextReader implements ITextReader {
 			// strain_number += ";" + equivalent_strain_numbers;
 			
 		}
-		if(strain_number != null) {
-			System.out.println("strain_number:" + strain_number);
-			return strain_number;
-		} // else {
-		// 	return strain_number;
+//		if(strain_number != null) {
+//			System.out.println("strain_number:" + strain_number);
+//			return strain_number;
+//		} // else {
+		 	return strain_number;
 		// }
-		throw new Exception("Could not find a strain number");
+		//throw new Exception("Could not find a strain number");
 	}
 	
 	
-	public String get16SrRNAAccessionNumber() throws Exception {
+	public String get16SrRNAAccessionNumber(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> strain_numberListOfElement = taxon_identification.getChildren("strain_number");
 		String the16SrRNAAccessionNumber = "";
 		for(Element strain_numberElement : strain_numberListOfElement) {
 			the16SrRNAAccessionNumber = strain_numberElement.getAttributeValue("accession_number_16s_rrna");	
 		}
-		if(the16SrRNAAccessionNumber != null) {
-			System.out.println("the16SrRNAAccessionNumber:" + the16SrRNAAccessionNumber);
-			return the16SrRNAAccessionNumber;
-		} // else {
-		//	return the16SrRNAAccessionNumber;
+//		if(the16SrRNAAccessionNumber != null) {
+//			System.out.println("the16SrRNAAccessionNumber:" + the16SrRNAAccessionNumber);
+//			return the16SrRNAAccessionNumber;
+//		} // else {
+		 return the16SrRNAAccessionNumber;
 		// }
-		throw new Exception("16S rRNA Accession Number");
+		//throw new Exception("16S rRNA Accession Number");
 	}	
 	
 	
