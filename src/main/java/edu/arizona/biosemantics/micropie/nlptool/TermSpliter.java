@@ -1,4 +1,4 @@
-package edu.arizona.biosemantics.micropie.transform;
+package edu.arizona.biosemantics.micropie.nlptool;
 
 import java.util.HashSet;
 import java.util.LinkedList;

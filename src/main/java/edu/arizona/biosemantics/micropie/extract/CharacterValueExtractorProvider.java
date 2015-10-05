@@ -28,8 +28,8 @@ import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempOptimumExtracto
 import edu.arizona.biosemantics.micropie.extract.regex.InorganicSubstancesNotUsedExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.OrganicCompoundsNotUsedOrNotHydrolyzedExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.PHTempNaClExtractor;
-import edu.arizona.biosemantics.micropie.transform.PosTagger;
-import edu.arizona.biosemantics.micropie.transform.SentenceSpliter;
+import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
+import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 
 
 /**
@@ -87,7 +87,12 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		*/
 		
 		//My method
+		for(Label label: Label.values()){
+			if(!labelExtractorsMap.containsKey(label))
+				labelExtractorsMap.put(label, new HashSet<ICharacterValueExtractor>());
+		}
 		
+		//System.out.println(extractors+" "+extractors.size());
 		extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
 		extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
 		extractors.add(new FermentationSubstratesNotUsed(Label.c56));
@@ -104,11 +109,6 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		ICharacterValueExtractor ptnFigureExtractor = new PHTempNaClExtractor(sentSplitter, posTagger, null, null);
 		ICharacterValueExtractor cellScaleFigureExtractor = new CellScaleExtractor(sentSplitter, posTagger, null, null);
 		
-		for(Label label: Label.values()){
-			if(!labelExtractorsMap.containsKey(label))
-				labelExtractorsMap.put(label, new HashSet<ICharacterValueExtractor>());
-		}
-		
 		labelExtractorsMap.get(Label.c1).add(gcFigureExtractor);
 		labelExtractorsMap.get(Label.c3).add(cellScaleFigureExtractor);
 		labelExtractorsMap.get(Label.c4).add(cellScaleFigureExtractor);
@@ -124,6 +124,11 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		labelExtractorsMap.get(Label.c24).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c25).add(ptnFigureExtractor);
 		
+		/*
+		for(Label label: Label.values()){
+			System.out.println(label+","+ labelExtractorsMap.get(label).size());
+		}
+		*/
 	}
 	
 	@Override

@@ -31,6 +31,7 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.CharacterValueExtractorProvider;
+import edu.arizona.biosemantics.micropie.extract.CharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.extract.ICharacterBatchExtractor;
 import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractorProvider;
@@ -58,17 +59,16 @@ import edu.arizona.biosemantics.micropie.extract.usp.AntibioticSensitivityExtrac
 import edu.arizona.biosemantics.micropie.io.CSVAbbreviationReader;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CategoryReader;
-import edu.arizona.biosemantics.micropie.io.CharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.io.ISentenceReader;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
-import edu.arizona.biosemantics.micropie.transform.ITextNormalizer;
-import edu.arizona.biosemantics.micropie.transform.PosTagger;
-import edu.arizona.biosemantics.micropie.transform.SentenceSpliter;
-import edu.arizona.biosemantics.micropie.transform.TextNormalizer;
+import edu.arizona.biosemantics.micropie.nlptool.ITextNormalizer;
+import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
+import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
+import edu.arizona.biosemantics.micropie.nlptool.TextNormalizer;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -116,7 +116,8 @@ public class Config extends AbstractModule {
 	private String trainedModelFile = "models";
 	
 	//System Parameters
-	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
+	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/categoryMapping_poster.txt";
+	//private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
 	
 	private String testFolder = "input";
 	private String characterValueExtractorsFolder = "CharacterValueExtractors";
@@ -400,10 +401,12 @@ public class Config extends AbstractModule {
 				ICharacterValueExtractor extractor = extractorReader.read(file);
 				extractors.add(extractor);
 			} catch(Exception e) {
-				//log(LogLevel.ERROR, "Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped", e);
+				System.out.println("Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped");
 				log(LogLevel.ERROR, "Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped");
 			}
 		}
+		
+		System.out.println("extractors size="+extractors.size());
 		
 		return extractors;
 	}
@@ -421,10 +424,10 @@ public class Config extends AbstractModule {
 		// 150123-Training-Sentences.csv
 		// trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "150123-Training-Sentences.csv";
 		// 150130-Training-Sentences-new.csv
-		trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "150130-Training-Sentences-new.csv";
+		trainingFile = inputDirectory + File.separator + trainingFile;
 		trainedModelFile = inputDirectory + File.separator + "models";
 		
-		svmLabelAndCategoryMappingFile = inputDirectory + File.separator + "svmlabelandcategorymapping_data" + File.separator + "SVMLabelAndCategoryMapping.txt";
+		svmLabelAndCategoryMappingFile = inputDirectory + File.separator + svmLabelAndCategoryMappingFile;
 		
 		
 		

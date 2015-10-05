@@ -10,7 +10,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
-import edu.arizona.biosemantics.micropie.transform.StringUtil;
+import edu.arizona.biosemantics.micropie.nlptool.StringUtil;
 
 public class UnZip {
 	List<String> fileList;

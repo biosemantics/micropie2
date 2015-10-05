@@ -1,4 +1,4 @@
-package edu.arizona.biosemantics.micropie.transform;
+package edu.arizona.biosemantics.micropie.nlptool;
 
 /**
  * Tokenizes given a seperator sting

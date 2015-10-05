@@ -29,8 +29,8 @@ import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SubSentence;
-import edu.arizona.biosemantics.micropie.transform.PosTagger;
-import edu.arizona.biosemantics.micropie.transform.SentenceSpliter;
+import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
+import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.stanford.nlp.ling.TaggedWord;
 
 

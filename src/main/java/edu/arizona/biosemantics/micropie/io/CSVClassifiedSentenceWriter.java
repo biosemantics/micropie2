@@ -34,86 +34,44 @@ import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
  */
 public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 
-	private OutputStream outputStream;
-	private InputStream inputStream;
-	private File labelMappingFile;
+	private String predictionFile;
 
 	/**
 	 * in the file, the fields are:
-	 * categoryNo, categoryLabel, categoryName
+	 * categoryNo, categoryLabel, categoryCode
 	 * "1","1.1","%G+C"
 	 */
-	private Map<String, String> svmLabelAndCategoryMappingMap;
+	private Map<ILabel, String> categoryLabelCodeMap;
 
+	
+	public void setCategoryLabelCodeMap(Map<ILabel, String> categoryLabelCodeMap) {
+		this.categoryLabelCodeMap = categoryLabelCodeMap;
+	}
+	
+	
 	/**
 	 * specify where to store the prediction file
 	 * @param outputFile
 	 */
-	public void setOutputFile(String predictionFile) {
-		try {
-			this.outputStream = new FileOutputStream(predictionFile);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+	public void setPredictionFile(String predictionFile) {
+		this.predictionFile = predictionFile;
 	}
 	
-	/**
-	 * @param inputStream to read SVMLabelSubcategoryMapping.txt
-	 */	
-	public void setLabelMappingFile(String labelMappingFilePath) {
-		this.labelMappingFile = new File(labelMappingFilePath);
-		try {
-			this.inputStream = new FileInputStream(labelMappingFile);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
 
 	
-	/**
-	 * read the label category mapping pairs
-	 * @return
-	 * @throws IOException
-	 */
-	public Map<String, String> readSVMLabelAndCategoryMapping(){
-		CSVReader readerOfSVMLabelAndCategoryMapping;
-		try {
-			readerOfSVMLabelAndCategoryMapping = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
-			List<String[]> linesOfSVMLabelAndCategoryMapping = readerOfSVMLabelAndCategoryMapping.readAll();
-			
-			svmLabelAndCategoryMappingMap = new HashMap<String, String>();
-			for(String[] lineOfSVMLabelAndCategoryMapping : linesOfSVMLabelAndCategoryMapping) {
-				if ( lineOfSVMLabelAndCategoryMapping.length > 2 ) {
-					String catNo = lineOfSVMLabelAndCategoryMapping[0];
-					String catLabel = lineOfSVMLabelAndCategoryMapping[1];
-					svmLabelAndCategoryMappingMap.put(catNo,catLabel);
-				}	
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return svmLabelAndCategoryMappingMap;
-	}	
 	
 	@Override
 	/**
 	 * output the results in a CSV file
-	 * Format: categoryLabel,sentence
+	 * Format: categoryCode,sentence
 	 * 
 	 */
 	public void write(List<MultiClassifiedSentence> classifiedSentences){
 		log(LogLevel.INFO, "Writing prediciton results...");
-		
-		if(svmLabelAndCategoryMappingMap==null){
-			this.readSVMLabelAndCategoryMapping();
-		}
-		
+ 
 		CSVWriter writer = null;
 		try {
-			writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));
+			writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(predictionFile), "UTF8")));
 			List<String[]> lines = new LinkedList<String[]>();
 			
 			//output for each sentence
@@ -122,10 +80,12 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 				Set<ILabel> predictions = classifiedSentence.getPredictions();
 				StringBuffer multiCatLabelsb = new StringBuffer();
 				for(ILabel label : predictions) {
-					String labelNo = label.toString();
-					String categoryLabel = svmLabelAndCategoryMappingMap.get(labelNo);
-					categoryLabel = categoryLabel==null?"0":categoryLabel;
-					multiCatLabelsb.append(categoryLabel).append(",");
+					//String labelNo = label.toString();
+					//Label labelNo = label.toString();
+					//String categoryLabel = svmLabelAndCategoryMappingMap.get(labelNo);
+					String categoryCode = categoryLabelCodeMap.get(label);
+					categoryCode = categoryCode==null?"0":categoryCode;
+					multiCatLabelsb.append(categoryCode).append(",");
 				}
 				
 				String multiCatLabel = multiCatLabelsb.toString();
@@ -135,7 +95,7 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 					multiCatLabel = multiCatLabel.substring(0, multiCatLabel.length() - 1);
 				lines.add(new String[] { multiCatLabel, classifiedSentence.getText()});
 			}
-				
+			
 			writer.writeAll(lines);
 			writer.flush();
 			writer.close();
@@ -147,6 +107,15 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	public void close(){
+		try {
+			outputStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}*/
 
 	public String getPredicitionsString(Set<ILabel> predictions) {
 		StringBuilder stringBuilder = new StringBuilder();
@@ -159,5 +128,6 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 		else
 			return result.substring(0, result.length() - 1);
 	}
+
 
 }

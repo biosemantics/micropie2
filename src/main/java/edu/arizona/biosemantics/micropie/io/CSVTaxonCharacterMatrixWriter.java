@@ -121,7 +121,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 			row[3] = taxonFile.getSpecies();
 			row[4] = taxonFile.getStrain_number();
 			row[5] = taxonFile.getThe16SrRNAAccessionNumber();
-			row[6] = taxonFile.getInputFile().getName();
+			row[6] = taxonFile.getXmlFile();//taxonFile.getInputFile().getName();
 			
 			// add 16S rRNA accession #|Family|Genus|Species|Strain
 			// March 07, 2015 Saturday
@@ -130,7 +130,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 			i=7;
 			for(ILabel character : characterLabels) {
 				List values = taxonCharValues.get(character);
-				System.out.println("character::" + character + " = " + values);
+				//System.out.println("character::" + character + " = " + values);
 				row[i++] = svFormatter.format(values);
 			}
 			lines.add(row);

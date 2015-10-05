@@ -96,7 +96,7 @@ public class TrainSentenceClassifier{
 			trainingSentenceReader.setInputStream(new FileInputStream(testFile));
 			
 			List<RawSentence> trainingSentences = trainingSentenceReader.readTwoColumnSentenceList();
-			System.out.println("trainingSentences.size()::" + trainingSentences.size());
+			System.out.println("True Positive : " + trainingSentences.size());
 			
 			multiSVMClassifier.setLabels(labels);
 			multiSVMClassifier.loadClassifier(trainedModelFolder);
@@ -125,7 +125,7 @@ public class TrainSentenceClassifier{
 			
 			for(int i=0;i<positive.length;i++){
 				double precision = truePositive[i] / positive[i];
-				System.out.println("label "+i+" "+precision);
+				System.out.println("label "+i+" "+precision+" "+truePositive[i]+" "+positive[i]);
 			}
 			
 		} catch (FileNotFoundException e) {
@@ -154,7 +154,7 @@ public class TrainSentenceClassifier{
 			
 			
 			List<RawSentence> trainingSentences = trainingSentenceReader.readTwoColumnSentenceList();
-			System.out.println("trainingSentences.size()::" + trainingSentences.size());
+			System.out.println("True Negative::" + trainingSentences.size());
 			
 			multiSVMClassifier.setLabels(labels);
 			multiSVMClassifier.loadClassifier(trainedModelFolder);
@@ -185,7 +185,7 @@ public class TrainSentenceClassifier{
 			
 			for(int i=0;i<negative.length;i++){
 				double tn = trueNegative[i] / negative[i];
-				System.out.println("label "+i+" "+tn);
+				System.out.println("label "+i+" "+tn+" "+trueNegative[i]+" "+negative[i]);
 			}
 			
 		} catch (FileNotFoundException e) {

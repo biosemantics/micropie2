@@ -25,8 +25,8 @@ import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
 import edu.arizona.biosemantics.micropie.model.RawSentence;
-import edu.arizona.biosemantics.micropie.transform.CompoundSentenceSplitRun;
-import edu.arizona.biosemantics.micropie.transform.SentenceSpliter;
+import edu.arizona.biosemantics.micropie.nlptool.CompoundSentenceSplitRun;
+import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
@@ -96,16 +96,16 @@ public class Main {
 		
 		//log(LogLevel.INFO, "running " + run.getClass() + "...");
 		//run.run();
-		//TrainSentenceClassifier run = (TrainSentenceClassifier)injector.getInstance(TrainSentenceClassifier.class);
+		TrainSentenceClassifier run = (TrainSentenceClassifier)injector.getInstance(TrainSentenceClassifier.class);
 		
-		//String testSentFile = "F:\\MicroPIE\\micropieInput\\training_data\\150130-Training-Sentences-new-2col.csv";
-		//String savedModelFolder = "F:\\MicroPIE\\micropieInput\\models\\";
+		String testSentFile = "F:\\MicroPIE\\micropieInput\\training_data\\150130-Training-Sentences-new-cleaned-2col.csv";
+		String savedModelFolder = "F:\\MicroPIE\\micropieInput\\models\\";
 		
 		//injector.getInstance(Key.get(new TypeLiteral<GenericDbClass<Integer>>(){});
-		//List<ILabel> labels = injector.getInstance(Key.get(new TypeLiteral<List<ILabel>>() {},  Names.named("MultiSVMClassifier_Labels")));
-		//run.train(testSentFile,savedModelFolder,labels);
-		//run.testTruePositive(testSentFile,savedModelFolder,labels);
-		//run.testTrueNegative(testSentFile,savedModelFolder,labels);
+		List<ILabel> labels = injector.getInstance(Key.get(new TypeLiteral<List<ILabel>>() {},  Names.named("MultiSVMClassifier_Labels")));
+		run.train(testSentFile,savedModelFolder,labels);
+		run.testTruePositive(testSentFile,savedModelFolder,labels);
+		run.testTrueNegative(testSentFile,savedModelFolder,labels);
 		
 		//SentenceSpliter sspliter = injector.getInstance(SentenceSpliter.class);
 		/*
@@ -135,7 +135,7 @@ public class Main {
 						new CoreLabelTokenFactory(), ""));
 		splitRun.call();
 		*/
-		
+		/*
 		
 		String inputFolder = "F:\\MicroPIE\\micropieInput\\input";
 		String svmLabelAndCategoryMappingFile = injector.getInstance(Key.get(String.class,  Names.named("svmLabelAndCategoryMappingFile")));
@@ -148,9 +148,10 @@ public class Main {
 		System.out.println("get the splitter costs:"+(e2-b)+" ms");
 		*/
 		
-		
+		/*
 		SentenceBatchProcessor sentBatPIEProcessor = injector.getInstance(SentenceBatchProcessor.class);
 		String lineFile = "F:/MicroPIE/micropieInput/sentences/1.1 G+C.csv";
 		sentBatPIEProcessor.processLineFile(lineFile, svmLabelAndCategoryMappingFile, predictionsFile, outputMatrixFile);
-	}
+	*/
+		}
 }

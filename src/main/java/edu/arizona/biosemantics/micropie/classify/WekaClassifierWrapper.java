@@ -78,7 +78,23 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 		Instances newInstances = Filter.useFilter(instances, filter);
 		weka.classifiers.Evaluation eval = new weka.classifiers.Evaluation(newInstances);
 		eval.crossValidateModel(filteredClassifier.getClassifier(), newInstances, 10, new Random(1));
-		System.out.println(eval.toSummaryString("\nResults\n======\n", true));
+		
+		//System.out.println(eval.toSummaryString("\nResults\n======\n", true));
+		System.out.println("correct = "+eval.correct());//classIndex
+		System.out.println("incorrect = "+eval.incorrect());//classIndex
+		System.out.println("precision = "+eval.precision(0));//classIndex
+		System.out.println("recall = "+eval.recall(0));//classIndex
+		System.out.println("error = "+eval.errorRate());//classIndex
+		System.out.println("truePositiveRate = "+eval.truePositiveRate(0));//classIndex
+		System.out.println("trueNegativeRate = "+eval.trueNegativeRate(0));//classIndex
+		System.out.println("falsePositiveRate = "+eval.falsePositiveRate(0));//classIndex
+		System.out.println("falseNegativeRate = "+eval.falseNegativeRate(0));//classIndex
+		System.out.println("meanAbosoluteError = "+eval.meanAbsoluteError());//classIndex
+		System.out.println("rootMeanSquaredError = "+eval.rootMeanSquaredError());//classIndex
+		System.out.println("roc = "+eval.areaUnderROC(0));//classIndex
+		
+		
+		//System.out.println(eval.toSummaryString("\nResults\n======\n", true));
 		 
 		trained = true;
 	}
@@ -124,18 +140,18 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 	    
 		//Filter Attribute selection
 		int n = 100; //100， number of features to select 
-	    AttributeSelection attributeSelection = new  AttributeSelection(); 
-	    Ranker ranker = new Ranker(); 
-	    ranker.setNumToSelect(n);
-	    ranker.setThreshold(0.0);
+	   // AttributeSelection attributeSelection = new  AttributeSelection(); 
+	   // Ranker ranker = new Ranker(); 
+	   // ranker.setNumToSelect(n);
+	   // ranker.setThreshold(0.0);
 	    
-	    InfoGainAttributeEval infoGainAttributeEval = new InfoGainAttributeEval(); 
-	    attributeSelection.setEvaluator(infoGainAttributeEval); 
-	    attributeSelection.setSearch(ranker); 
+	   // InfoGainAttributeEval infoGainAttributeEval = new InfoGainAttributeEval(); 
+	   // attributeSelection.setEvaluator(infoGainAttributeEval); 
+	   // attributeSelection.setSearch(ranker); 
 	    
 	    //filter.setFilters(new Filter[]{STWfilter,subsampleFilter,attributeSelection});
-	    filter.setFilters(new Filter[]{STWfilter,subsampleFilter});
-	    //filter.setFilters(new Filter[]{STWfilter});
+		filter.setFilters(new Filter[]{STWfilter,subsampleFilter});//
+		//filter.setFilters(new Filter[]{STWfilter});
 	    
 		filteredClassifier = new FilteredClassifier();
 		weka.classifiers.Classifier wekaClassifier = getWekaClassifier();

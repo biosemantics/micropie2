@@ -1,4 +1,4 @@
-package edu.arizona.biosemantics.micropie.transform;
+package edu.arizona.biosemantics.micropie.nlptool;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

@@ -29,7 +29,7 @@ import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
-import edu.arizona.biosemantics.micropie.transform.StringUtil;
+import edu.arizona.biosemantics.micropie.nlptool.StringUtil;
 
 
 
@@ -65,6 +65,7 @@ public class ExtractionEvaluation {
 	private Map<String, ILabel> characterNameLabelMapping;
 	private Map<ILabel, String> characterLabelNameMapping;
 	
+	//taxonfilename taxonfile
 	private Map<String, TaxonTextFile> taxonFileMap = new HashMap();
 	
 	private Map<TaxonTextFile, List> taxonResults = new LinkedHashMap();
@@ -161,16 +162,16 @@ public class ExtractionEvaluation {
 		MatrixReader gsdMatrixReader = new MatrixReader(gstBasicFields, gstKeyField, characterNameLabelMapping,characterLabelNameMapping);
 		gsdMatrixReader.readMatrixFromFile(goldStandardsMatrixFile);
 		this.goldStdMatrixFile = goldStandardsMatrixFile;
-		NewTaxonCharacterMatrix gsdMatrix = gsdMatrixReader.parseMatrix(this.gstSeparator);
+		NewTaxonCharacterMatrix gsdMatrix = gsdMatrixReader.parseMatrix(this.gstSeparator, true);
 		
-		readTaxonDetail(gsdMatrix.getTaxonFiles());
+		//readTaxonDetail(gsdMatrix.getTaxonFiles());
 		
-		this.taxonFileMap = gsdMatrixReader.parseTaxonFiles();
+		this.taxonFileMap = gsdMatrixReader.parseTaxonFiles(true);
 		
 		MatrixReader tgMatrixReader = new MatrixReader(tgBasicFields, tgKeyField, characterNameLabelMapping,characterLabelNameMapping);
 		tgMatrixReader.readMatrixFromFile(targetMatrixFile);
 		this.testMatrixFile = targetMatrixFile;
-		NewTaxonCharacterMatrix tgMatrix = tgMatrixReader.parseMatrix(this.tgSeparator);
+		NewTaxonCharacterMatrix tgMatrix = tgMatrixReader.parseMatrix(this.tgSeparator,false);
 		
 		compareResults(gsdMatrix, tgMatrix);
 	}
@@ -241,7 +242,7 @@ public class ExtractionEvaluation {
 				System.err.println(taxonName+" in test Matrix is empity!");
 				continue;
 			}
-			System.out.println("["+taxonName+"] gst:"+gstAllCharacterValues.size()+" tg:"+tgAllCharacterValues.size() );
+			//System.out.println("["+taxonName+"] gst:"+gstAllCharacterValues.size()+" tg:"+tgAllCharacterValues.size() );
 			//compare all the characters
 			Map<String,Measurement> charHitMap = new LinkedHashMap();
 			for(int ch = 0; ch<charLength;ch++){
@@ -261,7 +262,7 @@ public class ExtractionEvaluation {
 				taxonHit += matched;
 				charHit[ch] += matched;
 				
-				System.out.println(taxonName+" "+charLabel+" gst:["+gstCharValue+"] tg:["+tgCharValue+"]"+" value:"+matched); 
+				//System.out.println(taxonName+" "+charLabel+" gst:["+gstCharValue+"] tg:["+tgCharValue+"]"+" value:"+matched); 
 				matchedTotalCredit += matched;
 				
 				charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",matched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue)));
@@ -378,6 +379,7 @@ public class ExtractionEvaluation {
 			out.print("\nTaxon,XML file,Genus,Species,Strain,P,R,F1\n");
 			for(Entry<TaxonTextFile, List> entry:taxonResults.entrySet()){
 				TaxonTextFile taxonFile = entry.getKey();
+				if(taxonFile==null) continue;
 				out.print("\""+taxonFile.getTaxon()+"\"");
 				out.print(",");
 				out.print("\""+taxonFile.getXmlFile()+"\"");
@@ -424,6 +426,7 @@ public class ExtractionEvaluation {
 				TaxonTextFile taxonFile = entry.getKey();
 				Map<String, DetailMeasurement> charValues = entry.getValue();
 				for(Entry<String, DetailMeasurement> valueEntry : charValues.entrySet()){
+					if(taxonFile==null) continue;
 					out.print("\""+taxonFile.getTaxon()+"\"");
 					out.print(",");
 					out.print("\""+taxonFile.getXmlFile()+"\"");

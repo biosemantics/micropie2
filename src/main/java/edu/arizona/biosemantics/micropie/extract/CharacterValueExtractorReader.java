@@ -1,24 +1,26 @@
-package edu.arizona.biosemantics.micropie.io;
+package edu.arizona.biosemantics.micropie.extract;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.List;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.Label;
-import edu.arizona.biosemantics.micropie.extract.ExtractorType;
-import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.KeywordBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.usp.USPBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.usp.USPRequest;
+import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
 
 
 /**
@@ -46,7 +48,7 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 	 * 	character: Cell wall
 	 *  type:key
 	 */
-	public ICharacterValueExtractor read(File file) throws Exception {
+	public ICharacterValueExtractor read(File file){
 		String name = file.getName();
 		int firstDotIndex = name.indexOf(".");
 		
@@ -59,13 +61,13 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		String type = name.substring(lastDotIndex + 1, name.length());
 		
 		ExtractorType extractorType = ExtractorType.valueOf(type);
+		System.out.println(type+"="+extractorType);
 		switch(extractorType) {
 		case key:
 			return createKeywordBasedExtractor(file, labelName, characterName);
 		case usp:
 			return createUSPBasedExtractor(file, labelName, characterName);
-		default:
-			throw new Exception("Could not identify extractor type from file");
+		default:return null;
 		}
 	}
 
@@ -79,21 +81,25 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 	 * @throws IOException
 	 */
 	private ICharacterValueExtractor createUSPBasedExtractor(File file,
-			String labelName, String characterName) throws IOException {
+			String labelName, String characterName){
 		Set<USPRequest> uspRequests = new HashSet<USPRequest>();
-		BufferedReader br = new BufferedReader(new InputStreamReader(
-				new FileInputStream(file), "UTF8"));
-		String strLine;
-		while ((strLine = br.readLine()) != null) {
-			String[] requestParameters = strLine.split("\t");
-			if(requestParameters.length != 4) 
-				continue;
-			
-			// System.out.println("labelName:" + labelName + "::character::" + character);
-			
-			uspRequests.add(new USPRequest(requestParameters[0], requestParameters[1], requestParameters[2], requestParameters[3]));
+		try{
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(file), "UTF8"));
+			String strLine;
+			while ((strLine = br.readLine()) != null) {
+				String[] requestParameters = strLine.split("\t");
+				if(requestParameters.length != 4) 
+					continue;
+				
+				// System.out.println("labelName:" + labelName + "::character::" + character);
+				
+				uspRequests.add(new USPRequest(requestParameters[0], requestParameters[1], requestParameters[2], requestParameters[3]));
+			}
+			br.close();
+		} catch(Exception e){
+			e.printStackTrace();
 		}
-		br.close();
 		return new USPBasedExtractor(Label.valueOf(labelName), characterName, uspRequests, uspResultsDirectory, uspString);
 	}
 
@@ -106,15 +112,32 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 	 * @return
 	 * @throws IOException
 	 */
-	private ICharacterValueExtractor createKeywordBasedExtractor(File file, String labelName, String characterName) throws IOException {
-		Set<String> keywords = new HashSet<String>();
-		BufferedReader br = new BufferedReader(new InputStreamReader(
-				new FileInputStream(file), "UTF8"));
-		String strLine;
-		while ((strLine = br.readLine()) != null) {
-			keywords.add(strLine);
+	private ICharacterValueExtractor createKeywordBasedExtractor(File file, String labelName, String characterName){
+		Set<String> keywords = new LinkedHashSet<String>();
+		Map<String, List> subKeywords = new LinkedHashMap<String, List>();
+		try{
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(file), "UTF8"));
+			String strLine;
+			while ((strLine = br.readLine()) != null) {
+				//jin 09-24-2015
+				if(strLine.indexOf("|")>-1){
+					String[] fields = strLine.split("\\|");
+					String keyword = fields[0].trim();
+					keywords.add(keyword);
+					subKeywords.put(keyword,new ArrayList());
+					for(int i=0;i<fields.length;i++){
+						subKeywords.get(keyword).add(fields[i].toString());
+					}
+				}else{
+					keywords.add(strLine.trim());
+				}
+				
+			}
+			br.close();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
-		br.close();
-		return new KeywordBasedExtractor(Label.valueOf(labelName), characterName, keywords);
+		return new KeywordBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
 	}
 }

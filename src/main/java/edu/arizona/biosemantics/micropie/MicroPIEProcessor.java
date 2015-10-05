@@ -37,9 +37,9 @@ import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
-import edu.arizona.biosemantics.micropie.transform.CompoundSentenceSplitRun;
-import edu.arizona.biosemantics.micropie.transform.SentenceSplitRun;
-import edu.arizona.biosemantics.micropie.transform.SentenceSpliter;
+import edu.arizona.biosemantics.micropie.nlptool.CompoundSentenceSplitRun;
+import edu.arizona.biosemantics.micropie.nlptool.SentenceSplitRun;
+import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
@@ -57,6 +57,7 @@ public class MicroPIEProcessor{
 	private SentenceSpliter sentenceSpliter;
 	private CSVClassifiedSentenceWriter classifiedSentenceWriter;
 	
+	private Map<ILabel, String> categoryLabelCodeMap;
 	private Map<String, ILabel> categoryNameLabelMap;
 	
 	//System Parameters
@@ -79,6 +80,7 @@ public class MicroPIEProcessor{
 			@Named("maxThreads") int maxThreads,
 			@Named("Characters") LinkedHashSet<String> characterNames,
 			@Named("categoryNameLabelMap") Map<String, ILabel> categoryNameLabelMap,
+			@Named("labelCategoryCodeMap") Map<ILabel, String> categoryLabelCodeMap,
 			@Named("TaxonSentencesMap") Map<TaxonTextFile, List<MultiClassifiedSentence>> taxonSentencesMap,
 			LexicalizedParser lexicalizedParser,
 			SentencePredictor sentencePredictor,
@@ -95,6 +97,7 @@ public class MicroPIEProcessor{
 		this.maxThreads = maxThreads;
 		this.characterNames = characterNames;
 		this.categoryNameLabelMap = categoryNameLabelMap;
+		this.categoryLabelCodeMap = categoryLabelCodeMap;
 		
 		this.taxonSentencesMap = taxonSentencesMap;
 		
@@ -134,8 +137,8 @@ public class MicroPIEProcessor{
 			}
 			
 			//output the prediction results
-			classifiedSentenceWriter.setLabelMappingFile(svmLabelAndCategoryMappingFile);
-			classifiedSentenceWriter.setOutputFile(predictionsFile);
+			classifiedSentenceWriter.setCategoryLabelCodeMap(categoryLabelCodeMap);
+			classifiedSentenceWriter.setPredictionFile(predictionsFile);
 			classifiedSentenceWriter.write(testSentences);
 			
 			LinkedHashSet<ILabel> characterLabels = new LinkedHashSet();
@@ -158,8 +161,13 @@ public class MicroPIEProcessor{
 		}
 	}
 
-	
-	public void processFolder(String inputFolder,String outputMatrixFile){
+	/**
+	 * 
+	 * @param inputFolder
+	 * @param predictionFile if it's null, donot printout
+	 * @param outputMatrixFile
+	 */
+	public void processFolder(String inputFolder,String predictionFile,String outputMatrixFile){
 		LinkedHashSet<ILabel> characterLabels = new LinkedHashSet();
 		for(String characterName : characterNames){
 			ILabel label = categoryNameLabelMap.get(characterName.trim().toLowerCase());
@@ -171,14 +179,19 @@ public class MicroPIEProcessor{
 		matrix.setCharacterLabels(characterLabels);
 		matrix.setCharacterNames(characterNames);
 		
+		if(predictionFile!=null){
+			classifiedSentenceWriter.setCategoryLabelCodeMap(categoryLabelCodeMap);
+			classifiedSentenceWriter.setPredictionFile(predictionFile);
+		}
+		
 		matrixCreator.setCharacterLabels(characterLabels);
 		matrixCreator.setCharacterNames(characterNames);
 		
 		File inputFolderFile = new File(inputFolder);
 		File[] inputFiles = inputFolderFile.listFiles();
 		Set taxonSet = new LinkedHashSet();
-		for (File inputFile : inputFiles) {
-			TaxonTextFile taxonFile = processFile(inputFile,matrix);
+		for (File inputFile : inputFiles) {//process all the files
+			TaxonTextFile taxonFile = processFile(inputFile,predictionFile, matrix);
 			taxonSet.add(taxonFile);
 		}
 		matrix.setTaxonFiles(taxonSet);
@@ -200,7 +213,9 @@ public class MicroPIEProcessor{
 	 * @param inputFile
 	 * @param matrix
 	 */
-	public TaxonTextFile processFile(File inputFile, NewTaxonCharacterMatrix matrix) {
+	public TaxonTextFile processFile(File inputFile, String predictionFile, NewTaxonCharacterMatrix matrix) {
+		
+		//parse the taxon file information
 		TaxonTextFile taxonFile = readTaxonFile(inputFile);
 		//STEP 1: split sentences
 		List<MultiClassifiedSentence> sentences = this.createSentencesFromFile(taxonFile);
@@ -209,6 +224,10 @@ public class MicroPIEProcessor{
 		for (MultiClassifiedSentence testSentence : sentences) {
 			Set<ILabel> prediction = sentencePredictor.predict(testSentence);
 			testSentence.setPredictions(prediction);
+		}
+		
+		if(predictionFile!=null){
+			classifiedSentenceWriter.write(sentences);
 		}
 		
 		matrixCreator.create(matrix,taxonFile,sentences);
@@ -229,6 +248,7 @@ public class MicroPIEProcessor{
 		String text = textReader.read();
 		taxonFile.setInputFile(null);
 		taxonFile.setText(text);
+		taxonFile.setXmlFile(inputFile.getName());
 		
 		return taxonFile;
 	}
