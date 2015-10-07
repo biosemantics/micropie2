@@ -28,8 +28,8 @@ import edu.arizona.biosemantics.micropie.model.Sentence;
  */
 public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 
-	private Set<String> keywords;
-	private Map<String, List> subKeywords;
+	protected Set<String> keywords;
+	protected Map<String, List> subKeywords;
 	
 	public KeywordBasedExtractor(@Named("KeywordBasedExtractor_Label")ILabel label, 
 			@Named("KeywordBasedExtractor_Character")String character, 

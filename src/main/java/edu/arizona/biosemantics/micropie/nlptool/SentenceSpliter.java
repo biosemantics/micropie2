@@ -36,12 +36,12 @@ public class SentenceSpliter {
 	private ITextNormalizer textNormalizer;
 	//private LearnerUtility tester;
 	//private String celsius_degreeReplaceSourcePattern;
-	private StanfordWrapper stanfordWrapper;
+	private StanfordParserWrapper stanfordWrapper;
 	
 	@Inject
 	public SentenceSpliter(ITextNormalizer normalizer,
 			//LearnerUtility tester,
-			StanfordWrapper stanfordWrapper){
+			StanfordParserWrapper stanfordWrapper){
 		this.textNormalizer = normalizer;
 		//this.tester = tester;
 		//this.celsius_degreeReplaceSourcePattern = celsius_degreeReplaceSourcePattern;

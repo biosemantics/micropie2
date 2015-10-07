@@ -26,7 +26,7 @@ import edu.arizona.biosemantics.micropie.model.IndexMapping;
 import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.nlptool.CollapseUSPSentByCategoryChar;
 import edu.arizona.biosemantics.micropie.nlptool.SeperatorTokenizer;
-import edu.arizona.biosemantics.micropie.nlptool.StanfordWrapper;
+import edu.arizona.biosemantics.micropie.nlptool.StanfordParserWrapper;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
@@ -49,7 +49,7 @@ public class USPLearner {
 	
 	private String uspBaseFolder = null;//the base folder path
 	private String characterValueExtractorsFolder;
-	private StanfordWrapper stanfordWrapper;
+	private StanfordParserWrapper stanfordWrapper;
 	private CollapseUSPSentByCategoryChar collapseUSPSentByCateogryChar = new CollapseUSPSentByCategoryChar();
 	int counter = 1;//sentence counter
 	private Hashtable<String, String> kwdListByCategory;

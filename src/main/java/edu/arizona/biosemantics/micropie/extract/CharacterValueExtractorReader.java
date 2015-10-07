@@ -18,9 +18,12 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.keyword.KeywordBasedExtractor;
+import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.usp.USPBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.usp.USPRequest;
 import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
+import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
+import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 
 
 /**
@@ -138,6 +141,8 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return new KeywordBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
+		//return new KeywordBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
+		//SentenceSpliter must be set latter
+		return new PhraseBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
 	}
 }

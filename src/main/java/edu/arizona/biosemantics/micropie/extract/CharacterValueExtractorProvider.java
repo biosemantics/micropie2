@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellDiameterExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellLengthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellScaleExtractor;
@@ -102,6 +103,12 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 			if(!labelExtractorsMap.containsKey(extractor.getLabel()))
 				labelExtractorsMap.put(extractor.getLabel(), new HashSet<ICharacterValueExtractor>());
 			labelExtractorsMap.get(extractor.getLabel()).add(extractor);
+			
+			//phrase based extractor
+			if(extractor instanceof PhraseBasedExtractor){
+				((PhraseBasedExtractor) extractor).setPosTagger(posTagger);
+				((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
+			}
 		}
 		
 		// Figure Extraction Method

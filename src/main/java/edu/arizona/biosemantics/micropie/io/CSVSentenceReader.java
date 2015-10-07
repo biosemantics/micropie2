@@ -118,18 +118,26 @@ public class CSVSentenceReader implements ISentenceReader {
 	}
 	
 	// readSentenceList
-	public List<RawSentence> readSentenceList() throws IOException {
+	public List<RawSentence> readSentenceList(){
 		log(LogLevel.INFO, "Reading source sentences...");
 		List<RawSentence> result = new LinkedList<RawSentence>();
-		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
-	    List<String[]> lines = reader.readAll();
-		for(String[] line : lines) {
-			ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
-			if(svmLabel==null) svmLabel = Label.c0;		
-			
-			result.add(new RawSentence(line[5], svmLabel));
+		CSVReader reader;
+		try {
+			reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
+			 List<String[]> lines = reader.readAll();
+				for(String[] line : lines) {
+					ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
+					if(svmLabel==null) svmLabel = Label.c0;		
+					
+					result.add(new RawSentence(line[5], svmLabel));
+				}
+				reader.close();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		reader.close();
+	   
 		log(LogLevel.INFO, "Done reading source sentences...");
 		return result;
 	}
@@ -163,14 +171,22 @@ public class CSVSentenceReader implements ISentenceReader {
 	 * @return
 	 * @throws IOException
 	 */
-	public List<RawSentence> readOneColumnSentenceList() throws IOException {
+	public List<RawSentence> readOneColumnSentenceList(){
 		List<RawSentence> result = new LinkedList<RawSentence>();
-		CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
-	    List<String[]> lines = reader.readAll();
-		for(String[] line : lines) {
-			result.add(new RawSentence(line[0]));
+		CSVReader reader;
+		try {
+			reader = new CSVReader(new BufferedReader(new InputStreamReader(inputStream, "UTF8")));
+			List<String[]> lines = reader.readAll();
+			for(String[] line : lines) {
+				result.add(new RawSentence(line[0]));
+			}
+			reader.close();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		reader.close();
+	  
 		return result;
 	}
 	

@@ -372,9 +372,6 @@ public class Config extends AbstractModule {
 		bind(MicroPIEProcessor.class);
 		bind(MicroPIEProcessorOld.class);
 		bind(SentenceBatchProcessor.class).in(Singleton.class);
-		
-		bind(ICharacterBatchExtractor.class).to(CharacterBatchExtractor.class).in(Singleton.class);
-				
 	}
 
 	/**
