@@ -112,7 +112,7 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 					keywords.add(keyword);
 					subKeywords.put(keyword,new ArrayList());
 					for(int i=0;i<fields.length;i++){
-						subKeywords.get(keyword).add(fields[i].toString());
+						subKeywords.get(keyword).add(fields[i].toString().trim());
 					}
 				}else{
 					keywords.add(strLine.trim());

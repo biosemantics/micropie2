@@ -196,6 +196,20 @@ public class XMLTextReader implements ITextReader {
 //		throw new Exception("Could not find a family name");
 	}	
 	
+	
+	
+	public String getGenus(){
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		Element genusNameEl = taxon_identification.getChild("genus_name");
+		String genusName = null;
+		if(genusNameEl!=null){
+			genusName = genusNameEl.getText();
+		}
+		return genusName;
+	}		
+	
+	
+	/*
 	public String getGenus(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
@@ -211,8 +225,19 @@ public class XMLTextReader implements ITextReader {
 			return genusName;
 //		}	
 		//throw new Exception("Could not find a genus name");
-	}		
+	}	*/	
 
+	public String getSpecies(){
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		Element speciesNameEl = taxon_identification.getChild("species_name");
+		String speciesName = null;
+		if(speciesNameEl!=null){
+			speciesName = speciesNameEl.getText();
+		}
+		return speciesName;
+	}	
+	
+	/*
 	public String getSpecies(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
@@ -228,7 +253,7 @@ public class XMLTextReader implements ITextReader {
 			return speciesName;
 //		}	
 		//throw new Exception("Could not find a species name");
-	}	
+	}	*/
 
 	public String getStrain_number() {
 		Element taxon_identification = rootNode.getChild("taxon_identification");

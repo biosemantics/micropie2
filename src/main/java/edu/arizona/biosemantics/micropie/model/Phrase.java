@@ -14,6 +14,9 @@ public class Phrase {
 	private int start;
 	private int end;
 	private int role;//according to the language 
+	private String negation;//the negation word
+	
+	
 	public String getText() {
 		return text;
 	}
@@ -38,6 +41,10 @@ public class Phrase {
 	public void setRole(int role) {
 		this.role = role;
 	}
-
-	
+	public String getNegation() {
+		return negation;
+	}
+	public void setNegation(String negation) {
+		this.negation = negation;
+	}
 }

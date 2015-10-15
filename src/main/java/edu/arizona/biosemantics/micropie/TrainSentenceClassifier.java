@@ -15,7 +15,7 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
-import edu.arizona.biosemantics.micropie.io.CategoryReader;
+import edu.arizona.biosemantics.micropie.io.CharacterReader;
 import edu.arizona.biosemantics.micropie.io.WekaModelCaller;
 import edu.arizona.biosemantics.micropie.model.RawSentence;
 
@@ -51,7 +51,7 @@ public class TrainSentenceClassifier{
 	public void train(String trainingFile, String trainedModelFolder, List<ILabel> labels) {
 		long startTime = System.currentTimeMillis();
 		try {
-			CategoryReader cateReader = new CategoryReader();
+			CharacterReader cateReader = new CharacterReader();
 			cateReader.setCategoryFile(svmLabelAndCategoryMappingFile);
 			cateReader.read();
 			Map categoryCodeLabelMap = cateReader.getCategoryCodeLabelMap();
@@ -64,13 +64,14 @@ public class TrainSentenceClassifier{
 			List<RawSentence> trainingSentences = trainingSentenceReader.readTwoColumnSentenceList();
 			
 			System.out.println("trainingSentences.size()::" + trainingSentences.size());
-			
+			/**/
 			multiSVMClassifier.setLabels(labels);
 			multiSVMClassifier.train(trainingSentences);
 			
 			//save the trained files
 			WekaModelCaller wmc = new WekaModelCaller();
 			wmc.saveModel(multiSVMClassifier, trainedModelFolder);
+			
 		} catch (Exception e) {
 			log(LogLevel.ERROR, "Could not run Main", e);
 		}
@@ -86,7 +87,7 @@ public class TrainSentenceClassifier{
 	 */
 	public void testTruePositive(String testFile, String trainedModelFolder, List<ILabel> labels){
 		try {
-			CategoryReader cateReader = new CategoryReader();
+			CharacterReader cateReader = new CharacterReader();
 			cateReader.setCategoryFile(svmLabelAndCategoryMappingFile);
 			cateReader.read();
 			Map categoryCodeLabelMap = cateReader.getCategoryCodeLabelMap();
@@ -143,7 +144,7 @@ public class TrainSentenceClassifier{
 	public void testTrueNegative(String testFile, String trainedModelFolder, List<ILabel> labels){
 		try {
 			//TODO: as the initialized inputs
-			CategoryReader cateReader = new CategoryReader();
+			CharacterReader cateReader = new CharacterReader();
 			cateReader.setCategoryFile(svmLabelAndCategoryMappingFile);
 			cateReader.read();
 			Map categoryCodeLabelMap = cateReader.getCategoryCodeLabelMap();

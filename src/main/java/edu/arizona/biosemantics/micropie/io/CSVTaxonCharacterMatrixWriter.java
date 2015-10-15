@@ -35,19 +35,14 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		List<String[]> lines = new LinkedList<String[]>();
 		
 		//create header
-		String[] header = new String[characters.size() + 7];
+		String[] header = new String[characters.size() + 5];
 		header[0] = "Taxon";
-		header[1] = "Family";
+		header[1] = "XML file";
 		header[2] = "Genus";
 		header[3] = "Species";
-		header[4] = "Strain";
-		header[5] = "16S rRNA accession #";
-		header[6] = "File Name";
+		header[4] = "Strain";	
 		
-		// add 16S rRNA accession #|Family|Genus|Species|Strain
-		// March 07, 2015 Saturday
-		
-		int i=7;
+		int i=5;
 		for(String character : characters) 
 			header[i++] = character;
 		lines.add(header);
@@ -55,19 +50,14 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		//create matrix content
 		Map<TaxonTextFile, Map<String, Set<CharacterValue>>> taxonCharacterMap = matrix.getTaxonCharacterMap();
 		for(TaxonTextFile taxonFile : matrix.getTaxonFiles()) {
-			String[] row = new String[characters.size() + 7];
+			String[] row = new String[characters.size() + 5];
 			row[0] = taxonFile.getTaxon();
-			row[1] = taxonFile.getFamily();
+			row[1] = taxonFile.getInputFile().getName();//row[1] = taxonFile.getFamily();
 			row[2] = taxonFile.getGenus();
 			row[3] = taxonFile.getSpecies();
 			row[4] = taxonFile.getStrain_number();
-			row[5] = taxonFile.getThe16SrRNAAccessionNumber();
-			row[6] = taxonFile.getInputFile().getName();
 			
-			// add 16S rRNA accession #|Family|Genus|Species|Strain
-			// March 07, 2015 Saturday
-			
-			i=7;
+			i=5;
 			for(String character : characters) 
 				row[i++] = getValueString(taxonCharacterMap.get(taxonFile).get(character));
 			lines.add(row);
@@ -81,30 +71,34 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 	}
 	
 	
-	
-	public void write(NewTaxonCharacterMatrix matrix) throws Exception {
+	/**
+	 * output
+	 * @param matrix
+	 * @throws Exception
+	 */
+	public void write(NewTaxonCharacterMatrix matrix, Map<ILabel, String> labelNameMap) throws Exception {
 		log(LogLevel.INFO, "Writing matrix...");
 		LinkedHashSet<ILabel> characterLabels = matrix.getCharacterLabels();
 		LinkedHashSet<String> characterNames = matrix.getCharacterNames();
+		
+		System.out.println("characterLabels="+characterLabels.size()+" "+characterNames.size());
 		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));		
 		List<String[]> lines = new LinkedList<String[]>();
 		
-		//create header come from taxon
-		String[] header = new String[characterNames.size() + 7];
+		//create header
+		String[] header = new String[characterLabels.size() + 5];
 		header[0] = "Taxon";
-		header[1] = "Family";
+		header[1] = "XML file";
 		header[2] = "Genus";
 		header[3] = "Species";
-		header[4] = "Strain";
-		header[5] = "16S rRNA accession #";
-		header[6] = "XML file";
+		header[4] = "Strain";	
 		
-		// add 16S rRNA accession #|Family|Genus|Species|Strain
-		// March 07, 2015 Saturday
-		
-		int i=7;
-		for(String character : characterNames) 
-			header[i++] = character;
+		int i=5;
+		for(ILabel character : characterLabels) {
+			header[i++] = labelNameMap.get(character);
+			System.out.println(character+" "+header[i-1]);
+		}
+			
 		lines.add(header);
 
 		
@@ -114,23 +108,17 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		//create matrix content
 		Set<TaxonTextFile> textFiles = matrix.getTaxonFiles();
 		for(TaxonTextFile taxonFile : textFiles) {
-			String[] row = new String[characterNames.size() + 7];
+			String[] row = new String[characterNames.size() + 5];
 			row[0] = taxonFile.getTaxon();
-			row[1] = taxonFile.getFamily();
+			row[1] = taxonFile.getXmlFile();//row[1] = taxonFile.getFamily();
 			row[2] = taxonFile.getGenus();
 			row[3] = taxonFile.getSpecies();
 			row[4] = taxonFile.getStrain_number();
-			row[5] = taxonFile.getThe16SrRNAAccessionNumber();
-			row[6] = taxonFile.getXmlFile();//taxonFile.getInputFile().getName();
-			
-			// add 16S rRNA accession #|Family|Genus|Species|Strain
-			// March 07, 2015 Saturday
 			
 			Map<ILabel, List> taxonCharValues = matrix.getAllTaxonCharacterValues(taxonFile);
-			i=7;
+			i=5;
 			for(ILabel character : characterLabels) {
 				List values = taxonCharValues.get(character);
-				//System.out.println("character::" + character + " = " + values);
 				row[i++] = svFormatter.format(values);
 			}
 			lines.add(row);

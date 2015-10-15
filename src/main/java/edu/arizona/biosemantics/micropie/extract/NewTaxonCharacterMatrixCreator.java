@@ -32,8 +32,7 @@ import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
  * @author maojin
  *
  */
-public class NewTaxonCharacterMatrixCreator implements
-		ITaxonCharacterMatrixCreator {
+public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator {
 
 	private LinkedHashSet<ILabel> characterLabels;// the characters need to be parsed
 	private LinkedHashSet<String> characterNames;
@@ -74,7 +73,7 @@ public class NewTaxonCharacterMatrixCreator implements
 		
 		results.setTaxonFiles(taxonSentencesMap.keySet());
 		results.setCharacterLabels(characterLabels);
-		results.setCharacterNames(characterNames);
+		//results.setCharacterNames(characterNames);
 		
 		//process all the files
 		for (TaxonTextFile taxonFile : taxonSentencesMap.keySet()) {
@@ -100,7 +99,10 @@ public class NewTaxonCharacterMatrixCreator implements
 			for(CharacterValue value : charValues){
 				NumericCharacterValue nvalue = (NumericCharacterValue)value;
 				ILabel clabel = nvalue.getCharacter();//find the label
-				if(clabel!=null) charMap.get(clabel).add(nvalue);
+				if(clabel!=null){
+					charMap.get(clabel).add(nvalue);
+					System.out.println(label+" "+nvalue);
+				}
 			}
 		}
 	}
@@ -143,12 +145,12 @@ public class NewTaxonCharacterMatrixCreator implements
 			Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
 			for (ILabel label : predictions) {// get all the extractors ready
 				//if (label instanceof Label && characterLabels.contains(label)) {
-				//if (characterLabels.contains(label)) {
+				if (characterLabels.contains(label)) {
 					extractors.addAll(contentExtractorProvider.getContentExtractor((Label) label));
-				//}
+				}
 			}
 
-			System.out.println("predictions:"+predictions.size()+" extractors: "+extractors.size());
+			// System.out.println("predictions:"+predictions.size()+" extractors: "+extractors.size());
 			// call the extractors one by one
 			for (ICharacterValueExtractor extractor : extractors) {
 				String character = extractor.getCharacterName();
@@ -167,7 +169,7 @@ public class NewTaxonCharacterMatrixCreator implements
 					charValues = extractor.getCharacterValue(classifiedSentence);
 				}
 				
-				System.out.println(character+" "+classifiedSentence.getText()+" "+charValues);
+				
 				parseResult(matrix, taxonFile, label, charValues);
 			}
 		}

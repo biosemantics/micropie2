@@ -186,11 +186,11 @@ public class MatrixReader {
 				String cellValue = rowFieldValues[j].trim();
 				ILabel label = characterLabels[j-charStartIndex];
 				
-				if(label!=null){
+				if(label!=null&&cellValue!=null&&!"".equals(cellValue)){//read value
 					//System.out.println(taxon+" "+characterLabelNameMapping.get(label)+" "+cellValue);
 					List multiValues = ValueFormatterUtil.parse(label, cellValue);
 					//splitValue(label, multiValueSign, cellValue);
-					System.out.println(label+":"+multiValues);
+					//System.out.println(label+":"+multiValues);
 					taxonValues.put(label, multiValues);
 					notNullChars++;
 				}

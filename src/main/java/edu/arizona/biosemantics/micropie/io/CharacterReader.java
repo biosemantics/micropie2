@@ -23,7 +23,7 @@ import edu.arizona.biosemantics.micropie.classify.Label;
  * @author maojin
  *
  */
-public class CategoryReader {
+public class CharacterReader {
 
 	/**
 	 * format: ILabel, categoryCode, Name
@@ -52,7 +52,7 @@ public class CategoryReader {
 	 */
 	private Map<String, ILabel> categoryNameLabelMap;
 
-	public CategoryReader() {
+	public CharacterReader() {
 
 	}
 

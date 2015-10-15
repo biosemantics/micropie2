@@ -280,7 +280,6 @@ public class TextNormalizer implements ITextNormalizer {
 		return sentence;
 	}
 
-	@Override
 	public String transformEntity(String sentence) {
 		// TODO Auto-generated method stub
 		sentence = sentence.replaceAll("&lt;", "<"); // 
@@ -291,4 +290,13 @@ public class TextNormalizer implements ITextNormalizer {
 		return sentence;
 	}
 	
+	
+	public String transformSpchar(String sentence){
+		sentence = sentence.replaceAll(" : ", ":")
+				.replace(" ", "")
+				.replace(" ", "")
+				.replace(" ", " ")
+				.replace("⇑", ""); // 
+		return sentence;
+	}
 }

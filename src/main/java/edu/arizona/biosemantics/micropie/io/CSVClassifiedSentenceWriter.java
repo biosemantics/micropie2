@@ -71,7 +71,7 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
  
 		CSVWriter writer = null;
 		try {
-			writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(predictionFile), "UTF8")));
+			writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(predictionFile,true), "UTF8")));
 			List<String[]> lines = new LinkedList<String[]>();
 			
 			//output for each sentence

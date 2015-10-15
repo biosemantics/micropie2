@@ -10,7 +10,7 @@ import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
 
 
 /**
- * compare the value by string matching
+ * compare the value by exact string matching
  * @author maojin
  *
  */
@@ -18,6 +18,7 @@ public class StringComparator implements IValueComparator{
 
 	@Override
 	public double compare(List<CharacterValue> extValues,List<CharacterValue> gstValues) {
+		if((extValues == null||extValues.size()==0)&&(gstValues==null||gstValues.size()==0)) return 1;
 		if(extValues == null||gstValues==null||extValues.size()==0||gstValues.size()==0) return 0;
 		//System.out.println(" gst:["+gstValues+"] tg:["+extValues+"]"); 
 		int match = 0;
@@ -41,7 +42,8 @@ public class StringComparator implements IValueComparator{
 				extValueStr = extValueStr.trim();
 				//exactly string match
 				//System.out.println(extValueStr+" "+gstValueStr+" "+match);
-				if(extValueStr.equalsIgnoreCase(gstValueStr)&&!"".equals(extValueStr)){
+				//if(extValueStr.equalsIgnoreCase(gstValueStr)&&!"".equals(extValueStr)){
+				if(extValueStr.equalsIgnoreCase(gstValueStr)){
 					//System.out.println(extValueStr+" "+gstValueStr+" hit "+match);
 					match++;
 					//gstValues.remove(gstValue);
@@ -67,7 +69,8 @@ public class StringComparator implements IValueComparator{
 		value = value.replace(" NaCl", " ");
 		value = value.replace(" M", " ");
 		value = value.replace("??????C", "");
-		value = value.replace("??????C", "");
+		value = value.replace("??C", "");
+		value = value.replace("??m", "");
 		
 		return value;
 	}

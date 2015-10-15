@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +32,7 @@ import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.extract.TaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
+import edu.arizona.biosemantics.micropie.io.CSVExtValueWriter;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
@@ -107,17 +110,21 @@ public class SentenceBatchProcessor {
 	 * @param predictionsFile: records the predicted characters of the sentences
 	 * @param outputMatrixFile: the output matrix file
 	 */
-	public void processLineFile(String lineFile, String svmLabelAndCategoryMappingFile, String predictionsFile, String outputMatrixFile) {
+	public void processLineFile(String lineFile, String predictionsFile, String outputMatrixFile) {
 		//STEP 1: split sentences
 		List<RawSentence> testSentences = this.createSentencesByLine(lineFile);
 		
 		//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
 		List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>();
+		
+		Map<MultiClassifiedSentence, HashMap> chaMap = new LinkedHashMap();
 		for (RawSentence testSentence : testSentences) {
 			Set<ILabel> prediction = sentencePredictor.predict(testSentence);
 			MultiClassifiedSentence classifiedSentence = new MultiClassifiedSentence(testSentence, prediction);
 			sentenceClassificationMap.put(testSentence,classifiedSentence);
 			predictions.add(classifiedSentence);
+			
+			chaMap.put(classifiedSentence, new HashMap());
 			
 			if (prediction.size() == 0 ) {//it can be any character
 				Label[] labelList = Label.values();
@@ -125,6 +132,7 @@ public class SentenceBatchProcessor {
 					prediction.add(labelList[i]);
 				}
 			}
+			
 			// Reference: 
 			// get the character extractors for this sentence
 			Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
@@ -137,10 +145,10 @@ public class SentenceBatchProcessor {
 			//call the extractors one by one
 			for(ICharacterValueExtractor extractor : extractors) {
 				String character = extractor.getCharacterName();
-				List<CharacterValue> content = extractor.getCharacterValue(classifiedSentence);
 				
-				//characterMap.get(character).addAll(content);
-				System.out.println(character+" "+classifiedSentence.getText()+" "+content.toString());
+				List<CharacterValue> content = extractor.getCharacterValue(classifiedSentence);
+				System.out.println("current doing:character "+character+" by ["+extractor.getClass().getName()+"]");
+				chaMap.get(classifiedSentence).put(character, content);
 			}
 		}
 		
@@ -148,6 +156,9 @@ public class SentenceBatchProcessor {
 		classifiedSentenceWriter.setCategoryLabelCodeMap(categoryLabelCodeMap);
 		classifiedSentenceWriter.setPredictionFile(predictionsFile);
 		classifiedSentenceWriter.write(predictions);
+		
+		CSVExtValueWriter extValueWriter = new CSVExtValueWriter();
+		extValueWriter.write(chaMap, outputMatrixFile);
 	}
 	
 	/**

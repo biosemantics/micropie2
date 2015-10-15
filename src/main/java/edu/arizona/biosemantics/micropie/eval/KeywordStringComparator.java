@@ -18,12 +18,13 @@ import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
 public class KeywordStringComparator extends StringComparator{
 	@Override
 	public double compare(List<CharacterValue> extValues,List<CharacterValue> gstValues) {
+		if((extValues == null||extValues.size()==0)&&(gstValues==null||gstValues.size()==0)) return 1;
 		if(extValues == null||gstValues==null||extValues.size()==0||gstValues.size()==0) return 0;
-		//System.out.println(" gst:["+gstValues+"] tg:["+extValues+"]"); 
+		System.out.println(" gst:["+gstValues+"] tg:["+extValues+"]"); 
 		int match = 0;
 		for(int i=0;i<extValues.size();i++){
 			CharacterValue extValue = extValues.get(i);
-			String extValueStr = cleanValue(extValue.getValue().trim());
+			String extValueStr = cleanValue(extValue.getValue()).trim();
 			if(extValueStr.indexOf("and ")>-1){
 				String[] extDiValus = extValueStr.split("and");
 				extValueStr = extDiValus[0].trim();
@@ -36,15 +37,20 @@ public class KeywordStringComparator extends StringComparator{
 			Iterator<CharacterValue> gstValueIter = gstValues.iterator();
 			while(gstValueIter.hasNext()){
 				CharacterValue gstValue = gstValueIter.next();
-				String gstValueStr = cleanValue(gstValue.getValue().trim());
-				
+				//System.out.println(extValueStr+"|"+gstValue.getValue()+" "+match);
+				String gstValueStr = cleanValue(gstValue.getValue()).trim();
+				extValueStr = extValueStr.trim();
 				//exactly string match
-				if(extValueStr.equalsIgnoreCase(gstValueStr)&&!"".equals(extValueStr)){
-					//System.out.println(extValueStr+" "+gstValueStr+" "+match);
-					match++;
+				//System.out.println(extValueStr+" "+gstValueStr+" "+match);
+				//if(extValueStr.equalsIgnoreCase(gstValueStr)&&!"".equals(extValueStr)){
+				//if(extValueStr.equalsIgnoreCase(gstValueStr)){
+					//System.out.println(extValueStr+" "+gstValueStr+" hit "+match);
+					double amatch =  this.matchMeasure(gstValueStr, extValueStr);
+					match+= amatch;
+					//System.out.println(extValueStr+" "+gstValueStr+" hit "+match);
 					//gstValues.remove(gstValue);
-					break;
-				}
+					if(amatch>0) break;
+				//}
 			}
 		}
 		return match;
@@ -63,10 +69,15 @@ public class KeywordStringComparator extends StringComparator{
 		if(gstValueStr!=null&&gstValueStr.indexOf("[")>-1&&gstValueStr.indexOf("]")>-1){
 			fullValue = gstValueStr.substring(gstValueStr.indexOf("[")+1,gstValueStr.indexOf("]"));
 			keywords = gstValueStr.substring(0,gstValueStr.indexOf("[")).split(",");
+		}else{//if no [, it's fullValue
+			//keywords = new String[]{gstValueStr};
+			fullValue = gstValueStr;
 		}
+		//match the full values
 		if(extValueStr.equalsIgnoreCase(fullValue)&&!"".equals(extValueStr)){
 			return 1;
 		}
+		
 		if(keywords==null||"".equals(keywords)){
 			return 0;
 		}else{
@@ -90,11 +101,15 @@ public class KeywordStringComparator extends StringComparator{
 	
 	
 	public static void main(String[] args){
-		String gstValueStr = "a,b[a plus b]";
+		//String gstValueStr = "a,b[a plus b]";
+		//String gstValueStr = "straight rods";
+		//String gstValueStr = "straight rods devoid of flagella";
+		//String gstValueStr = "straight rods[straight rods devoid of flagella]";
+		String gstValueStr = "straight, rods[straight rods devoid of flagella]";
 		KeywordStringComparator kscomp = new KeywordStringComparator();
-		System.out.println(kscomp.matchMeasure(gstValueStr, "b 1a is not ab a"));
-		System.out.println(kscomp.matchMeasure(gstValueStr, "b 1a is not ab b"));
-		System.out.println(kscomp.matchMeasure(gstValueStr, "b"));
-		System.out.println(kscomp.matchMeasure(gstValueStr, "afasd b"));
+		System.out.println(kscomp.matchMeasure(gstValueStr, "straight rods devoid of flagella"));
+		System.out.println(kscomp.matchMeasure(gstValueStr, "straight rods devoid"));
+		System.out.println(kscomp.matchMeasure(gstValueStr, "straight rods "));
+		System.out.println(kscomp.matchMeasure(gstValueStr, "rods"));
 	}
 }

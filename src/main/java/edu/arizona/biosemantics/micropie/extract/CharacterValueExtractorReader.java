@@ -64,7 +64,7 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		String type = name.substring(lastDotIndex + 1, name.length());
 		
 		ExtractorType extractorType = ExtractorType.valueOf(type);
-		System.out.println(type+"="+extractorType);
+		//System.out.println(type+"="+extractorType);
 		switch(extractorType) {
 		case key:
 			return createKeywordBasedExtractor(file, labelName, characterName);
@@ -129,8 +129,8 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 					String keyword = fields[0].trim();
 					keywords.add(keyword);
 					subKeywords.put(keyword,new ArrayList());
-					for(int i=0;i<fields.length;i++){
-						subKeywords.get(keyword).add(fields[i].toString());
+					for(int i=1;i<fields.length;i++){
+						subKeywords.get(keyword).add(fields[i].trim());
 					}
 				}else{
 					keywords.add(strLine.trim());

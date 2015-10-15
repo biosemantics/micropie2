@@ -107,21 +107,21 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 			//phrase based extractor
 			if(extractor instanceof PhraseBasedExtractor){
 				((PhraseBasedExtractor) extractor).setPosTagger(posTagger);
-				((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
+				//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
 			}
 		}
 		
 		// Figure Extraction Method
 		ICharacterValueExtractor gcFigureExtractor = new GcFigureExtractor(sentSplitter, posTagger, Label.c1, "%G+C");
-		ICharacterValueExtractor ptnFigureExtractor = new PHTempNaClExtractor(sentSplitter, posTagger, null, null);
-		ICharacterValueExtractor cellScaleFigureExtractor = new CellScaleExtractor(sentSplitter, posTagger, null, null);
+		ICharacterValueExtractor ptnFigureExtractor = new PHTempNaClExtractor(sentSplitter, posTagger, null, "PHTempNacl");
+		ICharacterValueExtractor cellScaleFigureExtractor = new CellScaleExtractor(sentSplitter, posTagger, null, "CellScale");
 		
 		labelExtractorsMap.get(Label.c1).add(gcFigureExtractor);
 		labelExtractorsMap.get(Label.c3).add(cellScaleFigureExtractor);
 		labelExtractorsMap.get(Label.c4).add(cellScaleFigureExtractor);
 		labelExtractorsMap.get(Label.c5).add(cellScaleFigureExtractor);
 		
-		labelExtractorsMap.get(Label.c17).add(ptnFigureExtractor);
+		//note the mapping
 		labelExtractorsMap.get(Label.c18).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c19).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c20).add(ptnFigureExtractor);
@@ -130,6 +130,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		labelExtractorsMap.get(Label.c23).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c24).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c25).add(ptnFigureExtractor);
+		labelExtractorsMap.get(Label.c26).add(ptnFigureExtractor);
 		
 		/*
 		for(Label label: Label.values()){

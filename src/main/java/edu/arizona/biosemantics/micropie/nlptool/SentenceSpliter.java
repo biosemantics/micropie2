@@ -55,6 +55,7 @@ public class SentenceSpliter {
 		text = textNormalizer.transformEntity(text);
 		text = textNormalizer.transformDash(text); // replace \"–\" to \"-\" ..."
 		text = textNormalizer.transformPeriod(text); // · =>.
+		text = textNormalizer.transformSpchar(text); 
 		text = replaceCapitalPeriod(text);
 		//long e = System.currentTimeMillis();
 		//System.out.println("long replacements costs "+(e-b)+" ms");

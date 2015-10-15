@@ -6,12 +6,16 @@ import java.util.List;
 import java.util.Set;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.classify.NumericLabels;
 
 /**
  * create characters
  * @author maojin
  */
 public class CharacterValueFactory {
+	
+	private static NumericLabels numericLabels = new NumericLabels();
+	
 	
 	/**
 	 * create a single character value object
@@ -67,6 +71,11 @@ public class CharacterValueFactory {
 	 * @return
 	 */
 	public static CharacterValue create(ILabel character, String value) {
-		return new CharacterValue(character, value);
+		if(numericLabels.contains(character)){
+			return new NumericCharacterValue(character, value);
+		}else{
+			return new CharacterValue(character, value);
+		}
+		
 	}
 }

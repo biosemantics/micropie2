@@ -58,6 +58,7 @@ public class MicroPIEProcessor{
 	private CSVClassifiedSentenceWriter classifiedSentenceWriter;
 	
 	private Map<ILabel, String> categoryLabelCodeMap;
+	private Map<ILabel, String> labelCategoryNameMap;
 	private Map<String, ILabel> categoryNameLabelMap;
 	
 	//System Parameters
@@ -81,6 +82,7 @@ public class MicroPIEProcessor{
 			@Named("Characters") LinkedHashSet<String> characterNames,
 			@Named("categoryNameLabelMap") Map<String, ILabel> categoryNameLabelMap,
 			@Named("labelCategoryCodeMap") Map<ILabel, String> categoryLabelCodeMap,
+			@Named("labelCategoryNameMap")  Map<ILabel, String> labelCategoryNameMap,
 			@Named("TaxonSentencesMap") Map<TaxonTextFile, List<MultiClassifiedSentence>> taxonSentencesMap,
 			LexicalizedParser lexicalizedParser,
 			SentencePredictor sentencePredictor,
@@ -98,6 +100,7 @@ public class MicroPIEProcessor{
 		this.characterNames = characterNames;
 		this.categoryNameLabelMap = categoryNameLabelMap;
 		this.categoryLabelCodeMap = categoryLabelCodeMap;
+		this.labelCategoryNameMap = labelCategoryNameMap;
 		
 		this.taxonSentencesMap = taxonSentencesMap;
 		
@@ -113,53 +116,6 @@ public class MicroPIEProcessor{
 	}
 
 	
-	/**
-	 * What are the system configuration?
-	 * 
-	 * @param inputFolder  input folder, including files
-	 * @param svmLabelAndCategoryMappingFile
-	 * @param characters  the characters that need to extract in the file
-	 * @param predictionsFile: records the predicted characters of the sentences
-	 * @param outputMatrixFile: the output matrix file
-	 */
-	public void processFolder(String inputFolder, 
-			String svmLabelAndCategoryMappingFile, 
-			String predictionsFile, 
-			String outputMatrixFile) {
-		try {
-			//STEP 1: split sentences
-			List<MultiClassifiedSentence> testSentences = this.createSentencesFromFolder(inputFolder);
-			
-			//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
-			for (MultiClassifiedSentence testSentence : testSentences) {
-				Set<ILabel> prediction = sentencePredictor.predict(testSentence);
-				testSentence.setPredictions(prediction);
-			}
-			
-			//output the prediction results
-			classifiedSentenceWriter.setCategoryLabelCodeMap(categoryLabelCodeMap);
-			classifiedSentenceWriter.setPredictionFile(predictionsFile);
-			classifiedSentenceWriter.write(testSentences);
-			
-			LinkedHashSet<ILabel> characterLabels = new LinkedHashSet();
-			for(String characterName : characterNames){
-				ILabel label = categoryNameLabelMap.get(characterName.trim().toLowerCase());
-				characterLabels.add(label);
-			}
-			
-			matrixCreator.setCharacterLabels(characterLabels);
-			matrixCreator.setCharacterNames(characterNames);
-			matrixCreator.setTaxonSentencesMap(taxonSentencesMap);
-			
-			NewTaxonCharacterMatrix matrix = (NewTaxonCharacterMatrix)matrixCreator.create();
-			matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
-			matrixWriter.write(matrix);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * 
@@ -172,7 +128,10 @@ public class MicroPIEProcessor{
 		for(String characterName : characterNames){
 			ILabel label = categoryNameLabelMap.get(characterName.trim().toLowerCase());
 			characterLabels.add(label);
+			//System.out.println(characterName.trim().toLowerCase()+" "+label);
 		}
+		
+		//System.out.println("extractors="+characterLabels.size()+" "+characterNames.size());
 		
 		// <Taxon, <Character, List<Value>>>
 		NewTaxonCharacterMatrix matrix = new NewTaxonCharacterMatrix();
@@ -198,7 +157,7 @@ public class MicroPIEProcessor{
 		
 		try {
 			matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
-			matrixWriter.write(matrix);
+			matrixWriter.write(matrix, labelCategoryNameMap);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -245,6 +204,9 @@ public class MicroPIEProcessor{
 		XMLTextReader textReader = new XMLTextReader();
 		textReader.setInputStream(inputFile);
 		TaxonTextFile taxonFile = textReader.readFile();
+		taxonFile.setTaxon(taxonFile.getGenus()+" "+taxonFile.getSpecies());
+		
+		
 		String text = textReader.read();
 		taxonFile.setInputFile(null);
 		taxonFile.setText(text);

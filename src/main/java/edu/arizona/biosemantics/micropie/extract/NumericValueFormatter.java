@@ -36,6 +36,7 @@ public class NumericValueFormatter implements IValueFormatter {
 		for(int i=0; i<size;i++){
 			CharacterValue cv = values.get(i);
 			valueStr.append(cv.getValue());
+			valueStr.append("|");
 			if(i!=size-1) valueStr.append(separator);
 		}
 		return valueStr.toString();

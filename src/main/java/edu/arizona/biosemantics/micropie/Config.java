@@ -58,7 +58,7 @@ import edu.arizona.biosemantics.micropie.extract.regex.OrganicCompoundsNotUsedOr
 import edu.arizona.biosemantics.micropie.extract.usp.AntibioticSensitivityExtractor;
 import edu.arizona.biosemantics.micropie.io.CSVAbbreviationReader;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
-import edu.arizona.biosemantics.micropie.io.CategoryReader;
+import edu.arizona.biosemantics.micropie.io.CharacterReader;
 import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.io.ISentenceReader;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
@@ -87,8 +87,9 @@ public class Config extends AbstractModule {
 	// private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Diameter|Cell Long|Cell Wide|Cell Membrane & Cell Wall Components|External features|Filterability|Internal features|Lysis Susceptibility|Physiological requirements|Antibiotics|Secreted Products|Storage Products|Tests|Pathogen Target Organ|Complex Mixtures|Inorganic|Metals|Nitrogen Compounds|Organic|Organic Acids|Other";
 	
 	// Verison 2, March 08, 2015 Sunday
-	// running parameter
-	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used|Other genetic characteristics|Other physiological characteristics";
+	// running parameter characters to be extracted
+	//private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used|Other genetic characteristics|Other physiological characteristics";
+	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
 
 	
 	private String celsius_degreeReplaceSourcePattern = "(" +
@@ -195,7 +196,7 @@ public class Config extends AbstractModule {
 		bind(String.class).annotatedWith(Names.named("svmLabelAndCategoryMappingFile")).toInstance(
 				svmLabelAndCategoryMappingFile);
 		
-		CategoryReader categoryReader = new CategoryReader();
+		CharacterReader categoryReader = new CharacterReader();
 		categoryReader.setCategoryFile(svmLabelAndCategoryMappingFile);
 		categoryReader.read();
 		

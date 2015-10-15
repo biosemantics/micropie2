@@ -22,16 +22,15 @@ import org.jdom2.JDOMException;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.classify.NumericLabels;
 import edu.arizona.biosemantics.micropie.extract.ValueFormatterUtil;
-import edu.arizona.biosemantics.micropie.io.CategoryReader;
+import edu.arizona.biosemantics.micropie.io.CharacterReader;
 import edu.arizona.biosemantics.micropie.io.MatrixReader;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.arizona.biosemantics.micropie.nlptool.StringUtil;
-
-
 
 
 /**
@@ -61,7 +60,10 @@ public class ExtractionEvaluation {
 	private ILabel[] comparedCharacterLabels;
 	private String[] comparedCharacterNames;
 	
-	private IValueComparator valueComparator;
+	private IValueComparator stringValueComparator = new KeywordStringComparator();
+	private IValueComparator numericValueComparator = new NumericComparator();
+	private NumericLabels numericLabels = new NumericLabels();
+	
 	private Map<String, ILabel> characterNameLabelMapping;
 	private Map<ILabel, String> characterLabelNameMapping;
 	
@@ -111,10 +113,6 @@ public class ExtractionEvaluation {
 		this.categoryMappingFile = categoryMappingFile;
 	}
 	
-	public void setValueComparator(IValueComparator valueComparator) {
-		this.valueComparator = valueComparator;
-	}
-	
 	
 	/**
 	 * set the compared characters
@@ -126,6 +124,7 @@ public class ExtractionEvaluation {
 		for(int i = 0;i<comparedCharacterNames.length;i++){
 			comparedCharacterNames[i] = comparedCharacterNames[i].trim();
 			comparedCharacterLabels[i] = this.characterNameLabelMapping.get(comparedCharacterNames[i].toLowerCase());
+			System.out.println(comparedCharacterLabels[i]+"===>"+comparedCharacterNames[i]);
 		}
 	}
 
@@ -140,7 +139,7 @@ public class ExtractionEvaluation {
 	}
 	
 	public void readCategoryMapping(){
-		CategoryReader cateReader = new CategoryReader();
+		CharacterReader cateReader = new CharacterReader();
 		cateReader.setCategoryFile(this.categoryMappingFile);
 		cateReader.read();
 		this.characterNameLabelMapping = cateReader.getCategoryNameLabelMap();
@@ -162,11 +161,11 @@ public class ExtractionEvaluation {
 		MatrixReader gsdMatrixReader = new MatrixReader(gstBasicFields, gstKeyField, characterNameLabelMapping,characterLabelNameMapping);
 		gsdMatrixReader.readMatrixFromFile(goldStandardsMatrixFile);
 		this.goldStdMatrixFile = goldStandardsMatrixFile;
-		NewTaxonCharacterMatrix gsdMatrix = gsdMatrixReader.parseMatrix(this.gstSeparator, true);
+		NewTaxonCharacterMatrix gsdMatrix = gsdMatrixReader.parseMatrix(this.gstSeparator, false);
 		
 		//readTaxonDetail(gsdMatrix.getTaxonFiles());
 		
-		this.taxonFileMap = gsdMatrixReader.parseTaxonFiles(true);
+		this.taxonFileMap = gsdMatrixReader.parseTaxonFiles(false);
 		
 		MatrixReader tgMatrixReader = new MatrixReader(tgBasicFields, tgKeyField, characterNameLabelMapping,characterLabelNameMapping);
 		tgMatrixReader.readMatrixFromFile(targetMatrixFile);
@@ -251,21 +250,34 @@ public class ExtractionEvaluation {
 				List<CharacterValue> gstCharValue = gstAllCharacterValues.get(charLabel);
 				taxonTotal += gstCharValue==null?0:gstCharValue.size();
 				charTotal[ch] += gstCharValue==null?0:gstCharValue.size();
-				gstTotalValueNum+= gstCharValue==null?0:gstCharValue.size();
+				gstTotalValueNum += gstCharValue==null?0:gstCharValue.size();
 				
 				List<CharacterValue> tgCharValue = tgAllCharacterValues.get(charLabel);
 				taxonFound += tgCharValue==null?0:tgCharValue.size();
 				charFound[ch] += tgCharValue==null?0:tgCharValue.size();
 				tgTotalValueNum += tgCharValue==null?0:tgCharValue.size();
 				
-				double matched = valueComparator.compare(tgCharValue,gstCharValue);
-				taxonHit += matched;
-				charHit[ch] += matched;
 				
-				//System.out.println(taxonName+" "+charLabel+" gst:["+gstCharValue+"] tg:["+tgCharValue+"]"+" value:"+matched); 
-				matchedTotalCredit += matched;
+				System.out.println(charLabel+" "+comparedCharacterNames[ch]+" ["+gstCharValue+"] ["+tgCharValue+"]");
 				
-				charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",matched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue)));
+				double matched = 0;
+				if(tgCharValue!=null&&tgCharValue.size()!=0&&gstCharValue!=null&&gstCharValue.size()!=0){//when at least one has a value, compare
+					//System.out.println(charLabel);
+					if(numericLabels.contains(charLabel)){
+						matched = numericValueComparator.compare(tgCharValue,gstCharValue);
+					}else{
+						matched = stringValueComparator.compare(tgCharValue,gstCharValue);
+					}
+					
+					taxonHit += matched;
+					charHit[ch] += matched;
+					
+					matchedTotalCredit += matched;
+					
+					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",matched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue)));
+				}else if(gstCharValue!=null&&gstCharValue.size()!=0){
+					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",-1,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue)));
+				}
 			}
 			
 			charValueResults.put(taxonTextFile, charHitMap);
@@ -275,8 +287,10 @@ public class ExtractionEvaluation {
 		}
 		
 		for(int ch = 0; ch<charLength;ch++){
+			
 			List charEvalResults = this.calMeasure(charFound[ch], charHit[ch], charTotal[ch]);
 			String charName = this.comparedCharacterNames[ch];
+			System.out.println(ch+" "+charName+" "+charFound[ch]+" "+charHit[ch]+" "+charTotal[ch]);
 			this.charResults.put(charName, charEvalResults);
 		}
 		//measure report

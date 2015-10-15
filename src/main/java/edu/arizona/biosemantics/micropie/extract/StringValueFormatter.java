@@ -50,9 +50,10 @@ public class StringValueFormatter implements IValueFormatter {
 		
 		List<CharacterValue> valueList = new ArrayList();
 		for(String value:values){
-			CharacterValue cv = CharacterValueFactory.create(label, value);
-			
-			valueList.add(cv);
+			if(value!=null&&!"".equals(value)){
+				CharacterValue cv = CharacterValueFactory.create(label, value);
+				valueList.add(cv);
+			}
 		}
 		
 		return valueList;

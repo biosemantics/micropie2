@@ -16,8 +16,9 @@ public class MultiClassifiedSentence extends Sentence{
 
 	private Set<ILabel> predictions;// the predicted categories
 	private SentenceMetadata sentMetadata; // some metadata
-	private List<SubSentence> subSentence;
-	private List<List<TaggedWord>> subSentTaggedWords;
+	private List<SubSentence> subSentence; // subsentences if brackets are used
+	private List<List<TaggedWord>> subSentTaggedWords; // the pos tagger for the subsentences
+	private List<List<Phrase>> phraseList;
 	
 	
 	public MultiClassifiedSentence(String text) {
@@ -61,6 +62,16 @@ public class MultiClassifiedSentence extends Sentence{
 
 	public void setSubSentTaggedWords(List subSentTaggedWords) {
 		this.subSentTaggedWords = subSentTaggedWords;
+	}
+
+
+	public List<List<Phrase>> getPhraseList() {
+		return phraseList;
+	}
+
+
+	public void setPhraseList(List<List<Phrase>> phraseList) {
+		this.phraseList = phraseList;
 	}
 	
 }

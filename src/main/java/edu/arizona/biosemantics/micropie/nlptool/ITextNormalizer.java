@@ -74,4 +74,12 @@ public interface ITextNormalizer {
 	 * @return
 	 */
 	public String transformEntity(String sentence);
+	
+	
+	/**
+	 * replace various types of special characters
+	 * @param text
+	 * @return
+	 */
+	public String transformSpchar(String text);
 }
