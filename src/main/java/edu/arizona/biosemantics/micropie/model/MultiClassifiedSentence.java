@@ -14,17 +14,17 @@ import edu.stanford.nlp.ling.TaggedWord;
  */
 public class MultiClassifiedSentence extends Sentence{
 
-	private Set<ILabel> predictions;// the predicted categories
+	private Set<ILabel> predictions;// the predicted characters
+	private Set<ILabel> categories;// the predicted categories
 	private SentenceMetadata sentMetadata; // some metadata
 	private List<SubSentence> subSentence; // subsentences if brackets are used
 	private List<List<TaggedWord>> subSentTaggedWords; // the pos tagger for the subsentences
-	private List<List<Phrase>> phraseList;
+	private List<List<Phrase>> phraseList;// the phrases for each subsentence
 	
 	
 	public MultiClassifiedSentence(String text) {
 		this.text = text;
 	}
-	
 	
 	public MultiClassifiedSentence(RawSentence sentence, Set<ILabel> predictions) {
 		this.text = sentence.getText();
@@ -37,8 +37,17 @@ public class MultiClassifiedSentence extends Sentence{
 
 	public void setPredictions(Set<ILabel> predictions) {
 		this.predictions = predictions;
+		System.out.println("prediction="+predictions+" categories="+categories);
 	}
 
+	public Set<ILabel> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Set<ILabel> categories) {
+		this.categories = categories;
+		System.out.println("prediction="+predictions+" categories="+categories);
+	}
 
 	public SentenceMetadata getSentMetadata() {
 		return sentMetadata;

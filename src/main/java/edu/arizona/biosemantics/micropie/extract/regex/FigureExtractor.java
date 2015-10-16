@@ -117,11 +117,12 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 				figure = word.word();
 				if(!containNumber(figure)){i++;continue;}
 				//System.out.println("it is a figure:"+figure+" "+unit);
-				if(i+1<taggedWords.size()&&(taggedWords.get(i+1).tag().equals("CD")&&(containNumber(taggedWords.get(i+1).word())||"<".equalsIgnoreCase(taggedWords.get(i+1).word()))||defIsNumber(taggedWords.get(i+1).word()))){
+				//if(i+1<taggedWords.size()&&(taggedWords.get(i+1).tag().equals("CD")&&(containNumber(taggedWords.get(i+1).word())||"<".equalsIgnoreCase(taggedWords.get(i+1).word()))||defIsNumber(taggedWords.get(i+1).word()))){
+				while(i+1<taggedWords.size()&&(taggedWords.get(i+1).tag().equals("CD")&&(containNumber(taggedWords.get(i+1).word())||containNumSign(taggedWords.get(i+1).word()))||defIsNumber(taggedWords.get(i+1).word()))){
 					figure+=taggedWords.get(i+1).word();
 					i++;
 				}
-
+				//System.out.println("it is a figure:"+figure+" "+unit);
 				if(i+1<taggedWords.size()){
 					if((taggedWords.get(i+1).word().equals("°")&&taggedWords.get(i+2).word().equals("C"))
 							||taggedWords.get(i+1).word().equals("degree_celsius_1")
@@ -521,14 +522,13 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 		if(word.length()==1){
 			return word.matches("[0-9]+");
 		}else{
-			Matcher m = Pattern.compile("[+-.0-9]+").matcher(word);
+			Matcher m = Pattern.compile("[+-.0-9±]+").matcher(word);
 			if (m.matches()){
 				return true;
 			}
 		}
 		return false;
 	}
-
 
 	/**
 	 * only contain a number
@@ -550,6 +550,17 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 		return false;
 	}
 
+	
+	/**
+	 * only contain a number
+	 * @param word
+	 * @return
+	 */
+	public boolean containNumSign(String word) {
+		return word.matches("[+-±<>]+");
+	}
+	
+	
 	@Override
 	public List<CharacterValue> getCharacterValue(
 			Sentence text) {

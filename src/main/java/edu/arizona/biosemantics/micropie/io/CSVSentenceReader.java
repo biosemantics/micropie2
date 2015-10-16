@@ -86,7 +86,7 @@ public class CSVSentenceReader implements ISentenceReader {
 	    List<String[]> lines = reader.readAll();
 		for(String[] line : lines) {
 			ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
-			if(svmLabel==null) svmLabel = Label.c0;		
+			//if(svmLabel==null) svmLabel = Label.c0;		
 			
 			result.add(new RawSentence(line[5], svmLabel));
 			
@@ -127,7 +127,7 @@ public class CSVSentenceReader implements ISentenceReader {
 			 List<String[]> lines = reader.readAll();
 				for(String[] line : lines) {
 					ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
-					if(svmLabel==null) svmLabel = Label.c0;		
+					//if(svmLabel==null) svmLabel = Label.c0;		
 					
 					result.add(new RawSentence(line[5], svmLabel));
 				}
@@ -156,7 +156,7 @@ public class CSVSentenceReader implements ISentenceReader {
 		for(String[] line : lines) {
 			ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
 			//System.out.println(line[1]+" "+svmLabel);
-			if(svmLabel==null) svmLabel = Label.c0;		
+			//if(svmLabel==null) svmLabel = Label.c0;		
 			
 			result.add(new RawSentence(line[1], svmLabel));
 		}

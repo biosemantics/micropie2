@@ -14,6 +14,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import com.google.inject.TypeLiteral;
+import com.google.inject.name.Names;
+
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 
@@ -168,7 +171,7 @@ public class KeywordReader {
 		KeywordReader keywordReader = new KeywordReader();
 		String termsFolder = "F:/MicroPIE/micropieInput/termlist";
 		
-		
+		/*compare two characters
 		File termFolderFile = new File(termsFolder);
 		File[] files = termFolderFile.listFiles();
 		List<Set> allTermSet = new ArrayList();
@@ -188,12 +191,29 @@ public class KeywordReader {
 				if(overlap>0) System.out.println(aname+"|"+bname+"|"+overlap);
 			}
 		}
+		*/
 		
-		/*
+		/* output termlist */
+		String svmLabelAndCategoryMappingFile = "F:/MicroPIE/micropieInput//svmlabelandcategorymapping/categoryMapping_all.txt";
+		CharacterReader characterReader = new CharacterReader();
+		characterReader.setCategoryFile(svmLabelAndCategoryMappingFile);
+		characterReader.read();
+		
+		Map<ILabel, String> labelCategoryCodeMap = characterReader.getLabelCategoryCodeMap();
+		Map<String, ILabel> categoryCodeLabelMap =characterReader.getCategoryCodeLabelMap();
+		Map<ILabel, String> labelCategoryNameMap = characterReader.getLabelCategoryNameMap();
+		Map<String, ILabel> categoryNameLabelMap = characterReader.getCategoryNameLabelMap();
+		
+		
 		Map<String, Set<ILabel>> termCharacterMap = keywordReader.readTermCharacterMap(termsFolder);
 		for(Entry<String, Set<ILabel>> e: termCharacterMap.entrySet()){
-			System.out.println(e.getKey()+"|"+e.getValue().size()+"|"+e.getValue().toString());
+			Set<ILabel> labels = e.getValue();
+			StringBuffer sb = new StringBuffer();
+			for(ILabel label : labels){
+				sb.append(labelCategoryCodeMap.get(label)).append(" ").append(labelCategoryNameMap.get(label)).append(",");
+			}
+			System.out.println(e.getKey()+"|"+e.getValue().size()+"|"+sb.substring(0,sb.length()-1));
 		}
-		*/
+		
 	}
 }

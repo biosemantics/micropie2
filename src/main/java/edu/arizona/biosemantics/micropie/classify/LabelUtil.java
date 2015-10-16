@@ -1,7 +1,16 @@
-package edu.arizona.biosemantics.micropie.model;
+package edu.arizona.biosemantics.micropie.classify;
 
-import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.model.CharacterGroup;
+import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
+import edu.arizona.biosemantics.micropie.model.ValueGroup;
 
+
+
+/**
+ * tools about labels
+ * @author maojin
+ *
+ */
 public class LabelUtil {
 	/**
 	 * determine the character ILabel according to the character group and value group

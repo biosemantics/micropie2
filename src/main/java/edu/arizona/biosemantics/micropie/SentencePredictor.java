@@ -28,17 +28,13 @@ import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
  */
 public class SentencePredictor{
 
-	private XMLTextReader textReader;
 	private MultiSVMClassifier msvmClassifier;
-	private String trainedModelFile;
 
 	@Inject
-	public SentencePredictor(XMLTextReader textReader,
-			MultiSVMClassifier classifier,
+	public SentencePredictor(MultiSVMClassifier classifier,
 			@Named("trainedModelFile") String trainedModelFile) {
-		this.textReader = textReader;
+		System.out.println("trainedModelFile="+trainedModelFile);
 		this.msvmClassifier = classifier;
-		this.trainedModelFile = trainedModelFile;
 		try {
 			msvmClassifier.loadClassifier(trainedModelFile);
 		} catch (Exception e) {

@@ -105,6 +105,7 @@ public class NumericComparator implements IValueComparator{
 		value = value.replace("??????C", "");
 		value = value.replace("??C", "");
 		value = value.replace("??m", "");
+		value = value.replace("μm", "");
 		
 		value = value.replace("|", "");
 		

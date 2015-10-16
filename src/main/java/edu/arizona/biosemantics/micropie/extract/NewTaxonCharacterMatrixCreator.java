@@ -101,7 +101,7 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 				ILabel clabel = nvalue.getCharacter();//find the label
 				if(clabel!=null){
 					charMap.get(clabel).add(nvalue);
-					System.out.println(label+" "+nvalue);
+					//System.out.println(label+" "+nvalue);
 				}
 			}
 		}
@@ -150,7 +150,7 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 				}
 			}
 
-			// System.out.println("predictions:"+predictions.size()+" extractors: "+extractors.size());
+			System.out.println("predictions:"+predictions.size()+" "+predictions+" extractors: "+extractors.size());
 			// call the extractors one by one
 			for (ICharacterValueExtractor extractor : extractors) {
 				String character = extractor.getCharacterName();

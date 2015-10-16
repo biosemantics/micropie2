@@ -77,23 +77,43 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 			//output for each sentence
 			for(MultiClassifiedSentence classifiedSentence : classifiedSentences) {
 				
-				Set<ILabel> predictions = classifiedSentence.getPredictions();
-				StringBuffer multiCatLabelsb = new StringBuffer();
+				//Characterlabel
+				Set<ILabel> predictions = classifiedSentence.getPredictions();				
+				Set<ILabel> categories = classifiedSentence.getCategories();
+				
+				lines.add(new String[] {categories.toString(),
+						predictions.toString(),
+						classifiedSentence.getText()});
+				/*
+				StringBuffer multiCharachterLabelsb = new StringBuffer();
 				for(ILabel label : predictions) {
 					//String labelNo = label.toString();
 					//Label labelNo = label.toString();
 					//String categoryLabel = svmLabelAndCategoryMappingMap.get(labelNo);
-					String categoryCode = categoryLabelCodeMap.get(label);
-					categoryCode = categoryCode==null?"0":categoryCode;
-					multiCatLabelsb.append(categoryCode).append(",");
+					String characterCode = categoryLabelCodeMap.get(label);
+					characterCode = characterCode==null?"0":characterCode;
+					multiCharachterLabelsb.append(characterCode).append(",");
 				}
 				
-				String multiCatLabel = multiCatLabelsb.toString();
+				String multiCatLabel = multiCharachterLabelsb.toString();
 				if( multiCatLabel.length() == 0)
 					multiCatLabel = "0";
 				else
 					multiCatLabel = multiCatLabel.substring(0, multiCatLabel.length() - 1);
-				lines.add(new String[] { multiCatLabel, classifiedSentence.getText()});
+				
+				//category label
+				//Characterlabel
+				
+				StringBuffer multiCategoryLabelsb = new StringBuffer();
+				for(ILabel label : categories) {
+					multiCharachterLabelsb.append(label).append(",");
+				}
+				if( multiCategoryLabelsb.length() == 0) multiCategoryLabelsb.append("0,");
+				
+				lines.add(new String[] {multiCategoryLabelsb.substring(0, multiCategoryLabelsb.length() - 1),
+						multiCatLabel,
+						classifiedSentence.getText()});
+						*/
 			}
 			
 			writer.writeAll(lines);

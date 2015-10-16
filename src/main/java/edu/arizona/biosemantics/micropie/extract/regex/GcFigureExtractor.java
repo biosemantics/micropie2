@@ -160,7 +160,7 @@ public class GcFigureExtractor extends FigureExtractor {
 	public List<CharacterValue> getCharacterValue(Sentence sent) {
 		MultiClassifiedSentence sentence = (MultiClassifiedSentence)sent;
 		this.posSentence(sentence);
-		System.out.println(sentence.getText());
+		//System.out.println(sentence.getText());
 		/**
 		 * for each subsentences
 		 * 	1, detect the figure
@@ -186,13 +186,14 @@ public class GcFigureExtractor extends FigureExtractor {
 		//filter values
 		filterValues(sentValueList,sentence.getText());
 		
-		
+		/*
 		int fsize =  sentValueList.size();
 		for(int i=0;i<fsize;i++){
 			CharacterValue curFd = (CharacterValue)sentValueList.get(i);
 			
 			System.out.println(curFd.toString());
 		}
+		*/
 		
 		return sentValueList;
 	}

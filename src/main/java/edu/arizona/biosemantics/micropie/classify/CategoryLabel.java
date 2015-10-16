@@ -53,4 +53,7 @@ public enum CategoryLabel implements ILabel {
 		return values;
 	}
 
+	public boolean equals(ILabel label) {
+		return label.getValue().equals(this.getValue());
+	}
 }

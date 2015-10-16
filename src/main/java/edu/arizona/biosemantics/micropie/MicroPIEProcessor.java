@@ -54,6 +54,7 @@ public class MicroPIEProcessor{
 	//System Resources
 	private LexicalizedParser lexicalizedParser;
 	private SentencePredictor sentencePredictor;
+	private CategoryPredictor categoryPredictor;
 	private SentenceSpliter sentenceSpliter;
 	private CSVClassifiedSentenceWriter classifiedSentenceWriter;
 	
@@ -86,12 +87,14 @@ public class MicroPIEProcessor{
 			@Named("TaxonSentencesMap") Map<TaxonTextFile, List<MultiClassifiedSentence>> taxonSentencesMap,
 			LexicalizedParser lexicalizedParser,
 			SentencePredictor sentencePredictor,
+			CategoryPredictor categoryPredictor,
 			SentenceSpliter sentenceSpliter,
 			CSVClassifiedSentenceWriter classifiedSentenceWriter) {
 		this.matrixCreator = matrixCreator;
 		this.matrixWriter = matrixWriter;
 		this.lexicalizedParser = lexicalizedParser;
 		this.sentencePredictor = sentencePredictor;
+		this.categoryPredictor = categoryPredictor;
 		this.sentenceSpliter = sentenceSpliter;
 		this.classifiedSentenceWriter = classifiedSentenceWriter;
 		
@@ -182,7 +185,12 @@ public class MicroPIEProcessor{
 		//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
 		for (MultiClassifiedSentence testSentence : sentences) {
 			Set<ILabel> prediction = sentencePredictor.predict(testSentence);
+			Set<ILabel> categories = categoryPredictor.predict(testSentence);
 			testSentence.setPredictions(prediction);
+			testSentence.setCategories(categories);
+			
+			System.out.println("prediction="+prediction+" categories="+categories);
+			System.out.println("prediction="+testSentence.getPredictions()+" categories="+testSentence.getCategories());
 		}
 		
 		if(predictionFile!=null){

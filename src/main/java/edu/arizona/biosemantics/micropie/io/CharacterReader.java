@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import au.com.bytecode.opencsv.CSVReader;
+import edu.arizona.biosemantics.micropie.classify.CategoryLabel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 
@@ -51,6 +52,12 @@ public class CharacterReader {
 	 * <categoryName, label>
 	 */
 	private Map<String, ILabel> categoryNameLabelMap;
+	
+	/**
+	 * <character, category>
+	 */
+	private Map<ILabel, ILabel> categoryUpperMap;
+	
 
 	public CharacterReader() {
 
@@ -96,7 +103,14 @@ public class CharacterReader {
 		this.categoryNameLabelMap = categoryNameLabelMap;
 	}
 
-	
+	public Map<ILabel, ILabel> getCategoryUpperMap() {
+		return categoryUpperMap;
+	}
+
+	public void setCategoryUpperMap(Map<ILabel, ILabel> categoryUpperMap) {
+		this.categoryUpperMap = categoryUpperMap;
+	}
+
 	/**
 	 * parse the file
 	 * @return
@@ -114,6 +128,7 @@ public class CharacterReader {
 			categoryCodeLabelMap = new HashMap<String, ILabel>();
 			labelCategoryNameMap = new HashMap<ILabel, String>();
 			categoryNameLabelMap = new HashMap<String, ILabel>();
+			categoryUpperMap = new HashMap<ILabel, ILabel>();
 			
 			// label,category,category name
 			for (String[] lineOfSVMLabelAndCategoryMapping : linesOfSVMLabelAndCategoryMapping) {
@@ -122,11 +137,15 @@ public class CharacterReader {
 					ILabel label = Label.getEnum(lineOfSVMLabelAndCategoryMapping[0].trim());
 					String categoryCode = lineOfSVMLabelAndCategoryMapping[1].trim();
 					String categoryName = lineOfSVMLabelAndCategoryMapping[2].trim().toLowerCase();
-					System.out.println(categoryCode+" "+categoryName+" "+label);
+					
+					String upperCategoryCode = categoryCode.substring(0, categoryCode.indexOf("."));
+					ILabel upperLabel = CategoryLabel.getEnum(upperCategoryCode);
+					System.out.println(categoryCode+" "+categoryName+" "+label+" "+upperCategoryCode+" "+upperLabel);
 					labelCategoryCodeMap.put(label,categoryCode);
 					categoryCodeLabelMap.put(categoryCode, label);
 					labelCategoryNameMap.put(label, categoryName);
 					categoryNameLabelMap.put(categoryName, label);
+					categoryUpperMap.put(label, upperLabel);
 				}
 			}
 		} catch (UnsupportedEncodingException e) {

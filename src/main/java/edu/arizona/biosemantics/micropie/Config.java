@@ -27,6 +27,7 @@ import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.classify.CategoryLabel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
@@ -114,10 +115,12 @@ public class Config extends AbstractModule {
 	// private String trainingFile = "training_data/split-training-base-140603.csv";
 	// split-training-base-150110.csv
 	private String trainingFile = "training_data/split-training-base-150110.csv";
-	private String trainedModelFile = "models";
+	private String trainedModelFile = "character_model";//predict the characters
+	private String categoryModelFile = "category_model";//predict the categories
 	
 	//System Parameters
-	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/categoryMapping_poster.txt";
+	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_poster.txt";
+	private String firstLevelCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_category.txt";
 	//private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
 	
 	private String testFolder = "input";
@@ -189,6 +192,8 @@ public class Config extends AbstractModule {
 				trainingFile);
 		bind(String.class).annotatedWith(Names.named("trainedModelFile")).toInstance(
 				trainedModelFile);
+		bind(String.class).annotatedWith(Names.named("categoryModelFile")).toInstance(
+				categoryModelFile);
 		
 		
 		
@@ -196,19 +201,22 @@ public class Config extends AbstractModule {
 		bind(String.class).annotatedWith(Names.named("svmLabelAndCategoryMappingFile")).toInstance(
 				svmLabelAndCategoryMappingFile);
 		
-		CharacterReader categoryReader = new CharacterReader();
-		categoryReader.setCategoryFile(svmLabelAndCategoryMappingFile);
-		categoryReader.read();
+		CharacterReader characterReader = new CharacterReader();
+		characterReader.setCategoryFile(svmLabelAndCategoryMappingFile);
+		characterReader.read();
 		
 		bind(new TypeLiteral<Map<ILabel, String>>(){}).annotatedWith(Names.named("labelCategoryCodeMap"))
-			.toInstance(categoryReader.getLabelCategoryCodeMap());
+			.toInstance(characterReader.getLabelCategoryCodeMap());
 		bind(new TypeLiteral<Map<String, ILabel>>(){}).annotatedWith(Names.named("categoryCodeLabelMap"))
-			.toInstance(categoryReader.getCategoryCodeLabelMap());
+			.toInstance(characterReader.getCategoryCodeLabelMap());
 		bind(new TypeLiteral<Map<ILabel, String>>(){}).annotatedWith(Names.named("labelCategoryNameMap"))
-			.toInstance(categoryReader.getLabelCategoryNameMap());
+			.toInstance(characterReader.getLabelCategoryNameMap());
 		bind(new TypeLiteral<Map<String, ILabel>>(){}).annotatedWith(Names.named("categoryNameLabelMap"))
-			.toInstance(categoryReader.getCategoryNameLabelMap());
+			.toInstance(characterReader.getCategoryNameLabelMap());
+		bind(new TypeLiteral<Map<String, ILabel>>(){}).annotatedWith(Names.named("categoryNameLabelMap"))
+		.toInstance(characterReader.getCategoryNameLabelMap());
 		
+		//character labels
 		bind(new TypeLiteral<List<ILabel>>() {}).annotatedWith(Names.named("MultiSVMClassifier_Labels"))
 		.toProvider(new Provider<List<ILabel>>() {
 			@Override
@@ -220,6 +228,20 @@ public class Config extends AbstractModule {
 				return result;
 			}
 		});
+		
+		//category labels
+		bind(new TypeLiteral<List<ILabel>>() {}).annotatedWith(Names.named("Category_Labels"))
+		.toProvider(new Provider<List<ILabel>>() {
+			@Override
+			public List<ILabel> get() {
+				ILabel[] labels = CategoryLabel.values();
+				List<ILabel> result = new ArrayList<ILabel>(labels.length);
+				for(ILabel label : labels)
+					result.add(label);
+				return result;
+			}
+		});
+		
 		/*********************************    configure the extractors          ******************************/
 		
 		
@@ -416,31 +438,30 @@ public class Config extends AbstractModule {
 	 * @param inputDirectory
 	 */
 	public void setInputDirectory(String inputDirectory) {
-		testFolder = inputDirectory + File.separator + "input";
+		testFolder = inputDirectory + File.separator + testFolder;
 		
 		// trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "split-training-base-140603.csv";
 		// 150123-Training-Sentences.csv
 		// trainingFile = inputDirectory + File.separator + "training_data" + File.separator + "150123-Training-Sentences.csv";
 		// 150130-Training-Sentences-new.csv
 		trainingFile = inputDirectory + File.separator + trainingFile;
-		trainedModelFile = inputDirectory + File.separator + "models";
+		trainedModelFile = inputDirectory + File.separator + trainedModelFile;
+		categoryModelFile = inputDirectory + File.separator + categoryModelFile;
 		
 		svmLabelAndCategoryMappingFile = inputDirectory + File.separator + svmLabelAndCategoryMappingFile;
+		firstLevelCategoryMappingFile = inputDirectory + File.separator + firstLevelCategoryMappingFile;
 		
+		characterValueExtractorsFolder = inputDirectory + File.separator + characterValueExtractorsFolder;
+		abbreviationFile = inputDirectory + File.separator + abbreviationFile;
+		resFolder = inputDirectory + File.separator + resFolder;
+		kbFolder = inputDirectory + File.separator + kbFolder;
+		dataHolderFolder = inputDirectory + File.separator + dataHolderFolder;
 		
+		uspBaseString = inputDirectory + File.separator + uspBaseString;
+		uspBaseZipFileName = inputDirectory + File.separator + uspBaseZipFileName;
+		uspFolder = inputDirectory + File.separator + uspFolder;
 		
-		characterValueExtractorsFolder = inputDirectory + File.separator + "CharacterValueExtractors";
-		abbreviationFile = inputDirectory + File.separator + "abbrevlist/abbrevlist.csv";
-		resFolder = inputDirectory + File.separator + "res";
-		kbFolder = inputDirectory + File.separator + "kb";
-		dataHolderFolder = inputDirectory + File.separator + "dataholder";
-		uspBaseString = inputDirectory + File.separator + "usp_base";
-		uspBaseZipFileName = inputDirectory + File.separator + "usp_base.zip";
-		
-		
-		uspFolder = inputDirectory + File.separator + "usp_base/dep/0";
-		
-		System.out.println("resFolder = "+resFolder);
+		//System.out.println("resFolder = "+resFolder);
 	}
 	
 	public void setOutputDirectory(String outputDirectory) {

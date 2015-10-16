@@ -136,7 +136,7 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 	    // smoteFilter.setNearestNeighbors(5);
 	    // smoteFilter.setPercentage(200);//1000%
 	    SpreadSubsample subsampleFilter = new SpreadSubsample();
-	    subsampleFilter.setDistributionSpread(1.0);
+	    subsampleFilter.setDistributionSpread(2.0);
 	    
 		//Filter Attribute selection
 		int n = 100; //100， number of features to select 

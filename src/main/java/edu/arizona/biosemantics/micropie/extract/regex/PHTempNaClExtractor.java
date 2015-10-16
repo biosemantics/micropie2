@@ -13,10 +13,10 @@ import com.google.inject.Inject;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.classify.LabelUtil;
 import edu.arizona.biosemantics.micropie.model.CharacterGroup;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
-import edu.arizona.biosemantics.micropie.model.LabelUtil;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
 import edu.arizona.biosemantics.micropie.model.Sentence;

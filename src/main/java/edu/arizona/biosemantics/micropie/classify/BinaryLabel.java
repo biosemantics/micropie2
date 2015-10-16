@@ -44,4 +44,7 @@ public enum BinaryLabel implements ILabel {
 		return values;
 	}
 
+	public boolean equals(ILabel label) {
+		return label.getValue().equals(this.getValue());
+	}
 }

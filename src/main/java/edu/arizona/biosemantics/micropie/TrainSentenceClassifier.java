@@ -48,11 +48,11 @@ public class TrainSentenceClassifier{
 	 * train the given folders
 	 * @param trainingFile
 	 */
-	public void train(String trainingFile, String trainedModelFolder, List<ILabel> labels) {
+	public void train(String trainingFile, String trainedModelFolder, List<ILabel> labels, String categoryMappingFile) {
 		long startTime = System.currentTimeMillis();
 		try {
 			CharacterReader cateReader = new CharacterReader();
-			cateReader.setCategoryFile(svmLabelAndCategoryMappingFile);
+			cateReader.setCategoryFile(categoryMappingFile);
 			cateReader.read();
 			Map categoryCodeLabelMap = cateReader.getCategoryCodeLabelMap();
 			
@@ -63,7 +63,7 @@ public class TrainSentenceClassifier{
 			
 			List<RawSentence> trainingSentences = trainingSentenceReader.readTwoColumnSentenceList();
 			
-			System.out.println("trainingSentences.size()::" + trainingSentences.size());
+			//System.out.println("trainingSentences.size()::" + trainingSentences.size());
 			/**/
 			multiSVMClassifier.setLabels(labels);
 			multiSVMClassifier.train(trainingSentences);

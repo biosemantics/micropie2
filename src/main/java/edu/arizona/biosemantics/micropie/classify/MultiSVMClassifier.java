@@ -170,6 +170,7 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 	
 	private RawSentence createTwoClassData(ILabel label, RawSentence sentence) {
 		RawSentence result = (RawSentence)sentence.clone();
+		//if(result.getLabel().equals(label)) System.out.println("sentence label ="+ result.getLabel()+" "+label);
 		if(result.getLabel() != null)
 			if(result.getLabel().equals(label))
 				result.setLabel(BinaryLabel.YES);
