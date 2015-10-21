@@ -26,6 +26,8 @@ import edu.stanford.nlp.trees.tregex.TregexPattern;
 
 
 /**
+ * This phrase parser is only useful for extracting values, not a complete phrase parser that can handle all types of phrases.
+ * 
  * Extract meaningful expressions：
  * 	1）noun, noun phrases, noun expressions
  * 	2) 
@@ -44,6 +46,7 @@ public class PhraseParser {
 	}*/
 	
 	private ClauseSeparator clauseSeparator = new ClauseSeparator();
+	private FigureClassifier figureClassifier = new FigureClassifier();
 	
 	private static Set nounNodeNames;
 	static {
@@ -110,6 +113,14 @@ public class PhraseParser {
 		breakTag.add("-LRB-");
 	}
 	
+	private static Set breakWord = new HashSet();
+	static {
+		breakWord.add("and");
+		breakWord.add("but");
+		breakWord.add("or");
+		breakWord.add("as");
+	}
+	
 	//negation word list
 	private static Set negationSet = new HashSet();
 	static {
@@ -122,6 +133,19 @@ public class PhraseParser {
 		negationSet.add("cann't");
 		negationSet.add("cannot");
 		negationSet.add("absent");
+	}
+	
+	
+	private static Set stopWordSet = new HashSet();
+	static{
+		stopWordSet.add("and");
+		stopWordSet.add("or");
+		stopWordSet.add("but");
+		stopWordSet.add("in");
+		stopWordSet.add("on");
+		stopWordSet.add("above");
+		stopWordSet.add("for");
+		
 	}
 	
 	/**
@@ -233,7 +257,6 @@ public class PhraseParser {
 	 * extract by POS Tag Sequence
 	 * @param sentTaggedWords
 	 * @return
-	 */
 	public List<Phrase> extract(List<TaggedWord> sentTaggedWords){
 		
 		//reverse maximuml match
@@ -244,6 +267,7 @@ public class PhraseParser {
 		//System.out.println(sentTaggedWords);
 		
 		for(int i=length-1;i>=0;i--){
+			
 			TaggedWord tagWord = sentTaggedWords.get(i);
 			String tag = tagWord.tag();
 			String word = tagWord.word();
@@ -257,6 +281,13 @@ public class PhraseParser {
 				expressions.add(curStr); 
 				curStr.add(0,tagWord);//add current
 				curType = "J";
+			}else if(curStr==null&&"CD".equals(tag)){//ends with a number
+				if(i>0&&figureClassifier.isEntity(tagWord, sentTaggedWords.get(i-1))){
+					curStr = new ArrayList();
+					expressions.add(curStr); 
+					curStr.add(0,tagWord);//add current
+					curType = "N";
+				}
 			}else if(curStr!=null&&"N".equals(curType)&&meaningfulTag.contains(tag)){//contain the meaning full word
 				curStr.add(0,tagWord);//add current
 			}else if(i>=1&&curStr!=null&&"N".equals(curType)&&"VBN".equals(tag)&&nounNodeNames.contains(sentTaggedWords.get(i-1))){//if its VBN, the former must be a noun
@@ -294,7 +325,160 @@ public class PhraseParser {
 		}
 		return mfPhrases;
 	}
+	 * filter and generate the final strings
+	 * 	1, the word, "and," should not be put in the first place.
+	 * 	2, if the word, "and",  is in the middle, separate in to multiple . 
+	 * @param meanExp
+	 * @return
+	private List<Phrase> filter(List<TaggedWord> meanExp) {
+		StringBuffer str = new StringBuffer();
+		List pharseList = new ArrayList();
+		Phrase p = new Phrase();
+		List<TaggedWord> phraseWords = new ArrayList();
+		p.setWordTags(phraseWords);
+		for(int i=0;i<meanExp.size();i++){
+			TaggedWord tw = meanExp.get(i);
+			String word = tw.word();
+			if(i==0&&!("and".equals(word)||"but".equals(word)||"or".equals(word))) {
+				str.append(word);
+				str.append(" ");
+				p.setStart(tw.beginPosition());
+				p.setEnd(tw.endPosition());
+				phraseWords.add(tw);
+			}else if("and".equals(word)||"but".equals(word)||"or".equals(word)) {//not in the first
+				p.setText(str.toString().trim());
+				
+				if(!"".equals(p.getText())) pharseList.add(p);
+				p = new Phrase();
+				str = new StringBuffer();
+				phraseWords = new ArrayList();
+				p.setWordTags(phraseWords);
+			}else{
+				if(str.length()==0) p.setStart(tw.beginPosition());
+				str.append(word);
+				str.append(" ");
+				p.setEnd(tw.endPosition());
+				phraseWords.add(tw);
+			}
+		}
+		
+		
+		p.setText(str.toString().trim());
+		if(!"".equals(p.getText())) pharseList.add(p);
+		
+		return pharseList;
+	}*/
 	
+	/**
+	 * extract by POS Tag Sequence
+	 * @param sentTaggedWords
+	 * @return
+	 */
+	public List<Phrase> extract(List<TaggedWord> sentTaggedWords){
+		
+		//reverse maximuml match
+		List<Phrase> expressions = new ArrayList();
+		Phrase curPhrase = null;
+		List curPhraseTagList = null;
+		String curType = null;
+		int length = sentTaggedWords.size();
+		//System.out.println(sentTaggedWords);
+		
+		for(int i=length-1;i>=0;i--){
+			
+			TaggedWord tagWord = sentTaggedWords.get(i);
+			String tag = tagWord.tag();
+			String word = tagWord.word();
+			if(breakTag.contains(tag)||breakWord.contains(word)){//separate
+				//System.out.print(tagWord);
+				curPhraseTagList = null;
+			}else if(curPhraseTagList==null&&nounNodeNames.contains(tag)){//ends with a noun
+				curPhrase = new Phrase();
+				curPhrase.setStartIndex(i);
+				curPhrase.setEndIndex(i);
+				curPhraseTagList = new ArrayList();
+				curPhrase.setWordTags(curPhraseTagList);
+				expressions.add(curPhrase); 
+				
+				curPhraseTagList.add(0,tagWord);//add current
+				curType = "N";
+				curPhrase.setType(curType);
+			}else if(curPhraseTagList==null&&adjNames.contains(tag)){//ends with an adjective
+				curPhrase = new Phrase();
+				curPhrase.setStartIndex(i);
+				curPhrase.setEndIndex(i);
+				curPhraseTagList = new ArrayList();
+				curPhrase.setWordTags(curPhraseTagList);
+				expressions.add(curPhrase); 
+				
+				curPhraseTagList.add(0,tagWord);//add current
+				curType = "J";
+				curPhrase.setType(curType);
+			}else if(curPhraseTagList==null&&"CD".equals(tag)){//ends with a number
+				if(i>0&&figureClassifier.isEntity(tagWord, sentTaggedWords.get(i-1))){
+					curPhrase = new Phrase();
+					curPhrase.setStartIndex(i);
+					curPhrase.setEndIndex(i);
+					curPhraseTagList = new ArrayList();
+					curPhrase.setWordTags(curPhraseTagList);
+					expressions.add(curPhrase); 
+					curPhraseTagList.add(0,tagWord);//add current
+					curType = "N";
+					curPhrase.setType(curType);
+				}
+			}else if(curPhraseTagList!=null&&"N".equals(curType)&&meaningfulTag.contains(tag)){//contain the meaning full word
+				curPhraseTagList.add(0,tagWord);//add current
+				curPhrase.setStartIndex(i);
+			}else if(i>=1&&curPhraseTagList!=null&&"N".equals(curType)&&"VBN".equals(tag)&&nounNodeNames.contains(sentTaggedWords.get(i-1))){//if its VBN, the former must be a noun
+				curPhraseTagList.add(0,tagWord);//add current
+				curPhrase.setStartIndex(i);
+			}else if(curPhraseTagList!=null&&"J".equals(curType)&&advModifierTag.contains(tag)){//contain the meaning full word
+				curPhraseTagList.add(0,tagWord);//add current
+				curPhrase.setStartIndex(i);
+			}else {
+				curPhraseTagList = null;
+			}
+		}
+		
+		//convert to string
+		for(int i=0; i<expressions.size();i++){
+			Phrase phrase = expressions.get(i);
+			//filter the current phrase, and possibly add a new phrase
+			filter(phrase,expressions);
+		}
+		
+		//detect the core of the phrase
+		for(int i=0; i<expressions.size();i++){
+			Phrase phrase = expressions.get(i);
+			String core = detectCore(phrase);
+			phrase.setCore(core);
+		}
+		
+		//detect the modifier of the phrase
+		for(int i=0; i<expressions.size();i++){
+			Phrase phrase = expressions.get(i);
+			String modifer = detectModifier(phrase);
+			phrase.setModifer(modifer);
+		}
+				
+		//NOT TO DETECT NEGATION
+		//for(Phrase p: mfPhrases){
+		//	this.detectIntermNegation(p);
+		//}
+		
+		//whether there are outer negations
+		TaggedWord negationWord = detectOuttermNegation(sentTaggedWords);
+		if(negationWord!=null){
+			//determine the scope of its application
+			//int negStart = negationWord.beginPosition();
+			// negStart should be in the scope
+			determineNegationScope(negationWord, sentTaggedWords, expressions);
+		}
+		return expressions;
+	}
+	
+	
+
 	
 
 	/**
@@ -304,41 +488,59 @@ public class PhraseParser {
 	 * @param meanExp
 	 * @return
 	 */
-	private List<Phrase> filter(List<TaggedWord> meanExp) {
+	private void filter(Phrase phrase, List<Phrase> expressions) {
 		StringBuffer str = new StringBuffer();
 		List pharseList = new ArrayList();
-		Phrase p = new Phrase();
+		List<TaggedWord> meanExp = phrase.getWordTags();
 		
+		//new phrasewords
+		List<TaggedWord> phraseWords = new ArrayList();
+		phrase.setWordTags(phraseWords);
+		int index = phrase.getStartIndex();
 		for(int i=0;i<meanExp.size();i++){
 			
 			TaggedWord tw = meanExp.get(i);
-			String word = tw.word();
-			if(i==0&&!("and".equals(word)||"but".equals(word))) {
-				str.append(word);
-				str.append(" ");
-				p.setStart(tw.beginPosition());
-				p.setEnd(tw.endPosition());
-			}else if("and".equals(word)||"but".equals(word)) {
+			String word = tw.word().toLowerCase();
+			if(i==0&&stopWordSet.contains(word)) {
 				
-				p.setText(str.toString().trim());
-				if(!"".equals(p.getText())) pharseList.add(p);
-				p = new Phrase();
-				str = new StringBuffer();
-			}else{
-				if(str.length()==0) p.setStart(tw.beginPosition());
+			}else if(i==0&&!stopWordSet.contains(word)) {
 				str.append(word);
 				str.append(" ");
-				p.setEnd(tw.endPosition());
+				phrase.setStart(tw.beginPosition());
+				phrase.setEnd(tw.endPosition());
+				phraseWords.add(tw);
+			}else if(i>0&&("and".equals(word)||"but".equals(word)||"or".equals(word))) {//not in the first, create a new phrase, add it to the list
+				
+				String tag = meanExp.get(i-1).tag();
+				phrase.setText(str.toString().trim());
+				phrase.setEndIndex(index-1);
+				//if(!"".equals(phrase.getText())) pharseList.add(p);
+				int insertIndex = expressions.indexOf(phrase);
+				String type = phrase.getType();
+				phrase = new Phrase();//a new one
+				phrase.setStart(tw.beginPosition());
+				phrase.setStartIndex(index+1);
+				expressions.add(insertIndex, phrase);
+				str = new StringBuffer();
+				phraseWords = new ArrayList();
+				phrase.setWordTags(phraseWords);
+				phrase.setType(type);
+			}else{
+				if(str.length()==0) phrase.setStart(tw.beginPosition());
+				str.append(word);
+				str.append(" ");
+				phrase.setEnd(tw.endPosition());
+				phrase.setEndIndex(index);
+				phraseWords.add(tw);
 			}
+			
+			index++;
 		}
 		
 		
-		p.setText(str.toString().trim());
-		if(!"".equals(p.getText())) pharseList.add(p);
-		
-		return pharseList;
+		phrase.setText(str.toString().trim());
+		//if(!"".equals(p.getText())) pharseList.add(p);
 	}
-
 
 	/**
 	 * detect in-term negation, e.g., non-motile, non-~~
@@ -403,80 +605,74 @@ public class PhraseParser {
 		}
 	}
 	
-	public static void main(String[] args){
-		PhraseParser extractor = new PhraseParser();
-		/*
-		Phrase p = new Phrase();
-		p.setText("non-motile");
-		extractor.detectIntermNegation(p);
-		System.out.println(p.getText()+":"+p.getNegation());
-		p.setText("nonmotile");
-		extractor.detectIntermNegation(p);
-		System.out.println(p.getText()+":"+p.getNegation());
-		p.setText("a little nonmotile");
-		extractor.detectIntermNegation(p);
-		System.out.println(p.getText()+":"+p.getNegation());
-		p.setText("nonmotile a little ");
-		extractor.detectIntermNegation(p);
-		System.out.println(p.getText()+":"+p.getNegation());
-		*/
-		
-		
-		
-		
-		//extractor.initParser();
-		//Flexirubin-type pigments are not produced.
-		//Gram-negative, short rod, non-motile and not forming spores
-		//Does not hydrolyse DNA, cellulose, CM-cellulose, chitin or Tween 80.
-		//H2S is produced, but indole is not. 
-		//Nitrate is not reduced. 
-		//Aesculin, casein, gelatin, starch and Tween 20 are hydrolysed, but agar, DNA and carboxymethylcellulose are not.
-		//String sentence =" Colonies on solid medium containing 3.0% Noble agar are small and granular with dense centers but do not have a true fried-egg appearance.";
-		//String sentence = "Colonies on solid media (ZoBell 2216e and TSA plus sea water) are yellowish, slightly convex (elevation), entire (margin) and round (configuration). ";
-		String sentence ="Does not hydrolyse DNA, cellulose, CM-cellulose, chitin or Tween 80";
-		//String sentence ="In the API ZYM system, alkaline phosphatase, esterase (C4), esterase lipase (C8), leucine arylamidase, valine arylamidase, cystine arylamidase, acid phosphatase and naphthol-AS-BI-phosphohydrolase activities are present, but lipase (C14), trypsin, α-chymotrypsin, α-galactosidase, β-galactosidase, β-glucuronidase, α-glucosidase, β-glucosidase, N-acetyl-β-glucosaminidase, α-mannosidase and α-fucosidase activities are absent.";
-		//Tree phraseStructure = extractor.parsePhraseStructTree(sentence);
-		//System.out.println(phraseStructure);
-		
-		//extractor.getNounPhrases(phraseStructure);
-		
-		PosTagger posTagger = new PosTagger("edu/stanford/nlp/models/pos-tagger/english-bidirectional/english-bidirectional-distsim.tagger");
-		
-		LexicalizedParser lexParser = LexicalizedParser.loadModel("edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz");
-		StanfordParserWrapper parser = new StanfordParserWrapper(null, lexParser);
-		
-		
-		
-		CSVSentenceReader trainingSentenceReader = new CSVSentenceReader();
-		String sentFile = "F:\\MicroPIE\\micropieInput\\sentences\\keywordbased.txt";
-		trainingSentenceReader.setInputStream(sentFile);
-		
-		
-		List<TaggedWord> taggedWords  = posTagger.tagString(sentence);
-		System.out.println(sentence+"\nPOS:");
-		//System.out.println(sentence);
-		System.out.println(taggedWords);
-		List<Phrase> phraseList = extractor.extract(taggedWords);
-		for(Phrase p : phraseList){
-			System.out.println(p.getNegation()+"|"+p.getText()+" ["+p.getStart()+"-"+p.getEnd()+"]");
+	
+	/**
+	 * if it's NP, then the nouns are the core component
+	 * if it's JP, then the adjectives are the core component
+	 * @param phrase
+	 * @return
+	 */
+	public String detectCore(Phrase phrase){
+		StringBuffer core = new StringBuffer();
+		List<TaggedWord> twList = phrase.getWordTags();
+		if("N".equals(phrase.getType())){
+			for(int i=twList.size()-1;i>=0;i--){
+				TaggedWord tw = twList.get(i);
+				String tag = tw.tag();
+				if(nounNodeNames.contains(tag)||tw.tag().equals("CD")||tw.tag().equals("CC")){
+					core.insert(0, " ").insert(0, tw.word());
+				}else if(tw.tag().equals("IN")){
+					core.delete(0, core.length());
+				}
+			}
+		}else if("J".equals(phrase.getType())){
+			for(int i=twList.size()-1;i>=0;i--){
+				TaggedWord tw = twList.get(i);
+				String tag = tw.tag();
+				if(adjNames.contains(tag)){
+					core.insert(0, " ").insert(0, tw.word());
+				}else{
+					break;
+				}
+			}
 		}
 		
-		/*
-		List<RawSentence> trainingSentences = trainingSentenceReader.readOneColumnSentenceList();
+		return core.toString().trim();
+	}
+	
+	/**
+	 * if it's NP, then the adjectives before the core are the modifiers
+	 * if it's JP, then the adverbs before the core are the modifiers
+	 * @param phrase
+	 * @return
+	 */
+	public String detectModifier(Phrase phrase){
+		StringBuffer modifier = new StringBuffer();
+		List<TaggedWord> twList = phrase.getWordTags();
+		if("N".equals(phrase.getType())){
+			boolean begin = false;
+			for(int i=twList.size()-1;i>=0;i--){
+				TaggedWord tw = twList.get(i);
+				String tag = tw.tag();
+				if(nounNodeNames.contains(tag)||tw.tag().equals("CD")){
+					if(!begin&&phrase.getCore().indexOf(tw.word())>-1) begin= true;
+					continue;
+				}else if(adjNames.contains(tag)&&begin){
+					modifier.insert(0, " ").insert(0, tw.word());
+				}
+			}
+		}else if("J".equals(phrase.getType())){
+			for(int i=twList.size()-1;i>=0;i--){
+				TaggedWord tw = twList.get(i);
+				String tag = tw.tag();
+				if(adjNames.contains(tag)){
+					continue;
+				}else if(advModifierTag.contains(tag)){
+					modifier.insert(0, " ").insert(0, tw.word());
+				}
+			}
+		}
 		
-		for(RawSentence sent : trainingSentences){
-			sentence = sent.getText();
-	 
-			System.out.println(sentence);
-	 		//Tree tree = parser.parsePhraseTree(sentence);
-			//extractor.extract(tree);
-			
-			List<TaggedWord> taggedWords  = posTagger.tagString(sentence);
-			System.out.println("\nPOS:\n");
-			//System.out.println(sentence);
-			//System.out.println(taggedWords);
-			extractor.extract(taggedWords);
-		}*/
-		
+		return modifier.toString().trim();
 	}
 }

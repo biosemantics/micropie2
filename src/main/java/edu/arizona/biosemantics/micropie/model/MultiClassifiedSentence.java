@@ -37,7 +37,6 @@ public class MultiClassifiedSentence extends Sentence{
 
 	public void setPredictions(Set<ILabel> predictions) {
 		this.predictions = predictions;
-		System.out.println("prediction="+predictions+" categories="+categories);
 	}
 
 	public Set<ILabel> getCategories() {
@@ -46,7 +45,6 @@ public class MultiClassifiedSentence extends Sentence{
 
 	public void setCategories(Set<ILabel> categories) {
 		this.categories = categories;
-		System.out.println("prediction="+predictions+" categories="+categories);
 	}
 
 	public SentenceMetadata getSentMetadata() {

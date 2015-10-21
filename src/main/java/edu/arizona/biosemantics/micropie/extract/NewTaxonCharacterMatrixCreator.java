@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie.extract;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.Matrix;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
+import edu.arizona.biosemantics.micropie.model.Phrase;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 
 /**
@@ -150,8 +152,10 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 				}
 			}
 
-			System.out.println("predictions:"+predictions.size()+" "+predictions+" extractors: "+extractors.size());
-			// call the extractors one by one
+			System.out.println(classifiedSentence.getText()+"\npredictions:"+predictions.size()+" "+predictions+" extractors: "+extractors.size());
+			
+			//List<CharacterValue> sentCharValues = new ArrayList();
+			// call the extractors one by one according to the predicted characters
 			for (ICharacterValueExtractor extractor : extractors) {
 				String character = extractor.getCharacterName();
 				ILabel label = extractor.getLabel();
@@ -169,8 +173,23 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 					charValues = extractor.getCharacterValue(classifiedSentence);
 				}
 				
-				
 				parseResult(matrix, taxonFile, label, charValues);
+				//sentCharValues.addAll(charValues);
+			}
+			
+			
+			//to check whether there are some phrases that do not identified any values
+			List<List<Phrase>> phrases = classifiedSentence.getPhraseList();
+			if(phrases!=null&&phrases.size()>0){//need to parse before this step
+				for(List<Phrase> plist:phrases){
+					for(Phrase p:plist){
+						if(p.getCharValue()==null){
+							System.out.println("no value identified:"+p.getText());
+						}else{
+							System.out.println("values are found:"+p.getCharValue());
+						}
+					}
+				}
 			}
 		}
 	}

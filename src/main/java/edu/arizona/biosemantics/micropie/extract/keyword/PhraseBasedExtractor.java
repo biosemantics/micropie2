@@ -58,9 +58,9 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 
 	@Override
 	public List<CharacterValue> getCharacterValue(Sentence sentence) {
-		List<CharacterValue> charValueList = null;
+		List<CharacterValue> charValueList =  new ArrayList();
 		//System.out.println("sentence:"+sentence.getText());
-		Set<String> returnCharacterStrings = new HashSet<String>();
+		//Set<String> returnCharacterStrings = new HashSet<String>();
 		
 		MultiClassifiedSentence sent = (MultiClassifiedSentence)sentence;
 		this.posSentence(sent);//get sub sentences and their tagged words list
@@ -72,6 +72,7 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 			if(allPhraseList==null){
 				createPhraseList = true;
 				allPhraseList = new ArrayList();
+				sent.setPhraseList(allPhraseList);
 			}
 			for(int subsent=0;subsent<taggedWordList.size();subsent++){
 				List<Phrase> phraseList = null;
@@ -82,7 +83,7 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 					phraseList = allPhraseList.get(subsent);
 				}
 				
-				for(Phrase pharse : phraseList){//deal with each pharse
+				for(Phrase pharse : phraseList){//deal with each phrase
 					String text = pharse.getText().toLowerCase();
 					if(text==null||"".equals(text)) continue; 
 					
@@ -92,7 +93,10 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 						boolean isId = extract(keywordString, text);
 						
 						if(isId){
-							returnCharacterStrings.add(text);
+							CharacterValue charVal = CharacterValueFactory.create(this.getLabel(),text);
+							pharse.setCharValue(charVal);
+							charValueList.add(charVal);
+							//returnCharacterStrings.add(text);
 							continue;//if has found the value;
 						}
 						List<String> subKeywordList = subKeywords.get(keywordString);
@@ -103,7 +107,10 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 							isExist = extract(subKeyword, text);
 							//System.out.println("subkeywords:"+subKeyword+"[ "+text+" ]"+isExist);
 							if(isExist){
-								returnCharacterStrings.add(text);
+								CharacterValue charVal = CharacterValueFactory.create(this.getLabel(),text);
+								pharse.setCharValue(charVal);
+								charValueList.add(charVal);
+								//returnCharacterStrings.add(text);
 								break;
 							}
 						}
@@ -115,7 +122,7 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 				}
 			}
 			//System.out.println("returnCharacterStrings="+returnCharacterStrings);
-			charValueList = CharacterValueFactory.createList(this.getLabel(), returnCharacterStrings);
+			//charValueList = CharacterValueFactory.createList(this.getLabel(), returnCharacterStrings);
 		}
 		return charValueList;
 	}

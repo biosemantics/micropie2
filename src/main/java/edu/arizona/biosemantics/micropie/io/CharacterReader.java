@@ -2,6 +2,7 @@ package edu.arizona.biosemantics.micropie.io;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -13,6 +14,8 @@ import au.com.bytecode.opencsv.CSVReader;
 import edu.arizona.biosemantics.micropie.classify.CategoryLabel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.classify.LabelPhraseValueType;
+import edu.arizona.biosemantics.micropie.extract.PhraseValueType;
 
 /**
  * Read the categories and parse the mappings ILabel<-->CategoryCode
@@ -140,7 +143,7 @@ public class CharacterReader {
 					
 					String upperCategoryCode = categoryCode.substring(0, categoryCode.indexOf("."));
 					ILabel upperLabel = CategoryLabel.getEnum(upperCategoryCode);
-					System.out.println(categoryCode+" "+categoryName+" "+label+" "+upperCategoryCode+" "+upperLabel);
+					//System.out.println(categoryCode+" "+categoryName+" "+label+" "+upperCategoryCode+" "+upperLabel);
 					labelCategoryCodeMap.put(label,categoryCode);
 					categoryCodeLabelMap.put(categoryCode, label);
 					labelCategoryNameMap.put(label, categoryName);
@@ -153,6 +156,49 @@ public class CharacterReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	/**
+	 * read the configuration of labelvaluetype
+	 * @param labelValueTypeFile
+	 * @return
+	 */
+	public LabelPhraseValueType readLabelValueType(String labelValueTypeFile){
+		LabelPhraseValueType lpt = new LabelPhraseValueType();
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(labelValueTypeFile),
+							"UTF8"));
+			String line = null;
+			while((line=br.readLine())!=null){
+				if(!line.startsWith("#")&&!"".equals(line.trim())){
+					String[] field = line.split("\\\"\\,");
+					Label label = Label.getEnum(field[0].replace("\"", ""));
+					String[] allowValueTypes = field[1].replace("\"", "").split(",");
+					for(String avt : allowValueTypes){
+						//PhraseValueType pvt = PhraseValueType.getEmum(avt);
+						if("NU".equals(avt)){
+							lpt.nuCharSet.add(label);
+						}else if("NP".equals(avt)){
+							lpt.npCharSet.add(label);
+						}else if("JP".equals(avt)){
+							lpt.jpCharSet.add(label);
+						}else{
+							lpt.spCharSet.add(label);
+						}
+					}
+				}
+			}
+			br.close();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return lpt;
 	}
 
 }

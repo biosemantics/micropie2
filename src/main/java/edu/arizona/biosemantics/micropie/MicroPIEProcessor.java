@@ -189,8 +189,8 @@ public class MicroPIEProcessor{
 			testSentence.setPredictions(prediction);
 			testSentence.setCategories(categories);
 			
-			System.out.println("prediction="+prediction+" categories="+categories);
-			System.out.println("prediction="+testSentence.getPredictions()+" categories="+testSentence.getCategories());
+			//System.out.println("prediction="+prediction+" categories="+categories);
+			//System.out.println("prediction="+testSentence.getPredictions()+" categories="+testSentence.getCategories());
 		}
 		
 		if(predictionFile!=null){

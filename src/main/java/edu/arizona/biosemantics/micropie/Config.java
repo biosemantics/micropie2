@@ -30,6 +30,7 @@ import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.CategoryLabel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.classify.LabelPhraseValueType;
 import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.CharacterValueExtractorProvider;
 import edu.arizona.biosemantics.micropie.extract.CharacterValueExtractorReader;
@@ -121,6 +122,7 @@ public class Config extends AbstractModule {
 	//System Parameters
 	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_poster.txt";
 	private String firstLevelCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_category.txt";
+	private String labelValutypeFile ="svmlabelandcategorymapping/character_valuetype.txt";
 	//private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
 	
 	private String testFolder = "input";
@@ -378,16 +380,14 @@ public class Config extends AbstractModule {
 		
 		
 		//configure the extractors
-		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(getCharacterValueExtractors(characterValueExtractorsFolder, 
-		 		uspResultsDirectory, uspString));
+		bind(LabelPhraseValueType.class).toInstance(getLabelPhraseValueType(labelValutypeFile));
 		
 		bind(ICharacterValueExtractorProvider.class).to(CharacterValueExtractorProvider.class).in(Singleton.class);
 		
-		
-		
+		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(getCharacterValueExtractors(characterValueExtractorsFolder, 
+		 		uspResultsDirectory, uspString));
 		
 		weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO, "Weka Logging started"); 
-		
 		
 		//bind(IRun.class).to(TrainTestRun.class).in(Singleton.class);
 		bind(TrainSentenceClassifier.class).in(Singleton.class);
@@ -395,6 +395,15 @@ public class Config extends AbstractModule {
 		bind(MicroPIEProcessor.class);
 		bind(MicroPIEProcessorOld.class);
 		bind(SentenceBatchProcessor.class).in(Singleton.class);
+	}
+
+	/**
+	 * provide  labelValutypeFile
+	 * @param labelValutypeFile2
+	 * @return
+	 */
+	private LabelPhraseValueType getLabelPhraseValueType(String labelValutypeFile) {
+		return  new CharacterReader().readLabelValueType(labelValutypeFile);
 	}
 
 	/**
@@ -450,6 +459,7 @@ public class Config extends AbstractModule {
 		
 		svmLabelAndCategoryMappingFile = inputDirectory + File.separator + svmLabelAndCategoryMappingFile;
 		firstLevelCategoryMappingFile = inputDirectory + File.separator + firstLevelCategoryMappingFile;
+		labelValutypeFile  = inputDirectory + File.separator + labelValutypeFile;
 		
 		characterValueExtractorsFolder = inputDirectory + File.separator + characterValueExtractorsFolder;
 		abbreviationFile = inputDirectory + File.separator + abbreviationFile;
