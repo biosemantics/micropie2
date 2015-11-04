@@ -19,6 +19,7 @@ import com.google.inject.name.Named;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.keyword.KeywordBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
+import edu.arizona.biosemantics.micropie.extract.keyword.SalinityPreferenceExtractor;
 import edu.arizona.biosemantics.micropie.extract.usp.USPBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.usp.USPRequest;
 import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
@@ -126,14 +127,14 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 				//jin 09-24-2015
 				if(strLine.indexOf("|")>-1){
 					String[] fields = strLine.split("\\|");
-					String keyword = fields[0].trim();
+					String keyword = fields[0].trim().replace("-", " ");
 					keywords.add(keyword);
 					subKeywords.put(keyword,new ArrayList());
 					for(int i=1;i<fields.length;i++){
-						subKeywords.get(keyword).add(fields[i].trim());
+						subKeywords.get(keyword).add(fields[i].trim().replace("-", " "));
 					}
 				}else{
-					keywords.add(strLine.trim());
+					keywords.add(strLine.trim().replace("-", " "));
 				}
 				
 			}
@@ -143,6 +144,13 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		}
 		//return new KeywordBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
 		//SentenceSpliter must be set latter
-		return new PhraseBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
+		Label label = Label.valueOf(labelName);
+		if(label==Label.c59){
+			SalinityPreferenceExtractor saliPrefExtractor = new SalinityPreferenceExtractor(label, characterName,keywords,subKeywords);
+			return saliPrefExtractor;
+		}else{
+			return new PhraseBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
+		}
+		
 	}
 }

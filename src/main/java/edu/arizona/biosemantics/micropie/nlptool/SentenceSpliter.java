@@ -17,8 +17,10 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SubSentence;
+import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -292,6 +294,26 @@ public class SentenceSpliter {
 		return sentArr;
 	}
 	
+	
+	/**
+	 * 1, seprate by ; 
+	 * 2, extract the inner clause embedded by brackets.
+	 * @return
+	 */
+	public String removeBrackets(String sent){
+		//int leftBracket = sent.indexOf("(");
+		//int rightBracket = sent.indexOf(")");
+		Pattern pattern = Pattern.compile("(?<=\\()(.+?)(?=\\))");
+        Matcher matcher = pattern.matcher(sent);
+        while(matcher.find()){
+        	String innerClause = matcher.group();
+			sent = sent.replace(innerClause, "");
+        }
+        sent = sent.replace("(", "");
+        sent = sent.replace(")", "");
+		return sent;
+	}
+	
 	/**
 	 * split a sentence into sentences
 	 * @param sentence
@@ -301,5 +323,22 @@ public class SentenceSpliter {
 		return sentence.split(";");
 	}
 	
+	
+	
+	/**
+	 * Split sentences from a single file
+	 * @param inputFile
+	 * @return
+	 */
+	public List<MultiClassifiedSentence> createSentencesFromFile(TaxonTextFile taxonFile) {
+		List<String> sentences = this.split(taxonFile.getText());
+		List<MultiClassifiedSentence> result = new LinkedList<MultiClassifiedSentence>();
+		for (String subsentence : sentences) {
+			MultiClassifiedSentence sentence = new MultiClassifiedSentence(subsentence);
+			result.add(sentence);
+		}
+		
+		return result;
+	}
 	
 }

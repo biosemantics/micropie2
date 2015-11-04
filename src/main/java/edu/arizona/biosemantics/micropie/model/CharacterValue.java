@@ -93,6 +93,38 @@ public class CharacterValue {
 	
 	
 	public String toString(){
-		return this.value;
+		return this.character+":"+this.negation+"|"+this.valueModifier+"|"+this.value;
 	}
+	
+	@Override
+	public boolean equals(Object obj){
+		//if (!(obj instanceof CharacterValue))
+			//return false;	
+		if (obj == this)
+			return true;
+		if(obj == null) return false;
+		if(this.hashCode()==obj.hashCode()){
+			//System.out.println(this+" "+ obj+" "+ this.hashCode()+" "+obj.hashCode());
+			return true;
+		}
+		return false;
+	}
+	
+	
+	/**
+	 * 	ILabel character;//Tempature_optimal
+	 *  String negation; /
+	 *	String valueModifier;
+	 * String unit; //the unit
+	 */
+	@Override
+    public int hashCode() {
+        int hash = 1;
+        hash = hash * 17 + (character == null ? 0 : character.hashCode());
+        hash = hash * 31 + (negation == null ? 0 : negation.hashCode());
+        hash = hash * 13 + (valueModifier == null ? 0 : valueModifier.hashCode());
+        hash = hash * 19 + (unit == null ? 0 : unit.hashCode());
+        hash = hash * 13 + (value == null ? 0 : value.hashCode());
+        return hash;
+    }
 }

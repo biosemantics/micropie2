@@ -6,10 +6,15 @@ import java.util.Map;
 import java.util.Set;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.context.RelationParser;
+import edu.arizona.biosemantics.micropie.extract.keyword.AntibioticPhraseExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
+import edu.arizona.biosemantics.micropie.extract.keyword.SalinityPreferenceExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.AntibioticSyntacticExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellDiameterExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellLengthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellScaleExtractor;
@@ -29,8 +34,10 @@ import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempOptimumExtracto
 import edu.arizona.biosemantics.micropie.extract.regex.InorganicSubstancesNotUsedExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.OrganicCompoundsNotUsedOrNotHydrolyzedExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.PHTempNaClExtractor;
+import edu.arizona.biosemantics.micropie.nlptool.PhraseParser;
 import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
+import edu.arizona.biosemantics.micropie.nlptool.StanfordParserWrapper;
 
 
 /**
@@ -52,7 +59,12 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 	 */
 	public CharacterValueExtractorProvider(Set<ICharacterValueExtractor> extractors,
 			SentenceSpliter sentSplitter,
-			PosTagger posTagger) {
+			PosTagger posTagger,
+			StanfordParserWrapper stanfordWrapper,
+			@Named("sensitiveTerms")Set<String> sensitiveTerms,
+			@Named("sensitivePatterns")Set<String> sensitivePatterns,
+			@Named("resistantTerms")Set<String> resistantTerms,
+			@Named("resistantPatterns")Set<String> resistantPatterns) {
 		/*
 		//Elvis's Method
 		//Add additional more "customized" extractors than the universal keyword based one
@@ -99,6 +111,15 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		extractors.add(new FermentationSubstratesNotUsed(Label.c56));
 		
 		
+		PhraseParser phraseParser = new PhraseParser();
+		RelationParser phraseRelationParser = new RelationParser();
+		
+		extractors.add(new AntibioticSyntacticExtractor(Label.c32, "Antibiotic sensitivity",sensitivePatterns,sentSplitter,stanfordWrapper));
+		extractors.add(new AntibioticPhraseExtractor(Label.c32, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, sensitiveTerms));
+		extractors.add(new AntibioticSyntacticExtractor(Label.c33, "Antibiotic sensitivity",resistantPatterns,sentSplitter,stanfordWrapper));
+		extractors.add(new AntibioticPhraseExtractor(Label.c33, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, resistantTerms));
+
+		//convert to a label-extractor map
 		for(ICharacterValueExtractor extractor : extractors) {
 			if(!labelExtractorsMap.containsKey(extractor.getLabel()))
 				labelExtractorsMap.put(extractor.getLabel(), new HashSet<ICharacterValueExtractor>());
@@ -107,6 +128,12 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 			//phrase based extractor
 			if(extractor instanceof PhraseBasedExtractor){
 				((PhraseBasedExtractor) extractor).setPosTagger(posTagger);
+				((PhraseBasedExtractor) extractor).setPhraseParser(phraseParser);
+				//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
+			}
+			if(extractor instanceof SalinityPreferenceExtractor){
+				((SalinityPreferenceExtractor) extractor).setPosTagger(posTagger);
+				((SalinityPreferenceExtractor) extractor).setPhraseParser(phraseParser);
 				//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
 			}
 		}
@@ -115,6 +142,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		ICharacterValueExtractor gcFigureExtractor = new GcFigureExtractor(sentSplitter, posTagger, Label.c1, "%G+C");
 		ICharacterValueExtractor ptnFigureExtractor = new PHTempNaClExtractor(sentSplitter, posTagger, null, "PHTempNacl");
 		ICharacterValueExtractor cellScaleFigureExtractor = new CellScaleExtractor(sentSplitter, posTagger, null, "CellScale");
+		
 		
 		labelExtractorsMap.get(Label.c1).add(gcFigureExtractor);
 		labelExtractorsMap.get(Label.c3).add(cellScaleFigureExtractor);
@@ -131,6 +159,10 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		labelExtractorsMap.get(Label.c24).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c25).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c26).add(ptnFigureExtractor);
+		
+		
+		
+		
 		
 		/*
 		for(Label label: Label.values()){

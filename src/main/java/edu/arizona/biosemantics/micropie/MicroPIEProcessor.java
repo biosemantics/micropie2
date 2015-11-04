@@ -11,6 +11,7 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
@@ -163,6 +164,14 @@ public class MicroPIEProcessor{
 			matrixWriter.write(matrix, labelCategoryNameMap);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			try {
+				matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile+new Random().nextInt(), true));
+				matrixWriter.write(matrix, labelCategoryNameMap);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}catch (Exception e1) {
+				e.printStackTrace();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -180,7 +189,7 @@ public class MicroPIEProcessor{
 		//parse the taxon file information
 		TaxonTextFile taxonFile = readTaxonFile(inputFile);
 		//STEP 1: split sentences
-		List<MultiClassifiedSentence> sentences = this.createSentencesFromFile(taxonFile);
+		List<MultiClassifiedSentence> sentences = sentenceSpliter.createSentencesFromFile(taxonFile);
 		
 		//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
 		for (MultiClassifiedSentence testSentence : sentences) {
@@ -224,21 +233,6 @@ public class MicroPIEProcessor{
 	}
 
 
-	/**
-	 * Split sentences from a single file
-	 * @param inputFile
-	 * @return
-	 */
-	private List<MultiClassifiedSentence> createSentencesFromFile(TaxonTextFile taxonFile) {
-		List<String> sentences = sentenceSpliter.split(taxonFile.getText());
-		List<MultiClassifiedSentence> result = new LinkedList<MultiClassifiedSentence>();
-		for (String subsentence : sentences) {
-			MultiClassifiedSentence sentence = new MultiClassifiedSentence(subsentence);
-			result.add(sentence);
-		}
-		
-		return result;
-	}
 
 
 	/**

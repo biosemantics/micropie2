@@ -33,7 +33,7 @@ public class SentencePredictor{
 	@Inject
 	public SentencePredictor(MultiSVMClassifier classifier,
 			@Named("trainedModelFile") String trainedModelFile) {
-		System.out.println("trainedModelFile="+trainedModelFile);
+		//System.out.println("trainedModelFile="+trainedModelFile);
 		this.msvmClassifier = classifier;
 		try {
 			msvmClassifier.loadClassifier(trainedModelFile);

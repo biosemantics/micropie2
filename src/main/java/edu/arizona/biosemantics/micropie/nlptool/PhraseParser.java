@@ -19,6 +19,7 @@ import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.Label;
 import edu.stanford.nlp.ling.LabeledWord;
 import edu.stanford.nlp.ling.TaggedWord;
+import edu.stanford.nlp.ling.Word;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.tregex.TregexMatcher;
@@ -73,15 +74,15 @@ public class PhraseParser {
 	//meaningful tag in the sequence for noun
 	private static Set meaningfulTag = new HashSet();
 	static {
-		meaningfulTag.add("DT");
+		//meaningfulTag.add("DT");//determiner 表示限定词, a word (such as “a,” “the,” “some,” “any,” “my,” or “your”) 
 		meaningfulTag.add("JJ");
 		meaningfulTag.add("JJR");
 		meaningfulTag.add("JJS");
-		meaningfulTag.add("NN");
+		//meaningfulTag.add("NN");
 		meaningfulTag.add("RB");
-		//meaningfulTag.add("VBG");
+		meaningfulTag.add("VBG");
 		//meaningfulTag.add("VBN");
-		meaningfulTag.add("IN");
+		//meaningfulTag.add("IN"); in of at with .....
 		meaningfulTag.add("CD");
 		meaningfulTag.add(":");
 		meaningfulTag.add("FW");
@@ -115,7 +116,7 @@ public class PhraseParser {
 	
 	private static Set breakWord = new HashSet();
 	static {
-		breakWord.add("and");
+		//breakWord.add("and");
 		breakWord.add("but");
 		breakWord.add("or");
 		breakWord.add("as");
@@ -133,9 +134,55 @@ public class PhraseParser {
 		negationSet.add("cann't");
 		negationSet.add("cannot");
 		negationSet.add("absent");
+		negationSet.add("devoid");
 	}
 	
 	
+	/**
+	 * allowed tags in the verb phrases
+	 */
+	private static Set verbSet = new HashSet();
+	static{
+		verbSet.add("VBZ");// verb, present tense,3rd person singular
+		verbSet.add("VBP");//are
+		verbSet.add("VBD");//verb, past tense
+		verbSet.add("VBN");// verb, past participle
+		verbSet.add("VBG");//verb, present participle or gerund
+		verbSet.add("VB");
+	}
+	
+	
+	/**
+	 * allowed tags in the verb phrases
+	 */
+	private static Set verbPhraseSet = new HashSet();
+	static{
+		verbPhraseSet.add("IN");
+		verbPhraseSet.add("ADV");
+		verbPhraseSet.add("RB");//adverb
+		verbPhraseSet.add("RBR");
+		verbPhraseSet.add("RBS");
+		verbPhraseSet.add("RP");//particle
+		verbPhraseSet.add("TO");
+	}
+	
+	
+	
+	/**
+	 * allowed tags in the verb phrases
+	 */
+	private static Set verbStopSet = new HashSet();
+	static{
+		verbStopSet.add("=");
+		verbStopSet.add("is");
+		verbStopSet.add("was");
+		verbStopSet.add("are");
+		verbStopSet.add("were");
+	}
+	
+	/**
+	 * stop words
+	 */
 	private static Set stopWordSet = new HashSet();
 	static{
 		stopWordSet.add("and");
@@ -145,6 +192,8 @@ public class PhraseParser {
 		stopWordSet.add("on");
 		stopWordSet.add("above");
 		stopWordSet.add("for");
+		stopWordSet.add("of");
+		stopWordSet.add("not");
 		
 	}
 	
@@ -178,27 +227,117 @@ public class PhraseParser {
 	
 	/**
 	 * working with the phrase structure parse tree, rather than the dependencies representation.
+	 * only reture noun phrases
 	 * deepest search
 	 * @param parse
 	 * @return
 	 */
-	public List<Phrase> extract(Tree tree){
+	public List<Phrase> extractNounPharse(Tree tree){
 		List<Phrase> foundPhraseNodes = new ArrayList();
 		depthTraval(tree, foundPhraseNodes);
-		
 		return foundPhraseNodes;
 	}
 	
 	
+	
+	/**
+	 * was isolated from
+	 * isolated in 1977 from
+	 * 
+	 * see: Etzioni, O., Fader, A., Christensen, J., Soderland, S., & Mausam, M. (2011, July). Open Information Extraction: The Second Generation. In IJCAI (Vol. 11, pp. 3-10).
+	 * V | V P | VWP
+	 * V = verb particle? adv?
+	 * W = (noun | adj | adv | pron | det)
+	 * P = (prep | particle | inf. marker)
+	 * @param tree
+	 * @param verbPhraseNodes
+	 */
+	public List<Phrase> extractVerbPharse(Tree tree){
+		List<LabeledWord> wordList = tree.labeledYield();
+		int size = wordList.size();
+		
+		List<Phrase> verbPhraseNodes = new ArrayList();
+		for(int vid = 0; vid<size; vid++){
+			LabeledWord word = wordList.get(vid);
+			String text = word.word();
+			String tag = word.tag().value();
+			
+			if(verbSet.contains(tag)&&!verbStopSet.contains(text)){//a verb candidate
+				Phrase phrase = new Phrase();
+				phrase.setStart(word.beginPosition());
+				phrase.setStartIndex(vid);
+				phrase.setEnd(word.endPosition());
+				phrase.setEndIndex(vid);
+				phrase.setText(text);
+				
+				backwardSearchVerbPhrase(wordList,phrase,vid);
+				forwardSearchVerbPhrase(wordList,phrase,vid);
+				
+				phrase.setType("V");
+				
+				verbPhraseNodes.add(phrase);
+			}
+		}
+		
+		return verbPhraseNodes;
+	}
+
+
+	/**
+	 * forward search the allowed verb tags
+	 * @param wordList
+	 * @param text
+	 * @param vid
+	 */
+	public void forwardSearchVerbPhrase(List<LabeledWord> wordList, Phrase phrase, int vid) {
+		for(int j=vid+1;j<wordList.size();j++){
+			LabeledWord word = wordList.get(j);
+			String text = word.word();
+			String tag = word.tag().value();
+			if(verbPhraseSet.contains(tag)){
+				phrase.setText(phrase.getText()+" "+text);
+				phrase.setEnd(word.endPosition());
+				phrase.setEndIndex(j);
+			}else{
+				break;
+			}
+		}
+	}
+
+
+	/**
+	 * backward search the allowed verb tags
+	 * @param wordList
+	 * @param text
+	 * @param vid
+	 */
+	public void backwardSearchVerbPhrase(List<LabeledWord> wordList, Phrase phrase, int vid) {
+		for(int j=vid-1;j>0;j--){
+			LabeledWord word = wordList.get(j);
+			String text = word.word();
+			String tag = word.tag().value();
+			if(verbPhraseSet.contains(tag)){
+				phrase.setText(text+" "+phrase.getText());
+				phrase.setStart(word.beginPosition());
+				phrase.setStartIndex(j);
+			}else{
+				break;
+			}
+		}
+	}
+
+
 	/**
 	 * Depth-First-Search
+	 * 
+	 * 
 	 * @param tree
 	 * @param path
 	 */
 	public void depthTraval(Tree tree, List<Phrase> foundPhraseNodes){
 		 if (tree == null || tree.isLeaf()) {
-		        return;
-		    }
+		    return;
+		 }
 
 
 		 Label label = tree.label();
@@ -206,6 +345,7 @@ public class PhraseParser {
 		 //if (!tree.isLeaf()&&tree.children().length==1&&tree.firstChild().isLeaf()) {//it's the leaf
 		 // if (tree.isPhrasal()&&tree.isUnaryRewrite()) {//it's the leaf
 		    CoreLabel coreLabel = ((CoreLabel) label);
+		    //System.out.println(tree.firstChild().depth()+" "+coreLabel.beginPosition()+" "+coreLabel.endPosition());
 		    //Tree match = tree.firstChild();
 		   // String text  =((CoreLabel)match.label()).getString(OriginalTextAnnotation.class);
 		    //String curText  = coreLabel.getString(OriginalTextAnnotation.class);
@@ -214,7 +354,13 @@ public class PhraseParser {
 	        
 		   // System.out.println(category+ " "+text);
 	        if (nounNodeNames.contains(category)||adjNames.contains(category)) {
+//	        	List<Word> wordList = tree.yieldWords();
+//	        	int start = wordList.get(0).beginPosition();
+//	        	int end = wordList.get(wordList.size()-1).endPosition();
 	            Phrase phrase = flatten(tree);
+//	            phrase.setStart(start);
+//	            phrase.setEnd(end);
+	            
 	            if (! foundPhraseNodes.contains(phrase)) {
 	                foundPhraseNodes.add(phrase);
 	            } else {
@@ -222,8 +368,7 @@ public class PhraseParser {
 	            }
 	            return;
 		    }
-		    
-		 }
+		}
 		List<Tree> kids = tree.getChildrenAsList();
 		
 		for (Tree kid : kids) {
@@ -242,12 +387,15 @@ public class PhraseParser {
 	private Phrase flatten(Tree tree) {
 		
 		String phraseStr = "";
+		int start = tree.labeledYield().get(0).beginPosition();
+		int end = tree.labeledYield().get(tree.labeledYield().size()-1).beginPosition();; 
 		for(LabeledWord word : tree.labeledYield()){
 			phraseStr += word.word() +" ";
 		}
 		Phrase newPhrase = new Phrase();
 		newPhrase.setText(phraseStr.trim());
-		//System.out.println(phraseStr);
+		newPhrase.setStart(start);
+		newPhrase.setEnd(end);
 		return newPhrase;
 	}
 
@@ -447,6 +595,21 @@ public class PhraseParser {
 			filter(phrase,expressions);
 		}
 		
+		
+		//filter the expression
+		// empity phrase, nul phrase, figure phrase
+		for(int i=0; i<expressions.size();){
+			Phrase phrase = expressions.get(i);
+			//not empty
+			if(phrase.getWordTags().size()==0||phrase.getText().trim().isEmpty()||phrase.getWordTags().get(0).equals("CD")){
+				expressions.remove(phrase);
+			}else{
+				i++;
+			}
+		}
+				
+				
+		
 		//detect the core of the phrase
 		for(int i=0; i<expressions.size();i++){
 			Phrase phrase = expressions.get(i);
@@ -467,11 +630,12 @@ public class PhraseParser {
 		//}
 		
 		//whether there are outer negations
-		TaggedWord negationWord = detectOuttermNegation(sentTaggedWords);
+		TaggedWord negationWord = detectOutterNegation(sentTaggedWords);
+		//System.out.println("negationWord="+negationWord);
 		if(negationWord!=null){
 			//determine the scope of its application
 			//int negStart = negationWord.beginPosition();
-			// negStart should be in the scope
+			//negStart should be in the scope
 			determineNegationScope(negationWord, sentTaggedWords, expressions);
 		}
 		return expressions;
@@ -504,31 +668,44 @@ public class PhraseParser {
 			if(i==0&&stopWordSet.contains(word)) {
 				
 			}else if(i==0&&!stopWordSet.contains(word)) {
-				str.append(word);
 				str.append(" ");
+				str.append(word);
+				
 				phrase.setStart(tw.beginPosition());
 				phrase.setEnd(tw.endPosition());
 				phraseWords.add(tw);
-			}else if(i>0&&("and".equals(word)||"but".equals(word)||"or".equals(word))) {//not in the first, create a new phrase, add it to the list
-				
-				String tag = meanExp.get(i-1).tag();
-				phrase.setText(str.toString().trim());
-				phrase.setEndIndex(index-1);
-				//if(!"".equals(phrase.getText())) pharseList.add(p);
-				int insertIndex = expressions.indexOf(phrase);
-				String type = phrase.getType();
-				phrase = new Phrase();//a new one
-				phrase.setStart(tw.beginPosition());
-				phrase.setStartIndex(index+1);
-				expressions.add(insertIndex, phrase);
-				str = new StringBuffer();
-				phraseWords = new ArrayList();
-				phrase.setWordTags(phraseWords);
-				phrase.setType(type);
+			}else if(i>0&&("and".equals(word)||"but".equals(word)||"or".equals(word)||"and/or".equals(word))) {//not in the first, create a new phrase, add it to the list
+				//need to judge whether the ahead part has the same phrase type with the latter one
+				String aheadTag = detectCurtag(meanExp.get(i-1).tag());//the tag of the word ahead of this
+				String followTag = detectFollowtag(meanExp, i);
+				//System.out.println(aheadTag+" "+followTag);
+				if(aheadTag.equals(followTag)||followTag==null||i==meanExp.size()-2){//not merge, the left is only one
+					phrase.setText(str.toString().trim().replace(" +","+"));
+					phrase.setEndIndex(index-1);
+					//if(!"".equals(phrase.getText())) pharseList.add(p);
+					int insertIndex = expressions.indexOf(phrase);
+					String type = phrase.getType();
+					phrase = new Phrase();//a new one
+					phrase.setStart(tw.beginPosition());
+					phrase.setStartIndex(index+1);
+					expressions.add(insertIndex, phrase);
+					str = new StringBuffer();
+					phraseWords = new ArrayList();
+					phrase.setWordTags(phraseWords);
+					phrase.setType(type);
+				}else{// not the same type , merge
+					str.append(" ");
+					str.append(word);
+					
+					phrase.setEnd(tw.endPosition());
+					phrase.setEndIndex(index);
+					phraseWords.add(tw);
+				}
 			}else{
 				if(str.length()==0) phrase.setStart(tw.beginPosition());
-				str.append(word);
 				str.append(" ");
+				str.append(word);
+				
 				phrase.setEnd(tw.endPosition());
 				phrase.setEndIndex(index);
 				phraseWords.add(tw);
@@ -537,10 +714,47 @@ public class PhraseParser {
 			index++;
 		}
 		
-		
-		phrase.setText(str.toString().trim());
+		phrase.setText(str.toString().trim().replace(" +","+"));
 		//if(!"".equals(p.getText())) pharseList.add(p);
 	}
+
+	
+	/**
+	 * detect current tag type: N, J, and others
+	 * @param tag
+	 * @return
+	 */
+	private String detectCurtag(String tag) {
+		if(tag.startsWith("J")){
+			tag = "J";
+		}else if(tag.startsWith("N")||tag.startsWith("FW")){
+			return "N";
+		}
+		return tag;
+	}
+
+
+	/**
+	 * detect the tag type following the term i
+	 * @param meanExp
+	 * @param i
+	 * @return
+	 */
+	private String detectFollowtag(List<TaggedWord> meanExp, int i) {
+		String tag = null;
+		for(int j=i;j<meanExp.size();j++){
+			TaggedWord tw = meanExp.get(j);
+			if(tw.tag().startsWith("J")){
+				tag = "J";
+			}else if(tw.tag().startsWith("N")||tw.tag().startsWith("FW")){
+				return "N";
+			}else if(tw.tag().startsWith("RB")){
+				return null;
+			}
+		}
+		return tag;
+	}
+
 
 	/**
 	 * detect in-term negation, e.g., non-motile, non-~~
@@ -564,9 +778,17 @@ public class PhraseParser {
 	 * then to determine what phrases the negations can be applied to.
 	 * 
 	 */
-	public TaggedWord detectOuttermNegation(List<TaggedWord> sentTaggedWords){
-		for(TaggedWord tg : sentTaggedWords){
-			if(negationSet.contains(tg.word())) return tg;
+	public TaggedWord detectOutterNegation(List<TaggedWord> sentTaggedWords){
+		for(int i=0;i<sentTaggedWords.size();i++){
+			TaggedWord tg = sentTaggedWords.get(i);
+			if(negationSet.contains(tg.word().toLowerCase())){
+				if("devoid".equalsIgnoreCase(tg.word())&&"of".equalsIgnoreCase(sentTaggedWords.get(i+1).word())){
+					tg.setWord("devoid of");
+					return tg;
+				}else{
+					return tg;
+				}
+			}
 		}
 		return null;
 	}
@@ -581,26 +803,36 @@ public class PhraseParser {
 			List<TaggedWord> sentTaggedWords, List<Phrase> mfPhrases) {
 		int negStart = negationWord.beginPosition();
 		int negEnd = negationWord.endPosition();
-		//System.out.println("negStart="+negStart);
-		//System.out.println("negEnd="+negEnd);
-		List<List<TaggedWord>> clauseList = clauseSeparator.detect(sentTaggedWords);
-		List<TaggedWord> scopeClause = null;
-		for(List<TaggedWord> clause:clauseList){
-			//System.out.println(clause.get(0).beginPosition()+" "+clause.get(clause.size()-1).endPosition());
-			if(clause.get(0).beginPosition()<=negStart&&clause.get(clause.size()-1).endPosition()>=negEnd){
-				scopeClause = clause;
-				break;
+		if(!"devoid of".equalsIgnoreCase(negationWord.word())){
+			//System.out.println("negStart="+negStart);
+			//System.out.println("negEnd="+negEnd);
+			List<List<TaggedWord>> clauseList = clauseSeparator.detect(sentTaggedWords);
+			List<TaggedWord> scopeClause = null;
+			for(List<TaggedWord> clause:clauseList){
+				//System.out.println(clause.get(0).beginPosition()+" "+clause.get(clause.size()-1).endPosition());
+				if(clause.get(0).beginPosition()<=negStart&&clause.get(clause.size()-1).endPosition()>=negEnd){
+					scopeClause = clause;
+					break;
+				}
 			}
-		}
-		//only one clause 
-		if(scopeClause==null)  scopeClause = clauseList.get(0);
-		
-		int startPos = scopeClause.get(0).beginPosition();
-		int endPos = scopeClause.get(scopeClause.size()-1).endPosition();
-		//System.out.println("negation is applied to "+startPos+" "+endPos);
-		for(Phrase p : mfPhrases){
-			if(p.getStart()>=startPos&&p.getEnd()<=endPos){
-				p.setNegation(negationWord.word());
+			//only one clause 
+			if(scopeClause==null)  scopeClause = clauseList.get(0);
+			
+			int startPos = scopeClause.get(0).beginPosition();
+			int endPos = scopeClause.get(scopeClause.size()-1).endPosition();
+			//System.out.println("negation is applied to "+startPos+" "+endPos);
+			for(Phrase p : mfPhrases){
+				if(p.getStart()>=startPos&&p.getEnd()<=endPos){
+					p.setNegation(negationWord.word());
+				}
+			}
+		}else{//only the following
+			for(int i=mfPhrases.size()-1;i>=0;i--){//reverse
+				Phrase p  =  mfPhrases.get(i);
+				if(p.getStart()>=negEnd){
+					p.setNegation(negationWord.word());
+					break;
+				}
 			}
 		}
 	}

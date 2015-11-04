@@ -81,6 +81,7 @@ public class XMLTextReader implements ITextReader {
 		// Element title = source.getChild("title");
 		String titleText = source.getChildText("title");
 		
+		/*
 		if ( titleText != null && ! titleText.equals("") ) {
 			
 			String lastCharOfTitleText = titleText.substring(titleText.length()-1, titleText.length());
@@ -91,6 +92,7 @@ public class XMLTextReader implements ITextReader {
 			System.out.println("Adding title:" + titleText);
 			returnText += titleText + " ";
 		}
+		*/
 		
 		String text = rootNode.getChildText("description");
 		Element desc = rootNode.getChild("description");
@@ -294,7 +296,20 @@ public class XMLTextReader implements ITextReader {
 	}	
 	
 	
-	
+	public TaxonTextFile readTaxonFile(File inputFile) {
+		XMLTextReader textReader = new XMLTextReader();
+		textReader.setInputStream(inputFile);
+		TaxonTextFile taxonFile = textReader.readFile();
+		taxonFile.setTaxon(taxonFile.getGenus()+" "+taxonFile.getSpecies());
+		
+		
+		String text = textReader.read();
+		taxonFile.setInputFile(null);
+		taxonFile.setText(text);
+		taxonFile.setXmlFile(inputFile.getName());
+		
+		return taxonFile;
+	}
 	// New Schema 2:: 141111	
 	
 	/*

@@ -18,12 +18,15 @@ import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TokensAnnotation;
+import edu.stanford.nlp.ling.Sentence;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 import edu.stanford.nlp.process.TokenizerFactory;
+import edu.stanford.nlp.semgraph.SemanticGraph;
+import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.trees.GrammaticalStructure;
 import edu.stanford.nlp.trees.GrammaticalStructureFactory;
 import edu.stanford.nlp.trees.PennTreebankLanguagePack;
@@ -124,7 +127,7 @@ public class StanfordParserWrapper {
 	
 	
 	/**
-	 * Obtain dependency tree
+	 * Obtain dependency phrase
 	 * @param sent
 	 * @return
 	 */
@@ -144,7 +147,7 @@ public class StanfordParserWrapper {
 	 * @param sent
 	 * @return
 	 */
-	public List<TypedDependency> depParse(String sent){
+	public GrammaticalStructure depParse(String sent){
         Tree parse = parseDepTree(sent);
   
         TreebankLanguagePack tlp = new PennTreebankLanguagePack();  
@@ -153,7 +156,9 @@ public class StanfordParserWrapper {
         //Choose the type of dependenciesCollapseTree  
         //so that dependencies which do not   
         //preserve the tree structure are omitted  
-	    return (List<TypedDependency>) gs.typedDependenciesCollapsedTree(); 
+	   // return (List<TypedDependency>) gs.typedDependenciesCollapsedTree(); 
+        return gs;
 	}
+	
 	
 }

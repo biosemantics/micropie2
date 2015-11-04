@@ -51,22 +51,16 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 	 */
 	public void posSentence(MultiClassifiedSentence sentence){
 		//1, detect sentences
-		List<SubSentence> subSentences = sentence.getSubSentence();
-		if(subSentences == null){
-			subSentences = sentSplitter.detectSnippet(sentence);
-			sentence.setSubSentence(subSentences);
-		}
+		List<SubSentence> subSentences = sentSplitter.detectSnippet(sentence);
+		sentence.setSubSentence(subSentences);
 		
 		//2, postag each subsentence
-		List taggerwordsList = sentence.getSubSentTaggedWords();
-		if(taggerwordsList==null){
-			taggerwordsList = new LinkedList();
-			sentence.setSubSentTaggedWords(taggerwordsList);
-			for(SubSentence subsent:subSentences){
-				String content = subsent.getContent();
-				List<TaggedWord> taggedWords  = posTagger.tagString(content);
-				taggerwordsList.add(taggedWords);
-			}
+		List taggerwordsList = new LinkedList();
+		sentence.setSubSentTaggedWords(taggerwordsList);
+		for(SubSentence subsent:subSentences){
+			String content = subsent.getContent();
+			List<TaggedWord> taggedWords  = posTagger.tagString(content);
+			taggerwordsList.add(taggedWords);
 		}
 	}
 	
@@ -122,7 +116,7 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 					figure+=taggedWords.get(i+1).word();
 					i++;
 				}
-				//System.out.println("it is a figure:"+figure+" "+unit);
+				System.out.println("it is a figure:"+figure+" "+unit);
 				if(i+1<taggedWords.size()){
 					if((taggedWords.get(i+1).word().equals("°")&&taggedWords.get(i+2).word().equals("C"))
 							||taggedWords.get(i+1).word().equals("degree_celsius_1")
@@ -154,7 +148,7 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 					
 				}*/
 				if(!defIsNumber(figure)){
-					//System.err.println("it is not a figure:"+figure+" "+unit);
+					System.err.println("it is not a figure:"+figure+" "+unit);
 				}else{
 					fd.setValue(figure);
 					fd.setTermBegIdx(termId);
@@ -469,12 +463,12 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 					if(taggedWords.get(j).word().equals("to")||taggedWords.get(j).word().equals("-")||taggedWords.get(j).tag().equals(":")){
 						shouldMerge = true;
 					}
-					//System.out.println(curFd.getValue()+" "+curFd.getUnit()+"-"+nextFd.getValue()+" "+nextFd.getUnit());
+					System.out.println(curFd.getValue()+" "+curFd.getUnit()+"-"+nextFd.getValue()+" "+nextFd.getUnit());
 					try{
 						new Double(curFd.getValue()); 
 						new Double(nextFd.getValue());
 					}catch(Exception e){
-						//System.out.println(figure+" is not a figure");
+						//System.out.println(curFd+" is not a figure");
 						continue;
 					}
 					if(taggedWords.get(j).word().equals("and")&&( new Double(curFd.getValue())<new Double(nextFd.getValue()))){// the former and the latter should be the same type
@@ -504,13 +498,22 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 					curFd.setUnit(nextFd.getUnit());
 				}
 				featureList.remove(nextFd);
-				
+				featureList.set(i, curFd);
 			}
 			
-			
+			//System.out.println("merged:"+curFd);
 			i++;
+			/*
+			for(int j=0;j<featureList.size()-1;){
+				System.out.println("merged in:"+featureList.get(j));
+				j++;
+			}*/
 		}//deal all the values
 		
+		/*for(int i=0;i<featureList.size()-1;){
+			System.out.println("merged in:"+featureList.get(i));
+			i++;
+		}*/
 	}
 
 	/**

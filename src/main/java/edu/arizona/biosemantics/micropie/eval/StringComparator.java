@@ -72,6 +72,8 @@ public class StringComparator implements IValueComparator{
 		value = value.replace("??C", "");
 		value = value.replace("??m", "");
 		
+		value = value.replace("-", " ");
+		
 		return value;
 	}
 }

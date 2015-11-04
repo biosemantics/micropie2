@@ -125,6 +125,31 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 		}
 	}
 	
+	
+	/**
+	 * extract one character
+	 * @param keywordString
+	 * @param text
+	 * @param returnCharacterStrings
+	 */
+	public boolean isExist(String keywordString, String text){
+		keywordString = keywordString.toLowerCase().trim();
+		keywordString = keywordString.replace("+", "\\+");
+		keywordString = keywordString.replace("-", " ");
+		text = text.replace("-", " ");
+		String patternString = "^"+keywordString+"\\s|\\s"+keywordString+"\\s|\\s"+keywordString+"$|^"+keywordString+"$"; // regular expression pattern
+		Pattern pattern = Pattern.compile(patternString);
+		Matcher matcher = pattern.matcher(text);			
+		if (matcher.find() && keywordString.length() > 1) {
+			String matchString = matcher.group().trim();
+			if(matchString.substring(matchString.length()-1, matchString.length()).equals(",")) {
+				matchString = matchString.substring(0, matchString.length()-1);
+			}
+			return true;
+		}
+		return false;
+	}
+	
 	public static void main(String[] args){
 		String text = "Colonies on solid media (ZoBell 2216e and TSA plus sea water) are yellowish, slightly convex (elevation), entire (margin) and round (configuration).";
 		String keywordString = "yellowish";
@@ -139,7 +164,7 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 			if(matchString.substring(matchString.length()-1, matchString.length()).equals(",")) {
 				matchString = matchString.substring(0, matchString.length()-1);
 			}
-			System.out.println(matchString);
+			//System.out.println(matchString);
 		}
 	}
 }

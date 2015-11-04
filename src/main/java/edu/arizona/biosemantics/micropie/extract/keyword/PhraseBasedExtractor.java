@@ -32,7 +32,7 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 	//protected SentenceSpliter sentSplitter;
 	protected PosTagger posTagger;
 	
-	private PhraseParser phraseParser = new PhraseParser();
+	private PhraseParser phraseParser = null;
 	
 	@Inject
 	public PhraseBasedExtractor(PosTagger posTagger,ILabel label, String character,
@@ -54,6 +54,10 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 
 	public void setPosTagger(PosTagger posTagger) {
 		this.posTagger = posTagger;
+	}
+
+	public void setPhraseParser(PhraseParser phraseParser) {
+		this.phraseParser = phraseParser;
 	}
 
 	@Override
@@ -93,11 +97,12 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 						boolean isId = extract(keywordString, text);
 						
 						if(isId){
-							CharacterValue charVal = CharacterValueFactory.create(this.getLabel(),text);
-							pharse.setCharValue(charVal);
+							pharse.convertValue(this.getLabel());
+							CharacterValue charVal = pharse.getCharValue();
 							charValueList.add(charVal);
+							//System.out.println("OUTER PHRASE HIT VALUE: ["+charVal+"]");
 							//returnCharacterStrings.add(text);
-							continue;//if has found the value;
+							break;//if has found the value;
 						}
 						List<String> subKeywordList = subKeywords.get(keywordString);
 						if(subKeywordList==null) continue;
@@ -107,10 +112,12 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 							isExist = extract(subKeyword, text);
 							//System.out.println("subkeywords:"+subKeyword+"[ "+text+" ]"+isExist);
 							if(isExist){
-								CharacterValue charVal = CharacterValueFactory.create(this.getLabel(),text);
-								pharse.setCharValue(charVal);
+								//CharacterValue charVal = CharacterValueFactory.create(this.getLabel(),text);
+								//pharse.setCharValue(charVal);
+								pharse.convertValue(this.getLabel());
+								CharacterValue charVal = pharse.getCharValue();
 								charValueList.add(charVal);
-								//returnCharacterStrings.add(text);
+								//System.out.println("INNER PHRASE  HIT VALUE: ["+charVal+"]");
 								break;
 							}
 						}
@@ -136,9 +143,9 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 	public boolean extract(String keywordString, String text){
 		keywordString = keywordString.toLowerCase().trim();
 		keywordString = keywordString.replace("+", "\\+");
-	
+		keywordString = keywordString.replace("-", " ");
+		text = text.replace("-", " ");
 		String patternString = "^"+keywordString+"\\s|\\s"+keywordString+"\\s|\\s"+keywordString+"$|^"+keywordString+"$"; // regular expression pattern
-		//System.out.println(patternString);
 		Pattern pattern = Pattern.compile(patternString);
 		Matcher matcher = pattern.matcher(text);			
 		if (matcher.find() && keywordString.length() > 1) {
@@ -158,13 +165,10 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 	 * @param sentence
 	 */
 	public void posSentence(MultiClassifiedSentence sentence){
-		List taggerwordsList = sentence.getSubSentTaggedWords();
-		if(taggerwordsList==null){
-			taggerwordsList = new LinkedList();
-			sentence.setSubSentTaggedWords(taggerwordsList);
-			String content = sentence.getText();
-			List<TaggedWord> taggedWords  = posTagger.tagString(content);
-			taggerwordsList.add(taggedWords);
-		}
+		List taggerwordsList =  new LinkedList();
+		sentence.setSubSentTaggedWords(taggerwordsList);
+		String content = sentence.getText();
+		List<TaggedWord> taggedWords  = posTagger.tagString(content);
+		taggerwordsList.add(taggedWords);
 	}
 }

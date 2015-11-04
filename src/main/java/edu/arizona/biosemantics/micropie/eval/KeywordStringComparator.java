@@ -25,7 +25,7 @@ public class KeywordStringComparator extends StringComparator{
 		for(int i=0;i<extValues.size();i++){
 			CharacterValue extValue = extValues.get(i);
 			String extValueStr = cleanValue(extValue.getValue()).trim();
-			if(extValueStr.indexOf("and ")>-1){
+			/*if(extValueStr.indexOf("and ")>-1){
 				String[] extDiValus = extValueStr.split("and");
 				extValueStr = extDiValus[0].trim();
 				
@@ -33,7 +33,8 @@ public class KeywordStringComparator extends StringComparator{
 				for(int j=1;j<extDiValus.length;j++){
 					extValues.add(CharacterValueFactory.create(null, extDiValus[j].trim()));
 				}
-			}
+			}*/
+			if(extValue.getNegation()!=null)  extValueStr=extValue.getNegation()+" "+extValueStr;
 			Iterator<CharacterValue> gstValueIter = gstValues.iterator();
 			while(gstValueIter.hasNext()){
 				CharacterValue gstValue = gstValueIter.next();

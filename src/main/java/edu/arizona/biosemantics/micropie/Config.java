@@ -37,6 +37,8 @@ import edu.arizona.biosemantics.micropie.extract.CharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.extract.ICharacterBatchExtractor;
 import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractorProvider;
+import edu.arizona.biosemantics.micropie.extract.keyword.AntibioticPhraseExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.AntibioticSyntacticExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellDiameterExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellLengthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellShapeExtractor;
@@ -45,6 +47,7 @@ import edu.arizona.biosemantics.micropie.extract.regex.CellWidthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.FermentationProductsExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.FermentationSubstratesNotUsed;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GcFigureExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclMaxExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclMinExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclOptimumExtractor;
@@ -63,6 +66,7 @@ import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CharacterReader;
 import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.io.ISentenceReader;
+import edu.arizona.biosemantics.micropie.io.KeywordReader;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
@@ -91,7 +95,7 @@ public class Config extends AbstractModule {
 	// Verison 2, March 08, 2015 Sunday
 	// running parameter characters to be extracted
 	//private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used|Other genetic characteristics|Other physiological characteristics";
-	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
+	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Cell division pattern & reproduction|Salinity preference|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
 
 	
 	private String celsius_degreeReplaceSourcePattern = "(" +
@@ -120,10 +124,16 @@ public class Config extends AbstractModule {
 	private String categoryModelFile = "category_model";//predict the categories
 	
 	//System Parameters
-	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_poster.txt";
+	//private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_poster.txt";
+	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_micropie1.5.txt";
 	private String firstLevelCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_category.txt";
 	private String labelValutypeFile ="svmlabelandcategorymapping/character_valuetype.txt";
 	//private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
+	
+	private Set antiResistantTerms = null;
+	private Set antiResistantPatterns = null;
+	private Set antiSensPatterns = null;
+	private Set antiSensTerms = null;
 	
 	private String testFolder = "input";
 	private String characterValueExtractorsFolder = "CharacterValueExtractors";
@@ -190,6 +200,9 @@ public class Config extends AbstractModule {
 		
 		bind(String.class).annotatedWith(Names.named("uspResultsDirectory")).toInstance(uspResultsDirectory);
 		
+		
+		/*********************************    sentence classifiers                ******************************/
+		
 		bind(String.class).annotatedWith(Names.named("trainingFile")).toInstance(
 				trainingFile);
 		bind(String.class).annotatedWith(Names.named("trainedModelFile")).toInstance(
@@ -244,6 +257,9 @@ public class Config extends AbstractModule {
 			}
 		});
 		
+		
+		
+		
 		/*********************************    configure the extractors          ******************************/
 		
 		
@@ -284,12 +300,15 @@ public class Config extends AbstractModule {
 		
 		bind(String.class).annotatedWith(Names.named("LibSVMOptions")).toInstance(libSVMOptions);
 				
+		bind(new TypeLiteral<Set<String>>(){}).annotatedWith(Names.named("sensitiveTerms")).toInstance(getAntibioticSensitivityTerms());
+		bind(new TypeLiteral<Set<String>>(){}).annotatedWith(Names.named("sensitivePatterns")).toInstance(getAntibioticSensitivityPatterns());
+		bind(new TypeLiteral<Set<String>>(){}).annotatedWith(Names.named("resistantTerms")).toInstance(getAntibioticResistantTerms());
+		bind(new TypeLiteral<Set<String>>(){}).annotatedWith(Names.named("resistantPatterns")).toInstance(getAntibioticResistantPatterns());
 		
+		/*********************************    NLP Tools                ******************************/
 		bind(ISentenceReader.class).to(CSVSentenceReader.class).in(Singleton.class);
 		
 		bind(ITextNormalizer.class).to(TextNormalizer.class);
-		
-		
 		
 		bind(StanfordCoreNLP.class).annotatedWith(Names.named("TokenizeSSplit")).toProvider(new Provider<StanfordCoreNLP>() {
 			@Override
@@ -342,6 +361,9 @@ public class Config extends AbstractModule {
 			}
 		}).in(Singleton.class);
 		
+		
+		
+		
 		bind(new TypeLiteral<Map<RawSentence, MultiClassifiedSentence>>() {})
 			.annotatedWith(Names.named("SentenceClassificationMap")).toProvider(new Provider<Map<RawSentence, MultiClassifiedSentence>>() {
 			@Override
@@ -378,7 +400,7 @@ public class Config extends AbstractModule {
 		
 		
 		
-		
+		/***************  Intitializing resources that will be used by the extractors          *********/
 		//configure the extractors
 		bind(LabelPhraseValueType.class).toInstance(getLabelPhraseValueType(labelValutypeFile));
 		
@@ -387,13 +409,29 @@ public class Config extends AbstractModule {
 		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(getCharacterValueExtractors(characterValueExtractorsFolder, 
 		 		uspResultsDirectory, uspString));
 		
+		//read keywords from the keyword configuration files
+		bind(new TypeLiteral<Map<String, Set<ILabel>>>() {}).annotatedWith(Names.named("GlobalTermCharacterMap"))
+		.toProvider(new Provider<Map<String, Set<ILabel>>>() {
+		@Override
+		public Map<String, Set<ILabel>> get() {
+			KeywordReader keywordReader = new KeywordReader();
+			try {
+				return keywordReader.readTermCharacterMap(characterValueExtractorsFolder);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return new HashMap<String, Set<ILabel>>();
+		}
+		}).in(Singleton.class);
+		
+		
 		weka.core.logging.Logger.log(weka.core.logging.Logger.Level.INFO, "Weka Logging started"); 
 		
 		//bind(IRun.class).to(TrainTestRun.class).in(Singleton.class);
 		bind(TrainSentenceClassifier.class).in(Singleton.class);
 		
-		bind(MicroPIEProcessor.class);
-		bind(MicroPIEProcessorOld.class);
+		//bind(MicroPIEProcessor.class);
+		//bind(MicroPIEProcessorOld.class);
 		bind(SentenceBatchProcessor.class).in(Singleton.class);
 	}
 
@@ -406,6 +444,69 @@ public class Config extends AbstractModule {
 		return  new CharacterReader().readLabelValueType(labelValutypeFile);
 	}
 
+	
+	
+	/**
+	 * the keywords used to indicate the Antibiotic Sensitivity
+	 * @return
+	 */
+	private Set<String> getAntibioticSensitivityTerms(){
+		antiSensTerms = new HashSet();
+		antiSensTerms.add("susceptible");
+		antiSensTerms.add("sensitive");
+		antiSensTerms.add("sensitivity");
+		antiSensTerms.add("inhibited");
+		antiSensTerms.add("susceptibility");
+		
+		return antiSensTerms;
+	}
+	
+	/**
+	 * the keywords used to indicate the Antibiotic Sensitivity
+	 * @return
+	 */
+	private Set<String> getAntibioticSensitivityPatterns(){
+		antiSensPatterns = new HashSet();
+		antiSensPatterns.add("[Ss]usceptible");
+		antiSensPatterns.add("[Ss]ensitive");
+		antiSensPatterns.add("[Ii]nhibited");
+		antiSensPatterns.add("[Ii]nhibiting");
+		antiSensPatterns.add("[Ss]ensitivity");
+		
+		return antiSensPatterns;
+	}
+	
+	
+	/**
+	 * the keywords used to indicate the Antibiotic Resistant
+	 * @return
+	 */
+	private Set<String> getAntibioticResistantTerms(){
+		antiResistantTerms = new HashSet();
+		antiResistantTerms.add("resistant");
+		antiResistantTerms.add("resistance");
+		antiResistantTerms.add("insusceptible");
+		antiResistantTerms.add("insensitive");
+		
+		return antiResistantTerms;
+	}
+	
+	/**
+	 * the keywords used to indicate the Antibiotic Resistant
+	 * @return
+	 */
+	private Set<String> getAntibioticResistantPatterns(){
+		antiResistantPatterns = new HashSet();
+		antiResistantPatterns.add("[Rr]esistant");
+		antiResistantPatterns.add("[Rr]esistance");
+		antiResistantPatterns.add("[Ii]nsusceptible");
+		antiResistantPatterns.add("[Ii]nsensitive");
+		
+		return antiResistantPatterns;
+	}
+
+	
+	
 	/**
 	 * create extractors from the configuration folder: characterValueExtractorsFolder; 
 	 * e.g., micropieInput\CharacterValueExtractors
@@ -423,6 +524,8 @@ public class Config extends AbstractModule {
 		if(!inputDir.exists() || inputDir.isFile()) 
 			return extractors;
 		
+		
+		//read extractors from configure files
 		ICharacterValueExtractorReader extractorReader = new CharacterValueExtractorReader(
 				uspResultsDirectory, uspString);
 		for(File file : inputDir.listFiles()) {
@@ -435,9 +538,28 @@ public class Config extends AbstractModule {
 			}
 		}
 		
+		
+		
 		System.out.println("extractors size="+extractors.size());
 		
 		return extractors;
+	}
+	
+	
+	/**
+	 * extractors must have a label
+	 * @param extractors
+	 */
+	public void craftExtractors(Set<ICharacterValueExtractor> extractors, SentenceSpliter sentSplitter,
+			PosTagger posTagger){
+		//System.out.println(extractors+" "+extractors.size());
+		extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
+		extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
+		extractors.add(new FermentationSubstratesNotUsed(Label.c56));
+		extractors.add(new GcFigureExtractor(sentSplitter, posTagger, Label.c1, "%G+C"));
+		
+		//AntibioticSyntacticExtractor extractor1 = new AntibioticSyntacticExtractor(Label.c32, "Antibiotic sensitivity",patterns,sentSplitter,stanfordWrapper);
+		//new AntibioticPhraseExtractor(Label.c32, "Antibiotic sensitivity", postagger, phraseParser,phraseRelationParser, sentSplitter, keywords);
 	}
 
 	

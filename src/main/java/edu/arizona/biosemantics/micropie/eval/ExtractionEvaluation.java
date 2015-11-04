@@ -274,9 +274,11 @@ public class ExtractionEvaluation {
 					
 					matchedTotalCredit += matched;
 					
-					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",matched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue)));
+					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",matched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),tgCharValue.size()));
 				}else if(gstCharValue!=null&&gstCharValue.size()!=0){
-					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",-1,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue)));
+					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",-1,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),0));
+				}else if(tgCharValue!=null&&tgCharValue.size()!=0){
+					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",-2,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),tgCharValue.size(),0));
 				}
 			}
 			
@@ -434,7 +436,7 @@ public class ExtractionEvaluation {
 			out.print(this.testMatrixFile);
 			out.print("\nEvaluation Time,");
 			out.print(new Date());
-			out.print("\nTaxon,XML file,Genus,Species,Strain,Character,GoldStandard,Extracted,HIT\n");
+			out.print("\nTaxon,XML file,Genus,Species,Strain,Character,GoldStandard,Extracted,GSTNUM,ENUM,HIT\n");
 			
 			for(Entry<TaxonTextFile,Map> entry : charValueResults.entrySet()){
 				TaxonTextFile taxonFile = entry.getKey();
@@ -456,6 +458,10 @@ public class ExtractionEvaluation {
 					out.print("\""+valueEntry.getValue().getGstValue()+"\"");//gold standard
 					out.print(",");
 					out.print("\""+valueEntry.getValue().getTgValue()+"\"");//Extracted
+					out.print(",");
+					out.print(valueEntry.getValue().getGstNum());//P
+					out.print(",");
+					out.print(valueEntry.getValue().getTgNum());//P
 					out.print(",");
 					out.print(valueEntry.getValue().getValue());//P
 					out.println();

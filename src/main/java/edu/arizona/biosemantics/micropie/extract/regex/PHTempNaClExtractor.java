@@ -53,6 +53,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C");
 		//System.out.println(text);
 		MultiClassifiedSentence sent = (MultiClassifiedSentence)sentence;
+		sent.setSubSentence(null);//reseparate
 		this.posSentence(sent);//get sub sentences and their tagged words list
 		
 		//1, detect sentences
@@ -65,17 +66,15 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		List sentValueList = new LinkedList();
 		for(int sid=0;sid<sentSize;sid++){
 			List<TaggedWord> taggedWords = taggedWordList.get(sid);
-			//System.out.println(taggedWords);
+			System.out.println(taggedWords);
 			
 			List<NumericCharacterValue> valueList = detectFigures(taggedWords);
 			
 			mergeFigureRange(valueList,taggedWords);
-			/*
-			for(int i=0;i<featureList.size();i++){
-				NumericCharacterValue curFd = featureList.get(i);
-				System.out.println("before merge:"+curFd.getValue()+" "+curFd.getUnit());
-			}
-			*/
+			//for(int i=0;i<valueList.size();i++){
+			//	NumericCharacterValue curFd = valueList.get(i);
+				//System.out.println("after merge:"+curFd.getValue()+" "+curFd.getUnit());
+			//}
 			
 			//detect neutral pH
 			recNeutralPH(valueList,text,taggedWords);

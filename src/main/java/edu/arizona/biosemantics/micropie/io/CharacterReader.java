@@ -165,6 +165,7 @@ public class CharacterReader {
 	 * @return
 	 */
 	public LabelPhraseValueType readLabelValueType(String labelValueTypeFile){
+		//System.out.println("read label value type");
 		LabelPhraseValueType lpt = new LabelPhraseValueType();
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(labelValueTypeFile),

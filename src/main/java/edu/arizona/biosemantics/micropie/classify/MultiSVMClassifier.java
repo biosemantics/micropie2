@@ -93,10 +93,13 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		if(labels==null)  throw new Exception("Classifier labels are not specified");
 		Set<ILabel> result = new HashSet<ILabel>();
 		for(ILabel label : labels) {
-			RawSentence twoClassSentence = this.createTwoClassData(label, sentence);
-			ILabel prediction = classifiers.get(label).getClassification(twoClassSentence);
-			if(prediction.equals(BinaryLabel.YES))
-				result.add(label);
+			SVMClassifier classifier = classifiers.get(label);
+			if(classifier!=null){//some character do not have models
+				RawSentence twoClassSentence = this.createTwoClassData(label, sentence);
+				ILabel prediction = classifier.getClassification(twoClassSentence);
+				if(prediction.equals(BinaryLabel.YES))
+					result.add(label);
+			}
 		}
 		
 		log(LogLevel.INFO, "Prediction for " + sentence.getText() + "\n"
@@ -187,28 +190,30 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		log(LogLevel.INFO, "Loading classifier from files...");
 		for(ILabel label : labels) {
 			log(LogLevel.INFO, "Loading SVM classifier for label " + label.getValue());
-			
-			SVMClassifier svmClassifier = new SVMClassifier(BinaryLabel.valuesList(), multiFilterOptions, libSVMOptions);
-			svmClassifier.setupFilteredClassifier();
-			
-			//recover the classifier
-			Classifier wekaClfer =  (Classifier)WekaModelCaller.readModel(trainedModelFileFolder+File.separator+label.getValue()+".model");
-			svmClassifier.getFilteredClassifier().setClassifier(wekaClfer);
-			
-			//recover the filter
-			Filter filter = (Filter)WekaModelCaller.readModel(trainedModelFileFolder+File.separator+label.getValue()+".filter");
-			svmClassifier.getFilteredClassifier().setFilter(filter);
-			
-			//recover instances
-			svmClassifier.instances = WekaModelCaller.loadArff(trainedModelFileFolder+File.separator+label.getValue()+".arff");
-			svmClassifier.labelAttribute = svmClassifier.instances.attribute(0);
-			svmClassifier.textAttribute  = svmClassifier.instances.attribute(1);
-			svmClassifier.instances.setClassIndex(0);
-			//svmClassifier.getFilteredClassifier().getFilter().setInputFormat(svmClassifier.instances);
-			
-			svmClassifier.trained = true;
-			classifiers.put(label, svmClassifier);
-			//break;
+			File modelFile = new File(trainedModelFileFolder+File.separator+label.getValue()+".model");
+			if(modelFile.exists()){
+				SVMClassifier svmClassifier = new SVMClassifier(BinaryLabel.valuesList(), multiFilterOptions, libSVMOptions);
+				svmClassifier.setupFilteredClassifier();
+				
+				//recover the classifier
+				Classifier wekaClfer =  (Classifier)WekaModelCaller.readModel(trainedModelFileFolder+File.separator+label.getValue()+".model");
+				svmClassifier.getFilteredClassifier().setClassifier(wekaClfer);
+				
+				//recover the filter
+				Filter filter = (Filter)WekaModelCaller.readModel(trainedModelFileFolder+File.separator+label.getValue()+".filter");
+				svmClassifier.getFilteredClassifier().setFilter(filter);
+				
+				//recover instances
+				svmClassifier.instances = WekaModelCaller.loadArff(trainedModelFileFolder+File.separator+label.getValue()+".arff");
+				svmClassifier.labelAttribute = svmClassifier.instances.attribute(0);
+				svmClassifier.textAttribute  = svmClassifier.instances.attribute(1);
+				svmClassifier.instances.setClassIndex(0);
+				//svmClassifier.getFilteredClassifier().getFilter().setInputFormat(svmClassifier.instances);
+				
+				svmClassifier.trained = true;
+				classifiers.put(label, svmClassifier);
+				//break;
+			}
 		}
 		
 		

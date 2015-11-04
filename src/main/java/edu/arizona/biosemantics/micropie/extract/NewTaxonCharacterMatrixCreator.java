@@ -17,15 +17,27 @@ import com.google.inject.Inject;
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.classify.LabelPhraseValueType;
+import edu.arizona.biosemantics.micropie.extract.context.ContextInferrenceExtractor;
+import edu.arizona.biosemantics.micropie.extract.context.PhraseRelationGraph;
+import edu.arizona.biosemantics.micropie.extract.context.RelationParser;
+import edu.arizona.biosemantics.micropie.extract.keyword.GlobalKeywordExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellScaleExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.PHTempNaClExtractor;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.Matrix;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
 import edu.arizona.biosemantics.micropie.model.Phrase;
+import edu.arizona.biosemantics.micropie.model.PhraseRelation;
+import edu.arizona.biosemantics.micropie.model.SubSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
+import edu.arizona.biosemantics.micropie.nlptool.PhraseParser;
+import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
+import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
+import edu.stanford.nlp.ling.TaggedWord;
 
 /**
  * 
@@ -38,16 +50,56 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 
 	private LinkedHashSet<ILabel> characterLabels;// the characters need to be parsed
 	private LinkedHashSet<String> characterNames;
+	private HashSet categoryTwoLabels=new HashSet();
+	{	categoryTwoLabels.add(Label.c2);
+		categoryTwoLabels.add(Label.c3);
+		categoryTwoLabels.add(Label.c4);
+		categoryTwoLabels.add(Label.c5);
+		categoryTwoLabels.add(Label.c6);
+		categoryTwoLabels.add(Label.c7);
+		categoryTwoLabels.add(Label.c8);
+		categoryTwoLabels.add(Label.c9);
+		categoryTwoLabels.add(Label.c10);
+		categoryTwoLabels.add(Label.c11);
+		categoryTwoLabels.add(Label.c12);
+		categoryTwoLabels.add(Label.c13);
+		categoryTwoLabels.add(Label.c14);
+		categoryTwoLabels.add(Label.c15);
+		categoryTwoLabels.add(Label.c16);
+	}
+	
 	private ICharacterValueExtractorProvider contentExtractorProvider;// extractors
 
 	private Map<TaxonTextFile, List<MultiClassifiedSentence>> taxonSentencesMap;
 
 	private NewTaxonCharacterMatrix results;// the results of the extraction
+	
+	private LabelPhraseValueType labelValueType;
+	
+	//private Map<String, Set<ILabel>> GlobalTermCharacterMap;
 
+	private GlobalKeywordExtractor globalKeywordExtractor;
+	private ContextInferrenceExtractor contInfExtractor;
+	private PhraseParser phraseParser = new PhraseParser();
+	private RelationParser relationParser = new RelationParser();
+	private PosTagger posTagger;
+	private SentenceSpliter sentSplitter;
+	private PostProcessor postProcessor = new PostProcessor(); 
+	
 	@Inject
 	public NewTaxonCharacterMatrixCreator(
-			ICharacterValueExtractorProvider contentExtractorProvider) {
+			ICharacterValueExtractorProvider contentExtractorProvider,
+			GlobalKeywordExtractor globalKeywordExtractor,
+			ContextInferrenceExtractor contInfExtractor,
+			PosTagger posTagger,
+			SentenceSpliter sentSplitter,
+			LabelPhraseValueType labelValueType) {
 		this.contentExtractorProvider = contentExtractorProvider;
+		this.globalKeywordExtractor = globalKeywordExtractor;
+		this.contInfExtractor = contInfExtractor;
+		this.labelValueType = labelValueType;
+		this.posTagger = posTagger;
+		this.sentSplitter = sentSplitter;
 	}
 
 	public NewTaxonCharacterMatrix getResults() {
@@ -94,19 +146,33 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 	 */
 	private void parseResult(NewTaxonCharacterMatrix extResults, TaxonTextFile taxonFile, ILabel label,
 			List<CharacterValue> charValues) {
+		//before parse the values into the map, post process the values
+		postProcessor.postProcessor(charValues);
+		
 		Map<ILabel, List> charMap = extResults.getAllTaxonCharacterValues(taxonFile);
 		if(label!=null){//not a mixed value extractor
 			charMap.get(label).addAll(charValues);
 		}else{
 			for(CharacterValue value : charValues){
-				NumericCharacterValue nvalue = (NumericCharacterValue)value;
-				ILabel clabel = nvalue.getCharacter();//find the label
-				if(clabel!=null){
-					charMap.get(clabel).add(nvalue);
-					//System.out.println(label+" "+nvalue);
+				
+				ILabel clabel = value.getCharacter();//find the label
+				List values = charMap.get(clabel);
+				if(values==null){
+					values = new ArrayList();
+					charMap.put(clabel, values);
+				}
+				if(labelValueType.nuCharSet.contains(clabel)){//numeric value
+					NumericCharacterValue nvalue = (NumericCharacterValue)value;
+					if(clabel!=null){
+						if(!values.contains(nvalue)) charMap.get(clabel).add(nvalue);
+					}
+				}else{//string value
+					if(!values.contains(value)) charMap.get(clabel).add(value);
 				}
 			}
 		}
+		
+		
 	}
 
 	
@@ -134,6 +200,11 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		
 		// the sentences in the file
 		for (MultiClassifiedSentence classifiedSentence : sentences) {// process one sentence
+			//parse phrases
+			String text = classifiedSentence.getText();
+			text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C");
+			classifiedSentence.setText(text);
+			
 			Set<ILabel> predictions = classifiedSentence.getPredictions();
 			if (predictions.size() == 0) {// it can be any character
 				Label[] labelList = Label.values();
@@ -149,6 +220,9 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 				//if (label instanceof Label && characterLabels.contains(label)) {
 				if (characterLabels.contains(label)) {
 					extractors.addAll(contentExtractorProvider.getContentExtractor((Label) label));
+				}
+				if(categoryTwoLabels.contains(label)){
+					extractors.addAll(contentExtractorProvider.getContentExtractor(Label.c59));
 				}
 			}
 
@@ -178,21 +252,133 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 			}
 			
 			
+			posSentence(classifiedSentence);//get sub sentences and their tagged words list
+			List<List<TaggedWord>> taggedWordList = classifiedSentence.getSubSentTaggedWords();
+			
+			if(taggedWordList.size()>=1){//process each subsentence
+				List<List<Phrase>> allPhraseList = classifiedSentence.getPhraseList();
+				if(allPhraseList==null){
+					allPhraseList = new ArrayList();
+					classifiedSentence.setPhraseList(allPhraseList);
+					for(int subsent=0;subsent<taggedWordList.size();subsent++){
+						List<Phrase> phraseList = phraseParser.extract(taggedWordList.get(subsent));
+						allPhraseList.add(phraseList);
+					}
+				}
+				
+				
+				List<PhraseRelationGraph> prGraphList = new ArrayList();
+				classifiedSentence.setPhraseRelationGraphs(prGraphList);
+				
+				for(int subsent=0;allPhraseList!=null&&subsent<allPhraseList.size();subsent++){
+					PhraseRelationGraph prGraph = relationParser.parseCoordinativeRelationGraph(allPhraseList.get(subsent), taggedWordList.get(subsent));
+					prGraphList.add(prGraph);
+				}
+			}
+			
 			//to check whether there are some phrases that do not identified any values
+			//Stragety 1: unique match
+			List phraseCharValues = new ArrayList();
 			List<List<Phrase>> phrases = classifiedSentence.getPhraseList();
 			if(phrases!=null&&phrases.size()>0){//need to parse before this step
 				for(List<Phrase> plist:phrases){
 					for(Phrase p:plist){
 						if(p.getCharValue()==null){
-							System.out.println("no value identified:"+p.getText());
-						}else{
-							System.out.println("values are found:"+p.getCharValue());
+							//System.out.println("after first round extraction, no value identified:"+p.getText());
+							//if a term is unique in the term list
+							CharacterValue cv = this.globalKeywordExtractor.uniqMatch(p);
+							
+							if(cv!=null&&!phraseCharValues.contains(cv)){
+								phraseCharValues.add(cv);
+								//System.out.println("values are found via global matching:"+cv);
+							}
 						}
+						/*else{
+							System.out.println("values are found:"+p.getCharValue());
+						}*/
 					}
 				}
 			}
+			
+			parseResult(matrix, taxonFile, null, phraseCharValues);
+			
+			
+			//Stragety 2: strict infer
+			phraseCharValues = new ArrayList();
+			phrases = classifiedSentence.getPhraseList();
+			if(phrases!=null&&phrases.size()>0){//need to parse before this step
+				for(int sent =0; sent<phrases.size();sent++){//for each subsentence
+					List<Phrase> plist = phrases.get(sent);
+					PhraseRelationGraph prGraph = classifiedSentence.getPhraseRelationGraphs().get(sent);
+					for(int i = 0;i<plist.size();i++){
+						Phrase p = plist.get(i); 
+						if(p.getCharValue()==null){
+							//if the ahead term and the follow term have the same character value
+							//CharacterValue cv = contInfExtractor.strictStrategy1(p, prGraph);
+							
+							//according to the surround weight
+							CharacterValue cv = contInfExtractor.strictStrategy2(p, prGraph);
+							
+							if(cv!=null&&!phraseCharValues.contains(cv)){
+								phraseCharValues.add(cv);
+								//System.out.println("values are found via Strict Strategy2:"+cv);
+							}
+						}
+						/*else{
+							System.out.println("values are found:"+p.getCharValue());
+						}*/
+					}
+				}
+			}
+			
+			parseResult(matrix, taxonFile, null, phraseCharValues);
+			
+			//infer the value according to the context
+		}
+	}
+	
+	
+	/**
+	 * 1, do not separate subsetences
+	 * 2, postag each subsentence
+	 * 
+	 * @param sentence
+	 */
+	public void posSentence(MultiClassifiedSentence sentence){
+		List taggerwordsList = sentence.getSubSentTaggedWords();
+		if(taggerwordsList==null){
+			taggerwordsList = new LinkedList();
+			sentence.setSubSentTaggedWords(taggerwordsList);
+			String content = sentence.getText();
+			List<TaggedWord> taggedWords  = posTagger.tagString(content);
+			taggerwordsList.add(taggedWords);
 		}
 	}
 
-	
+	/**
+	 * 1, separate subsetences
+	 * 2, postag each subsentence
+	 * 
+	 * @param sentence
+	 
+	public void posSentence(MultiClassifiedSentence sentence){
+		//1, detect sentences
+		List<SubSentence> subSentences = sentence.getSubSentence();
+		if(subSentences == null){
+			subSentences = sentSplitter.detectSnippet(sentence);
+			sentence.setSubSentence(subSentences);
+		}
+		
+		//2, postag each subsentence
+		List taggerwordsList = sentence.getSubSentTaggedWords();
+		if(taggerwordsList==null){
+			taggerwordsList = new LinkedList();
+			sentence.setSubSentTaggedWords(taggerwordsList);
+			for(SubSentence subsent:subSentences){
+				String content = subsent.getContent();
+				List<TaggedWord> taggedWords  = posTagger.tagString(content);
+				taggerwordsList.add(taggedWords);
+			}
+		}
+	}*/
 }

@@ -2,6 +2,7 @@ package edu.arizona.biosemantics.micropie.model;
 
 import java.util.List;
 
+import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.stanford.nlp.ling.TaggedWord;
 
 
@@ -16,13 +17,13 @@ import edu.stanford.nlp.ling.TaggedWord;
 public class Phrase {
 	private String text;
 	private String negation;//the negation word
-	private String type;
+	private String type;//N,J,V
 	private String core;
 	private String modifer;
 	private List<TaggedWord> wordTags;
-	private int startIndex;
+	private int startIndex;//the term index
 	private int endIndex;
-	private int start;
+	private int start;//the character index
 	private int end;
 	private int role;//according to the language 
 	
@@ -104,4 +105,24 @@ public class Phrase {
 		this.endIndex = endIndex;
 	}
 	
+	
+	/**
+	 * convert the phrase into a character
+	 * @param label
+	 * @return
+	 */
+	public CharacterValue convertValue(ILabel label){
+		if(this.charValue!=null) System.err.println("Phrase already contains a value:"+this.charValue);
+		CharacterValue cv = CharacterValueFactory.create(label, this.text);
+		cv.setNegation(this.negation);
+		cv.setValueModifier(this.modifer);
+		this.charValue = cv;
+		//System.out.println("Phrase conterts to a value:"+this.charValue);
+		return cv;
+	}
+	
+	@Override
+	public String toString(){
+		return this.text;
+	}
 }

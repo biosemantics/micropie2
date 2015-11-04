@@ -296,7 +296,8 @@ public class TextNormalizer implements ITextNormalizer {
 				.replace(" ", "")
 				.replace(" ", "")
 				.replace(" ", " ")
-				.replace("⇑", ""); // 
+				.replace("⇑", "")
+				.replace("[\\s]*:", ":"); // 
 		return sentence;
 	}
 }

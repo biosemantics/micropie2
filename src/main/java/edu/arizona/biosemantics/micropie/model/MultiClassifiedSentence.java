@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.extract.context.PhraseRelationGraph;
 import edu.stanford.nlp.ling.TaggedWord;
 
 /**
@@ -20,6 +21,7 @@ public class MultiClassifiedSentence extends Sentence{
 	private List<SubSentence> subSentence; // subsentences if brackets are used
 	private List<List<TaggedWord>> subSentTaggedWords; // the pos tagger for the subsentences
 	private List<List<Phrase>> phraseList;// the phrases for each subsentence
+	private List<PhraseRelationGraph> phraseRelationGraphs;
 	
 	
 	public MultiClassifiedSentence(String text) {
@@ -71,14 +73,21 @@ public class MultiClassifiedSentence extends Sentence{
 		this.subSentTaggedWords = subSentTaggedWords;
 	}
 
-
 	public List<List<Phrase>> getPhraseList() {
 		return phraseList;
 	}
 
-
 	public void setPhraseList(List<List<Phrase>> phraseList) {
 		this.phraseList = phraseList;
 	}
-	
+
+	public List<PhraseRelationGraph> getPhraseRelationGraphs() {
+		return phraseRelationGraphs;
+	}
+
+	public void setPhraseRelationGraphs(
+			List<PhraseRelationGraph> phraseRelationGraphs) {
+		this.phraseRelationGraphs = phraseRelationGraphs;
+	}
+
 }

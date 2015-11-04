@@ -39,13 +39,14 @@ public class KeywordReader {
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
 			String strLine;
 			while ((strLine = br.readLine()) != null) {
+				strLine = strLine.toLowerCase();
 				//jin 09-24-2015
 				if(strLine.indexOf("|")>-1){
 					String[] fields = strLine.split("\\|");
-					String keyword = fields[0].trim();
+					String keyword = fields[0].trim().replace("-", " ");
 					keywordMap.put(keyword,new ArrayList());
 					for(int i=1;i<fields.length;i++){
-						keywordMap.get(keyword).add(fields[i].toString());
+						keywordMap.get(keyword).add(fields[i].toString().replace("-", " "));
 					}
 				}else{
 					keywordMap.put(strLine.trim(),null);
@@ -71,14 +72,15 @@ public class KeywordReader {
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
 			String strLine;
 			while ((strLine = br.readLine()) != null) {
+				strLine = strLine.toLowerCase();
 				//jin 09-24-2015
 				if(strLine.indexOf("|")>-1){
 					String[] fields = strLine.split("\\|");
 					for(int i=0;i<fields.length;i++){
-						keywordSet.add(fields[i].trim());
+						keywordSet.add(fields[i].trim().replace("-", " "));
 					}
 				}else{
-					keywordSet.add(strLine.trim());
+					keywordSet.add(strLine.trim().replace("-", " "));
 				}
 			}
 			br.close();
@@ -91,7 +93,8 @@ public class KeywordReader {
 	
 	
 	/**
-	 * 
+	 * read a term-character mapping
+	 * replace("-", " ");
 	 * @return
 	 */
 	public Map<String, Set<ILabel>> readTermCharacterMap(String termsFolder){
@@ -117,15 +120,16 @@ public class KeywordReader {
 					BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
 					String strLine;
 					while((strLine = br.readLine()) != null) {
+						strLine = strLine.toLowerCase();
 						//jin 09-24-2015
 						if(strLine.indexOf("|")>-1){
 							String[] fields = strLine.split("\\|");
 							for(int i=0;i<fields.length;i++){
-								String keyword = fields[i].trim();
+								String keyword = fields[i].trim().replace("-", " ");
 								if(!"".equalsIgnoreCase(keyword)) putIntoMap(label, keyword, termCharacterMap);
 							}
 						}else{
-							String keyword = strLine.trim();
+							String keyword = strLine.trim().replace("-", " ");
 							if(!"".equalsIgnoreCase(keyword)) putIntoMap(label, strLine.trim(), termCharacterMap);
 						}
 					}

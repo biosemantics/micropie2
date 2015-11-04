@@ -96,7 +96,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		int i=5;
 		for(ILabel character : characterLabels) {
 			header[i++] = labelNameMap.get(character);
-			System.out.println(character+" "+header[i-1]);
+			//System.out.println(character+" "+header[i-1]);
 		}
 			
 		lines.add(header);

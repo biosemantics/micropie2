@@ -35,6 +35,7 @@ public class StringValueFormatter implements IValueFormatter {
 		int size = values.size();
 		for(int i=0; i<size;i++){
 			CharacterValue cv = values.get(i);
+			if(cv.getNegation()!=null) valueStr.append(cv.getNegation()).append(" ");
 			valueStr.append(cv.getValue());
 			if(i!=size-1) valueStr.append(separator);
 		}
@@ -52,7 +53,7 @@ public class StringValueFormatter implements IValueFormatter {
 		for(String value:values){
 			if(value!=null&&!"".equals(value)){
 				CharacterValue cv = CharacterValueFactory.create(label, value);
-				valueList.add(cv);
+				if(!valueList.contains(cv)) valueList.add(cv);
 			}
 		}
 		
