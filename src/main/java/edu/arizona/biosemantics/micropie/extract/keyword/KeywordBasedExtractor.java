@@ -20,6 +20,8 @@ import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
 import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.nlptool.INegationIdentifier;
+import edu.arizona.biosemantics.micropie.nlptool.NegationIdentifier;
 
 
 /**
@@ -27,7 +29,8 @@ import edu.arizona.biosemantics.micropie.model.Sentence;
  * 
  */
 public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
-
+	
+	protected INegationIdentifier negationIdentifier = new NegationIdentifier();
 	protected Set<String> keywords;
 	protected Map<String, List> subKeywords;
 	
@@ -107,6 +110,7 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 			while ((strLine = br.readLine()) != null) {
 				//jin 09-24-2015
 				if(strLine.indexOf("|")>-1){
+					if(strLine.startsWith("#")) continue;
 					String[] fields = strLine.split("\\|");
 					String keyword = fields[0].trim();
 					keywords.add(keyword);

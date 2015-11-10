@@ -29,5 +29,10 @@ public abstract class AbstractCharacterValueExtractor implements ICharacterValue
 	public ILabel getLabel() {
 		return label;
 	}
+	
+	
+	public String toString(){
+		return this.getClass().getName();
+	}
 
 }

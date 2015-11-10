@@ -10,7 +10,8 @@ import org.jgrapht.graph.DefaultEdge;
  */
 public class PhraseRelation extends DefaultEdge{
 	
-	private PhraseRelationType type;
+	//private PhraseRelationType type;
+	private String type;
 	
 	private Object source;
 	private Object target;
@@ -27,7 +28,7 @@ public class PhraseRelation extends DefaultEdge{
 	}
 	
 	public PhraseRelation(Phrase sourcep, Phrase targetp,
-			PhraseRelationType type) {
+			String type) {
 		source = sourcep;
 		target = targetp;
 		this.type = type;
@@ -53,17 +54,28 @@ public class PhraseRelation extends DefaultEdge{
     }
 	
     
-	public PhraseRelationType getType() {
-		return type;
-	}
-	public void setType(PhraseRelationType type) {
-		this.type = type;
-	}
+//	public PhraseRelationType getType() {
+//		return type;
+//	}
+//	public void setType(PhraseRelationType type) {
+//		this.type = type;
+//	}
+    
 	
 	public Phrase getSource(){
 		return (Phrase)this.source;
 	}
 	
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
 	public Phrase getTarget(){
 		return (Phrase)this.target;
 	}

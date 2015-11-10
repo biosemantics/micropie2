@@ -62,6 +62,8 @@ public class AntibioticPhraseExtractor extends AbstractCharacterValueExtractor{
 		List<TaggedWord> tagList = posTagger.tagString(cleanSent);
 		List<Phrase> phraseList = phraseParser.extract(tagList);
 		
+		
+		
 		//First, identify the coordinative relationships.
 		List<List<Phrase>> coordTermLists = phraseRelationParser.getCoordList(phraseList,tagList);
 		

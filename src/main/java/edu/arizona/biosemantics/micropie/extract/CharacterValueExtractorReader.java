@@ -17,6 +17,7 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.keyword.HabitatIsolatedFromExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.KeywordBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.SalinityPreferenceExtractor;
@@ -54,6 +55,8 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 	 */
 	public ICharacterValueExtractor read(File file){
 		String name = file.getName();
+		String[] fields = name.split("\\.");
+		/*
 		int firstDotIndex = name.indexOf(".");
 		
 		// Example: file name: c2.Cell wall.key
@@ -63,12 +66,19 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		String labelName = name.substring(0, firstDotIndex);
 		String characterName = name.substring(firstDotIndex + 1, lastDotIndex);
 		String type = name.substring(lastDotIndex + 1, name.length());
-		
+		*/
+		String labelName = fields[0];
+		String characterName = fields[1];
+		String type = fields[fields.length-1];
+		String matchModel = "P";//phrase model
+		if(fields.length==4){
+			matchModel = fields[2];
+		}
 		ExtractorType extractorType = ExtractorType.valueOf(type);
 		//System.out.println(type+"="+extractorType);
 		switch(extractorType) {
 		case key:
-			return createKeywordBasedExtractor(file, labelName, characterName);
+			return createKeywordBasedExtractor(file, labelName, characterName, matchModel);
 		case usp:
 			return createUSPBasedExtractor(file, labelName, characterName);
 		default:return null;
@@ -116,14 +126,19 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 	 * @return
 	 * @throws IOException
 	 */
-	private ICharacterValueExtractor createKeywordBasedExtractor(File file, String labelName, String characterName){
+	private ICharacterValueExtractor createKeywordBasedExtractor(File file, String labelName, String characterName, String matchMode){
 		Set<String> keywords = new LinkedHashSet<String>();
 		Map<String, List> subKeywords = new LinkedHashMap<String, List>();
+		String firstLine = null;
 		try{
 			BufferedReader br = new BufferedReader(new InputStreamReader(
 					new FileInputStream(file), "UTF8"));
 			String strLine;
+			int line =1;
+			
 			while ((strLine = br.readLine()) != null) {
+				if(line++==1) firstLine = strLine;
+				if(strLine.startsWith("#")) continue;
 				//jin 09-24-2015
 				if(strLine.indexOf("|")>-1){
 					String[] fields = strLine.split("\\|");
@@ -142,15 +157,24 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		String initClass = null;
+		if(firstLine!=null&&firstLine.startsWith("#")){
+			initClass = firstLine.replace("#", "");
+		}
 		//return new KeywordBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
 		//SentenceSpliter must be set latter
 		Label label = Label.valueOf(labelName);
-		if(label==Label.c59){
-			SalinityPreferenceExtractor saliPrefExtractor = new SalinityPreferenceExtractor(label, characterName,keywords,subKeywords);
-			return saliPrefExtractor;
-		}else{
-			return new PhraseBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
+		if(initClass!=null){
+			if("SalinityPreferenceExtractor".equals(initClass)){
+				SalinityPreferenceExtractor saliPrefExtractor = new SalinityPreferenceExtractor(label, characterName,keywords,subKeywords);
+				return saliPrefExtractor;
+			}else if("HabitatIsolatedFromExtractor".equals(initClass)){
+				return new HabitatIsolatedFromExtractor(label, characterName,keywords,subKeywords);
+			}
 		}
-		
+
+		//default
+		return new PhraseBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords, matchMode);
 	}
 }

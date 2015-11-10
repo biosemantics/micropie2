@@ -202,11 +202,11 @@ public class PhraseParser {
 	 * @param parse
 	 * @return
 	 */
-	private List<String> getNounPhrases(Tree parse) {
+	private List<String> getNounPhrases(Tree phraseTree) {
 	    List<String> result = new ArrayList<>();
 	    TregexPattern pattern = TregexPattern.compile("NP << NN|NNS|NNP");//,NNP,NNS
 	    //TregexPattern pattern = TregexPattern.compile("@NP");
-	    TregexMatcher matcher = pattern.matcher(parse);
+	    TregexMatcher matcher = pattern.matcher(phraseTree);
 	    Set hitSet = new HashSet();
 	    while (matcher.find()) {
 	        Tree match = matcher.getMatch();
@@ -232,9 +232,9 @@ public class PhraseParser {
 	 * @param parse
 	 * @return
 	 */
-	public List<Phrase> extractNounPharse(Tree tree){
+	public List<Phrase> extractNounPharse(Tree phraseTree){
 		List<Phrase> foundPhraseNodes = new ArrayList();
-		depthTraval(tree, foundPhraseNodes);
+		depthTraval(phraseTree, foundPhraseNodes);
 		return foundPhraseNodes;
 	}
 	
@@ -252,8 +252,8 @@ public class PhraseParser {
 	 * @param tree
 	 * @param verbPhraseNodes
 	 */
-	public List<Phrase> extractVerbPharse(Tree tree){
-		List<LabeledWord> wordList = tree.labeledYield();
+	public List<Phrase> extractVerbPharse(Tree phraseTree){
+		List<LabeledWord> wordList = phraseTree.labeledYield();
 		int size = wordList.size();
 		
 		List<Phrase> verbPhraseNodes = new ArrayList();
@@ -269,7 +269,7 @@ public class PhraseParser {
 				phrase.setEnd(word.endPosition());
 				phrase.setEndIndex(vid);
 				phrase.setText(text);
-				
+				phrase.setCore(text);
 				backwardSearchVerbPhrase(wordList,phrase,vid);
 				forwardSearchVerbPhrase(wordList,phrase,vid);
 				
@@ -388,7 +388,7 @@ public class PhraseParser {
 		
 		String phraseStr = "";
 		int start = tree.labeledYield().get(0).beginPosition();
-		int end = tree.labeledYield().get(tree.labeledYield().size()-1).beginPosition();; 
+		int end = tree.labeledYield().get(tree.labeledYield().size()-1).endPosition();; 
 		for(LabeledWord word : tree.labeledYield()){
 			phraseStr += word.word() +" ";
 		}
@@ -562,7 +562,7 @@ public class PhraseParser {
 				curPhraseTagList.add(0,tagWord);//add current
 				curType = "J";
 				curPhrase.setType(curType);
-			}else if(curPhraseTagList==null&&"CD".equals(tag)){//ends with a number
+			}else if(curPhraseTagList==null&&("CD".equals(tag)||"CC".equals(tag))){//ends with a number
 				if(i>0&&figureClassifier.isEntity(tagWord, sentTaggedWords.get(i-1))){
 					curPhrase = new Phrase();
 					curPhrase.setStartIndex(i);
@@ -601,7 +601,7 @@ public class PhraseParser {
 		for(int i=0; i<expressions.size();){
 			Phrase phrase = expressions.get(i);
 			//not empty
-			if(phrase.getWordTags().size()==0||phrase.getText().trim().isEmpty()||phrase.getWordTags().get(0).equals("CD")){
+			if(phrase.getWordTags().size()==0||phrase.getText().trim().isEmpty()||phrase.getWordTags().get(0).equals("CD")||phrase.getWordTags().get(0).equals("CC")){
 				expressions.remove(phrase);
 			}else{
 				i++;
@@ -664,12 +664,12 @@ public class PhraseParser {
 		for(int i=0;i<meanExp.size();i++){
 			
 			TaggedWord tw = meanExp.get(i);
-			String word = tw.word().toLowerCase();
-			if(i==0&&stopWordSet.contains(word)) {
+			String word = tw.word();
+			if(i==0&&stopWordSet.contains(word.toLowerCase())) {
 				
 			}else if(i==0&&!stopWordSet.contains(word)) {
 				str.append(" ");
-				str.append(word);
+				str.append(tw.word());
 				
 				phrase.setStart(tw.beginPosition());
 				phrase.setEnd(tw.endPosition());
@@ -695,7 +695,7 @@ public class PhraseParser {
 					phrase.setType(type);
 				}else{// not the same type , merge
 					str.append(" ");
-					str.append(word);
+					str.append(tw.word());
 					
 					phrase.setEnd(tw.endPosition());
 					phrase.setEndIndex(index);
@@ -704,7 +704,7 @@ public class PhraseParser {
 			}else{
 				if(str.length()==0) phrase.setStart(tw.beginPosition());
 				str.append(" ");
-				str.append(word);
+				str.append(tw.word());
 				
 				phrase.setEnd(tw.endPosition());
 				phrase.setEndIndex(index);
@@ -727,7 +727,7 @@ public class PhraseParser {
 	private String detectCurtag(String tag) {
 		if(tag.startsWith("J")){
 			tag = "J";
-		}else if(tag.startsWith("N")||tag.startsWith("FW")){
+		}else if(tag.startsWith("N")||tag.startsWith("FW")||tag.startsWith("CD")||tag.startsWith("CC")){
 			return "N";
 		}
 		return tag;
@@ -886,7 +886,7 @@ public class PhraseParser {
 			for(int i=twList.size()-1;i>=0;i--){
 				TaggedWord tw = twList.get(i);
 				String tag = tw.tag();
-				if(nounNodeNames.contains(tag)||tw.tag().equals("CD")){
+				if(nounNodeNames.contains(tag)||tw.tag().equals("CD")||tw.tag().equals("CC")){
 					if(!begin&&phrase.getCore().indexOf(tw.word())>-1) begin= true;
 					continue;
 				}else if(adjNames.contains(tag)&&begin){

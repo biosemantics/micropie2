@@ -50,22 +50,20 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 
 	private LinkedHashSet<ILabel> characterLabels;// the characters need to be parsed
 	private LinkedHashSet<String> characterNames;
-	private HashSet categoryTwoLabels=new HashSet();
-	{	categoryTwoLabels.add(Label.c2);
-		categoryTwoLabels.add(Label.c3);
-		categoryTwoLabels.add(Label.c4);
-		categoryTwoLabels.add(Label.c5);
-		categoryTwoLabels.add(Label.c6);
-		categoryTwoLabels.add(Label.c7);
-		categoryTwoLabels.add(Label.c8);
-		categoryTwoLabels.add(Label.c9);
-		categoryTwoLabels.add(Label.c10);
-		categoryTwoLabels.add(Label.c11);
-		categoryTwoLabels.add(Label.c12);
-		categoryTwoLabels.add(Label.c13);
-		categoryTwoLabels.add(Label.c14);
-		categoryTwoLabels.add(Label.c15);
-		categoryTwoLabels.add(Label.c16);
+	private HashSet categoryThreeLabels=new HashSet();
+	{	categoryThreeLabels.add(Label.c18);
+		categoryThreeLabels.add(Label.c19);
+		categoryThreeLabels.add(Label.c20);
+		categoryThreeLabels.add(Label.c21);
+		categoryThreeLabels.add(Label.c22);
+		categoryThreeLabels.add(Label.c23);
+		categoryThreeLabels.add(Label.c24);
+		categoryThreeLabels.add(Label.c25);
+		categoryThreeLabels.add(Label.c26);
+		categoryThreeLabels.add(Label.c27);
+		categoryThreeLabels.add(Label.c28);
+		categoryThreeLabels.add(Label.c29);
+		categoryThreeLabels.add(Label.c30);
 	}
 	
 	private ICharacterValueExtractorProvider contentExtractorProvider;// extractors
@@ -144,15 +142,18 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 	 * @param taxonFile
 	 * @param charValues
 	 */
-	private void parseResult(NewTaxonCharacterMatrix extResults, TaxonTextFile taxonFile, ILabel label,
+	private void parseResult(NewTaxonCharacterMatrix extResults, TaxonTextFile taxonFile, ILabel defaultLabel,
 			List<CharacterValue> charValues) {
+		if(charValues==null||charValues.size()==0) return;
 		//before parse the values into the map, post process the values
+		//System.out.println("before post process:"+charValues);
 		postProcessor.postProcessor(charValues);
+		//System.out.println("after post process:"+charValues);
 		
 		Map<ILabel, List> charMap = extResults.getAllTaxonCharacterValues(taxonFile);
-		if(label!=null){//not a mixed value extractor
-			charMap.get(label).addAll(charValues);
-		}else{
+		//if(label!=null){//not a mixed value extractor
+		//	charMap.get(label).addAll(charValues);
+		//}else{
 			for(CharacterValue value : charValues){
 				
 				ILabel clabel = value.getCharacter();//find the label
@@ -161,16 +162,26 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 					values = new ArrayList();
 					charMap.put(clabel, values);
 				}
+				
+				if(!values.contains(value)){
+					if(clabel==null) clabel = defaultLabel;
+					if(!values.contains(value)) charMap.get(clabel).add(value);
+				}
+				
+				/*
 				if(labelValueType.nuCharSet.contains(clabel)){//numeric value
 					NumericCharacterValue nvalue = (NumericCharacterValue)value;
 					if(clabel!=null){
 						if(!values.contains(nvalue)) charMap.get(clabel).add(nvalue);
 					}
 				}else{//string value
-					if(!values.contains(value)) charMap.get(clabel).add(value);
-				}
+					if(!values.contains(value)){
+						if(clabel==null) clabel = defaultLabel;
+						charMap.get(clabel).add(value);
+					}
+				}*/
 			}
-		}
+		//}
 		
 		
 	}
@@ -221,17 +232,17 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 				if (characterLabels.contains(label)) {
 					extractors.addAll(contentExtractorProvider.getContentExtractor((Label) label));
 				}
-				if(categoryTwoLabels.contains(label)){
+				if(categoryThreeLabels.contains(label)){
 					extractors.addAll(contentExtractorProvider.getContentExtractor(Label.c59));
 				}
 			}
 
-			System.out.println(classifiedSentence.getText()+"\npredictions:"+predictions.size()+" "+predictions+" extractors: "+extractors.size());
+			//System.out.println(classifiedSentence.getText()+"\npredictions:"+predictions.size()+" "+predictions+" extractors: "+extractors);
 			
 			//List<CharacterValue> sentCharValues = new ArrayList();
 			// call the extractors one by one according to the predicted characters
 			for (ICharacterValueExtractor extractor : extractors) {
-				String character = extractor.getCharacterName();
+				//String character = extractor.getCharacterName();
 				ILabel label = extractor.getLabel();
 				List<CharacterValue> charValues = null;
 				
@@ -299,6 +310,7 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 					}
 				}
 			}
+			
 			
 			parseResult(matrix, taxonFile, null, phraseCharValues);
 			

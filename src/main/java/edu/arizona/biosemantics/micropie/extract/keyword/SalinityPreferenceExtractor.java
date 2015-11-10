@@ -1,6 +1,7 @@
 package edu.arizona.biosemantics.micropie.extract.keyword;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import edu.arizona.biosemantics.micropie.model.Phrase;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.nlptool.PhraseParser;
 import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
+import edu.arizona.biosemantics.micropie.nlptool.VerbIdentifier;
 import edu.stanford.nlp.ling.TaggedWord;
 
 
@@ -28,7 +30,31 @@ import edu.stanford.nlp.ling.TaggedWord;
  */
 public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 	
-	private int checkWindow = 3;
+	private VerbIdentifier verbIdentifier = new VerbIdentifier();
+	/**
+	 * require pattern
+	 */
+	public Set<String> requirePatterns = new HashSet();
+	{
+		requirePatterns.add("require");
+		requirePatterns.add("enhance");
+		requirePatterns.add("support");
+		requirePatterns.add("foster");
+		requirePatterns.add("facilitat");
+	}
+	
+	/**
+	 * not require pattern
+	 */
+	public Set<String> notrequirePatterns = new HashSet();
+	{
+		notrequirePatterns.add("inhibit");
+		notrequirePatterns.add("prohibit");
+	}
+	
+	
+	
+	private int checkWindow = 5;
 
 	//protected SentenceSpliter sentSplitter;
 	protected PosTagger posTagger;
@@ -90,89 +116,263 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 			for(int cur=0;cur<phList.size();cur++){
 				Phrase phrase = phList.get(cur);
 				String text = phrase.getText();
+				//System.out.println("phrases:" +text);
 				//detect whether contain keywords
+				//System.out.println("charValueList:" +charValueList);
 				for (String keywordString : keywords) {
+					String substance = keywordString.substring(1,keywordString.length());
+					//System.out.println("phrases:" +text+" to find "+isExist(substance.toLowerCase(), text.toLowerCase())+" in ["+keywordString+"]");
+					
 					//it's an adjective to describe the salinity preference
-					if(keywordString.indexOf("@")==-1&&isExist(keywordString, text)){//adjectives
+					//Situation 1: Adjective descriptions;
+					//Sample sentences:
+					//Halophilic, growing between 1.0 and 7.5 % (w/v) NaCl with optimum growth at 1–3 %.
+					if(keywordString.indexOf("@")==-1&&isExist(keywordString.toLowerCase(), text.toLowerCase())){//adjectives
 						//System.out.println("adjectives");
 						phrase.convertValue(this.getLabel());
-						
-						//whether need require
-						int startIndex = phrase.getStartIndex();
-						int endIndex = phrase.getEndIndex();
-						
-						for(int checkIndex = startIndex-checkWindow;checkIndex<=endIndex+checkWindow&&checkIndex<taggedwordsList.size();checkIndex++ ){
-							if(checkIndex<=0) checkIndex=0;
-							//System.out.println(taggedwordsList.get(checkIndex).word()+" "+taggedwordsList.get(checkIndex).word().toLowerCase().indexOf("requir"));
-							if(taggedwordsList.get(checkIndex).word().toLowerCase().indexOf("requir")>-1){
-								phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
-							}
-						}
-						
+						phrase.setText(keywordString);
 						CharacterValue charVal = phrase.getCharValue();
 						charValueList.add(charVal);
-						System.out.println("OUTER PHRASE HIT VALUE: ["+charVal+"]");
-						//returnCharacterStrings.add(text);
+						//System.out.println("Adjective words: ["+charVal+"]");
 						break;//if has found the value;
-					}else if(keywordString.indexOf("@")>-1&&isExist(keywordString.substring(1,keywordString.length()), text)){{//compounds
 						
-						//System.out.println("substances:" +text);
+					//Situation 2: Require some kinds of substances.
+					//Sample sentences:
+					//Halophilic, growing between 1.0 and 7.5 % (w/v) NaCl with optimum growth at 1–3 %.
+					}else if(keywordString.indexOf("@")>-1&&isExist(substance.toLowerCase(), text.toLowerCase())){//compounds
+						phrase.setText(substance);
+						//System.out.println("found substances:" +substance+" "+phrase.getStart());
 						//whether need require
-						int startIndex = phrase.getStartIndex();
-						int endIndex = phrase.getEndIndex();
-						
-						Boolean isRequired = null;
-						
-						for(int checkIndex = startIndex-1;checkIndex>=0;checkIndex--){
-							String word = taggedwordsList.get(checkIndex).word().toLowerCase();
-							if(word.indexOf("requir")>-1){
-								isRequired = true;
-							}
-							if(word.equals("but")){
+						//Situation 2a: Explicitly express the requirement. 
+						boolean foundNew = detectExplicitExpression(taggedwordsList, phrase, charValueList);
+						if(foundNew){
+							break;
+						}else{
+							boolean absentFoundInferred =detectAbsentExpression(sentStr, taggedwordsList, phrase, charValueList);
+							if(absentFoundInferred){//either
 								break;
 							}
-						}
-						
-						for(int checkIndex = endIndex+1;checkIndex<taggedwordsList.size();checkIndex++){
-							String word = taggedwordsList.get(checkIndex).word().toLowerCase();
-							if(word.indexOf("requir")>-1){
-								isRequired = true;
-							}
-							if(word.equals("but")){
+							boolean presentFoundInferred =detectPresentExpression(sentStr, taggedwordsList, phrase, charValueList);
+							if(presentFoundInferred){//either
 								break;
+							}else{//default as requirement
+								//find the nearest verb
+								defaultExpression(taggedwordsList, phrase, charValueList);
 							}
 						}
 						
-						if(isRequired!=null&&isRequired){
-							phrase.convertValue(this.getLabel());
-							phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
-							CharacterValue charVal = phrase.getCharValue();
-							System.out.println("OUTER PHRASE HIT VALUE: ["+charVal+"]");
-							charValueList.add(charVal);
-						}
-						
-						//in the absence
-						int preIndex = sentStr.indexOf("in the absen");
-						if(preIndex>-1){//there is a 
-							
-						}
-						
-						//in the presence
-						
-						
-						
-						//returnCharacterStrings.add(text);
-						break;//if has found the value;
-					}
+					
+						break;//if has found the value, do not find in this sentence anymore
 				}//:~
 			}//:~
-		}
+		}//all phrase
 		}
 		
 		return charValueList;
 	}
 	
 	
+	/**
+	 * 
+	 * @param taggedwordsList
+	 * @param phrase
+	 * @param charValueList
+	 */
+	public void defaultExpression(List<TaggedWord> taggedwordsList, Phrase phrase,
+			List<CharacterValue> charValueList){
+		TaggedWord verbWord = verbIdentifier.identifyNearestVerb(phrase, taggedwordsList);
+		//find a nearby negation
+		String negation = negationIdentifier.detectNeighbourNegation(taggedwordsList, verbWord);
+		phrase.setNegation(negation);
+		
+		phrase.convertValue(this.getLabel());
+		phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
+		CharacterValue charVal = phrase.getCharValue();
+		//System.out.println("infer for present : ["+charVal+"]");
+		charValueList.add(charVal);
+	}
+	
+	
+	/**
+	 * infer the requirements from the sentences
+	 * @param sentStr
+	 * @param taggedwordsList
+	 * @param phrase
+	 * @param charValueList
+	 * @return
+	 */
+	public boolean detectPresentExpression(String sentStr,
+			List<TaggedWord> taggedwordsList, Phrase phrase,
+			List<CharacterValue> charValueList) {
+		//boolean foundNew = false;
+		//Situation 2b: Explicitly express the requirement. 
+		//Present State and the Verb
+		//in the absence
+		int phraseStartPosition = phrase.getStart();
+		
+		//in the presence
+		int preIndex = sentStr.indexOf("in the presen");
+		//System.out.println("infer for present : ");
+		int preAbsIndex = sentStr.indexOf("in the absen");
+		if(preIndex>-1&&preIndex<phraseStartPosition&&(preIndex>preAbsIndex||preAbsIndex>phraseStartPosition)){//it an present
+			TaggedWord verbWord = verbIdentifier.identifyAheadVerb(preIndex, taggedwordsList);
+			//find a nearby negation
+			String negation = negationIdentifier.detectNeighbourNegation(taggedwordsList, verbWord);
+			
+			if(negation!=null&&!"".equals(negation.trim())){
+				phrase.setNegation("negation");
+			}
+			
+			negation = reverseNegation(verbWord, negation);
+			phrase.setNegation(negation);
+			
+			phrase.convertValue(this.getLabel());
+			phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
+			CharacterValue charVal = phrase.getCharValue();
+			//System.out.println("infer for present : ["+charVal+"]");
+			charValueList.add(charVal);
+			return true;
+		}
+		
+		
+		//returnCharacterStrings.add(text);
+		return false;
+	}
+
+	
+	/**
+	 * infer the requirements from the sentences
+	 * @param sentStr
+	 * @param taggedwordsList
+	 * @param phrase
+	 * @param charValueList
+	 * @return
+	 */
+	public boolean detectAbsentExpression(String sentStr,
+			List<TaggedWord> taggedwordsList, Phrase phrase,
+			List<CharacterValue> charValueList) {
+		//boolean foundNew = false;
+		//Situation 2b: Explicitly express the requirement. 
+		//Present State and the Verb
+		//in the absence
+		int phraseStartPosition = phrase.getStart();
+		int preIndex = sentStr.indexOf("in the absen");
+		int prePresIndex = sentStr.indexOf("in the presen");
+		
+		if(preIndex>-1&&preIndex<phraseStartPosition&&(preIndex>prePresIndex||prePresIndex>phraseStartPosition)){//it an absent
+			TaggedWord verbWord = verbIdentifier.identifyAheadVerb(preIndex, taggedwordsList);
+			//find a nearby negation
+			String negation = negationIdentifier.detectNeighbourNegation(taggedwordsList, verbWord);
+			
+			
+			negation = reverseNegation(verbWord, negation);
+			//System.out.println("reversed negation: ["+negation+"] for "+verbWord);
+			if(negation!=null&&!"".equals(negation.trim())){
+				
+			}else{
+				phrase.setNegation("not");
+			}
+			
+			
+			//phrase.setNegation(negation);
+			
+			phrase.convertValue(this.getLabel());
+			phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
+			CharacterValue charVal = phrase.getCharValue();
+			//System.out.println("infer for absent : ["+charVal+"]");
+			charValueList.add(charVal);
+			
+			return true;
+		}
+		
+		
+		//returnCharacterStrings.add(text);
+		return false;
+	}
+	
+	
+	
+
+	/**
+	 * if the word is a netation verb, then reverse it
+	 * @param verbWord
+	 * @return
+	 */
+	private String reverseNegation(TaggedWord verbWord, String negation) {
+		for(String notrequireStr: notrequirePatterns){
+			if(verbWord.word().toLowerCase().startsWith(notrequireStr)){
+				if(negation==null||"".equals(negation)){
+					negation = "not";
+				}else{
+					negation = null;
+				}
+				return negation;
+			}
+		}
+		return negation;
+	}
+
+	/**
+	 * detect explicitly expressed requirements 
+	 * @param taggedwordsList
+	 * @return
+	 */
+	public boolean detectExplicitExpression(List<TaggedWord> taggedwordsList, Phrase phrase, List<CharacterValue> charValueList) {
+		boolean foundNew = false;
+		Boolean isRequired = null;
+		int startIndex = phrase.getStartIndex();
+		int endIndex = phrase.getEndIndex();
+		int requireIndex = -1;
+		//backward search
+		for(int checkIndex = startIndex-1;checkIndex>=0;checkIndex--){
+			String word = taggedwordsList.get(checkIndex).word().toLowerCase();
+			for(String requireStr: requirePatterns){
+				if(word.indexOf(requireStr)>-1){
+					isRequired = true;
+					requireIndex = checkIndex;
+				}
+				if(word.equals("but")){
+					break;
+				}
+			}
+		}
+		
+		//forward search
+		for(int checkIndex = endIndex+1;checkIndex<taggedwordsList.size();checkIndex++){
+			String word = taggedwordsList.get(checkIndex).word().toLowerCase();
+			for(String requireStr: requirePatterns){
+				if(word.indexOf(requireStr)>-1){
+					isRequired = true;
+					requireIndex = checkIndex;
+					break;
+				}
+				if(word.equals("but")){
+					break;
+				}
+			}
+		}
+		
+		if(isRequired!=null&&isRequired){
+			String negation = negationIdentifier.detectNeighbourNegation(taggedwordsList, requireIndex);
+			
+			//detect negation
+			phrase.setNegation(negation);
+			phrase.convertValue(this.getLabel());
+			phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
+			CharacterValue charVal = phrase.getCharValue();
+			//System.out.println("explicit requirements: ["+charVal+"]");
+			charValueList.add(charVal);
+			foundNew = true;
+		}
+		return foundNew;
+	}
+
+	
+	
+	
+	
+	
+
 	/**
 	 * 1, do not separate subsetences
 	 * 2, postag each subsentence

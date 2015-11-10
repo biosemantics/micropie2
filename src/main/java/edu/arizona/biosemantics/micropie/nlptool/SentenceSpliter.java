@@ -66,13 +66,21 @@ public class SentenceSpliter {
 		//Standford parser for long text 
 		List<String> preSents = preSplit(text);
 		List<String> sentences = new LinkedList();
+		
+		
+		
+		//TODO: FOR Long sentences, the computation is heavy.		
+		
+		
 		for(String sent: preSents){
 			//System.out.println(sent);
-			//if(sent.split("\\s+").length>13){//what should it be?
+			if(sent.length()>=450&&sent.split("[\\.\\?]").length<=2){
+				sentences.add(sent);
+			}else if(sent.split("\\s+").length>13){//what should it be?
 				sentences.addAll(stanfordWrapper.getSentences(sent));
-			//}else{
-			//	sentences.add(sent);
-			//}
+			}else{
+				sentences.add(sent);
+			}
 		}
 		//e = System.currentTimeMillis();
 		//System.out.println("stanford parser costs "+(e-b)+" ms");

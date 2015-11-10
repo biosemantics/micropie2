@@ -15,9 +15,13 @@ import opennlp.tools.util.InvalidFormatException;
 import com.google.inject.Inject;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.stanford.nlp.ling.CoreAnnotations.NamedEntityTagAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations.TextAnnotation;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TokensAnnotation;
+import edu.stanford.nlp.ling.Document;
 import edu.stanford.nlp.ling.Sentence;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -27,10 +31,12 @@ import edu.stanford.nlp.process.PTBTokenizer;
 import edu.stanford.nlp.process.TokenizerFactory;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
+import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
 import edu.stanford.nlp.trees.GrammaticalStructure;
 import edu.stanford.nlp.trees.GrammaticalStructureFactory;
 import edu.stanford.nlp.trees.PennTreebankLanguagePack;
 import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation;
 import edu.stanford.nlp.trees.TreebankLanguagePack;
 import edu.stanford.nlp.trees.TypedDependency;
 import edu.stanford.nlp.util.CoreMap;
@@ -143,20 +149,74 @@ public class StanfordParserWrapper {
 	}
 	
 	/**
+	 * Obtain dependency phrase
+	 * @param sent
+	 * @return
+	 */
+	public Tree parseDepTreeByCoreNLP(String sentence){
+		Annotation annotation = new Annotation(sentence);
+		this.sfCoreNLP.annotate(annotation);
+		//CoreAnnotations.SentencesAnnotation.class
+		//Tree tree = annotation.get(TreeAnnotation.class);
+		//SemanticGraph dependencies = annotation.get(CollapsedCCProcessedDependenciesAnnotation.class);
+		//System.out.println(dependencies);
+
+      	List<CoreMap> sentences = annotation.get(SentencesAnnotation.class);
+      	for(CoreMap sent: sentences) {
+            // traversing the words in the current sentence
+            // a CoreLabel is a CoreMap with additional token-specific methods
+            for (CoreLabel token: sent.get(TokensAnnotation.class)) {
+              // this is the text of the token
+              String word = token.get(TextAnnotation.class);
+              // this is the POS tag of the token
+              String pos = token.get(PartOfSpeechAnnotation.class);
+              // this is the NER label of the token
+              String ne = token.get(NamedEntityTagAnnotation.class);       
+            }
+
+            // this is the parse tree of the current sentence
+           return sent.get(TreeAnnotation.class);
+
+            // this is the Stanford dependency graph of the current sentence
+           // System.out.println(sent.get(CollapsedCCProcessedDependenciesAnnotation.class));
+          }
+        return null;
+	}
+	
+	
+	
+	/**
 	 * Obtain dependency tree
 	 * @param sent
 	 * @return
 	 */
 	public GrammaticalStructure depParse(String sent){
-        Tree parse = parseDepTree(sent);
-  
-        TreebankLanguagePack tlp = new PennTreebankLanguagePack();  
-        GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();  
-        GrammaticalStructure gs = gsf.newGrammaticalStructure(parse);  
+       // Tree parse = parseDepTree(sent);
+        Tree parse = parseDepTreeByCoreNLP(sent);
+        TreebankLanguagePack tlp = new PennTreebankLanguagePack();
+      	GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
+      	GrammaticalStructure gs = gsf.newGrammaticalStructure(parse); 
+      	
+        //TreebankLanguagePack tlp = new PennTreebankLanguagePack();  
+        //GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();  
+        //GrammaticalStructure gs = gsf.newGrammaticalStructure(parse);  
         //Choose the type of dependenciesCollapseTree  
         //so that dependencies which do not   
         //preserve the tree structure are omitted  
 	   // return (List<TypedDependency>) gs.typedDependenciesCollapsedTree(); 
+        return gs;
+	}
+	
+	
+	/**
+	 * Obtain dependency tree
+	 * @param sent
+	 * @return
+	 */
+	public GrammaticalStructure depParse( Tree parse){
+        TreebankLanguagePack tlp = new PennTreebankLanguagePack();
+      	GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
+      	GrammaticalStructure gs = gsf.newGrammaticalStructure(parse); 
         return gs;
 	}
 	

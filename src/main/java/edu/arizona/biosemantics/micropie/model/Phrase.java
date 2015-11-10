@@ -18,7 +18,7 @@ public class Phrase {
 	private String text;
 	private String negation;//the negation word
 	private String type;//N,J,V
-	private String core;
+	private String core;//the core noun or the verb
 	private String modifer;
 	private List<TaggedWord> wordTags;
 	private int startIndex;//the term index

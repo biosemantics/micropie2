@@ -9,7 +9,9 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
+import edu.arizona.biosemantics.micropie.model.Phrase;
 import edu.arizona.biosemantics.micropie.model.Sentence;
+import edu.arizona.biosemantics.micropie.nlptool.PhraseParser;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.arizona.biosemantics.micropie.nlptool.StanfordParserWrapper;
 import edu.stanford.nlp.ling.IndexedWord;
@@ -34,6 +36,7 @@ import edu.stanford.nlp.trees.tregex.TregexPattern;
 public class AntibioticSyntacticExtractor extends AbstractCharacterValueExtractor{
 	private  SentenceSpliter sentSplitter;
 	private  StanfordParserWrapper stfParser;
+	private  PhraseParser phraseParser;
 	
 	private Set sensTypeSet = null;
 	
@@ -56,7 +59,8 @@ public class AntibioticSyntacticExtractor extends AbstractCharacterValueExtracto
 		String cleanSent = sentSplitter.removeBrackets(sentence.getText());
 		
 		//2, get the dependency tree
-		GrammaticalStructure deptTree = stfParser.depParse(cleanSent);
+		Tree parseTree =  stfParser.parseDepTree(cleanSent);
+		GrammaticalStructure deptTree = stfParser.depParse(parseTree);
 		
 		//3, parse
 		List<CharacterValue> valueList = parseValueFromTree(deptTree);
@@ -101,9 +105,8 @@ public class AntibioticSyntacticExtractor extends AbstractCharacterValueExtracto
 						IndexedWord simWependent = simword.getDependent();
 						if(simword.getRelation().toString().startsWith("conj")){//simWependent.tag().startsWith("N")&
 							
-							
 							if(simword.getRelation().toString().equals("conj_but")){//there should be a negation
-								boolean negation = true;
+								//boolean negation = true;
 								//System.out.println("a similar word found: not "+simword.getDependent()+" "+simword.getRelation());
 								
 								CharacterValue cv = CharacterValueFactory.create(this.getLabel(), this.complementPhrase(simWependent, graph));
@@ -153,6 +156,8 @@ public class AntibioticSyntacticExtractor extends AbstractCharacterValueExtracto
 	
 	
 	/**
+	 * TODO: they must connect with each other
+	 * 
 	 * complement the phrase
 	 * @param coreWord
 	 * @param graph
@@ -160,17 +165,80 @@ public class AntibioticSyntacticExtractor extends AbstractCharacterValueExtracto
 	 */
 	public String complementPhrase(IndexedWord coreWord,SemanticGraph graph){
 		List<SemanticGraphEdge> prefixDep = graph.outgoingEdgeList(coreWord);
+		
 		//similar words like the first one
 		String phrase = coreWord.word();
+		//int beginPosition = coreWord.beginPosition();
+		//System.out.println(phrase+" the index of the core is "+ coreWord.index());
 		for(int i= prefixDep.size()-1; i>=0;i--){//
 			SemanticGraphEdge simword = prefixDep.get(i);
-			if(simword.getRelation().toString().equalsIgnoreCase("nn")||simword.getRelation().toString().equals("amod")){//simWependent.tag().startsWith("N")&
-				phrase = simword.getDependent().word()+" "+phrase;
+			String relation = simword.getRelation().toString();
+			IndexedWord dependent = simword.getDependent();
+			//int deptIndex = dependent.index();
+			if((relation.equalsIgnoreCase("nn")||relation.equals("amod"))&&isAdjecent(dependent, prefixDep,coreWord)){//simWependent.tag().startsWith("N")&
+				System.out.println("add "+dependent.word());
+				phrase = dependent.word()+" "+phrase;
 			}
 		}
 		
 		return phrase;
 	}
+
+	/**
+	 * TODO: they must connect with each other
+	 * 
+	 * complement the phrase
+	 * @param coreWord
+	 * @param graph
+	 * @return
+	 */
+	public String complementPhrase(IndexedWord coreWord,List<Phrase> phraseList){
+		
+		//similar words like the first one
+		int beginPosition = coreWord.beginPosition();
+		//System.out.println(phrase+" the index of the core is "+ coreWord.index());
+		for(Phrase phrase:phraseList){//
+			int start = phrase.getStart();
+			int end = phrase.getEnd();
+			if(beginPosition>=start&&beginPosition<=end){//simWependent.tag().startsWith("N")&
+				return phrase.getText();
+			}
+		}
+		
+		return null;
+	}
+	
+	
+	/**
+	 * a index should be adject to at least one of the others
+	 * @param deptIndex
+	 * @param prefixDep
+	 * @return
+	 */
+	private boolean isAdjecent(IndexedWord dependent, List<SemanticGraphEdge> prefixDep,IndexedWord coreWord) {
+		int deptBeginPosition = dependent.beginPosition();
+		int deptEndPosition = dependent.endPosition();
+		
+		int beginPosition = coreWord.beginPosition();
+		int endPosition = coreWord.endPosition();
+		
+		if(Math.abs(deptEndPosition-beginPosition)<=2) return true;
+		/*for(SemanticGraphEdge edge : prefixDep){
+			IndexedWord anIndexWord = edge.getDependent();
+			if(anIndexWord==dependent) continue;
+			int anBeginPosition = anIndexWord.beginPosition();
+			int anptEndPosition = anIndexWord.endPosition();
+			//System.out.println(dependent.word()+" "+deptBeginPosition+"-"+deptEndPosition+"   "+anIndexWord.word()+" "+anBeginPosition+"-"+anptEndPosition);
+			if(Math.abs(deptEndPosition-anBeginPosition)<=2||Math.abs(anptEndPosition-deptBeginPosition)<=2) return true;
+		}
+		*/
+		return false;
+	}
+	
+	
+	
+	//should not in a large span, there should not contain a comma
+	
 	
 
 }

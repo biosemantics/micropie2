@@ -13,13 +13,11 @@ import com.google.inject.Inject;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
-import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Phrase;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.nlptool.PhraseParser;
 import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
-import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.stanford.nlp.ling.TaggedWord;
 
 
@@ -32,19 +30,35 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 	//protected SentenceSpliter sentSplitter;
 	protected PosTagger posTagger;
 	
-	private PhraseParser phraseParser = null;
+	protected PhraseParser phraseParser = null;
 	
-	@Inject
+	/**
+	 * should return the matched keywords or should return the whole phrase
+	 */
+	protected String matchMode = "P";//P: phrase; W: keyword
+	
 	public PhraseBasedExtractor(PosTagger posTagger,ILabel label, String character,
 			Set<String> keywords, Map<String, List> subKeyword) {
 		super(label, character, keywords, subKeyword);
 		//this.sentSplitter = sentSplitter;SentenceSpliter sentSplitter,
 		this.posTagger = posTagger;
+		
 	}
 	
 	public PhraseBasedExtractor(ILabel label, String character,
 			Set<String> keywords, Map<String, List> subKeyword) {
 		super(label, character, keywords, subKeyword);
+	}
+	
+	public PhraseBasedExtractor(ILabel label, String character,
+			Set<String> keywords, Map<String, List> subKeyword, String matchMode) {
+		super(label, character, keywords, subKeyword);
+		this.matchMode = matchMode;
+	}
+	
+	
+	public void setMatchMode(String matchMode){
+		this.matchMode = matchMode;
 	}
 
 	
@@ -99,6 +113,7 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 						if(isId){
 							pharse.convertValue(this.getLabel());
 							CharacterValue charVal = pharse.getCharValue();
+							if("W".equals(this.matchMode)) charVal.setValue(keywordString);
 							charValueList.add(charVal);
 							//System.out.println("OUTER PHRASE HIT VALUE: ["+charVal+"]");
 							//returnCharacterStrings.add(text);
@@ -116,6 +131,7 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 								//pharse.setCharValue(charVal);
 								pharse.convertValue(this.getLabel());
 								CharacterValue charVal = pharse.getCharValue();
+								if("W".equals(this.matchMode)) charVal.setValue(subKeyword);
 								charValueList.add(charVal);
 								//System.out.println("INNER PHRASE  HIT VALUE: ["+charVal+"]");
 								break;

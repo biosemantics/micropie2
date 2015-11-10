@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jgrapht.EdgeFactory;
 import org.jgrapht.Graph;
@@ -14,8 +16,12 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import edu.arizona.biosemantics.micropie.model.Phrase;
 import edu.arizona.biosemantics.micropie.model.PhraseRelation;
 import edu.arizona.biosemantics.micropie.model.PhraseRelationType;
+import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
+import edu.stanford.nlp.semgraph.SemanticGraphEdge;
+import edu.stanford.nlp.trees.GrammaticalStructure;
+import edu.stanford.nlp.trees.Tree;
 
 
 /**
@@ -120,7 +126,7 @@ public class RelationParser {
 				graph.addVertex(formerPhrase);
 				graph.addVertex(curPhrase);
 				PhraseRelation directEdge = graph.getEdgeFactory().createEdge(formerPhrase, curPhrase);
-				directEdge.setType(PhraseRelationType.COR);
+				directEdge.setType(PhraseRelationType.COR.toString());
 				//graph.addEdge(formerPhrase, curPhrase);
 				graph.addEdge(formerPhrase, curPhrase, directEdge);
 			}
@@ -128,7 +134,6 @@ public class RelationParser {
 		
 		return graph;
 	}
-
 	
 	/**
 	 * BuildPhrase Graph according to the SemanticGraph of the sentence
@@ -197,27 +202,147 @@ public class RelationParser {
 			}
 		
 		}
-		
 	}
-	
-	
 	
 	
 	/**
-	 * build relation type
-	 * 
-	 * TODO: different words: core words, modifiers plus core words or the whole phrase?
-	 * 
-	 * @param source
-	 * @param target
-	 * @param type
+	 * build a dependency tree between noun phrases and verb phrases
+	 * the source is the governor
+	 * the target is the dependent
 	 * @return
-	
-	public PhraseRelation buildRelation(Phrase source, Phrase target, PhraseRelationType type){
-		String sourcePh = source.getCore();
-		String targetPh = target.getCore();
-		return new PhraseRelation(sourcePh, targetPh, type);
-	}
 	 */
+	public PhraseRelationGraph parseVerbDependencyRelation(List<Phrase> verbPhrases, List<Phrase> nounPhrases, GrammaticalStructure deptTree){
+		
+		PhraseRelationGraph relationGraph = new PhraseRelationGraph(new PhraseRelationFactory());
+		SemanticGraph semanticGraph = new SemanticGraph(deptTree.typedDependenciesCollapsedTree());
+		
+		//find the dependent relationship for all the verb phrases
+		for(Phrase vbPhrase : verbPhrases){
+			String verbStr = vbPhrase.getCore();
+			
+			IndexedWord verbWord = semanticGraph.getNodeByWordPattern(verbStr);//obtain the word
+			List<SemanticGraphEdge> edgeList = semanticGraph.edgeListSorted();
+			for(SemanticGraphEdge edge : edgeList){
+				//build a relation
+				findRelationForVerbPhrase(vbPhrase, verbWord, edge, nounPhrases, relationGraph);
+			}
+		}
+		
+		return relationGraph;
+	}
+
+	/**
+	 * find and build a phrase relation for a verb phrase
+	 * @param vbPhrase
+	 * @param nounCands
+	 * @param nounPhrases
+	 * @return
+	 */
+	public PhraseRelation findRelationForVerbPhrase(Phrase vbPhrase,IndexedWord verbWord, SemanticGraphEdge edge, 
+			List<Phrase> nounPhrases, PhraseRelationGraph relationGraph) {
+		
+		String relationType = edge.getRelation().toString();
+		IndexedWord governer = edge.getGovernor();
+		IndexedWord dependent = edge.getDependent();
+		IndexedWord nounCands = null;
+		Phrase governPhrase = null;
+		Phrase dependentPhrase = null;
+		if(governer.equals(verbWord)){
+			nounCands = dependent;
+			governPhrase = vbPhrase;
+		}else{
+			nounCands = governer;
+			dependentPhrase = vbPhrase;
+		}
+		
+		String nounCandWord = nounCands.word();
+		int beginPosition = nounCands.beginPosition();
+		int endPosition = nounCands.endPosition();
+		
+		String patternString = "\\s"+nounCandWord+"[\\,\\.\\s\\?\\:]|^"+nounCandWord+"\\s|\\s"+nounCandWord+"$"; // regular expression pattern
+		Pattern pattern = Pattern.compile(patternString);
+		
+		PhraseRelation directEdge = null;
+		for(Phrase phrase : nounPhrases){
+			String text = phrase.getText();
+			Matcher matcher = pattern.matcher(text);
+			int begin = phrase.getStart();
+			int end = phrase.getEnd();
+			
+			if(matcher.find()&&begin<=beginPosition&&end>=endPosition){//match
+				relationGraph.addVertex(phrase);
+				relationGraph.addVertex(vbPhrase);
+				//the role of this noun phrase
+				if(governPhrase==null){
+					governPhrase = phrase;
+				}else{
+					dependentPhrase = phrase;
+				}
+				
+				
+				directEdge = relationGraph.getEdgeFactory().createEdge(governPhrase, dependentPhrase);
+				directEdge.setType(relationType);
+				//graph.addEdge(formerPhrase, curPhrase);
+				relationGraph.addEdge(governPhrase, dependentPhrase, directEdge);
+				//System.out.println(governPhrase+" "+dependentPhrase+"===>"+relationType);
+				break;
+			}
+		}
+		return directEdge;
+	}
+	
+	
+	/**
+	 * find those phrases with conjunctive relations by self-invocation
+	 * @param dependent
+	 * @param phraseList
+	 * @param semanticGraph
+	 * @return
+	 */
+	public void findConjPhrase(IndexedWord governor, List<Phrase> phraseList, SemanticGraph semanticGraph, List allDependList) {
+		List<SemanticGraphEdge> edgeList = semanticGraph.outgoingEdgeList(governor);
+		for(SemanticGraphEdge edge : edgeList){
+			String edgeRelation = edge.getRelation().toString();
+			if(edgeRelation.startsWith("conj")){
+				IndexedWord dependent = edge.getDependent();
+				Phrase dependentPhrase = findPhrase(dependent, phraseList);
+				allDependList.add(dependentPhrase);
+				findConjPhrase(dependent,phraseList,semanticGraph,allDependList);
+			}
+		}
+	}
+
+
+	/**
+	 * 
+	 * @param dependentPhrase
+	 * @param coordTermLists
+	 * @return
+	 */
+	public List findCoordTerms(Phrase dependentPhrase,List<List<Phrase>> coordTermLists) {
+		for(List<Phrase> phList : coordTermLists){
+			for(Phrase p: phList){
+				if(p ==dependentPhrase) return phList;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * find the phrase for this word
+	 * @param dependent
+	 * @param phraseList
+	 * @return
+	 */
+	public Phrase findPhrase(IndexedWord dependent, List<Phrase> phraseList) {
+		int wordBeginPosition = dependent.beginPosition();
+		int wordEndPosition = dependent.endPosition();
+		for(Phrase phrase : phraseList){
+			if(wordBeginPosition>=phrase.getStart()&&wordEndPosition<=phrase.getEnd()){
+				return phrase;
+			}
+		}
+		return null;
+	}
 	
 }
