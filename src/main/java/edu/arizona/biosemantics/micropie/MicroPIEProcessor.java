@@ -31,6 +31,7 @@ import edu.arizona.biosemantics.micropie.extract.NewTaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.extract.TaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
+import edu.arizona.biosemantics.micropie.io.XMLNewSchemaTextReader;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
@@ -218,8 +219,13 @@ public class MicroPIEProcessor{
 	 * @return
 	 */
 	private TaxonTextFile readTaxonFile(File inputFile) {
+
 		XMLTextReader textReader = new XMLTextReader();
 		textReader.setInputStream(inputFile);
+		if(textReader.isNew()){
+			textReader = new XMLNewSchemaTextReader();
+			textReader.setInputStream(inputFile);
+		}
 		TaxonTextFile taxonFile = textReader.readFile();
 		taxonFile.setTaxon(taxonFile.getGenus()+" "+taxonFile.getSpecies());
 		

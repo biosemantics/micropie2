@@ -3,6 +3,8 @@ package edu.arizona.biosemantics.micropie.nlptool;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.stanford.nlp.ling.TaggedWord;
 
@@ -81,6 +83,23 @@ public class NegationIdentifier implements INegationIdentifier{
 			return detectNegationWithinWindow(taggedwordsList, i, 2);
 		}
 		return null;
+	}
+	
+	
+	/**
+	 * detect whether it is a negation or not
+	 * @param term
+	 * @return
+	 */
+	public static boolean detectInlineNegation(String term){
+		String patternString = "\\snon(?=[a-z\\-])|^non(?=[a-z\\-])|negative"; // regular expression pattern
+		Matcher matcher = Pattern.compile(patternString).matcher(term);
+		//String negation = null;
+		if (matcher.find()) {
+			//negation = matcher.group().trim();
+			return true;
+		}
+		return false;
 	}
 
 }

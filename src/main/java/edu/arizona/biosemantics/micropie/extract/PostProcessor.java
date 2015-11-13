@@ -5,6 +5,7 @@ import java.util.List;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
+import edu.arizona.biosemantics.micropie.nlptool.NegationIdentifier;
 
 
 /**
@@ -33,12 +34,20 @@ public class PostProcessor {
 				i++;
 				continue;
 			}else{
-				if(Label.c53.equals(valueLabel)||Label.c55.equals(valueLabel)||Label.c57.equals(valueLabel)){
+				if(Label.c45.equals(valueLabel)||Label.c53.equals(valueLabel)||Label.c55.equals(valueLabel)||Label.c57.equals(valueLabel)){
 					negationToAnother(aValue);
 				}else if(Label.c32.equals(valueLabel)||Label.c33.equals(valueLabel)){
 					negationReverse(aValue);
 				}
 				
+				valueLabel = aValue.getCharacter();
+				//remove 
+				if(Label.c46.equals(valueLabel)){//it must be a negation
+					if((aValue.getNegation()==null||"".equals(aValue.getNegation()))&&!NegationIdentifier.detectInlineNegation(aValue.getValue())){
+						valueList.remove(aValue);
+						i--;
+					}
+				}
 				i++;
 			}
 		}

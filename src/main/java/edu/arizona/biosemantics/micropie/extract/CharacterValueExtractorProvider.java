@@ -107,10 +107,10 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 				labelExtractorsMap.put(label, new HashSet<ICharacterValueExtractor>());
 		}
 		
-		//System.out.println(extractors+" "+extractors.size());
-		extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
-		extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
-		extractors.add(new FermentationSubstratesNotUsed(Label.c56));
+		//System.out.println("initializing new characters "+extractors.size());
+		//extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
+		//extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
+		//extractors.add(new FermentationSubstratesNotUsed(Label.c56));
 		
 		
 		PhraseParser phraseParser = new PhraseParser();
@@ -121,6 +121,8 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		extractors.add(new AntibioticSyntacticExtractor(Label.c33, "Antibiotic sensitivity",resistantPatterns,sentSplitter,stanfordWrapper));
 		extractors.add(new AntibioticPhraseExtractor(Label.c33, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, resistantTerms));
 
+		
+		FermentationProductExtractor  fermentationExtractor =  null;
 		//convert to a label-extractor map
 		for(ICharacterValueExtractor extractor : extractors) {
 			if(!labelExtractorsMap.containsKey(extractor.getLabel()))
@@ -138,16 +140,18 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 				((HabitatIsolatedFromExtractor) extractor).setSentSplitter(sentSplitter);
 				((HabitatIsolatedFromExtractor) extractor).setRelationParser(phraseRelationParser);
 				((HabitatIsolatedFromExtractor) extractor).setStanParser(stanfordWrapper);
-			}else if(extractor instanceof PhraseBasedExtractor){
-				((PhraseBasedExtractor) extractor).setPosTagger(posTagger);
-				((PhraseBasedExtractor) extractor).setPhraseParser(phraseParser);
-				//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
 			}else if(extractor instanceof edu.arizona.biosemantics.micropie.extract.keyword.FermentationProductExtractor){
 				((FermentationProductExtractor) extractor).setPosTagger(posTagger);
 				((FermentationProductExtractor) extractor).setPhraseParser(phraseParser);
 				((FermentationProductExtractor) extractor).setSentSplitter(sentSplitter);
 				((FermentationProductExtractor) extractor).setRelationParser(phraseRelationParser);
 				((FermentationProductExtractor) extractor).setStanParser(stanfordWrapper);
+				fermentationExtractor = (FermentationProductExtractor) extractor;
+				
+			}else if(extractor instanceof PhraseBasedExtractor){//put in the last
+				((PhraseBasedExtractor) extractor).setPosTagger(posTagger);
+				((PhraseBasedExtractor) extractor).setPhraseParser(phraseParser);
+				//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
 			}
 		}
 		
@@ -173,6 +177,8 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		labelExtractorsMap.get(Label.c25).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c26).add(ptnFigureExtractor);
 		
+		labelExtractorsMap.get(Label.c41).add(fermentationExtractor);
+		labelExtractorsMap.get(Label.c42).add(fermentationExtractor);
 		/*
 		for(Label label: Label.values()){
 			System.out.println(label+","+ labelExtractorsMap.get(label).size());

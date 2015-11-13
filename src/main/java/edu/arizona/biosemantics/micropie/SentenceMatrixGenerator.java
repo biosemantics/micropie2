@@ -31,6 +31,7 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.extract.NewTaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
+import edu.arizona.biosemantics.micropie.io.XMLNewSchemaTextReader;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
@@ -122,9 +123,9 @@ public class SentenceMatrixGenerator {
 		 * @param outputMatrixFile
 		 */
 		public void processFolder(String inputFolder,String predictionFile){
-			String[] characterNames ="%G+C,Cell shape,Cell width,Cell length,Cell diameter,Motility,Pigment compounds,Gram stain type,Cell membrane & cell wall components,Cell relationships&aggregations,Cell division pattern & reproduction,External features,Internal features,Lysis Susceptibility,Biofilm formation,Filterability,Colony shape,Colony margin,Colony texture,Colony color,Film test result,Spot test result,Habitat isolated from,Geographic location,Aerophilicity,Pressure preference,pH minimum,pH optimum,pH maximum,Temperature minimum,Temperature optimum,Temperature maximum,NaCl minimum,NaCl optimum,NaCl maximum,Host,Symbiotic relationship,Pathogenic,Disease Caused,Pathogen Target Organ,Haemolytic&haemadsorption properties,Vitamins and Cofactors required for growth,Magnesium requirement for growth,organic compounds used or hydrolyzed,organic compounds NOT used or NOT hydrolyzed,inorganic substances used,inorganic substances NOT used,fermentation substrates used,fermentation substrates NOT used,Fermentation Products,Other metabolic product,Antibiotic sensitivity,Antibiotic resistant,Antibiotic production".split(",");
+			String[] characterNames ="%G+C,Cell shape,Cell width,Cell length,Cell diameter,Motility,Pigment compounds,Gram stain type,Cell membrane & cell wall components,Cell relationships&aggregations,Cell division pattern & reproduction,External features,Internal features,Lysis Susceptibility,Biofilm formation,Filterability,Colony shape,Colony margin,Colony texture,Colony color,Film test result,Spot test result,Habitat isolated from,Geographic location,Aerophilicity,Pressure preference,pH minimum,pH optimum,pH maximum,Temperature minimum,Temperature optimum,Temperature maximum,NaCl minimum,NaCl optimum,NaCl maximum,Host,Symbiotic relationship,Pathogenic,Disease Caused,Pathogen Target Organ,Haemolytic&haemadsorption properties,Vitamins and Cofactors required for growth,Magnesium requirement for growth,organic compounds used or hydrolyzed,organic compounds NOT used or NOT hydrolyzed,inorganic substances used,inorganic substances NOT used,fermentation substrates used,fermentation substrates NOT used,Fermentation Products,Other metabolic product,Antibiotic sensitivity,Antibiotic resistant,Antibiotic production,tests positive,tests negative".split(",");
 			
-			LinkedHashSet<ILabel> characterLabels = new LinkedHashSet();
+			List<ILabel> characterLabels = new ArrayList();
 			for(String characterName : characterNames){
 				ILabel label = categoryNameLabelMap.get(characterName.trim().toLowerCase());
 				characterLabels.add(label);
@@ -151,7 +152,7 @@ public class SentenceMatrixGenerator {
 		 * @param inputFile
 		 * @param matrix
 		 */
-		public TaxonTextFile processFile(File inputFile, String predictionFile, LinkedHashSet characterLabels) {
+		public TaxonTextFile processFile(File inputFile, String predictionFile, List<ILabel> characterLabels) {
 			
 			//parse the taxon file information
 			TaxonTextFile taxonFile = readTaxonFile(inputFile);
@@ -199,8 +200,13 @@ public class SentenceMatrixGenerator {
 		 * @return
 		 */
 		private TaxonTextFile readTaxonFile(File inputFile) {
+			
 			XMLTextReader textReader = new XMLTextReader();
 			textReader.setInputStream(inputFile);
+			if(textReader.isNew()){
+				textReader = new XMLNewSchemaTextReader();
+				textReader.setInputStream(inputFile);
+			}
 			TaxonTextFile taxonFile = textReader.readFile();
 			taxonFile.setTaxon(taxonFile.getGenus()+" "+taxonFile.getSpecies());
 			
@@ -227,10 +233,10 @@ public class SentenceMatrixGenerator {
 			Injector injector = Guice.createInjector(config);
 			
 			//String inputFolder = "F:\\MicroPIE\\micropieInput\\input";
-			String inputFolder = "F:\\MicroPIE\\datasets\\exp116";
+			String inputFolder = "F:\\MicroPIE\\datasets\\Part One 112";
 			//String inputFolder ="F:\\MicroPIE\\ext\\sample1";
 			//String svmLabelAndCategoryMappingFile = injector.getInstance(Key.get(String.class,  Names.named("svmLabelAndCategoryMappingFile")));
-			String predictionsFile = "F:\\MicroPIE\\ext\\goldtest\\gold_matrix_sentence.csv";
+			String predictionsFile = "F:\\MicroPIE\\ext\\goldtest\\gold_matrix_Part_One_112_sentence.csv";
 			
 			//MicroPIEProcessorOld microPIEProcessor = injector.getInstance(MicroPIEProcessorOld.class);
 			

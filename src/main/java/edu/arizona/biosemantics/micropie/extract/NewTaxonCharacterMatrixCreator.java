@@ -241,6 +241,7 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 			
 			//List<CharacterValue> sentCharValues = new ArrayList();
 			// call the extractors one by one according to the predicted characters
+			//TODO:FermentationProductExtractor
 			for (ICharacterValueExtractor extractor : extractors) {
 				//String character = extractor.getCharacterName();
 				ILabel label = extractor.getLabel();

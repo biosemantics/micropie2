@@ -50,6 +50,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 	private SentenceSpliter sentSplitter;
 	private RelationParser phraseRelationParser;
 	private Label fermSubstrate = Label.c57;
+	private Label fermProSubstrate = Label.c41;
 	//protected String matchMode = "W";
 	
 	public FermentationProductExtractor(ILabel label, String character,
@@ -89,6 +90,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 		//System.out.println("sentence:"+sentence.getText());
 		//Set<String> returnCharacterStrings = new HashSet<String>();
 		//1, get rid of all the content in the brackets
+		if(sentence==null) return null;
 		String cleanSent = sentSplitter.removeBrackets(sentence.getText());
 		List<TaggedWord> tagList = posTagger.tagString(cleanSent);
 		List<Phrase> phraseList = phraseParser.extract(tagList);
@@ -110,6 +112,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 			if(edgeRelation.startsWith("prep")){
 				IndexedWord dependent = edge.getDependent();
 				Phrase dependentPhrase = phraseRelationParser.findPhrase(dependent, phraseList);
+				if(dependentPhrase==null) continue;
 				prepPhrases.add(dependentPhrase);
 				
 				//default as a fermentation substrate
@@ -173,7 +176,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 				boolean isId = extract(keywordString, text);
 				
 				if(isId){
-					pharse.convertValue(this.getLabel());
+					pharse.convertValue(fermProSubstrate);
 					CharacterValue charVal = pharse.getCharValue();
 					if("W".equals(this.matchMode)) charVal.setValue(keywordString);
 					charValueList.add(charVal);
@@ -191,7 +194,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 					if(isExist){
 						//CharacterValue charVal = CharacterValueFactory.create(this.getLabel(),text);
 						//pharse.setCharValue(charVal);
-						pharse.convertValue(this.getLabel());
+						pharse.convertValue(fermProSubstrate);
 						CharacterValue charVal = pharse.getCharValue();
 						if("W".equals(this.matchMode)) charVal.setValue(subKeyword);
 						charValueList.add(charVal);

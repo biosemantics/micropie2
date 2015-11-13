@@ -19,11 +19,11 @@ import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 
 
 /**
- * for handling old schema of XML files
+ * for handling new schema of XML files
  * @author maojin
  *
  */
-public class XMLTextReader implements ITextReader {
+public class XMLNewSchemaTextReader extends XMLTextReader {
 
 	private Element rootNode;
 	private InputStream inputStream;
@@ -122,7 +122,6 @@ public class XMLTextReader implements ITextReader {
 	 * @return
 	 */
 	public TaxonTextFile readFile(){
-		if(rootNode==null) return null;
 		
 		TaxonTextFile taxonFile = new TaxonTextFile();
 		String taxon = this.getTaxon();
@@ -161,11 +160,11 @@ public class XMLTextReader implements ITextReader {
 			
 			
 			if( rank.equals("genus")) {
-				taxon += taxon_nameElement.getText();
+				taxon += taxon_nameElement.getText().replace(",", "");
 			}
 			
 			if( rank.equals("species")) {
-				taxon += " " + taxon_nameElement.getText();
+				taxon += " " + taxon_nameElement.getText().replace(",", "");
 			}
 			
 		}
@@ -204,7 +203,7 @@ public class XMLTextReader implements ITextReader {
 //		throw new Exception("Could not find a family name");
 	}	
 	
-	
+	/*
 	
 	public String getGenus(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
@@ -214,10 +213,10 @@ public class XMLTextReader implements ITextReader {
 			genusName = genusNameEl.getText();
 		}
 		return genusName;
-	}		
+	}		*/	
 	
 	
-	/*
+
 	public String getGenus(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
@@ -226,6 +225,7 @@ public class XMLTextReader implements ITextReader {
 			String rank = taxon_nameElement.getAttributeValue("rank");
 			if( rank.equals("genus")) {
 				genusName = taxon_nameElement.getText();
+				genusName = genusName.replace(",", "");
 			}
 		}
 //		if(genusName != null) {
@@ -233,19 +233,8 @@ public class XMLTextReader implements ITextReader {
 			return genusName;
 //		}	
 		//throw new Exception("Could not find a genus name");
-	}	*/	
-
-	public String getSpecies(){
-		Element taxon_identification = rootNode.getChild("taxon_identification");
-		Element speciesNameEl = taxon_identification.getChild("species_name");
-		String speciesName = null;
-		if(speciesNameEl!=null){
-			speciesName = speciesNameEl.getText();
-		}
-		return speciesName;
 	}	
-	
-	/*
+
 	public String getSpecies(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
@@ -254,6 +243,7 @@ public class XMLTextReader implements ITextReader {
 			String rank = taxon_nameElement.getAttributeValue("rank");
 			if( rank.equals("species")) {
 				speciesName = taxon_nameElement.getText();
+				speciesName = speciesName.replace(",", "");
 			}
 		}
 //		if(speciesName != null) {
@@ -261,8 +251,9 @@ public class XMLTextReader implements ITextReader {
 			return speciesName;
 //		}	
 		//throw new Exception("Could not find a species name");
-	}	*/
+	}
 
+	
 	public String getStrain_number() {
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> strain_numberListOfElement = taxon_identification.getChildren("strain_number");
@@ -303,13 +294,8 @@ public class XMLTextReader implements ITextReader {
 	
 	
 	public TaxonTextFile readTaxonFile(File inputFile) {
-		XMLTextReader textReader = new XMLTextReader();
+		XMLNewSchemaTextReader textReader = new XMLNewSchemaTextReader();
 		textReader.setInputStream(inputFile);
-		if(textReader.isNew()){
-			textReader = new XMLNewSchemaTextReader();
-			textReader.setInputStream(inputFile);
-			System.out.println("new");
-		}
 		TaxonTextFile taxonFile = textReader.readFile();
 		taxonFile.setTaxon(taxonFile.getGenus()+" "+taxonFile.getSpecies());
 		
@@ -322,20 +308,6 @@ public class XMLTextReader implements ITextReader {
 		return taxonFile;
 	}
 	// New Schema 2:: 141111	
-
-	
-	
-	/**
-	 * detect whether it is new schema.
-	 * @return
-	 */
-	public boolean isNew() {
-		//System.out.println(rootNode);
-		//System.out.println(rootNode.getNamespace().getPrefix());
-		//if("bio:treatment".equals(rootNode.getName())) return true;
-		if(rootNode==null||!"".equals(rootNode.getNamespace().getPrefix())) return true;
-		return false;
-	}
 	
 	/*
 	// New schema

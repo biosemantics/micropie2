@@ -17,6 +17,7 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.keyword.FermentationProductExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.HabitatIsolatedFromExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.KeywordBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
@@ -164,6 +165,7 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		}
 		//return new KeywordBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
 		//SentenceSpliter must be set latter
+		//System.out.println("read character extractors");
 		Label label = Label.valueOf(labelName);
 		if(initClass!=null){
 			if("SalinityPreferenceExtractor".equals(initClass)){
@@ -171,6 +173,9 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 				return saliPrefExtractor;
 			}else if("HabitatIsolatedFromExtractor".equals(initClass)){
 				return new HabitatIsolatedFromExtractor(label, characterName,keywords,subKeywords);
+			}else if("FermentationProductExtractor".equals(initClass)){
+				//System.out.println("read FermentationProductExtractor");
+				return new FermentationProductExtractor(label, characterName,keywords,subKeywords);
 			}
 		}
 

@@ -158,7 +158,7 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 	 * @param sentences
 	 * @param labelList
 	 */
-	public void writePredictMatrix(TaxonTextFile taxon, Map<ILabel, List<String>> labelSentenceMap, LinkedHashSet<ILabel> labelList) {
+	public void writePredictMatrix(TaxonTextFile taxon, Map<ILabel, List<String>> labelSentenceMap, List<ILabel> labelList) {
 		CSVWriter writer = null;
 		try {
 			writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(predictionFile,true), "UTF8")));
@@ -191,7 +191,7 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 			writer.writeAll(lines);
 			writer.flush();
 			writer.close();
-			System.out.println("write headers");
+			//System.out.println("write headers");
 			log(LogLevel.INFO, "Done writing prediciton results");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
