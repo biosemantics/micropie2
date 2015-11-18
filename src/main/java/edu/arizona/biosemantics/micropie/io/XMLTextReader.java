@@ -107,7 +107,6 @@ public class XMLTextReader implements ITextReader {
 		// System.out.println("descType:" + descType);
 		// System.out.println("text:" + text);
 		if(text != null && descType.equals("morphology")) {  
-			System.out.println("text:" + text);
 			returnText += text;
 			return returnText;
 		}	
@@ -153,23 +152,28 @@ public class XMLTextReader implements ITextReader {
 		
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		
-		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
-		
 		String taxon = "";
-		for(Element taxon_nameElement : taxon_nameListOfElement) {
-			String rank = taxon_nameElement.getAttributeValue("rank");
+		if(taxon_identification!=null){
+			List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
 			
 			
-			if( rank.equals("genus")) {
-				taxon += taxon_nameElement.getText();
+			for(Element taxon_nameElement : taxon_nameListOfElement) {
+				String rank = taxon_nameElement.getAttributeValue("rank");
+				
+				
+				if( rank.equals("genus")) {
+					taxon += taxon_nameElement.getText();
+				}
+				
+				if( rank.equals("species")) {
+					taxon += " " + taxon_nameElement.getText();
+				}
+				
 			}
-			
-			if( rank.equals("species")) {
-				taxon += " " + taxon_nameElement.getText();
-			}
-			
-		}
 		
+		}else{
+			taxon = rootNode.getChildText("taxon_name");
+		}
 	
 //		
 //		if(taxon != null) {
@@ -308,7 +312,6 @@ public class XMLTextReader implements ITextReader {
 		if(textReader.isNew()){
 			textReader = new XMLNewSchemaTextReader();
 			textReader.setInputStream(inputFile);
-			System.out.println("new");
 		}
 		TaxonTextFile taxonFile = textReader.readFile();
 		taxonFile.setTaxon(taxonFile.getGenus()+" "+taxonFile.getSpecies());

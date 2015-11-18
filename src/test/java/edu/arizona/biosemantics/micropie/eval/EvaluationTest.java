@@ -15,7 +15,7 @@ public class EvaluationTest {
 		String comparedCharacterNames ="%g+c|cell shape|cell diameter|cell length|cell width|"
 				+ "cell relationships&aggregations|gram stain type|cell membrane & cell wall components|external features|"
 				+ "internal features|motility|pigment compounds|biofilm formation|filterability|lysis susceptibility|cell division pattern & reproduction|"
-				+ "habitat isolated from|Salinity preference|nacl minimum|nacl optimum|nacl maximum|ph minimum|"
+				+ "habitat isolated from|salinity preference|nacl minimum|nacl optimum|nacl maximum|ph minimum|"
 				+ "ph optimum|ph maximum|temperature minimum|temperature optimum|temperature maximum|"
 				+ "pressure preference|aerophilicity|magnesium requirement for growth|vitamins and cofactors required for growth|"
 				+ "geographic location|antibiotic sensitivity|antibiotic resistant|antibiotic production|"
@@ -24,7 +24,7 @@ public class EvaluationTest {
 				+ "tests negative|symbiotic relationship|host|pathogenic|disease caused|pathogen target organ|haemolytic&haemadsorption properties|"
 				+ "organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
 		
-		String categoryMappingFile = "F:/MicroPIE/micropieInput/svmlabelandcategorymapping/categoryMapping_poster.txt";
+		String categoryMappingFile = "F:/MicroPIE/micropieInput/svmlabelandcategorymapping/categoryMapping_MicroPIE1.5.txt";
 		
 		String charValEvalResultFile = "F:/MicroPIE/evaluation/output/charValEvalResult.csv";
 		String charAllEvalResultFile = "F:/MicroPIE/evaluation/output/charAllEvalResult.csv";
@@ -40,12 +40,12 @@ public class EvaluationTest {
 		
 		String gstBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String gstKeyField = "XML file";
-		String gstMatrixFile ="F:/MicroPIE/evaluation/gold_matrix_sample_22.csv";//gold_matrix_sample.csv";
+		String gstMatrixFile ="F:/MicroPIE/evaluation/gold_matrix_sample.csv";//gold_matrix_sample.csv";
 		
 		//Taxon	Family	Genus	Species	Strain	16S rRNA accession #	XML file
 		String tgBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String tgKeyField = "XML file";
-		String tgMatrixFile ="F:/MicroPIE/ext/goldtest/goldtest_22_1110.csv";
+		String tgMatrixFile ="F:/MicroPIE/ext/goldtest/goldtest_22_1113.csv";
 		
 		//String tgBasicFields = "XML file|Taxon|Genus|Species|Strain";//STUEXP_040214_28ch.csv
 		//String tgKeyField = "XML file";

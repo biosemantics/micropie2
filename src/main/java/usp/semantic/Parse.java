@@ -224,7 +224,7 @@ public class Parse {
 		Utils.println("[Parse] read syntax ...");		
 		ArrayList<Article> articles=new ArrayList<Article>();
 		for (int i=0; i<inputFileNames_.size(); i++) {
-			// System.out.println(inputFileNames_.get(i));
+			 //System.out.println(inputFileNames_.get(i));
 			Article a=parseReader_.readParse(inputFileNames_.get(i));
 			// System.out.println("inputFileNames_::" + inputFileNames_);
 			// System.out.println("Elvis Test::inputFileNames_.get(i)::" + inputFileNames_.get(i).toString());

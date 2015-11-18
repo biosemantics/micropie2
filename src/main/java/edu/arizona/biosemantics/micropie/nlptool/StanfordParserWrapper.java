@@ -85,6 +85,19 @@ public class StanfordParserWrapper {
 		
 		return tokenStr;
 	}
+	
+	/**
+	 * tokenize the string and convert the results to a new string
+	 * @param oriSent
+	 * @return
+	 */
+	public List<CoreMap> tokenize(String str) {
+		Annotation annotation = new Annotation(str);
+		this.sfCoreNLP.annotate(annotation);
+		List<CoreMap> sentenceAnnotations = annotation.get(SentencesAnnotation.class);
+		
+		return sentenceAnnotations;
+	}
 
 	
 
@@ -221,4 +234,17 @@ public class StanfordParserWrapper {
 	}
 	
 	
+	
+	public List<TypedDependency> parseDepList(String sent){
+		//tokenize the sentence
+		TokenizerFactory<CoreLabel> tokenizerFactory =  PTBTokenizer.factory(new CoreLabelTokenFactory(), "");  
+	   	List<CoreLabel> rawWords =    tokenizerFactory.getTokenizer(new StringReader(sent)).tokenize();  
+	   	
+	   	//parse the sentence
+        Tree parse = lexParser.apply(rawWords);  
+        TreebankLanguagePack tlp = new PennTreebankLanguagePack();  
+        GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();  
+        GrammaticalStructure gs = gsf.newGrammaticalStructure(parse);  
+	    return (List<TypedDependency>) gs.typedDependenciesCollapsedTree(); 
+	}
 }

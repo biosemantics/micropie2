@@ -53,7 +53,8 @@ public class SentenceSpliter {
 	public List<String> split(String text){
 		//long b = System.currentTimeMillis();
 		//long b1 = System.currentTimeMillis();
-		text = textNormalizer.transform(text);
+		//text = textNormalizer.transform(text);
+		if(text==null) return null;
 		text = textNormalizer.transformEntity(text);
 		text = textNormalizer.transformDash(text); // replace \"–\" to \"-\" ..."
 		text = textNormalizer.transformPeriod(text); // · =>.
@@ -94,7 +95,7 @@ public class SentenceSpliter {
 			//sentence = textNormalizer.transformPeriod(sentence); // · =>.
 			
 			//what's the purpose?....
-			sentence = textNormalizer.transformBack(sentence);
+			//sentence = textNormalizer.transformBack(sentence);
 			
 			//sentence = textNormalizer.transformCelsiusDegree(sentence); // °C => celsius_degree
 			//System.out.println(sentence);
@@ -340,6 +341,7 @@ public class SentenceSpliter {
 	 */
 	public List<MultiClassifiedSentence> createSentencesFromFile(TaxonTextFile taxonFile) {
 		List<String> sentences = this.split(taxonFile.getText());
+		if(sentences==null) return null;
 		List<MultiClassifiedSentence> result = new LinkedList<MultiClassifiedSentence>();
 		for (String subsentence : sentences) {
 			MultiClassifiedSentence sentence = new MultiClassifiedSentence(subsentence);

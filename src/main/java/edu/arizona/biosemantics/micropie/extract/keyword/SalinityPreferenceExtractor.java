@@ -157,12 +157,11 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 								break;
 							}else{//default as requirement
 								//find the nearest verb
-								defaultExpression(taggedwordsList, phrase, charValueList);
+								//defaultExpression(taggedwordsList, phrase, charValueList);
 							}
 						}
-						
 					
-						break;//if has found the value, do not find in this sentence anymore
+						break;//if has found the value, do not find in this phrase anymore
 				}//:~
 			}//:~
 		}//all phrase
