@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie.model;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,6 +24,15 @@ public class CharacterValueFactory {
 	 * @return
 	 */
 	public static CharacterValue create(ILabel character){
+		return new CharacterValue(character);
+	}
+	
+	/**
+	 * create a single character value object
+	 * @param character
+	 * @return
+	 */
+	public static CharacterValue createStringValue(ILabel character){
 		return new CharacterValue(character);
 	}
 	
@@ -56,7 +66,7 @@ public class CharacterValueFactory {
 	 * @param charValues
 	 * @return
 	 */
-	public static List<CharacterValue> createList(ILabel character, Set<String> charValues){
+	public static List<CharacterValue> createList(ILabel character, Collection<String> charValues){
 		List<CharacterValue> charList = new LinkedList<CharacterValue>();
 		for(String charValue : charValues){
 			charList.add(new CharacterValue(character,charValue));

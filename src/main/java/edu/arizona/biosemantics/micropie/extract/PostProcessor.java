@@ -34,20 +34,33 @@ public class PostProcessor {
 				i++;
 				continue;
 			}else{
+				if(Label.c2.equals(valueLabel)){
+					replaceGram(aValue);
+				}
+				
+				//Tests negative, organic compounds used or hydrolyzed, inorganic substances used,fermentation substrates used
 				if(Label.c45.equals(valueLabel)||Label.c53.equals(valueLabel)||Label.c55.equals(valueLabel)||Label.c57.equals(valueLabel)){
 					negationToAnother(aValue);
 				}else if(Label.c32.equals(valueLabel)||Label.c33.equals(valueLabel)){
+					//Antibiotic sensitivity
 					negationReverse(aValue);
 				}
 				
-				valueLabel = aValue.getCharacter();
-				//remove 
+				//remove
+				//if the value is empty, remove it.
+				if(aValue.getValue()==null||"".equals(aValue.getValue())){//it must be a negation
+					valueList.remove(aValue);
+					i--;
+				}
+				
 				if(Label.c46.equals(valueLabel)){//it must be a negation
 					if((aValue.getNegation()==null||"".equals(aValue.getNegation()))&&!NegationIdentifier.detectInlineNegation(aValue.getValue())){
 						valueList.remove(aValue);
 						i--;
 					}
 				}
+				
+				
 				i++;
 			}
 		}
@@ -55,12 +68,22 @@ public class PostProcessor {
 
 	
 	/**
+	 * change Gram-negative rods into rods
+	 * @param aValue
+	 */
+	private void replaceGram(CharacterValue aValue) {
+		if(aValue.getValue()!=null)
+			aValue.setValue(aValue.getValue().replace("[gG]ram[\\-\\s]negative", "").trim());
+	}
+
+
+	/**
 	 * if the value is negation, change it to the corresponding negative character.
 	 * @param aValue
 	 */
 	public void negationToAnother(CharacterValue aValue) {
 		ILabel valueLabel = aValue.getCharacter();
-		valueLabel.getValue();
+		//valueLabel.getValue();
 		String negation = aValue.getNegation();
 		if(negation!=null&&!"".equals(negation)){//chage to the corresponding negative character
 			Label newLabel = Label.getEnum((new Integer(valueLabel.getValue())+1)+"");

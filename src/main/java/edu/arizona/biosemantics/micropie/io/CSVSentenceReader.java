@@ -156,7 +156,11 @@ public class CSVSentenceReader implements ISentenceReader {
 		for(String[] line : lines) {
 			ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
 			//System.out.println(line[1]+" "+svmLabel);
-			//if(svmLabel==null) svmLabel = Label.c0;		
+			if(svmLabel==null) {
+				svmLabel = Label.c0;		
+				//System.err.print(line[1]);
+				//System.exit(0);
+			}
 			
 			result.add(new RawSentence(line[1], svmLabel));
 		}
@@ -275,7 +279,7 @@ public class CSVSentenceReader implements ISentenceReader {
 			xmlOutput.setFormat(Format.getPrettyFormat());
 			xmlOutput.output(doc, new FileWriter("123.xml"));
 		 
-			System.out.println("File Saved!");
+			//System.out.println("File Saved!");
 		} catch (IOException io) {
 			System.out.println(io.getMessage());
 		}
@@ -306,7 +310,7 @@ public class CSVSentenceReader implements ISentenceReader {
 	    Iterator it = categoryStat.entrySet().iterator();
 	    while (it.hasNext()) {
 	    	Map.Entry pairs = (Map.Entry)it.next();
-	    	System.out.println(pairs.getKey() + " = " + pairs.getValue());
+	    	//System.out.println(pairs.getKey() + " = " + pairs.getValue());
 	    	it.remove(); // avoids a ConcurrentModificationException
 	    }
 	    

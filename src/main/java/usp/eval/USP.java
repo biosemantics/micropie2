@@ -152,8 +152,10 @@ public class USP {
 		
 		Set<String> output = new HashSet<String>(); // Output, format::List<String>
 				
-		rstDir_ = "usp_results";
-		dataDir_ = "usp";		
+		rstDir_ = "F:\\MicroPIE\\micropieInput\\usp_base_results";
+		dataDir_ = "F:\\MicroPIE\\micropieInput\\job1_usp";	
+		//rstDir_ = "usp_results";
+		//dataDir_ = "usp";	
 
 		keywordList_.put(keyword, new HashMap<String, Integer>());
 		

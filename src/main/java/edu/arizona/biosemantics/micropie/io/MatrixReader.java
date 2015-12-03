@@ -200,7 +200,7 @@ public class MatrixReader {
 			}
 		}
 		
-		System.out.println(this.matrixFile+" taxa:"+matrix.size()+" basicFields="+basicFields.length+" characterLabels:"+characterLabels.length+" characters read:"+notNullChars);
+		//System.out.println(this.matrixFile+" taxa:"+matrix.size()+" basicFields="+basicFields.length+" characterLabels:"+characterLabels.length+" characters read:"+notNullChars);
 		
 		return matrix;
 	}

@@ -37,11 +37,13 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 
 	private String uspResultsDirectory;
 	private String uspString;
+	private String uspBaseString;
 	
 	@Inject
-	public CharacterValueExtractorReader(@Named("uspResultsDirectory") String uspResultsDirectory, @Named("uspString") String uspString) {
+	public CharacterValueExtractorReader(@Named("uspBaseString") String uspBaseString, @Named("uspResultsDirectory") String uspResultsDirectory, @Named("uspString") String uspString) {
 		this.uspResultsDirectory = uspResultsDirectory;
 		this.uspString = uspString;
+		this.uspBaseString = uspBaseString;
 	}
 	
 	@Override
@@ -115,7 +117,7 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		return new USPBasedExtractor(Label.valueOf(labelName), characterName, uspRequests, uspResultsDirectory, uspString);
+		return new USPBasedExtractor(Label.valueOf(labelName), characterName, uspRequests, uspResultsDirectory, uspString,uspBaseString);
 	}
 
 	

@@ -20,7 +20,7 @@ public class EvaluationTest {
 				+ "pressure preference|aerophilicity|magnesium requirement for growth|vitamins and cofactors required for growth|"
 				+ "geographic location|antibiotic sensitivity|antibiotic resistant|antibiotic production|"
 				+ "colony shape|colony margin|colony texture|colony color|film test result|spot test result|"
-				+ "fermentation products|antibiotic production|methanogenesis products|other metabolic product|tests positive|"
+				+ "fermentation products|methanogenesis products|other metabolic product|tests positive|"
 				+ "tests negative|symbiotic relationship|host|pathogenic|disease caused|pathogen target organ|haemolytic&haemadsorption properties|"
 				+ "organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
 		
@@ -40,12 +40,12 @@ public class EvaluationTest {
 		
 		String gstBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String gstKeyField = "XML file";
-		String gstMatrixFile ="F:/MicroPIE/evaluation/gold_matrix_sample.csv";//gold_matrix_sample.csv";
+		String gstMatrixFile ="F:/MicroPIE/evaluation/gold_matrix_22_1130.csv";//gold_matrix_sample.csv";
 		
 		//Taxon	Family	Genus	Species	Strain	16S rRNA accession #	XML file
 		String tgBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String tgKeyField = "XML file";
-		String tgMatrixFile ="F:/MicroPIE/ext/goldtest/goldtest_22_1113.csv";
+		String tgMatrixFile ="F:/MicroPIE/ext/goldtest/goldtest_22_1202.csv";
 		
 		//String tgBasicFields = "XML file|Taxon|Genus|Species|Strain";//STUEXP_040214_28ch.csv
 		//String tgKeyField = "XML file";

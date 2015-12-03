@@ -122,12 +122,13 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		if(labels==null)  throw new Exception("Classifier labels are not specified");
 		for(ILabel label : labels) {
 			log(LogLevel.INFO, "Training SVM for label " + label.getValue());
-			System.out.println("Training SVM for label " + label.getValue());
+			
 			SVMClassifier classifier = new SVMClassifier(BinaryLabel.valuesList(), multiFilterOptions, libSVMOptions);
 			classifiers.put(label, classifier);
 			
 			//divide into two classes
 			List<RawSentence> twoClassData = createTwoClassData(label, trainingData);
+			//System.out.println("Training SVM for label " + label.getValue()+" training sentences:"+twoClassData.size());
 			classifier.train(twoClassData);
 			//
 			

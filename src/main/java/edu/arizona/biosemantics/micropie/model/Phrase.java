@@ -3,6 +3,7 @@ package edu.arizona.biosemantics.micropie.model;
 import java.util.List;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.stanford.nlp.ling.TaggedWord;
 
 
@@ -112,12 +113,23 @@ public class Phrase {
 	 * @return
 	 */
 	public CharacterValue convertValue(ILabel label){
-		if(this.charValue!=null) System.err.println("Phrase already contains a value:"+this.charValue);
+		//if(this.charValue!=null){//multiple value
+			//System.err.println("Phrase already contains a value:"+this.charValue);
+			//return this.charValue;
+		//}
 		CharacterValue cv = CharacterValueFactory.create(label, this.text);
 		cv.setNegation(this.negation);
-		cv.setValueModifier(this.modifer);
+		//only cell shape, motility, oxygen use characters need the values
+		//"2","2.1","Cell shape"
+		//"11","2.1A","Motility"
+		//"28","3.12","Aerophilicity"
+		if(this.modifer!=null&&!"".equals(this.modifer)){
+			if(Label.c2.equals(label)||Label.c11.equals(label)||Label.c28.equals(label)){
+				cv.setValueModifier(this.modifer);
+				cv.setValue(cv.getValue().replace(this.modifer, "").trim());
+			}
+		}
 		this.charValue = cv;
-		//System.out.println("Phrase conterts to a value:"+this.charValue);
 		return cv;
 	}
 	

@@ -98,8 +98,8 @@ public class MicropieUSPExtractor {
 		// TODO Auto-generated method stub
 		
 		
-		MicropieUSPExtractor usp = new MicropieUSPExtractor("usp_results", "usp");
-		
+		//MicropieUSPExtractor usp = new MicropieUSPExtractor("usp_results", "usp");
+		MicropieUSPExtractor usp = new MicropieUSPExtractor("F:\\MicroPIE\\micropieInput\\usp_base_results", "F:\\MicroPIE\\micropieInput\\job1_usp");
 		Set<String> output = new HashSet<String>();
 		
 		// Set<String> output = usp.getObjectValue("Produces arginine dihydrolase and lysine decarboxylase, but not ornithine decarboxylase.", "produces", "V", "dobj");
@@ -178,10 +178,11 @@ public class MicropieUSPExtractor {
 		
 		// Resistant to kanamycin, gentamicin, neomycin and polymyxin B.
 		// Resistant to kanamycin , gentamicin , neomycin and polymyxin B.
-		// Set<String> output = usp.getObjectValue("Resistant to kanamycin, gentamicin, neomycin and polymyxin B.",
-		// 		"resistant", "J", "prep_to", "dep");
-		// System.out.println(output.toString());
-		
+		 System.out.println("Resistant to kanamycin, gentamicin, neomycin and polymyxin B.");
+		output = usp.getObjectValue("Resistant to kanamycin, gentamicin, neomycin and polymyxin B.",
+		 		"resistant", "N", "prep_to", "dep");
+		 System.out.println(output.toString());
+		// Set<String> 
 		
 		// Utilizes Tween 40, d-galactose, gentiobiose, α-d-glucose, mono-succinate, citric acid, d-glucuronic acid, succinamic acid, succinic acid, alaninamide, glycyl l-aspartic acid, hydroxy-l-proline, l-ornithine, l-pyroglutamic acid, urocanic acid, thymidine, 2-aminoethanol and glycerol.
 		// Set<String> output = usp.getObjectValue("Utilizes Tween 40, d-galactose, gentiobiose, α-d-glucose, mono-succinate, citric acid, d-glucuronic acid, succinamic acid, succinic acid, alaninamide, glycyl l-aspartic acid, hydroxy-l-proline, l-ornithine, l-pyroglutamic acid, urocanic acid, thymidine, 2-aminoethanol and glycerol.",
@@ -427,9 +428,9 @@ public class MicropieUSPExtractor {
 
 	
 	@Inject
-	public MicropieUSPExtractor(@Named("uspResultsDirectory")String uspResultsDirectory, @Named("uspString") String uspString) {
+	public MicropieUSPExtractor(@Named("uspResultsDirectory")String uspResultsDirectory, @Named("uspBaseString") String uspBaseString) {
 		rstDir_ = uspResultsDirectory;
-		dataDir_ = uspString;	
+		dataDir_ = uspBaseString;	
 	}
 	
 	
@@ -538,15 +539,15 @@ public class MicropieUSPExtractor {
 										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
 										
 										// System.out.println("depFileName::" + depFileName);
-										System.out.println("\nRule 1::text::" + text);
+										//System.out.println("\nRule 1::text::" + text);
 										
 										USPId = sentId;
 
-										System.out.println("keyword::" + keyword);
-										System.out.println("depFileName::" + depFileName);
+										//System.out.println("keyword::" + keyword);
+										//System.out.println("depFileName::" + depFileName);
 										// System.out.println("text::" + text);
 										// System.out.println("oriSentText::" + oriSentText);
-										System.out.println("sentText(collapsed sentence)::" + sentText);										
+										//System.out.println("sentText(collapsed sentence)::" + sentText);										
 										
 										
 										String dobjStringList = "";
@@ -576,7 +577,7 @@ public class MicropieUSPExtractor {
 												String dobjString = depString;
 												String dobjIdx = depIdx;
 												
-												System.out.println("dobjString::" + dobjString); 
+												//System.out.println("dobjString::" + dobjString); 
 												dobjStringList += dobjString + "\t";
 												rootDobjStringList += dobjString + "\t";
 												
@@ -859,10 +860,10 @@ public class MicropieUSPExtractor {
 										
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
-										System.out.println("depFileName::" + depFileName);
+										//System.out.println("depFileName::" + depFileName);
 										
 										
-										System.out.println("Rule 2::");
+										//System.out.println("Rule 2::");
 										String nsubjpassStringList = "";
 										
 										Map<String, String> outputMap = new HashMap<String, String>();
@@ -895,7 +896,7 @@ public class MicropieUSPExtractor {
 												
 												USPId = sentId;
 
-												System.out.println("nsubjpassString::" + nsubjpassString);
+												//System.out.println("nsubjpassString::" + nsubjpassString);
 												nsubjpassStringList +=  nsubjpassString + "\t";
 
 												
@@ -1104,9 +1105,9 @@ public class MicropieUSPExtractor {
 										
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
-										System.out.println("depFileName::" + depFileName);
+										//System.out.println("depFileName::" + depFileName);
 										
-										System.out.println("Rule 3::");
+										//System.out.println("Rule 3::");
 										String nsubjStringList = "";
 										
 										Map<String, String> outputMap = new HashMap<String, String>();
@@ -1124,7 +1125,7 @@ public class MicropieUSPExtractor {
 												
 												USPId = sentId;
 
-												System.out.println("nsubjString::" + nsubjString);
+												//System.out.println("nsubjString::" + nsubjString);
 												nsubjStringList +=  nsubjString + "\t";
 												
 												if (nsubjString.matches("(^c\\d\\-)(.*)")) {
@@ -1327,9 +1328,9 @@ public class MicropieUSPExtractor {
 							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
 							
-							System.out.println("depFileName:" + depFileName);
+							//System.out.println("depFileName:" + depFileName);
 							
-							System.out.println("Rule 3-1::");
+							//System.out.println("Rule 3-1::");
 							
 							USPId = sentId;
 							
@@ -1403,7 +1404,7 @@ public class MicropieUSPExtractor {
 									
 									USPId = sentId;
 
-									System.out.println("rootNsubjString::" + rootNsubjString);
+									//System.out.println("rootNsubjString::" + rootNsubjString);
 									rootNsubjStringList +=  rootNsubjString + "\t";
 									
 									if (rootNsubjString.matches("(^c\\d\\-)(.*)")) {
@@ -1475,7 +1476,7 @@ public class MicropieUSPExtractor {
 										String nsubjIdx = depIdx;
 										
 										rootNsubjStringList += nsubjString + "\t";
-										System.out.println("rootNsubjString::" + nsubjString);
+										//System.out.println("rootNsubjString::" + nsubjString);
 										
 										
 										if (nsubjString.matches("(^c\\d\\-)(.*)")) {
@@ -1713,12 +1714,12 @@ public class MicropieUSPExtractor {
 										USPId = sentId;
 										
 										
-										System.out.println("keyword::" + keyword);
-										System.out.println("depFileName::" + depFileName);
-										System.out.println("sentText(collapsed sentence)::" + sentText);
+										//System.out.println("keyword::" + keyword);
+										//System.out.println("depFileName::" + depFileName);
+										//System.out.println("sentText(collapsed sentence)::" + sentText);
 										
 										
-										System.out.println("Rule 4");
+										//System.out.println("Rule 4");
 										Map<String, String> outputMap = new HashMap<String, String>();
 
 										
@@ -1916,7 +1917,7 @@ public class MicropieUSPExtractor {
 							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
 							
-							System.out.println("depFileName:" + depFileName);
+						//	System.out.println("depFileName:" + depFileName);
 							
 							
 							
@@ -1938,7 +1939,7 @@ public class MicropieUSPExtractor {
 
 							
 							
-							System.out.println("Rule 4-1");
+							//System.out.println("Rule 4-1");
 							Map<String, String> outputMap = new HashMap<String, String>();
 							
 							
@@ -2112,7 +2113,7 @@ public class MicropieUSPExtractor {
 								*/								
 							}
 							
-							System.out.println("updatePrep_toList::" + updatePrep_toList);
+							//System.out.println("updatePrep_toList::" + updatePrep_toList);
 							
 							
 							String[] updatePrep_toListArray = updatePrep_toList.split("\t");
@@ -2211,11 +2212,11 @@ public class MicropieUSPExtractor {
 										
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
-										System.out.println("depFileName:" + depFileName);
+										//System.out.println("depFileName:" + depFileName);
 										
 										USPId = sentId;
 
-										System.out.println("Rule 5");
+										//System.out.println("Rule 5");
 										Map<String, String> outputMap = new HashMap<String, String>();
 										
 										
@@ -2312,8 +2313,8 @@ public class MicropieUSPExtractor {
 										String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 										List<SentenceDependency> depList = readDepFromDepFile(depFileName);
 										
-										System.out.println("Rule 6::");
-										System.out.println("depFileName::" + depFileName);
+										//System.out.println("Rule 6::");
+										//System.out.println("depFileName::" + depFileName);
 										
 										USPId = sentId;
 
@@ -2659,7 +2660,7 @@ public class MicropieUSPExtractor {
 										
 										USPId = sentId;
 
-										System.out.println("Rule 7");
+										//System.out.println("Rule 7");
 										Map<String, String> outputMap = new HashMap<String, String>();
 										
 										
@@ -2801,7 +2802,7 @@ public class MicropieUSPExtractor {
 										
 										USPId = sentId;
 
-										System.out.println("Rule 8");
+										//System.out.println("Rule 8");
 										Map<String, String> outputMap = new HashMap<String, String>();
 										
 										
@@ -2949,7 +2950,7 @@ public class MicropieUSPExtractor {
 										
 										USPId = sentId;
 
-										System.out.println("Rule 9");
+										//System.out.println("Rule 9");
 										Map<String, String> outputMap = new HashMap<String, String>();										
 										
 										for (SentenceDependency rowInDepList : depList) {
@@ -3069,9 +3070,9 @@ public class MicropieUSPExtractor {
 					
 					for (String pid:pids) {
 						
-						System.out.println("Pid::" + pid + "::" + ptId_aciChdIds_.get(pid));
+						//System.out.println("Pid::" + pid + "::" + ptId_aciChdIds_.get(pid));
 						String sentId = pid.split(":")[0];
-						System.out.println("sentId is ::" + sentId);
+						//System.out.println("sentId is ::" + sentId);
 						String txtFileName =  null;
 						String sentText = null;
 						
@@ -3096,11 +3097,11 @@ public class MicropieUSPExtractor {
 							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
 							
-							System.out.println("depFileName:" + depFileName);
+							//System.out.println("depFileName:" + depFileName);
 							
 							USPId = sentId;
 							
-							System.out.println("Rule 10");
+							//System.out.println("Rule 10");
 							Map<String, String> outputMap = new HashMap<String, String>();										
 							String nsubjStringList = "";
 							
@@ -3283,11 +3284,11 @@ public class MicropieUSPExtractor {
 							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
 							
-							System.out.println("depFileName:" + depFileName);
+							//System.out.println("depFileName:" + depFileName);
 							
 							USPId = sentId;
 							
-							System.out.println("Rule 11");
+							//System.out.println("Rule 11");
 							Map<String, String> outputMap = new HashMap<String, String>();										
 							String dobjStringList = "";
 							
@@ -3475,11 +3476,11 @@ public class MicropieUSPExtractor {
 							String depFileName = dataDir_+ "/dep/0/" + sentId + ".dep";
 							List<SentenceDependency> depList = readDepFromDepFile(depFileName);
 							
-							System.out.println("depFileName:" + depFileName);
+							//System.out.println("depFileName:" + depFileName);
 							
 							USPId = sentId;
 							
-							System.out.println("Rule 12");
+							//System.out.println("Rule 12");
 							Map<String, String> outputMap = new HashMap<String, String>();										
 							String nsubjStringList = "";
 							

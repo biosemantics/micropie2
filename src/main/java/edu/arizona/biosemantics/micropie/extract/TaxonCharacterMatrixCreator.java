@@ -93,7 +93,7 @@ public class TaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCreator
 					if(characters.contains(character)) {//will one have many characters?
 						List<CharacterValue> content = extractor.getCharacterValue(sentence);
 						
-						System.out.println("character::" + character + " => content::Before::" + Arrays.toString(content.toArray()));
+						//System.out.println("character::" + character + " => content::Before::" + Arrays.toString(content.toArray()));
 						content.remove(null);
 						content.removeAll(Collections.singleton(null));
 						content.removeAll(Collections.singleton(""));

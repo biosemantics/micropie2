@@ -75,6 +75,8 @@ import edu.arizona.biosemantics.micropie.nlptool.ITextNormalizer;
 import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.arizona.biosemantics.micropie.nlptool.TextNormalizer;
+import edu.stanford.nlp.ie.AbstractSequenceClassifier;
+import edu.stanford.nlp.ie.crf.CRFClassifier;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -97,7 +99,9 @@ public class Config extends AbstractModule {
 	//private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used|Other genetic characteristics|Other physiological characteristics";
 	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Cell division pattern & reproduction|Salinity preference|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
 
+	private String serializedClassifierModel = "nlpmodel/english.all.3class.distsim.crf.ser.gz";
 	
+
 	private String celsius_degreeReplaceSourcePattern = "(" +
 			"\\s?˚C\\s?|" +
 			"\\s?˚ C\\s?|" +
@@ -144,8 +148,11 @@ public class Config extends AbstractModule {
 
 	// private String uspBaseString = "usp_small_test";
 	// private String uspBaseString = "usp_base_new";
-	private String uspBaseString = "usp_base";
-	private String uspFolder = "usp_base/dep/0";
+	private String uspBaseString = "job1_usp";
+	private String uspResultsDirectory = "job1_usp_results";
+	private String uspFolder = "job1_usp/dep/0";
+	private String uspString= "job1_usp";
+	
 	
 	// => don't useFolder anymore !!
 	
@@ -162,8 +169,7 @@ public class Config extends AbstractModule {
 	/** OUTPUT DATA **/
 	private String predicitonsFile = "predictions.csv";
 	private String matrixFile = "matrix.csv";
-	private String uspString= "usp";
-	private String uspResultsDirectory = "usp_results";
+	
 	
 	/** prarallel PROCESSING param **/
 	private boolean parallelProcessing = true;
@@ -338,6 +344,15 @@ public class Config extends AbstractModule {
 				return LexicalizedParser.loadModel("edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz");
 			}
 		}).in(Singleton.class);
+		
+		
+		bind(AbstractSequenceClassifier.class).annotatedWith(Names.named("nerClassifier")).toProvider(new Provider<AbstractSequenceClassifier>() {
+			@Override
+			public AbstractSequenceClassifier get() {
+				return CRFClassifier.getClassifierNoExceptions(serializedClassifierModel);
+			}
+		}).in(Singleton.class);
+		
 		
 		bind(new TypeLiteral<TokenizerFactory<CoreLabel>>() {}).toProvider(new Provider<TokenizerFactory<CoreLabel>>() {
 			@Override
@@ -527,20 +542,20 @@ public class Config extends AbstractModule {
 		
 		//read extractors from configure files
 		ICharacterValueExtractorReader extractorReader = new CharacterValueExtractorReader(
-				uspResultsDirectory, uspString);
+				uspBaseString, uspResultsDirectory, uspString);
 		for(File file : inputDir.listFiles()) {
 			try {
 				ICharacterValueExtractor extractor = extractorReader.read(file);
-				extractors.add(extractor);
+				//System.out.println(file+" ==>"+extractor.getClass().getName());
+				if(extractor!=null) extractors.add(extractor);
 			} catch(Exception e) {
-				System.out.println("Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped");
+				//System.out.println("Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped");
 				log(LogLevel.ERROR, "Could not load extractor in file: " + file.getAbsolutePath() + "\nIt will be skipped");
 			}
 		}
 		
 		
 		
-		System.out.println("extractors size="+extractors.size());
 		
 		return extractors;
 	}
@@ -593,16 +608,18 @@ public class Config extends AbstractModule {
 		uspBaseZipFileName = inputDirectory + File.separator + uspBaseZipFileName;
 		uspFolder = inputDirectory + File.separator + uspFolder;
 		
+		serializedClassifierModel = inputDirectory + File.separator+serializedClassifierModel;
+
 		//System.out.println("resFolder = "+resFolder);
 	}
 	
 	public void setOutputDirectory(String outputDirectory) {
 		predicitonsFile = outputDirectory + File.separator + "predictions.csv";
 		matrixFile = outputDirectory + File.separator + "matrix.csv";
-		uspString= outputDirectory + File.separator + "usp";
-		new File(uspString).mkdirs();
-		uspResultsDirectory = outputDirectory + File.separator + "usp_results";
-		new File(uspResultsDirectory).mkdirs();
+		//uspBaseString= outputDirectory + File.separator + uspBaseString;
+		//new File(uspString).mkdirs();
+		uspResultsDirectory = outputDirectory + File.separator + uspResultsDirectory;
+		//new File(uspResultsDirectory).mkdirs();
 	}
 
 	/*

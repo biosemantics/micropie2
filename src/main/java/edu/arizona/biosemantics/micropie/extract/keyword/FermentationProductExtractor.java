@@ -109,7 +109,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 			//the first dependent on
 			//if(dependent.tag().startsWith("N")&&sge.getRelation().toString().startsWith("prep")){
 			//System.out.println(edge);
-			if(edgeRelation.startsWith("prep")){
+			if(edgeRelation.startsWith("prep_from")||edgeRelation.startsWith("prep_with")){
 				IndexedWord dependent = edge.getDependent();
 				Phrase dependentPhrase = phraseRelationParser.findPhrase(dependent, phraseList);
 				if(dependentPhrase==null) continue;
@@ -147,9 +147,12 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 			List<Phrase> prepPhrases) {
 		List<CharacterValue> charList = new ArrayList();
 		for(List<Phrase> pList:coordTermLists){
-			if(pList.size()>0&&prepPhrases.contains(pList.get(0))){//if the phrase is in the prepPhrases
-				for(Phrase p: pList){
-					charList.add(p.convertValue(fermSubstrate));
+			for(Phrase pPhrase: prepPhrases){
+				if(pList.size()>0&&pList.contains(pPhrase)){//if the phrase is in the prepPhrases
+					for(Phrase p: pList){
+						charList.add(p.convertValue(fermSubstrate));
+					}
+					break;
 				}
 			}
 		}

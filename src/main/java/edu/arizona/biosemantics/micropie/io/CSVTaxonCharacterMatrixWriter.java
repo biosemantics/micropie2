@@ -14,6 +14,7 @@ import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.extract.NumericValueFormatter;
 import edu.arizona.biosemantics.micropie.extract.StringValueFormatter;
+import edu.arizona.biosemantics.micropie.extract.ValueFormatterUtil;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonCharacterMatrix;
@@ -102,9 +103,9 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		lines.add(header);
 
 		
-		StringValueFormatter svFormatter = new StringValueFormatter();
+		//StringValueFormatter svFormatter = new StringValueFormatter();
 		//NumericValueFormatter nvFormatter = new NumericValueFormatter();
-		
+		ValueFormatterUtil formatter = new ValueFormatterUtil();
 		//create matrix content
 		Set<TaxonTextFile> textFiles = matrix.getTaxonFiles();
 		for(TaxonTextFile taxonFile : textFiles) {
@@ -119,7 +120,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 			i=5;
 			for(ILabel character : characterLabels) {
 				List values = taxonCharValues.get(character);
-				row[i++] = svFormatter.format(values);
+				row[i++] = formatter.format(values);
 			}
 			lines.add(row);
 		}

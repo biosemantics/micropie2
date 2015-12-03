@@ -208,6 +208,9 @@ public abstract class WekaClassifierWrapper implements IClassifier, ITrainableCl
 	 */
 	private Instance createInstance(RawSentence sentence) {
 		Instance instance = new Instance(2);
+		//System.out.println(labelAttribute);
+		//System.out.println(sentence.getText());
+		//System.out.println(sentence.getLabel().toString());
 		instance.setValue(labelAttribute, sentence.getLabel().toString());
 		instance.setValue(textAttribute, sentence.getText());
 		return instance;

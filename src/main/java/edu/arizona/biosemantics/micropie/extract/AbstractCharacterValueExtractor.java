@@ -11,8 +11,8 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
  */
 public abstract class AbstractCharacterValueExtractor implements ICharacterValueExtractor {
 
-	private String characterName;
-	private ILabel label;
+	protected String characterName;
+	protected ILabel label;
 	
 	@Inject
 	public AbstractCharacterValueExtractor(ILabel label, String characterName) {

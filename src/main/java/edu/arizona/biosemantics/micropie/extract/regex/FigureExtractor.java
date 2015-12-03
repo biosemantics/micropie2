@@ -116,7 +116,7 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 					figure+=taggedWords.get(i+1).word();
 					i++;
 				}
-				System.out.println("it is a figure:"+figure+" "+unit);
+				//System.out.println("it is a figure:"+figure+" "+unit);
 				if(i+1<taggedWords.size()){
 					if((taggedWords.get(i+1).word().equals("°")&&taggedWords.get(i+2).word().equals("C"))
 							||taggedWords.get(i+1).word().equals("degree_celsius_1")
@@ -463,7 +463,7 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 					if(taggedWords.get(j).word().equals("to")||taggedWords.get(j).word().equals("-")||taggedWords.get(j).tag().equals(":")){
 						shouldMerge = true;
 					}
-					System.out.println(curFd.getValue()+" "+curFd.getUnit()+"-"+nextFd.getValue()+" "+nextFd.getUnit());
+					//System.out.println(curFd.getValue()+" "+curFd.getUnit()+"-"+nextFd.getValue()+" "+nextFd.getUnit());
 					try{
 						new Double(curFd.getValue()); 
 						new Double(nextFd.getValue());

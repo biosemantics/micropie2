@@ -216,7 +216,7 @@ public class KeywordReader {
 			for(ILabel label : labels){
 				sb.append(labelCategoryCodeMap.get(label)).append(" ").append(labelCategoryNameMap.get(label)).append(",");
 			}
-			System.out.println(e.getKey()+"|"+e.getValue().size()+"|"+sb.substring(0,sb.length()-1));
+			//System.out.println(e.getKey()+"|"+e.getValue().size()+"|"+sb.substring(0,sb.length()-1));
 		}
 		
 	}

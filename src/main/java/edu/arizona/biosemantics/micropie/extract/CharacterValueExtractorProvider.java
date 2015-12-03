@@ -22,6 +22,7 @@ import edu.arizona.biosemantics.micropie.extract.regex.CellScaleExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellWidthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.FermentationSubstratesNotUsed;
 import edu.arizona.biosemantics.micropie.extract.keyword.FermentationProductExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.GeographicLocationExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GcFigureExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthNaclMaxExtractor;
@@ -127,7 +128,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		for(ICharacterValueExtractor extractor : extractors) {
 			if(!labelExtractorsMap.containsKey(extractor.getLabel()))
 				labelExtractorsMap.put(extractor.getLabel(), new HashSet<ICharacterValueExtractor>());
-			labelExtractorsMap.get(extractor.getLabel()).add(extractor);
+			if(extractor!=null) labelExtractorsMap.get(extractor.getLabel()).add(extractor);
 			//System.out.println(extractor);
 			//phrase based extractor
 			if(extractor instanceof SalinityPreferenceExtractor){
@@ -147,7 +148,8 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 				((FermentationProductExtractor) extractor).setRelationParser(phraseRelationParser);
 				((FermentationProductExtractor) extractor).setStanParser(stanfordWrapper);
 				fermentationExtractor = (FermentationProductExtractor) extractor;
-				
+			}else if(extractor instanceof edu.arizona.biosemantics.micropie.extract.regex.GeographicLocationExtractor){
+					((GeographicLocationExtractor) extractor).setStanParser(stanfordWrapper);
 			}else if(extractor instanceof PhraseBasedExtractor){//put in the last
 				((PhraseBasedExtractor) extractor).setPosTagger(posTagger);
 				((PhraseBasedExtractor) extractor).setPhraseParser(phraseParser);
@@ -159,7 +161,6 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		ICharacterValueExtractor gcFigureExtractor = new GcFigureExtractor(sentSplitter, posTagger, Label.c1, "%G+C");
 		ICharacterValueExtractor ptnFigureExtractor = new PHTempNaClExtractor(sentSplitter, posTagger, null, "PHTempNacl");
 		ICharacterValueExtractor cellScaleFigureExtractor = new CellScaleExtractor(sentSplitter, posTagger, null, "CellScale");
-		
 		
 		labelExtractorsMap.get(Label.c1).add(gcFigureExtractor);
 		labelExtractorsMap.get(Label.c3).add(cellScaleFigureExtractor);
@@ -177,8 +178,11 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		labelExtractorsMap.get(Label.c25).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c26).add(ptnFigureExtractor);
 		
-		labelExtractorsMap.get(Label.c41).add(fermentationExtractor);
-		labelExtractorsMap.get(Label.c42).add(fermentationExtractor);
+		if(fermentationExtractor!=null){
+			labelExtractorsMap.get(Label.c41).add(fermentationExtractor);
+			labelExtractorsMap.get(Label.c42).add(fermentationExtractor);
+		}
+		
 		/*
 		for(Label label: Label.values()){
 			System.out.println(label+","+ labelExtractorsMap.get(label).size());

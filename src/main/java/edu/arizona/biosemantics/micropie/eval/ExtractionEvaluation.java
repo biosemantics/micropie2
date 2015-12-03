@@ -124,7 +124,7 @@ public class ExtractionEvaluation {
 		for(int i = 0;i<comparedCharacterNames.length;i++){
 			comparedCharacterNames[i] = comparedCharacterNames[i].trim();
 			comparedCharacterLabels[i] = this.characterNameLabelMapping.get(comparedCharacterNames[i].toLowerCase());
-			System.out.println(comparedCharacterLabels[i]+"===>"+comparedCharacterNames[i]);
+			//System.out.println(comparedCharacterLabels[i]+"===>"+comparedCharacterNames[i]);
 		}
 	}
 
@@ -258,7 +258,7 @@ public class ExtractionEvaluation {
 				tgTotalValueNum += tgCharValue==null?0:tgCharValue.size();
 				
 				
-				System.out.println(charLabel+" "+comparedCharacterNames[ch]+" ["+gstCharValue+"] ["+tgCharValue+"]");
+				//System.out.println(charLabel+" "+comparedCharacterNames[ch]+" ["+gstCharValue+"] ["+tgCharValue+"]");
 				
 				double matched = 0;
 				if(tgCharValue!=null&&tgCharValue.size()!=0&&gstCharValue!=null&&gstCharValue.size()!=0){//when at least one has a value, compare
@@ -292,7 +292,7 @@ public class ExtractionEvaluation {
 			
 			List charEvalResults = this.calMeasure(charFound[ch], charHit[ch], charTotal[ch]);
 			String charName = this.comparedCharacterNames[ch];
-			System.out.println(ch+" "+charName+" "+charFound[ch]+" "+charHit[ch]+" "+charTotal[ch]);
+			//System.out.println(ch+" "+charName+" "+charFound[ch]+" "+charHit[ch]+" "+charTotal[ch]);
 			this.charResults.put(charName, charEvalResults);
 		}
 		//measure report

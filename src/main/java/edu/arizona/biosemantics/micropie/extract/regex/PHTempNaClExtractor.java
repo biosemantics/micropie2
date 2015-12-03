@@ -64,9 +64,13 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		//
 		int sentSize = taggedWordList.size();
 		List sentValueList = new LinkedList();
+		boolean containWV = false;//whether the sentence contains the unit w/v; 
 		for(int sid=0;sid<sentSize;sid++){
 			List<TaggedWord> taggedWords = taggedWordList.get(sid);
-			System.out.println(taggedWords);
+			//System.out.println(taggedWords);
+			if(isWVUnit(taggedWords)){
+				containWV = true;
+			}
 			
 			List<NumericCharacterValue> valueList = detectFigures(taggedWords);
 			
@@ -132,23 +136,54 @@ public class PHTempNaClExtractor extends FigureExtractor {
 				NumericCharacterValue curFd = valueList.get(i);
 				//detemine the type
 				LabelUtil.determineLabel(curFd);
+				/*
 				if(curFd.getCharacterGroup()!=null){
 					System.out.println(curFd.getCharacter()+" "+curFd.getCharacterGroup()+"_"+curFd.getValueGroup()+" "+curFd.getValueModifier()+" "+curFd.getValue()+" "+curFd.getUnit());
 				}else{
 					System.err.println(curFd.getCharacter()+" "+curFd.getCharacterGroup()+"_"+curFd.getValueGroup()+" "+curFd.getValueModifier()+" "+curFd.getValue()+" "+curFd.getUnit());
 				}
-				
+				*/
 			}
 			
 			//combine all the subsentences
 			sentValueList.addAll(valueList);
 		}
-				
+		
+		if(containWV) updateNaClUnitWV(sentValueList);
 		
 		return sentValueList;
 	}
 	
+	/**
+	 * update the unit of NaCL characters
+	 * @param sentValueList
+	 */
+	private void updateNaClUnitWV(List<NumericCharacterValue> sentValueList) {
+		//System.out.println("update w/v");
+		for(NumericCharacterValue ncv:sentValueList){
+			//System.out.println(ncv.getCharacterGroup());
+			if(CharacterGroup.NACL.equals(ncv.getCharacterGroup())){
+				String unit = ncv.getUnit();
+				if(unit==null) unit="w/v";
+				else unit+="w/v";
+				ncv.setUnit(unit);
+			}
+			
+		}
+		
+	}
 	
+	/**
+	 * whether this list is W/V
+	 * [w/v/NN]
+	 * @param taggedWords
+	 * @return
+	 */
+	private boolean isWVUnit(List<TaggedWord> taggedWords) {
+		if(taggedWords.toString().indexOf("w/v")>-1) return true;
+		else return false;
+	}
+
 	/**
 	 * replace neutral pH --> 7
 	 * @param featureList
@@ -193,7 +228,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		//detect by unit
 		if(curFd.getUnit()!=null&&(curFd.getUnit().equals("˚C")||curFd.getUnit().equals("˚"))){
 			return CharacterGroup.TEMP;
-		}else if(curFd.getUnit()!=null&&curFd.getUnit().equals("%")){
+		}else if(curFd.getUnit()!=null&&curFd.getUnit().indexOf("%")>-1){
 			return CharacterGroup.NACL;
 		}else if(curFd.getUnit()!=null&&curFd.getUnit().equals("M")){
 			return CharacterGroup.NACL;

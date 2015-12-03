@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,8 +14,11 @@ import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.util.InvalidFormatException;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.stanford.nlp.ie.AbstractSequenceClassifier;
+import edu.stanford.nlp.ling.CoreAnnotations.AnswerAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.NamedEntityTagAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TextAnnotation;
@@ -51,11 +55,14 @@ public class StanfordParserWrapper {
 	
 	private StanfordCoreNLP sfCoreNLP;
 	private LexicalizedParser lexParser;
+	private AbstractSequenceClassifier nerClassifier;
 	
 	@Inject
-	public StanfordParserWrapper(StanfordCoreNLP sfCoreNLP, LexicalizedParser lexParser){
+	public StanfordParserWrapper(StanfordCoreNLP sfCoreNLP, LexicalizedParser lexParser, 
+			@Named("nerClassifier")AbstractSequenceClassifier nerClassifier){
 		this.sfCoreNLP = sfCoreNLP;
 		this.lexParser = lexParser;
+		this.nerClassifier = nerClassifier;
 	}
 	
 	/**
@@ -119,6 +126,92 @@ public class StanfordParserWrapper {
 			result.add(sentenceAnnotation.toString());
 		}
 		return result;
+	}
+	
+	/**
+	 * split text to sentences using stanford corenlp pipeline...
+	 * ORGANIZATION
+	 * LOCATION
+	 * PERSON
+	 * @param text
+	 * @return
+	 */
+	public List<String> getNER(String text, String type) {
+		List<List<CoreLabel>> clList = nerClassifier.classify(text);
+		List<String> nerList = new ArrayList();
+		
+		String curNerType = "";
+		String curWord = "";
+		for (List<CoreLabel> lcl : clList){
+			for (CoreLabel cl : lcl) {
+		        String word = cl.word();
+		        String nerType =  cl.get(AnswerAnnotation.class);
+		        //System.out.println(word+" "+nerType);
+		       
+		        if(curNerType.equals(nerType)&&type.equals(nerType)){
+		        	curWord+=" "+word;
+		        }else if(!curNerType.equals(nerType)&&type.equals(nerType)){
+		        	curWord+=word;
+		        }else{
+		        	if(curWord!=null&&!"".equals(curWord)){
+		        		nerList.add(curWord);
+		        		curWord="";
+		        	}
+		        }
+		        curNerType = nerType;
+		    }
+		}
+		
+		if(curWord!=null&&!"".equals(curWord)){
+    		nerList.add(curWord);
+    	}
+		return nerList;
+	}
+	
+	/**
+	 * split text to sentences using stanford corenlp pipeline...
+	 * ORGANIZATION
+	 * LOCATION
+	 * PERSON
+	 * @param text
+	 * @return
+	 */
+	public List<String> getLocationNER(String text) {
+		String type = "LOCATION";
+		List<List<CoreLabel>> clList = nerClassifier.classify(text);
+		List<String> nerList = new ArrayList();
+		
+		String curNerType = "";
+		String curWord = "";
+		for (List<CoreLabel> lcl : clList){
+			for (int i=0;i<lcl.size();i++) {
+				CoreLabel cl = lcl.get(i);
+		        String word = cl.word();
+		        String nerType =  cl.get(AnswerAnnotation.class);
+		        //System.out.println(word+" "+nerType+" "+curNerType);
+		       
+		        if(",".equals(word)&&curWord!=null&&"O".equals(nerType)&&!"O".equals(curNerType)&&curNerType.equals(lcl.get(i+1).get(AnswerAnnotation.class))) {
+		        	curWord+=" "+word;
+		        }else{
+		        	if(curNerType.equals(nerType)&&type.equals(nerType)){
+				        curWord+=" "+word;
+			        }else if(!curNerType.equals(nerType)&&type.equals(nerType)){
+			        	curWord+=word;
+			        }else{
+			        	if(curWord!=null&&!"".equals(curWord)){
+			        		nerList.add(curWord);
+			        		curWord="";
+			        	}
+			        }
+			        curNerType = nerType;
+		        }
+		    }
+		}
+		
+		if(curWord!=null&&!"".equals(curWord)){
+    		nerList.add(curWord);
+    	}
+		return nerList;
 	}
 	
 	

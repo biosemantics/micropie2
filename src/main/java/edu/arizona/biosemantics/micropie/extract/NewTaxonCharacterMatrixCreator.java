@@ -230,10 +230,21 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 			for (ILabel label : predictions) {// get all the extractors ready
 				//if (label instanceof Label && characterLabels.contains(label)) {
 				if (characterLabels.contains(label)) {
-					extractors.addAll(contentExtractorProvider.getContentExtractor((Label) label));
+					Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor((Label) label);
+					if(labelExtractors!=null){
+						extractors.addAll(labelExtractors);
+					}else{
+						System.err.println(label+" extractor is null");
+					}
+					
 				}
 				if(categoryThreeLabels.contains(label)){
-					extractors.addAll(contentExtractorProvider.getContentExtractor(Label.c59));
+					Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor(Label.c59);
+					if(labelExtractors!=null){
+						extractors.addAll(labelExtractors);
+					}else{
+						System.err.println(label+" extractor is null");
+					}
 				}
 			}
 
