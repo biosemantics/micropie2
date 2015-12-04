@@ -21,11 +21,12 @@ public class StringComparator implements IValueComparator{
 		if((extValues == null||extValues.size()==0)&&(gstValues==null||gstValues.size()==0)) return 1;
 		if(extValues == null||gstValues==null||extValues.size()==0||gstValues.size()==0) return 0;
 		//System.out.println(" gst:["+gstValues+"] tg:["+extValues+"]"); 
-		int match = 0;
+		double match = 0;
 		for(int i=0;i<extValues.size();i++){
 			CharacterValue extValue = extValues.get(i);
 			String extValueStr = cleanValue(extValue.getValue()).trim();
-			if(extValueStr.indexOf("and ")>-1){
+			
+			/*if(extValueStr.indexOf("and ")>-1){
 				String[] extDiValus = extValueStr.split("and");
 				extValueStr = extDiValus[0].trim();
 				
@@ -33,7 +34,7 @@ public class StringComparator implements IValueComparator{
 				for(int j=1;j<extDiValus.length;j++){
 					extValues.add(CharacterValueFactory.create(null, extDiValus[j].trim()));
 				}
-			}
+			}*/
 			Iterator<CharacterValue> gstValueIter = gstValues.iterator();
 			while(gstValueIter.hasNext()){
 				CharacterValue gstValue = gstValueIter.next();
@@ -76,4 +77,56 @@ public class StringComparator implements IValueComparator{
 		
 		return value;
 	}
+	
+	/**
+	 * whether they are the same negation
+	 * @param extValue
+	 * @param gstValue
+	 * @return
+	 */
+	public boolean isSameNeg(CharacterValue extValue, CharacterValue gstValue) {
+		String extNeg = extValue.getNegation();
+		String gstNeg = gstValue.getNegation();
+		if((extNeg==null||"".equals(extNeg))&&(gstNeg!=null&&!"".equals(gstNeg))){
+			return false;
+		}else if((extNeg!=null&&!"".equals(extNeg))&&(gstNeg==null||"".equals(gstNeg))){
+			return false;
+		}else if((extNeg!=null&&!"".equals(extNeg))&&(gstNeg!=null&&!"".equals(gstNeg))){
+			if(extNeg.trim().equals(gstNeg.trim())){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return true;
+		}
+	}
+	
+	
+	/**
+	 * whether they are the same modifer
+	 * get half value
+	 * @param extValue
+	 * @param gstValue
+	 * @return
+	 */
+	public double modifierMatch(CharacterValue extValue, CharacterValue gstValue) {
+		
+		String extNeg = extValue.getValueModifier();
+		String gstNeg = gstValue.getValueModifier();
+		if((extNeg==null||"".equals(extNeg))&&(gstNeg!=null&&!"".equals(gstNeg))){
+			return 0.5;
+		}else if((extNeg!=null&&!"".equals(extNeg))&&(gstNeg==null||"".equals(gstNeg))){
+			return 0.5;
+		}else if((extNeg!=null&&!"".equals(extNeg))&&(gstNeg!=null&&!"".equals(gstNeg))){
+			if(extNeg.trim().equals(gstNeg.trim())){
+				return 1.0;
+			}else{
+				return 0.5;
+			}
+		}else{
+			return 1.0;
+		}
+	}
+
 }

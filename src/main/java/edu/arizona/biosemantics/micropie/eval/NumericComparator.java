@@ -16,26 +16,28 @@ import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
  * @author maojin
  *
  */
-public class NumericComparator implements IValueComparator{
+public class NumericComparator extends StringComparator{
 
 	@Override
 	public double compare(List<CharacterValue> extValues,List<CharacterValue> gstValues) {
 		if((extValues == null||extValues.size()==0)&&(gstValues==null||gstValues.size()==0)) return 1;
 		if(extValues == null||gstValues==null||extValues.size()==0||gstValues.size()==0) return 0;
 		//System.out.println(" gst:["+gstValues+"] tg:["+extValues+"]"); 
-		int match = 0;
+		double match = 0;
 		for(int i=0;i<extValues.size();i++){
 			CharacterValue extValue = extValues.get(i);
 			String extValueStr = cleanValue(extValue.getValue()).trim();
-			if(extValueStr.indexOf("and ")>-1){
-				String[] extDiValus = extValueStr.split("and");
-				extValueStr = extDiValus[0].trim();
-				
-				//
-				for(int j=1;j<extDiValus.length;j++){
-					extValues.add(CharacterValueFactory.create(null, extDiValus[j].trim()));
-				}
-			}
+//			if(extValueStr.indexOf("and ")>-1){
+//				String[] extDiValus = extValueStr.split("and");
+//				extValueStr = extDiValus[0].trim();
+//				
+//				//
+//				for(int j=1;j<extDiValus.length;j++){
+//					extValues.add(CharacterValueFactory.create(null, extDiValus[j].trim()));
+//				}
+//			}
+			
+		
 			
 			
 			//extracted value string
@@ -54,15 +56,24 @@ public class NumericComparator implements IValueComparator{
 			while(gstValueIter.hasNext()){
 				CharacterValue gstValue = gstValueIter.next();
 				
+				// Negation, must be the same
+				boolean sameNeg = isSameNeg(extValue,gstValue);
+				//System.out.println("sameNeg="+sameNeg);
+				if(!sameNeg) return 0;
+				
+				//modifier match
+				double modMatch = modifierMatch(extValue, gstValue);
+				
+				double mainMatch = 0;
 				//gst value string
 				String gstValueStr = cleanValue(gstValue.getValue()).trim();
 				
 				//gst value numeric
 				Double anGstValue = null;
-				
 				//if the string can be matched
 				if(gstValueStr.equalsIgnoreCase(extValueStr)&&!extValueStr.equals("")){
-					match++;
+					mainMatch=modMatch;
+					match+=mainMatch;
 					break;
 				}
 				
@@ -72,9 +83,10 @@ public class NumericComparator implements IValueComparator{
 					try{
 						anGstValue = new Double(gstValueStr);
 						if(anGstValue!=null&&anGstValue.equals(anExtValue)){
-							match++;
-							//System.out.println(extValueStr+" "+gstValueStr+" hit "+match);
-							//gstValues.remove(gstValue);
+							mainMatch=modMatch;
+							
+							match+=mainMatch;
+							//System.out.println(" hit "+mainMatch);
 							break;
 						}
 					}catch(Exception e){
@@ -85,6 +97,7 @@ public class NumericComparator implements IValueComparator{
 				//System.out.println(extValueStr+" "+gstValueStr+" hit "+match);
 			}
 		}
+		
 		return match;
 	}
 	

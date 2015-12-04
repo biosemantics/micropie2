@@ -190,7 +190,7 @@ public class MatrixReader {
 					//System.out.println(taxon+" "+characterLabelNameMapping.get(label)+" "+cellValue);
 					List multiValues = ValueFormatterUtil.parse(label, cellValue);
 					//splitValue(label, multiValueSign, cellValue);
-					//System.out.println(label+":"+multiValues);
+					System.out.println(label+":"+multiValues);
 					taxonValues.put(label, multiValues);
 					notNullChars++;
 				}

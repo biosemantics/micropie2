@@ -93,7 +93,22 @@ public class CharacterValue {
 	
 	
 	public String toString(){
-		return this.character+":"+this.negation+"|"+this.valueModifier+"|"+this.value;
+		StringBuffer sb = new StringBuffer();
+		sb.append(this.character);
+		sb.append(":");
+		if(this.negation!=null&&!"".equals(this.negation)){
+			sb.append(this.negation);
+			sb.append("|");
+			sb.append(this.valueModifier==null?"":this.valueModifier);
+			sb.append("|");
+		}else{
+			if(this.valueModifier!=null&&!"".equals(this.valueModifier)){
+				sb.append(this.valueModifier);
+				sb.append("|");
+			}
+		}
+		sb.append(this.value);
+		return sb.toString();
 	}
 	
 	@Override

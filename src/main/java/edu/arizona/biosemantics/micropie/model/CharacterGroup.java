@@ -11,6 +11,7 @@ public enum CharacterGroup {
 	CDIAM,
 	CLENGTH,
 	CSIZE,
+	CTHICK,
 	TEMP,
 	NACL,
 	PH,

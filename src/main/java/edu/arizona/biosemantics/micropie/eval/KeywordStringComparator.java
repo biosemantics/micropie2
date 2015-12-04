@@ -20,37 +20,36 @@ public class KeywordStringComparator extends StringComparator{
 	public double compare(List<CharacterValue> extValues,List<CharacterValue> gstValues) {
 		if((extValues == null||extValues.size()==0)&&(gstValues==null||gstValues.size()==0)) return 1;
 		if(extValues == null||gstValues==null||extValues.size()==0||gstValues.size()==0) return 0;
-		System.out.println(" gst:["+gstValues+"] tg:["+extValues+"]"); 
-		int match = 0;
+		//System.out.println(" gst:["+gstValues+"] tg:["+extValues+"]"); 
+		double match = 0;
 		for(int i=0;i<extValues.size();i++){
 			CharacterValue extValue = extValues.get(i);
 			String extValueStr = cleanValue(extValue.getValue()).trim();
-			/*if(extValueStr.indexOf("and ")>-1){
-				String[] extDiValus = extValueStr.split("and");
-				extValueStr = extDiValus[0].trim();
-				
-				//
-				for(int j=1;j<extDiValus.length;j++){
-					extValues.add(CharacterValueFactory.create(null, extDiValus[j].trim()));
-				}
-			}*/
+			
 			if(extValue.getNegation()!=null)  extValueStr=extValue.getNegation()+" "+extValueStr;
 			Iterator<CharacterValue> gstValueIter = gstValues.iterator();
 			while(gstValueIter.hasNext()){
 				CharacterValue gstValue = gstValueIter.next();
-				//System.out.println(extValueStr+"|"+gstValue.getValue()+" "+match);
+				
+				
+				// Negation, must be the same
+				boolean sameNeg = isSameNeg(extValue,gstValue);
+				
+				if(!sameNeg) return 0;
+				
+				// MainValue
 				String gstValueStr = cleanValue(gstValue.getValue()).trim();
 				extValueStr = extValueStr.trim();
+				
 				//exactly string match
-				//System.out.println(extValueStr+" "+gstValueStr+" "+match);
-				//if(extValueStr.equalsIgnoreCase(gstValueStr)&&!"".equals(extValueStr)){
-				//if(extValueStr.equalsIgnoreCase(gstValueStr)){
-					//System.out.println(extValueStr+" "+gstValueStr+" hit "+match);
-					double amatch =  this.matchMeasure(gstValueStr, extValueStr);
-					match+= amatch;
-					//System.out.println(extValueStr+" "+gstValueStr+" hit "+match);
-					//gstValues.remove(gstValue);
-					if(amatch>0) break;
+				double mailMatch =  this.matchMeasure(gstValueStr, extValueStr);
+				
+				//modifier match
+				double modMatch = modifierMatch(extValue, gstValue);
+				
+				double totalMatch = mailMatch*modMatch;
+				match+= totalMatch;
+				if(totalMatch>0) break;
 				//}
 			}
 		}
@@ -58,6 +57,8 @@ public class KeywordStringComparator extends StringComparator{
 	}
 	
 	
+	
+
 	/**
 	 * measure by keywords
 	 * @param gstValueStr

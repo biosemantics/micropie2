@@ -2,6 +2,8 @@ package edu.arizona.biosemantics.micropie.extract;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.eval.IValueComparator;
@@ -65,10 +67,17 @@ public class NumericValueFormatter implements IValueFormatter {
 		}
 		
 		valueStr.append(value.getValue());
-		valueStr.append("|");
-		valueStr.append(replaceNull(value.getUnit()));
-		valueStr.append("|");
-		valueStr.append(replaceNull(value.getSubCharacter()));
+		if(value.getUnit()!=null&&!"".equals(value.getUnit())) {
+			valueStr.append("|");
+			valueStr.append(replaceNull(value.getUnit()));
+		}
+		if(value.getSubCharacter()!=null&&!"".equals(value.getSubCharacter())) {
+			if(value.getUnit()==null||"".equals(value.getUnit())){
+				valueStr.append("|");
+			}
+			valueStr.append("|");
+			valueStr.append(replaceNull(value.getSubCharacter()));
+		}
 		
 		return valueStr.toString();
 	}
@@ -99,16 +108,15 @@ public class NumericValueFormatter implements IValueFormatter {
 		List<CharacterValue> valueList = new ArrayList();
 		for(String value:values){
 			NumericCharacterValue cv =  null;
-			String[] fields = value.split("\\|");
+			String[] fields = value.split("\\|",-1);
 			
 			if(fields.length==1){
-				
-				cv = CharacterValueFactory.createNumericValue(label, valueStr, null);
+				cv = CharacterValueFactory.createNumericValue(label, value, null);
 			}else{
-				cv = CharacterValueFactory.createNumericValue(label, valueStr, null);
+				cv = CharacterValueFactory.createNumericValue(label, value, null);
 				int mainIndex = -1;
 				for(int i=0;i<fields.length;i++){
-					if(isNumeric(fields[i])){
+					if(containNumber(fields[i])){
 						mainIndex =i;
 						cv.setValue(fields[i]);
 					}
@@ -146,7 +154,7 @@ public class NumericValueFormatter implements IValueFormatter {
 	 * @return
 	 */
 	public boolean isNumeric(String field){
-		System.out.println(field);
+		//System.out.println(field);
 		if(field.indexOf("-")>-1){//It is a range
 			String[] pairs = field.split("\\-");
 			return isNumeric(pairs[0]);
@@ -158,5 +166,25 @@ public class NumericValueFormatter implements IValueFormatter {
 				return false;
 			}
 		}
+	}
+	
+	/**
+	 * only contain a number
+	 * @param word
+	 * @return
+	 */
+	public boolean containNumber(String word) {
+		//System.out.println(word.matches("[+-]?[1-9]+[0-9]*(\\.[0-9]+)?[-]?[1-9]+[0-9]*(\\.[0-9]+)?"));
+		if(word.length()==1){
+			return word.matches("[0-9]+");
+		}else{
+			Matcher m = Pattern.compile(".*\\d+.*").matcher(word);// Pattern.compile(".*\\d+.*").matcher(word);
+			if (m.matches()){
+				return true;
+			}
+			//return word.matches("[+-.0-9]+"); 
+		}
+		
+		return false;
 	}
 }

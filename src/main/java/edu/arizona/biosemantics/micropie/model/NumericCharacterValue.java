@@ -48,7 +48,40 @@ public class NumericCharacterValue extends CharacterValue{
 		this.valueGroup = valueGroup;
 	}
 	
+//	public String toString(){
+//		return this.valueGroup+" "+this.characterGroup+" "+this.negation+" "+this.valueModifier==null?"":this.valueModifier+" "+this.value+" "+this.unit+" "+this.valueType;
+//	}
+	
+	
 	public String toString(){
-		return this.valueGroup+" "+this.characterGroup+" "+this.negation+" "+this.valueModifier==null?"":this.valueModifier+" "+this.value+" "+this.unit+" "+this.valueType;
+		StringBuffer sb = new StringBuffer();
+		sb.append(this.character);
+		sb.append(":");
+		if(this.negation!=null&&!"".equals(this.negation)){
+			sb.append(this.negation);
+			sb.append("|");
+			sb.append(this.valueModifier==null?"":this.valueModifier);
+			sb.append("|");
+		}else{
+			if(this.valueModifier!=null&&!"".equals(this.valueModifier)){
+				sb.append(this.valueModifier);
+				sb.append("|");
+			}
+		}
+		sb.append(this.value);
+		
+		if(this.unit!=null&&!"".equals(this.unit)){
+			sb.append("|");
+			sb.append(this.unit);
+		}
+		
+		if(this.subCharacter!=null&&!"".equals(this.subCharacter)){
+			if(this.unit==null||"".equals(this.unit)){
+				sb.append("|");
+			}
+			sb.append("|");
+			sb.append(this.subCharacter);
+		}
+		return sb.toString();
 	}
 }

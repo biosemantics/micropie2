@@ -40,12 +40,12 @@ public class EvaluationTest {
 		
 		String gstBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String gstKeyField = "XML file";
-		String gstMatrixFile ="F:/MicroPIE/evaluation/gold_matrix_22_1130.csv";//gold_matrix_sample.csv";
+		String gstMatrixFile ="F:/MicroPIE/evaluation/Gold_matrix_22_1204.csv";//gold_matrix_sample.csv";
 		
 		//Taxon	Family	Genus	Species	Strain	16S rRNA accession #	XML file
 		String tgBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String tgKeyField = "XML file";
-		String tgMatrixFile ="F:/MicroPIE/ext/goldtest/goldtest_22_1202.csv";
+		String tgMatrixFile ="F:/MicroPIE/ext/goldtest/goldtest_22_1203.csv";
 		
 		//String tgBasicFields = "XML file|Taxon|Genus|Species|Strain";//STUEXP_040214_28ch.csv
 		//String tgKeyField = "XML file";

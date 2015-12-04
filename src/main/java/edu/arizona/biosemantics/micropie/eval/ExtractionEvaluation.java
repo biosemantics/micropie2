@@ -269,6 +269,7 @@ public class ExtractionEvaluation {
 						matched = stringValueComparator.compare(tgCharValue,gstCharValue);
 					}
 					
+					System.out.println("final value:"+matched);
 					taxonHit += matched;
 					charHit[ch] += matched;
 					

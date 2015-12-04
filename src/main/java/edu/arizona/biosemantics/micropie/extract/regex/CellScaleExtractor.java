@@ -36,13 +36,16 @@ public class CellScaleExtractor extends FigureExtractor{
 	@Override
 	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 		String text = sentence.getText();
+		text = text.replace("µ.m", "µm");
+		text = text.replace("_m", "µm");
+		sentence.setText(text);
 		MultiClassifiedSentence sent = (MultiClassifiedSentence)sentence; 
 		this.posSentenceNoSub(sent);//no sub sentences
 		List<TaggedWord> taggedWords = (List<TaggedWord>) sent.getSubSentTaggedWords().get(0);
 		
 		System.out.println(text);//+":\n"+taggedWords
 		//detect all the figures
-		List<CharacterValue> valueList = detectFigures(taggedWords);
+		List valueList = detectFigures(taggedWords);
 		
 		//merge the figure ranges
 		mergeFigureRange(valueList,taggedWords);
@@ -77,16 +80,104 @@ public class CellScaleExtractor extends FigureExtractor{
 			LabelUtil.determineLabel(curFd);
 		}
 		
+		separateCellSize(valueList);
 		//remove some error files
-		//filter(valueList);
+		filter(valueList);
 		return valueList;
 	}
 	
+	
+	/**
+	 * separate cell size
+	 * @param valueList
+	 */
+	public void separateCellSize(List<NumericCharacterValue> valueList) {
+		try{
+			for(int i=0;i<valueList.size();){
+				NumericCharacterValue cv = valueList.get(i);
+				if(CharacterGroup.CSIZE.equals(cv.getCharacterGroup())){
+					String[] fields = cv.getValue().split("x");
+					System.out.println(cv);
+					double firstMax = detectMaxValue(fields[0]);
+					double secondMax = detectMaxValue(fields[1]);
+					
+					if(firstMax>secondMax){//the first one should be the cell length
+						NumericCharacterValue cellLength = new NumericCharacterValue(null);
+						cellLength.setCharacterGroup(CharacterGroup.CLENGTH);
+						cellLength.setValue(fields[0]);
+						cellLength.setUnit(cv.getUnit());
+						
+						LabelUtil.determineLabel(cellLength);
+						valueList.add(cellLength);
+						
+						NumericCharacterValue cellWidth = new NumericCharacterValue(null);
+						cellWidth.setCharacterGroup(CharacterGroup.CWIDTH);
+						cellWidth.setValue(fields[0]);
+						cellWidth.setUnit(cv.getUnit());
+						
+						LabelUtil.determineLabel(cellWidth);
+						valueList.add(cellWidth);
+					}else{//the second one should be the cell length
+						NumericCharacterValue cellLength = new NumericCharacterValue(null);
+						cellLength.setCharacterGroup(CharacterGroup.CLENGTH);
+						cellLength.setValue(fields[1]);
+						cellLength.setUnit(cv.getUnit());
+						
+						LabelUtil.determineLabel(cellLength);
+						valueList.add(cellLength);
+						
+						NumericCharacterValue cellWidth = new NumericCharacterValue(null);
+						cellWidth.setCharacterGroup(CharacterGroup.CWIDTH);
+						cellWidth.setValue(fields[0]);
+						cellWidth.setUnit(cv.getUnit());
+						
+						LabelUtil.determineLabel(cellWidth);
+						valueList.add(cellWidth);
+					}
+					
+					valueList.remove(i);
+				}else{
+					i++;
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+
+	/**
+	 * detect the max value, it should be the last figure
+	 * 
+	 * @param string
+	 * @return
+	 */
+	public double detectMaxValue(String string) {
+		int index = string.indexOf("-");
+		double max = 0;
+		if(index>-1){//it should be the second one
+			String[] fields =  string.split("-");
+			max = new Double(fields[1]);
+		}else{
+			max = new Double(string);
+		}
+		return max;
+	}
+
+
 	/**
 	 * filter some wrong values
 	 * @param valueList
 	 */
-	private void filter(List valueList) {
+	private void filter(List<NumericCharacterValue> valueList) {
+		for(int i=0;i<valueList.size();){
+			NumericCharacterValue cv = valueList.get(i);
+			if(!cv.getValue().toLowerCase().equals(cv.getValue().toUpperCase())){
+				valueList.remove(i);
+			}else{
+				i++;
+			}
+		}
 	}
 
 
@@ -116,6 +207,7 @@ public class CellScaleExtractor extends FigureExtractor{
 			else if(word.startsWith("size")) {return CharacterGroup.CSIZE;}
 			else if(word.startsWith("day")) {return CharacterGroup.TIME;}
 			else if(word.startsWith("celsius_degree")) {return CharacterGroup.TEMP;}
+			else if(word.startsWith("thick")) {return CharacterGroup.CTHICK;}
 			else if(word.equals("and")||")".equals(word)) {break;}
 		}
 		
