@@ -419,10 +419,10 @@ public class Config extends AbstractModule {
 		//configure the extractors
 		bind(LabelPhraseValueType.class).toInstance(getLabelPhraseValueType(labelValutypeFile));
 		
-		bind(ICharacterValueExtractorProvider.class).to(CharacterValueExtractorProvider.class).in(Singleton.class);
-		
 		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(getCharacterValueExtractors(characterValueExtractorsFolder, 
 		 		uspResultsDirectory, uspString));
+		
+		bind(ICharacterValueExtractorProvider.class).to(CharacterValueExtractorProvider.class).in(Singleton.class);
 		
 		//read keywords from the keyword configuration files
 		bind(new TypeLiteral<Map<String, Set<ILabel>>>() {}).annotatedWith(Names.named("GlobalTermCharacterMap"))
@@ -568,9 +568,9 @@ public class Config extends AbstractModule {
 	public void craftExtractors(Set<ICharacterValueExtractor> extractors, SentenceSpliter sentSplitter,
 			PosTagger posTagger){
 		//System.out.println(extractors+" "+extractors.size());
-		extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
-		extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
-		extractors.add(new FermentationSubstratesNotUsed(Label.c56));
+		//extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
+		//extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
+		//extractors.add(new FermentationSubstratesNotUsed(Label.c56));
 		extractors.add(new GcFigureExtractor(sentSplitter, posTagger, Label.c1, "%G+C"));
 		
 		//AntibioticSyntacticExtractor extractor1 = new AntibioticSyntacticExtractor(Label.c32, "Antibiotic sensitivity",patterns,sentSplitter,stanfordWrapper);

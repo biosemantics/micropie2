@@ -22,7 +22,7 @@ public class EvaluationTest {
 				+ "colony shape|colony margin|colony texture|colony color|film test result|spot test result|"
 				+ "fermentation products|methanogenesis products|other metabolic product|tests positive|"
 				+ "tests negative|symbiotic relationship|host|pathogenic|disease caused|pathogen target organ|haemolytic&haemadsorption properties|"
-				+ "organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
+				+ "organic compounds used or hydrolyzed|organic compounds NOT used or NOT hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
 		
 		String categoryMappingFile = "F:/MicroPIE/micropieInput/svmlabelandcategorymapping/categoryMapping_MicroPIE1.5.txt";
 		
@@ -39,19 +39,21 @@ public class EvaluationTest {
 		*/
 		
 		String gstBasicFields = "Taxon|XML file|Genus|Species|Strain";
-		String gstKeyField = "XML file";
-		String gstMatrixFile ="F:/MicroPIE/evaluation/Gold_matrix_22_1204.csv";//gold_matrix_sample.csv";
-		
-		//Taxon	Family	Genus	Species	Strain	16S rRNA accession #	XML file
+		String gstKeyField = "Taxon";
+		String gstXMLField = "XML file";
+		String gstMatrixFile ="F:/MicroPIE/evaluation/GSM_MicroPIE1.5_121415_Jin.csv";//Gold_matrix_22_1213.csv.csv";
+		//gstMatrixFile
+		//Taxon	Family	Genus	Species	Strain	16S rRNA accession #	XMsL file
 		String tgBasicFields = "Taxon|XML file|Genus|Species|Strain";
-		String tgKeyField = "XML file";
-		String tgMatrixFile ="F:/MicroPIE/ext/goldtest/goldtest_22_1203.csv";
-		
+		String tgKeyField = "Taxon";
+		String tgXMLField = "XML file";
+		String tgMatrixFile ="F:/MicroPIE/ext/goldtest/goldtest_22_1223.csv";//final_114_1214.csv
+		//tgMatrixFile
 		//String tgBasicFields = "XML file|Taxon|Genus|Species|Strain";//STUEXP_040214_28ch.csv
 		//String tgKeyField = "XML file";
 		//String tgMatrixFile ="F:/MicroPIE/evaluation/STUEXP_040214_28ch.csv";
 		
-		ExtractionEvaluation extEval = new ExtractionEvaluation(gstBasicFields,tgBasicFields,gstKeyField,tgKeyField,categoryMappingFile);
+		ExtractionEvaluation extEval = new ExtractionEvaluation(gstBasicFields,tgBasicFields,gstKeyField,tgKeyField,gstXMLField,tgXMLField,categoryMappingFile);
 		extEval.readCategoryMapping();
 		extEval.setComparedCharacter(comparedCharacterNames);
 		extEval.setSeparators("#", ",");

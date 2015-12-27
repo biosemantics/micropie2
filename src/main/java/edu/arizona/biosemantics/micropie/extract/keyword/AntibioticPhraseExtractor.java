@@ -2,9 +2,11 @@ package edu.arizona.biosemantics.micropie.extract.keyword;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.context.RelationParser;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
@@ -25,7 +27,7 @@ import edu.stanford.nlp.ling.TaggedWord;
  * 
  * @author maojin
  */
-public class AntibioticPhraseExtractor extends AbstractCharacterValueExtractor{
+public class AntibioticPhraseExtractor extends KeywordBasedExtractor{
 
 	private PosTagger posTagger;
 	private PhraseParser phraseParser = null;
@@ -37,21 +39,46 @@ public class AntibioticPhraseExtractor extends AbstractCharacterValueExtractor{
 	//susceptible
 	private Set<String> sensTypeKeywords = null;
 	
-	public AntibioticPhraseExtractor(ILabel label, String characterName) {
-		super(label, characterName);
+	
+//	public AntibioticPhraseExtractor(ILabel label, String characterName,PosTagger posTagger,PhraseParser phraseParser,RelationParser phraseRelationParser, SentenceSpliter sentSplitter, Set<String> sensTypeKeywords) {
+//		this.posTagger = posTagger;
+//		this.phraseParser = phraseParser;
+//		this.sensTypeKeywords = sensTypeKeywords;
+//		this.sentSplitter = sentSplitter;
+//		this.phraseRelationParser = phraseRelationParser;
+//	}
+	
+	
+	public AntibioticPhraseExtractor(Label label, String characterName,
+			Set<String> keywords, Map<String, List> subKeywords) {
+		super(label,characterName,keywords,subKeywords);
 	}
 	
-	public AntibioticPhraseExtractor(ILabel label, String characterName,PosTagger posTagger,PhraseParser phraseParser,RelationParser phraseRelationParser, SentenceSpliter sentSplitter, Set<String> sensTypeKeywords) {
-		super(label, characterName);
+	public void setPosTagger(PosTagger posTagger) {
 		this.posTagger = posTagger;
+	}
+
+	public void setPhraseParser(PhraseParser phraseParser) {
 		this.phraseParser = phraseParser;
-		this.sensTypeKeywords = sensTypeKeywords;
-		this.sentSplitter = sentSplitter;
+	}
+
+	public void setPhraseRelationParser(RelationParser phraseRelationParser) {
 		this.phraseRelationParser = phraseRelationParser;
 	}
-	
-	
+
+	public void setSentSplitter(SentenceSpliter sentSplitter) {
+		this.sentSplitter = sentSplitter;
+	}
+
+	public void setSensTypeKeywords(Set<String> sensTypeKeywords) {
+		this.sensTypeKeywords = sensTypeKeywords;
+	}
+
+
 	@Override
+	/**
+	 * where does " resistant " come from?
+	 */
 	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 		// TODO Auto-generated method stub
 		String text = sentence.getText();
@@ -63,10 +90,10 @@ public class AntibioticPhraseExtractor extends AbstractCharacterValueExtractor{
 		List<Phrase> phraseList = phraseParser.extract(tagList);
 		
 		
-		
+		//System.out.println(phraseList);
 		//First, identify the coordinative relationships.
 		List<List<Phrase>> coordTermLists = phraseRelationParser.getCoordList(phraseList,tagList);
-		
+		//System.out.println(coordTermLists);
 		
 		//Second, find the keyword and one substances that follows it.
 		//Third, determine the phrases that have coordinative relationships with this keyword
@@ -82,7 +109,6 @@ public class AntibioticPhraseExtractor extends AbstractCharacterValueExtractor{
 					//w+2 should be the start index, and the position difference should not be greater than 2
 					//sensitive w to w+1 <w+2 w+3>
 					valueCandList = sortByPosition(coordTermLists, w+2);
-					
 					for(int nindex = w-2;nindex>0&&nindex<w+2;nindex++){
 						TaggedWord ntw = tagList.get(nindex);
 						if(ntw.word().equals("not")){
@@ -103,6 +129,25 @@ public class AntibioticPhraseExtractor extends AbstractCharacterValueExtractor{
 				}
 			}//end
 		}
+		
+		/*
+		if(valueCandList==null||valueCandList.size()==0){
+			valueCandList = new ArrayList();
+			for(List<Phrase> phList: coordTermLists){
+				Phrase p = phList.get(0);
+				//boolean isExist = false;
+				for(String keyword : keywords){
+					if(isExist(keyword, p.getText())){
+						//isExist = true;
+						for(Phrase ap:phList){
+							valueCandList.add(ap);
+						}
+						break;
+					}
+				}
+				//if(isExist) break;
+			}
+		}*/
 		
 		List<CharacterValue> cvList = new ArrayList();
 		if(valueCandList!=null){

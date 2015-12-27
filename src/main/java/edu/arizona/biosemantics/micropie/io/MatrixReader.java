@@ -49,7 +49,9 @@ public class MatrixReader {
 	public ILabel[] characterLabels = null;
 	
 	public String keyField = null;
+	public String XMLField = null;
 	public int keyFieldIndex;
+	public int xmlFileIndex;
 	
 	public Map<String, ILabel> characterNameLabelMapping = null;
 	public Map<ILabel, String> characterLabelNameMapping = null;
@@ -60,9 +62,10 @@ public class MatrixReader {
 	//matrix results
 	public NewTaxonCharacterMatrix matrix = null;
 	
-	public MatrixReader(String[] basicFields, String keyField, Map<String, ILabel> characterNameLabelMapping,Map<ILabel, String> characterLabelNameMapping){
+	public MatrixReader(String[] basicFields, String keyField,String XMLField,  Map<String, ILabel> characterNameLabelMapping,Map<ILabel, String> characterLabelNameMapping){
 		this.basicFields = basicFields;
 		this.keyField = keyField;
+		this.XMLField = XMLField;
 		this.characterNameLabelMapping = characterNameLabelMapping;
 		this.characterLabelNameMapping = characterLabelNameMapping;
 	}
@@ -106,6 +109,13 @@ public class MatrixReader {
 				break;
 			}
 		}
+		
+		for(int i=0;i<basicFields.length;i++){
+			if(XMLField.equalsIgnoreCase(basicFields[i].trim())){
+				this.xmlFileIndex = i;
+				break;
+			}
+		}
 		//System.out.println(" keyFieldIndex "+keyFieldIndex);
 		characterLabels = new ILabel[characterFields.length];
 		for(int i=0;i<characterFields.length;i++){
@@ -115,6 +125,7 @@ public class MatrixReader {
 	
 	/**
 	 * parse taxon files
+	 * @isTransFileName  whether standardize the file name
 	 * @return
 	 */
 	public Map<String, TaxonTextFile> parseTaxonFiles(boolean isTransFileName){
@@ -127,11 +138,11 @@ public class MatrixReader {
 			TaxonTextFile taxonFile = new TaxonTextFile();
 			String taxon = rowFieldValues[keyFieldIndex]; //taxa name
 			if(isTransFileName) taxon = StringUtil.standFileName(taxon);
-			System.out.println(taxon);
+			//System.out.println(taxon);
 			//Taxon|XML file|Genus|Species|Strain
 			String taxonName = rowFieldValues[0];
-			taxonFile.setTaxon(taxonName);
-			String taxonFileName = rowFieldValues[1];
+			taxonFile.setTaxon(taxonName);//taxon name
+			String taxonFileName =  rowFieldValues[xmlFileIndex];
 			if(isTransFileName){
 				taxonFile.setXmlFile(StringUtil.standFileName(taxonFileName));
 			}else{
@@ -145,7 +156,8 @@ public class MatrixReader {
 			String strain = rowFieldValues[4];
 			taxonFile.setStrain_number(strain);
 			
-			taxonFileMap.put(taxon, taxonFile);
+			//both taxon and xmlfile are combined as the key
+			taxonFileMap.put(taxon.trim()+"_"+taxonFile.getXmlFile().trim(), taxonFile);
 		}
 		
 		return taxonFileMap;
@@ -173,11 +185,13 @@ public class MatrixReader {
 			
 			
 			String taxon = rowFieldValues[keyFieldIndex]; //taxa name
-			if(isTransFileName) taxon = StringUtil.standFileName(taxon);//transform the file name
+			String taxonXMLFile = rowFieldValues[xmlFileIndex]; //xmlFileIndex
+			if(isTransFileName) taxonXMLFile = StringUtil.standFileName(taxon);//transform the file name
 			//System.out.println("parseMatrix="+taxon);
 			if(taxon==null) continue;//it means it's empty
 			Map<ILabel, List<CharacterValue>> taxonValues = new HashMap<ILabel, List<CharacterValue>>();
-			matrix.put(taxon, taxonValues);
+			//matrix.put(taxon, taxonValues);//put taxon
+			matrix.put(taxon.trim()+"_"+taxonXMLFile.trim(), taxonValues);//put both taxon and xml file
 			
 			notNullChars = 0;
 			int isNotEmptyStringCounter = 0;
@@ -190,7 +204,7 @@ public class MatrixReader {
 					//System.out.println(taxon+" "+characterLabelNameMapping.get(label)+" "+cellValue);
 					List multiValues = ValueFormatterUtil.parse(label, cellValue);
 					//splitValue(label, multiValueSign, cellValue);
-					System.out.println(label+":"+multiValues);
+					//System.out.println(label+":"+multiValues);
 					taxonValues.put(label, multiValues);
 					notNullChars++;
 				}

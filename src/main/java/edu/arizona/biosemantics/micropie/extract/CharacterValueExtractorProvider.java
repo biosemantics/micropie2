@@ -22,6 +22,7 @@ import edu.arizona.biosemantics.micropie.extract.regex.CellScaleExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellWidthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.FermentationSubstratesNotUsed;
 import edu.arizona.biosemantics.micropie.extract.keyword.FermentationProductExtractor;
+import edu.arizona.biosemantics.micropie.extract.keyword.OrganicCompoundExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GeographicLocationExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GcFigureExtractor;
@@ -37,6 +38,7 @@ import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempOptimumExtracto
 import edu.arizona.biosemantics.micropie.extract.regex.InorganicSubstancesNotUsedExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.OrganicCompoundsNotUsedOrNotHydrolyzedExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.PHTempNaClExtractor;
+import edu.arizona.biosemantics.micropie.extract.regex.PigmentCompoundAbsorptionExtractor;
 import edu.arizona.biosemantics.micropie.nlptool.PhraseParser;
 import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
@@ -104,8 +106,10 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		
 		//My method
 		for(Label label: Label.values()){
-			if(!labelExtractorsMap.containsKey(label))
+			if(!labelExtractorsMap.containsKey(label)){
 				labelExtractorsMap.put(label, new HashSet<ICharacterValueExtractor>());
+			}
+				
 		}
 		
 		//System.out.println("initializing new characters "+extractors.size());
@@ -118,18 +122,21 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		RelationParser phraseRelationParser = new RelationParser();
 		
 		extractors.add(new AntibioticSyntacticExtractor(Label.c32, "Antibiotic sensitivity",sensitivePatterns,sentSplitter,stanfordWrapper));
-		extractors.add(new AntibioticPhraseExtractor(Label.c32, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, sensitiveTerms));
+		//extractors.add(new AntibioticPhraseExtractor(Label.c32, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, sensitiveTerms));
 		extractors.add(new AntibioticSyntacticExtractor(Label.c33, "Antibiotic sensitivity",resistantPatterns,sentSplitter,stanfordWrapper));
-		extractors.add(new AntibioticPhraseExtractor(Label.c33, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, resistantTerms));
+		//extractors.add(new AntibioticPhraseExtractor(Label.c33, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, resistantTerms));
 
 		
 		FermentationProductExtractor  fermentationExtractor =  null;
+		Set<String> inorganicWords = null;
 		//convert to a label-extractor map
 		for(ICharacterValueExtractor extractor : extractors) {
 			if(!labelExtractorsMap.containsKey(extractor.getLabel()))
 				labelExtractorsMap.put(extractor.getLabel(), new HashSet<ICharacterValueExtractor>());
-			if(extractor!=null) labelExtractorsMap.get(extractor.getLabel()).add(extractor);
-			//System.out.println(extractor);
+			if(extractor!=null){
+				labelExtractorsMap.get(extractor.getLabel()).add(extractor);
+			}
+			
 			//phrase based extractor
 			if(extractor instanceof SalinityPreferenceExtractor){
 				((SalinityPreferenceExtractor) extractor).setPosTagger(posTagger);
@@ -148,24 +155,56 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 				((FermentationProductExtractor) extractor).setRelationParser(phraseRelationParser);
 				((FermentationProductExtractor) extractor).setStanParser(stanfordWrapper);
 				fermentationExtractor = (FermentationProductExtractor) extractor;
+			}else if(extractor instanceof edu.arizona.biosemantics.micropie.extract.keyword.OrganicCompoundExtractor){
+				((OrganicCompoundExtractor) extractor).setPosTagger(posTagger);
+				((OrganicCompoundExtractor) extractor).setPhraseParser(phraseParser);
+				((OrganicCompoundExtractor) extractor).setSentSplitter(sentSplitter);
+				((OrganicCompoundExtractor) extractor).setStanParser(stanfordWrapper);
+				((OrganicCompoundExtractor) extractor).setPhraseRelationParser(phraseRelationParser);
 			}else if(extractor instanceof edu.arizona.biosemantics.micropie.extract.regex.GeographicLocationExtractor){
 					((GeographicLocationExtractor) extractor).setStanParser(stanfordWrapper);
+			}else if(extractor instanceof edu.arizona.biosemantics.micropie.extract.keyword.AntibioticPhraseExtractor){
+				((AntibioticPhraseExtractor) extractor).setPosTagger(posTagger);
+				((AntibioticPhraseExtractor) extractor).setPhraseParser(phraseParser);
+				((AntibioticPhraseExtractor) extractor).setSentSplitter(sentSplitter);
+				((AntibioticPhraseExtractor) extractor).setPhraseRelationParser(phraseRelationParser);
+				if(Label.c32.equals(extractor.getLabel())){
+					((AntibioticPhraseExtractor) extractor).setSensTypeKeywords(sensitiveTerms);
+				}else{
+					((AntibioticPhraseExtractor) extractor).setSensTypeKeywords(resistantTerms);
+				}
 			}else if(extractor instanceof PhraseBasedExtractor){//put in the last
 				((PhraseBasedExtractor) extractor).setPosTagger(posTagger);
 				((PhraseBasedExtractor) extractor).setPhraseParser(phraseParser);
-				//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
 			}
+			
+			
 		}
 		
+		
+		//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
+		PhraseBasedExtractor inExtractor = (PhraseBasedExtractor)labelExtractorsMap.get(Label.c55).iterator().next();
+		inorganicWords = inExtractor.getKeywords();
+		for(ICharacterValueExtractor extractor : extractors) {
+			 if(extractor instanceof edu.arizona.biosemantics.micropie.extract.keyword.FermentationProductExtractor){
+				fermentationExtractor = (FermentationProductExtractor) extractor;
+				fermentationExtractor.setInorganicWords(inorganicWords);
+			 }
+		}
 		// Figure Extraction Method
 		ICharacterValueExtractor gcFigureExtractor = new GcFigureExtractor(sentSplitter, posTagger, Label.c1, "%G+C");
 		ICharacterValueExtractor ptnFigureExtractor = new PHTempNaClExtractor(sentSplitter, posTagger, null, "PHTempNacl");
 		ICharacterValueExtractor cellScaleFigureExtractor = new CellScaleExtractor(sentSplitter, posTagger, null, "CellScale");
+		PigmentCompoundAbsorptionExtractor pcAbsoExtractor = new PigmentCompoundAbsorptionExtractor(posTagger, Label.c12, "Pigment Compounds", null, null);
+		pcAbsoExtractor.setPhraseParser(phraseParser);
 		
 		labelExtractorsMap.get(Label.c1).add(gcFigureExtractor);
+		labelExtractorsMap.get(Label.c2).add(cellScaleFigureExtractor);//some values of cell shapes orrcur in this character sentences.
 		labelExtractorsMap.get(Label.c3).add(cellScaleFigureExtractor);
 		labelExtractorsMap.get(Label.c4).add(cellScaleFigureExtractor);
 		labelExtractorsMap.get(Label.c5).add(cellScaleFigureExtractor);
+		
+		labelExtractorsMap.get(Label.c12).add(pcAbsoExtractor);
 		
 		//note the mapping
 		labelExtractorsMap.get(Label.c18).add(ptnFigureExtractor);
@@ -178,9 +217,14 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		labelExtractorsMap.get(Label.c25).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c26).add(ptnFigureExtractor);
 		
+		
+		
+		
 		if(fermentationExtractor!=null){
 			labelExtractorsMap.get(Label.c41).add(fermentationExtractor);
 			labelExtractorsMap.get(Label.c42).add(fermentationExtractor);
+			labelExtractorsMap.get(Label.c53).add(fermentationExtractor);
+			labelExtractorsMap.get(Label.c54).add(fermentationExtractor);
 		}
 		
 		/*

@@ -130,7 +130,8 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 					if(keywordString.indexOf("@")==-1&&isExist(keywordString.toLowerCase(), text.toLowerCase())){//adjectives
 						//System.out.println("adjectives");
 						phrase.convertValue(this.getLabel());
-						phrase.setText(keywordString);
+						phrase.setText(text);//phrase text
+						
 						CharacterValue charVal = phrase.getCharValue();
 						charValueList.add(charVal);
 						//System.out.println("Adjective words: ["+charVal+"]");
@@ -140,7 +141,13 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 					//Sample sentences:
 					//Halophilic, growing between 1.0 and 7.5 % (w/v) NaCl with optimum growth at 1–3 %.
 					}else if(keywordString.indexOf("@")>-1&&isExist(substance.toLowerCase(), text.toLowerCase())){//compounds
-						phrase.setText(substance);
+						//System.out.println("substances");
+						phrase.convertValue(this.getLabel());
+						if(substance.equals("Na+")){// ions
+							if(sentStr.indexOf("Na\\+ ions")>-1) phrase.setText("Na+ ions");
+						}else{
+							phrase.setText(substance);
+						}
 						//System.out.println("found substances:" +substance+" "+phrase.getStart());
 						//whether need require
 						//Situation 2a: Explicitly express the requirement. 
@@ -185,7 +192,7 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 		phrase.setNegation(negation);
 		
 		phrase.convertValue(this.getLabel());
-		phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
+		phrase.getCharValue().setValue("requires "+phrase.getCharValue().getValue());
 		CharacterValue charVal = phrase.getCharValue();
 		//System.out.println("infer for present : ["+charVal+"]");
 		charValueList.add(charVal);
@@ -226,7 +233,7 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 			phrase.setNegation(negation);
 			
 			phrase.convertValue(this.getLabel());
-			phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
+			phrase.getCharValue().setValue("requires "+phrase.getCharValue().getValue());
 			CharacterValue charVal = phrase.getCharValue();
 			//System.out.println("infer for present : ["+charVal+"]");
 			charValueList.add(charVal);
@@ -276,7 +283,7 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 			//phrase.setNegation(negation);
 			
 			phrase.convertValue(this.getLabel());
-			phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
+			phrase.getCharValue().setValue("requires "+phrase.getCharValue().getValue());
 			CharacterValue charVal = phrase.getCharValue();
 			//System.out.println("infer for absent : ["+charVal+"]");
 			charValueList.add(charVal);
@@ -293,13 +300,13 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 	
 
 	/**
-	 * if the word is a netation verb, then reverse it
+	 * if the word is a negation verb, then reverse it
 	 * @param verbWord
 	 * @return
 	 */
 	private String reverseNegation(TaggedWord verbWord, String negation) {
 		for(String notrequireStr: notrequirePatterns){
-			if(verbWord.word().toLowerCase().startsWith(notrequireStr)){
+			if(verbWord!=null&&verbWord.word()!=null&&verbWord.word().toLowerCase().startsWith(notrequireStr)){
 				if(negation==null||"".equals(negation)){
 					negation = "not";
 				}else{
@@ -357,7 +364,7 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 			//detect negation
 			phrase.setNegation(negation);
 			phrase.convertValue(this.getLabel());
-			phrase.getCharValue().setValue("require "+phrase.getCharValue().getValue());
+			phrase.getCharValue().setValue("requires "+phrase.getCharValue().getValue());
 			CharacterValue charVal = phrase.getCharValue();
 			//System.out.println("explicit requirements: ["+charVal+"]");
 			charValueList.add(charVal);

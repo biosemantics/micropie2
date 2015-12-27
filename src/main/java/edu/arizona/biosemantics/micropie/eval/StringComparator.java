@@ -60,20 +60,20 @@ public class StringComparator implements IValueComparator{
 		value = value.replace("-", " ");
 		
 		//unit
-		value = value.replace("mol%", "");
-		value = value.replace("·", ".");
-		value = value.replace("°C", "");
-		value = value.replace("%", " ");
-		value = value.replace(" g", " ");
-		value = value.replace("sea salts", " ");
-		value = value.replace("(w/v)", " ");
-		value = value.replace(" NaCl", " ");
-		value = value.replace(" M", " ");
-		value = value.replace("??????C", "");
-		value = value.replace("??C", "");
-		value = value.replace("??m", "");
-		
-		value = value.replace("-", " ");
+		value = value.replace("mol%", "")
+				.replace("·", ".")
+				.replace("°C", "")
+				.replace("%", " ")
+				.replace(" g", " ")
+				.replace("sea salts", " ")
+				.replace("(w/v)", " ")
+				.replace(" NaCl", " ")
+				.replace(" M", " ")
+				.replace("??????C", "")
+				.replace("??C", "")
+				.replace("??m", "")
+				.replace("-", " ").
+				replace("[\\s]*:[\\s]*", ":");
 		
 		return value;
 	}
@@ -87,12 +87,12 @@ public class StringComparator implements IValueComparator{
 	public boolean isSameNeg(CharacterValue extValue, CharacterValue gstValue) {
 		String extNeg = extValue.getNegation();
 		String gstNeg = gstValue.getNegation();
-		if((extNeg==null||"".equals(extNeg))&&(gstNeg!=null&&!"".equals(gstNeg))){
+		if((extNeg==null||"".equalsIgnoreCase(extNeg))&&(gstNeg!=null&&!"".equalsIgnoreCase(gstNeg))){
 			return false;
-		}else if((extNeg!=null&&!"".equals(extNeg))&&(gstNeg==null||"".equals(gstNeg))){
+		}else if((extNeg!=null&&!"".equalsIgnoreCase(extNeg))&&(gstNeg==null||"".equalsIgnoreCase(gstNeg))){
 			return false;
-		}else if((extNeg!=null&&!"".equals(extNeg))&&(gstNeg!=null&&!"".equals(gstNeg))){
-			if(extNeg.trim().equals(gstNeg.trim())){
+		}else if((extNeg!=null&&!"".equalsIgnoreCase(extNeg))&&(gstNeg!=null&&!"".equalsIgnoreCase(gstNeg))){
+			if(extNeg.trim().equalsIgnoreCase(gstNeg.trim())){
 				return true;
 			}else{
 				return false;
@@ -114,19 +114,59 @@ public class StringComparator implements IValueComparator{
 		
 		String extNeg = extValue.getValueModifier();
 		String gstNeg = gstValue.getValueModifier();
+		
+		
+		String extUnit = extValue.getUnit();
+		String gstUnit = gstValue.getUnit();
+		
+		if(extUnit!=null) extUnit = unitNormal(extUnit);
+		if(gstUnit!=null) gstUnit = unitNormal(gstUnit);
+		
+		if(isTheSame(extNeg,gstNeg)&&isTheSame(extUnit,gstUnit)){
+			return 1.0;
+		}else{
+			return 0.5;
+		}
+		
+		/*
 		if((extNeg==null||"".equals(extNeg))&&(gstNeg!=null&&!"".equals(gstNeg))){
 			return 0.5;
 		}else if((extNeg!=null&&!"".equals(extNeg))&&(gstNeg==null||"".equals(gstNeg))){
 			return 0.5;
 		}else if((extNeg!=null&&!"".equals(extNeg))&&(gstNeg!=null&&!"".equals(gstNeg))){
-			if(extNeg.trim().equals(gstNeg.trim())){
+			if(extNeg.trim().equalsIgnoreCase(gstNeg.trim())){
 				return 1.0;
 			}else{
 				return 0.5;
 			}
 		}else{
 			return 1.0;
-		}
+		}*/
 	}
 
+	
+	public boolean isTheSame(String source, String target){
+		if(source==null&&target==null){
+			return true;
+		}else if(source==null&&target!=null&&!"".equals(target.trim())){
+			return false;
+		}else if(source==null&&(target!=null&&"".equals(target.trim()))){
+			return true;
+		}else if(source!=null&&target==null&&!"".equals(source.trim())){
+			return false;
+		}else if(target==null&&source!=null&&"".equals(source.trim())){
+			return true;
+		}else if(source.trim().equalsIgnoreCase(target.trim())){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	private String unitNormal(String value){
+		value = value.replace("˚C", "˚C").replace("°C", "˚C").replace("°C", "˚C").replace("μm", "µm");
+		return value;
+	}
+	
 }

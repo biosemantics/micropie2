@@ -104,13 +104,13 @@ public class RelationParser {
 			Phrase curPhrase = phraseList.get(i);
 			int curStartIndex = curPhrase.getStartIndex();
 			String curType = curPhrase.getType();
-			
+			//System.out.println(curPhrase+" "+curType);
 			Phrase formerPhrase = phraseList.get(i+1);
 			int formerEndIndex = formerPhrase.getEndIndex();
 			String formerType = formerPhrase.getType();
 			
 			boolean isCoor = true;
-			if(!curType.equals(formerType)&&"N".equals(curType)){//must be the same type
+			if(!curType.equals(formerType)||!"N".equals(curType)){//must be the same type
 				isCoor = false;
 			}else{//must not be interrupted by non conj words as "and","or" and ",".
 				for(int inter = formerEndIndex+1; inter <curStartIndex&&inter<twList.size(); inter++ ){
@@ -121,7 +121,7 @@ public class RelationParser {
 					}
 				}
 			}
-			
+			//System.out.println(curPhrase+" "+curType+" "+formerPhrase+" "+isCoor);
 			if(isCoor){//
 				graph.addVertex(formerPhrase);
 				graph.addVertex(curPhrase);
@@ -167,6 +167,7 @@ public class RelationParser {
 			pharseSet.remove(onePhrase);
 			//deep-first traverse strategy
 			traverseConnectedGraph(corphraseList,pharseSet,onePhrase,coordGraph);
+			//System.out.println("corphraseList="+corphraseList);
 		}
 		
 		return phraseLists;

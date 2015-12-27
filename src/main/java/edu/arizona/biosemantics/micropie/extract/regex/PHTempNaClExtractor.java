@@ -50,7 +50,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 	@Override
 	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 		String text = sentence.getText();
-		text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C");
+		text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C").replace("–", "-");
 		//System.out.println(text);
 		MultiClassifiedSentence sent = (MultiClassifiedSentence)sentence;
 		sent.setSubSentence(null);//reseparate
@@ -75,10 +75,10 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			List<NumericCharacterValue> valueList = detectFigures(taggedWords);
 			
 			mergeFigureRange(valueList,taggedWords);
-			//for(int i=0;i<valueList.size();i++){
-			//	NumericCharacterValue curFd = valueList.get(i);
-				//System.out.println("after merge:"+curFd.getValue()+" "+curFd.getUnit());
-			//}
+//			for(int i=0;i<valueList.size();i++){
+//				NumericCharacterValue curFd = valueList.get(i);
+//				System.out.println("after merge:"+curFd.getValue()+" "+curFd.getUnit());
+//			}
 			
 			//detect neutral pH
 			recNeutralPH(valueList,text,taggedWords);
@@ -99,11 +99,11 @@ public class PHTempNaClExtractor extends FigureExtractor {
 				ValueGroup valueGroup = detectValueGroup(curFd,taggedWords,text,posCharaMap);
 				curFd.setValueGroup(valueGroup);
 				
-				detectModifier(curFd,taggedWords);// detect the modifier for the figure
+				//detectModifier(curFd,taggedWords);// detect the modifier for the figure
 				
-				curFd.setNegation(detectNegation(curFd,taggedWords));
+				//curFd.setNegation(detectNegation(curFd,taggedWords));
 				//if(curFd.isNegation()) System.out.println("negation:"+curFd.isNegation()+" "+curFd.getValueModifier());
-				//System.out.println(valueGroup(valueGroup));
+				//System.out.println(curFd+" "+valueGroup);
 				if(valueGroup==ValueGroup.USP){//
 					if(curFd.getValue().indexOf("-")>-1){// range
 						int rIndex =  curFd.getValue().lastIndexOf("-");
@@ -123,8 +123,6 @@ public class PHTempNaClExtractor extends FigureExtractor {
 						//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
 					}
 					
-				}else{//
-					//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
 				}
 			}
 			
@@ -134,6 +132,9 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			fsize =  valueList.size();
 			for(int i=0;i<fsize;i++){
 				NumericCharacterValue curFd = valueList.get(i);
+				
+				if(curFd.getValue()!=null) curFd.setValue(curFd.getValue().replace("−", "-"));
+				
 				//detemine the type
 				LabelUtil.determineLabel(curFd);
 				/*
@@ -141,8 +142,8 @@ public class PHTempNaClExtractor extends FigureExtractor {
 					System.out.println(curFd.getCharacter()+" "+curFd.getCharacterGroup()+"_"+curFd.getValueGroup()+" "+curFd.getValueModifier()+" "+curFd.getValue()+" "+curFd.getUnit());
 				}else{
 					System.err.println(curFd.getCharacter()+" "+curFd.getCharacterGroup()+"_"+curFd.getValueGroup()+" "+curFd.getValueModifier()+" "+curFd.getValue()+" "+curFd.getUnit());
-				}
-				*/
+				}*/
+				
 			}
 			
 			//combine all the subsentences
@@ -150,7 +151,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		}
 		
 		if(containWV) updateNaClUnitWV(sentValueList);
-		
+		//System.out.println(sentValueList);
 		return sentValueList;
 	}
 	
@@ -359,10 +360,11 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			//Na+,MgCl2,Cl-,Mg2+
 			if(wordStr.equalsIgnoreCase("nacl")||wordStr.equalsIgnoreCase("na")||wordStr.startsWith("MgC")||wordStr.equalsIgnoreCase("cl")
 					||wordStr.equalsIgnoreCase("mg2")||wordStr.equalsIgnoreCase("salinity")||wordStr.equalsIgnoreCase("sea")
-					||wordStr.equalsIgnoreCase("artificial")||wordStr.equalsIgnoreCase("MgSO4")||wordStr.equalsIgnoreCase("Ca2")||wordStr.equalsIgnoreCase("magnesium")) {
+					||wordStr.equalsIgnoreCase("artificial")||wordStr.equalsIgnoreCase("MgSO4")||wordStr.equalsIgnoreCase("Ca2")||wordStr.equalsIgnoreCase("magnesium")
+					||wordStr.equalsIgnoreCase("ASW")) {
 				if(wordStr.equalsIgnoreCase("na")) wordStr = "Na+";
 				if(wordStr.equalsIgnoreCase("sea")) wordStr = "sea salt";
-				if(wordStr.equalsIgnoreCase("artificial")) wordStr = "artificial seawater";
+				if(wordStr.equalsIgnoreCase("artificial")||wordStr.equalsIgnoreCase("ASW")) wordStr = "artificial seawater";
 				if(wordStr.equalsIgnoreCase("Mg2")) wordStr = "Mg2+";
 				if(wordStr.equalsIgnoreCase("Ca2")) wordStr = "Ca2+";
 				curFd.setSubCharacter(wordStr);

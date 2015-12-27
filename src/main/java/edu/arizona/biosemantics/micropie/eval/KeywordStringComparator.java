@@ -16,6 +16,7 @@ import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
  *
  */
 public class KeywordStringComparator extends StringComparator{
+	
 	@Override
 	public double compare(List<CharacterValue> extValues,List<CharacterValue> gstValues) {
 		if((extValues == null||extValues.size()==0)&&(gstValues==null||gstValues.size()==0)) return 1;
@@ -26,7 +27,7 @@ public class KeywordStringComparator extends StringComparator{
 			CharacterValue extValue = extValues.get(i);
 			String extValueStr = cleanValue(extValue.getValue()).trim();
 			
-			if(extValue.getNegation()!=null)  extValueStr=extValue.getNegation()+" "+extValueStr;
+			//if(extValue.getNegation()!=null)  extValueStr=extValue.getNegation()+" "+extValueStr;
 			Iterator<CharacterValue> gstValueIter = gstValues.iterator();
 			while(gstValueIter.hasNext()){
 				CharacterValue gstValue = gstValueIter.next();
@@ -34,20 +35,20 @@ public class KeywordStringComparator extends StringComparator{
 				
 				// Negation, must be the same
 				boolean sameNeg = isSameNeg(extValue,gstValue);
-				
-				if(!sameNeg) return 0;
+				//if(extValue.getValue().indexOf("equir")>-1) System.out.println("sameNeg="+sameNeg);
+				if(!sameNeg) continue;//current is not matched, to the next
 				
 				// MainValue
 				String gstValueStr = cleanValue(gstValue.getValue()).trim();
 				extValueStr = extValueStr.trim();
 				
 				//exactly string match
-				double mailMatch =  this.matchMeasure(gstValueStr, extValueStr);
-				
+				double mainMatch =  this.matchMeasure(gstValueStr, extValueStr);
+				//if(extValue.getValue().indexOf("equir")>-1) System.out.println("mainMatch="+mainMatch);
 				//modifier match
 				double modMatch = modifierMatch(extValue, gstValue);
 				
-				double totalMatch = mailMatch*modMatch;
+				double totalMatch = mainMatch*modMatch;
 				match+= totalMatch;
 				if(totalMatch>0) break;
 				//}
@@ -75,11 +76,15 @@ public class KeywordStringComparator extends StringComparator{
 			//keywords = new String[]{gstValueStr};
 			fullValue = gstValueStr;
 		}
+		//System.out.println("fullValue="+fullValue);
+		//for(String keyword:keywords) System.out.println("keywords="+keyword.toString());
 		//match the full values
+		fullValue = fullValue.trim();
 		if(extValueStr.equalsIgnoreCase(fullValue)&&!"".equals(extValueStr)){
 			return 1;
 		}
 		
+		extValueStr = extValueStr.toLowerCase().trim();
 		if(keywords==null||"".equals(keywords)){
 			return 0;
 		}else{
@@ -87,6 +92,7 @@ public class KeywordStringComparator extends StringComparator{
 			double hit = 0;
 			for(String keyword : keywords){
 				keyword= keyword.trim().toLowerCase();
+				//System.out.println("keyword="+keyword+" against "+extValueStr);
 				String patternString = "\\s"+keyword+"$|\\s"+keyword+"\\s|^"+keyword+"\\s|^"+keyword+"$"; // regular expression pattern
 				Pattern pattern = Pattern.compile(patternString);
 				Matcher matcher = pattern.matcher(extValueStr);			
@@ -107,9 +113,9 @@ public class KeywordStringComparator extends StringComparator{
 		//String gstValueStr = "straight rods";
 		//String gstValueStr = "straight rods devoid of flagella";
 		//String gstValueStr = "straight rods[straight rods devoid of flagella]";
-		String gstValueStr = "straight, rods[straight rods devoid of flagella]";
+		String gstValueStr = "Halophilic [Halophilic, growing between 1.0 and 7.5% (w/v) NaCl with optimum growth at 1-3%.]";
 		KeywordStringComparator kscomp = new KeywordStringComparator();
-		System.out.println(kscomp.matchMeasure(gstValueStr, "straight rods devoid of flagella"));
+		System.out.println(kscomp.matchMeasure(gstValueStr, "Halophilic"));
 		System.out.println(kscomp.matchMeasure(gstValueStr, "straight rods devoid"));
 		System.out.println(kscomp.matchMeasure(gstValueStr, "straight rods "));
 		System.out.println(kscomp.matchMeasure(gstValueStr, "rods"));

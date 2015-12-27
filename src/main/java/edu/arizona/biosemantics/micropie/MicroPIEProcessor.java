@@ -188,10 +188,10 @@ public class MicroPIEProcessor{
 	public TaxonTextFile processFile(File inputFile, String predictionFile, NewTaxonCharacterMatrix matrix) {
 		
 		//parse the taxon file information
+		//System.out.println("read from taxon file");
 		TaxonTextFile taxonFile = readTaxonFile(inputFile);
 		//STEP 1: split sentences
 		List<MultiClassifiedSentence> sentences = sentenceSpliter.createSentencesFromFile(taxonFile);
-		
 		//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
 		for (MultiClassifiedSentence testSentence : sentences) {
 			Set<ILabel> prediction = sentencePredictor.predict(testSentence);
@@ -207,6 +207,7 @@ public class MicroPIEProcessor{
 			classifiedSentenceWriter.write(sentences);
 		}
 		
+		//System.out.println("extract values and create matrix");
 		matrixCreator.create(matrix,taxonFile,sentences);
 		
 		return taxonFile;
@@ -221,13 +222,19 @@ public class MicroPIEProcessor{
 	private TaxonTextFile readTaxonFile(File inputFile) {
 
 		XMLTextReader textReader = new XMLTextReader();
+		//System.out.println(inputFile);
 		textReader.setInputStream(inputFile);
 		if(textReader.isNew()){
 			textReader = new XMLNewSchemaTextReader();
 			textReader.setInputStream(inputFile);
 		}
 		TaxonTextFile taxonFile = textReader.readFile();
-		taxonFile.setTaxon(taxonFile.getGenus()+" "+taxonFile.getSpecies());
+		if(taxonFile.getSpecies()==null){
+			taxonFile.setTaxon(taxonFile.getGenus());
+		}else{
+			taxonFile.setTaxon(taxonFile.getGenus()+" "+taxonFile.getSpecies());
+		}
+		
 		
 		
 		String text = textReader.read();

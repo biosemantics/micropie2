@@ -76,6 +76,7 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 			writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(predictionFile,true), "UTF8")));
 			List<String[]> lines = new LinkedList<String[]>();
 			
+			System.out.println("total sentences:"+ classifiedSentences.size());
 			//output for each sentence
 			for(MultiClassifiedSentence classifiedSentence : classifiedSentences) {
 				

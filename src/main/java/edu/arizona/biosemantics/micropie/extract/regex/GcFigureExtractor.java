@@ -217,7 +217,7 @@ public class GcFigureExtractor extends FigureExtractor {
 		}
 		for(int i=0;i<valueSize;){
 			NumericCharacterValue curValue = valueList.get(i);
-			if("%".equals(curValue.getUnit())){
+			if("%".equals(curValue.getUnit())&&text.indexOf("G")>-1&&text.indexOf("C")>-1){//find other information, add some features
 				curValue.setUnit("mol%");
 				i++;
 			}else if("mol%".equals(curValue.getUnit())||"mol %".equals(curValue.getUnit())){

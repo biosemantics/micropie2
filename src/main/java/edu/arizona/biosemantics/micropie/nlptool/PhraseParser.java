@@ -135,6 +135,7 @@ public class PhraseParser {
 		negationSet.add("cannot");
 		negationSet.add("absent");
 		negationSet.add("devoid");
+		//negationSet.add("negative");
 	}
 	
 	
@@ -198,21 +199,37 @@ public class PhraseParser {
 	}
 	
 	/**
+	 * stop words
+	 */
+	private static Set advAjdSet = new HashSet();
+	static{
+		advAjdSet.add("JJ");
+		advAjdSet.add("JJR");
+		advAjdSet.add("JJS");
+		advAjdSet.add("RB");
+		advAjdSet.add("RBR");
+		advAjdSet.add("RBS");
+	}
+	
+	
+	
+	
+	/**
 	 * working with the phrase structure parse tree, rather than the dependencies representation.
 	 * @param parse
 	 * @return
 	 */
-	private List<String> getNounPhrases(Tree phraseTree) {
+	public List<String> getNounPhrases(Tree phraseTree) {
 	    List<String> result = new ArrayList<>();
-	    TregexPattern pattern = TregexPattern.compile("NP << NN|NNS|NNP");//,NNP,NNS
-	    //TregexPattern pattern = TregexPattern.compile("@NP");
+	    // TregexPattern pattern = TregexPattern.compile("NP << NN|NNS|NNP");//,NNP,NNS
+	   TregexPattern pattern = TregexPattern.compile("@NP");
 	    TregexMatcher matcher = pattern.matcher(phraseTree);
 	    Set hitSet = new HashSet();
 	    while (matcher.find()) {
 	        Tree match = matcher.getMatch();
 	        List<Tree> leaves = match.getLeaves();
-	        //System.out.println(leaves);
-	        // Some Guava magic.
+	       // System.out.println(leaves);
+	        //// Some Guava magic.
 	        if(!hitSet.contains(leaves)){
 		        String nounPhrase = Joiner.on(' ').join(Lists.transform(leaves, Functions.toStringFunction()));
 		        result.add(nounPhrase);
@@ -665,10 +682,12 @@ public class PhraseParser {
 			
 			TaggedWord tw = meanExp.get(i);
 			String word = tw.word();
-			if(i==0&&stopWordSet.contains(word.toLowerCase())) {
-				
+			//System.out.println(i+" "+word);
+			boolean isNew = false;
+			if((i==0||isNew)&&stopWordSet.contains(word.toLowerCase())) {
+				//System.out.println("stop="+word);
 			}else if(i==0&&!stopWordSet.contains(word)) {
-				str.append(" ");
+				if(i-1<0||tw.beginPosition()>meanExp.get(i-1).endPosition()) str.append(" ");
 				str.append(tw.word());
 				
 				phrase.setStart(tw.beginPosition());
@@ -679,7 +698,7 @@ public class PhraseParser {
 				String aheadTag = detectCurtag(meanExp.get(i-1).tag());//the tag of the word ahead of this
 				String followTag = detectFollowtag(meanExp, i);
 				//System.out.println(aheadTag+" "+followTag);
-				if(aheadTag.equals(followTag)||followTag==null||i==meanExp.size()-2){//not merge, the left is only one
+				if(aheadTag.equals(followTag)||followTag==null||i==meanExp.size()-2||(advAjdSet.contains(aheadTag)&&advAjdSet.contains(followTag))){//not merge, the left is only one
 					phrase.setText(str.toString().trim().replace(" +","+"));
 					phrase.setEndIndex(index-1);
 					//if(!"".equals(phrase.getText())) pharseList.add(p);
@@ -693,8 +712,9 @@ public class PhraseParser {
 					phraseWords = new ArrayList();
 					phrase.setWordTags(phraseWords);
 					phrase.setType(type);
+					isNew = true;
 				}else{// not the same type , merge
-					str.append(" ");
+					if(i-1<0||tw.beginPosition()>meanExp.get(i-1).endPosition()) str.append(" ");
 					str.append(tw.word());
 					
 					phrase.setEnd(tw.endPosition());
@@ -702,8 +722,10 @@ public class PhraseParser {
 					phraseWords.add(tw);
 				}
 			}else{
+				//System.out.println(tw.beginPosition()+" "+meanExp.get(i-1).endPosition());
 				if(str.length()==0) phrase.setStart(tw.beginPosition());
-				str.append(" ");
+				//iso-15:0, iso-15:1ω10c and 10-methyl-16:0.
+				if(i-1<0||tw.beginPosition()>meanExp.get(i-1).endPosition()) str.append(" ");
 				str.append(tw.word());
 				
 				phrase.setEnd(tw.endPosition());
@@ -713,8 +735,12 @@ public class PhraseParser {
 			
 			index++;
 		}
+		if(str.toString().trim().startsWith("not ")){
+			phrase.setText(str.toString().trim().replace("not ", "").replace(" +","+"));
+		}else{
+			phrase.setText(str.toString().trim().replace(" +","+"));
+		}
 		
-		phrase.setText(str.toString().trim().replace(" +","+"));
 		//if(!"".equals(p.getText())) pharseList.add(p);
 	}
 
@@ -792,6 +818,34 @@ public class PhraseParser {
 		}
 		return null;
 	}
+	
+	
+	
+	/**
+	 * detect the standalone negation words that are not in the phrase.
+	 * then to determine what phrases the negations can be applied to.
+	 * 
+	 */
+	public TaggedWord applyNegative(List<TaggedWord> sentTaggedWords,List<Phrase> phraseList){
+		TaggedWord negationWord = null;
+		for(int i=0;i<sentTaggedWords.size();i++){
+			TaggedWord tg = sentTaggedWords.get(i);
+			if("negative".equalsIgnoreCase(tg.word().toLowerCase())){
+				negationWord = tg;
+				break;
+			}
+		}
+		//System.out.println(negationWord);
+		if(negationWord!=null){
+			for(int i=phraseList.size()-1;i>=0;i--){//reverse
+				Phrase p  =  phraseList.get(i);
+				p.setNegation(negationWord.word());
+			}
+		}
+		return negationWord;
+	}
+	
+	
 	
 	/**
 	 * apply the negation to its clause only

@@ -12,6 +12,7 @@ import com.google.inject.Inject;
 
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
+import edu.arizona.biosemantics.micropie.model.CharacterGroup;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
@@ -110,13 +111,15 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 				
 				figure = word.word();
 				if(!containNumber(figure)){i++;continue;}
+				
 				//System.out.println("it is a figure:"+figure+" "+unit);
+				
+				
 				//if(i+1<taggedWords.size()&&(taggedWords.get(i+1).tag().equals("CD")&&(containNumber(taggedWords.get(i+1).word())||"<".equalsIgnoreCase(taggedWords.get(i+1).word()))||defIsNumber(taggedWords.get(i+1).word()))){
 				while(i+1<taggedWords.size()&&(taggedWords.get(i+1).tag().equals("CD")&&(containNumber(taggedWords.get(i+1).word())||containNumSign(taggedWords.get(i+1).word()))||defIsNumber(taggedWords.get(i+1).word()))){
 					figure+=taggedWords.get(i+1).word();
 					i++;
 				}
-				//System.out.println("it is a figure:"+figure+" "+unit);
 				if(i+1<taggedWords.size()){
 					if((taggedWords.get(i+1).word().equals("°")&&taggedWords.get(i+2).word().equals("C"))
 							||taggedWords.get(i+1).word().equals("degree_celsius_1")
@@ -124,7 +127,7 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 						unit = "˚C";
 					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("˚C")){
 						unit = "˚C";
-					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("˚")){
+					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("˚")||taggedWords.get(i+1).word().equalsIgnoreCase("°")){
 						unit = "˚C";
 					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("%")){
 						unit = "%";
@@ -138,6 +141,8 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 						unit = "‰";
 					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("mol")&&taggedWords.get(i+2).word().equalsIgnoreCase("%")){
 						unit = "mol%";
+					}else if(taggedWords.get(i+1).word().startsWith("day")) {
+						unit = "days";
 					}
 				}
 				/*
@@ -150,6 +155,12 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 				if(!defIsNumber(figure)){
 					System.err.println("it is not a figure:"+figure+" "+unit);
 				}else{
+					if(termId-1>=0&&(taggedWords.get(termId-1).word().equals("-")||taggedWords.get(termId-1).word().equals("−")
+							||taggedWords.get(termId-1).word().equals("+")||taggedWords.get(termId-1).word().equals("<")||taggedWords.get(termId-1).word().equals(">"))){
+						figure = taggedWords.get(termId-1).word()+figure;
+						termId = termId-1;
+					}
+					
 					fd.setValue(figure);
 					fd.setTermBegIdx(termId);
 					fd.setTermEndIdx(i);
@@ -328,11 +339,11 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 			//System.out.println(word.word()+" "+word.tag());
 			if(word.tag().equals("CD")) break;//scan until the former number.
 			if((wordStr.equalsIgnoreCase("no")||(wordStr.equalsIgnoreCase("neither"))&&word.tag().equalsIgnoreCase("dt"))) {
-				if("".equals(curFd.getValueModifier())){
+				/*if("".equals(curFd.getValueModifier())){
 					curFd.setValueModifier(wordStr); 
 				}else{
 					curFd.setValueModifier(wordStr+" "+curFd.getValueModifier());
-				}
+				}*/
 				return wordStr;
 			}
 			if(wordStr.equalsIgnoreCase("not")&&word.tag().equalsIgnoreCase("rb")) {
@@ -567,7 +578,6 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 	@Override
 	public List<CharacterValue> getCharacterValue(
 			Sentence text) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -17,9 +17,12 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.Label;
+import edu.arizona.biosemantics.micropie.extract.keyword.AntibioticPhraseExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.FermentationProductExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.HabitatIsolatedFromExtractor;
+import edu.arizona.biosemantics.micropie.extract.keyword.InorganicSubstanceExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.KeywordBasedExtractor;
+import edu.arizona.biosemantics.micropie.extract.keyword.OrganicCompoundExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.SalinityPreferenceExtractor;
 import edu.arizona.biosemantics.micropie.extract.usp.USPBasedExtractor;
@@ -145,14 +148,14 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 				//jin 09-24-2015
 				if(strLine.indexOf("|")>-1){
 					String[] fields = strLine.split("\\|");
-					String keyword = fields[0].trim().replace("-", " ");
+					String keyword = fields[0].trim().replace("-", " ").replace("_", " ");
 					keywords.add(keyword);
 					subKeywords.put(keyword,new ArrayList());
 					for(int i=1;i<fields.length;i++){
-						subKeywords.get(keyword).add(fields[i].trim().replace("-", " "));
+						subKeywords.get(keyword).add(fields[i].trim().replace("-", " ").replace("_", " "));
 					}
 				}else{
-					keywords.add(strLine.trim().replace("-", " "));
+					keywords.add(strLine.trim().replace("-", " ").replace("_", " "));
 				}
 				
 			}
@@ -167,8 +170,9 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		}
 		//return new KeywordBasedExtractor(Label.valueOf(labelName), characterName, keywords, subKeywords);
 		//SentenceSpliter must be set latter
-		//System.out.println("read character extractors");
+		
 		Label label = Label.valueOf(labelName);
+		//System.out.println("read character extractors "+label);
 		if(initClass!=null){
 			if("SalinityPreferenceExtractor".equals(initClass)){
 				SalinityPreferenceExtractor saliPrefExtractor = new SalinityPreferenceExtractor(label, characterName,keywords,subKeywords);
@@ -178,6 +182,18 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 			}else if("FermentationProductExtractor".equals(initClass)){
 				//System.out.println("read FermentationProductExtractor");
 				return new FermentationProductExtractor(label, characterName,keywords,subKeywords);
+			}else if("AntibioticPhraseExtractor".equals(initClass)){
+				//System.out.println("read FermentationProductExtractor");
+				return new AntibioticPhraseExtractor(label, characterName,keywords,subKeywords);
+			}else if("OrganicCompoundExtractor".equals(initClass)){
+				//System.out.println("read OrganicCompoundExtractor:"+label+" "+characterName);
+				return new OrganicCompoundExtractor(label, characterName,keywords,subKeywords);
+			}else if("InorganicSubstanceExtractor".equals(initClass)){
+				//System.out.println("read OrganicCompoundExtractor:"+label+" "+characterName);
+				return new InorganicSubstanceExtractor(label, characterName,keywords,subKeywords);
+			}else if("KeywordBasedExtractor".equals(initClass)){
+				//System.out.println("read FermentationProductExtractor");
+				return new KeywordBasedExtractor(label, characterName,keywords,subKeywords);
 			}
 		}
 

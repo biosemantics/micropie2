@@ -62,6 +62,7 @@ public class ExtractionEvaluation {
 	
 	private IValueComparator stringValueComparator = new KeywordStringComparator();
 	private IValueComparator numericValueComparator = new NumericComparator();
+	private IValueComparator numericRelaxedComparator = new NumericRelaxedComparator();
 	private NumericLabels numericLabels = new NumericLabels();
 	
 	private Map<String, ILabel> characterNameLabelMapping;
@@ -72,10 +73,14 @@ public class ExtractionEvaluation {
 	
 	private Map<TaxonTextFile, List> taxonResults = new LinkedHashMap();
 	private Map<String, List> charResults = new LinkedHashMap();
+	private Map<String, List> charRelaxedResults = new LinkedHashMap();
 	private Map<TaxonTextFile, Map> charValueResults = new LinkedHashMap();
+	private Map<TaxonTextFile, Map> charRelaxedValueResults = new LinkedHashMap();
 	private List<Measurement> matrixResult = null;
 	
 	private String datasetFolder = "F:\\MicroPIE\\datasets\\exp1";
+	private String gstXMLField;
+	private String tgXMLField;
 	
 	/**
 	 * the gold standard matrix and the target matrix have the same structure
@@ -101,7 +106,7 @@ public class ExtractionEvaluation {
 	 * @param tgKeyField
 	 * @param categoryMappingFile
 	 */
-	public ExtractionEvaluation(String gstBasicFields,String tgBasicFields,String gstKeyField,String tgKeyField,String categoryMappingFile){
+	public ExtractionEvaluation(String gstBasicFields,String tgBasicFields,String gstKeyField,String tgKeyField,String gstXMLField,String tgXMLField,String categoryMappingFile){
 		
 		String[] gstFields = gstBasicFields.split("\\|");
 		String[] tsFields = tgBasicFields.split("\\|");
@@ -109,6 +114,8 @@ public class ExtractionEvaluation {
 		this.tgBasicFields = tsFields;
 		this.gstKeyField = gstKeyField;
 		this.tgKeyField = tgKeyField;
+		this.gstXMLField = gstXMLField;
+		this.tgXMLField = tgXMLField;
 		
 		this.categoryMappingFile = categoryMappingFile;
 	}
@@ -158,7 +165,7 @@ public class ExtractionEvaluation {
 	public void evaluate(String goldStandardsMatrixFile, String targetMatrixFile){
 		
 		//parse gold standard matrix and taget matrix
-		MatrixReader gsdMatrixReader = new MatrixReader(gstBasicFields, gstKeyField, characterNameLabelMapping,characterLabelNameMapping);
+		MatrixReader gsdMatrixReader = new MatrixReader(gstBasicFields, gstKeyField,gstXMLField, characterNameLabelMapping,characterLabelNameMapping);
 		gsdMatrixReader.readMatrixFromFile(goldStandardsMatrixFile);
 		this.goldStdMatrixFile = goldStandardsMatrixFile;
 		NewTaxonCharacterMatrix gsdMatrix = gsdMatrixReader.parseMatrix(this.gstSeparator, false);
@@ -167,7 +174,7 @@ public class ExtractionEvaluation {
 		
 		this.taxonFileMap = gsdMatrixReader.parseTaxonFiles(false);
 		
-		MatrixReader tgMatrixReader = new MatrixReader(tgBasicFields, tgKeyField, characterNameLabelMapping,characterLabelNameMapping);
+		MatrixReader tgMatrixReader = new MatrixReader(tgBasicFields, tgKeyField,tgXMLField, characterNameLabelMapping,characterLabelNameMapping);
 		tgMatrixReader.readMatrixFromFile(targetMatrixFile);
 		this.testMatrixFile = targetMatrixFile;
 		NewTaxonCharacterMatrix tgMatrix = tgMatrixReader.parseMatrix(this.tgSeparator,false);
@@ -211,39 +218,46 @@ public class ExtractionEvaluation {
 		double gstTotalValueNum = 0;
 		double tgTotalValueNum = 0;
 		double matchedTotalCredit = 0;
+		double matchedTotalRelxedCredit = 0;
 		
 		int charLength = comparedCharacterLabels.length;
 		double[] charTotal = new double[charLength];
 		double[] charFound = new double[charLength];
 		double[] charHit = new double[charLength];
+		double[] charRelaxedHit = new double[charLength];
 		
 		//compare all the taxa
-		Set<String> taxa = gsdMatrix.keySet();
-		Iterator<String> taxaIter = taxa.iterator();
+		Set<String> taxaAndXMLFiles = gsdMatrix.keySet();//taxon_xml file
+		Iterator<String> taxaIter = taxaAndXMLFiles.iterator();
 		//System.out.println(taxa.size()+" goldstands "+tgMatrix.keySet().size()+" files need to compare!");
 		while(taxaIter.hasNext()){
-			String taxonName = taxaIter.next();
-			TaxonTextFile taxonTextFile = this.taxonFileMap.get(taxonName);
-			Map<ILabel, List> gstAllCharacterValues = gsdMatrix.getAllTaxonCharacterValues(taxonName);
-			Map<ILabel, List> tgAllCharacterValues = tgMatrix.getAllTaxonCharacterValues(taxonName);
+			String taxaAndXMLFile = taxaIter.next();
+			//System.out.println(taxaAndXMLFile);
+			TaxonTextFile taxonTextFile = this.taxonFileMap.get(taxaAndXMLFile);
+			Map<ILabel, List> gstAllCharacterValues = gsdMatrix.getAllTaxonCharacterValues(taxaAndXMLFile);
+			Map<ILabel, List> tgAllCharacterValues = tgMatrix.getAllTaxonCharacterValues(taxaAndXMLFile);
 			
+			String taxonName = taxaAndXMLFile.substring(0,taxaAndXMLFile.indexOf("_"));
 			if(tgAllCharacterValues==null){//it's not existed, so do not evalute this taxon
 				
 			}
 			double taxonTotal = 0;
 			double taxonHit = 0;
+			double taxonRelaxedHit = 0;
 			double taxonFound = 0;
 			if(gstAllCharacterValues==null){
-				System.err.println(taxonName+" gst is empity!");
+				System.err.println(taxaAndXMLFile+" gst is empity!");
 				continue;
 			}
 			if(tgAllCharacterValues==null){
-				System.err.println(taxonName+" in test Matrix is empity!");
+				System.err.println(taxaAndXMLFile+" in test Matrix is empity!");
 				continue;
 			}
 			//System.out.println("["+taxonName+"] gst:"+gstAllCharacterValues.size()+" tg:"+tgAllCharacterValues.size() );
 			//compare all the characters
 			Map<String,Measurement> charHitMap = new LinkedHashMap();
+			Map<String,Measurement> charRelaxedHitMap = new LinkedHashMap();
+			
 			for(int ch = 0; ch<charLength;ch++){
 				ILabel charLabel = comparedCharacterLabels[ch];
 				
@@ -257,33 +271,42 @@ public class ExtractionEvaluation {
 				charFound[ch] += tgCharValue==null?0:tgCharValue.size();
 				tgTotalValueNum += tgCharValue==null?0:tgCharValue.size();
 				
-				
 				//System.out.println(charLabel+" "+comparedCharacterNames[ch]+" ["+gstCharValue+"] ["+tgCharValue+"]");
 				
 				double matched = 0;
+				double relaxedMatched = 0;
 				if(tgCharValue!=null&&tgCharValue.size()!=0&&gstCharValue!=null&&gstCharValue.size()!=0){//when at least one has a value, compare
 					//System.out.println(charLabel);
 					if(numericLabels.contains(charLabel)){
 						matched = numericValueComparator.compare(tgCharValue,gstCharValue);
+						relaxedMatched = numericRelaxedComparator.compare(tgCharValue, gstCharValue);
 					}else{
 						matched = stringValueComparator.compare(tgCharValue,gstCharValue);
+						relaxedMatched= matched;
 					}
 					
-					System.out.println("final value:"+matched);
+					//System.out.println(tgCharValue+" "+gstCharValue+" final value:"+matched);
 					taxonHit += matched;
+					taxonRelaxedHit += relaxedMatched;
 					charHit[ch] += matched;
+					charRelaxedHit[ch] +=relaxedMatched;
 					
 					matchedTotalCredit += matched;
+					matchedTotalRelxedCredit +=relaxedMatched;
 					
 					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",matched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),tgCharValue.size()));
+					charRelaxedHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("relaxed_hit",relaxedMatched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),tgCharValue.size()));
 				}else if(gstCharValue!=null&&gstCharValue.size()!=0){
 					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",-1,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),0));
+					charRelaxedHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("relaxed_hit",-1,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),0));
 				}else if(tgCharValue!=null&&tgCharValue.size()!=0){
-					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",-2,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),tgCharValue.size(),0));
+					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",-2,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),0,tgCharValue.size()));
+					charRelaxedHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("relaxed_hit",-2,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),0,tgCharValue.size()));
 				}
 			}
 			
 			charValueResults.put(taxonTextFile, charHitMap);
+			charRelaxedValueResults.put(taxonTextFile, charRelaxedHitMap);
 			List taxonEvalResults = this.calMeasure(taxonFound, taxonHit, taxonTotal);
 			this.taxonResults.put(taxonTextFile, taxonEvalResults);
 			//System.out.println(taxonName+" measure: "+taxonEvalResults.toString());
@@ -295,6 +318,10 @@ public class ExtractionEvaluation {
 			String charName = this.comparedCharacterNames[ch];
 			//System.out.println(ch+" "+charName+" "+charFound[ch]+" "+charHit[ch]+" "+charTotal[ch]);
 			this.charResults.put(charName, charEvalResults);
+			
+			
+			List charRelaxedEvalResults = this.calMeasure(charFound[ch], charRelaxedHit[ch], charTotal[ch]);
+			this.charRelaxedResults.put(charName, charRelaxedEvalResults);
 		}
 		//measure report
 		matrixResult = this.calMeasure(tgTotalValueNum, matchedTotalCredit, gstTotalValueNum);
@@ -358,10 +385,11 @@ public class ExtractionEvaluation {
 			out.print(this.testMatrixFile);
 			out.print("\nEvaluation Time,");
 			out.print(new Date());
-			out.print("\nCharacter,P,R,F1\n");
+			out.print("\nCharacter,P,R,F1,Relaxed_P,Relaxed_R,Relaxed_F1\n");
 			for(int ch = 0; ch<charLength;ch++){
 				String charName = comparedCharacterNames[ch];
 				List<Measurement> charEvalResults = charResults.get(charName);
+				List<Measurement> charRelaxedEvalResults = charRelaxedResults.get(charName);
 				out.print("\""+charName+"\"");
 				out.print(",");
 				out.print(charEvalResults.get(0).getValue());
@@ -369,6 +397,12 @@ public class ExtractionEvaluation {
 				out.print(charEvalResults.get(1).getValue());
 				out.print(",");
 				out.print(charEvalResults.get(2).getValue());
+				out.print(",");
+				out.print(charRelaxedEvalResults.get(0).getValue());
+				out.print(",");
+				out.print(charRelaxedEvalResults.get(1).getValue());
+				out.print(",");
+				out.print(charRelaxedEvalResults.get(2).getValue());
 				out.print("\n");
 			}
 			out.flush();
@@ -437,11 +471,12 @@ public class ExtractionEvaluation {
 			out.print(this.testMatrixFile);
 			out.print("\nEvaluation Time,");
 			out.print(new Date());
-			out.print("\nTaxon,XML file,Genus,Species,Strain,Character,GoldStandard,Extracted,GSTNUM,ENUM,HIT\n");
+			out.print("\nTaxon,XML file,Genus,Species,Strain,Character,GSM Value,Extracted Value,GSM_NUM,EXT_NUM,HIT,Relaxed_HIT\n");
 			
 			for(Entry<TaxonTextFile,Map> entry : charValueResults.entrySet()){
 				TaxonTextFile taxonFile = entry.getKey();
 				Map<String, DetailMeasurement> charValues = entry.getValue();
+				Map<String, DetailMeasurement> charRelaxedValues = charRelaxedValueResults.get(taxonFile);
 				for(Entry<String, DetailMeasurement> valueEntry : charValues.entrySet()){
 					if(taxonFile==null) continue;
 					out.print("\""+taxonFile.getTaxon()+"\"");
@@ -460,11 +495,13 @@ public class ExtractionEvaluation {
 					out.print(",");
 					out.print("\""+valueEntry.getValue().getTgValue()+"\"");//Extracted
 					out.print(",");
-					out.print(valueEntry.getValue().getGstNum());//P
+					out.print(valueEntry.getValue().getGstNum());//GST_NUM
 					out.print(",");
-					out.print(valueEntry.getValue().getTgNum());//P
+					out.print(valueEntry.getValue().getTgNum());//TG_NUM, EXT_NUM
 					out.print(",");
-					out.print(valueEntry.getValue().getValue());//P
+					out.print(valueEntry.getValue().getValue());//RIGID HIT
+					out.print(",");
+					out.print(charRelaxedValues.get(valueEntry.getKey()).getValue());//RELAXED HIT
 					out.println();
 				}
 				out.flush();

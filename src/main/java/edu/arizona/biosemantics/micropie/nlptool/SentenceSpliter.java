@@ -88,9 +88,9 @@ public class SentenceSpliter {
 		
 		//pipeline 
 		sentences = splitSentencesBySemicolon(sentences); // run ";" semicolon separator
-
+		//System.out.println("total sentences:"+ sentences.size());
 		// replace abbreviation back to original sentence
-		for (String sentence: sentences) {
+		//for (String sentence: sentences) {
 			//sentence = textNormalizer.transformDash(sentence); // replace \"–\" to \"-\" ..."
 			//sentence = textNormalizer.transformPeriod(sentence); // · =>.
 			
@@ -99,7 +99,7 @@ public class SentenceSpliter {
 			
 			//sentence = textNormalizer.transformCelsiusDegree(sentence); // °C => celsius_degree
 			//System.out.println(sentence);
-		}
+		//}
 		
 		//long e1 = System.currentTimeMillis();
 		//System.out.println("all spliting costs "+(e1-b1)+" ms");
@@ -324,6 +324,25 @@ public class SentenceSpliter {
 	}
 	
 	/**
+	 * 1, seprate by ; 
+	 * 2, extract the inner clause embedded by brackets.
+	 * @return
+	 */
+	public String removeSquBrackets(String sent){
+		//int leftBracket = sent.indexOf("(");
+		//int rightBracket = sent.indexOf(")");
+		Pattern pattern = Pattern.compile("(?<=\\[)(.+?)(?=\\])");
+        Matcher matcher = pattern.matcher(sent);
+        while(matcher.find()){
+        	String innerClause = matcher.group();
+			sent = sent.replace(innerClause, "");
+        }
+        sent = sent.replace("[", "");
+        sent = sent.replace("]", "");
+		return sent;
+	}
+	
+	/**
 	 * split a sentence into sentences
 	 * @param sentence
 	 * @return
@@ -351,4 +370,9 @@ public class SentenceSpliter {
 		return result;
 	}
 	
+	
+	public static void main(String[] args){
+		SentenceSpliter spliter = new SentenceSpliter(null, null); 
+		System.out.println(spliter.removeBrackets("The following amounts of fermentation acids (in milliequivalents per 100 ml of culture; mean % standard error of the mean) are produced in PYG-serum broth cultures: succinic acid, 2.9 2 0.5; acetic acid, 0.9 -+ 0.2; and lactic acid, 0.2 k 0.1."));
+	}
 }

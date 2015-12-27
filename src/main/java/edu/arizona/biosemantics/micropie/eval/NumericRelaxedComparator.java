@@ -1,23 +1,21 @@
 package edu.arizona.biosemantics.micropie.eval;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
-import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
-import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
-import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
 
 
 /**
- * compare the numeric values
+ * relaxed evaluation
+ * 
+ * 
  * @author maojin
  *
  */
-public class NumericComparator extends StringComparator{
-
+public class NumericRelaxedComparator extends NumericComparator{
+	
+	
 	@Override
 	public double compare(List<CharacterValue> extValues,List<CharacterValue> gstValues) {
 		if((extValues == null||extValues.size()==0)&&(gstValues==null||gstValues.size()==0)) return 1;
@@ -50,7 +48,7 @@ public class NumericComparator extends StringComparator{
 				if(!sameNeg) return 0;
 				
 				//modifier match
-				double modMatch = modifierMatch(extValue, gstValue);
+				//double modMatch = modifierMatch(extValue, gstValue);
 				//System.out.println("modMatch="+modMatch);
 				double mainMatch = 0;
 				//gst value string
@@ -62,18 +60,18 @@ public class NumericComparator extends StringComparator{
 				//if the string can be matched
 				if(gstValueStr.equalsIgnoreCase(extValueStr)&&!extValueStr.equals("")){
 					//System.out.println("mainMatch="+mainMatch+" "+modMatch);
-					mainMatch=modMatch;
+					mainMatch=1;
 					match+=mainMatch;
 					break;
 				}
 				
 				//TODO:for a range, it's more complex
-				//compare the value
+				//compare the value as numeric
 				if(!"".equalsIgnoreCase(extValueStr)){
 					try{
 						anGstValue = new Double(gstValueStr);
 						if(anGstValue!=null&&anGstValue.equals(anExtValue)){
-							mainMatch=modMatch;
+							mainMatch=1;
 							
 							match+=mainMatch;
 							//System.out.println(" hit "+mainMatch);
@@ -89,41 +87,5 @@ public class NumericComparator extends StringComparator{
 		}
 		
 		return match;
-	}
-	
-	
-	public String cleanValue(String value){
-		//value = value.replace("-", " ");
-		
-		//unit
-		value = value.replace("mol%", "");
-		value = value.replace("·", ".");
-		value = value.replace("°C", "");
-		value = value.replace("%", "");
-		value = value.replace(" g", "");
-		value = value.replace("sea salts", "");
-		value = value.replace("(w/v)", "");
-		value = value.replace(" NaCl", "");
-		value = value.replace(" M", "");
-		value = value.replace("??????C", "");
-		value = value.replace("??C", "");
-		value = value.replace("??m", "");
-		value = value.replace("μm", "");
-		value = value.replace("–", "-");
-		value = value.replaceAll("|", "");
-		
-		return value;
-	}
-	
-	
-	
-	public static void main(String[] args ){
-		List<CharacterValue> extValues = new ArrayList();
-		extValues.add(new NumericCharacterValue(null,"7.0-8.0"));
-		List<CharacterValue> gstValues = new ArrayList();
-		gstValues.add(new NumericCharacterValue(null,"7.0-8.0"));
-	
-		NumericComparator nc = new NumericComparator();
-		System.out.println(nc.compare(extValues, gstValues));
 	}
 }

@@ -43,18 +43,19 @@ public class CellScaleExtractor extends FigureExtractor{
 		this.posSentenceNoSub(sent);//no sub sentences
 		List<TaggedWord> taggedWords = (List<TaggedWord>) sent.getSubSentTaggedWords().get(0);
 		
-		System.out.println(text);//+":\n"+taggedWords
+		//System.out.println(text);//+":\n"+taggedWords
 		//detect all the figures
 		List valueList = detectFigures(taggedWords);
-		
+		//System.out.println("figures = "+valueList);
 		//merge the figure ranges
 		mergeFigureRange(valueList,taggedWords);
-		
+		//System.out.println("after merged figures = "+valueList);
 		/**
 		 * 0.5-3.0 x 0.4-0.5 µm===>0.5-3.0x0.4-0.5
 		 * 0.4 by 2 to 20 µm===>0.4x2-20
 		 */
 		mergeMultiplication(valueList,taggedWords);
+		//System.out.println("after mergeMultiplication figures = "+valueList);
 		
 		for(int i=0;i<valueList.size();i++){
 			NumericCharacterValue curFd = (NumericCharacterValue) valueList.get(i);
@@ -79,7 +80,7 @@ public class CellScaleExtractor extends FigureExtractor{
 			
 			LabelUtil.determineLabel(curFd);
 		}
-		
+		//System.out.println(valueList);
 		separateCellSize(valueList);
 		//remove some error files
 		filter(valueList);
@@ -96,12 +97,14 @@ public class CellScaleExtractor extends FigureExtractor{
 			for(int i=0;i<valueList.size();){
 				NumericCharacterValue cv = valueList.get(i);
 				if(CharacterGroup.CSIZE.equals(cv.getCharacterGroup())){
-					String[] fields = cv.getValue().split("x");
-					System.out.println(cv);
+					String[] fields = cv.getValue().split("x|×");
+					if(fields.length<2){i++;continue;}
+					//System.out.println(cv);
 					double firstMax = detectMaxValue(fields[0]);
 					double secondMax = detectMaxValue(fields[1]);
-					
+					//System.out.println(fields[0]+" and "+fields[1]);
 					if(firstMax>secondMax){//the first one should be the cell length
+						//System.out.println("the first is cell length");
 						NumericCharacterValue cellLength = new NumericCharacterValue(null);
 						cellLength.setCharacterGroup(CharacterGroup.CLENGTH);
 						cellLength.setValue(fields[0]);
@@ -112,12 +115,13 @@ public class CellScaleExtractor extends FigureExtractor{
 						
 						NumericCharacterValue cellWidth = new NumericCharacterValue(null);
 						cellWidth.setCharacterGroup(CharacterGroup.CWIDTH);
-						cellWidth.setValue(fields[0]);
+						cellWidth.setValue(fields[1]);
 						cellWidth.setUnit(cv.getUnit());
 						
 						LabelUtil.determineLabel(cellWidth);
 						valueList.add(cellWidth);
 					}else{//the second one should be the cell length
+						//System.out.println("the second is cell length");
 						NumericCharacterValue cellLength = new NumericCharacterValue(null);
 						cellLength.setCharacterGroup(CharacterGroup.CLENGTH);
 						cellLength.setValue(fields[1]);
@@ -202,12 +206,12 @@ public class CellScaleExtractor extends FigureExtractor{
 			String word = taggedWords.get(t).word();
 			//System.out.println(word);
 			if(word.startsWith("diamet")) {return CharacterGroup.CDIAM;}
-			else if(word.startsWith("length")||word.startsWith("long")) {return CharacterGroup.CLENGTH;}
+			else if(word.startsWith("length")||word.startsWith("long")||word.startsWith("short")) {return CharacterGroup.CLENGTH;}
 			else if(word.startsWith("wid")) {return CharacterGroup.CWIDTH;}
 			else if(word.startsWith("size")) {return CharacterGroup.CSIZE;}
 			else if(word.startsWith("day")) {return CharacterGroup.TIME;}
 			else if(word.startsWith("celsius_degree")) {return CharacterGroup.TEMP;}
-			else if(word.startsWith("thick")) {return CharacterGroup.CTHICK;}
+			else if(word.startsWith("thick")) {return CharacterGroup.CWIDTH;}//treat cell thick as cell width
 			else if(word.equals("and")||")".equals(word)) {break;}
 		}
 		
@@ -216,7 +220,7 @@ public class CellScaleExtractor extends FigureExtractor{
 			String word = taggedWords.get(t).word();
 			//System.out.println(word);
 			if(word.startsWith("diamet")) {return CharacterGroup.CDIAM;}
-			else if(word.startsWith("length")||word.startsWith("long")) {return CharacterGroup.CLENGTH;}
+			else if(word.startsWith("length")||word.startsWith("long")||word.startsWith("short")) {return CharacterGroup.CLENGTH;}
 			else if(word.startsWith("wid")) {return CharacterGroup.CWIDTH;}
 			else if(word.startsWith("size")) {return CharacterGroup.CSIZE;}
 			else if(word.equals("and")) {break;}//||"(".equals(word)
@@ -239,12 +243,11 @@ public class CellScaleExtractor extends FigureExtractor{
 			NumericCharacterValue nextFd = (NumericCharacterValue) featureList.get(i+1);
 			int curEnd = curFd.getTermEndIdx();
 			int nextBegin = nextFd.getTermBegIdx();
-			
+			//System.out.println("curEnd="+curEnd+" nextBegin="+nextBegin);
 			//merge +/CC, //:, -1/CD
-			if(nextBegin-curEnd<=2){
-				int j = curEnd+1;
-				if(taggedWords.get(j).word().equals("x")||taggedWords.get(j).word().equals("by")){
-					String value = curFd.getValue()+"x"+nextFd.getValue();
+			if(nextBegin-curEnd<=4){
+				if(nextFd.getValue().startsWith("x")||nextFd.getValue().startsWith("×")){
+					String value = curFd.getValue()+nextFd.getValue();
 					curFd.setValue(value);
 					curFd.setTermEndIdx(nextFd.getTermEndIdx());
 					if("".equals(curFd.getUnit())){
@@ -252,7 +255,27 @@ public class CellScaleExtractor extends FigureExtractor{
 					}
 					featureList.remove(nextFd);
 				}
+				
+				int j = curEnd+1;
+				while(j<nextBegin){
+					//System.out.println("by="+taggedWords.get(j).word());
+					if(taggedWords.get(j).word().equals("x")||taggedWords.get(j).word().equals("by")||taggedWords.get(j).word().equals("×")){
+						if(nextFd.getValue().startsWith("×")||nextFd.getValue().startsWith("x")){
+							nextFd.setValue(nextFd.getValue().replace("×", "").replace("x", ""));
+						}
+						String value = curFd.getValue()+"x"+nextFd.getValue();
+						curFd.setValue(value);
+						curFd.setTermEndIdx(nextFd.getTermEndIdx());
+						if("".equals(curFd.getUnit())){
+							curFd.setUnit(nextFd.getUnit());
+						}
+						featureList.remove(nextFd);
+					}
+					j++;
+				}
+				
 			}
+			
 				
 			i++;
 		}//deal all the values
@@ -266,7 +289,7 @@ public class CellScaleExtractor extends FigureExtractor{
 	 * @return
 	 */
 	public List detectFigures(List<TaggedWord> taggedWords) {
-		
+		//System.out.println(taggedWords);
 		List<NumericCharacterValue> features = new ArrayList();
 		for(int i = 0;i<taggedWords.size();){
 			int termId= 0;
@@ -286,11 +309,14 @@ public class CellScaleExtractor extends FigureExtractor{
 				figure = word.word();
 				//if(!containNumber(figure)){i++;continue;}
 				//System.out.println("it is a figure:"+figure+" "+unit);
-				if(i+1<taggedWords.size()&&(taggedWords.get(i+1).tag().equals("CD")&&(containNumber(taggedWords.get(i+1).word())||"<".equalsIgnoreCase(taggedWords.get(i+1).word()))||defIsNumber(taggedWords.get(i+1).word()))){
-					figure+=taggedWords.get(i+1).word();
-					i++;
+				while(true){
+					if(i+1<taggedWords.size()&&(taggedWords.get(i+1).tag().equals("CD")&&(containNumber(taggedWords.get(i+1).word())||"<".equalsIgnoreCase(taggedWords.get(i+1).word()))||defIsNumber(taggedWords.get(i+1).word()))){
+						figure+=taggedWords.get(i+1).word();
+						i++;
+						continue;
+					}
+					break;
 				}
-
 				if(i+1<taggedWords.size()){
 					String followingWord = taggedWords.get(i+1).word();
 					if(followingWord.equalsIgnoreCase("µm")||followingWord.equalsIgnoreCase("µmin")){
@@ -316,7 +342,7 @@ public class CellScaleExtractor extends FigureExtractor{
 				fd.setTermEndIdx(i);
 				fd.setUnit(unit);
 				
-				detectModifier(fd,taggedWords);// detect the modifier for the figure
+				//detectModifier(fd,taggedWords);// detect the modifier for the figure
 				
 				features.add(fd);
 				
@@ -326,6 +352,5 @@ public class CellScaleExtractor extends FigureExtractor{
 		}//all words traversed
 		return features;
 	}
-	
 
 }

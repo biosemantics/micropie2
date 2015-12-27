@@ -77,15 +77,19 @@ public class StringValueFormatter implements IValueFormatter {
 	public List<CharacterValue> parse(ILabel label, String valueStr) {
 		//separate multiple values
 		String[] values = valueStr.split(separator);
-		
+	
 		List<CharacterValue> valueList = new ArrayList();
 		for(String value:values){//this is a value
-			
 			if(value!=null&&!"".equals(value)){
 				
 				String[] fields = value.trim().split("\\|");
 				if(fields.length==1){
 					CharacterValue cv = CharacterValueFactory.create(label, fields[0]);
+					if(!valueList.contains(cv)) valueList.add(cv);
+				}else if(fields.length==2){
+					CharacterValue cv = CharacterValueFactory.create(label);
+					cv.setValueModifier(fields[0]);
+					cv.setValue(fields[1]);
 					if(!valueList.contains(cv)) valueList.add(cv);
 				}else if(fields.length==3){
 					CharacterValue cv = CharacterValueFactory.create(label);

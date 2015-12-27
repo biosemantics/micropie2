@@ -136,10 +136,10 @@ public class CharacterValue {
     public int hashCode() {
         int hash = 1;
         hash = hash * 17 + (character == null ? 0 : character.hashCode());
-        hash = hash * 31 + (negation == null ? 0 : negation.hashCode());
-        hash = hash * 13 + (valueModifier == null ? 0 : valueModifier.hashCode());
-        hash = hash * 19 + (unit == null ? 0 : unit.hashCode());
-        hash = hash * 13 + (value == null ? 0 : value.hashCode());
+        hash = hash * 31 + (negation == null ? 0 : negation.toLowerCase().hashCode());
+        hash = hash * 13 + (valueModifier == null ? 0 : valueModifier.toLowerCase().hashCode());
+        hash = hash * 19 + (unit == null ? 0 : unit.toLowerCase().hashCode());
+        hash = hash * 13 + (value == null ? 0 : value.toLowerCase().hashCode());
         return hash;
     }
 }

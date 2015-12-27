@@ -84,7 +84,7 @@ public class USPBasedExtractor extends AbstractCharacterValueExtractor {
 				}
 				
 				for (String uspClusteringKeyword : uspClusteringKeywords) {
-					System.out.println("uspClusteringKeyword="+uspClusteringKeyword);
+					//System.out.println("uspClusteringKeyword="+uspClusteringKeyword);
 					tmpMicropieUSPExtractorResult = micropieUSPExtractor.getObjectValue(text, 
 							uspClusteringKeyword, uspRequest.getKeywordType(), uspRequest.getKeywordObject(), uspRequest.getExtractionType());
 					returnCharacterStrings.addAll(tmpMicropieUSPExtractorResult);

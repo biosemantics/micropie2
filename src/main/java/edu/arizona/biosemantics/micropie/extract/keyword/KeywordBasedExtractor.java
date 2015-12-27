@@ -100,7 +100,7 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 	 * read keywords from file
 	 * @param keywordFile
 	 */
-	public void readKeywords(String keywordFile){
+	public Set<String> readKeywords(String keywordFile){
 		try{
 			keywords = new LinkedHashSet<String>();
 			subKeywords = new LinkedHashMap<String, List>();
@@ -124,9 +124,11 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 				
 			}
 			br.close();
+			return keywords;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	
