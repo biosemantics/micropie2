@@ -86,6 +86,18 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		categoryTwoLabels.add(Label.c16);
 	}
 	
+	private HashSet metobolismLabels = new HashSet();
+	{
+		metobolismLabels.add(Label.c53);
+		metobolismLabels.add(Label.c54);
+		metobolismLabels.add(Label.c55);
+		metobolismLabels.add(Label.c56);
+		metobolismLabels.add(Label.c57);
+		metobolismLabels.add(Label.c58);
+	}
+	
+	
+	
 	
 	
 	private ICharacterValueExtractorProvider contentExtractorProvider;// extractors
@@ -287,12 +299,15 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 			//List<CharacterValue> sentCharValues = new ArrayList();
 			// call the extractors one by one according to the predicted characters
 			//TODO:FermentationProductExtractor
+			boolean containMetabolism = false;
 			for (ICharacterValueExtractor extractor : extractors) {
 				String character = extractor.getCharacterName();
 				//System.out.println("current character:"+character+" sentence:"+text);
 				ILabel label = extractor.getLabel();
 				List<CharacterValue> charValues = null;
-				
+				if(!containMetabolism&&metobolismLabels.contains(label)){
+					containMetabolism = true;
+				}
 				if(extractor instanceof CellScaleExtractor && !hasCellScale){
 					charValues = extractor.getCharacterValue(classifiedSentence);
 				}else if(extractor instanceof CellScaleExtractor && hasCellScale){
@@ -307,8 +322,11 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 				
 				parseResult(matrix, taxonFile, label, charValues,noLabelValueList);
 				//sentCharValues.addAll(charValues);
+				//System.out.println("charValues:"+charValues);
 			}
 			
+			//if(containMetabolism) continue;
+			/*
 			posSentence(classifiedSentence);//get sub sentences and their tagged words list
 			List<List<TaggedWord>> taggedWordList = classifiedSentence.getSubSentTaggedWords();
 			
@@ -352,9 +370,8 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 								//System.out.println("values are found via global matching:"+cv);
 							}
 						}
-						/*else{
+						else{
 							System.out.println("values are found:"+p.getCharValue());
-						}*/
 					}
 				}
 			}
@@ -362,8 +379,9 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 			
 			parseResult(matrix, taxonFile, null, phraseCharValues,noLabelValueList);
 			
-			
+			*/
 			//Stragety 2: strict infer
+			/*
 			phraseCharValues = new ArrayList();
 			phrases = classifiedSentence.getPhraseList();
 			if(phrases!=null&&phrases.size()>0){//need to parse before this step
@@ -381,19 +399,16 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 							
 							if(cv!=null&&!phraseCharValues.contains(cv)){
 								phraseCharValues.add(cv);
-								//System.out.println("values are found via Strict Strategy2:"+cv);
+								System.out.println("values are found via Strict Strategy2:"+cv);
 							}
 						}
-						/*else{
-							System.out.println("values are found:"+p.getCharValue());
-						}*/
 					}
 				}
 			}
 			
 			parseResult(matrix, taxonFile, null, phraseCharValues,noLabelValueList);
-			
 			//infer the value according to the context
+			 */
 		}//
 		
 		
@@ -401,10 +416,10 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		/**
 		This component is used to predict values for PH, NACL, TEMP			
 		**/
-		postProcessor.dealUSP(noLabelValueList,charaMap);
+		//postProcessor.dealUSP(noLabelValueList,charaMap);
 		
 		
-		postProcessor.dealConflictNum(charaMap);
+		//postProcessor.dealConflictNum(charaMap);
 		
 	}
 	

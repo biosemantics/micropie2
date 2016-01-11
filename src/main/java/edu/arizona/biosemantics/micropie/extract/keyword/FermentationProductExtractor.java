@@ -94,7 +94,6 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 	
 	{
 		organicSet.add("hydroly");
-		organicSet.add("use");
 		organicSet.add("assimilat");
 		organicSet.add("organic");
 		organicSet.add("utiliz");
@@ -102,12 +101,10 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 		organicSet.add("observe");
 		organicSet.add("oxidize");
 		organicSet.add("decompos");
-		organicSet.add("grow");
 		organicSet.add("positive");
 		organicSet.add("negative");
 		organicSet.add("attack");
 		organicSet.add("respons");
-		organicSet.add("grew");
 		organicSet.add("activity");
 		organicSet.add("dihydrolas");
 	}
@@ -131,6 +128,8 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 		//Set<String> returnCharacterStrings = new HashSet<String>();
 		//1, get rid of all the content in the brackets
 		if(sentence==null) return null;
+		if(((MultiClassifiedSentence)sentence).getPredictions()==null||
+				((MultiClassifiedSentence)sentence).getPredictions().size()==0) return null;
 		String cleanSent = sentSplitter.removeBrackets(sentence.getText());
 		cleanSent = sentSplitter.removeSquBrackets(cleanSent);
 		//System.out.println("1="+cleanSent);
@@ -172,15 +171,20 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 		// add the from,  form ,product
 		
 		//detectFermentList(tagList, coordTermLists,prepPhrases);
-		detectFerment(tagList, phraseList,charValueList);
-		//System.out.println(prepPhrases);
+		boolean isDefFerment  = detectFerment(tagList, phraseList,charValueList);
+		System.out.println("prepPhrases="+prepPhrases);
+		
+		
+		System.out.println("prepPhrases2="+prepPhrases);
+		System.out.println("charValueList="+charValueList);
+		//fermentation products
+		if(!isOrganicComp(cleanSent)){
+			charValueList.addAll(extractFermentationProducts(phraseList, prepPhrases,cleanSent));
+		}
 		
 		//fermentation substate
-		charValueList.addAll(extractFermentationSubstrate(coordTermLists,tagList,prepPhrases,cleanSent));
-		//System.out.println(charValueList);
-		//fermentation products
-		charValueList.addAll(extractFermentationProducts(phraseList, prepPhrases));
-				
+		charValueList.addAll(extractFermentationSubstrate(coordTermLists,tagList,prepPhrases,cleanSent,isDefFerment));
+		System.out.println("charValueList2="+charValueList);
 		return charValueList;
 	}
 	
@@ -217,8 +221,9 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 	 * @param phraseList
 	 * @param charList
 	 */
-	private void detectFerment(List<TaggedWord> tagList,
+	private boolean detectFerment(List<TaggedWord> tagList,
 			List<Phrase> phraseList, List charList) {
+		boolean isDefFerment = false;
 		for(Phrase phrase : phraseList){
 			//System.out.println(phrase);
 			int phraseIndex = phrase.getStartIndex();
@@ -230,10 +235,11 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 						//||tw.word().toLowerCase().startsWith("utili")||tw.word().toLowerCase().startsWith("use")||tw.word().toLowerCase().startsWith("test")
 						){	
 					charList.add(phrase.convertValue(fermSubstrate));
+					if(!isDefFerment) isDefFerment = true;
 				}
 			}
 		}
-		
+		return isDefFerment;
 	}
 
 
@@ -247,7 +253,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 	 */
 	public  List<CharacterValue> extractFermentationSubstrate(
 			List<List<Phrase>> coordTermLists, List<TaggedWord> tagList,
-			List<Phrase> prepPhrases,String text) {
+			List<Phrase> prepPhrases,String text,boolean isDefFerment) {
 		List<CharacterValue> charList = new ArrayList();
 		for(List<Phrase> pList:coordTermLists){
 			//has a keyword phrase
@@ -266,7 +272,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 			
 			//System.out.println("judge this:"+pList);
 			//feature two: has produce, ferment and so on
-			if(determineFermentList2(pList,tagList,text)){
+			if(isDefFerment||determineFermentList2(pList,tagList,text)){
 				//System.out.println("add this:"+pList);
 				for(Phrase p: pList){
 					//System.out.println(p.getText()+"   "+isInorganic(p.getText()));
@@ -348,12 +354,17 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 				break;
 			}
 		}
-		
 		if(isTrue){
 			if(isInorganic(text)){//no inorganic words
 				isTrue =  false;
 			}
 		}
+		if(isTrue){
+			if(isOrganicComp(text)){//not definite isOrganicComp words
+				isTrue =  false;
+			}
+		}
+		
 		return isTrue;
 	}
 	
@@ -365,8 +376,13 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 	 * @param prepPhrases the prep-phrase list of the sentence, which should not be the fermentations
 	 * @return
 	 */
-	public List<CharacterValue> extractFermentationProducts(List<Phrase> phraseList, List<Phrase> prepPhrases){
+	public List<CharacterValue> extractFermentationProducts(List<Phrase> phraseList, List<Phrase> prepPhrases, String sentText){
 		List<CharacterValue> charValueList = new ArrayList();
+		
+		if(isInorganic(sentText)||isOrganicComp(sentText)){
+			return charValueList;
+		}
+		
 		for(int index = 0; index< phraseList.size();index++){//deal with each phrase
 			Phrase pharse = phraseList.get(index);
 			//it should not be in the list of fermentation substrate
@@ -458,6 +474,21 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 	public boolean isInorganic(String text){
 		for (String keywordString : inorganicWords) {
 			if(extract(keywordString, text)) return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * determine whether this phrase in OrganicComp
+	 * @param text
+	 * @return
+	 */
+	public boolean isOrganicComp(String text){
+		for (String keywordString : organicSet) {
+			if(text.indexOf(keywordString)>-1){
+				//System.out.println("keywordString="+keywordString);
+				return true;
+			}
 		}
 		return false;
 	}

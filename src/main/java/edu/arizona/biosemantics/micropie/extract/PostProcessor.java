@@ -47,7 +47,7 @@ public class PostProcessor {
 			fermSet.add(cv.getValue());
 		}*/
 		//post-process one by one
-		for(int i=0;i<valueList.size();){
+		for(int i=0;valueList!=null&&i<valueList.size();){
 			CharacterValue aValue = valueList.get(i);
 			ILabel valueLabel = aValue.getCharacter();
 			if(valueLabel==null){//null label values

@@ -300,7 +300,8 @@ public class TextNormalizer implements ITextNormalizer {
 				.replace("[\\s]*:", ":")
 				.replace("\\s:", ":")
 				.replace("", " ")
-				.replace("[\\s]*±[\\s]*", "±"); // 
+				.replace("[\\s]*±[\\s]*", "±")
+				.replace("mC", "°C"); // 
 		return sentence;
 	}
 }

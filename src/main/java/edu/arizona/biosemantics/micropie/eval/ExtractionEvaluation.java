@@ -45,42 +45,42 @@ import edu.arizona.biosemantics.micropie.nlptool.StringUtil;
  *
  */
 public class ExtractionEvaluation {
-	private String[] gstBasicFields;//basic fields used to describe the taxon/taxon file
-	private String[] tgBasicFields;
-	private String gstKeyField;//the field of the unique taxon name
-	private String tgKeyField;
-	private String gstSeparator;
-	private String tgSeparator;
+	protected String[] gstBasicFields;//basic fields used to describe the taxon/taxon file
+	protected String[] tgBasicFields;
+	protected String gstKeyField;//the field of the unique taxon name
+	protected String tgKeyField;
+	protected String gstSeparator;
+	protected String tgSeparator;
 	
-	private String goldStdMatrixFile;
-	private String testMatrixFile;
+	protected String goldStdMatrixFile;
+	protected String testMatrixFile;
 	
-	private String categoryMappingFile; 
+	protected String categoryMappingFile; 
 	
-	private ILabel[] comparedCharacterLabels;
-	private String[] comparedCharacterNames;
+	protected ILabel[] comparedCharacterLabels;
+	protected String[] comparedCharacterNames;
 	
-	private IValueComparator stringValueComparator = new KeywordStringComparator();
-	private IValueComparator numericValueComparator = new NumericComparator();
-	private IValueComparator numericRelaxedComparator = new NumericRelaxedComparator();
-	private NumericLabels numericLabels = new NumericLabels();
+	protected IValueComparator stringValueComparator = new KeywordStringComparator();
+	protected IValueComparator numericValueComparator = new NumericComparator();
+	protected IValueComparator numericRelaxedComparator = new NumericRelaxedComparator();
+	protected NumericLabels numericLabels = new NumericLabels();
 	
-	private Map<String, ILabel> characterNameLabelMapping;
-	private Map<ILabel, String> characterLabelNameMapping;
+	protected Map<String, ILabel> characterNameLabelMapping;
+	protected Map<ILabel, String> characterLabelNameMapping;
 	
 	//taxonfilename taxonfile
-	private Map<String, TaxonTextFile> taxonFileMap = new HashMap();
+	protected Map<String, TaxonTextFile> taxonFileMap = new HashMap();
 	
-	private Map<TaxonTextFile, List> taxonResults = new LinkedHashMap();
-	private Map<String, List> charResults = new LinkedHashMap();
-	private Map<String, List> charRelaxedResults = new LinkedHashMap();
-	private Map<TaxonTextFile, Map> charValueResults = new LinkedHashMap();
-	private Map<TaxonTextFile, Map> charRelaxedValueResults = new LinkedHashMap();
-	private List<Measurement> matrixResult = null;
+	protected Map<TaxonTextFile, List> taxonResults = new LinkedHashMap();
+	protected Map<String, List> charResults = new LinkedHashMap();
+	protected Map<String, List> charRelaxedResults = new LinkedHashMap();
+	protected Map<TaxonTextFile, Map> charValueResults = new LinkedHashMap();
+	protected Map<TaxonTextFile, Map> charRelaxedValueResults = new LinkedHashMap();
+	protected List<Measurement> matrixResult = null;
 	
-	private String datasetFolder = "F:\\MicroPIE\\datasets\\exp1";
-	private String gstXMLField;
-	private String tgXMLField;
+	protected String datasetFolder = "F:\\MicroPIE\\datasets\\exp1";
+	protected String gstXMLField;
+	protected String tgXMLField;
 	
 	/**
 	 * the gold standard matrix and the target matrix have the same structure
@@ -186,7 +186,7 @@ public class ExtractionEvaluation {
 	 * read the fields from files
 	 * @param taxonFiles
 	 */
-	private void readTaxonDetail(Set<TaxonTextFile> taxonFiles) {
+	protected void readTaxonDetail(Set<TaxonTextFile> taxonFiles) {
 		XMLTextReader xmlTextReader = new XMLTextReader();
 		for(TaxonTextFile tx: taxonFiles){
 			String xmlPath = tx.getXmlFile();
@@ -238,9 +238,6 @@ public class ExtractionEvaluation {
 			Map<ILabel, List> tgAllCharacterValues = tgMatrix.getAllTaxonCharacterValues(taxaAndXMLFile);
 			
 			String taxonName = taxaAndXMLFile.substring(0,taxaAndXMLFile.indexOf("_"));
-			if(tgAllCharacterValues==null){//it's not existed, so do not evalute this taxon
-				
-			}
 			double taxonTotal = 0;
 			double taxonHit = 0;
 			double taxonRelaxedHit = 0;
@@ -271,11 +268,10 @@ public class ExtractionEvaluation {
 				charFound[ch] += tgCharValue==null?0:tgCharValue.size();
 				tgTotalValueNum += tgCharValue==null?0:tgCharValue.size();
 				
-				//System.out.println(charLabel+" "+comparedCharacterNames[ch]+" ["+gstCharValue+"] ["+tgCharValue+"]");
 				
 				double matched = 0;
 				double relaxedMatched = 0;
-				if(tgCharValue!=null&&tgCharValue.size()!=0&&gstCharValue!=null&&gstCharValue.size()!=0){//when at least one has a value, compare
+				if((tgCharValue!=null&&tgCharValue.size()!=0)||(gstCharValue!=null&&gstCharValue.size()!=0)){//when at least one has a value, compare
 					//System.out.println(charLabel);
 					if(numericLabels.contains(charLabel)){
 						matched = numericValueComparator.compare(tgCharValue,gstCharValue);
@@ -294,8 +290,10 @@ public class ExtractionEvaluation {
 					matchedTotalCredit += matched;
 					matchedTotalRelxedCredit +=relaxedMatched;
 					
-					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",matched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),tgCharValue.size()));
-					charRelaxedHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("relaxed_hit",relaxedMatched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),tgCharValue.size()));
+					int gstSize = gstCharValue==null?0:gstCharValue.size();
+					int tgSize = tgCharValue==null?0:tgCharValue.size();
+					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",matched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstSize,tgSize));
+					charRelaxedHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("relaxed_hit",relaxedMatched,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstSize,tgSize));
 				}else if(gstCharValue!=null&&gstCharValue.size()!=0){
 					charHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("hit",-1,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),0));
 					charRelaxedHitMap.put(comparedCharacterNames[ch], new DetailMeasurement("relaxed_hit",-1,ValueFormatterUtil.format(gstCharValue),ValueFormatterUtil.format(tgCharValue),gstCharValue.size(),0));
@@ -348,7 +346,7 @@ public class ExtractionEvaluation {
 	 * output the matrix evaluation
 	 * @param matrixEvalResultFile
 	 */
-	private void outputMatrixEval(String matrixEvalResultFile) {
+	protected void outputMatrixEval(String matrixEvalResultFile) {
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(matrixEvalResultFile, true)));
 			out.print("Gold Standard Matrix,");
@@ -375,7 +373,7 @@ public class ExtractionEvaluation {
 	 * output every characters
 	 * @param charValEvalResultFile
 	 */
-	private void outputCharEval(String charValEvalResultFile) {
+	protected void outputCharEval(String charValEvalResultFile) {
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(charValEvalResultFile, true)));
 			int charLength = comparedCharacterNames.length;
@@ -418,7 +416,7 @@ public class ExtractionEvaluation {
 	 * print taxon evaluation values
 	 * @param taxonEvalResultFile
 	 */
-	private void outputTaxonEval(String taxonEvalResultFile) {
+	protected void outputTaxonEval(String taxonEvalResultFile) {
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(taxonEvalResultFile, true)));
 			out.print("Gold Standard Matrix,");
@@ -462,7 +460,7 @@ public class ExtractionEvaluation {
 	 * put(taxonTextFile, taxonEvalResults);
 	 * @param charAllEvalResultFile
 	 */
-	private void outputCharAllEval(String charAllEvalResultFile) {
+	protected void outputCharAllEval(String charAllEvalResultFile) {
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(charAllEvalResultFile, true)));
 			out.print("Gold Standard Matrix,");
@@ -522,7 +520,7 @@ public class ExtractionEvaluation {
 	 * @param totalGstValueSize
 	 * @return
 	 */
-	private List calMeasure(double totalExtValueSize, double positiveSize,
+	protected List calMeasure(double totalExtValueSize, double positiveSize,
 			double totalGstValueSize) {
 		double p = positiveSize/totalExtValueSize;
 		double r =positiveSize/totalGstValueSize;

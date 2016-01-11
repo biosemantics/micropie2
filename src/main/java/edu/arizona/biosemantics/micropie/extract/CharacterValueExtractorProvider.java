@@ -117,7 +117,6 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		//extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
 		//extractors.add(new FermentationSubstratesNotUsed(Label.c56));
 		
-		
 		PhraseParser phraseParser = new PhraseParser();
 		RelationParser phraseRelationParser = new RelationParser();
 		
@@ -136,7 +135,6 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 			if(extractor!=null){
 				labelExtractorsMap.get(extractor.getLabel()).add(extractor);
 			}
-			
 			//phrase based extractor
 			if(extractor instanceof SalinityPreferenceExtractor){
 				((SalinityPreferenceExtractor) extractor).setPosTagger(posTagger);
@@ -177,11 +175,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 				((PhraseBasedExtractor) extractor).setPosTagger(posTagger);
 				((PhraseBasedExtractor) extractor).setPhraseParser(phraseParser);
 			}
-			
-			
 		}
-		
-		
 		//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
 		PhraseBasedExtractor inExtractor = (PhraseBasedExtractor)labelExtractorsMap.get(Label.c55).iterator().next();
 		inorganicWords = inExtractor.getKeywords();
@@ -218,15 +212,12 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		labelExtractorsMap.get(Label.c26).add(ptnFigureExtractor);
 		
 		
-		
-		
 		if(fermentationExtractor!=null){
 			labelExtractorsMap.get(Label.c41).add(fermentationExtractor);
 			labelExtractorsMap.get(Label.c42).add(fermentationExtractor);
 			labelExtractorsMap.get(Label.c53).add(fermentationExtractor);
 			labelExtractorsMap.get(Label.c54).add(fermentationExtractor);
 		}
-		
 		/*
 		for(Label label: Label.values()){
 			System.out.println(label+","+ labelExtractorsMap.get(label).size());

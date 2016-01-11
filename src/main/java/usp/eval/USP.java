@@ -202,7 +202,7 @@ public class USP {
 
 					for (String pid:pids) {
 						
-						if (ptId_aciChdIds_.get(pid)!=null) { 
+						if (ptId_aciChdIds_.get(pid)!=null) {
 							// System.out.println("pid is ::" + pid);
 							// System.out.println("ptId_aciChdIds_.get(pid).toString() ::" + ptId_aciChdIds_.get(pid).toString());
 							
@@ -616,6 +616,11 @@ public class USP {
 	
 	
 	// find clustIdx for rel in questions
+	/**
+	 * read cluster information from Markov Logic Network File
+	 * @param fileName
+	 * @throws Exception
+	 */
 	static void readClust2(String fileName) throws Exception {
 		BufferedReader in;
 		String s;
@@ -886,6 +891,11 @@ public class USP {
 	}	
 
 	// read parts
+	/**
+	 * read from parse file
+	 * @param fileName
+	 * @throws Exception
+	 */
 	static void readPart(String fileName) throws Exception {
 		BufferedReader in;
 		String s;
