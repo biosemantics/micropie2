@@ -157,7 +157,8 @@ public class MatrixReader {
 			taxonFile.setStrain_number(strain);
 			
 			//both taxon and xmlfile are combined as the key
-			taxonFileMap.put(taxon.trim()+"_"+taxonFile.getXmlFile().trim(), taxonFile);
+			//taxonFileMap.put(taxon.trim()+"_"+taxonFile.getXmlFile().trim(), taxonFile);
+			taxonFileMap.put(taxon.trim(), taxonFile);
 		}
 		
 		return taxonFileMap;
@@ -186,12 +187,13 @@ public class MatrixReader {
 			
 			String taxon = rowFieldValues[keyFieldIndex]; //taxa name
 			String taxonXMLFile = rowFieldValues[xmlFileIndex]; //xmlFileIndex
-			if(isTransFileName) taxonXMLFile = StringUtil.standFileName(taxon);//transform the file name
+			if(isTransFileName) taxonXMLFile = StringUtil.standFileName(taxonXMLFile);//transform the file name
 			//System.out.println("parseMatrix="+taxon);
 			if(taxon==null) continue;//it means it's empty
 			Map<ILabel, List<CharacterValue>> taxonValues = new HashMap<ILabel, List<CharacterValue>>();
-			//matrix.put(taxon, taxonValues);//put taxon
-			matrix.put(taxon.trim()+"_"+taxonXMLFile.trim(), taxonValues);//put both taxon and xml file
+			matrix.put(taxon, taxonValues);//put taxon
+			System.out.println("taxonXMLFile="+taxonXMLFile);
+			//matrix.put(taxon.trim()+"_"+taxonXMLFile.trim(), taxonValues);//put both taxon and xml file
 			
 			notNullChars = 0;
 			int isNotEmptyStringCounter = 0;

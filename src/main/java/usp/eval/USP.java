@@ -67,7 +67,7 @@ public class USP {
 		allowedDeps_.add("appos");
 	}
 	
-	
+	//keyword, <pos, clustIdx>
 	static Map<String, Map<String,Integer>> keywordList_ = new TreeMap<String,Map<String,Integer>>();
 	static Map<Integer,Map<String,String>> clustIdx_argTypeClustIdx_=new HashMap<Integer,Map<String,String>>();
 	
@@ -85,8 +85,6 @@ public class USP {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		
 		
 		USP usp = new USP();
 		
@@ -725,6 +723,14 @@ public class USP {
 		in.close();		
 	}
 
+	
+	/**
+	 * if the relType is contained in keywordList, record this cluster
+	 * 
+	 * @param clustIdx
+	 * @param pos
+	 * @param relType
+	 */
 	static void procRelType2(int clustIdx, String pos, String relType) {
 		// 19508	[(N:b (nn (N:nf-kappa))):1466,	(N:b (dep (N:nf-kappa))):2]
 

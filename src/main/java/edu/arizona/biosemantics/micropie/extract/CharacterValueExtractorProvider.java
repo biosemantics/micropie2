@@ -116,7 +116,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		//extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
 		//extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
 		//extractors.add(new FermentationSubstratesNotUsed(Label.c56));
-		
+		/**/
 		PhraseParser phraseParser = new PhraseParser();
 		RelationParser phraseRelationParser = new RelationParser();
 		
@@ -135,6 +135,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 			if(extractor!=null){
 				labelExtractorsMap.get(extractor.getLabel()).add(extractor);
 			}
+			/**/
 			//phrase based extractor
 			if(extractor instanceof SalinityPreferenceExtractor){
 				((SalinityPreferenceExtractor) extractor).setPosTagger(posTagger);
@@ -176,6 +177,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 				((PhraseBasedExtractor) extractor).setPhraseParser(phraseParser);
 			}
 		}
+		/**/
 		//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
 		PhraseBasedExtractor inExtractor = (PhraseBasedExtractor)labelExtractorsMap.get(Label.c55).iterator().next();
 		inorganicWords = inExtractor.getKeywords();

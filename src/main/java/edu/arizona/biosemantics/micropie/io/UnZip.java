@@ -14,8 +14,8 @@ import edu.arizona.biosemantics.micropie.nlptool.StringUtil;
 
 public class UnZip {
 	List<String> fileList;
-	private static final String INPUT_ZIP_FILE = "F:\\MicroPIE\\datasets\\Microbial_Phenomics_Project_Experiment1_papers-2015-09-14.zip";
-	private static final String OUTPUT_FOLDER = "F:\\MicroPIE\\datasets\\exp1";
+	private static final String INPUT_ZIP_FILE = "F:\\MicroPIE\\datasets\\LisaNew66BacteroidetesPapers-66-2015-10-02.zip";
+	private static final String OUTPUT_FOLDER = "F:\\MicroPIE\\datasets\\LisaNew66BacteroidetesPapers_unzip";
 
 	public static void main(String[] args) {
 		UnZip unZip = new UnZip();

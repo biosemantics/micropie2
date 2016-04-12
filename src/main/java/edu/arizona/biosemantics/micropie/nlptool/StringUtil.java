@@ -2,6 +2,7 @@ package edu.arizona.biosemantics.micropie.nlptool;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
+import java.util.Random;
 
 public class StringUtil {
 	/**
@@ -20,6 +21,11 @@ public class StringUtil {
 				if(i<length-1) finalName.append(fileName.charAt(++i));
 			}
 		}
+		int lastIndex  = fileName.lastIndexOf("_");
+		if(lastIndex>-1){
+			finalName.append(fileName.substring(lastIndex, fileName.lastIndexOf(".")));
+		}
+		finalName.append(new Random().nextInt(1000));
 		finalName.append(".xml");
 		return finalName.toString();
 	}
@@ -60,7 +66,7 @@ public class StringUtil {
 				}
 			}
 			buffer.flip();
-			System.out.println(bytes.length);
+			//System.out.println(bytes.length);
 			return new String(buffer.array(), "utf-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block

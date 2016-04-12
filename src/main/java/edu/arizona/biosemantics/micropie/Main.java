@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie;
 
+import java.io.File;
 import java.util.List;
 import java.util.Set;
 
@@ -31,6 +32,14 @@ import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 
+
+/**
+ * -i input: xml folder
+ * -o results: output folder
+ * -m model: folder
+ * @author 
+ *
+ */
 public class Main {
 	
 	protected Config config;
@@ -38,9 +47,10 @@ public class Main {
 	public static void main(String[] args) throws Throwable {
 		Main main = new Main();
 		
-		args = "-i F:/MicroPIE/micropieInput -o F:/MicroPIE/micropieInput/output".split("\\s+");
-		//main.parse(args);
-		main.run();
+		//args = "-i F:/MicroPIE/datasets/craft -o F:/MicroPIE/ext/craft -m F:/MicroPIE/MicroPIEWEB/models".split("\\s+");
+		//System.out.println(args);
+		main.parse(args);
+		//main.run();
 	}
 	
 	/**
@@ -51,10 +61,13 @@ public class Main {
 		Options options = new Options();
 		options.addOption("i", "input", true, "input directory to use");
 		options.addOption("o", "output", true, "output directory to use");
+		options.addOption("m", "model", true, "model folders");
 		options.addOption("h", "help", false, "shows the help");
 
+		System.out.println("parsing args");
 		config = new Config();
-			
+		String xmlFolder = null;
+		String outputFolder = null;
 		try {
 		    CommandLine commandLine = parser.parse( options, args );
 		    if(commandLine.hasOption("h")) {
@@ -63,23 +76,38 @@ public class Main {
 				return;
 		    }
 		    if(!commandLine.hasOption("i")) {
-		    	log(LogLevel.ERROR, "You have to specify an input directory");
+		    	//log(LogLevel.ERROR, "You have to specify an input directory");
 		    	throw new IllegalArgumentException();
 		    } else {
-		    	config.setInputDirectory(commandLine.getOptionValue("i"));
+		    	xmlFolder = commandLine.getOptionValue("i");
+		    }
+		    if(!commandLine.hasOption("m")) {
+		    	log(LogLevel.ERROR, "You have to specify an model directory");
+		    	throw new IllegalArgumentException();
+		    } else {
+		    	config.setInputDirectory(commandLine.getOptionValue("m"));
 		    }
 		    if(!commandLine.hasOption("o")) {
-		    	log(LogLevel.ERROR, "You have to specify an output directory");
+		    	//log(LogLevel.ERROR, "You have to specify an output directory");
 		    	throw new IllegalArgumentException();
 		    } else {
+		    	outputFolder = commandLine.getOptionValue("o");
 		    	config.setOutputDirectory(commandLine.getOptionValue("o"));
 		    }
+		    
+			Injector injector = Guice.createInjector(config);
+		    MicroPIEProcessor microPIEProcessor = injector.getInstance(MicroPIEProcessor.class);
+		    String predicitonsFile = outputFolder + File.separator + "predictions.csv";
+			String matrixFile = outputFolder + File.separator + "matrix.csv";
+		    microPIEProcessor.processFolder(xmlFolder,predicitonsFile, matrixFile);
+			
 		} catch(ParseException e) {
+			e.printStackTrace();
 			log(LogLevel.ERROR, "Problem parsing parameters", e);
 		}
 	}
 
-	
+	/*
 	private void run() throws Exception {
 		config = new Config();
 		String prjInputFolder = "F:/MicroPIE/micropieInput";
@@ -88,6 +116,7 @@ public class Main {
 		config.setOutputDirectory(prjOutputFolder);
 		
 		Injector injector = Guice.createInjector(config);
+		
 		//IRun run = injector.getInstance(IRun.class);	
 		//IRun run = injector.getInstance(IRun.class);
 		
@@ -102,10 +131,14 @@ public class Main {
 		String savedModelFolder = "F:\\MicroPIE\\micropieInput\\models\\";
 		
 		//injector.getInstance(Key.get(new TypeLiteral<GenericDbClass<Integer>>(){});
-		List<ILabel> labels = injector.getInstance(Key.get(new TypeLiteral<List<ILabel>>() {},  Names.named("MultiSVMClassifier_Labels")));
-		run.train(testSentFile,savedModelFolder,labels);
-		run.testTruePositive(testSentFile,savedModelFolder,labels);
-		run.testTrueNegative(testSentFile,savedModelFolder,labels);
+		//List<ILabel> labels = injector.getInstance(Key.get(new TypeLiteral<List<ILabel>>() {},  Names.named("MultiSVMClassifier_Labels")));
+		//run.train(testSentFile,savedModelFolder,labels);
+		//run.testTruePositive(testSentFile,savedModelFolder,labels);
+		//run.testTrueNegative(testSentFile,savedModelFolder,labels);
+		
+		
+		
+		
 		
 		//SentenceSpliter sspliter = injector.getInstance(SentenceSpliter.class);
 		/*
@@ -113,7 +146,6 @@ public class Main {
 		SentencePredictor sentPred1 = injector.getInstance(SentencePredictor.class);
 		SentencePredictor sentPred2 = injector.getInstance(SentencePredictor.class);
 		SentencePredictor sentPred3 = injector.getInstance(SentencePredictor.class);
-		*/
 		//Habitat is not known.
 		//Colonies are 0.2 to 0.3 mm in diameter on blood-enriched Columbia agar and Brain Heart Infusion (BHI) agar.
 		
@@ -134,8 +166,6 @@ public class Main {
 				sentence, lexicalizedParser, PTBTokenizer.factory(
 						new CoreLabelTokenFactory(), ""));
 		splitRun.call();
-		*/
-		/*
 		
 		String inputFolder = "F:\\MicroPIE\\micropieInput\\input";
 		String svmLabelAndCategoryMappingFile = injector.getInstance(Key.get(String.class,  Names.named("svmLabelAndCategoryMappingFile")));
@@ -146,12 +176,9 @@ public class Main {
 		microPIEProcessor.processFolder(inputFolder, svmLabelAndCategoryMappingFile, predictionsFile, outputMatrixFile);
 		long e2 = System.currentTimeMillis();
 		System.out.println("get the splitter costs:"+(e2-b)+" ms");
-		*/
 		
-		/*
 		SentenceBatchProcessor sentBatPIEProcessor = injector.getInstance(SentenceBatchProcessor.class);
 		String lineFile = "F:/MicroPIE/micropieInput/sentences/1.1 G+C.csv";
 		sentBatPIEProcessor.processLineFile(lineFile, svmLabelAndCategoryMappingFile, predictionsFile, outputMatrixFile);
-	*/
-		}
+		}*/
 }

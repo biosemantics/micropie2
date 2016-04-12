@@ -1,6 +1,7 @@
 package edu.arizona.biosemantics.micropie.nlptool;
 
 import java.util.List;
+import java.util.Set;
 
 import edu.arizona.biosemantics.micropie.model.Phrase;
 import edu.stanford.nlp.ling.IndexedWord;

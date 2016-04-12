@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -162,12 +163,12 @@ public class MicroPIEProcessor{
 		
 		try {
 			matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
-			matrixWriter.write(matrix, labelCategoryNameMap);
+			matrixWriter.write(matrix, labelCategoryNameMap,false);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			try {
 				matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile+new Random().nextInt(), true));
-				matrixWriter.write(matrix, labelCategoryNameMap);
+				matrixWriter.write(matrix, labelCategoryNameMap,false);
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}catch (Exception e1) {
@@ -193,19 +194,20 @@ public class MicroPIEProcessor{
 		//STEP 1: split sentences
 		List<MultiClassifiedSentence> sentences = sentenceSpliter.createSentencesFromFile(taxonFile);
 		//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
+		
 		for (MultiClassifiedSentence testSentence : sentences) {
 			Set<ILabel> prediction = sentencePredictor.predict(testSentence);
 			Set<ILabel> categories = categoryPredictor.predict(testSentence);
 			testSentence.setPredictions(prediction);
 			testSentence.setCategories(categories);
-			
+			//testSentence.setPredictions(new HashSet());
 			//System.out.println("prediction="+prediction+" categories="+categories);
 			//System.out.println("prediction="+testSentence.getPredictions()+" categories="+testSentence.getCategories());
 		}
-		
+		/*
 		if(predictionFile!=null){
 			classifiedSentenceWriter.write(sentences);
-		}
+		}*/
 		
 		//System.out.println("extract values and create matrix");
 		matrixCreator.create(matrix,taxonFile,sentences);

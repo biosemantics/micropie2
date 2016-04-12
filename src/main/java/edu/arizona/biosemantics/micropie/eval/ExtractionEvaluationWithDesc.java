@@ -480,13 +480,13 @@ public class ExtractionEvaluationWithDesc extends ExtractionEvaluation{
 		String gstBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String gstKeyField = "Taxon";
 		String gstXMLField = "XML file";
-		String gstMatrixFile ="F:/MicroPIE/evaluation/GSM_MicroPIE1.5_010316_111_final.csv";//Gold_matrix_22_1213.csv.csv";
+		String gstMatrixFile ="F:\\MicroPIE\\manuscript\\results\\GSM_MicroPIE1.5_after_MS_0208.csv";//Gold_matrix_22_1213.csv.csv";
 		//gstMatrixFile
 		//Taxon	Family	Genus	Species	Strain	16S rRNA accession #	XMsL file
 		String tgBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String tgKeyField = "Taxon";
 		String tgXMLField = "XML file";
-		String tgMatrixFile ="F:\\MicroPIE\\ext\\final111\\PartOne111_simpest_matrix.csv";//final_114_1214.csv
+		String tgMatrixFile ="F:/MicroPIE/ext/final111/PartOne111_NOSVM_matrix.csv";//final_114_1214.csv
 		//tgMatrixFile
 		//String tgBasicFields = "XML file|Taxon|Genus|Species|Strain";//STUEXP_040214_28ch.csv
 		//String tgKeyField = "XML file";

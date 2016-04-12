@@ -77,7 +77,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 	 * @param matrix
 	 * @throws Exception
 	 */
-	public void write(NewTaxonCharacterMatrix matrix, Map<ILabel, String> labelNameMap) throws Exception {
+	public void write(NewTaxonCharacterMatrix matrix, Map<ILabel, String> labelNameMap, boolean isFormat) throws Exception {
 		log(LogLevel.INFO, "Writing matrix...");
 		LinkedHashSet<ILabel> characterLabels = matrix.getCharacterLabels();
 		LinkedHashSet<String> characterNames = matrix.getCharacterNames();
@@ -120,6 +120,66 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 			i=5;
 			for(ILabel character : characterLabels) {
 				List values = taxonCharValues.get(character);
+				row[i] = formatter.format(values);
+				if(!isFormat&&row[i]!=null)  row[i] = row[i].replace("|", " ");
+				i++;
+			}
+			lines.add(row);
+		}
+		
+		//write
+		writer.writeAll(lines);
+		writer.flush();
+		writer.close();
+		log(LogLevel.INFO, "Done writing matrix");
+	}
+	
+	
+	/**
+	 * output
+	 * @param matrix
+	 * @throws Exception
+	 */
+	public void writeWithTaxonName(NewTaxonCharacterMatrix matrix, Map<ILabel, String> labelNameMap) throws Exception {
+		log(LogLevel.INFO, "Writing matrix...");
+		LinkedHashSet<ILabel> characterLabels = matrix.getCharacterLabels();
+		LinkedHashSet<String> characterNames = matrix.getCharacterNames();
+		
+		//System.out.println("characterLabels="+characterLabels.size()+" "+characterNames.size());
+		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));		
+		List<String[]> lines = new LinkedList<String[]>();
+		
+		//create header
+		String[] header = new String[characterLabels.size() + 5];
+		header[0] = "Taxon";
+		header[1] = "XML file";
+		header[2] = "Genus";
+		header[3] = "Species";
+		header[4] = "Strain";	
+		
+		int i=5;
+		for(ILabel character : characterLabels) {
+			header[i++] = labelNameMap.get(character);
+			//System.out.println(character+" "+header[i-1]);
+		}
+			
+		lines.add(header);
+
+		
+		//StringValueFormatter svFormatter = new StringValueFormatter();
+		//NumericValueFormatter nvFormatter = new NumericValueFormatter();
+		ValueFormatterUtil formatter = new ValueFormatterUtil();
+		//create matrix content
+		Set<String> textFiles = matrix.keySet();
+		for(String taxonFile : textFiles) {
+			String[] row = new String[characterNames.size() + 5];
+			row[0] = taxonFile.substring(0,taxonFile.indexOf("_"));
+			row[1] =  taxonFile.substring(taxonFile.indexOf("_")+1,taxonFile.length());
+			
+			Map<ILabel, List> taxonCharValues = matrix.getAllTaxonCharacterValues(taxonFile);
+			i=5;
+			for(ILabel character : characterLabels) {
+				List values = taxonCharValues.get(character);
 				row[i++] = formatter.format(values);
 			}
 			lines.add(row);
@@ -131,6 +191,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		writer.close();
 		log(LogLevel.INFO, "Done writing matrix");
 	}
+
 
 	/**
 	 * Returns a single string representing the set of values (separated by comma)
@@ -147,5 +208,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 			return result;
 		return result.substring(0, result.length() - 1);
 	}
+	
+	
 
 }

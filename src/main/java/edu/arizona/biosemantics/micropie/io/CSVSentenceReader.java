@@ -157,7 +157,7 @@ public class CSVSentenceReader implements ISentenceReader {
 			ILabel svmLabel = categoryCodeLabelMap.get(line[0]);
 			//System.out.println(line[1]+" "+svmLabel);
 			if(svmLabel==null) {
-				svmLabel = Label.c0;		
+				//svmLabel = Label.c0;		
 				//System.err.print(line[1]);
 				//System.exit(0);
 			}

@@ -149,7 +149,7 @@ public class AntibioticSyntacticExtractor extends AbstractCharacterValueExtracto
 		}
 		
 		
-		System.out.println(cvList);
+		//System.out.println(cvList);
 		return cvList;
 	}
 	
@@ -176,7 +176,7 @@ public class AntibioticSyntacticExtractor extends AbstractCharacterValueExtracto
 			IndexedWord dependent = simword.getDependent();
 			//int deptIndex = dependent.index();
 			if((relation.equalsIgnoreCase("nn")||relation.equals("amod"))&&isAdjecent(dependent, prefixDep,coreWord)){//simWependent.tag().startsWith("N")&
-				System.out.println("add "+dependent.word());
+				//System.out.println("add "+dependent.word());
 				phrase = dependent.word()+" "+phrase;
 			}
 		}

@@ -172,11 +172,11 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 		
 		//detectFermentList(tagList, coordTermLists,prepPhrases);
 		boolean isDefFerment  = detectFerment(tagList, phraseList,charValueList);
-		System.out.println("prepPhrases="+prepPhrases);
+		//System.out.println("prepPhrases="+prepPhrases);
 		
 		
-		System.out.println("prepPhrases2="+prepPhrases);
-		System.out.println("charValueList="+charValueList);
+		//System.out.println("prepPhrases2="+prepPhrases);
+		//System.out.println("charValueList="+charValueList);
 		//fermentation products
 		if(!isOrganicComp(cleanSent)){
 			charValueList.addAll(extractFermentationProducts(phraseList, prepPhrases,cleanSent));
@@ -184,7 +184,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 		
 		//fermentation substate
 		charValueList.addAll(extractFermentationSubstrate(coordTermLists,tagList,prepPhrases,cleanSent,isDefFerment));
-		System.out.println("charValueList2="+charValueList);
+		//System.out.println("charValueList2="+charValueList);
 		return charValueList;
 	}
 	

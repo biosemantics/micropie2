@@ -237,7 +237,7 @@ public class ExtractionEvaluation {
 			Map<ILabel, List> gstAllCharacterValues = gsdMatrix.getAllTaxonCharacterValues(taxaAndXMLFile);
 			Map<ILabel, List> tgAllCharacterValues = tgMatrix.getAllTaxonCharacterValues(taxaAndXMLFile);
 			
-			String taxonName = taxaAndXMLFile.substring(0,taxaAndXMLFile.indexOf("_"));
+			//String taxonName = taxaAndXMLFile.substring(0,taxaAndXMLFile.indexOf("_"));
 			double taxonTotal = 0;
 			double taxonHit = 0;
 			double taxonRelaxedHit = 0;
