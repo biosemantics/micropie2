@@ -28,14 +28,21 @@ If you have compiled MicroPIE as a jar file, you can use command line to run Mic
 	Java –cp micropieproject_lib –jar micropie-0.1.0.jar -i F:/MicroPIE/datasets/Part_One_111_final -o F:/MicroPIE/ext/craft -m F:/MicroPIE/MicroPIEWEB/models
 
 The major parameters are:
+
 -cp: the classpath;  micropieproject_lib should be the folder that contains all the dependency jar libraries.
+
 -jar: the name of the compiled MicroPIE jar file
+
 -i: the folder holding taxonomic descriptions
+
 -o: the output folder to place the generated taxon-by-character matrix
+
 -m: the “models” folder.
+
 
 
 Other information
 =========
 The trained SVM models are in the folder, models\character_model0.1.0.
+
 The Term Lists of characters are in the folder, F:\MicroPIE\micropieweb\models\CharacterValueExtractors0.1.0.
