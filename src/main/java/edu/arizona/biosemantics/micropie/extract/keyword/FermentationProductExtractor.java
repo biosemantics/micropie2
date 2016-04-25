@@ -50,8 +50,10 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 	private StanfordParserWrapper stanParser;
 	private SentenceSpliter sentSplitter;
 	private RelationParser phraseRelationParser;
-	private Label fermSubstrate = Label.c57;
-	private Label fermProduct = Label.c41;
+	//private Label fermSubstrate = Label.c57;
+	//private Label fermProduct = Label.c41;
+	private Label fermSubstrate = Label.c40;
+	private Label fermProduct = Label.c30;
 	//protected String matchMode = "W";
 	private Set<String> inorganicWords;
 	

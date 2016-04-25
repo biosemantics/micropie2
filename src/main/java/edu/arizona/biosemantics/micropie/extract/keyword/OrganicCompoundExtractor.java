@@ -122,7 +122,8 @@ public class OrganicCompoundExtractor extends PhraseBasedExtractor{
 				//System.out.println("isInList:"+isInList);
 				if(isInList){
 					for(Phrase p:phList){
-						Label label = p.getNegation()!=null?Label.c54:Label.c53;
+						Label label = p.getNegation()!=null?Label.c37:Label.c36;
+						//Label label = p.getNegation()!=null?Label.c54:Label.c53;
 						valueList.add(p.convertValue(label));
 						phraseList.remove(p);//remove from phrase List
 					}
@@ -136,7 +137,8 @@ public class OrganicCompoundExtractor extends PhraseBasedExtractor{
 				//detect whether contain keywords
 				for (String keywordString : keywords) {
 					if(extract(keywordString.toLowerCase(), text)){
-						Label label = p.getNegation()!=null?Label.c54:Label.c53;
+						Label label = p.getNegation()!=null?Label.c37:Label.c36;
+						//Label label = p.getNegation()!=null?Label.c54:Label.c53;
 						valueList.add(p.convertValue(label));
 					}
 					
@@ -144,7 +146,8 @@ public class OrganicCompoundExtractor extends PhraseBasedExtractor{
 					if(subKeywordList==null) continue;
 					for(String subKeyword : subKeywordList){
 						if(extract(subKeyword.toLowerCase(), text)){
-							Label label = p.getNegation()!=null?Label.c54:Label.c53;
+							Label label = p.getNegation()!=null?Label.c37:Label.c36;
+							//Label label = p.getNegation()!=null?Label.c54:Label.c53;
 							valueList.add(p.convertValue(label));
 						}
 					}

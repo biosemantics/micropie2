@@ -90,4 +90,9 @@ public class MultiClassifiedSentence extends Sentence{
 		this.phraseRelationGraphs = phraseRelationGraphs;
 	}
 
+	public int words() {
+		String[] words = text.split("[-,\\s]+");
+		return words.length;
+	}
+
 }

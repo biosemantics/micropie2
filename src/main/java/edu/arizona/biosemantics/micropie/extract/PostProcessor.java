@@ -56,13 +56,15 @@ public class PostProcessor {
 				//System.out.println("this is null label:"+aValue);
 				continue;
 			}else{
-				if(Label.c2.equals(valueLabel)){
+				if(Label.c2.equals(valueLabel)){//cell shape
 					replaceGram(aValue);
-				}else if(Label.c9.equals(valueLabel)){
+				}else if(Label.c7.equals(valueLabel)){//gram type
 					replaceRods(aValue);
-				}else if(Label.c46.equals(valueLabel)){
-					aValue.setNegation(null);
 				}
+				/*
+				else if(Label.c30.equals(valueLabel)){//fermentation products, Tests negative
+					aValue.setNegation(null);
+				}*/
 				
 				
 				
@@ -77,16 +79,17 @@ public class PostProcessor {
 				} */
 				
 				//Tests negative, organic compounds used or hydrolyzed, inorganic substances used,fermentation substrates used
-				if(Label.c45.equals(valueLabel)||Label.c53.equals(valueLabel)||Label.c55.equals(valueLabel)||Label.c57.equals(valueLabel)){
+				//Label.c45.equals(valueLabel)||
+				if(Label.c36.equals(valueLabel)||Label.c38.equals(valueLabel)||Label.c40.equals(valueLabel)){
 					negationToAnother(aValue);
-				}else if(Label.c54.equals(valueLabel)||Label.c56.equals(valueLabel)||Label.c58.equals(valueLabel)){
+				}else if(Label.c37.equals(valueLabel)||Label.c39.equals(valueLabel)||Label.c41.equals(valueLabel)){//not used
 					if(aValue.getNegation()!=null){//should be 
 						aValue.setNegation(null);
 					}else{//if it's null
 						//negationToPositive(aValue);
 					}
-				}else if(Label.c32.equals(valueLabel)||Label.c33.equals(valueLabel)){
-					//Antibiotic sensitivity
+				}else if(Label.c24.equals(valueLabel)||Label.c25.equals(valueLabel)){////Antibiotic sensitivity
+					
 					negationReverse(aValue);
 				}
 				
@@ -96,19 +99,19 @@ public class PostProcessor {
 					valueList.remove(aValue);
 					//System.out.println("remove 1:"+aValue);
 					i--;
-				}else if(Label.c41.equals(valueLabel)){//it must be a negation
+				}else if(Label.c30.equals(valueLabel)){//it must be a negation "Fermentation Products"
 					if(aValue.getNegation()!=null&&!"".equals(aValue.getNegation())){
 						valueList.remove(aValue);
 						//System.out.println("remove 2:"+aValue);
 						i--;
 					}
-				}else if(Label.c46.equals(valueLabel)){//it must be a negation
+				} /*else if(Label.c46.equals(valueLabel)){//it must be a negation Tests negative
 					if((aValue.getNegation()==null||"".equals(aValue.getNegation()))&&!NegationIdentifier.detectInlineNegation(aValue.getValue())){
 						valueList.remove(aValue);
 						//System.out.println("remove 2:"+aValue);
 						i--;
 					}
-				}else if(Label.c32.equals(valueLabel)||Label.c33.equals(valueLabel)){//the length of value should be greater than 1
+				}*/else if(Label.c24.equals(valueLabel)||Label.c25.equals(valueLabel)){//the length of value should be greater than 1  /Antibiotic sensitivity
 					if((aValue.getValue().trim().length()<=1)){
 						//System.out.println("remove 3:"+aValue);
 						valueList.remove(aValue);

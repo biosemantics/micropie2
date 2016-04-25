@@ -18,7 +18,8 @@ import edu.arizona.biosemantics.micropie.model.Sentence;
 public class InorganicSubstanceExtractor extends PhraseBasedExtractor{
 	public InorganicSubstanceExtractor(ILabel label, String character,
 			Set<String> keywords, Map<String, List> subKeyword) {
-		super(Label.c55, character, keywords, subKeyword);
+		super(Label.c38, character, keywords, subKeyword);
+		//super(Label.c55, character, keywords, subKeyword);
 	}
 	
 	

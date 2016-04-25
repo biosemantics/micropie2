@@ -120,9 +120,9 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		PhraseParser phraseParser = new PhraseParser();
 		RelationParser phraseRelationParser = new RelationParser();
 		
-		extractors.add(new AntibioticSyntacticExtractor(Label.c32, "Antibiotic sensitivity",sensitivePatterns,sentSplitter,stanfordWrapper));
+		extractors.add(new AntibioticSyntacticExtractor(Label.c24, "Antibiotic sensitivity",sensitivePatterns,sentSplitter,stanfordWrapper));
 		//extractors.add(new AntibioticPhraseExtractor(Label.c32, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, sensitiveTerms));
-		extractors.add(new AntibioticSyntacticExtractor(Label.c33, "Antibiotic sensitivity",resistantPatterns,sentSplitter,stanfordWrapper));
+		extractors.add(new AntibioticSyntacticExtractor(Label.c25, "Antibiotic sensitivity",resistantPatterns,sentSplitter,stanfordWrapper));
 		//extractors.add(new AntibioticPhraseExtractor(Label.c33, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, resistantTerms));
 
 		
@@ -179,7 +179,8 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		}
 		/**/
 		//((PhraseBasedExtractor) extractor).setSentSplitter(sentSplitter);
-		PhraseBasedExtractor inExtractor = (PhraseBasedExtractor)labelExtractorsMap.get(Label.c55).iterator().next();
+		PhraseBasedExtractor inExtractor = (PhraseBasedExtractor)labelExtractorsMap.get(Label.c38).iterator().next();
+		//PhraseBasedExtractor inExtractor = (PhraseBasedExtractor)labelExtractorsMap.get(Label.c55).iterator().next();
 		inorganicWords = inExtractor.getKeywords();
 		for(ICharacterValueExtractor extractor : extractors) {
 			 if(extractor instanceof edu.arizona.biosemantics.micropie.extract.keyword.FermentationProductExtractor){
@@ -191,7 +192,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		ICharacterValueExtractor gcFigureExtractor = new GcFigureExtractor(sentSplitter, posTagger, Label.c1, "%G+C");
 		ICharacterValueExtractor ptnFigureExtractor = new PHTempNaClExtractor(sentSplitter, posTagger, null, "PHTempNacl");
 		ICharacterValueExtractor cellScaleFigureExtractor = new CellScaleExtractor(sentSplitter, posTagger, null, "CellScale");
-		PigmentCompoundAbsorptionExtractor pcAbsoExtractor = new PigmentCompoundAbsorptionExtractor(posTagger, Label.c12, "Pigment Compounds", null, null);
+		PigmentCompoundAbsorptionExtractor pcAbsoExtractor = new PigmentCompoundAbsorptionExtractor(posTagger, Label.c11, "Pigment Compounds", null, null);
 		pcAbsoExtractor.setPhraseParser(phraseParser);
 		
 		labelExtractorsMap.get(Label.c1).add(gcFigureExtractor);
@@ -200,10 +201,20 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		labelExtractorsMap.get(Label.c4).add(cellScaleFigureExtractor);
 		labelExtractorsMap.get(Label.c5).add(cellScaleFigureExtractor);
 		
-		labelExtractorsMap.get(Label.c12).add(pcAbsoExtractor);
+		labelExtractorsMap.get(Label.c11).add(pcAbsoExtractor);
+		//labelExtractorsMap.get(Label.c12).add(pcAbsoExtractor);
 		
 		//note the mapping
+		labelExtractorsMap.get(Label.c12).add(ptnFigureExtractor);
+		labelExtractorsMap.get(Label.c13).add(ptnFigureExtractor);
+		labelExtractorsMap.get(Label.c14).add(ptnFigureExtractor);
+		labelExtractorsMap.get(Label.c15).add(ptnFigureExtractor);
+		labelExtractorsMap.get(Label.c16).add(ptnFigureExtractor);
+		labelExtractorsMap.get(Label.c17).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c18).add(ptnFigureExtractor);
+		labelExtractorsMap.get(Label.c19).add(ptnFigureExtractor);
+		labelExtractorsMap.get(Label.c20).add(ptnFigureExtractor);
+		/*labelExtractorsMap.get(Label.c18).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c19).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c20).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c21).add(ptnFigureExtractor);
@@ -212,13 +223,17 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		labelExtractorsMap.get(Label.c24).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c25).add(ptnFigureExtractor);
 		labelExtractorsMap.get(Label.c26).add(ptnFigureExtractor);
+		*/
 		
 		
 		if(fermentationExtractor!=null){
-			labelExtractorsMap.get(Label.c41).add(fermentationExtractor);
-			labelExtractorsMap.get(Label.c42).add(fermentationExtractor);
-			labelExtractorsMap.get(Label.c53).add(fermentationExtractor);
-			labelExtractorsMap.get(Label.c54).add(fermentationExtractor);
+			labelExtractorsMap.get(Label.c30).add(fermentationExtractor);
+			//labelExtractorsMap.get(Label.c41).add(fermentationExtractor);
+			//labelExtractorsMap.get(Label.c42).add(fermentationExtractor);
+			labelExtractorsMap.get(Label.c36).add(fermentationExtractor);//organic compounds used or hydrolyzed"
+			labelExtractorsMap.get(Label.c37).add(fermentationExtractor);//organic compounds not used or not hydrolyzed"
+			//labelExtractorsMap.get(Label.c53).add(fermentationExtractor);
+			//labelExtractorsMap.get(Label.c54).add(fermentationExtractor);
 		}
 		/*
 		for(Label label: Label.values()){

@@ -51,20 +51,27 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 	private LinkedHashSet<ILabel> characterLabels;// the characters need to be parsed
 	private LinkedHashSet<String> characterNames;
 	private HashSet categoryThreeLabels=new HashSet();
-	{	categoryThreeLabels.add(Label.c17);
+	{	
+		categoryThreeLabels.add(Label.c12);
+		categoryThreeLabels.add(Label.c13);
+		categoryThreeLabels.add(Label.c14);
+		categoryThreeLabels.add(Label.c15);
+		categoryThreeLabels.add(Label.c16);
+		categoryThreeLabels.add(Label.c17);
 		categoryThreeLabels.add(Label.c18);
 		categoryThreeLabels.add(Label.c19);
 		categoryThreeLabels.add(Label.c20);
 		categoryThreeLabels.add(Label.c21);
 		categoryThreeLabels.add(Label.c22);
 		categoryThreeLabels.add(Label.c23);
-		categoryThreeLabels.add(Label.c24);
-		categoryThreeLabels.add(Label.c25);
-		categoryThreeLabels.add(Label.c26);
-		categoryThreeLabels.add(Label.c27);
-		categoryThreeLabels.add(Label.c28);
-		categoryThreeLabels.add(Label.c29);
-		categoryThreeLabels.add(Label.c30);
+		categoryThreeLabels.add(Label.c42);
+//		categoryThreeLabels.add(Label.c24);
+//		categoryThreeLabels.add(Label.c25);
+//		categoryThreeLabels.add(Label.c26);
+//		categoryThreeLabels.add(Label.c27);
+//		categoryThreeLabels.add(Label.c28);
+//		categoryThreeLabels.add(Label.c29);
+//		categoryThreeLabels.add(Label.c30);
 	}
 	
 	
@@ -79,21 +86,29 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		categoryTwoLabels.add(Label.c9);
 		categoryTwoLabels.add(Label.c10);
 		categoryTwoLabels.add(Label.c11);
-		categoryTwoLabels.add(Label.c12);
-		categoryTwoLabels.add(Label.c13);
-		categoryTwoLabels.add(Label.c14);
-		categoryTwoLabels.add(Label.c15);
-		categoryTwoLabels.add(Label.c16);
+//		categoryTwoLabels.add(Label.c12);
+//		categoryTwoLabels.add(Label.c13);
+//		categoryTwoLabels.add(Label.c14);
+//		categoryTwoLabels.add(Label.c15);
+//		categoryTwoLabels.add(Label.c16);
 	}
 	
 	private HashSet metobolismLabels = new HashSet();
 	{
-		metobolismLabels.add(Label.c53);
+		/*metobolismLabels.add(Label.c53);
 		metobolismLabels.add(Label.c54);
 		metobolismLabels.add(Label.c55);
 		metobolismLabels.add(Label.c56);
 		metobolismLabels.add(Label.c57);
 		metobolismLabels.add(Label.c58);
+		*/
+		metobolismLabels.add(Label.c36);
+		metobolismLabels.add(Label.c37);
+		metobolismLabels.add(Label.c38);
+		metobolismLabels.add(Label.c39);
+		metobolismLabels.add(Label.c40);
+		metobolismLabels.add(Label.c41);
+		metobolismLabels.add(Label.c42);
 	}
 	
 	
@@ -279,7 +294,8 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 				
 				//salinity preference
 				if(categoryThreeLabels.contains(label)){
-					Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor(Label.c59);
+					//Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor(Label.c59);
+					Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor(Label.c42);
 					if(labelExtractors!=null){
 						extractors.addAll(labelExtractors);
 					}

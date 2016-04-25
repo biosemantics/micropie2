@@ -130,6 +130,8 @@ public class MicroPIEProcessor{
 	 * @param outputMatrixFile
 	 */
 	public void processFolder(String inputFolder,String predictionFile,String outputMatrixFile){
+		
+		long start = System.currentTimeMillis();
 		LinkedHashSet<ILabel> characterLabels = new LinkedHashSet();
 		for(String characterName : characterNames){
 			ILabel label = categoryNameLabelMap.get(characterName.trim().toLowerCase());
@@ -177,8 +179,8 @@ public class MicroPIEProcessor{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+		long end = System.currentTimeMillis();
+		System.out.println("It cost "+(end-start)+" ms to process the folder");
 	}
 	
 	/**
@@ -200,6 +202,8 @@ public class MicroPIEProcessor{
 			Set<ILabel> categories = categoryPredictor.predict(testSentence);
 			testSentence.setPredictions(prediction);
 			testSentence.setCategories(categories);
+			
+			//System.out.println("testSentence words="+testSentence.words());
 			//testSentence.setPredictions(new HashSet());
 			//System.out.println("prediction="+prediction+" categories="+categories);
 			//System.out.println("prediction="+testSentence.getPredictions()+" categories="+testSentence.getCategories());

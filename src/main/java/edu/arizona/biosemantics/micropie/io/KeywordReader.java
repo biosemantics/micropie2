@@ -173,18 +173,19 @@ public class KeywordReader {
 	
 	public static void main(String[] args){
 		KeywordReader keywordReader = new KeywordReader();
-		String termsFolder = "F:/MicroPIE/micropieInput/termlist";
+		String termsFolder = "F:\\MicroPIE\\microbial ontology\\termlist0904";
 		
-		/*compare two characters
+		/*compare two characters*/
 		File termFolderFile = new File(termsFolder);
 		File[] files = termFolderFile.listFiles();
 		List<Set> allTermSet = new ArrayList();
 		for(File file : files){
 			String name = file.getName();
-			//System.out.println(name);
+			System.out.println(name+"|"+keywordReader.readATermSet(file.getAbsolutePath()).size());
 			allTermSet.add(keywordReader.readATermSet(file.getAbsolutePath()));
 		}
 		
+		/*
 		for(int i=0;i<allTermSet.size();i++){
 			String aname = files[i].getName();
 			
@@ -197,7 +198,7 @@ public class KeywordReader {
 		}
 		*/
 		
-		/* output termlist */
+		/* output termlist
 		String svmLabelAndCategoryMappingFile = "F:/MicroPIE/micropieInput//svmlabelandcategorymapping/categoryMapping_all.txt";
 		CharacterReader characterReader = new CharacterReader();
 		characterReader.setCategoryFile(svmLabelAndCategoryMappingFile);
@@ -218,6 +219,6 @@ public class KeywordReader {
 			}
 			//System.out.println(e.getKey()+"|"+e.getValue().size()+"|"+sb.substring(0,sb.length()-1));
 		}
-		
+		 */
 	}
 }
