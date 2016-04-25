@@ -45,4 +45,4 @@ Other information
 =========
 The trained SVM models are in the folder, models\character_model0.1.0.
 
-The Term Lists of characters are in the folder, F:\MicroPIE\micropieweb\models\CharacterValueExtractors0.1.0.
+The Term Lists of characters are in the folder, models\CharacterValueExtractors0.1.0.
