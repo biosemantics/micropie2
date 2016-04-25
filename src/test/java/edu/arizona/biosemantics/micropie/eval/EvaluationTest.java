@@ -26,10 +26,10 @@ public class EvaluationTest {
 		
 		String categoryMappingFile = "F:/MicroPIE/micropieInput/svmlabelandcategorymapping/categoryMapping_MicroPIE1.5.txt";
 		
-		String charValEvalResultFile = "F:/MicroPIE/evaluation/output/charValEvalResult.csv";
-		String charAllEvalResultFile = "F:/MicroPIE/evaluation/output/charAllEvalResult.csv";
-		String taxonEvalResultFile = "F:/MicroPIE/evaluation/output/taxonEvalResult.csv";
-		String matrixEvalResultFile = "F:/MicroPIE/evaluation/output/matrixEvalResult.csv";
+		String charValEvalResultFile = "F:/MicroPIE/evaluation/output/stu/charValEvalResult.csv";
+		String charAllEvalResultFile = "F:/MicroPIE/evaluation/output/stu/charAllEvalResult.csv";
+		String taxonEvalResultFile = "F:/MicroPIE/evaluation/output/stu/taxonEvalResult.csv";
+		String matrixEvalResultFile = "F:/MicroPIE/evaluation/output/stu/matrixEvalResult.csv";
 		
 		/*
 		String charValEvalResultFile = "F:/MicroPIE/evaluation/output/charValEvalResult_58.csv";
@@ -41,13 +41,15 @@ public class EvaluationTest {
 		String gstBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String gstKeyField = "Taxon";
 		String gstXMLField = "XML file";
-		String gstMatrixFile ="F:/MicroPIE/evaluation/GSM_MicroPIE1.5_010316_111_final.csv";//Gold_matrix_22_1213.csv.csv";
+		//String gstMatrixFile ="F:/MicroPIE/evaluation/GSM_MicroPIE1.5_010316_111_final.csv";//Gold_matrix_22_1213.csv.csv";
+		String gstMatrixFile ="F:\\MicroPIE\\manuscript\\results\\GSM_MicroPIE1.5_after_MS_0208.csv";
 		//gstMatrixFile
 		//Taxon	Family	Genus	Species	Strain	16S rRNA accession #	XMsL file
 		String tgBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String tgKeyField = "Taxon";
 		String tgXMLField = "XML file";
-		String tgMatrixFile ="F:/MicroPIE/ext/final111/PartOne111_simpest_matrix.csv";//final_114_1214.csv
+		//String tgMatrixFile ="F:/MicroPIE/ext/final111/PartOne111_NOSVM_matrix.csv";//final_114_1214.csv
+		String tgMatrixFile ="F:/MicroPIE/ext/studentoutput/Microbial Phenomics Project Data Form experiment output 031715_filename&taxon_stu344.csv";//student output
 		//tgMatrixFile
 		//String tgBasicFields = "XML file|Taxon|Genus|Species|Strain";//STUEXP_040214_28ch.csv
 		//String tgKeyField = "XML file";
