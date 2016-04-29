@@ -9,7 +9,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import usp.eval.MicropieUSPExtractor;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;

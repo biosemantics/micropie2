@@ -32,15 +32,6 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.PennTreebankLanguagePack;
 import edu.stanford.nlp.util.CoreMap;
-import semanticMarkup.know.lib.WordNetPOSKnowledgeBase;
-import semanticMarkup.knowledge.KnowledgeBase;
-import semanticMarkup.ling.learn.Configuration;
-import semanticMarkup.ling.learn.dataholder.DataHolder;
-import semanticMarkup.ling.learn.utility.LearnerUtility;
-import semanticMarkup.ling.Token;
-import semanticMarkup.ling.transform.ITokenizer;
-import semanticMarkup.ling.transform.lib.OpenNLPSentencesTokenizer;
-import semanticMarkup.ling.transform.lib.OpenNLPTokenizer;
 
 
 

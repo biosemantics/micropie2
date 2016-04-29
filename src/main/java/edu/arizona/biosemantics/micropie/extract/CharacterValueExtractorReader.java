@@ -25,8 +25,8 @@ import edu.arizona.biosemantics.micropie.extract.keyword.KeywordBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.OrganicCompoundExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.SalinityPreferenceExtractor;
-import edu.arizona.biosemantics.micropie.extract.usp.USPBasedExtractor;
-import edu.arizona.biosemantics.micropie.extract.usp.USPRequest;
+//import edu.arizona.biosemantics.micropie.extract.usp.USPBasedExtractor;
+//import edu.arizona.biosemantics.micropie.extract.usp.USPRequest;
 import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
@@ -102,25 +102,25 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 	 */
 	private ICharacterValueExtractor createUSPBasedExtractor(File file,
 			String labelName, String characterName){
-		Set<USPRequest> uspRequests = new HashSet<USPRequest>();
-		try{
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					new FileInputStream(file), "UTF8"));
-			String strLine;
-			while ((strLine = br.readLine()) != null) {
-				String[] requestParameters = strLine.split("\t");
-				if(requestParameters.length != 4) 
-					continue;
-				
-				// System.out.println("labelName:" + labelName + "::character::" + character);
-				
-				uspRequests.add(new USPRequest(requestParameters[0], requestParameters[1], requestParameters[2], requestParameters[3]));
-			}
-			br.close();
-		} catch(Exception e){
-			e.printStackTrace();
-		}
-		return new USPBasedExtractor(Label.valueOf(labelName), characterName, uspRequests, uspResultsDirectory, uspString,uspBaseString);
+//		Set<USPRequest> uspRequests = new HashSet<USPRequest>();
+//		try{
+//			BufferedReader br = new BufferedReader(new InputStreamReader(
+//					new FileInputStream(file), "UTF8"));
+//			String strLine;
+//			while ((strLine = br.readLine()) != null) {
+//				String[] requestParameters = strLine.split("\t");
+//				if(requestParameters.length != 4) 
+//					continue;
+//				
+//				// System.out.println("labelName:" + labelName + "::character::" + character);
+//				
+//				uspRequests.add(new USPRequest(requestParameters[0], requestParameters[1], requestParameters[2], requestParameters[3]));
+//			}
+//			br.close();
+//		} catch(Exception e){
+//			e.printStackTrace();
+//		}
+		return null;//new USPBasedExtractor(Label.valueOf(labelName), characterName, uspRequests, uspResultsDirectory, uspString,uspBaseString);
 	}
 
 	

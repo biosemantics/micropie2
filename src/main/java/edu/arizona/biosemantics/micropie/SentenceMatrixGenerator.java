@@ -37,7 +37,6 @@ import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.SentenceMetadata;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
-import edu.arizona.biosemantics.micropie.nlptool.CompoundSentenceSplitRun;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSplitRun;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;

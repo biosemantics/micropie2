@@ -8,10 +8,10 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import semanticMarkup.know.lib.WordNetPOSKnowledgeBase;
-import semanticMarkup.ling.Token;
-import semanticMarkup.ling.learn.utility.LearnerUtility;
-import semanticMarkup.ling.transform.ITokenizer;
+//import semanticMarkup.know.lib.WordNetPOSKnowledgeBase;
+//import semanticMarkup.ling.Token;
+//import semanticMarkup.ling.learn.utility.LearnerUtility;
+//import semanticMarkup.ling.transform.ITokenizer;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -161,6 +161,7 @@ public class SentenceSpliter {
 	}	
 	
 	
+	
 	/**
 	 * CharaParser's segmentSentence
 	 * @param sentences
@@ -169,6 +170,7 @@ public class SentenceSpliter {
 	 * @param wordNetPOSKnowledgeBase
 	 * @return
 	 */
+	/*
 	private List<String> getSentencesDongyeMengSegmentSent(List<String> sentences,
 			ITokenizer sentenceDetector,
 			ITokenizer tokenizer,
@@ -195,7 +197,7 @@ public class SentenceSpliter {
 		}
 		return result;
 	}
-	
+	*/
 
 	/**
 	 * @param text

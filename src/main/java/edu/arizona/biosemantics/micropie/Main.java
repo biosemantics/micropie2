@@ -26,7 +26,6 @@ import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
 import edu.arizona.biosemantics.micropie.model.RawSentence;
-import edu.arizona.biosemantics.micropie.nlptool.CompoundSentenceSplitRun;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
@@ -47,7 +46,7 @@ public class Main {
 	public static void main(String[] args) throws Throwable {
 		Main main = new Main();
 		
-		//args = "-i F:/MicroPIE/datasets/Part_One_111_final -o F:/MicroPIE/ext/craft -m F:/MicroPIE/MicroPIEWEB/models".split("\\s+");
+		args = "-i F:/MicroPIE/datasets/craft -o F:/MicroPIE/ext/craft -m F:/MicroPIE/MicroPIEWEB/models".split("\\s+");
 		//System.out.println(args);
 		main.parse(args);
 		//main.run();

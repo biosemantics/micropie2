@@ -7,7 +7,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import usp.eval.MicropieUSPExtractor;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -55,16 +54,16 @@ public class AntibioticSensitivityExtractor extends AbstractCharacterValueExtrac
 		// input: the original sentence
 		// output: String array?
 		
-		// Example:  ??
-		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor(uspResultsDirectory, uspString);
-		try {
-			output = micropieUSPExtractor.getObjectValue(text, "sensitive", "J", "prep_to", "Dep");
-			//System.out.println("Antibiotic Sensitivity::" + output.toString());
-			charValueList = CharacterValueFactory.createList(this.getLabel(), output);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// Example:  ??
+//		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor(uspResultsDirectory, uspString);
+//		try {
+//			output = micropieUSPExtractor.getObjectValue(text, "sensitive", "J", "prep_to", "Dep");
+//			//System.out.println("Antibiotic Sensitivity::" + output.toString());
+//			charValueList = CharacterValueFactory.createList(this.getLabel(), output);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 		return charValueList;
