@@ -98,7 +98,8 @@ public class Config extends AbstractModule {
 	// running parameter characters to be extracted
 	//private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used|Other genetic characteristics|Other physiological characteristics";
 	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Cell division pattern & reproduction|Salinity preference|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
-
+	private String ouputCharacterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|External features|Internal features|Motility|Pigment compounds|Salinity preference|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Colony shape |Colony margin|Colony texture|Colony color|Fermentation Products|Other Metabolic Product|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
+	
 	private String serializedClassifierModel = "nlpmodel/english.all.3class.distsim.crf.ser.gz";
 	
 
@@ -185,6 +186,16 @@ public class Config extends AbstractModule {
 					return new LinkedHashSet<String>(Arrays.asList(characterListString.split("\\|")));
 				}
 		}).in(Singleton.class);
+		
+		bind(new TypeLiteral<LinkedHashSet<String>>() {}).annotatedWith(Names.named("OutputCharacters"))
+		.toProvider(new Provider<LinkedHashSet<String>>() {
+			@Override
+			public LinkedHashSet<String> get() {
+				return new LinkedHashSet<String>(Arrays.asList(ouputCharacterListString.split("\\|")));
+			}
+		}).in(Singleton.class);
+		
+		
 
 		bind(String.class).annotatedWith(Names.named("resFolder")).toInstance(resFolder);
 		bind(String.class).annotatedWith(Names.named("kbFolder")).toInstance(kbFolder);

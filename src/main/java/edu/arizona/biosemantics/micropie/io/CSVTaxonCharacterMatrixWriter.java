@@ -75,9 +75,10 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 	/**
 	 * output
 	 * @param matrix
+	 * @param outputCharacterLabels 
 	 * @throws Exception
 	 */
-	public void write(NewTaxonCharacterMatrix matrix, Map<ILabel, String> labelNameMap, boolean isFormat) throws Exception {
+	public void write(NewTaxonCharacterMatrix matrix, Map<ILabel, String> labelNameMap, LinkedHashSet<ILabel> outputCharacterLabels, boolean isFormat) throws Exception {
 		log(LogLevel.INFO, "Writing matrix...");
 		LinkedHashSet<ILabel> characterLabels = matrix.getCharacterLabels();
 		LinkedHashSet<String> characterNames = matrix.getCharacterNames();
@@ -96,7 +97,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		
 		int i=5;
 		for(ILabel character : characterLabels) {
-			header[i++] = labelNameMap.get(character);
+			if(outputCharacterLabels==null||outputCharacterLabels.contains(character)) header[i++] = labelNameMap.get(character);
 			//System.out.println(character+" "+header[i-1]);
 		}
 			
@@ -119,10 +120,12 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 			Map<ILabel, List> taxonCharValues = matrix.getAllTaxonCharacterValues(taxonFile);
 			i=5;
 			for(ILabel character : characterLabels) {
-				List values = taxonCharValues.get(character);
-				row[i] = formatter.format(values);
-				if(!isFormat&&row[i]!=null)  row[i] = row[i].replace("|", " ");
-				i++;
+				if(outputCharacterLabels==null||outputCharacterLabels.contains(character)){
+					List values = taxonCharValues.get(character);
+					row[i] = formatter.format(values);
+					if(!isFormat&&row[i]!=null)  row[i] = row[i].replace("|", " ");
+					i++;
+				}
 			}
 			lines.add(row);
 		}
