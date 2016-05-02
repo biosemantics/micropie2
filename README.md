@@ -16,7 +16,7 @@ Mao J, Moore LR, Blank CE, Wu EH-H, Ackerman M, and Cui H.  2016.  Microbial Phe
 
 Moore L, Mao J, Blank C, Ackerman M, Hong Cui.  2016.  Automated Text Mining of Prokaryotic Phenotypic Characters using MicroPIE.  Abstract submitted to the annual American Society for Microbiology general meeting, June 16-20, Boston, MA.
 
-Mao J, Moore L, Blank C, Cui H.  2016.  An Information Extraction Tool for Microbial Characters.  Poster to be presented at the iConference 2016, Philadelphia, PA, March 20-23.
+Mao J, Moore L, Blank C, Cui H.  2016.  An Information Extraction Tool for Microbial Characters.  Poster presented at the iConference 2016, Philadelphia, PA, March 20-23.
 
 Blank CE, Hsin-Hui Wu E, Cui H, Moore LR, Burleigh JG, Liu J, Gasparich GE.  2014.  AVAToL microbial phenomics: an ontology and natural language processing tools to facilitate trait evolution studies for the archaeal domain of life.  Talk given at the Evolution 2014 meeting, Raleigh, NC, June 20-24.
 
