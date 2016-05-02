@@ -82,4 +82,6 @@ public interface ITextNormalizer {
 	 * @return
 	 */
 	public String transformSpchar(String text);
+	
+	public String toDBC(String text);
 }

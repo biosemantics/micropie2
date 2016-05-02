@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import com.google.inject.Inject;
@@ -247,8 +248,9 @@ public class TextNormalizer implements ITextNormalizer {
 	 * @return
 	 */
 	public String transformDash(String sentence){
-		sentence = sentence.replaceAll("–", "-"); // To avoid the error ClausIE spliter: the dash will disappear
-		sentence = sentence.replaceAll("\\s?-\\s?", "-"); // To avoid the error ClausIE spliter: the dash will disappear
+		sentence = sentence.replaceAll("–", "-");
+		// To avoid the error ClausIE spliter: the dash will disappear
+		//sentence = sentence.replaceAll("\\s?-\\s?", "-"); // To avoid the error ClausIE spliter: the dash will disappear
 		return sentence;
 	}
 	
@@ -301,7 +303,44 @@ public class TextNormalizer implements ITextNormalizer {
 				.replace("\\s:", ":")
 				.replace("", " ")
 				.replace("[\\s]*±[\\s]*", "±")
-				.replace("mC", "°C"); // 
+				.replace("mC", "°C")
+				.replace("–", "-")
+				.replace("°C", "°C"); // 
 		return sentence;
+	}
+	
+	/**
+	 * 全角转半角
+	 * 
+	 * @param input String.
+	 * @return 半角字符串
+	 */
+	public String toDBC(String input) {
+		return toDBC(input, null);
+	}
+	
+	/**
+	 * 替换全角为半角
+	 * @param text 文本
+	 * @param notConvertSet 不替换的字符集合
+	 * @return 替换后的字符
+	 */
+	public String toDBC(String text, Set<Character> notConvertSet) {
+		char c[] = text.toCharArray();
+		for (int i = 0; i < c.length; i++) {
+			if(null != notConvertSet && notConvertSet.contains(c[i])) {
+				//跳过不替换的字符
+				continue;
+			}
+			
+			if (c[i] == '\u3000') {
+				c[i] = ' ';
+			} else if (c[i] > '\uFF00' && c[i] < '\uFF5F') {
+				c[i] = (char) (c[i] - 65248);
+			}
+		}
+		String returnString = new String(c);
+		
+		return returnString;
 	}
 }

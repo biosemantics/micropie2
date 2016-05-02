@@ -54,11 +54,14 @@ public class SentenceSpliter {
 		//long b = System.currentTimeMillis();
 		//long b1 = System.currentTimeMillis();
 		//text = textNormalizer.transform(text);
+		System.out.println(text);
 		if(text==null) return null;
+		text = textNormalizer.toDBC(text);
 		text = textNormalizer.transformEntity(text);
 		text = textNormalizer.transformDash(text); // replace \"–\" to \"-\" ..."
 		text = textNormalizer.transformPeriod(text); // · =>.
 		text = textNormalizer.transformSpchar(text); 
+		System.out.println(text);
 		text = replaceCapitalPeriod(text);
 		//long e = System.currentTimeMillis();
 		//System.out.println("long replacements costs "+(e-b)+" ms");

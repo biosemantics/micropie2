@@ -36,7 +36,7 @@ public class XMLTextReader implements ITextReader {
 		SAXBuilder builder = new SAXBuilder();
 		Document xmlDocument;
 		try {
-			xmlDocument = (Document) builder.build(new InputStreamReader(inputStream, "UTF8"));
+			xmlDocument = (Document) builder.build(new InputStreamReader(inputStream, "UTF-8"));
 			rootNode = xmlDocument.getRootElement();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -336,6 +336,15 @@ public class XMLTextReader implements ITextReader {
 		//if("bio:treatment".equals(rootNode.getName())) return true;
 		if(rootNode==null||!"".equals(rootNode.getNamespace().getPrefix())) return true;
 		return false;
+	}
+	
+	
+	public static void main(String[] args){
+		String inputFile = "F:\\MicroPIE\\datasets\\carrine_bacteria\\input1\\inputForm-0.xml";
+		XMLTextReader tReader = new XMLTextReader();
+		tReader.setInputStream(inputFile);
+		String text = tReader.read();
+		System.out.println(text);
 	}
 	
 }
