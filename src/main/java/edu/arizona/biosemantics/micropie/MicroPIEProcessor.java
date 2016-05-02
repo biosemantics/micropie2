@@ -68,7 +68,7 @@ public class MicroPIEProcessor{
 	private boolean parallelProcessing;
 	private int maxThreads;
 	private LinkedHashSet<String> characterNames;
-	
+	private LinkedHashSet<String> outputCharacterNames;
 	//Class Members
 	private ListeningExecutorService executorService;
 	private NewTaxonCharacterMatrixCreator matrixCreator;
@@ -83,6 +83,7 @@ public class MicroPIEProcessor{
 			@Named("parallelProcessing") boolean parallelProcessing,
 			@Named("maxThreads") int maxThreads,
 			@Named("Characters") LinkedHashSet<String> characterNames,
+			@Named("OutputCharacters") LinkedHashSet<String> outputCharacterNames,//OutputCharacters
 			@Named("categoryNameLabelMap") Map<String, ILabel> categoryNameLabelMap,
 			@Named("labelCategoryCodeMap") Map<ILabel, String> categoryLabelCodeMap,
 			@Named("labelCategoryNameMap")  Map<ILabel, String> labelCategoryNameMap,
@@ -103,6 +104,7 @@ public class MicroPIEProcessor{
 		this.parallelProcessing = parallelProcessing;
 		this.maxThreads = maxThreads;
 		this.characterNames = characterNames;
+		this.outputCharacterNames = outputCharacterNames;
 		this.categoryNameLabelMap = categoryNameLabelMap;
 		this.categoryLabelCodeMap = categoryLabelCodeMap;
 		this.labelCategoryNameMap = labelCategoryNameMap;
@@ -138,6 +140,13 @@ public class MicroPIEProcessor{
 			//System.out.println(characterName.trim().toLowerCase()+" "+label);
 		}
 		
+		LinkedHashSet<ILabel> outputCharacterLabels = new LinkedHashSet();
+		for(String characterName : outputCharacterNames){
+			ILabel label = categoryNameLabelMap.get(characterName.trim().toLowerCase());
+			outputCharacterLabels.add(label);
+			//System.out.println(characterName.trim().toLowerCase()+" "+label);
+		}
+		
 		//System.out.println("extractors="+characterLabels.size()+" "+characterNames.size());
 		
 		// <Taxon, <Character, List<Value>>>
@@ -164,12 +173,12 @@ public class MicroPIEProcessor{
 		
 		try {
 			matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
-			matrixWriter.write(matrix, labelCategoryNameMap,false);
+			matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,false);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			try {
 				matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile+new Random().nextInt(), true));
-				matrixWriter.write(matrix, labelCategoryNameMap,false);
+				matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,false);
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}catch (Exception e1) {
@@ -207,10 +216,10 @@ public class MicroPIEProcessor{
 			//System.out.println("prediction="+prediction+" categories="+categories);
 			//System.out.println("prediction="+testSentence.getPredictions()+" categories="+testSentence.getCategories());
 		}
-		/*
+		/* */
 		if(predictionFile!=null){
 			classifiedSentenceWriter.write(sentences);
-		}*/
+		}
 		
 		//System.out.println("extract values and create matrix");
 		matrixCreator.create(matrix,taxonFile,sentences);
