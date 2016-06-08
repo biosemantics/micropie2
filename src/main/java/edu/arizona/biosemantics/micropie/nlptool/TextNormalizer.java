@@ -305,6 +305,7 @@ public class TextNormalizer implements ITextNormalizer {
 				.replace("[\\s]*±[\\s]*", "±")
 				.replace("mC", "°C")
 				.replace("–", "-")
+				.replace("–", "-")
 				.replace("°C", "°C"); // 
 		return sentence;
 	}

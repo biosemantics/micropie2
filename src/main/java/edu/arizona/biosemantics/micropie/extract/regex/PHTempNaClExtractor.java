@@ -235,7 +235,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			return CharacterGroup.NACL;
 		}else  if(curFd.getUnit()!=null&&curFd.getUnit().equals("g")){
 			return CharacterGroup.NACL;
-		}else  if(curFd.getUnit()!=null&&curFd.getUnit().equals("mM")){
+		}else  if(curFd.getUnit()!=null&&curFd.getUnit().equalsIgnoreCase("mM")){
 			return CharacterGroup.NACL;
 		}else  if(curFd.getUnit()!=null&&curFd.getUnit().equals("‰")){
 			return CharacterGroup.NACL;

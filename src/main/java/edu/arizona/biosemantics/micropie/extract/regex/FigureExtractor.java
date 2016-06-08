@@ -132,11 +132,11 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("%")){
 						unit = "%";
 					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("m")||taggedWords.get(i+1).word().equalsIgnoreCase("m.")){
-						unit = "M";
+						unit = "m";
 					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("g")){
 						unit = "g";
 					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("mm")){
-						unit = "mM";
+						unit = "mm";
 					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("‰")){
 						unit = "‰";
 					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("mol")&&taggedWords.get(i+2).word().equalsIgnoreCase("%")){

@@ -326,9 +326,9 @@ public class CellScaleExtractor extends FigureExtractor{
 					}else if(followingWord.equals("mm")){//mm
 						unit = "mm";
 					}else if(followingWord.equalsIgnoreCase("microns")||followingWord.equalsIgnoreCase("mcirons")){//microns
-						unit = "microns";
+						unit = "µm";//unit = "microns";
 					}else if(followingWord.equalsIgnoreCase("micron")){//micron
-						unit = "micron";
+						unit = "µm";//normalize to "µm"
 					}else if(followingWord.equalsIgnoreCase("nm")){//nm
 						unit = "nm";
 					}else if(followingWord.equalsIgnoreCase("µm")){//nm
