@@ -1,6 +1,7 @@
 package edu.arizona.biosemantics.micropie.extract;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -133,6 +134,18 @@ public class PostProcessor {
 			}
 		}
 		*/
+		
+		
+		if(valueList.size()>0){
+			ILabel valueLabel = valueList.get(0).getCharacter();
+			if(Label.c32.equals(valueLabel)||Label.c33.equals(valueLabel)||
+					Label.c53.equals(valueLabel)||Label.c54.equals(valueLabel)||
+					Label.c55.equals(valueLabel)||Label.c56.equals(valueLabel)||
+					Label.c57.equals(valueLabel)||Label.c58.equals(valueLabel)){//alphabetized
+				CharacterValueComparator cvSorter = new CharacterValueComparator();
+				Collections.sort(valueList, cvSorter);
+			}
+		}
 		//System.out.println(" aa label:"+valueList);
 	}
 
