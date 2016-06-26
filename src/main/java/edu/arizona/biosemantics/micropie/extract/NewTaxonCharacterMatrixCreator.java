@@ -421,6 +421,7 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		
 		//postProcessor.dealConflictNum(charaMap);
 		
+		postProcessor.mergeCellDiameterIntoWidth(charaMap);
 	}
 	
 	

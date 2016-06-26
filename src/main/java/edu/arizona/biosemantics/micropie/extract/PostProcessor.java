@@ -527,6 +527,20 @@ public class PostProcessor {
 	}
 	
 	
+	/**
+	 * treat cell diameter as cell width
+	 * Cell Diameter: C3
+	 * Cell Width: C5
+	 * @param charaMap
+	 */
+	public void mergeCellDiameterIntoWidth(Map<ILabel, List<CharacterValue>> charaMap) {
+		List diameterValues = charaMap.get(Label.c3);
+		if(diameterValues!=null&&diameterValues.size()!=0){
+			List widthValues = charaMap.get(Label.c5);
+			if(widthValues==null) widthValues = new ArrayList();
+			widthValues.addAll(diameterValues);
+		}
+	}
 
 	public static void main(String[] args){
 		NumericCharacterValue ncv1 = CharacterValueFactory.createNumericValue(Label.c23, "8", null);
@@ -539,5 +553,8 @@ public class PostProcessor {
 		pp.distinctRestrain(ncvList, Label.c23);
 		System.out.println(ncvList);
 	}
+
+
+	
 
 }
