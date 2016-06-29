@@ -68,6 +68,7 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 		}
 	   // System.out.println("returnCharacterStrings="+returnCharacterStrings);
 		charValueList = CharacterValueFactory.createList(this.getLabel(), returnCharacterStrings);
+		//System.out.println("returnCharacterStrings="+charValueList);
 		return charValueList;
 	}
 
