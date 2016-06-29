@@ -84,7 +84,7 @@ public enum Label implements ILabel {
 	}
 	
 	public boolean equals(ILabel label) {
-		return label.getValue().equals(this.getValue());
+		return this.getValue().equals(label.getValue());
 	}
 	
 	/**

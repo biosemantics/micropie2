@@ -84,7 +84,7 @@ public class PhraseParser {
 		//meaningfulTag.add("VBN");
 		//meaningfulTag.add("IN"); in of at with .....
 		meaningfulTag.add("CD");
-		meaningfulTag.add(":");
+		//meaningfulTag.add(":");
 		meaningfulTag.add("FW");
 		meaningfulTag.add("CC");
 		//meaningfulTag.add("TO");
@@ -541,7 +541,7 @@ public class PhraseParser {
 	 */
 	public List<Phrase> extract(List<TaggedWord> sentTaggedWords){
 		
-		//reverse maximuml match
+		//reverse maximum match
 		List<Phrase> expressions = new ArrayList();
 		Phrase curPhrase = null;
 		List curPhraseTagList = null;

@@ -85,7 +85,7 @@ public class AntibioticPhraseExtractor extends KeywordBasedExtractor{
 		
 		//1, get rid of all the content in the brackets
 		String cleanSent = sentSplitter.removeBrackets(text);
-		
+		cleanSent = sentSplitter.removeSquBrackets(cleanSent);
 		List<TaggedWord> tagList = posTagger.tagString(cleanSent);
 		List<Phrase> phraseList = phraseParser.extract(tagList);
 		
@@ -93,7 +93,8 @@ public class AntibioticPhraseExtractor extends KeywordBasedExtractor{
 		//System.out.println(phraseList);
 		//First, identify the coordinative relationships.
 		List<List<Phrase>> coordTermLists = phraseRelationParser.getCoordList(phraseList,tagList);
-		//System.out.println(coordTermLists);
+		//phraseRelationParser.combineCorrdList(coordTermLists);
+		//System.out.println(coordTermLists.size()+":"+coordTermLists);
 		
 		//Second, find the keyword and one substances that follows it.
 		//Third, determine the phrases that have coordinative relationships with this keyword
@@ -109,13 +110,17 @@ public class AntibioticPhraseExtractor extends KeywordBasedExtractor{
 					//w+2 should be the start index, and the position difference should not be greater than 2
 					//sensitive w to w+1 <w+2 w+3>
 					valueCandList = sortByPosition(coordTermLists, w+2);
-					for(int nindex = w-2;nindex>0&&nindex<w+2;nindex++){
+					//System.out.println("w:"+w);
+					int nindex =0;
+					if(w-2>0) nindex=w-2;
+					for(;nindex>=0&&nindex<w+2;nindex++){//w is the index of the keyword
 						TaggedWord ntw = tagList.get(nindex);
-						if(ntw.word().equals("not")){
-							negation = ntw.word();
+						//System.out.println("negation:"+ntw.word());
+						if(ntw.word().equalsIgnoreCase("not")&&negation==null){
+							negation = "not";
 						}
 					}
-					
+					///System.out.println("final negation:"+negation);
 					//for a single word or phrase
 					if(valueCandList==null){
 						Phrase oneCandPhrase = sortASinglePhrase(phraseList, w+2);

@@ -98,23 +98,24 @@ public class RelationParser {
 		PhraseRelationGraph graph = new PhraseRelationGraph(new PhraseRelationFactory());
 		
 		int phsize = phraseList.size();
-		
+		//System.out.println(twList);
 		//notice: the phrase list is reversed
 		for(int i=0;i<phsize-1;i++){
 			Phrase curPhrase = phraseList.get(i);
 			int curStartIndex = curPhrase.getStartIndex();
 			String curType = curPhrase.getType();
-			//System.out.println(curPhrase+" "+curType);
+			
 			Phrase formerPhrase = phraseList.get(i+1);
 			int formerEndIndex = formerPhrase.getEndIndex();
 			String formerType = formerPhrase.getType();
-			
+			//System.out.println(curPhrase+" "+curType+" "+formerPhrase+" formerStartIndex="+formerPhrase.getStartIndex()+" formerEndIndex="+formerEndIndex+" formerType="+formerType);
 			boolean isCoor = true;
 			if(!curType.equals(formerType)||!"N".equals(curType)){//must be the same type
 				isCoor = false;
 			}else{//must not be interrupted by non conj words as "and","or" and ",".
 				for(int inter = formerEndIndex+1; inter <curStartIndex&&inter<twList.size(); inter++ ){
 					TaggedWord tw = twList.get(inter);
+					//System.out.println("inter word="+tw.word());
 					if(!this.conjSet.contains(tw.word())){
 						isCoor = false;
 						break;
@@ -173,6 +174,60 @@ public class RelationParser {
 		return phraseLists;
 	}
 
+	/**
+	 * if two lists are adjacent to each other, combine them
+	 * the order is reversed
+	 * @param coordList
+	 * @return
+	 */
+	public List<List<Phrase>> combineCorrdList(List<List<Phrase>> coordList){
+		
+		for(int i=0;i<coordList.size()-1;){
+			List<Phrase> corphraseList  = coordList.get(i);
+			Phrase firstPhrase = corphraseList.get(0);
+			int firstPhraseStart = firstPhrase.getStartIndex();
+			int firstPhraseEnd = firstPhrase.getEndIndex();
+			
+			Phrase lastPhrase = corphraseList.get(corphraseList.size()-1);
+			int lastPhraseStart = lastPhrase.getStartIndex();
+			int lastPhraseEnd = lastPhrase.getEndIndex();
+			System.out.println(corphraseList.toString()+" firstPhraseStart="+firstPhraseStart+" firstPhraseEnd="+firstPhraseEnd+" lastPhraseStart="+lastPhraseStart+" lastPhraseEnd="+lastPhraseEnd);
+			for(int j=i+1;j<coordList.size();j++){
+				List<Phrase> ncorphraseList  = coordList.get(j);
+				Phrase nfirstPhrase = ncorphraseList.get(0);
+				int nfirstPhraseStart = nfirstPhrase.getStartIndex();
+				int nfirstPhraseEnd = nfirstPhrase.getEndIndex();
+				
+				Phrase nlastPhrase = ncorphraseList.get(ncorphraseList.size()-1);
+				int nlastPhraseStart = nlastPhrase.getStartIndex();
+				int nlastPhraseEnd = nlastPhrase.getEndIndex();
+				
+				if(lastPhraseEnd==nfirstPhraseStart+1){
+					corphraseList.addAll(ncorphraseList);
+					coordList.remove(ncorphraseList);
+					i++;
+					break;
+				}else if(firstPhraseStart+1==nlastPhraseEnd){
+					ncorphraseList.addAll(corphraseList);
+					coordList.remove(corphraseList);
+					corphraseList = coordList.get(i);
+					firstPhrase = corphraseList.get(0);
+					firstPhraseStart = firstPhrase.getStartIndex();
+					firstPhraseEnd = firstPhrase.getEndIndex();
+					
+					lastPhrase = corphraseList.get(corphraseList.size()-1);
+					lastPhraseStart = lastPhrase.getStartIndex();
+					lastPhraseEnd = lastPhrase.getEndIndex();
+					break;
+				}else{
+					j++;
+				}
+			}
+			i++;
+		}
+		
+		return coordList;
+	}
 
 	/**
 	 * 

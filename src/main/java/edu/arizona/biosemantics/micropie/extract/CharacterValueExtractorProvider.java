@@ -122,7 +122,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		
 		extractors.add(new AntibioticSyntacticExtractor(Label.c32, "Antibiotic sensitivity",sensitivePatterns,sentSplitter,stanfordWrapper));
 		//extractors.add(new AntibioticPhraseExtractor(Label.c32, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, sensitiveTerms));
-		extractors.add(new AntibioticSyntacticExtractor(Label.c33, "Antibiotic sensitivity",resistantPatterns,sentSplitter,stanfordWrapper));
+		extractors.add(new AntibioticSyntacticExtractor(Label.c33, "Antibiotic resistant",resistantPatterns,sentSplitter,stanfordWrapper));
 		//extractors.add(new AntibioticPhraseExtractor(Label.c33, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, resistantTerms));
 
 		

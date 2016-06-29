@@ -141,6 +141,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 		//First, identify the coordinative relationships.
 		List<List<Phrase>> coordTermLists = phraseRelationParser.getCoordList(phraseList,tagList);
 		
+		
 		SemanticGraph semanticGraph = new SemanticGraph(deptTree.typedDependenciesCollapsedTree());
 		//find the dependent relationship for all the verb phrases
 		List<SemanticGraphEdge> edgeList = semanticGraph.edgeListSorted();

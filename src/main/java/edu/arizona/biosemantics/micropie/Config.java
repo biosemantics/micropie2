@@ -141,7 +141,7 @@ public class Config extends AbstractModule {
 	private Set antiSensTerms = null;
 	
 	private String testFolder = "input";
-	private String characterValueExtractorsFolder = "CharacterValueExtractors";
+	private String characterValueExtractorsFolder = "CharacterValueExtractors0.2.0";
 	private String abbreviationFile = "abbrevlist/abbrevlist.csv";
 	private String resFolder = "res";
 	private String kbFolder = "kb";

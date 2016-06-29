@@ -138,12 +138,14 @@ public class PostProcessor {
 		
 		if(valueList.size()>0){
 			ILabel valueLabel = valueList.get(0).getCharacter();
-			if(Label.c32.equals(valueLabel)||Label.c33.equals(valueLabel)||
-					Label.c53.equals(valueLabel)||Label.c54.equals(valueLabel)||
-					Label.c55.equals(valueLabel)||Label.c56.equals(valueLabel)||
-					Label.c57.equals(valueLabel)||Label.c58.equals(valueLabel)){//alphabetized
-				CharacterValueComparator cvSorter = new CharacterValueComparator();
-				Collections.sort(valueList, cvSorter);
+			if(valueLabel!=null){
+				if(Label.c32.equals(valueLabel)||Label.c33.equals(valueLabel)||
+						Label.c53.equals(valueLabel)||Label.c54.equals(valueLabel)||
+						Label.c55.equals(valueLabel)||Label.c56.equals(valueLabel)||
+						Label.c57.equals(valueLabel)||Label.c58.equals(valueLabel)){//alphabetized
+					CharacterValueComparator cvSorter = new CharacterValueComparator();
+					Collections.sort(valueList, cvSorter);
+				}
 			}
 		}
 		//System.out.println(" aa label:"+valueList);

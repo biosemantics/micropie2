@@ -57,6 +57,7 @@ public class AntibioticSyntacticExtractor extends AbstractCharacterValueExtracto
 	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 		//1, get rid of all the content in the brackets
 		String cleanSent = sentSplitter.removeBrackets(sentence.getText());
+		cleanSent = sentSplitter.removeSquBrackets(cleanSent);
 		
 		//2, get the dependency tree
 		Tree parseTree =  stfParser.parseDepTree(cleanSent);
@@ -118,7 +119,7 @@ public class AntibioticSyntacticExtractor extends AbstractCharacterValueExtracto
 								while(ngsimilarWordsIter.hasNext()){
 									SemanticGraphEdge ngsimword = ngsimilarWordsIter.next();
 									//System.out.println(simword.getGovernor()+" "+simword.getDependent()+" "+simword.getRelation());
-									IndexedWord ngsimWependent = simword.getDependent();
+									IndexedWord ngsimWependent = ngsimword.getDependent();//should be ngsimword, not simword.
 									if(ngsimword.getRelation().toString().startsWith("conj")){
 										CharacterValue cv1 = CharacterValueFactory.create(this.getLabel(), this.complementPhrase(ngsimWependent, graph));
 										cv1.setNegation("not");

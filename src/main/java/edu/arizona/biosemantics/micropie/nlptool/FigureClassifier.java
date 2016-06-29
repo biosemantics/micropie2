@@ -25,7 +25,8 @@ public class FigureClassifier {
 		String ahTag = aheadWord.tag();
 		String ahWord = aheadWord.word();
 		//System.out.println(ahTag+" "+ahWord);
-		if(!ahWord.equals(ahWord.toLowerCase())&&ahTag.startsWith("N")){
+		//!ahWord.equals(ahWord.toLowerCase())&&
+		if(ahTag.startsWith("N")){
 			return true;
 		}
 		return false;

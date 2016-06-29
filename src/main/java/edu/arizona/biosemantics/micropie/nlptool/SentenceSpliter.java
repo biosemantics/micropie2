@@ -54,14 +54,14 @@ public class SentenceSpliter {
 		//long b = System.currentTimeMillis();
 		//long b1 = System.currentTimeMillis();
 		//text = textNormalizer.transform(text);
-		System.out.println(text);
+		//System.out.println(text);
 		if(text==null) return null;
 		text = textNormalizer.toDBC(text);
 		text = textNormalizer.transformEntity(text);
 		text = textNormalizer.transformDash(text); // replace \"–\" to \"-\" ..."
 		text = textNormalizer.transformPeriod(text); // · =>.
 		text = textNormalizer.transformSpchar(text); 
-		System.out.println(text);
+		//System.out.println(text);
 		text = replaceCapitalPeriod(text);
 		//long e = System.currentTimeMillis();
 		//System.out.println("long replacements costs "+(e-b)+" ms");
@@ -323,6 +323,7 @@ public class SentenceSpliter {
         }
         sent = sent.replace("(", "");
         sent = sent.replace(")", "");
+        sent = sent.replace(" ,", ",").replace(" :", ":").replace(" .", ".");
 		return sent;
 	}
 	
@@ -376,6 +377,6 @@ public class SentenceSpliter {
 	
 	public static void main(String[] args){
 		SentenceSpliter spliter = new SentenceSpliter(null, null); 
-		System.out.println(spliter.removeBrackets("The following amounts of fermentation acids (in milliequivalents per 100 ml of culture; mean % standard error of the mean) are produced in PYG-serum broth cultures: succinic acid, 2.9 2 0.5; acetic acid, 0.9 -+ 0.2; and lactic acid, 0.2 k 0.1."));
+		System.out.println(spliter.removeBrackets("The following amounts of fermentation acids (in milliequivalents per 100 ml of culture; mean % standard error of the mean), are produced in PYG-serum broth cultures: succinic acid, 2.9 2 0.5; acetic acid, 0.9 -+ 0.2; and lactic acid, 0.2 k 0.1."));
 	}
 }
