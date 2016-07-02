@@ -102,4 +102,29 @@ public class NegationIdentifier implements INegationIdentifier{
 		return false;
 	}
 
+
+	@Override
+	public String detectFirstNegation(List<TaggedWord> taggedwordsList) {
+		for(int checkIndex = 0;checkIndex<taggedwordsList.size();checkIndex++){
+			String word = taggedwordsList.get(checkIndex).word().toLowerCase();
+			
+			if(privativeSet.contains(word)){
+				return word;
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public int detectFirstNegationIndex(List<TaggedWord> taggedwordsList) {
+		for(int checkIndex = 0;checkIndex<taggedwordsList.size();checkIndex++){
+			String word = taggedwordsList.get(checkIndex).word().toLowerCase();
+			
+			if(privativeSet.contains(word)){
+				return checkIndex;
+			}
+		}
+		return -1;
+	}
+
 }

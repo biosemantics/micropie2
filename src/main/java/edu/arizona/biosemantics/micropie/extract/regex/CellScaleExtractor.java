@@ -38,6 +38,7 @@ public class CellScaleExtractor extends FigureExtractor{
 		String text = sentence.getText();
 		text = text.replace("µ.m", "µm");
 		text = text.replace("_m", "µm");
+		text = text.replace("- ", "-");
 		sentence.setText(text);
 		MultiClassifiedSentence sent = (MultiClassifiedSentence)sentence; 
 		this.posSentenceNoSub(sent);//no sub sentences
@@ -204,6 +205,7 @@ public class CellScaleExtractor extends FigureExtractor{
 		//go backwards to find clues
 		for(int t=termEndIndex+1;t<size&&t<=termEndIndex+3;t++){//window is 3
 			String word = taggedWords.get(t).word();
+			word = word.toLowerCase();
 			//System.out.println(word);
 			if(word.startsWith("diamet")) {return CharacterGroup.CDIAM;}
 			else if(word.startsWith("length")||word.startsWith("long")||word.startsWith("short")) {return CharacterGroup.CLENGTH;}
@@ -218,6 +220,7 @@ public class CellScaleExtractor extends FigureExtractor{
 		//go forward
 		for(int t=termBegIndex-1;t>=0&&t>=termEndIndex-5;t--){//window is 5
 			String word = taggedWords.get(t).word();
+			word = word.toLowerCase();
 			//System.out.println(word);
 			if(word.startsWith("diamet")) {return CharacterGroup.CDIAM;}
 			else if(word.startsWith("length")||word.startsWith("long")||word.startsWith("short")) {return CharacterGroup.CLENGTH;}

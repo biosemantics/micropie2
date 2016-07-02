@@ -48,7 +48,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 	}
 	
 	@Override
-	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+	public List getCharacterValue(Sentence sentence) {
 		String text = sentence.getText();
 		text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C").replace("–", "-");
 		//System.out.println(text);
@@ -63,7 +63,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		List<List<TaggedWord>> taggedWordList = sent.getSubSentTaggedWords();
 		//
 		int sentSize = taggedWordList.size();
-		List sentValueList = new LinkedList();
+		List<NumericCharacterValue> sentValueList = new LinkedList();
 		boolean containWV = false;//whether the sentence contains the unit w/v; 
 		for(int sid=0;sid<sentSize;sid++){
 			List<TaggedWord> taggedWords = taggedWordList.get(sid);
@@ -75,10 +75,10 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			List<NumericCharacterValue> valueList = detectFigures(taggedWords);
 			
 			mergeFigureRange(valueList,taggedWords);
-//			for(int i=0;i<valueList.size();i++){
-//				NumericCharacterValue curFd = valueList.get(i);
-//				System.out.println("after merge:"+curFd.getValue()+" "+curFd.getUnit());
-//			}
+			for(int i=0;i<valueList.size();i++){
+				NumericCharacterValue curFd = valueList.get(i);
+				//System.out.println("after merge:"+curFd.getValue()+" "+curFd.getUnit());
+			}
 			
 			//detect neutral pH
 			recNeutralPH(valueList,text,taggedWords);
@@ -151,6 +151,10 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		}
 		
 		if(containWV) updateNaClUnitWV(sentValueList);
+		
+		for(CharacterValue cv:sentValueList){
+			if(cv.getCharacter()==null) cv.setCharacter(Label.USP);
+		}
 		//System.out.println(sentValueList);
 		return sentValueList;
 	}
@@ -229,7 +233,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		//detect by unit
 		if(curFd.getUnit()!=null&&(curFd.getUnit().equals("˚C")||curFd.getUnit().equals("˚"))){
 			return CharacterGroup.TEMP;
-		}else if(curFd.getUnit()!=null&&curFd.getUnit().indexOf("%")>-1){
+		}else if(curFd.getUnit()!=null&&curFd.getUnit().equals("%")){
 			return CharacterGroup.NACL;
 		}else if(curFd.getUnit()!=null&&curFd.getUnit().equals("M")){
 			return CharacterGroup.NACL;
@@ -239,8 +243,9 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			return CharacterGroup.NACL;
 		}else  if(curFd.getUnit()!=null&&curFd.getUnit().equals("‰")){
 			return CharacterGroup.NACL;
+		}else if(curFd.getUnit()!=null&&curFd.getUnit().equals("mol%")){
+			return CharacterGroup.GC;
 		}
-		
 		//detect by context terms
 		//PH
 		int termIndex = curFd.getTermBegIdx();

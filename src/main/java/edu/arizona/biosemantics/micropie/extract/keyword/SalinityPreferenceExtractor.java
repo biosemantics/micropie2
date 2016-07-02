@@ -13,6 +13,7 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
+import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
 import edu.arizona.biosemantics.micropie.model.Phrase;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.nlptool.PhraseParser;
@@ -105,6 +106,8 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 		String sentStr = sent.getText();
 		this.posSentence(sent);//get sub sentences and their tagged words list
 		
+		
+		
 		List<CharacterValue> charValueList =  new ArrayList();
 		if(sent.getSubSentTaggedWords()!=null&&sent.getSubSentTaggedWords().size()>0){
 			List<TaggedWord> taggedwordsList = (List<TaggedWord>)sent.getSubSentTaggedWords().get(0);
@@ -113,6 +116,32 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 			//System.out.println(phList);
 			
 			
+			//in the presence
+			int preIndex = sentStr.indexOf("in the presen");
+			int preWordIndex = wordIndex("presence", taggedwordsList);
+			//System.out.println("infer for present : ");
+			int absIndex = sentStr.indexOf("in the absen");
+			int absWordIndex = wordIndex("absence", taggedwordsList);
+			String negation = negationIdentifier.detectFirstNegation(taggedwordsList);
+			int negationIndex = negationIdentifier.detectFirstNegationIndex(taggedwordsList);
+			
+//			boolean absNegation = false;
+//			boolean preNegation = false;
+//			if(negationIndex>-1){
+//				if(negationIndex-preWordIndex<0&&absWordIndex<0||
+//						negationIndex-preWordIndex<0&&negationIndex-preWordIndex>negationIndex-absWordIndex){//present negation
+//					preNegation = true;
+//				}
+//				if (negationIndex-absWordIndex<0&&preWordIndex<0||
+//						negationIndex-absWordIndex<0&&negationIndex-absWordIndex>negationIndex-preWordIndex){//absent substance
+//					absNegation = true;
+//				}
+//			}
+			
+			//System.out.println("sentence="+sentence.getText());
+			//System.out.println("negation="+negation+" negationIndex="+negationIndex);
+			//System.out.println("preIndex="+preIndex+" preWordIndex="+preWordIndex);
+			//System.out.println("absIndex="+absIndex+" absWordIndex="+absWordIndex);
 			for(int cur=0;cur<phList.size();cur++){
 				Phrase phrase = phList.get(cur);
 				String text = phrase.getText();
@@ -151,33 +180,68 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 						//System.out.println("found substances:" +substance+" "+phrase.getStart());
 						//whether need require
 						//Situation 2a: Explicitly express the requirement. 
-						boolean foundNew = detectExplicitExpression(taggedwordsList, phrase, charValueList);
-						if(foundNew){
-							break;
-						}else{
-							boolean absentFoundInferred =detectAbsentExpression(sentStr, taggedwordsList, phrase, charValueList);
-							if(absentFoundInferred){//either
-								break;
+						int subIndex = phrase.getStartIndex();
+						if(preWordIndex>-1&&preWordIndex-subIndex<0&&absWordIndex<0||
+								preWordIndex>-1&&preWordIndex-subIndex<0&&Math.abs(preWordIndex-subIndex)<Math.abs(absWordIndex-subIndex)||
+								preWordIndex<subIndex&&subIndex<absWordIndex){//present substance
+							//System.out.println(negation+" present "+phrase.getText());
+							phrase.setNegation(negation);
+							
+							phrase.convertValue(this.getLabel());
+							phrase.getCharValue().setValue("requires "+phrase.getCharValue().getValue());
+							CharacterValue charVal = phrase.getCharValue();
+							//System.out.println("infer for present : ["+charVal+"]");
+							charValueList.add(charVal);
+						}else if (absWordIndex>-1&&absWordIndex-subIndex<0&&preWordIndex<0||
+								absWordIndex>-1&&absWordIndex-subIndex<0&&Math.abs(absWordIndex-subIndex)<Math.abs(preWordIndex-subIndex)){//absent substance
+							//System.out.println(negation+" absent "+phrase.getText());
+							
+							CharacterValue charVal = phrase.getCharValue();
+							phrase.convertValue(this.getLabel());
+							if(negation==null){
+								charVal.setNegation("not");
+								//System.out.println("infer for absent : not ["+phrase.getCharValue().getValue()+"]");
+								charVal.setValue("requires "+phrase.getCharValue().getValue());
+							}else{
+								charVal.setNegation(null);
+								charVal.setValue("requires "+phrase.getCharValue().getValue());
 							}
-							boolean presentFoundInferred =detectPresentExpression(sentStr, taggedwordsList, phrase, charValueList);
-							if(presentFoundInferred){//either
-								break;
-							}else{//default as requirement
-								//find the nearest verb
-								//defaultExpression(taggedwordsList, phrase, charValueList);
-							}
+							
+							//System.out.println("infer for absent : ["+charVal+"]");
+							charValueList.add(charVal);
 						}
 					
-						break;//if has found the value, do not find in this phrase anymore
+						//break;//if has found the value, do not find in this phrase anymore
 				}//:~
 			}//:~
 		}//all phrase
 		}
 		
+		
+		boolean containBoth = detectBoth(charValueList);
+		if(containBoth){
+			for(int i=0;i<charValueList.size();){
+				CharacterValue cv = charValueList.get(i);
+				if(cv.getNegation()!=null) charValueList.remove(cv);
+				else i++;
+			}
+		}
 		return charValueList;
 	}
 	
 	
+	private boolean detectBoth(List<CharacterValue> charValueList) {
+		boolean yes = false;
+		boolean not = false;
+		for(CharacterValue cv : charValueList){
+			if(cv.getValue().startsWith("requ")&&cv.getNegation()==null) yes = true;
+		}
+		for(CharacterValue cv : charValueList){
+			if(cv.getValue().startsWith("requ")&&cv.getNegation()!=null) not = true;
+		}
+		return yes&&not;
+	}
+
 	/**
 	 * 
 	 * @param taggedwordsList
@@ -197,6 +261,27 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 		//System.out.println("infer for present : ["+charVal+"]");
 		charValueList.add(charVal);
 	}
+	
+	
+	/**
+	 * find the index of the word in the word list.
+	 * @return
+	 */
+	public int wordIndex(String word, List<TaggedWord> taggedwordsList) {
+		
+		int wordIndex = -1;
+		for(int i=0;i<taggedwordsList.size();i++){
+			TaggedWord tword = taggedwordsList.get(i);
+			if(tword.word().equals(word)){
+				wordIndex = i;
+			}
+		}
+		
+		//int stringIndex = sentStr.indexOf(word);
+		return wordIndex;//new WordIndexes(stringIndex, wordIndex);
+	}
+	
+
 	
 	
 	/**
@@ -392,5 +477,101 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 		List<TaggedWord> taggedWords  = posTagger.tagString(content);
 		taggerwordsList.add(taggedWords);
 	}
+	
+	/**
+	 * detect single figure and figure ranges
+	 * 
+	 * @param taggedWords
+	 * @return
+	
+	public List<NumericCharacterValue> detectFigures(List<TaggedWord> taggedWords) {
+		
+		List<NumericCharacterValue> features = new ArrayList();
+		for(int i = 0;i<taggedWords.size();){
+			int termId= 0;
+			TaggedWord word = (TaggedWord) taggedWords.get(i);
+			String figure = null;
+			
+			if(word.tag().equals("CD")||(word.tag().equals("JJ")&&containNumber(word.word()))||(defIsNumber(word.word()))){
+				//if(word.tag().equals("CD")||defNumber(word.word())){
+				termId = i;
+				NumericCharacterValue fd = new NumericCharacterValue(this.getLabel());
+				String unit = "";
+				
+				figure = word.word();
+				if(!containNumber(figure)){i++;continue;}
+				
+				//System.out.println("it is a figure:"+figure+" "+unit);
+				
+				
+				//if(i+1<taggedWords.size()&&(taggedWords.get(i+1).tag().equals("CD")&&(containNumber(taggedWords.get(i+1).word())||"<".equalsIgnoreCase(taggedWords.get(i+1).word()))||defIsNumber(taggedWords.get(i+1).word()))){
+				while(i+1<taggedWords.size()&&(taggedWords.get(i+1).tag().equals("CD")&&(containNumber(taggedWords.get(i+1).word())||containNumSign(taggedWords.get(i+1).word()))||defIsNumber(taggedWords.get(i+1).word()))){
+					figure+=taggedWords.get(i+1).word();
+					i++;
+				}
+				if(i+1<taggedWords.size()){
+					if((taggedWords.get(i+1).word().equals("°")&&taggedWords.get(i+2).word().equals("C"))
+							||taggedWords.get(i+1).word().equals("degree_celsius_1")
+							||taggedWords.get(i+1).word().equals("degree_celsius_7")){
+						unit = "˚C";
+					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("˚C")){
+						unit = "˚C";
+					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("˚")||taggedWords.get(i+1).word().equalsIgnoreCase("°")){
+						unit = "˚C";
+					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("%")){
+						unit = "%";
+					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("m")||taggedWords.get(i+1).word().equalsIgnoreCase("m.")){
+						unit = "m";
+					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("g")){
+						unit = "g";
+					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("mm")){
+						unit = "mm";
+					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("‰")){
+						unit = "‰";
+					}else if(taggedWords.get(i+1).word().equalsIgnoreCase("mol")&&taggedWords.get(i+2).word().equalsIgnoreCase("%")){
+						unit = "mol%";
+					}else if(taggedWords.get(i+1).word().startsWith("day")) {
+						unit = "days";
+					}
+				}
+				if(!defIsNumber(figure)){
+					System.err.println("it is not a figure:"+figure+" "+unit);
+				}else{
+					if(termId-1>=0&&(taggedWords.get(termId-1).word().equals("-")||taggedWords.get(termId-1).word().equals("−")
+							||taggedWords.get(termId-1).word().equals("+")||taggedWords.get(termId-1).word().equals("<")||taggedWords.get(termId-1).word().equals(">"))){
+						figure = taggedWords.get(termId-1).word()+figure;
+						termId = termId-1;
+					}
+					
+					fd.setValue(figure);
+					fd.setTermBegIdx(termId);
+					fd.setTermEndIdx(i);
+					fd.setUnit(unit);
+					features.add(fd);
+				}
+				
+			}
+			
+			i++;
+		}//all words traversed
+		return features;
+	}
+ */
+}
 
+class WordIndexes{
+	
+	private int stringIndex;
+	private int wordIndex;
+	//private String substance;
+	//private String status;
+	
+	public WordIndexes(int stringIndex, int wordIndex){
+		this.stringIndex = stringIndex;
+		this.wordIndex = wordIndex;
+		
+		//, String substance, String status
+		//this.substance = substance;
+		//this.status = status;
+	}
 }

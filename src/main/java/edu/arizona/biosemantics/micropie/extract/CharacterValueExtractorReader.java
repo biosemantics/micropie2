@@ -148,14 +148,14 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 				//jin 09-24-2015
 				if(strLine.indexOf("|")>-1){
 					String[] fields = strLine.split("\\|");
-					String keyword = fields[0].trim().replace("-", " ").replace("_", " ");
+					String keyword = fields[0].trim();//.replace("-", " ").replace("_", " ");
 					keywords.add(keyword);
 					subKeywords.put(keyword,new ArrayList());
 					for(int i=1;i<fields.length;i++){
-						subKeywords.get(keyword).add(fields[i].trim().replace("-", " ").replace("_", " "));
+						subKeywords.get(keyword).add(fields[i].trim());//.replace("-", " ").replace("_", " "));
 					}
 				}else{
-					keywords.add(strLine.trim().replace("-", " ").replace("_", " "));
+					keywords.add(strLine.trim());//.replace("-", " ").replace("_", " "));
 				}
 				
 			}

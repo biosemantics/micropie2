@@ -110,7 +110,7 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 					String text = pharse.getText().toLowerCase();
 					//System.out.println(text);
 					if(text==null||"".equals(text)) continue; 
-					text = text.replace("-", " ").replace("_", " ");
+					//text = text.replace("-", " ").replace("_", " ");
 					//detect whether contain keywords
 					for (String keywordString : keywords) {
 						
@@ -122,7 +122,7 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 							if("W".equals(this.matchMode)) charVal.setValue(keywordString);
 							charValueList.add(charVal);
 							//System.out.println("OUTER PHRASE HIT VALUE: ["+charVal+"]");
-							//returnCharacterStrings.add(text);
+							////returnCharacterStrings.add(text);
 							break;//if has found the value;
 						}
 						List<String> subKeywordList = subKeywords.get(keywordString);

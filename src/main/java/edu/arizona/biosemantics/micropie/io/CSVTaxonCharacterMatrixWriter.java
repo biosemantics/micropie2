@@ -12,6 +12,7 @@ import java.util.Set;
 import au.com.bytecode.opencsv.CSVWriter;
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
+import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.NumericValueFormatter;
 import edu.arizona.biosemantics.micropie.extract.StringValueFormatter;
 import edu.arizona.biosemantics.micropie.extract.ValueFormatterUtil;
@@ -88,7 +89,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		List<String[]> lines = new LinkedList<String[]>();
 		
 		//create header
-		String[] header = new String[characterLabels.size() + 5];
+		String[] header = new String[characterLabels.size() + 6];
 		header[0] = "Taxon";
 		header[1] = "XML file";
 		header[2] = "Genus";
@@ -100,7 +101,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 			if(outputCharacterLabels==null||outputCharacterLabels.contains(character)) header[i++] = labelNameMap.get(character);
 			//System.out.println(character+" "+header[i-1]);
 		}
-			
+		header[i++] = "Character not determined";
 		lines.add(header);
 
 		
@@ -127,6 +128,11 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 					i++;
 				}
 			}
+			
+			//character not identified
+			List values = taxonCharValues.get(Label.USP);
+			row[i] = formatter.format(values);
+			if(!isFormat&&row[i]!=null)  row[i] = row[i].replace("|", " ");
 			lines.add(row);
 		}
 		
