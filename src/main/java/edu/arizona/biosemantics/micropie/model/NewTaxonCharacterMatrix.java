@@ -92,13 +92,15 @@ public class NewTaxonCharacterMatrix<ILabel> extends HashMap<TaxonTextFile, Map<
 			String taxonName = taxonFile.getTaxon();
 			taxonName = taxonName.trim();
 			String[] fields = taxonName.split("[\\s]+");
-			if(fields.length>1||taxonName.endsWith("gen.")){//it's a genus
+			if(fields.length==1||taxonName.endsWith("gen.")){//it's a genus
 				genusTaxonMap.put(fields[0], taxonFile);
 			}else{
 				speciesTaxonMap.put(taxonFile.getTaxon(), taxonFile);
 			}
 		}
 		
+		System.out.println("genus size="+genusTaxonMap.size());
+		System.out.println("species size="+speciesTaxonMap.size());
 		
 		//when species has no value, propagate values from genus to species
 		Iterator speciesIter = speciesTaxonMap.keySet().iterator();

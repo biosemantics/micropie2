@@ -172,6 +172,7 @@ public class MicroPIEProcessor{
 		
 		try {
 			matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
+			matrix.propagateGenus();
 			matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,false);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

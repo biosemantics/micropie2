@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.arizona.biosemantics.micropie</groupId>
 	<artifactId>micropie</artifactId>
-	<version>0.0.9-SNAPSHOT</version>
+	<version>0.1.1-SNAPSHOT</version>
 	
 
 	<properties>

@@ -86,7 +86,7 @@ public class XMLNewSchemaTextReader extends XMLTextReader {
 		Element source = meta.getChild("source");
 		// Element title = source.getChild("title");
 		String titleText = source.getChildText("title");
-		
+		//returnText += titleText;
 		/*
 		if ( titleText != null && ! titleText.equals("") ) {
 			

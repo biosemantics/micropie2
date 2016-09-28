@@ -86,7 +86,7 @@ public class XMLTextReader implements ITextReader {
 		Element source = meta.getChild("source");
 		// Element title = source.getChild("title");
 		String titleText = source.getChildText("title");
-		
+		//returnText+=titleText;
 		/*
 		if ( titleText != null && ! titleText.equals("") ) {
 			
@@ -345,6 +345,11 @@ public class XMLTextReader implements ITextReader {
 		tReader.setInputStream(inputFile);
 		String text = tReader.read();
 		System.out.println(text);
+	}
+
+	public String readSimple() {
+		Element desc = rootNode.getChild("description");
+		 return desc==null?"":desc.getText();
 	}
 	
 }
