@@ -47,8 +47,8 @@ public class Main {
 	public static void main(String[] args) throws Throwable {
 		Main main = new Main();
 		
-		//args = "-i F:/MicroPIE/datasets/carrine_bacteria/input1 -o F:/MicroPIE/ext/cbdemo -m F:/MicroPIE/MicroPIEWEB/models".split("\\s+");
-		//System.out.println(args);
+		//args = "-i F:/MicroPIE/datasets/craft -o F:/MicroPIE/ext/craft -m F:/MicroPIE/MicroPIEWEB/models".split("\\s+");
+		System.out.println(args);
 		main.parse(args);
 		//main.run();
 	}

@@ -30,6 +30,7 @@ import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SubSentence;
 import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
+import edu.arizona.biosemantics.micropie.nlptool.StringUtil;
 import edu.stanford.nlp.ling.TaggedWord;
 
 
@@ -202,10 +203,15 @@ public class GcFigureExtractor extends FigureExtractor {
 	/**
 	 * if more than 1 values:
 	 * 	1. check the unit
+	 *  2. check the confidence
 	 * @param valueList
 	 * @param text
 	 */
 	public void filterValues(List<NumericCharacterValue> valueList, String text) {
+		System.out.println("is confident:"+this.confident(text));
+		if(!this.confident(text)){
+			valueList.clear();
+		}
 		int valueSize = valueList.size();
 		if(valueSize==1){
 			if(text.contains(" mol")||text.contains("%")){
@@ -229,6 +235,19 @@ public class GcFigureExtractor extends FigureExtractor {
 		}
 	}
 	
+	
+	public boolean confident(String text){
+		String[] terms = text.split("[\\s\\+\\-\\.]+");
+		int confidence = 0;
+		if(StringUtil.contains(terms,"G")) confidence++;
+		if(StringUtil.contains(terms,"C")) confidence++;
+		if(StringUtil.contains(terms,"mol%")) confidence++;
+		if(StringUtil.contains(terms,"mol")) confidence++;
+		//guanine + cytosine
+		if(StringUtil.contains(terms,"guanine")) confidence++;
+		if(StringUtil.contains(terms,"cytosine")) confidence++;
+		return confidence>0;
+	}
 	
 
 	public Set<CharacterValue> getCharacterValueElvis(String text) {

@@ -85,8 +85,13 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		LinkedHashSet<String> characterNames = matrix.getCharacterNames();
 		
 		//System.out.println("characterLabels="+characterLabels.size()+" "+characterNames.size());
-		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));		
+		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")));	
+		
+		outputStream.write(239);
+		outputStream.write(187);
+		outputStream.write(191);
 		List<String[]> lines = new LinkedList<String[]>();
+		
 		
 		//create header
 		String[] header = new String[characterLabels.size() + 6];
