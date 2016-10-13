@@ -14,6 +14,7 @@ import edu.arizona.biosemantics.micropie.model.CharacterGroup;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.CharacterValueFactory;
 import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
+import edu.arizona.biosemantics.micropie.model.ValueGroup;
 import edu.arizona.biosemantics.micropie.nlptool.NegationIdentifier;
 
 
@@ -134,7 +135,6 @@ public class PostProcessor {
 			}
 		}
 		*/
-		
 		
 		if(valueList.size()>0){
 			ILabel valueLabel = valueList.get(0).getCharacter();
@@ -380,13 +380,14 @@ public class PostProcessor {
 	 * @param noLabelValueList
 	 */
 	public void dealUSP(List<CharacterValue> noLabelValueList, Map<ILabel, List<CharacterValue>> chaMap) {
-		
+		///System.out.println("noLabelValueList.size()="+noLabelValueList.size());
 		List<NumericCharacterValue> tempUspList = new ArrayList();
 		List<NumericCharacterValue> phUspList = new ArrayList();
 		List<NumericCharacterValue> naclUspList = new ArrayList();
 		for(int i=0;i<noLabelValueList.size();i++){
 			NumericCharacterValue ncv = (NumericCharacterValue) noLabelValueList.get(i);
 			if(ncv!=null&&ncv.getCharacterGroup()!=null){
+				//System.out.println("ncv.getCharacterGroup()="+ncv.getCharacterGroup());
 				switch(ncv.getCharacterGroup()){
 					case TEMP: tempUspList.add(ncv);continue;
 					case PH: phUspList.add(ncv);continue;
@@ -402,7 +403,12 @@ public class PostProcessor {
 				if(minCV!=null){
 					tempUspList.remove(minCV);
 					minCV.setCharacter(Label.c24);//temp
-					chaMap.get(Label.c24).add(minCV);
+					if(chaMap.get(Label.c24)!=null){
+						chaMap.get(Label.c24).add(minCV);
+					}else{
+						chaMap.put(Label.c24, new ArrayList());
+						chaMap.get(Label.c24).add(minCV);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -415,7 +421,13 @@ public class PostProcessor {
 				if(maxCV!=null){
 					tempUspList.remove(maxCV);
 					maxCV.setCharacter(Label.c26);//temp
-					chaMap.get(Label.c26).add(maxCV);
+					//chaMap.get(Label.c26).add(maxCV);
+					if(chaMap.get(Label.c26)!=null){
+						chaMap.get(Label.c26).add(maxCV);
+					}else{
+						chaMap.put(Label.c26, new ArrayList());
+						chaMap.get(Label.c26).add(maxCV);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -432,7 +444,13 @@ public class PostProcessor {
 				if(minCV!=null){
 					phUspList.remove(minCV);
 					minCV.setCharacter(Label.c18);//ph min
-					chaMap.get(Label.c18).add(minCV);
+					//chaMap.get(Label.c18).add(minCV);
+					if(chaMap.get(Label.c18)!=null){
+						chaMap.get(Label.c18).add(minCV);
+					}else{
+						chaMap.put(Label.c18, new ArrayList());
+						chaMap.get(Label.c18).add(minCV);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -445,7 +463,13 @@ public class PostProcessor {
 				if(maxCV!=null){
 					phUspList.remove(maxCV);
 					maxCV.setCharacter(Label.c20);//ph max
-					chaMap.get(Label.c20).add(maxCV);
+					//chaMap.get(Label.c20).add(maxCV);
+					if(chaMap.get(Label.c20)!=null){
+						chaMap.get(Label.c20).add(maxCV);
+					}else{
+						chaMap.put(Label.c20, new ArrayList());
+						chaMap.get(Label.c20).add(maxCV);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -460,7 +484,13 @@ public class PostProcessor {
 				if(minCV!=null){
 					naclUspList.remove(minCV);
 					minCV.setCharacter(Label.c21);//ph min
-					chaMap.get(Label.c21).add(minCV);
+					//chaMap.get(Label.c21).add(minCV);
+					if(chaMap.get(Label.c21)!=null){
+						chaMap.get(Label.c21).add(minCV);
+					}else{
+						chaMap.put(Label.c21, new ArrayList());
+						chaMap.get(Label.c21).add(minCV);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -473,7 +503,13 @@ public class PostProcessor {
 				if(maxCV!=null){
 					naclUspList.remove(maxCV);
 					maxCV.setCharacter(Label.c23);//ph max
-					chaMap.get(Label.c23).add(maxCV);
+					//chaMap.get(Label.c23).add(maxCV);
+					if(chaMap.get(Label.c23)!=null){
+						chaMap.get(Label.c23).add(maxCV);
+					}else{
+						chaMap.put(Label.c23, new ArrayList());
+						chaMap.get(Label.c23).add(maxCV);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -541,6 +577,23 @@ public class PostProcessor {
 			List widthValues = charaMap.get(Label.c5);
 			if(widthValues==null) widthValues = new ArrayList();
 			widthValues.addAll(diameterValues);
+		}
+	}
+	
+	/**
+	 * only used for PH,TEMP,NACL
+	 * @param valueList
+	 * @param unlabelList
+	 */
+	public void seperateLabelAndUnlabelList(List<CharacterValue> valueList, List<CharacterValue> unlabelList){
+		for(int i=0;i<valueList.size();){
+			//System.out.println(valueList.get(i).getCharacter());
+			if(valueList.get(i).getCharacter()==Label.USP){
+				unlabelList.add(valueList.get(i));
+				valueList.remove(i);
+			}else{
+				i++;
+			}
 		}
 	}
 

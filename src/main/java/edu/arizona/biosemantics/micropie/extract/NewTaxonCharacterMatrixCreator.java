@@ -96,10 +96,6 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		metobolismLabels.add(Label.c58);
 	}
 	
-	
-	
-	
-	
 	private ICharacterValueExtractorProvider contentExtractorProvider;// extractors
 
 	private Map<TaxonTextFile, List<MultiClassifiedSentence>> taxonSentencesMap;
@@ -117,6 +113,9 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 	private PosTagger posTagger;
 	private SentenceSpliter sentSplitter;
 	private PostProcessor postProcessor = new PostProcessor(); 
+	
+	//whether make assumptions for USP values of pH, Temperature and NaCL values
+	private boolean judgeUSPForPTN = false;
 	
 	@Inject
 	public NewTaxonCharacterMatrixCreator(
@@ -151,6 +150,16 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		this.taxonSentencesMap = taxonSentencesMap;
 	}
 
+	
+	/**
+	 * whether make assumptions for USP values of pH, Temperature and NaCL values
+	 * @param judgeUSPForPTN
+	 */
+	public void setJudgeUSPForPTN(boolean judgeUSPForPTN) {
+		this.judgeUSPForPTN = judgeUSPForPTN;
+	}
+
+	
 	@Override
 	public Matrix create() {
 
@@ -185,6 +194,7 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		//System.out.println("after post process:"+charValues);
 		
 		Map<ILabel, List<CharacterValue>> charMap = extResults.getAllTaxonCharacterValues(taxonFile);
+		if(judgeUSPForPTN) postProcessor.dealUSP(noLabelValueList, charMap);
 		postProcessor.postProcessor(charValues,noLabelValueList,charMap);
 		//if(label!=null){//not a mixed value extractor
 		//	charMap.get(label).addAll(charValues);
@@ -314,8 +324,13 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 					continue;
 				}else if(extractor instanceof PHTempNaClExtractor && !hasPTN){
 					charValues = extractor.getCharacterValue(classifiedSentence);
+					
+					//TODO:check whether multiple labels are in this list
+					if(judgeUSPForPTN) postProcessor.seperateLabelAndUnlabelList(charValues,noLabelValueList);
 				}else if(extractor instanceof PHTempNaClExtractor && hasPTN){
 					charValues = extractor.getCharacterValue(classifiedSentence);
+					//TODO:check whether multiple labels are in this list
+					if(judgeUSPForPTN) postProcessor.seperateLabelAndUnlabelList(charValues,noLabelValueList);
 				}else{
 					charValues = extractor.getCharacterValue(classifiedSentence);
 				}
