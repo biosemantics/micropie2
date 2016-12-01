@@ -16,7 +16,7 @@ Publications and Presentations
 =================
 Mao J, Moore LR, Blank CE, Wu EH-H, Ackerman M, Ranade S and Cui H.  2016.  Microbial Phenomics Information Extractor (MicroPIE): A Natural Language Processing Tool for the Automated Acquisition of Prokaryotic Phenotypic Characters from Text Sources. BMC Bioinformatics, in review.
 
-Moore L, Mao J, Blank C, Ackerman M, Hong Cui.  2016.  Automated Text Mining of Prokaryotic Phenotypic Characters using MicroPIE.  Abstract submitted to the annual American Society for Microbiology general meeting, June 16-20, Boston, MA.
+Moore L, Mao J, Blank C, Ackerman M, Hong Cui.  2016.  Automated Text Mining of Prokaryotic Phenotypic Characters using MicroPIE.  The annual American Society for Microbiology general meeting, June 16-20, Boston, MA.
 
 Mao J, Moore L, Blank C, Cui H.  2016.  An Information Extraction Tool for Microbial Characters.  Poster presented at the iConference 2016, Philadelphia, PA, March 20-23.
 
