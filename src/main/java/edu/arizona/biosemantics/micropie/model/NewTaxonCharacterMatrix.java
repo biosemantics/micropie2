@@ -99,8 +99,8 @@ public class NewTaxonCharacterMatrix<ILabel> extends HashMap<TaxonTextFile, Map<
 			}
 		}
 		
-		System.out.println("genus size="+genusTaxonMap.size());
-		System.out.println("species size="+speciesTaxonMap.size());
+		//System.out.println("genus size="+genusTaxonMap.size());
+		//System.out.println("species size="+speciesTaxonMap.size());
 		
 		//when species has no value, propagate values from genus to species
 		Iterator speciesIter = speciesTaxonMap.keySet().iterator();
@@ -122,7 +122,7 @@ public class NewTaxonCharacterMatrix<ILabel> extends HashMap<TaxonTextFile, Map<
 					List<CharacterValue> speciesValue = speciesValues.get(label);
 					if(speciesValue==null||speciesValue.size()==0){
 						speciesValues.put(label, genusValue);
-						System.out.println("propagate Genus to Species:"+genusName+" ===> "+speciesName+"  for "+label);
+						//System.out.println("propagate Genus to Species:"+genusName+" ===> "+speciesName+"  for "+label);
 					}
 				}
 			}

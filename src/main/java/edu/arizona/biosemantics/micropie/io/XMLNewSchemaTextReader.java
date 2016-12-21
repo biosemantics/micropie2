@@ -12,7 +12,9 @@ import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
+import org.jdom2.filter.Filters;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.xpath.XPathFactory;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
@@ -25,8 +27,11 @@ import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
  */
 public class XMLNewSchemaTextReader extends XMLTextReader {
 
+	private static final String jdomDocument = null;
 	private Element rootNode;
 	private InputStream inputStream;
+	private Document xmlDocument;
+	private XPathFactory xFactory = XPathFactory.instance();
 	/**
 	 * @param inputStream to read from
 	 * @throws IOException 
@@ -34,7 +39,6 @@ public class XMLNewSchemaTextReader extends XMLTextReader {
 	 */
 	public void setInputStream(InputStream inputStream) {		
 		SAXBuilder builder = new SAXBuilder();
-		Document xmlDocument;
 		try {
 			xmlDocument = (Document) builder.build(new InputStreamReader(inputStream, "UTF8"));
 			rootNode = xmlDocument.getRootElement();
@@ -137,6 +141,10 @@ public class XMLNewSchemaTextReader extends XMLTextReader {
 		String the16SrRNAAccessionNumber = this.get16SrRNAAccessionNumber();
 		taxonFile.setThe16SrRNAAccessionNumber(the16SrRNAAccessionNumber);
 		
+		
+		taxonFile.setAuthor(this.getAuthor());
+		taxonFile.setYear(this.getYear());
+		taxonFile.setTitle(this.getTitle());
 		return taxonFile;
 	}
 	
@@ -178,6 +186,26 @@ public class XMLNewSchemaTextReader extends XMLTextReader {
 //		throw new Exception("Could not find a taxon name");
 	}
 
+	
+	
+	public String getAuthor(){
+		Element firstTitle = xFactory.compile("//author", Filters.element()).evaluateFirst(xmlDocument);
+	  
+		return firstTitle.getValue();
+	}
+	
+	public String getYear(){
+		Element firstTitle = xFactory.compile("//source/date", Filters.element()).evaluateFirst(xmlDocument);
+	  
+		return firstTitle.getValue();
+	}
+	
+	public String getTitle(){
+		Element firstTitle = xFactory.compile("//source/title", Filters.element()).evaluateFirst(xmlDocument);
+	  
+		return firstTitle.getValue();
+	}
+	
 	
 	// add on March 07, 2015 Saturday
 	// 16S rRNA accession #

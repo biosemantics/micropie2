@@ -44,11 +44,22 @@ public class Main {
 	
 	protected Config config;
 	
+	
+	/**
+	 * -i input folder
+	 * -o output folder for CSV file or markup XML files
+	 * -m various models used by MicrioPIE
+	 * -f output format i.e., 0 default CSV; mc, MatrixConverter format; xml, markup XML files
+	 * -vi  value infer; true or false. Only apply to CSV output
+	 * 
+	 * @param args
+	 * @throws Throwable
+	 */
 	public static void main(String[] args) throws Throwable {
 		Main main = new Main();
 		
-		//args = "-i F:/MicroPIE/datasets/craft -o F:/MicroPIE/ext/craft -m F:/MicroPIE/MicroPIEWEB/models".split("\\s+");
-		System.out.println(args);
+		//args = "-i F:\\MicroPIE\\micropieweb\\danveno_at_qq_dot_com_2016_11_03_12_15_24_059\\input -o F:/MicroPIE/ext/craft -m F:/MicroPIE/MicroPIEWEB/models -f xml -vi true".split("\\s+");
+		//System.out.println(args);
 		main.parse(args);
 		//main.run();
 	}
@@ -62,12 +73,22 @@ public class Main {
 		options.addOption("i", "input", true, "input directory to use");
 		options.addOption("o", "output", true, "output directory to use");
 		options.addOption("m", "model", true, "model folders");
+		options.addOption("f", "format", true, "outputformat");
+		options.addOption("vi", "value infer", true, "infer value for unspecific values");
 		options.addOption("h", "help", false, "shows the help");
 
-		System.out.println("parsing args");
+		//System.out.println("parsing args");
 		config = new Config();
 		String xmlFolder = null;
 		String outputFolder = null;
+		
+		int outputformat = 0;//default, plain CSV file
+		//1, MatrixConverter
+		//2, Markup XML files
+		
+		boolean isValueInference = false;//
+		
+		
 		try {
 		    CommandLine commandLine = parser.parse( options, args );
 		    if(commandLine.hasOption("h")) {
@@ -94,12 +115,33 @@ public class Main {
 		    	outputFolder = commandLine.getOptionValue("o");
 		    	config.setOutputDirectory(commandLine.getOptionValue("o"));
 		    }
-		    
+		    if(commandLine.hasOption("f")) {
+		    	String outputformatStr = commandLine.getOptionValue("f");
+		    	if("mc".equals(outputformatStr)){
+		    		outputformat = 1;
+		    	}else if("xml".equals(outputformatStr)){
+		    		outputformat = 2;
+		    	}else{
+		    		throw new IllegalArgumentException(outputformatStr+" is invalid!");
+		    	}
+		    }
+		    if(commandLine.hasOption("vi")) {
+		    	String viStr = commandLine.getOptionValue("vi");
+		    	if("true".equals(viStr)){
+		    		isValueInference = true;
+		    	}else if("false".equals(viStr)){
+		    		isValueInference = false;
+		    	}else{
+		    		throw new IllegalArgumentException(viStr+" is invalid!");
+		    	}
+		    }
 			Injector injector = Guice.createInjector(config);
 		    MicroPIEProcessor microPIEProcessor = injector.getInstance(MicroPIEProcessor.class);
 		    String predicitonsFile = outputFolder + File.separator + "predictions.csv";
 			String matrixFile = outputFolder + File.separator + "matrix.csv";
-		    microPIEProcessor.processFolder(xmlFolder,predicitonsFile, matrixFile);
+			
+			
+		    microPIEProcessor.processFolder(xmlFolder,predicitonsFile, matrixFile, outputformat, isValueInference);
 			
 		} catch(ParseException e) {
 			e.printStackTrace();

@@ -1,6 +1,8 @@
 package edu.arizona.biosemantics.micropie.model;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 /**
  * The model of taxon XML file
@@ -8,6 +10,12 @@ import java.io.File;
  */
 public class TaxonTextFile {
 
+	private String author;
+	private String year;
+	private String title;
+	private String doi;
+	private String citation;
+	
 	private String taxon;
 
 	private String family;
@@ -20,6 +28,12 @@ public class TaxonTextFile {
 	
 	private String text;
 	private File inputFile;
+	
+	
+	/****   add for MatrixGenerator in ETC  **/
+	private List sentences;
+	private Map<Sentence, List> sentCharacterValues;
+	
 
 	public TaxonTextFile(String taxon, String family, String genus, String species, String strain_number, String the16SrRNAAccessionNumber, String text, File inputFile) {
 		this.taxon = taxon;
@@ -50,6 +64,47 @@ public class TaxonTextFile {
 		
 	}
 	
+	
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDoi() {
+		return doi;
+	}
+
+	public void setDoi(String doi) {
+		this.doi = doi;
+	}
+
+	public String getCitation() {
+		return citation;
+	}
+
+	public void setCitation(String citation) {
+		this.citation = citation;
+	}
 
 	public String getTaxon() {
 		return taxon;
@@ -126,7 +181,21 @@ public class TaxonTextFile {
 	public void setXmlFile(String xmlFile) {
 		this.xmlFile = xmlFile;
 	}
-	
-	
+
+	public List getSentences() {
+		return sentences;
+	}
+
+	public void setSentences(List sentences) {
+		this.sentences = sentences;
+	}
+
+	public Map<Sentence, List> getSentCharacterValues() {
+		return sentCharacterValues;
+	}
+
+	public void setSentCharacterValues(Map<Sentence, List> sentCharacterValues) {
+		this.sentCharacterValues = sentCharacterValues;
+	}
 
 }

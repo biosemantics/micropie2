@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -32,6 +33,7 @@ import edu.arizona.biosemantics.micropie.extract.NewTaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.extract.TaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
+import edu.arizona.biosemantics.micropie.io.MarkupXMLWriter;
 import edu.arizona.biosemantics.micropie.io.XMLNewSchemaTextReader;
 import edu.arizona.biosemantics.micropie.io.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
@@ -131,7 +133,7 @@ public class MicroPIEProcessor{
 	 * @param predictionFile if it's null, donot printout
 	 * @param outputMatrixFile
 	 */
-	public void processFolder(String inputFolder,String predictionFile,String outputMatrixFile){
+	public void processFolder(String inputFolder,String predictionFile,String outputMatrixFile, int outputFormat, boolean isValueInference){
 		LinkedHashSet<ILabel> characterLabels = new LinkedHashSet();
 		for(String characterName : characterNames){
 			ILabel label = categoryNameLabelMap.get(characterName.trim().toLowerCase());
@@ -160,6 +162,7 @@ public class MicroPIEProcessor{
 		
 		matrixCreator.setCharacterLabels(characterLabels);
 		matrixCreator.setCharacterNames(characterNames);
+		matrixCreator.setJudgeUSPForPTN(isValueInference);
 		
 		File inputFolderFile = new File(inputFolder);
 		File[] inputFiles = inputFolderFile.listFiles();
@@ -171,15 +174,39 @@ public class MicroPIEProcessor{
 		matrix.setTaxonFiles(taxonSet);
 		
 		try {
-			matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
+			
 			matrix.propagateGenus();
-			matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,false);
+			switch(outputFormat){
+				case 1://output the format of MatrixConverter csv
+					matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
+					matrixWriter.writeMatrixConverter(matrix, labelCategoryNameMap,outputCharacterLabels,false);break;
+				case 2://output Marked up XML files
+					String outputFolder = outputMatrixFile;
+					Set taxonFiles = matrix.getTaxonFiles();
+					//taxonFile.setInputFile(inputFile);
+					MarkupXMLWriter markupXMLWriter = new MarkupXMLWriter();
+					markupXMLWriter.setInputFolder(inputFolder);
+					String xmloutputFolder = outputMatrixFile.replace("matrix.csv","");
+					markupXMLWriter.setOutputFolder(xmloutputFolder);
+					markupXMLWriter.setTaxonFiles(taxonFiles);
+					markupXMLWriter.setLabelCategoryNameMap(labelCategoryNameMap);
+					markupXMLWriter.generateOutputXML();
+					break;
+				default://output default csv
+					matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
+					matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,false);
+			}
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			try {
 				matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile+new Random().nextInt(), true));
 				matrix.propagateGenus();
-				matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,false);
+				switch(outputFormat){
+				case 1: matrixWriter.writeMatrixConverter(matrix, labelCategoryNameMap,outputCharacterLabels,false);break;
+				default:
+					matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,false);
+			}
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}catch (Exception e1) {
@@ -188,7 +215,6 @@ public class MicroPIEProcessor{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 	}
 	
@@ -204,6 +230,9 @@ public class MicroPIEProcessor{
 		TaxonTextFile taxonFile = readTaxonFile(inputFile);
 		//STEP 1: split sentences
 		List<MultiClassifiedSentence> sentences = sentenceSpliter.createSentencesFromFile(taxonFile);
+		taxonFile.setSentences(sentences);
+		taxonFile.setSentCharacterValues(new HashMap());
+		
 		//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
 		
 		for (MultiClassifiedSentence testSentence : sentences) {
@@ -251,7 +280,7 @@ public class MicroPIEProcessor{
 		
 		
 		String text = textReader.read();
-		taxonFile.setInputFile(null);
+		taxonFile.setInputFile(inputFile);
 		taxonFile.setText(text);
 		taxonFile.setXmlFile(inputFile.getName());
 		

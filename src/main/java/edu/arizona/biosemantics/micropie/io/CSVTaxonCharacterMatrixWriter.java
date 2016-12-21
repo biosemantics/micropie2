@@ -148,6 +148,84 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		log(LogLevel.INFO, "Done writing matrix");
 	}
 	
+	/**
+	 * output
+	 * @param matrix
+	 * @param outputCharacterLabels 
+	 * @throws Exception
+	 */
+	public void writeMatrixConverter(NewTaxonCharacterMatrix matrix, Map<ILabel, String> labelNameMap, LinkedHashSet<ILabel> outputCharacterLabels, boolean isFormat) throws Exception {
+		log(LogLevel.INFO, "Writing matrix...");
+		LinkedHashSet<ILabel> characterLabels = matrix.getCharacterLabels();
+		LinkedHashSet<String> characterNames = matrix.getCharacterNames();
+		
+		//System.out.println("characterLabels="+characterLabels.size()+" "+characterNames.size());
+		CSVWriter writer = new CSVWriter(new BufferedWriter(new OutputStreamWriter(outputStream, "UTF8")), ',',CSVWriter.NO_QUOTE_CHARACTER);	
+		
+		outputStream.write(239);
+		outputStream.write(187);
+		outputStream.write(191);
+		List<String[]> lines = new LinkedList<String[]>();
+		
+		
+		//create header
+		String[] header = new String[characterLabels.size() + 6];
+		header[0] = "Taxon";
+		header[1] = "XML file";
+		header[2] = "Genus";
+		header[3] = "Species";
+		header[4] = "Strain";	
+		
+		int i=5;
+		for(ILabel character : characterLabels) {
+			if(outputCharacterLabels==null||outputCharacterLabels.contains(character)) header[i++] = labelNameMap.get(character);
+			//System.out.println(character+" "+header[i-1]);
+		}
+		header[i++] = "Character not determined";
+		lines.add(header);
+
+		
+		//StringValueFormatter svFormatter = new StringValueFormatter();
+		//NumericValueFormatter nvFormatter = new NumericValueFormatter();
+		ValueFormatterUtil formatter = new ValueFormatterUtil();
+		//create matrix content
+		Set<TaxonTextFile> textFiles = matrix.getTaxonFiles();
+		for(TaxonTextFile taxonFile : textFiles) {
+			String[] row = new String[characterNames.size() + 5];
+			row[0] = taxonFile.getTaxon().replace(",", " ");
+			row[1] = taxonFile.getXmlFile().replace(",", " ");//row[1] = taxonFile.getFamily();
+			row[2] = taxonFile.getGenus().replace(",", " ");
+			row[3] = taxonFile.getSpecies().replace(",", " ");
+			row[4] = taxonFile.getStrain_number().replace(",", " ");
+			
+			Map<ILabel, List> taxonCharValues = matrix.getAllTaxonCharacterValues(taxonFile);
+			i=5;
+			for(ILabel character : characterLabels) {
+				if(outputCharacterLabels==null||outputCharacterLabels.contains(character)){
+					List values = taxonCharValues.get(character);
+					row[i] = formatter.format(values);
+					if(!isFormat&&row[i]!=null){
+						row[i] = row[i].replace("|", " ").replace("#", "|").replace(",", " ");
+					}
+					i++;
+				}
+			}
+			
+			//character not identified
+			List values = taxonCharValues.get(Label.USP);
+			row[i] = formatter.format(values);
+			if(!isFormat&&row[i]!=null){
+				row[i] = row[i].replace("|", " ").replace("#", "|").replace(",", " ");
+			}
+			lines.add(row);
+		}
+		
+		//write
+		writer.writeAll(lines);
+		writer.flush();
+		writer.close();
+		log(LogLevel.INFO, "Done writing matrix");
+	}
 	
 	/**
 	 * output

@@ -34,7 +34,7 @@ public class PostProcessor {
 	 * 
 	 * @param valueList
 	 */
-	public void postProcessor(List<CharacterValue> valueList, List<CharacterValue> noLabelValueList,Map<ILabel, List<CharacterValue>> charMap){
+	public void postProcessor(List<CharacterValue> valueList, List<CharacterValue> noLabelValueList){
 		
 		/*
 		List<CharacterValue> fermUsed = charMap.get(Label.c57);

@@ -180,7 +180,7 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 
 	
 	/**
-	 * parse the results
+	 * parse the results, put it into the matrix
 	 * @param extResults
 	 * @param taxonFile
 	 * @param charValues
@@ -194,8 +194,8 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		//System.out.println("after post process:"+charValues);
 		
 		Map<ILabel, List<CharacterValue>> charMap = extResults.getAllTaxonCharacterValues(taxonFile);
-		if(judgeUSPForPTN) postProcessor.dealUSP(noLabelValueList, charMap);
-		postProcessor.postProcessor(charValues,noLabelValueList,charMap);
+		//if(judgeUSPForPTN) postProcessor.dealUSP(noLabelValueList, charMap);
+		postProcessor.postProcessor(charValues,noLabelValueList);
 		//if(label!=null){//not a mixed value extractor
 		//	charMap.get(label).addAll(charValues);
 		//}else{
@@ -230,6 +230,31 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		
 		
 	}
+	
+
+	/**
+	 * parse the results, put it into the matrix
+	 * @param extResults
+	 * @param taxonFile
+	 * @param charValues
+	 */
+	private void parseResultForSentence(List<CharacterValue> newCharValues,TaxonTextFile taxonFile, ILabel defaultLabel,
+			List<CharacterValue> charValues, List<CharacterValue> noLabelValueList) {
+		if(charValues==null||charValues.size()==0) return;
+		
+		postProcessor.postProcessor(charValues,noLabelValueList);
+		for(CharacterValue value : charValues){
+			
+			ILabel clabel = value.getCharacter();//find the label
+			if(clabel==null) clabel = defaultLabel;
+			value.setCharacter(clabel);
+			if(!newCharValues.contains(value)){
+				newCharValues.add(value);
+			}
+		}//values
+		
+	}
+
 
 	
 	/**
@@ -264,10 +289,7 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 			text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C");
 			classifiedSentence.setText(text);
 			
-			
-			//System.out.println("build extractors for "+text);
 			Set<ILabel> predictions = classifiedSentence.getPredictions();
-			//System.out.println("build extractors for "+text+"["+predictions+"]");
 			if (predictions.size() == 0) {// it can be any character,||(predictions.size() == 1&&predictions.contains(Label.c0))
 				Label[] labelList = Label.values();
 				for (int i = 0; i < labelList.length; i++) {
@@ -304,9 +326,7 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 				}
 			}
 
-			//System.out.println(classifiedSentence.getText()+"\npredictions:"+predictions.size()+" "+predictions+" extractors: "+extractors);
-			
-			//List<CharacterValue> sentCharValues = new ArrayList();
+			List<CharacterValue> sentCharValues = new ArrayList();
 			// call the extractors one by one according to the predicted characters
 			//TODO:FermentationProductExtractor
 			boolean containMetabolism = false;
@@ -337,7 +357,8 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 				
 				parseResult(matrix, taxonFile, label, charValues,noLabelValueList);
 				//sentCharValues.addAll(charValues);
-				//System.out.println("charValues:"+charValues);
+				//add characters into sentence list
+				parseResultForSentence(sentCharValues,taxonFile, label, charValues, noLabelValueList);
 			}
 			
 			//if(containMetabolism) continue;
@@ -424,14 +445,15 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 			parseResult(matrix, taxonFile, null, phraseCharValues,noLabelValueList);
 			//infer the value according to the context
 			 */
-		}//
+			taxonFile.getSentCharacterValues().put(classifiedSentence, sentCharValues);
+		}//sentence end
 		
 		
 		//out of single sentence
 		/**
 		This component is used to predict values for PH, NACL, TEMP			
 		**/
-		//postProcessor.dealUSP(noLabelValueList,charaMap);
+		if(judgeUSPForPTN)  postProcessor.dealUSP(noLabelValueList,charaMap);
 		
 		
 		//postProcessor.dealConflictNum(charaMap);
