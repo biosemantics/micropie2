@@ -82,8 +82,8 @@ public class MarkupXMLWriter {
 	 * @param inputFile
 	 * @param outputXMLFile
 	 */
-	public void outputMarkupXML(TaxonTextFile taxonFile, File inputFile,
-			String outputXMLFile) {
+	public void outputMarkupXML(TaxonTextFile taxonFile, File inputFile, String outputXMLFile) {
+		int organId = 0;
 		// TODO Auto-generated method stub
 		SAXBuilder builder = new SAXBuilder();
 		try {
@@ -115,23 +115,30 @@ public class MarkupXMLWriter {
 				Element biological_entityEl = new Element("biological_entity");
 				sentEL.addContent(biological_entityEl);
 				//<biological_entity id="o1" name="flower" name_original="flowers" type="structure">
-				biological_entityEl.setAttribute("id", "o1");
+				biological_entityEl.setAttribute("id", "o" + organId++);
 				biological_entityEl.setAttribute("name", "whole_organism");
-				biological_entityEl.setAttribute("type", "microbe");
+				biological_entityEl.setAttribute("type", "structure");
 				
 				// <character is_modifier="true" name="architecture" value="regular" />
 				List<CharacterValue> characterList = sentValues.get(sent);
 				if(characterList!=null&&characterList.size()>0){
 					for(CharacterValue charValue:characterList){
 						Element characterEl = new Element("character");
-						biological_entityEl.addContent(characterEl);
-						
 						
 						ILabel label = charValue.getCharacter();
 						String charName = labelCategoryNameMap.get(label);
-						characterEl.setAttribute("name",charName);
-						String value = formatter.format(charValue);
-						characterEl.setAttribute("value",value);
+						if(charName == null) {
+							//This happens with the three etc sample files
+							//character: USP
+							//label: USP
+							System.out.println("character: " + charValue.getCharacter());
+							System.out.println("label: " + label);
+						} else {
+							characterEl.setAttribute("name",charName);
+							String value = formatter.format(charValue);
+							characterEl.setAttribute("value",value);
+							biological_entityEl.addContent(characterEl);
+						}
 					}
 				}
 			}

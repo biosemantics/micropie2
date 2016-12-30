@@ -1,4 +1,4 @@
-package edu.arizona.biosemantics.micropie.io;
+package edu.arizona.biosemantics.micropie.io.xml;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,21 +12,26 @@ import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
+import org.jdom2.filter.Filters;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.xpath.XPathFactory;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 
 
 /**
- * for handling old schema of XML files
+ * for handling new schema of XML files
  * @author maojin
  *
  */
-public class XMLTextReader implements ITextReader {
+public class XMLNewSchemaTextReader extends XMLTextReader {
 
+	private static final String jdomDocument = null;
 	private Element rootNode;
 	private InputStream inputStream;
+	private Document xmlDocument;
+	private XPathFactory xFactory = XPathFactory.instance();
 	/**
 	 * @param inputStream to read from
 	 * @throws IOException 
@@ -34,9 +39,8 @@ public class XMLTextReader implements ITextReader {
 	 */
 	public void setInputStream(InputStream inputStream) {		
 		SAXBuilder builder = new SAXBuilder();
-		Document xmlDocument;
 		try {
-			xmlDocument = (Document) builder.build(new InputStreamReader(inputStream, "UTF-8"));
+			xmlDocument = (Document) builder.build(new InputStreamReader(inputStream, "UTF8"));
 			rootNode = xmlDocument.getRootElement();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -86,7 +90,7 @@ public class XMLTextReader implements ITextReader {
 		Element source = meta.getChild("source");
 		// Element title = source.getChild("title");
 		String titleText = source.getChildText("title");
-		//returnText+=titleText;
+		//returnText += titleText;
 		/*
 		if ( titleText != null && ! titleText.equals("") ) {
 			
@@ -107,6 +111,7 @@ public class XMLTextReader implements ITextReader {
 		// System.out.println("descType:" + descType);
 		// System.out.println("text:" + text);
 		if(text != null && descType.equals("morphology")) {  
+			System.out.println("text:" + text);
 			returnText += text;
 			return returnText;
 		}	
@@ -121,7 +126,6 @@ public class XMLTextReader implements ITextReader {
 	 * @return
 	 */
 	public TaxonTextFile readFile(){
-		if(rootNode==null) return null;
 		
 		TaxonTextFile taxonFile = new TaxonTextFile();
 		String taxon = this.getTaxon();
@@ -137,6 +141,10 @@ public class XMLTextReader implements ITextReader {
 		String the16SrRNAAccessionNumber = this.get16SrRNAAccessionNumber();
 		taxonFile.setThe16SrRNAAccessionNumber(the16SrRNAAccessionNumber);
 		
+		
+		taxonFile.setAuthor(this.getAuthor());
+		taxonFile.setYear(this.getYear());
+		taxonFile.setTitle(this.getTitle());
 		return taxonFile;
 	}
 	
@@ -152,28 +160,23 @@ public class XMLTextReader implements ITextReader {
 		
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		
-		String taxon = "";
-		if(taxon_identification!=null){
-			List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
-			
-			
-			for(Element taxon_nameElement : taxon_nameListOfElement) {
-				String rank = taxon_nameElement.getAttributeValue("rank");
-				
-				
-				if( rank.equals("genus")) {
-					taxon += taxon_nameElement.getText();
-				}
-				
-				if( rank.equals("species")&&taxon_nameElement.getText()!=null) {
-					taxon += " " + taxon_nameElement.getText();
-				}
-				
-			}
+		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
 		
-		}else{
-			taxon = rootNode.getChildText("taxon_name");
+		String taxon = "";
+		for(Element taxon_nameElement : taxon_nameListOfElement) {
+			String rank = taxon_nameElement.getAttributeValue("rank");
+			
+			
+			if( rank.equals("genus")) {
+				taxon += taxon_nameElement.getText().replace(",", "");
+			}
+			
+			if( rank.equals("species")) {
+				taxon += " " + taxon_nameElement.getText().replace(",", "");
+			}
+			
 		}
+		
 	
 //		
 //		if(taxon != null) {
@@ -183,6 +186,26 @@ public class XMLTextReader implements ITextReader {
 //		throw new Exception("Could not find a taxon name");
 	}
 
+	
+	
+	public String getAuthor(){
+		Element firstTitle = xFactory.compile("//author", Filters.element()).evaluateFirst(xmlDocument);
+	  
+		return firstTitle.getValue();
+	}
+	
+	public String getYear(){
+		Element firstTitle = xFactory.compile("//source/date", Filters.element()).evaluateFirst(xmlDocument);
+	  
+		return firstTitle.getValue();
+	}
+	
+	public String getTitle(){
+		Element firstTitle = xFactory.compile("//source/title", Filters.element()).evaluateFirst(xmlDocument);
+	  
+		return firstTitle.getValue();
+	}
+	
 	
 	// add on March 07, 2015 Saturday
 	// 16S rRNA accession #
@@ -208,7 +231,7 @@ public class XMLTextReader implements ITextReader {
 //		throw new Exception("Could not find a family name");
 	}	
 	
-	
+	/*
 	
 	public String getGenus(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
@@ -218,10 +241,10 @@ public class XMLTextReader implements ITextReader {
 			genusName = genusNameEl.getText();
 		}
 		return genusName;
-	}		
+	}		*/	
 	
 	
-	/*
+
 	public String getGenus(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
@@ -230,6 +253,7 @@ public class XMLTextReader implements ITextReader {
 			String rank = taxon_nameElement.getAttributeValue("rank");
 			if( rank.equals("genus")) {
 				genusName = taxon_nameElement.getText();
+				genusName = genusName.replace(",", "");
 			}
 		}
 //		if(genusName != null) {
@@ -237,19 +261,8 @@ public class XMLTextReader implements ITextReader {
 			return genusName;
 //		}	
 		//throw new Exception("Could not find a genus name");
-	}	*/	
-
-	public String getSpecies(){
-		Element taxon_identification = rootNode.getChild("taxon_identification");
-		Element speciesNameEl = taxon_identification.getChild("species_name");
-		String speciesName = null;
-		if(speciesNameEl!=null){
-			speciesName = speciesNameEl.getText();
-		}
-		return speciesName;
 	}	
-	
-	/*
+
 	public String getSpecies(){
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> taxon_nameListOfElement = taxon_identification.getChildren("taxon_name");
@@ -258,6 +271,7 @@ public class XMLTextReader implements ITextReader {
 			String rank = taxon_nameElement.getAttributeValue("rank");
 			if( rank.equals("species")) {
 				speciesName = taxon_nameElement.getText();
+				speciesName = speciesName.replace(",", "");
 			}
 		}
 //		if(speciesName != null) {
@@ -265,8 +279,9 @@ public class XMLTextReader implements ITextReader {
 			return speciesName;
 //		}	
 		//throw new Exception("Could not find a species name");
-	}	*/
+	}
 
+	
 	public String getStrain_number() {
 		Element taxon_identification = rootNode.getChild("taxon_identification");
 		List<Element> strain_numberListOfElement = taxon_identification.getChildren("strain_number");
@@ -307,12 +322,8 @@ public class XMLTextReader implements ITextReader {
 	
 	
 	public TaxonTextFile readTaxonFile(File inputFile) {
-		XMLTextReader textReader = new XMLTextReader();
+		XMLNewSchemaTextReader textReader = new XMLNewSchemaTextReader();
 		textReader.setInputStream(inputFile);
-		if(textReader.isNew()){
-			textReader = new XMLNewSchemaTextReader();
-			textReader.setInputStream(inputFile);
-		}
 		TaxonTextFile taxonFile = textReader.readFile();
 		taxonFile.setTaxon(taxonFile.getGenus()+" "+taxonFile.getSpecies());
 		
@@ -325,31 +336,95 @@ public class XMLTextReader implements ITextReader {
 		return taxonFile;
 	}
 	// New Schema 2:: 141111	
-
-	/**
-	 * detect whether it is new schema.
-	 * @return
-	 */
-	public boolean isNew() {
-		//System.out.println(rootNode);
-		//System.out.println(rootNode.getNamespace().getPrefix());
-		//if("bio:treatment".equals(rootNode.getName())) return true;
-		if(rootNode==null||!"".equals(rootNode.getNamespace().getPrefix())) return true;
-		return false;
-	}
 	
-	
-	public static void main(String[] args){
-		String inputFile = "F:\\MicroPIE\\datasets\\carrine_bacteria\\input1\\inputForm-0.xml";
-		XMLTextReader tReader = new XMLTextReader();
-		tReader.setInputStream(inputFile);
-		String text = tReader.read();
-		System.out.println(text);
-	}
+	/*
+	// New schema
+	@Override
+	public String read() throws Exception {
+		String returnText = "";
 
-	public String readSimple() {
+		Element meta = rootNode.getChild("meta");
+		Element source = meta.getChild("source");
+		// Element title = source.getChild("title");
+		String titleText = source.getChildText("title");
+		
+		if ( titleText != null && ! titleText.equals("") ) {
+			
+			String lastCharOfTitleText = titleText.substring(titleText.length()-1, titleText.length());
+			if ( ! lastCharOfTitleText.equals(".") ) {
+				titleText += ".";
+			}
+			
+			System.out.println("Adding title:" + titleText);
+			returnText += titleText + " ";
+		}
+		
+		String text = rootNode.getChildText("description");
 		Element desc = rootNode.getChild("description");
-		 return desc==null?"":desc.getText();
+		String descType = desc.getAttributeValue("type");
+		
+		// System.out.println("descType:" + descType);
+		// System.out.println("text:" + text);
+		if(text != null && descType.equals("morphology")) {  
+			System.out.println("text:" + text);
+			returnText += text;
+			return returnText;
+		}	
+		throw new Exception("Could not find a description");
+		
+		
 	}
+
+	public String getTaxon() throws Exception {
+		// String taxon = rootNode.getChildText("taxon_name");
+		
+		
+		//<taxon_identification status="ACCEPTED">
+		//<family_name>aaa</family_name>
+		//<subfamily_name>bbb</subfamily_name>
+		//<genus_name>ccc</genus_name>
+		//<species_name>ddd</species_name>
+		//<strain_name>Arc51T (=NBRC 100649T=DSM 18877T)</strain_name><strain_source>Arc51T (=NBRC 100649T=DSM 18877T)</strain_source>
+		//</taxon_identification>
+		
+		Element taxon_identification = rootNode.getChild("taxon_identification");
+		
+		String taxon = "";
+		taxon += taxon_identification.getChildText("genus_name");
+		taxon += " ";
+		taxon += taxon_identification.getChildText("species_name");
+	
+		
+		if(taxon != null) {
+			System.out.println("taxon:" + taxon);
+			return taxon;
+		}	
+		throw new Exception("Could not find a taxon name");
+	}
+	// New Schema
+	*/
+	
+	
+	
+	/*
+	// Old Schema
+	@Override
+	public String read() throws Exception {
+		String text = rootNode.getChildText("description");
+		
+		if(text != null) 
+			return text;
+		throw new Exception("Could not find a description");
+	}
+
+	public String getTaxon() throws Exception {
+		String taxon = rootNode.getChildText("taxon_name");
+		
+		if(taxon != null) 
+			return taxon;
+		throw new Exception("Could not find a taxon name");
+	}
+	// Old Schema
+	*/
 	
 }

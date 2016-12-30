@@ -16,7 +16,7 @@ import com.google.inject.name.Names;
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
-import edu.arizona.biosemantics.micropie.io.XMLTextReader;
+import edu.arizona.biosemantics.micropie.io.xml.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.RawSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;

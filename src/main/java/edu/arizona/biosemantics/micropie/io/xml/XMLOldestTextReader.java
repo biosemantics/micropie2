@@ -1,4 +1,4 @@
-package edu.arizona.biosemantics.micropie.io;
+package edu.arizona.biosemantics.micropie.io.xml;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +15,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
+import edu.arizona.biosemantics.micropie.io.ITextReader;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 
 

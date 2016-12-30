@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.arizona.biosemantics.micropie</groupId>
 	<artifactId>micropie</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.4-SNAPSHOT</version>
 	
 
 	<properties>
@@ -161,6 +161,16 @@
 		    <version>1.1.6</version>
 		</dependency>
 				
+		<dependency>
+			<groupId>edu.arizona.biosemantics.common</groupId>
+			<artifactId>taxonomy</artifactId>
+			<version>0.0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.arizona.biosemantics.common</groupId>
+			<artifactId>log</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -168,7 +178,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>aspectj-maven-plugin</artifactId>
-				<version>1.8</version>
+				<version>1.7</version>
 				<configuration>
 					<proceedOnError>true</proceedOnError>
 					<complianceLevel>${java.version}</complianceLevel>
@@ -222,7 +232,7 @@
 				</executions>
 			</plugin>
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9.1</version>
@@ -237,7 +247,7 @@
 		            </configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 
 			<plugin>				
 				<groupId>org.apache.maven.plugins</groupId>

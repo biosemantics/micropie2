@@ -30,8 +30,8 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.extract.ExtractorType;
-import edu.arizona.biosemantics.micropie.io.XMLOldestTextReader;
-import edu.arizona.biosemantics.micropie.io.XMLTextReader;
+import edu.arizona.biosemantics.micropie.io.xml.XMLOldestTextReader;
+import edu.arizona.biosemantics.micropie.io.xml.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.IndexMapping;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.RawSentence;

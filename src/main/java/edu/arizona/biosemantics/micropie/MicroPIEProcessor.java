@@ -34,8 +34,8 @@ import edu.arizona.biosemantics.micropie.extract.TaxonCharacterMatrixCreator;
 import edu.arizona.biosemantics.micropie.io.CSVClassifiedSentenceWriter;
 import edu.arizona.biosemantics.micropie.io.CSVTaxonCharacterMatrixWriter;
 import edu.arizona.biosemantics.micropie.io.MarkupXMLWriter;
-import edu.arizona.biosemantics.micropie.io.XMLNewSchemaTextReader;
-import edu.arizona.biosemantics.micropie.io.XMLTextReader;
+import edu.arizona.biosemantics.micropie.io.xml.XMLNewSchemaTextReader;
+import edu.arizona.biosemantics.micropie.io.xml.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.RawSentence;
@@ -157,6 +157,7 @@ public class MicroPIEProcessor{
 		
 		if(predictionFile!=null){
 			classifiedSentenceWriter.setCategoryLabelCodeMap(categoryLabelCodeMap);
+			classifiedSentenceWriter.setLabelCategoryNameMap(labelCategoryNameMap);
 			classifiedSentenceWriter.setPredictionFile(predictionFile);
 		}
 		

@@ -15,6 +15,8 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 
+import edu.arizona.biosemantics.micropie.io.xml.XMLNewSchemaTextReader;
+import edu.arizona.biosemantics.micropie.io.xml.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.arizona.biosemantics.micropie.nlptool.ITextNormalizer;

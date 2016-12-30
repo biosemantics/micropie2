@@ -10,7 +10,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 import edu.arizona.biosemantics.micropie.Config;
-import edu.arizona.biosemantics.micropie.io.XMLTextReader;
+import edu.arizona.biosemantics.micropie.io.xml.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.Phrase;
 import edu.arizona.biosemantics.micropie.model.PhraseRelation;
