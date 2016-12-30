@@ -124,8 +124,6 @@ public class MarkupXMLWriter {
 				if(characterList!=null&&characterList.size()>0){
 					for(CharacterValue charValue:characterList){
 						Element characterEl = new Element("character");
-						biological_entityEl.addContent(characterEl);
-						
 						
 						ILabel label = charValue.getCharacter();
 						String charName = labelCategoryNameMap.get(label);
@@ -139,6 +137,7 @@ public class MarkupXMLWriter {
 							characterEl.setAttribute("name",charName);
 							String value = formatter.format(charValue);
 							characterEl.setAttribute("value",value);
+							biological_entityEl.addContent(characterEl);
 						}
 					}
 				}
