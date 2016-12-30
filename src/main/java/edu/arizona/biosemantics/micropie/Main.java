@@ -57,6 +57,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws Throwable {
 		Main main = new Main();
+		//args = "-i in -o out -m models -f xml".split(" ");
 		
 		//-f xml
 		args = "-i F:\\MicroPIE\\datasets\\2017\\Firmicutes_Genomes_descriptions_122216 -o F:\\MicroPIE\\ext\\2017new -m F:/MicroPIE/MicroPIEWEB/models  -vi true".split("\\s+");
@@ -138,7 +139,9 @@ public class Main {
 		    }
 			Injector injector = Guice.createInjector(config);
 		    MicroPIEProcessor microPIEProcessor = injector.getInstance(MicroPIEProcessor.class);
-		    String predicitonsFile = outputFolder + File.separator + "predictions.csv";
+		    String predicitonsFile = null;
+		    if(outputformat != 2)
+		    	predicitonsFile = outputFolder + File.separator + "predictions.csv";
 			String matrixFile = outputFolder + File.separator + "matrix.csv";
 			
 			
