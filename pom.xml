@@ -171,6 +171,16 @@
 		    <version>1.1.6</version>
 		</dependency>
 				
+		<dependency>
+			<groupId>edu.arizona.biosemantics.common</groupId>
+			<artifactId>taxonomy</artifactId>
+			<version>0.0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.arizona.biosemantics.common</groupId>
+			<artifactId>log</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

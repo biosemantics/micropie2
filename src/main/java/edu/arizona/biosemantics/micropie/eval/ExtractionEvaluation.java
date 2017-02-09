@@ -26,7 +26,7 @@ import edu.arizona.biosemantics.micropie.classify.NumericLabels;
 import edu.arizona.biosemantics.micropie.extract.ValueFormatterUtil;
 import edu.arizona.biosemantics.micropie.io.CharacterReader;
 import edu.arizona.biosemantics.micropie.io.MatrixReader;
-import edu.arizona.biosemantics.micropie.io.XMLTextReader;
+import edu.arizona.biosemantics.micropie.io.xml.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.NewTaxonCharacterMatrix;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;

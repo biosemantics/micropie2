@@ -175,7 +175,12 @@ public class Config extends AbstractModule {
 	/** prarallel PROCESSING param **/
 	private boolean parallelProcessing = true;
 	private int maxThreads = 3;
-		
+	
+	
+	
+	
+			
+			
 	@Override
 	protected void configure() {
 		

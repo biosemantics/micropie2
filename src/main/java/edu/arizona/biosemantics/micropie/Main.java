@@ -59,7 +59,8 @@ public class Main {
 		Main main = new Main();
 		//args = "-i in -o out -m models -f xml".split(" ");
 		
-		//args = "-i F:\\MicroPIE\\micropieweb\\danveno_at_qq_dot_com_2016_11_03_12_15_24_059\\input -o F:/MicroPIE/ext/craft -m F:/MicroPIE/MicroPIEWEB/models -f xml -vi true".split("\\s+");
+		//-f xml
+		args = "-i F:\\MicroPIE\\datasets\\2017\\Firmicutes_Genomes_descriptions_122216 -o F:\\MicroPIE\\ext\\2017new -m F:/MicroPIE/MicroPIEWEB/models  -vi true".split("\\s+");
 		//System.out.println(args);
 		main.parse(args);
 		//main.run();

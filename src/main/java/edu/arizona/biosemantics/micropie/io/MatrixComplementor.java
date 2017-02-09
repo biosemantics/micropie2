@@ -18,6 +18,7 @@ import java.util.UUID;
 
 import org.apache.commons.lang.ArrayUtils;
 
+import edu.arizona.biosemantics.micropie.io.xml.XMLTextReader;
 import edu.arizona.biosemantics.micropie.model.TaxonTextFile;
 import edu.arizona.biosemantics.micropie.nlptool.StringUtil;
 import au.com.bytecode.opencsv.CSVReader;

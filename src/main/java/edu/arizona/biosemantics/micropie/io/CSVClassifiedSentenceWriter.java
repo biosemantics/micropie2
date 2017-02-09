@@ -50,7 +50,14 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 		this.categoryLabelCodeMap = categoryLabelCodeMap;
 	}
 	
+	private  Map<ILabel, String> labelCategoryNameMap;
 	
+	
+	public void setLabelCategoryNameMap(Map<ILabel, String> labelCategoryNameMap) {
+		this.labelCategoryNameMap = labelCategoryNameMap;
+	}
+
+
 	/**
 	 * specify where to store the prediction file
 	 * @param outputFile
@@ -83,40 +90,27 @@ public class CSVClassifiedSentenceWriter implements IClassifiedSentenceWriter {
 				//Characterlabel
 				Set<ILabel> predictions = classifiedSentence.getPredictions();				
 				Set<ILabel> categories = classifiedSentence.getCategories();
-				
+				/* 
 				lines.add(new String[] {categories.toString(),
 						predictions.toString(),
 						classifiedSentence.getText()});
-				/*
-				StringBuffer multiCharachterLabelsb = new StringBuffer();
-				for(ILabel label : predictions) {
-					//String labelNo = label.toString();
-					//Label labelNo = label.toString();
-					//String categoryLabel = svmLabelAndCategoryMappingMap.get(labelNo);
-					String characterCode = categoryLabelCodeMap.get(label);
-					characterCode = characterCode==null?"0":characterCode;
-					multiCharachterLabelsb.append(characterCode).append(",");
+				*/
+				if(predictions==null||predictions.size()==0){
+					lines.add(new String[] {"0", "",
+							classifiedSentence.getText()});
+				}else{
+					for(ILabel label : predictions) {
+						//String labelNo = label.toString();
+						//Label labelNo = label.toString();
+						//String categoryLabel = svmLabelAndCategoryMappingMap.get(labelNo);
+						String characterCode = categoryLabelCodeMap.get(label);
+						characterCode = characterCode==null?"0":characterCode;
+						String categoryName = labelCategoryNameMap.get(label);
+						categoryName = categoryName==null?"":categoryName;
+						lines.add(new String[] {characterCode,categoryName,
+								classifiedSentence.getText()});
+					}
 				}
-				
-				String multiCatLabel = multiCharachterLabelsb.toString();
-				if( multiCatLabel.length() == 0)
-					multiCatLabel = "0";
-				else
-					multiCatLabel = multiCatLabel.substring(0, multiCatLabel.length() - 1);
-				
-				//category label
-				//Characterlabel
-				
-				StringBuffer multiCategoryLabelsb = new StringBuffer();
-				for(ILabel label : categories) {
-					multiCharachterLabelsb.append(label).append(",");
-				}
-				if( multiCategoryLabelsb.length() == 0) multiCategoryLabelsb.append("0,");
-				
-				lines.add(new String[] {multiCategoryLabelsb.substring(0, multiCategoryLabelsb.length() - 1),
-						multiCatLabel,
-						classifiedSentence.getText()});
-						*/
 			}
 			
 			writer.writeAll(lines);
