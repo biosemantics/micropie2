@@ -2,12 +2,15 @@ package edu.arizona.biosemantics.micropie.extract;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
+import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.context.RelationParser;
@@ -237,6 +240,18 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 	@Override
 	public boolean hasExtractor(Label label) {
 		return !this.getContentExtractor(label).isEmpty();
+	}
+
+
+	@Override
+	public Set<ICharacterValueExtractor> getAllContentExtractor() {
+		Set<ICharacterValueExtractor> allExtractor = new HashSet();
+		Iterator<Entry<ILabel, Set<ICharacterValueExtractor>>> entryIter = labelExtractorsMap.entrySet().iterator();
+		while(entryIter.hasNext()){
+			Entry<ILabel, Set<ICharacterValueExtractor>> entry = entryIter.next();
+			allExtractor.addAll(entry.getValue());
+		}
+		return allExtractor;
 	}
 
 }

@@ -11,4 +11,5 @@ public interface ICharacterValueExtractorProvider {
 
 	public boolean hasExtractor(Label label);
 	
+	public Set<ICharacterValueExtractor> getAllContentExtractor();
 }

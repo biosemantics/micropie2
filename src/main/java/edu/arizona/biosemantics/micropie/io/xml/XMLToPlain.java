@@ -13,15 +13,17 @@ public class XMLToPlain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String inputFolder = "F:/MicroPIE/datasets/GutsMicrobiomes";
+		String inputFolder = "F:/MicroPIE/datasets/2017-0106_Firmicutes";
 		String outputFile = "F:/MicroPIE/datasets/GutMicro_MicroPIEWebFormat.txt";
 		
 		//XMLToPlain xmlToPlain = new XMLToPlain();
 		//xmlToPlain.fromXMLToPlain(inputFolder, outputFile);
 		
-		
-		String plainInputFile = "F:/MicroPIE/datasets/2017/Firmicutes_NoGenomes_descriptions_122316.txt";
-		String xmlFolder = "F:/MicroPIE/datasets/2017/Firmicutes_NoGenomes_descriptions_122316";
+		/**
+		 * convert plain files to XML files
+		 */
+		String plainInputFile = "F:/MicroPIE/datasets/2017/Pathogen_Feb2017.txt";
+		String xmlFolder = "F:/MicroPIE/datasets/2017/Pathogen_Feb2017";
 		XmlFileConverter xmlFileConverter = new XmlFileConverter();
 		
 		List<String> lines = FileReaderUtil.readFileLines(plainInputFile);

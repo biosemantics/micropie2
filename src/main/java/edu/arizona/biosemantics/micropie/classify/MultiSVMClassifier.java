@@ -137,6 +137,33 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		log(LogLevel.INFO, "Done training");
 	}
 
+	/**
+	 * train the data
+	 * Alert: label list should be specified
+	 */
+	public void trainNew(CharacterExampleGenerator chaSentsGenerator) throws Exception {
+		log(LogLevel.INFO, "Training classifier...");
+		if(labels==null)  throw new Exception("Classifier labels are not specified");
+		for(ILabel label : labels) {
+			log(LogLevel.INFO, "Training SVM for label " + label.getValue());
+			
+			SVMClassifier classifier = new SVMClassifier(BinaryLabel.valuesList(), multiFilterOptions, libSVMOptions);
+			classifiers.put(label, classifier);
+			
+			try{
+			//divide into two classes
+			List<RawSentence> twoClassData = chaSentsGenerator.obtainTwoClassData(label);
+			//System.out.println("Training SVM for label " + label.getValue()+" training sentences:"+twoClassData.size());
+			classifier.train(twoClassData);
+			//
+			}catch(Exception e){
+				log(LogLevel.INFO, "Training SVM for label " + label.getValue()+".... No positive instances found!");
+			}
+		}
+		trained = true;
+		log(LogLevel.INFO, "Done training");
+	}
+	
 	
 	/**
 	 * train the data
@@ -172,6 +199,13 @@ public class MultiSVMClassifier implements IMultiClassifier, ITrainableClassifie
 		return result;
 	}
 	
+	
+	/**
+	 * only yes and no classes
+	 * @param label
+	 * @param sentence
+	 * @return
+	 */
 	private RawSentence createTwoClassData(ILabel label, RawSentence sentence) {
 		RawSentence result = (RawSentence)sentence.clone();
 		//if(result.getLabel().equals(label)) System.out.println("sentence label ="+ result.getLabel()+" "+label);

@@ -38,7 +38,7 @@ public class WekaModelCaller {
     	Map<ILabel, SVMClassifier> classifiers = mutliClassifier.getClassifiers();
     	for(ILabel label : labels) {
 			SVMClassifier classifier =  classifiers.get(label);
-			saveModel(classifier, label, modelPath);
+			if(classifier!=null&&classifier.getFilteredClassifier()!=null) saveModel(classifier, label, modelPath);
 		}
 	}
 	

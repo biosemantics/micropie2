@@ -84,7 +84,7 @@ public class XmlModelFileCreator {
 			line = line.trim();
 			line = normalizeText(line);
 			if(line.length()==0 && !insideContinuousValue) {
-				result.add(treatment.toString());
+				if(treatment.toString().length()>0) result.add(treatment.toString());
 				treatment = new StringBuilder();
 			}else {
 				treatment.append(line + "\n");

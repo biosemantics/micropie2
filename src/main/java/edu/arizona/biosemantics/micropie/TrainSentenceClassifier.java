@@ -11,6 +11,7 @@ import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.BinaryLabel;
+import edu.arizona.biosemantics.micropie.classify.CharacterExampleGenerator;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.classify.MultiSVMClassifier;
@@ -80,7 +81,50 @@ public class TrainSentenceClassifier{
 		
 	}
 	
-	
+	/**
+	 * train the given folders
+	 * new training work flow
+	 * 
+	 * @param trainingFile
+	 */
+	public void trainNew(String trainingFile, String trainedModelFolder, List<ILabel> labels, String categoryMappingFile) {
+		long startTime = System.currentTimeMillis();
+		try {
+			CharacterReader cateReader = new CharacterReader();
+			cateReader.setCategoryFile(categoryMappingFile);
+			cateReader.read();
+			Map categoryCodeLabelMap = cateReader.getCategoryCodeLabelMap();
+			
+			CSVSentenceReader trainingSentenceReader = new CSVSentenceReader();
+			trainingSentenceReader.setCategoryCodeLabelMap(categoryCodeLabelMap);
+			
+			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+			
+			//List<RawSentence> trainingSentences = trainingSentenceReader.readTwoColumnSentenceList();
+			CharacterExampleGenerator chaSentsGenerator = new CharacterExampleGenerator();
+			chaSentsGenerator.loadTwoClns("F:\\MicroPIE\\2017tasks\\training sentences\\150130-Training-Sentences-new-cleaned1201-2col-17039.txt");
+			chaSentsGenerator.loadCorrectedClns("F:\\MicroPIE\\2017tasks\\training sentences\\2017-0106_Firmicutes_predictions_CHECKED.txt");
+			chaSentsGenerator.loadCorrectedClns("F:\\MicroPIE\\2017tasks\\training sentences\\2017-0106_Halobacter_predictions_CHECKED_3c.txt");
+			chaSentsGenerator.loadCorrectedClns("F:\\MicroPIE\\2017tasks\\training sentences\\Firmicutes_Genomes_descriptions_122216_predictions_CHECKED_3c.txt");
+			chaSentsGenerator.loadCorrectedClns("F:\\MicroPIE\\2017tasks\\training sentences\\Firmicutes_NoGenomes_descriptions_122316_predictions_CHECKED_3c.txt");
+			chaSentsGenerator.loadCorrectedClns("F:\\MicroPIE\\2017tasks\\training sentences\\HalophilicArchaea_descriptions_122316_predictions_CHECKED_3c.txt");
+			
+			//System.out.println("trainingSentences.size()::" + trainingSentences.size());
+			/**/
+			multiSVMClassifier.setLabels(labels);
+			multiSVMClassifier.trainNew(chaSentsGenerator);
+			
+			//save the trained files
+			WekaModelCaller wmc = new WekaModelCaller();
+			wmc.saveModel(multiSVMClassifier, trainedModelFolder);
+			
+		} catch (Exception e) {
+			log(LogLevel.ERROR, "Could not run Main", e);
+		}
+
+		System.out.println("DONE: " + ((long) System.currentTimeMillis() - startTime) + " ms");
+		
+	}
 	
 	/**
 	 * test the true positive measure of the model

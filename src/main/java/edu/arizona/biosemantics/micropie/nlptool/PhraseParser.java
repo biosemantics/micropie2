@@ -864,7 +864,7 @@ public class PhraseParser {
 			List<TaggedWord> scopeClause = null;
 			for(List<TaggedWord> clause:clauseList){
 				//System.out.println(clause.get(0).beginPosition()+" "+clause.get(clause.size()-1).endPosition());
-				if(clause.get(0).beginPosition()<=negStart&&clause.get(clause.size()-1).endPosition()>=negEnd){
+				if(clause.size()>=1&&clause.get(0).beginPosition()<=negStart&&clause.get(clause.size()-1).endPosition()>=negEnd){
 					scopeClause = clause;
 					break;
 				}

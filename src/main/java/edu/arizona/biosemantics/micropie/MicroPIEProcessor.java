@@ -180,7 +180,8 @@ public class MicroPIEProcessor{
 			switch(outputFormat){
 				case 1://output the format of MatrixConverter csv
 					matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
-					matrixWriter.writeMatrixConverter(matrix, labelCategoryNameMap,outputCharacterLabels,false);break;
+					matrixWriter.writeMatrixConverter(matrix, labelCategoryNameMap,outputCharacterLabels,false);
+					break;
 				case 2://output Marked up XML files
 					String outputFolder = outputMatrixFile;
 					Set taxonFiles = matrix.getTaxonFiles();
@@ -192,6 +193,10 @@ public class MicroPIEProcessor{
 					markupXMLWriter.setTaxonFiles(taxonFiles);
 					markupXMLWriter.setLabelCategoryNameMap(labelCategoryNameMap);
 					markupXMLWriter.generateOutputXML();
+					break;
+				case 3://output character matrix and sentence matrix together, setence is by character value
+					matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
+					matrixWriter.writeCharSentMatrix(matrix, labelCategoryNameMap,outputCharacterLabels,true);
 					break;
 				default://output default csv
 					matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));

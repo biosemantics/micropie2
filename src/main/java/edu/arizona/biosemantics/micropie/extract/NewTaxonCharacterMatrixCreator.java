@@ -289,17 +289,16 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 			text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C");
 			classifiedSentence.setText(text);
 			
-			Set<ILabel> predictions = classifiedSentence.getPredictions();
-			if (predictions.size() == 0) {// it can be any character,||(predictions.size() == 1&&predictions.contains(Label.c0))
-				Label[] labelList = Label.values();
-				for (int i = 0; i < labelList.length; i++) {
-					predictions.add(labelList[i]);
-				}
-			}
+			
 
 			// Reference:
 			// get the character extractors for this sentence
 			Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
+			Set<ILabel> predictions = classifiedSentence.getPredictions();
+			if (predictions.size() == 0) {// it can be any character,||(predictions.size() == 1&&predictions.contains(Label.c0))
+				extractors = contentExtractorProvider.getAllContentExtractor();
+			}
+			
 			for (ILabel label : predictions) {// get all the extractors ready
 				//if (label instanceof Label && characterLabels.contains(label)) {
 				if (characterLabels.contains(label)) {
