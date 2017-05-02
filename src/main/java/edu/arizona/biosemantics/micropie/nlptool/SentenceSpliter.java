@@ -8,10 +8,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import semanticMarkup.know.lib.WordNetPOSKnowledgeBase;
-import semanticMarkup.ling.Token;
-import semanticMarkup.ling.learn.utility.LearnerUtility;
-import semanticMarkup.ling.transform.ITokenizer;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -164,40 +160,6 @@ public class SentenceSpliter {
 	}	
 	
 	
-	/**
-	 * CharaParser's segmentSentence
-	 * @param sentences
-	 * @param sentenceDetector
-	 * @param tokenizer
-	 * @param wordNetPOSKnowledgeBase
-	 * @return
-	 */
-	private List<String> getSentencesDongyeMengSegmentSent(List<String> sentences,
-			ITokenizer sentenceDetector,
-			ITokenizer tokenizer,
-			WordNetPOSKnowledgeBase wordNetPOSKnowledgeBase) {
-		
-		//System.out.println("Go to getSentencesStep4()");
-		List<String> result = new LinkedList<String>();		
-
-
-		for (String sentence : sentences) {
-			//System.out.println("sentence::" + sentence);
-			
-			List<Token> tokenList = new ArrayList<Token>();
-			// this.tester = new LearnerUtility(sentenceDetector, tokenizer, wordNetPOSKnowledgeBase);
-			//tokenList = this.tester.segmentSentence(sentence);
-			LearnerUtility tester = new LearnerUtility(sentenceDetector, tokenizer, wordNetPOSKnowledgeBase);
-			tokenList = tester.segmentSentence(sentence);
-			
-			for ( int i = 0; i < tokenList.size(); i++ ) {
-				String subSent = tokenList.get(i).getContent();
-				//System.out.println("segmentSentence()::" + subSent);
-				result.add(subSent);
-			}			
-		}
-		return result;
-	}
 	
 
 	/**

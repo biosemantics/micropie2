@@ -102,8 +102,11 @@ public class LabelUtil {
 		stringToLabelMap.put("3.1B", Label.c27);
 		stringToLabelMap.put("3.12", Label.c28);
 		stringToLabelMap.put("3.1C", Label.c28);
-		stringToLabelMap.put("3.13", Label.c29);
-		stringToLabelMap.put("3.1D", Label.c29);
+		//combine 3.1D and 3.1G
+		stringToLabelMap.put("3.13", Label.c59);
+		stringToLabelMap.put("3.1D", Label.c59);
+		//stringToLabelMap.put("3.13", Label.c29);
+		//stringToLabelMap.put("3.1D", Label.c29);
 		stringToLabelMap.put("3.14", Label.c30);
 		stringToLabelMap.put("3.1E", Label.c30);
 		stringToLabelMap.put("3.15", Label.c31);

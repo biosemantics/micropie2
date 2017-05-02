@@ -95,10 +95,10 @@ public class TrainSentenceClassifier{
 			cateReader.read();
 			Map categoryCodeLabelMap = cateReader.getCategoryCodeLabelMap();
 			
-			CSVSentenceReader trainingSentenceReader = new CSVSentenceReader();
-			trainingSentenceReader.setCategoryCodeLabelMap(categoryCodeLabelMap);
-			
-			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
+//			CSVSentenceReader trainingSentenceReader = new CSVSentenceReader();
+//			trainingSentenceReader.setCategoryCodeLabelMap(categoryCodeLabelMap);
+//			
+//			trainingSentenceReader.setInputStream(new FileInputStream(trainingFile));
 			
 			//List<RawSentence> trainingSentences = trainingSentenceReader.readTwoColumnSentenceList();
 			CharacterExampleGenerator chaSentsGenerator = new CharacterExampleGenerator();
@@ -108,6 +108,7 @@ public class TrainSentenceClassifier{
 			chaSentsGenerator.loadCorrectedClns("F:\\MicroPIE\\2017tasks\\training sentences\\Firmicutes_Genomes_descriptions_122216_predictions_CHECKED_3c.txt");
 			chaSentsGenerator.loadCorrectedClns("F:\\MicroPIE\\2017tasks\\training sentences\\Firmicutes_NoGenomes_descriptions_122316_predictions_CHECKED_3c.txt");
 			chaSentsGenerator.loadCorrectedClns("F:\\MicroPIE\\2017tasks\\training sentences\\HalophilicArchaea_descriptions_122316_predictions_CHECKED_3c.txt");
+			chaSentsGenerator.loadCorrectedClns("F:\\MicroPIE\\2017tasks\\training sentences\\Pathogen_Feb2017_predictions_checked_3c.txt");
 			
 			//System.out.println("trainingSentences.size()::" + trainingSentences.size());
 			/**/

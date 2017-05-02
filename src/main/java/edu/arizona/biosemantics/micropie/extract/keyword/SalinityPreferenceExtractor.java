@@ -177,7 +177,7 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 						}else{
 							phrase.setText(substance);
 						}
-						//System.out.println("found substances:" +substance+" "+phrase.getStart());
+						System.out.println("found substances:" +substance+" "+phrase.getStart());
 						//whether need require
 						//Situation 2a: Explicitly express the requirement. 
 						int subIndex = phrase.getStartIndex();

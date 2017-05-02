@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import usp.eval.MicropieUSPExtractor;
+//import usp.eval.MicropieUSPExtractor;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -53,7 +53,7 @@ public class FermentationProductsExtractor extends AbstractCharacterValueExtract
 		List<CharacterValue> charValueList = null;
 		
 		String text = sentence.getText();
-
+/*
 		MicropieUSPExtractor micropieUSPExtractor = new MicropieUSPExtractor(uspResultsDirectory, uspString);
 		try {
 			output = micropieUSPExtractor.getObjectValue(text, "produces", "V", "dobj", "Dep");
@@ -64,6 +64,7 @@ public class FermentationProductsExtractor extends AbstractCharacterValueExtract
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 		
 		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
 		return charValueList;

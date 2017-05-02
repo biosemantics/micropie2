@@ -14,7 +14,6 @@ import java.util.Set;
 import java.util.List;
 
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.keyword.AntibioticPhraseExtractor;
@@ -25,11 +24,7 @@ import edu.arizona.biosemantics.micropie.extract.keyword.KeywordBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.OrganicCompoundExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.SalinityPreferenceExtractor;
-import edu.arizona.biosemantics.micropie.extract.usp.USPBasedExtractor;
-import edu.arizona.biosemantics.micropie.extract.usp.USPRequest;
 import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
-import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
-import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 
 
 /**
@@ -38,15 +33,9 @@ import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
  */
 public class CharacterValueExtractorReader implements ICharacterValueExtractorReader {
 
-	private String uspResultsDirectory;
-	private String uspString;
-	private String uspBaseString;
 	
 	@Inject
-	public CharacterValueExtractorReader(@Named("uspBaseString") String uspBaseString, @Named("uspResultsDirectory") String uspResultsDirectory, @Named("uspString") String uspString) {
-		this.uspResultsDirectory = uspResultsDirectory;
-		this.uspString = uspString;
-		this.uspBaseString = uspBaseString;
+	public CharacterValueExtractorReader() {
 	}
 	
 	@Override
@@ -85,42 +74,8 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		switch(extractorType) {
 		case key:
 			return createKeywordBasedExtractor(file, labelName, characterName, matchModel);
-		case usp:
-			return createUSPBasedExtractor(file, labelName, characterName);
 		default:return null;
 		}
-	}
-
-	
-	/**
-	 * Create  value extractor which extracts values by USP
-	 * @param file : contains the initial USP request
-	 * @param labelName
-	 * @param character
-	 * @return
-	 * @throws IOException
-	 */
-	private ICharacterValueExtractor createUSPBasedExtractor(File file,
-			String labelName, String characterName){
-		Set<USPRequest> uspRequests = new HashSet<USPRequest>();
-		try{
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					new FileInputStream(file), "UTF8"));
-			String strLine;
-			while ((strLine = br.readLine()) != null) {
-				String[] requestParameters = strLine.split("\t");
-				if(requestParameters.length != 4) 
-					continue;
-				
-				// System.out.println("labelName:" + labelName + "::character::" + character);
-				
-				uspRequests.add(new USPRequest(requestParameters[0], requestParameters[1], requestParameters[2], requestParameters[3]));
-			}
-			br.close();
-		} catch(Exception e){
-			e.printStackTrace();
-		}
-		return new USPBasedExtractor(Label.valueOf(labelName), characterName, uspRequests, uspResultsDirectory, uspString,uspBaseString);
 	}
 
 	
