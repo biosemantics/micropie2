@@ -2,6 +2,7 @@ package edu.arizona.biosemantics.micropie.extract.keyword;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,12 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 		requirePatterns.add("support");
 		requirePatterns.add("foster");
 		requirePatterns.add("facilitat");
+		requirePatterns.add("occur");
+		requirePatterns.add("grow");
+		requirePatterns.add("tolerate");
+		requirePatterns.add("supply");
+		requirePatterns.add("grew");
+		requirePatterns.add("observed");
 	}
 	
 	/**
@@ -51,6 +58,12 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 	{
 		notrequirePatterns.add("inhibit");
 		notrequirePatterns.add("prohibit");
+	}
+	
+	public Set<String> verbPatterns = new HashSet();
+	{
+		verbPatterns.addAll(requirePatterns);
+		verbPatterns.addAll(notrequirePatterns);
 	}
 	
 	
@@ -109,49 +122,30 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 		
 		
 		List<CharacterValue> charValueList =  new ArrayList();
+		//sentences
 		if(sent.getSubSentTaggedWords()!=null&&sent.getSubSentTaggedWords().size()>0){
 			List<TaggedWord> taggedwordsList = (List<TaggedWord>)sent.getSubSentTaggedWords().get(0);
-			//System.out.println(taggedwordsList);
+			System.out.println(taggedwordsList);
 			List<Phrase> phList = phraseParser.extract(taggedwordsList);
-			//System.out.println(phList);
+			System.out.println(phList);
 			
-			
-			//in the presence
-			int preIndex = sentStr.indexOf("in the presen");
-			int preWordIndex = wordIndex("presence", taggedwordsList);
-			//System.out.println("infer for present : ");
-			int absIndex = sentStr.indexOf("in the absen");
-			int absWordIndex = wordIndex("absence", taggedwordsList);
+			String existenceVerb = detectVerb(taggedwordsList);
+			System.out.println("existenceVerb=" +existenceVerb);
+			boolean detectPresence = detectPresence(sentStr);
+			System.out.println("detectPresence=" +detectPresence);
 			String negation = negationIdentifier.detectFirstNegation(taggedwordsList);
 			int negationIndex = negationIdentifier.detectFirstNegationIndex(taggedwordsList);
 			
-//			boolean absNegation = false;
-//			boolean preNegation = false;
-//			if(negationIndex>-1){
-//				if(negationIndex-preWordIndex<0&&absWordIndex<0||
-//						negationIndex-preWordIndex<0&&negationIndex-preWordIndex>negationIndex-absWordIndex){//present negation
-//					preNegation = true;
-//				}
-//				if (negationIndex-absWordIndex<0&&preWordIndex<0||
-//						negationIndex-absWordIndex<0&&negationIndex-absWordIndex>negationIndex-preWordIndex){//absent substance
-//					absNegation = true;
-//				}
-//			}
-			
-			//System.out.println("sentence="+sentence.getText());
-			//System.out.println("negation="+negation+" negationIndex="+negationIndex);
-			//System.out.println("preIndex="+preIndex+" preWordIndex="+preWordIndex);
-			//System.out.println("absIndex="+absIndex+" absWordIndex="+absWordIndex);
+			//verb+salt
 			for(int cur=0;cur<phList.size();cur++){
 				Phrase phrase = phList.get(cur);
 				String text = phrase.getText();
-				//System.out.println("phrases:" +text);
+				
+				text = text.toLowerCase();
 				//detect whether contain keywords
-				//System.out.println("charValueList:" +charValueList);
 				for (String keywordString : keywords) {
 					String substance = keywordString.substring(1,keywordString.length());
-					//System.out.println("phrases:" +text+" to find "+isExist(substance.toLowerCase(), text.toLowerCase())+" in ["+keywordString+"]");
-					
+					//System.out.println(substance);
 					//it's an adjective to describe the salinity preference
 					//Situation 1: Adjective descriptions;
 					//Sample sentences:
@@ -163,59 +157,83 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 						
 						CharacterValue charVal = phrase.getCharValue();
 						charValueList.add(charVal);
-						//System.out.println("Adjective words: ["+charVal+"]");
+						System.out.println("Adjective words: ["+charVal+"]");
 						break;//if has found the value;
 						
 					//Situation 2: Require some kinds of substances.
 					//Sample sentences:
-					//Halophilic, growing between 1.0 and 7.5 % (w/v) NaCl with optimum growth at 1–3 %.
+					//Require Na+ ions
 					}else if(keywordString.indexOf("@")>-1&&isExist(substance.toLowerCase(), text.toLowerCase())){//compounds
-						//System.out.println("substances");
+						System.out.println("substances:"+keywordString);
 						phrase.convertValue(this.getLabel());
-						if(substance.equals("Na+")){// ions
-							if(sentStr.indexOf("Na\\+ ions")>-1) phrase.setText("Na+ ions");
-						}else{
+//						if(substance.equals("Na+")){// ions
+//							if(sentStr.indexOf("Na\\+ ions")>-1) phrase.setText("Na+ ions");
+//						}else{
 							phrase.setText(substance);
-						}
-						System.out.println("found substances:" +substance+" "+phrase.getStart());
-						//whether need require
-						//Situation 2a: Explicitly express the requirement. 
-						int subIndex = phrase.getStartIndex();
-						if(preWordIndex>-1&&preWordIndex-subIndex<0&&absWordIndex<0||
-								preWordIndex>-1&&preWordIndex-subIndex<0&&Math.abs(preWordIndex-subIndex)<Math.abs(absWordIndex-subIndex)||
-								preWordIndex<subIndex&&subIndex<absWordIndex){//present substance
-							//System.out.println(negation+" present "+phrase.getText());
-							phrase.setNegation(negation);
-							
-							phrase.convertValue(this.getLabel());
-							phrase.getCharValue().setValue("requires "+phrase.getCharValue().getValue());
-							CharacterValue charVal = phrase.getCharValue();
-							//System.out.println("infer for present : ["+charVal+"]");
-							charValueList.add(charVal);
-						}else if (absWordIndex>-1&&absWordIndex-subIndex<0&&preWordIndex<0||
-								absWordIndex>-1&&absWordIndex-subIndex<0&&Math.abs(absWordIndex-subIndex)<Math.abs(preWordIndex-subIndex)){//absent substance
-							//System.out.println(negation+" absent "+phrase.getText());
-							
-							CharacterValue charVal = phrase.getCharValue();
-							phrase.convertValue(this.getLabel());
-							if(negation==null){
-								charVal.setNegation("not");
-								//System.out.println("infer for absent : not ["+phrase.getCharValue().getValue()+"]");
-								charVal.setValue("requires "+phrase.getCharValue().getValue());
-							}else{
-								charVal.setNegation(null);
-								charVal.setValue("requires "+phrase.getCharValue().getValue());
+							if(findIons(cur, phList)){
+								phrase.setText(substance+" ions");
 							}
-							
-							//System.out.println("infer for absent : ["+charVal+"]");
-							charValueList.add(charVal);
-						}
-					
-						//break;//if has found the value, do not find in this phrase anymore
+//						}
+						System.out.println("found substances:" +phrase.getText());
+						//String verbWord = detectVerb(taggedwordsList); 
+						phrase.setNegation(negation);
+						phrase.setModifer(existenceVerb);
+						phrase.convertValue(this.getLabel());
+						phrase.getCharValue().setValue(phrase.getCharValue().getValue());
+						CharacterValue charVal = phrase.convertValue(this.getLabel());
+						System.out.println("infer for present : ["+charVal+"]");
+						charValueList.add(charVal);
+					}
 				}//:~
-			}//:~
-		}//all phrase
-		}
+			}
+			/*	
+			if(!detectPresence){{//presence
+			//in the presence
+			int preIndex = sentStr.indexOf("in the presen");
+			int preWordIndex = wordIndex("presence", taggedwordsList);
+			//System.out.println("infer for present : ");
+			int absIndex = sentStr.indexOf("in the absen");
+			int absWordIndex = wordIndex("absence", taggedwordsList);
+			
+			//whether need require
+			//Situation 2a: Explicitly express the requirement. 
+			for(int cur=0;cur<phList.size();cur++){
+				Phrase phrase = phList.get(cur);
+				String text = phrase.getText();
+				int subIndex = phrase.getStartIndex();
+				if(preWordIndex>-1&&preWordIndex-subIndex<0&&absWordIndex<0||
+						preWordIndex>-1&&preWordIndex-subIndex<0&&Math.abs(preWordIndex-subIndex)<Math.abs(absWordIndex-subIndex)||
+						preWordIndex<subIndex&&subIndex<absWordIndex){//present substance
+					//System.out.println(negation+" present "+phrase.getText());
+					phrase.setNegation(negation);
+					
+					phrase.convertValue(this.getLabel());
+					phrase.getCharValue().setValue("requires "+phrase.getCharValue().getValue());
+					CharacterValue charVal = phrase.getCharValue();
+					//System.out.println("infer for present : ["+charVal+"]");
+					charValueList.add(charVal);
+				}else if (absWordIndex>-1&&absWordIndex-subIndex<0&&preWordIndex<0||
+						absWordIndex>-1&&absWordIndex-subIndex<0&&Math.abs(absWordIndex-subIndex)<Math.abs(preWordIndex-subIndex)){//absent substance
+					//System.out.println(negation+" absent "+phrase.getText());
+					
+					CharacterValue charVal = phrase.getCharValue();
+					phrase.convertValue(this.getLabel());
+					if(negation==null){
+						charVal.setNegation("not");
+						//System.out.println("infer for absent : not ["+phrase.getCharValue().getValue()+"]");
+						charVal.setValue("requires "+phrase.getCharValue().getValue());
+					}else{
+						charVal.setNegation(null);
+						charVal.setValue("requires "+phrase.getCharValue().getValue());
+					}
+					
+					//System.out.println("infer for absent : ["+charVal+"]");
+					charValueList.add(charVal);
+				}
+			}
+		}*/
+			
+		}//subsentences end
 		
 		
 		boolean containBoth = detectBoth(charValueList);
@@ -230,6 +248,30 @@ public class SalinityPreferenceExtractor extends KeywordBasedExtractor{
 	}
 	
 	
+	//whether "ions" follow this phrase
+	private boolean findIons(int cur, List<Phrase> phList) {
+		for(int j=cur; j<phList.size()&&j<cur+3;j++) if(phList.get(j).getText().contains("ions")) return true;
+		return false;
+	}
+
+	private boolean detectPresence(String sentStr) {
+		return sentStr.indexOf("in the presen")>-1||sentStr.indexOf("in the absen")>-1;
+	}
+
+	private String detectVerb(List<TaggedWord> taggedwordsList) {
+		String verb = null;
+		for(TaggedWord tword:taggedwordsList){
+			if(tword.tag().startsWith("VB")){
+				Iterator<String> verbIter = this.verbPatterns.iterator();
+				while(verbIter.hasNext()){
+					String next = verbIter.next();
+					if(tword.word().toLowerCase().contains(next)) verb = next;
+				}
+			}
+		}
+		return verb;
+	}
+
 	private boolean detectBoth(List<CharacterValue> charValueList) {
 		boolean yes = false;
 		boolean not = false;

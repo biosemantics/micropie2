@@ -158,20 +158,22 @@ public class KeywordBasedExtractor extends AbstractCharacterValueExtractor {
 	}
 	
 	public static void main(String[] args){
-		String text = "Colonies on solid media (ZoBell 2216e and TSA plus sea water) are yellowish, slightly convex (elevation), entire (margin) and round (configuration).";
-		String keywordString = "yellowish";
+		String text = "The minimal Mg2+ concentration for growth and the Mg2+ concentration for optimal growth are 5 and 20 mM, respectively";
+		String keywordString = "Mg2+";
 		keywordString = keywordString.toLowerCase();
 		keywordString = keywordString.replace("+", "\\+");
 		
 		String patternString = "\\s"+keywordString+"\\,|\\s"+keywordString+"\\s|^"+keywordString+"\\s|^"+keywordString+"\\,"; // regular expression pattern
+		System.out.println(patternString);
 		Pattern pattern = Pattern.compile(patternString);
-		Matcher matcher = pattern.matcher(text);			
+		Matcher matcher = pattern.matcher(text.toLowerCase());			
 		if (matcher.find() && keywordString.length() > 1) {
 			String matchString = matcher.group().trim();
+			System.out.println(matchString);
 			if(matchString.substring(matchString.length()-1, matchString.length()).equals(",")) {
 				matchString = matchString.substring(0, matchString.length()-1);
 			}
-			//System.out.println(matchString);
+			System.out.println(matchString);
 		}
 	}
 }
