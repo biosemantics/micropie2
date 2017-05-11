@@ -30,6 +30,8 @@ public class NegationIdentifier implements INegationIdentifier{
 		privativeSet.add("nor");
 		privativeSet.add("unable");
 		privativeSet.add("impossible");
+		//inhibited
+		privativeSet.add("inhibited");
 	}
 	
 	

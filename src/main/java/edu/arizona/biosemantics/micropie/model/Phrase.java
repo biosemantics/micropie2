@@ -124,7 +124,7 @@ public class Phrase {
 		//"11","2.1A","Motility"
 		//"28","3.12","Aerophilicity"
 		if(this.modifer!=null&&!"".equals(this.modifer)){
-			if(Label.c2.equals(label)||Label.c11.equals(label)||Label.c28.equals(label)){
+			if(Label.c2.equals(label)||Label.c11.equals(label)||Label.c28.equals(label)||Label.c59.equals(label)){
 				cv.setValueModifier(this.modifer);
 				cv.setValue(cv.getValue().replace(this.modifer, "").trim());
 			}

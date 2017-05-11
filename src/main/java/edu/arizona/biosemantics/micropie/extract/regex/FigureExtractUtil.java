@@ -1,90 +1,22 @@
 package edu.arizona.biosemantics.micropie.extract.regex;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.google.inject.Inject;
-
-import edu.arizona.biosemantics.micropie.classify.ILabel;
-import edu.arizona.biosemantics.micropie.extract.AbstractCharacterValueExtractor;
-import edu.arizona.biosemantics.micropie.model.CharacterGroup;
-import edu.arizona.biosemantics.micropie.model.CharacterValue;
-import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
-import edu.arizona.biosemantics.micropie.model.Sentence;
-import edu.arizona.biosemantics.micropie.model.SubSentence;
 import edu.arizona.biosemantics.micropie.model.ValueGroup;
-import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
-import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.stanford.nlp.ling.TaggedWord;
 
+
 /**
- * extract the figures
- * updated: change -, <,> as modifiers,in final output, combine it to value field
- * 
+ * Figure Extraction Util
  * @author maojin
- * 
+ *
  */
-public class FigureExtractor  extends AbstractCharacterValueExtractor{
-	protected SentenceSpliter sentSplitter;
-	protected PosTagger posTagger;
-	
-	@Inject
-	public FigureExtractor(SentenceSpliter sentSplitter,PosTagger posTagger,ILabel label, String characterName){
-		super(label,characterName);
-		this.sentSplitter = sentSplitter;
-		this.posTagger = posTagger;
-	}
-
-	public FigureExtractor(ILabel label, String characterName) {
-		super(label,characterName);
-	}
-
-	
-	/**
-	 * 1, separate subsetences
-	 * 2, postag each subsentence
-	 * 
-	 * @param sentence
-	 */
-	public void posSentence(MultiClassifiedSentence sentence){
-		//1, detect sentences
-		List<SubSentence> subSentences = sentSplitter.detectSnippet(sentence);
-		sentence.setSubSentence(subSentences);
-		
-		//2, postag each subsentence
-		List taggerwordsList = new LinkedList();
-		sentence.setSubSentTaggedWords(taggerwordsList);
-		for(SubSentence subsent:subSentences){
-			String content = subsent.getContent();
-			List<TaggedWord> taggedWords  = posTagger.tagString(content);
-			taggerwordsList.add(taggedWords);
-		}
-	}
-	
-	/**
-	 * 1, separate subsetences
-	 * 2, postag each subsentence
-	 * 
-	 * @param sentence
-	 */
-	public void posSentenceNoSub(MultiClassifiedSentence sentence){
-		//2, postag each subsentence
-		List taggerwordsList = sentence.getSubSentTaggedWords();
-		if(taggerwordsList==null){
-			taggerwordsList = new LinkedList();
-			sentence.setSubSentTaggedWords(taggerwordsList);
-			List<TaggedWord> taggedWords  = posTagger.tagString(sentence.getText());
-			taggerwordsList.add(taggedWords);
-		}
-	}
-	
-	
+public class FigureExtractUtil {
 	
 	/**
 	 * detect single figure and figure ranges
@@ -108,7 +40,7 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 			if(word.tag().equals("CD")||(word.tag().equals("JJ")&&containNumber(word.word()))||(defIsNumber(word.word()))){
 				//if(word.tag().equals("CD")||defNumber(word.word())){
 				termId = i;
-				NumericCharacterValue fd = new NumericCharacterValue(this.getLabel());
+				NumericCharacterValue fd = new NumericCharacterValue(null);
 				String unit = "";
 				
 				figure = word.word();
@@ -159,9 +91,8 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 				}else{
 					if(termId-1>=0&&(taggedWords.get(termId-1).word().equals("-")||taggedWords.get(termId-1).word().equals("−")
 							||taggedWords.get(termId-1).word().equals("+")||taggedWords.get(termId-1).word().equals("<")||taggedWords.get(termId-1).word().equals(">"))){
-						//updated:
-						fd.setValueModifier(taggedWords.get(termId-1).word());
 						//figure = taggedWords.get(termId-1).word()+figure;
+						fd.setValueModifier(taggedWords.get(termId-1).word());
 						termId = termId-1;
 					}
 					
@@ -172,13 +103,6 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 					features.add(fd);
 				}
 				
-			}else if(word.word().equals("absence")){
-				NumericCharacterValue fd = new NumericCharacterValue(this.getLabel());
-				fd.setValueModifier("<");
-				fd.setTermBegIdx(i);
-				fd.setTermEndIdx(i+1);
-				fd.setValue("0");
-				features.add(fd);
 			}
 			
 			i++;
@@ -584,12 +508,4 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 	public boolean containNumSign(String word) {
 		return word.matches("[+-±<>]+");
 	}
-	
-	
-	@Override
-	public List<CharacterValue> getCharacterValue(
-			Sentence text) {
-		return null;
-	}
-
 }
