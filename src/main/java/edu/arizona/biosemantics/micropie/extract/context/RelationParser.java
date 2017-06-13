@@ -121,6 +121,16 @@ public class RelationParser {
 						break;
 					}
 				}
+				boolean containsAsWellAs = true;
+				for(int inter = formerEndIndex+1; inter <curStartIndex&&inter<twList.size(); inter++ ){
+					TaggedWord tw = twList.get(inter);
+					//System.out.println("inter word="+tw.word());
+					if(!"as well as".contains(tw.word())){
+						containsAsWellAs = false;
+						break;
+					}
+				}
+				if(containsAsWellAs) isCoor = true;
 			}
 			//System.out.println(curPhrase+" "+curType+" "+formerPhrase+" "+isCoor);
 			if(isCoor){//
@@ -168,7 +178,7 @@ public class RelationParser {
 			pharseSet.remove(onePhrase);
 			//deep-first traverse strategy
 			traverseConnectedGraph(corphraseList,pharseSet,onePhrase,coordGraph);
-			//System.out.println("corphraseList="+corphraseList);
+			System.out.println("corphraseList="+corphraseList);
 		}
 		
 		return phraseLists;

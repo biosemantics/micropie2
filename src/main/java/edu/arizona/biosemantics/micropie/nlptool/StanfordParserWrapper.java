@@ -299,9 +299,9 @@ public class StanfordParserWrapper {
 	public GrammaticalStructure depParse(String sent){
        // Tree parse = parseDepTree(sent);
         Tree parse = parseDepTreeByCoreNLP(sent);
-        TreebankLanguagePack tlp = new PennTreebankLanguagePack();
-      	GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
-      	GrammaticalStructure gs = gsf.newGrammaticalStructure(parse); 
+//        TreebankLanguagePack tlp = new PennTreebankLanguagePack();
+//      	GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
+//      	GrammaticalStructure gs = gsf.newGrammaticalStructure(parse); 
       	
         //TreebankLanguagePack tlp = new PennTreebankLanguagePack();  
         //GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();  
@@ -310,7 +310,7 @@ public class StanfordParserWrapper {
         //so that dependencies which do not   
         //preserve the tree structure are omitted  
 	   // return (List<TypedDependency>) gs.typedDependenciesCollapsedTree(); 
-        return gs;
+        return this.depParse(parse);
 	}
 	
 	

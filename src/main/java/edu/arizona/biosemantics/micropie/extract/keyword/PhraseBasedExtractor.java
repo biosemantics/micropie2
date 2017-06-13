@@ -167,6 +167,7 @@ public class PhraseBasedExtractor extends KeywordBasedExtractor{
 		keywordString = keywordString.replace("+", "\\+");
 		//keywordString = keywordString.replace("-", " ");
 		//text = text.replace("-", " ");
+		
 		String patternString = "^"+keywordString+"\\s|\\s"+keywordString+"\\s|\\s"+keywordString+"$|^"+keywordString+"$"; // regular expression pattern
 		Pattern pattern = Pattern.compile(patternString);
 		Matcher matcher = pattern.matcher(text);			

@@ -20,6 +20,7 @@ public class NegationIdentifier implements INegationIdentifier{
 	private Set<String> privativeSet = new HashSet();
 	{
 		privativeSet.add("no");
+		privativeSet.add("none");
 		privativeSet.add("not");
 		privativeSet.add("doesn't");
 		privativeSet.add("don't");
