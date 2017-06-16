@@ -1,8 +1,10 @@
-MicroPIE 0.1.0
+
+<img src="http://biosemantics.github.io/micropie/MicroPIE_logo.png">
 =========================================
 
 
-Introduction
+MicroPIE 0.1.0 
+Introduction 
 ====================
 <B>MicroPIE (Microbial Phenomics Information Extractor)</B>is a text-mining tool that utilizes domain experts' knowledge, NLP (Natural Language Processing) and machine learning techniques (Support Vector Machine) to extract phenotypic (i.e., phenomic) characters and character states from microbial taxonomic descriptions. MicroPIE was developed asis part of an NSF funded research project entitled AVAToL: Next Generation Phenomics for the Tree of Life (NSF DEB- #1208256 , DEB-1208567, DEB-1208534, DEB-1208685, and DBI-1147266).
 
