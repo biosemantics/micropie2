@@ -1,5 +1,5 @@
 
-<img src="micropie2/MicroPIE_logo.png">
+<img src="https://github.com/biosemantics/micropie2/blob/dc780221acc4f4164766b7c8c8ce86c7ac5b8204/MicroPIE_logo.png">
 =========================================
 
 
