@@ -1,5 +1,5 @@
 
-<img src="http://biosemantics.github.io/micropie/MicroPIE_logo.png">
+<img src="http://biosemantics.github.io/micropie2/MicroPIE_logo.png">
 =========================================
 
 
