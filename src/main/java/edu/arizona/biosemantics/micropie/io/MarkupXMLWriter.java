@@ -3,9 +3,11 @@ package edu.arizona.biosemantics.micropie.io;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
@@ -136,7 +138,7 @@ public class MarkupXMLWriter {
 						} else {
 							characterEl.setAttribute("name",charName);
 							String value = formatter.format(charValue);
-							characterEl.setAttribute("value",value);
+							characterEl.setAttribute("value",value.replace("|", " "));//replace the format, 37|C to 37 C.
 							biological_entityEl.addContent(characterEl);
 						}
 					}
@@ -148,7 +150,7 @@ public class MarkupXMLWriter {
 
 			// display nice nice
 			xmlOutput.setFormat(Format.getPrettyFormat());
-			xmlOutput.output(xmlDocument, new FileWriter(outputXMLFile));
+			xmlOutput.output(xmlDocument, new OutputStreamWriter(new FileOutputStream("outputXMLFile"), "UTF-8"));
 			
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

@@ -94,11 +94,11 @@ public class PostProcessor {
 				
 				//remove
 				//if the value is empty, remove it.
-				if(aValue.getValue()==null||"".equals(aValue.getValue())){//it must be a negation
+				if(aValue.getValue()==null||"".equals(aValue.getValue())){
 					valueList.remove(aValue);
 					//System.out.println("remove 1:"+aValue);
 					i--;
-				}else if(Label.c41.equals(valueLabel)){//it must be a negation
+				}else if(Label.c41.equals(valueLabel)&&Label.c44.equals(valueLabel)){//it must not be a negation
 					if(aValue.getNegation()!=null&&!"".equals(aValue.getNegation())){
 						valueList.remove(aValue);
 						//System.out.println("remove 2:"+aValue);

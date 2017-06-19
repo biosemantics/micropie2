@@ -70,7 +70,7 @@ public class HabitatIsolatedFromExtractor extends PhraseBasedExtractor{
 		
 		//filter verb phrases
 		filterVerbPhraseList(verbPhrases);
-		//System.out.println("filtered verbPhrases="+verbPhrases);
+		System.out.println("filtered verbPhrases="+verbPhrases);
 		GrammaticalStructure deptTree = stanParser.depParse(cleanSent);
 		PhraseRelationGraph verbRelationGraph = relationParser.parseVerbDependencyRelation(verbPhrases, nounPhrases, deptTree);
 		//System.out.println("verbRelationGraph edges ="+verbRelationGraph.edgeSet().size());

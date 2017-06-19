@@ -22,6 +22,8 @@ import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SubSentence;
 import edu.arizona.biosemantics.micropie.model.ValueGroup;
+import edu.arizona.biosemantics.micropie.nlptool.INegationIdentifier;
+import edu.arizona.biosemantics.micropie.nlptool.NegationIdentifier;
 import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.stanford.nlp.ling.TaggedWord;
@@ -35,7 +37,8 @@ import edu.stanford.nlp.process.PTBTokenizer;
  *
  */
 public class PHTempNaClExtractor extends FigureExtractor {
-
+	protected INegationIdentifier negationIdentifier = new NegationIdentifier();
+	
 	public PHTempNaClExtractor(ILabel label, String characterName) {
 		super(label, characterName);
 	}
@@ -62,6 +65,8 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		List<SubSentence> sents = sent.getSubSentence();
 		List<List<TaggedWord>> taggedWordList = sent.getSubSentTaggedWords();
 		//
+		
+		
 		int sentSize = taggedWordList.size();
 		List<NumericCharacterValue> sentValueList = new LinkedList();
 		boolean containWV = false;//whether the sentence contains the unit w/v; 
@@ -71,6 +76,8 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			if(isWVUnit(taggedWords)){
 				containWV = true;
 			}
+			
+			String negation = negationIdentifier.detectFirstNegation(taggedWords);
 			
 			List<NumericCharacterValue> valueList = detectFigures(taggedWords);
 			
@@ -119,15 +126,26 @@ public class PHTempNaClExtractor extends FigureExtractor {
 						maxFd.setUnit(curFd.getUnit());
 						maxFd.setSubCharacter(curFd.getSubCharacter());
 						valueList.add(maxFd);
-					}else{// really unspecified
+					}else if ("<".equals(curFd.getValueModifier())){// really unspecified
 						//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
+						if(negation==null) curFd.setValueGroup(ValueGroup.MAX);//maximum
+						else curFd.setValueGroup(ValueGroup.MIN);//mininum
+						curFd.setValueModifier(null);
+					}else if (">".equals(curFd.getValueModifier())){// really unspecified
+						//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
+						if(negation!=null) curFd.setValueGroup(ValueGroup.MAX);//maximum
+						else curFd.setValueGroup(ValueGroup.MIN);//mininum
+						curFd.setValueModifier(null);
 					}
 					
 				}
 			}
 			
+			
+			
 			//disambiguation according to the logic of value
 			disambCharacters(valueList,taggedWords);
+			
 			
 			fsize =  valueList.size();
 			for(int i=0;i<fsize;i++){
@@ -233,9 +251,11 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		//detect by unit
 		if(curFd.getUnit()!=null&&(curFd.getUnit().equals("˚C")||curFd.getUnit().equals("˚"))){
 			return CharacterGroup.TEMP;
+		}else if(curFd.getUnit()!=null&&curFd.getUnit().contains("w/v")){
+			return CharacterGroup.NACL;
 		}else if(curFd.getUnit()!=null&&curFd.getUnit().equals("%")){
 			return CharacterGroup.NACL;
-		}else if(curFd.getUnit()!=null&&curFd.getUnit().equals("M")){
+		}else if(curFd.getUnit()!=null&&curFd.getUnit().equalsIgnoreCase("M")){
 			return CharacterGroup.NACL;
 		}else  if(curFd.getUnit()!=null&&curFd.getUnit().equals("g")){
 			return CharacterGroup.NACL;
@@ -366,7 +386,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			if(wordStr.equalsIgnoreCase("nacl")||wordStr.equalsIgnoreCase("na")||wordStr.startsWith("MgC")||wordStr.equalsIgnoreCase("cl")
 					||wordStr.equalsIgnoreCase("mg2")||wordStr.equalsIgnoreCase("salinity")||wordStr.equalsIgnoreCase("sea")
 					||wordStr.equalsIgnoreCase("artificial")||wordStr.equalsIgnoreCase("MgSO4")||wordStr.equalsIgnoreCase("Ca2")||wordStr.equalsIgnoreCase("magnesium")
-					||wordStr.equalsIgnoreCase("ASW")) {
+					||wordStr.equalsIgnoreCase("ASW")||wordStr.equalsIgnoreCase("CaCl2")) {
 				if(wordStr.equalsIgnoreCase("na")) wordStr = "Na+";
 				if(wordStr.equalsIgnoreCase("sea")) wordStr = "sea salt";
 				if(wordStr.equalsIgnoreCase("artificial")||wordStr.equalsIgnoreCase("ASW")) wordStr = "artificial seawater";
@@ -420,6 +440,8 @@ public class PHTempNaClExtractor extends FigureExtractor {
 				return ValueGroup.MIN;
 			}
 		}
+		
+		if(content.toLowerCase().contains("optim")) return ValueGroup.OPT;
 		
 		//it may lead to some errors
 		/*

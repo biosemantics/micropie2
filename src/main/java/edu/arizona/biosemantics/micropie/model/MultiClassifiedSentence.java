@@ -65,7 +65,7 @@ public class MultiClassifiedSentence extends Sentence{
 		this.subSentence = subSentence;
 	}
 
-	public List getSubSentTaggedWords() {
+	public List<List<TaggedWord>> getSubSentTaggedWords() {
 		return subSentTaggedWords;
 	}
 
