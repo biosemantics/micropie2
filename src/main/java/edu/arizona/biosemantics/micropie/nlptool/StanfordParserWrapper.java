@@ -53,7 +53,7 @@ import edu.stanford.nlp.util.CoreMap;
  */
 public class StanfordParserWrapper {
 	
-	private StanfordCoreNLP sfCoreNLP;
+	public StanfordCoreNLP sfCoreNLP;
 	private LexicalizedParser lexParser;
 	private AbstractSequenceClassifier nerClassifier;
 	

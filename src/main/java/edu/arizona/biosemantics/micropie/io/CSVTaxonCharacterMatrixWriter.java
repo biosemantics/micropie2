@@ -195,7 +195,7 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		//create matrix content
 		Set<TaxonTextFile> textFiles = matrix.getTaxonFiles();
 		for(TaxonTextFile taxonFile : textFiles) {
-			String[] row = new String[characterNames.size() + 5];
+			String[] row = new String[characterNames.size() + 6];
 			row[0] = taxonFile.getTaxon().replace(",", " ");
 			row[1] = taxonFile.getXmlFile().replace(",", " ");//row[1] = taxonFile.getFamily();
 			row[2] = taxonFile.getGenus().replace(",", " ");

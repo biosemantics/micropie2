@@ -22,6 +22,9 @@ import edu.stanford.nlp.ling.TaggedWord;
 
 /**
  * extract the cell size, cell width, cell length
+ * 
+ * Bug fix log: to avoid colony size, 06/23/17
+ * 
  * @author maojin
  *
  */
@@ -36,6 +39,8 @@ public class CellScaleExtractor extends FigureExtractor{
 	@Override
 	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 		String text = sentence.getText();
+		//to avoid colony size, 06/23/17
+		if(text.indexOf("colony")>-1) return new ArrayList();
 		text = text.replace("µ.m", "µm");
 		text = text.replace("_m", "µm");
 		text = text.replace("- ", "-");

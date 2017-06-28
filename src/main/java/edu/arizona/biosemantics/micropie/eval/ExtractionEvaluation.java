@@ -61,6 +61,7 @@ public class ExtractionEvaluation {
 	protected String[] comparedCharacterNames;
 	
 	protected IValueComparator stringValueComparator = new KeywordStringComparator();
+	protected IValueComparator  cosineComparator = new CosineComparator();
 	protected IValueComparator numericValueComparator = new NumericComparator();
 	protected IValueComparator numericRelaxedComparator = new NumericRelaxedComparator();
 	protected NumericLabels numericLabels = new NumericLabels();
@@ -131,7 +132,6 @@ public class ExtractionEvaluation {
 		for(int i = 0;i<comparedCharacterNames.length;i++){
 			comparedCharacterNames[i] = comparedCharacterNames[i].trim();
 			comparedCharacterLabels[i] = this.characterNameLabelMapping.get(comparedCharacterNames[i].toLowerCase());
-			//System.out.println(comparedCharacterLabels[i]+"===>"+comparedCharacterNames[i]);
 		}
 	}
 
@@ -277,8 +277,13 @@ public class ExtractionEvaluation {
 						matched = numericValueComparator.compare(tgCharValue,gstCharValue);
 						relaxedMatched = numericRelaxedComparator.compare(tgCharValue, gstCharValue);
 					}else{
-						matched = stringValueComparator.compare(tgCharValue,gstCharValue);
-						relaxedMatched= matched;
+						if(charLabel.equals(Label.c17)||charLabel.equals(Label.c31)){
+							matched = cosineComparator.compare(tgCharValue,gstCharValue);
+							relaxedMatched= matched;
+						}else{
+							matched = stringValueComparator.compare(tgCharValue,gstCharValue);
+							relaxedMatched= matched;
+						}
 					}
 					
 					//System.out.println(tgCharValue+" "+gstCharValue+" final value:"+matched);

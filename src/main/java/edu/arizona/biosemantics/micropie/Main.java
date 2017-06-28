@@ -49,7 +49,7 @@ public class Main {
 	 * -i input folder
 	 * -o output folder for CSV file or markup XML files
 	 * -m various models used by MicrioPIE
-	 * -f output format i.e., 0 default CSV; mc, MatrixConverter format; xml, markup XML files; csm, character and sentence matrix
+	 * -f output format i.e., csv default CSV; mc, MatrixConverter format; xml, markup XML files; csm, character and sentence matrix
 	 * -vi  value infer; true or false. Only apply to CSV output
 	 * 
 	 * @param args
@@ -60,9 +60,9 @@ public class Main {
 		//args = "-i in -o out -m models -f xml".split(" ");
 		
 		//-f xml
-		//args = "-i F:\\MicroPIE\\datasets\\craft -o F:\\MicroPIE\\ext\\2017new -m F:/MicroPIE/MicroPIEWEB/models  -vi true -f csm".split("\\s+");
+		//args = "-i F:\\MicroPIE\\datasets\\craft -o F:\\MicroPIE\\ext\\2017new -m F:/MicroPIE/micropie0.2_model  -vi true -f mc".split("\\s+");
 		
-		//args = "-i F:\\MicroPIE\\datasets\\2017\\GSM_v2_103_desccriptions_011217 -o F:\\MicroPIE\\ext\\2017new -m F:/MicroPIE/micropie0.2_model  -vi true -f csm".split("\\s+");
+		args = "-i F:\\MicroPIE\\datasets\\2017\\GSM_v2_103_desccriptions_011217 -o F:/MicroPIE/2017tasks/results -m F:/MicroPIE/micropie0.2_model  -vi true -f csv".split("\\s+");
 		//System.out.println(args);
 		main.parse(args);
 		//main.run();
@@ -127,6 +127,8 @@ public class Main {
 		    		outputformat = 2;
 		    	}else if("csm".equals(outputformatStr)){
 		    		outputformat = 3;
+		    	}else if("csv".equals(outputformatStr)){
+		    		outputformat = 0;
 		    	}else{
 		    		throw new IllegalArgumentException(outputformatStr+" is invalid!");
 		    	}

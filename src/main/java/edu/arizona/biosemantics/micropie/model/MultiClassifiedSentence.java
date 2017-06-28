@@ -25,11 +25,11 @@ public class MultiClassifiedSentence extends Sentence{
 	
 	
 	public MultiClassifiedSentence(String text) {
-		this.text = text;
+		super(text);
 	}
 	
 	public MultiClassifiedSentence(RawSentence sentence, Set<ILabel> predictions) {
-		this.text = sentence.getText();
+		super(sentence.getText());
 		this.predictions = predictions;
 	}
 

@@ -200,7 +200,7 @@ public class MicroPIEProcessor{
 					break;
 				default://output default csv
 					matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
-					matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,false);
+					matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,true);
 			}
 			
 		} catch (FileNotFoundException e) {

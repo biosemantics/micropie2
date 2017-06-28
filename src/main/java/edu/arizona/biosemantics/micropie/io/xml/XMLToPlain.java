@@ -13,15 +13,15 @@ public class XMLToPlain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String inputFolder = "F:/MicroPIE/datasets/2017-0106_Firmicutes";
-		String outputFile = "F:/MicroPIE/datasets/GutMicro_MicroPIEWebFormat.txt";
+		String inputFolder = "F:/MicroPIE/datasets/2017/GSM_v2_103_desccriptions_011217";
+		String outputFile = "F:/MicroPIE/datasets/GSM_all_in_one.txt";
 		
-		//XMLToPlain xmlToPlain = new XMLToPlain();
-		//xmlToPlain.fromXMLToPlain(inputFolder, outputFile);
+		XMLToPlain xmlToPlain = new XMLToPlain();
+		xmlToPlain.fromXMLToPlain(inputFolder, outputFile);
 		
 		/**
 		 * convert plain files to XML files
-		 */
+		
 		String plainInputFile = "F:/MicroPIE/datasets/2017/Pathogen_Feb2017.txt";
 		String xmlFolder = "F:/MicroPIE/datasets/2017/Pathogen_Feb2017";
 		XmlFileConverter xmlFileConverter = new XmlFileConverter();
@@ -42,7 +42,7 @@ public class XMLToPlain {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+		} */
 	}
 
 	
@@ -64,18 +64,19 @@ public class XMLToPlain {
 				
 				String text = textReader.read();
 				
-				fw.write("author: "+taxonFile.getAuthor());
-				fw.write("\n");
-				fw.write("year: "+taxonFile.getYear());
-				fw.write("\n");
-				fw.write("title: "+taxonFile.getTitle()+"-"+taxonFile.getStrain_number());
-				fw.write("\n");
-				fw.write("genus name:"+taxonFile.getGenus());
-				fw.write("\n");
-				fw.write("species name:"+taxonFile.getSpecies());
-				fw.write("\n");
-				fw.write("morphology:"+text);
-				fw.write("\n");
+//				fw.write("author: "+taxonFile.getAuthor());
+//				fw.write("\n");
+//				fw.write("year: "+taxonFile.getYear());
+//				fw.write("\n");
+//				fw.write("title: "+taxonFile.getTitle()+"-"+taxonFile.getStrain_number());
+//				fw.write("\n");
+//				fw.write("genus name:"+taxonFile.getGenus());
+//				fw.write("\n");
+//				fw.write("species name:"+taxonFile.getSpecies());
+//				fw.write("\n");
+//				fw.write("morphology:"+text);
+//				fw.write("\n");
+				fw.write(text);
 				fw.write("\n");
 			}
 		} catch (IOException e) {

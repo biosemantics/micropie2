@@ -29,7 +29,7 @@ import edu.arizona.biosemantics.micropie.io.ICharacterValueExtractorReader;
 
 /**
  * create character value extractors according to the configuration files
- * 
+ * update: Magnesium requirement for growth use  the character extractors for Salt/salinity useage for growth.
  */
 public class CharacterValueExtractorReader implements ICharacterValueExtractorReader {
 
@@ -130,6 +130,8 @@ public class CharacterValueExtractorReader implements ICharacterValueExtractorRe
 		//System.out.println("read character extractors "+label);
 		if(initClass!=null){
 			if("SalinityPreferenceExtractor".equals(initClass)){
+				//fix it
+				label = Label.c59;
 				SalinityPreferenceExtractor saliPrefExtractor = new SalinityPreferenceExtractor(label, characterName,keywords,subKeywords);
 				return saliPrefExtractor;
 			}else if("HabitatIsolatedFromExtractor".equals(initClass)){

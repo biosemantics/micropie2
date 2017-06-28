@@ -37,6 +37,7 @@ import edu.arizona.biosemantics.micropie.extract.CharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.extract.ICharacterBatchExtractor;
 import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractorProvider;
+import edu.arizona.biosemantics.micropie.extract.crf.FeatureRender;
 import edu.arizona.biosemantics.micropie.extract.keyword.AntibioticPhraseExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.AntibioticSyntacticExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellDiameterExtractor;
@@ -91,12 +92,12 @@ import edu.stanford.nlp.process.TokenizerFactory;
 public class Config extends AbstractModule {
 
 
-	// private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Diameter|Cell Long|Cell Wide|Cell Membrane & Cell Wall Components|External features|Filterability|Internal features|Lysis Susceptibility|Physiological requirements|Antibiotics|Secreted Products|Storage Products|Tests|Pathogen Target Organ|Complex Mixtures|Inorganic|Metals|Nitrogen Compounds|Organic|Organic Acids|Other";
+	// private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity/Salt Relationship to Growth|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Diameter|Cell Long|Cell Wide|Cell Membrane & Cell Wall Components|External features|Filterability|Internal features|Lysis Susceptibility|Physiological requirements|Antibiotics|Secreted Products|Storage Products|Tests|Pathogen Target Organ|Complex Mixtures|Inorganic|Metals|Nitrogen Compounds|Organic|Organic Acids|Other";
 	
 	// Verison 2, March 08, 2015 Sundayg
 	// running parameter characters to be extracted
-	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Cell division pattern & reproduction|Salinity preference|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Vitamins and Cofactors required for growth|Geographic location|Antibiotic sensitivity|Antibiotic resistant|Colony shape |Colony margin|Colony texture|Colony color|Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Host|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
-	private String ouputCharacterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Cell division pattern & reproduction|Salinity preference|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Vitamins and Cofactors required for growth|Geographic location|Antibiotic sensitivity|Antibiotic resistant|Colony shape |Colony margin|Colony texture|Colony color|Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Host|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
+	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|cell width/diameter|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Cell division pattern & reproduction|Salinity/Salt Relationship to Growth|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Geographic location|Antibiotic sensitivity|Antibiotic resistant|Colony shape |Colony margin|Colony texture|Colony color|Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Host|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
+	private String ouputCharacterListString = "%G+C|Cell shape|Cell length|cell width/diameter|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Cell division pattern & reproduction|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Vitamins and Cofactors required for growth|Salinity/Salt Relationship to Growth|Geographic location|Antibiotic sensitivity|Antibiotic resistant|Colony shape |Colony margin|Colony texture|Colony color|Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Host|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
 	private String serializedClassifierModel = "nlpmodel/english.all.3class.distsim.crf.ser.gz";
 	
 
@@ -301,6 +302,7 @@ public class Config extends AbstractModule {
 		
 		bind(ITextNormalizer.class).to(TextNormalizer.class);
 		
+		/*
 		bind(StanfordCoreNLP.class).annotatedWith(Names.named("TokenizeSSplit")).toProvider(new Provider<StanfordCoreNLP>() {
 			@Override
 			public StanfordCoreNLP get() {
@@ -308,13 +310,13 @@ public class Config extends AbstractModule {
 				stanfordCoreProperties.put("annotators", "tokenize, ssplit");
 				return new StanfordCoreNLP(stanfordCoreProperties);
 			}
-		}).in(Singleton.class);
+		}).in(Singleton.class);*/
 		
 		bind(StanfordCoreNLP.class).annotatedWith(Names.named("TokenizeSSplitPosParse")).toProvider(new Provider<StanfordCoreNLP>() {
 			@Override
 			public StanfordCoreNLP get() {
 				Properties stanfordCoreProperties = new Properties();
-				stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse");
+				stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse,lemma");
 				return new StanfordCoreNLP(stanfordCoreProperties);
 			}
 		});
@@ -432,6 +434,7 @@ public class Config extends AbstractModule {
 		//bind(MicroPIEProcessor.class);
 		//bind(MicroPIEProcessorOld.class);
 		bind(SentenceBatchProcessor.class).in(Singleton.class);
+		bind(FeatureRender.class).in(Singleton.class);
 	}
 
 	/**

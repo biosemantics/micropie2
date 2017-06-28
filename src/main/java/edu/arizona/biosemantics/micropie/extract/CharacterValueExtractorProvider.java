@@ -14,6 +14,8 @@ import edu.arizona.biosemantics.common.log.LogLevel;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.context.RelationParser;
+import edu.arizona.biosemantics.micropie.extract.crf.FeatureRender;
+import edu.arizona.biosemantics.micropie.extract.crf.GeoPredictor;
 import edu.arizona.biosemantics.micropie.extract.keyword.AntibioticPhraseExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.HabitatIsolatedFromExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
@@ -69,6 +71,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 			SentenceSpliter sentSplitter,
 			PosTagger posTagger,
 			StanfordParserWrapper stanfordWrapper,
+			FeatureRender FeatureRender,
 			@Named("sensitiveTerms")Set<String> sensitiveTerms,
 			@Named("sensitivePatterns")Set<String> sensitivePatterns,
 			@Named("resistantTerms")Set<String> resistantTerms,
@@ -114,6 +117,9 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 			}
 				
 		}
+		
+		
+		extractors.add(new GeoPredictor(Label.c31, "Geographic location",FeatureRender));
 		
 		//System.out.println("initializing new characters "+extractors.size());
 		//extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
@@ -253,5 +259,6 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		}
 		return allExtractor;
 	}
+
 
 }

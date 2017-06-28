@@ -49,7 +49,8 @@ public class LabelUtil {
 		case CLENGTH:curFd.setCharacter(Label.c4);break;
 		case CSIZE:curFd.setCharacter(null);break;
 		case CWIDTH:curFd.setCharacter(Label.c5);break;
-		case CDIAM:curFd.setCharacter(Label.c3);break;
+		//case CDIAM:curFd.setCharacter(Label.c3);break;
+		case CDIAM:curFd.setCharacter(Label.c5);break;//merge cell width and cell diameter
 		case GC:curFd.setCharacter(Label.c1);break;
 		default:
 			curFd.setCharacter(null);
