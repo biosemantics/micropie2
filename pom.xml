@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.arizona.biosemantics.micropie</groupId>
 	<artifactId>micropie</artifactId>
-	<version>0.1.6-SNAPSHOT</version>
+	<version>0.1.7-SNAPSHOT-debug</version>
 	
 
 	<properties>
@@ -88,17 +88,23 @@
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
-			<version>3.0</version>
+			<version>4.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
-			<version>1.9.9</version>
+			<version>1.9.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.9</version>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+			<classifier>sources</classifier>
 		</dependency>
 		<dependency>
 			<groupId>tw.edu.ntu.csie</groupId>
@@ -110,7 +116,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>16.0.1</version>
+			<version>18.0</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -151,7 +157,7 @@
 		<dependency>
 			<groupId>edu.arizona.biosemantics.common</groupId>
 			<artifactId>log</artifactId>
-			<version>0.0.3-SNAPSHOT</version>
+			<version>0.0.3-SNAPSHOT-debug</version>
 		</dependency>
 		<!--<dependency>
 			<groupId>org.jgrapht</groupId>
@@ -174,13 +180,9 @@
 		<dependency>
 			<groupId>edu.arizona.biosemantics.common</groupId>
 			<artifactId>taxonomy</artifactId>
-			<version>0.0.4-SNAPSHOT</version>
+			<version>0.0.24-SNAPSHOT-debug</version>
 		</dependency>
-		<dependency>
-			<groupId>edu.arizona.biosemantics.common</groupId>
-			<artifactId>log</artifactId>
-			<version>0.0.3-SNAPSHOT</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
