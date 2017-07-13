@@ -55,6 +55,7 @@ public class GeoPredictor extends AbstractCharacterValueExtractor{
 	
 	private FeatureRender featureRender;
 	private CRF crf;
+	private Pipe pipe;
 	
 	@Inject
 	public GeoPredictor(ILabel label, String character,FeatureRender featureRender){
@@ -70,6 +71,11 @@ public class GeoPredictor extends AbstractCharacterValueExtractor{
 			s = new ObjectInputStream(new FileInputStream(Configuration.geoTaggerModel));
 			
 			crf = (CRF) s.readObject();
+			if(crf!=null){
+				pipe = crf.getInputPipe();
+				//System.out.println("load crf model success! parameters:"+crf.getNumParameters());
+			}
+			//System.out.println(Configuration.geoTaggerModel);
 			s.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -83,7 +89,7 @@ public class GeoPredictor extends AbstractCharacterValueExtractor{
 	public List<CharacterValue> getCharacterValue(Sentence sentence) {
 		List<CharacterValue> charValueList =  new ArrayList();
 		String sentText = sentence.getText();
-		System.out.println(sentText);
+		//System.out.println(sentText);
 		List<Token> sentTokenList = featureRender.render(sentText);
 		InstanceList instance = transform(sentTokenList);
 		String[] predictedLabels = predict(instance);
@@ -198,13 +204,13 @@ public class GeoPredictor extends AbstractCharacterValueExtractor{
 	 */
 	public InstanceList transform(List<Token> sentTokenList){
 		String sentTokenString = transfromTokenFeatureString(sentTokenList);
-		Pipe p = new SimpleTaggerSentence2FeatureVectorSequence();
-		//p.getTargetAlphabet().lookupIndex();
-		//System.out.println(sentTokenString);
+//		Pipe p = new SimpleTaggerSentence2FeatureVectorSequence();
+//		p.getTargetAlphabet().lookupIndex("O");
+//		//System.out.println(sentTokenString);
 		Reader trainingFile= new StringReader(sentTokenString);
-		p.setTargetProcessing(true);
+		//p.setTargetProcessing(true);
 		
-		InstanceList trainingData = new InstanceList(p);
+		InstanceList trainingData = new InstanceList(pipe);
 		trainingData.addThruPipe(new LineGroupIterator(trainingFile, Pattern.compile("^\\s*$"), true));
 		
 		//System.out.println("Import data:"+trainingData.size());
@@ -321,6 +327,7 @@ public class GeoPredictor extends AbstractCharacterValueExtractor{
 	 * @return array of the k highest-scoring output sequences
 	 */
 	public static Sequence[] apply(Transducer model, Sequence input, int k) {
+		System.out.println("input length="+input.size());
 		Sequence[] answers;
 		if (k == 1) {
 			answers = new Sequence[1];

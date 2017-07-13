@@ -1,4 +1,5 @@
 wordNetDirectory=
 brownClusterFile=
 wordEmbeddingClusterFile=
+geoUniqTermFile=
 geoTaggerModel=

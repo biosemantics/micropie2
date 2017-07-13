@@ -605,7 +605,7 @@ public class SimpleTagger {
 		//args="--train true --gaussian-variance 0.70710678118654746 --model-file F:\\dataset\\conll_ner\\formatted\\eng_mallet.model  F:\\dataset\\conll_ner\\formatted\\eng.train".split("[\\s]+");
 		//args="--train true --model-file F:/Habitat/BacteriaBiotope/experiments/CRFinputs/all/BioNLP-ST-2016_BB-cat+ner_train.model  F:/Habitat/BacteriaBiotope/experiments/CRFinputs/all/BioNLP-ST-2016_BB-cat+ner_train.txt".split("[\\s]+");
 		//args="--model-file F:/Habitat/BacteriaBiotope/experiments/CRFinputs/all/BioNLP-ST-2016_BB-cat+ner_train.model  F:/Habitat/BacteriaBiotope/experiments/CRFinputs/all/BioNLP-ST-2016_BB-cat+ner_dev.txt > F:/Habitat/BacteriaBiotope/experiments/CRFinputs/all/BioNLP-ST-2016_BB-cat+ner_dev.rs".split("[\\s]+");
-		args="--train true --orders 0,1,2 --model-file F:\\MicroPIE\\CRF\\\\geo_tagger_train.model  F:\\MicroPIE\\CRF\\geo_crf_model_062017.train".split("[\\s]+");
+		args="--train true --orders 0,1,2 --model-file F:\\MicroPIE\\CRF\\\\geo_crf_model_071317.model  F:\\MicroPIE\\CRF\\geo_crf_model_071317.train".split("[\\s]+");
 		Reader trainingFile = null, testFile = null;
 		InstanceList trainingData = null, testData = null;
 		int numEvaluations = 0;

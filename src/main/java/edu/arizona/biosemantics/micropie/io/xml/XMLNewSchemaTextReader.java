@@ -111,14 +111,11 @@ public class XMLNewSchemaTextReader extends XMLTextReader {
 		// System.out.println("descType:" + descType);
 		// System.out.println("text:" + text);
 		if(text != null && descType.equals("morphology")) {  
-			System.out.println("text:" + text);
+			//System.out.println("text:" + text);
 			returnText += text;
 			return returnText;
 		}	
 		return null;
-		//throw new Exception("Could not find a description");
-		
-		
 	}
 	
 	/**
@@ -335,6 +332,29 @@ public class XMLNewSchemaTextReader extends XMLTextReader {
 		
 		return taxonFile;
 	}
+	
+	
+	public boolean checkValid(String folder){
+		File folderFile = new File(folder);
+		if(folderFile.exists()){
+			File[] files = folderFile.listFiles();
+			for(File file:files){
+				try{
+					this.readTaxonFile(file);
+				}catch(Exception e){
+					System.err.println("The XML file ["+file.getName()+"] is not valid");
+					return false;
+				}
+			}
+		}else{
+			System.err.println("The XML folder ["+folder+"] does not exist");
+			return false;
+		}
+		return true;
+	}
+	
+	
+	
 	// New Schema 2:: 141111	
 	
 	/*

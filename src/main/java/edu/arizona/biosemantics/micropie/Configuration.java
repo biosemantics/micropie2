@@ -19,6 +19,8 @@ public class Configuration {
 	public static String brownClusterFile;
 	public static String geoTaggerModel;
 	public static String wordEmbeddingClusterFile;
+
+	public static String geoUniqTermFile;
 	
 	static {
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
@@ -29,6 +31,7 @@ public class Configuration {
 			wordNetDirectory = properties.getProperty("wordNetDirectory");
 			brownClusterFile = properties.getProperty("brownClusterFile");
 			wordEmbeddingClusterFile =  properties.getProperty("wordEmbeddingClusterFile");
+			geoUniqTermFile = properties.getProperty("geoUniqTermFile");
 			geoTaggerModel = properties.getProperty("geoTaggerModel");
 		} catch (IOException e) {
 			logger.error("Couldn't read configuration", e);

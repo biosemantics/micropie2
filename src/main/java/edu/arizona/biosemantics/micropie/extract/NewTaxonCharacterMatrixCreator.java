@@ -283,168 +283,174 @@ public class NewTaxonCharacterMatrixCreator implements ITaxonCharacterMatrixCrea
 		List<CharacterValue> noLabelValueList = new ArrayList();
 		
 		// the sentences in the file
-		for (MultiClassifiedSentence classifiedSentence : sentences) {// process one sentence
-			//parse phrases
-			String text = classifiedSentence.getText();
-			text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C");
-			classifiedSentence.setText(text);
+		for (MultiClassifiedSentence classifiedSentence : sentences) {
+			try{
+				// process one sentence
 			
-			
-
-			// Reference:
-			// get the character extractors for this sentence
-			Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
-			Set<ILabel> predictions = classifiedSentence.getPredictions();
-			if (predictions.size() == 0) {// it can be any character,||(predictions.size() == 1&&predictions.contains(Label.c0))
-				extractors = contentExtractorProvider.getAllContentExtractor();
-			}
-			
-			for (ILabel label : predictions) {// get all the extractors ready
-				//if (label instanceof Label && characterLabels.contains(label)) {
-				if (characterLabels.contains(label)) {
-					Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor((Label) label);
-					if(labelExtractors!=null){
-						extractors.addAll(labelExtractors);
-					}
+				//parse phrases
+				String text = classifiedSentence.getText();
+				text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C");
+				classifiedSentence.setText(text);
+				
+				
+	
+				// Reference:
+				// get the character extractors for this sentence
+				Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
+				Set<ILabel> predictions = classifiedSentence.getPredictions();
+				if (predictions.size() == 0) {// it can be any character,||(predictions.size() == 1&&predictions.contains(Label.c0))
+					extractors = contentExtractorProvider.getAllContentExtractor();
 				}
 				
-				//salinity preference
-				if(categoryThreeLabels.contains(label)){
-					Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor(Label.c59);
-					if(labelExtractors!=null){
-						extractors.addAll(labelExtractors);
+				for (ILabel label : predictions) {// get all the extractors ready
+					//if (label instanceof Label && characterLabels.contains(label)) {
+					if (characterLabels.contains(label)) {
+						Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor((Label) label);
+						if(labelExtractors!=null){
+							extractors.addAll(labelExtractors);
+						}
 					}
-				}
-				
-				//cell shape
-				if(categoryTwoLabels.contains(label)){
-					Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor(Label.c2);
-					if(labelExtractors!=null){
-						extractors.addAll(labelExtractors);
-					}
-				}
-			}
-
-			List<CharacterValue> sentCharValues = new ArrayList();
-			// call the extractors one by one according to the predicted characters
-			//TODO:FermentationProductExtractor
-			boolean containMetabolism = false;
-			for (ICharacterValueExtractor extractor : extractors) {
-				String character = extractor.getCharacterName();
-				//System.out.println("current character:"+character+" sentence:"+text);
-				ILabel label = extractor.getLabel();
-				List<CharacterValue> charValues = null;
-				if(!containMetabolism&&metobolismLabels.contains(label)){
-					containMetabolism = true;
-				}
-				if(extractor instanceof CellScaleExtractor && !hasCellScale){
-					charValues = extractor.getCharacterValue(classifiedSentence);
-				}else if(extractor instanceof CellScaleExtractor && hasCellScale){
-					continue;
-				}else if(extractor instanceof PHTempNaClExtractor && !hasPTN){
-					charValues = extractor.getCharacterValue(classifiedSentence);
 					
-					//TODO:check whether multiple labels are in this list
-					if(judgeUSPForPTN) postProcessor.seperateLabelAndUnlabelList(charValues,noLabelValueList);
-				}else if(extractor instanceof PHTempNaClExtractor && hasPTN){
-					charValues = extractor.getCharacterValue(classifiedSentence);
-					//TODO:check whether multiple labels are in this list
-					if(judgeUSPForPTN) postProcessor.seperateLabelAndUnlabelList(charValues,noLabelValueList);
-				}else{
-					charValues = extractor.getCharacterValue(classifiedSentence);
-				}
-				
-				parseResult(matrix, taxonFile, label, charValues,noLabelValueList);
-				//sentCharValues.addAll(charValues);
-				//add characters into sentence list
-				parseResultForSentence(sentCharValues,taxonFile, label, charValues, noLabelValueList);
-			}
-			
-			//if(containMetabolism) continue;
-			/*
-			posSentence(classifiedSentence);//get sub sentences and their tagged words list
-			List<List<TaggedWord>> taggedWordList = classifiedSentence.getSubSentTaggedWords();
-			
-			if(taggedWordList.size()>=1){//process each subsentence
-				List<List<Phrase>> allPhraseList = classifiedSentence.getPhraseList();
-				if(allPhraseList==null){
-					allPhraseList = new ArrayList();
-					classifiedSentence.setPhraseList(allPhraseList);
-					for(int subsent=0;subsent<taggedWordList.size();subsent++){
-						List<Phrase> phraseList = phraseParser.extract(taggedWordList.get(subsent));
-						allPhraseList.add(phraseList);
-					}
-				}
-				
-				
-				List<PhraseRelationGraph> prGraphList = new ArrayList();
-				classifiedSentence.setPhraseRelationGraphs(prGraphList);
-				
-				for(int subsent=0;allPhraseList!=null&&subsent<taggedWordList.size()&&subsent<allPhraseList.size();subsent++){
-					PhraseRelationGraph prGraph = relationParser.parseCoordinativeRelationGraph(allPhraseList.get(subsent), taggedWordList.get(subsent));
-					prGraphList.add(prGraph);
-				}
-			}
-			
-			
-			//System.out.println("predict character according to the context");
-			//to check whether there are some phrases that do not identified any values
-			//Stragety 1: unique match
-			List phraseCharValues = new ArrayList();
-			List<List<Phrase>> phrases = classifiedSentence.getPhraseList();
-			if(phrases!=null&&phrases.size()>0){//need to parse before this step
-				for(List<Phrase> plist:phrases){
-					for(Phrase p:plist){
-						if(p.getCharValue()==null){
-							//System.out.println("after first round extraction, no value identified:"+p.getText());
-							//if a term is unique in the term list
-							CharacterValue cv = this.globalKeywordExtractor.uniqMatch(p);
-							
-							if(cv!=null&&!phraseCharValues.contains(cv)){
-								phraseCharValues.add(cv);
-								//System.out.println("values are found via global matching:"+cv);
-							}
+					//salinity preference
+					if(categoryThreeLabels.contains(label)){
+						Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor(Label.c59);
+						if(labelExtractors!=null){
+							extractors.addAll(labelExtractors);
 						}
-						else{
-							System.out.println("values are found:"+p.getCharValue());
 					}
-				}
-			}
-			
-			
-			parseResult(matrix, taxonFile, null, phraseCharValues,noLabelValueList);
-			
-			*/
-			//Stragety 2: strict infer
-			/*
-			phraseCharValues = new ArrayList();
-			phrases = classifiedSentence.getPhraseList();
-			if(phrases!=null&&phrases.size()>0){//need to parse before this step
-				for(int sent =0; sent<phrases.size();sent++){//for each subsentence
-					List<Phrase> plist = phrases.get(sent);
-					PhraseRelationGraph prGraph = classifiedSentence.getPhraseRelationGraphs().get(sent);
-					for(int i = 0;i<plist.size();i++){
-						Phrase p = plist.get(i); 
-						if(p.getCharValue()==null){
-							//if the ahead term and the follow term have the same character value
-							//CharacterValue cv = contInfExtractor.strictStrategy1(p, prGraph);
-							
-							//according to the surround weight
-							CharacterValue cv = contInfExtractor.strictStrategy2(p, prGraph);
-							
-							if(cv!=null&&!phraseCharValues.contains(cv)){
-								phraseCharValues.add(cv);
-								System.out.println("values are found via Strict Strategy2:"+cv);
-							}
+					
+					//cell shape
+					if(categoryTwoLabels.contains(label)){
+						Set<ICharacterValueExtractor> labelExtractors = contentExtractorProvider.getContentExtractor(Label.c2);
+						if(labelExtractors!=null){
+							extractors.addAll(labelExtractors);
 						}
 					}
 				}
+	
+				List<CharacterValue> sentCharValues = new ArrayList();
+				// call the extractors one by one according to the predicted characters
+				//TODO:FermentationProductExtractor
+				boolean containMetabolism = false;
+				for (ICharacterValueExtractor extractor : extractors) {
+					String character = extractor.getCharacterName();
+					//System.out.println("current character:"+character+" sentence:"+text);
+					ILabel label = extractor.getLabel();
+					List<CharacterValue> charValues = null;
+					if(!containMetabolism&&metobolismLabels.contains(label)){
+						containMetabolism = true;
+					}
+					if(extractor instanceof CellScaleExtractor && !hasCellScale){
+						charValues = extractor.getCharacterValue(classifiedSentence);
+					}else if(extractor instanceof CellScaleExtractor && hasCellScale){
+						continue;
+					}else if(extractor instanceof PHTempNaClExtractor && !hasPTN){
+						charValues = extractor.getCharacterValue(classifiedSentence);
+						
+						//TODO:check whether multiple labels are in this list
+						if(judgeUSPForPTN) postProcessor.seperateLabelAndUnlabelList(charValues,noLabelValueList);
+					}else if(extractor instanceof PHTempNaClExtractor && hasPTN){
+						charValues = extractor.getCharacterValue(classifiedSentence);
+						//TODO:check whether multiple labels are in this list
+						if(judgeUSPForPTN) postProcessor.seperateLabelAndUnlabelList(charValues,noLabelValueList);
+					}else{
+						charValues = extractor.getCharacterValue(classifiedSentence);
+					}
+					
+					parseResult(matrix, taxonFile, label, charValues,noLabelValueList);
+					//sentCharValues.addAll(charValues);
+					//add characters into sentence list
+					parseResultForSentence(sentCharValues,taxonFile, label, charValues, noLabelValueList);
+				}
+				
+				//if(containMetabolism) continue;
+				/*
+				posSentence(classifiedSentence);//get sub sentences and their tagged words list
+				List<List<TaggedWord>> taggedWordList = classifiedSentence.getSubSentTaggedWords();
+				
+				if(taggedWordList.size()>=1){//process each subsentence
+					List<List<Phrase>> allPhraseList = classifiedSentence.getPhraseList();
+					if(allPhraseList==null){
+						allPhraseList = new ArrayList();
+						classifiedSentence.setPhraseList(allPhraseList);
+						for(int subsent=0;subsent<taggedWordList.size();subsent++){
+							List<Phrase> phraseList = phraseParser.extract(taggedWordList.get(subsent));
+							allPhraseList.add(phraseList);
+						}
+					}
+					
+					
+					List<PhraseRelationGraph> prGraphList = new ArrayList();
+					classifiedSentence.setPhraseRelationGraphs(prGraphList);
+					
+					for(int subsent=0;allPhraseList!=null&&subsent<taggedWordList.size()&&subsent<allPhraseList.size();subsent++){
+						PhraseRelationGraph prGraph = relationParser.parseCoordinativeRelationGraph(allPhraseList.get(subsent), taggedWordList.get(subsent));
+						prGraphList.add(prGraph);
+					}
+				}
+				
+				
+				//System.out.println("predict character according to the context");
+				//to check whether there are some phrases that do not identified any values
+				//Stragety 1: unique match
+				List phraseCharValues = new ArrayList();
+				List<List<Phrase>> phrases = classifiedSentence.getPhraseList();
+				if(phrases!=null&&phrases.size()>0){//need to parse before this step
+					for(List<Phrase> plist:phrases){
+						for(Phrase p:plist){
+							if(p.getCharValue()==null){
+								//System.out.println("after first round extraction, no value identified:"+p.getText());
+								//if a term is unique in the term list
+								CharacterValue cv = this.globalKeywordExtractor.uniqMatch(p);
+								
+								if(cv!=null&&!phraseCharValues.contains(cv)){
+									phraseCharValues.add(cv);
+									//System.out.println("values are found via global matching:"+cv);
+								}
+							}
+							else{
+								System.out.println("values are found:"+p.getCharValue());
+						}
+					}
+				}
+				
+				
+				parseResult(matrix, taxonFile, null, phraseCharValues,noLabelValueList);
+				
+				*/
+				//Stragety 2: strict infer
+				/*
+				phraseCharValues = new ArrayList();
+				phrases = classifiedSentence.getPhraseList();
+				if(phrases!=null&&phrases.size()>0){//need to parse before this step
+					for(int sent =0; sent<phrases.size();sent++){//for each subsentence
+						List<Phrase> plist = phrases.get(sent);
+						PhraseRelationGraph prGraph = classifiedSentence.getPhraseRelationGraphs().get(sent);
+						for(int i = 0;i<plist.size();i++){
+							Phrase p = plist.get(i); 
+							if(p.getCharValue()==null){
+								//if the ahead term and the follow term have the same character value
+								//CharacterValue cv = contInfExtractor.strictStrategy1(p, prGraph);
+								
+								//according to the surround weight
+								CharacterValue cv = contInfExtractor.strictStrategy2(p, prGraph);
+								
+								if(cv!=null&&!phraseCharValues.contains(cv)){
+									phraseCharValues.add(cv);
+									System.out.println("values are found via Strict Strategy2:"+cv);
+								}
+							}
+						}
+					}
+				}
+				
+				parseResult(matrix, taxonFile, null, phraseCharValues,noLabelValueList);
+				//infer the value according to the context
+				 */
+				taxonFile.getSentCharacterValues().put(classifiedSentence, sentCharValues);
+			}catch(Exception e){
+				System.err.println("Error: "+taxonFile.getInputFile().getName()+" sentence:"+classifiedSentence.getText());
 			}
-			
-			parseResult(matrix, taxonFile, null, phraseCharValues,noLabelValueList);
-			//infer the value according to the context
-			 */
-			taxonFile.getSentCharacterValues().put(classifiedSentence, sentCharValues);
 		}//sentence end
 		
 		

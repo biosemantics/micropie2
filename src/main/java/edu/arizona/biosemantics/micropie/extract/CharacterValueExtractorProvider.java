@@ -71,7 +71,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 			SentenceSpliter sentSplitter,
 			PosTagger posTagger,
 			StanfordParserWrapper stanfordWrapper,
-			FeatureRender FeatureRender,
+			FeatureRender featureRender,
 			@Named("sensitiveTerms")Set<String> sensitiveTerms,
 			@Named("sensitivePatterns")Set<String> sensitivePatterns,
 			@Named("resistantTerms")Set<String> resistantTerms,
@@ -119,7 +119,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		}
 		
 		
-		extractors.add(new GeoPredictor(Label.c31, "Geographic location",FeatureRender));
+		extractors.add(new GeoPredictor(Label.c31, "Geographic location",featureRender));
 		
 		//System.out.println("initializing new characters "+extractors.size());
 		//extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));

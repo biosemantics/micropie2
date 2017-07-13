@@ -62,7 +62,7 @@ public class Main {
 		//-f xml
 		//args = "-i F:\\MicroPIE\\datasets\\craft -o F:\\MicroPIE\\ext\\2017new -m F:/MicroPIE/micropie0.2_model  -vi true -f mc".split("\\s+");
 		
-		args = "-i F:\\MicroPIE\\datasets\\2017\\GSM_v2_103_desccriptions_011217 -o F:/MicroPIE/2017tasks/results -m F:/MicroPIE/micropie0.2_model  -vi true -f csv".split("\\s+");
+		args = "-i F:/MicroPIE/datasets/carrine_bacteria/allfirmicutesJul2017 -o F:/MicroPIE/ext/carrine_bacteria2017 -m F:/MicroPIE/micropie0.2_model  -vi true -f mc".split("\\s+");
 		//System.out.println(args);
 		main.parse(args);
 		//main.run();

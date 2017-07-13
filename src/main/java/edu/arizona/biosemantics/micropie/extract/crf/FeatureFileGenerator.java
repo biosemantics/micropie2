@@ -10,6 +10,7 @@ import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 
+import edu.arizona.biosemantics.micropie.io.FileReaderUtil;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
 /**
@@ -135,10 +136,48 @@ public class FeatureFileGenerator {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param subsetIndex
+	 * @param allFeatureFile
+	 * @param excerptFile
+	 * @param containLabel ---- the last one is the label
+	 */
+	public void excerptFeatures(int[] subsetIndex, String allFeatureFile, String excerptFile){
+		List<String> features = FileReaderUtil.readFileLines(allFeatureFile);
+		
+		try {
+			FileWriter fw = new FileWriter(excerptFile);
+			for(String line : features){
+				line = line.trim();
+				if(line.equals("")){
+					fw.write("\n");
+					continue;
+				}
+				String[] fields = line.split("[\\s]+");
+				StringBuffer sb = new StringBuffer();
+				for(int index : subsetIndex){
+					sb.append(fields[index]).append(" ");					
+				}
+				fw.write(sb.toString().trim());
+				fw.write("\n");
+			}
+			fw.flush();
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args){
 		FeatureFileGenerator featureGenerator = new FeatureFileGenerator();
 		String folder = "F:/MicroPIE/CRF/annotation";
-		String featureFile ="F:/MicroPIE/CRF/geo_crf_model_062017.train";
+		String featureFile ="F:/MicroPIE/CRF/geo_crf_model_071317.train";
 		featureGenerator.generateForAllFiles(folder, featureFile, true);
+		
+		int[] basicIndex = {0,1,2,3,4,5,6,7,11};//,11
+		String featureBasicFile ="F:/MicroPIE/CRF/geo_crf_model_070717.train";
+		//featureGenerator.excerptFeatures(basicIndex, featureFile, featureBasicFile);
+		
 	}
 }

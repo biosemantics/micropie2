@@ -37,5 +37,6 @@ public enum TokenAttribute {
 	CocoaType,//the entity type by Cocoas
 	BrownCluster,//brown cluster
 	wordEmbedCluster, //word embedding cluster
+	isGeo,//is in the geo term list
 	NER	//answer
 }

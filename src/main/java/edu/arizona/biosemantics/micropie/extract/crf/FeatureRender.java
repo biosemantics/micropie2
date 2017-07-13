@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -46,13 +47,16 @@ import edu.stanford.nlp.util.CoreMap;
 	7 Word sense
     8 Cluster identifier according to the Brown cluster
 	9 word embedding
-	10 label
+	10 Presence in the term list of geographical names
+	11 label
  * @author maojin
  */
 public class FeatureRender {
 	
 	private Map<String, String> brownClusterMap; 
 	private Map<String, String> weClusterMap; 
+	private Set<String> geoUniqSet;
+	
 	//private WekaClusterMatcher wordEmbeddingCluster;//word embedding clusters
 	
 	private WordSenseRender wordSenseRender;
@@ -67,6 +71,7 @@ public class FeatureRender {
 		wordSenseRender = new WordSenseRender();
 		brownClusterMap = readBrownCluster(Configuration.brownClusterFile);
 		weClusterMap = readWECluster(Configuration.wordEmbeddingClusterFile);
+		geoUniqSet = readGeoTerms(Configuration.geoUniqTermFile);
 		this.sfCoreNLP=sfCoreNLP;
 	}
 	
@@ -88,6 +93,15 @@ public class FeatureRender {
 			brownCluster.put(fields[0], "WE"+fields[1]);
 		}
 		return brownCluster;
+	}
+	
+	public Set<String> readGeoTerms(String geoUniqFile){
+		List<String> lineStr = FileReaderUtil.readFileLines(geoUniqFile);
+		Set<String> geoTerms = new HashSet();
+		for(String line : lineStr){
+			geoTerms.add(line.trim());
+		}
+		return geoTerms;
 	}
 	
 	/**
@@ -116,6 +130,11 @@ public class FeatureRender {
       	for(CoreMap sent: sentences) {
       		 for (CoreLabel ctoken: sent.get(TokensAnnotation.class)) {
                String word = ctoken.get(TextAnnotation.class);
+               if("-RRB-".equals(word)){
+            	   word = ")";
+               }else if("-LRB-".equals(word)){
+            	   word = "(";
+               } //-LRB-
                String lemma = ctoken.get(LemmaAnnotation.class);
                Token token = new Token();
 				token.setText(word);
@@ -184,6 +203,8 @@ public class FeatureRender {
 			String posTag = (String)token.getAttribute(TokenAttribute.POS);
 			token.setAttribute(TokenAttribute.wordSense, wordSenseRender.getSense(token.getLemma(), posTag));
 			
+			token.setAttribute(TokenAttribute.isGeo, this.geoUniqSet.contains(token.getText()));
+			
 			//token.setAttribute(TokenAttribute.wordEmbedCluster, wordEmbeddingCluster.findCluster(token.getText()));
 		}
 		return sentTokens;
@@ -212,11 +233,14 @@ public class FeatureRender {
 		sb.append(token.getAttribute(TokenAttribute.BrownCluster)+" ");//20 BrownCluster
 		
 		String wordembCluster = (String) token.getAttribute(TokenAttribute.wordEmbedCluster);
-		//fw.write("u");
 		sb.append(wordembCluster==null?"O":wordembCluster);//21 word sense
+		sb.append(" ");
+		
+		sb.append((boolean)token.getAttribute(TokenAttribute.isGeo)?"pGeo":"O");//5 presentsInGeoTermList
 		sb.append(" ");
 		return sb;
 	}
+	
 	public void renderLabel(List<Token> tokens, List<BBEntity> entityList) {
 		for(Token token:tokens){
 			String nerType = detectNERType(entityList, token);
