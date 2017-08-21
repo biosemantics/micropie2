@@ -12,10 +12,10 @@ public class EvaluationTest {
 		//String comparedCharacterNames ="%G+C|Cell shape|Gram stain type|Motility|Pigment compounds|Biofilm formation|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Aerophilicity|Salinity preference|Host|Symbiotic relationship|Pathogenic|Disease caused|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used|Fermentation products|Alcohols|Amino acids|Carbohydrates (mono & disaccharides)|Polysaccharides|Fatty acids|Polyalkanoates|Antibiotic sensitivity|Antibiotic resistant";
 		//58 character version
 		/**/
-		String comparedCharacterNames ="%g+c|cell shape|cell diameter|cell length|cell width|"
+		String comparedCharacterNames ="%g+c|cell shape|cell length|cell width|"
 				+ "cell relationships&aggregations|gram stain type|cell membrane & cell wall components|external features|"
 				+ "internal features|motility|pigment compounds|biofilm formation|filterability|lysis susceptibility|cell division pattern & reproduction|"
-				+ "habitat isolated from|salinity preference|nacl minimum|nacl optimum|nacl maximum|ph minimum|"
+				+ "habitat isolated from|Salinity/Salt Relationship to Growth|nacl minimum|nacl optimum|nacl maximum|ph minimum|"
 				+ "ph optimum|ph maximum|temperature minimum|temperature optimum|temperature maximum|"
 				+ "pressure preference|aerophilicity|magnesium requirement for growth|vitamins and cofactors required for growth|"
 				+ "geographic location|antibiotic sensitivity|antibiotic resistant|antibiotic production|"
@@ -24,12 +24,12 @@ public class EvaluationTest {
 				+ "tests negative|symbiotic relationship|host|pathogenic|disease caused|pathogen target organ|haemolytic&haemadsorption properties|"
 				+ "organic compounds used or hydrolyzed|organic compounds NOT used or NOT hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
 		
-		String categoryMappingFile = "F:/MicroPIE/micropieInput/svmlabelandcategorymapping/categoryMapping_MicroPIE1.5.txt";
+		String categoryMappingFile = "F:/MicroPIE/micropie0.2_model/svmlabelandcategorymapping/categoryMapping_micropie.txt";
 		
-		String charValEvalResultFile = "F:/MicroPIE/evaluation/output/charValEvalResult.csv";
-		String charAllEvalResultFile = "F:/MicroPIE/evaluation/output/charAllEvalResult.csv";
-		String taxonEvalResultFile = "F:/MicroPIE/evaluation/output/taxonEvalResult.csv";
-		String matrixEvalResultFile = "F:/MicroPIE/evaluation/output/matrixEvalResult.csv";
+		String charValEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/charValEvalResult.csv";
+		String charAllEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/charAllEvalResult.csv";
+		String taxonEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/taxonEvalResult.csv";
+		String matrixEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/matrixEvalResult.csv";
 		
 		/*
 		String charValEvalResultFile = "F:/MicroPIE/evaluation/output/charValEvalResult_58.csv";
@@ -41,13 +41,20 @@ public class EvaluationTest {
 		String gstBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String gstKeyField = "Taxon";
 		String gstXMLField = "XML file";
-		String gstMatrixFile ="F:/MicroPIE/evaluation/GSM_MicroPIE1.5_010316_111_final.csv";//Gold_matrix_22_1213.csv.csv";
+		//String gstMatrixFile ="F:/MicroPIE/evaluation/GSM_MicroPIE1.5_010316_111_final.csv";//Gold_matrix_22_1213.csv.csv";
+		//String gstMatrixFile ="F:\\MicroPIE\\manuscript\\results\\GSM_MicroPIE1.5_after_MS_0208.csv";
+		String gstMatrixFile ="F:/MicroPIE/2017tasks/GSMv1comparison/GSM_MicroPIE_133_submission.csv";
+		//String gstMatrixFile ="F:/MicroPIE/2017tasks/GSM v2/GSM_v2_matrixC_072717.csv";
 		//gstMatrixFile
 		//Taxon	Family	Genus	Species	Strain	16S rRNA accession #	XMsL file
 		String tgBasicFields = "Taxon|XML file|Genus|Species|Strain";
 		String tgKeyField = "Taxon";
 		String tgXMLField = "XML file";
-		String tgMatrixFile ="F:/MicroPIE/ext/final111/PartOne111_simpest_matrix.csv";//final_114_1214.csv
+		//String tgMatrixFile ="F:/MicroPIE/2017tasks/results/matrix.csv";
+		//String tgMatrixFile ="F:/MicroPIE/ext/GSMv1/matrix-0.1.csv";
+		String tgMatrixFile ="F:/MicroPIE/ext/GSMv1/matrix.csv";
+		//String tgMatrixFile ="F:/MicroPIE/ext/final111/PartOne111_NOSVM_matrix.csv";//final_114_1214.csv
+		//String tgMatrixFile ="F:/MicroPIE/ext/studentoutput/Microbial Phenomics Project Data Form experiment output 031715_filename&taxon_stu344.csv";//student output
 		//tgMatrixFile
 		//String tgBasicFields = "XML file|Taxon|Genus|Species|Strain";//STUEXP_040214_28ch.csv
 		//String tgKeyField = "XML file";

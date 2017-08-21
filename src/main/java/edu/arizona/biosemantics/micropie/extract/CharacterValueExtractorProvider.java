@@ -2,7 +2,9 @@ package edu.arizona.biosemantics.micropie.extract;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.google.inject.Inject;
@@ -11,6 +13,8 @@ import com.google.inject.name.Named;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.context.RelationParser;
+import edu.arizona.biosemantics.micropie.extract.crf.FeatureRender;
+import edu.arizona.biosemantics.micropie.extract.crf.GeoPredictor;
 import edu.arizona.biosemantics.micropie.extract.keyword.AntibioticPhraseExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.HabitatIsolatedFromExtractor;
 import edu.arizona.biosemantics.micropie.extract.keyword.PhraseBasedExtractor;
@@ -66,6 +70,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 			SentenceSpliter sentSplitter,
 			PosTagger posTagger,
 			StanfordParserWrapper stanfordWrapper,
+			FeatureRender featureRender,
 			@Named("sensitiveTerms")Set<String> sensitiveTerms,
 			@Named("sensitivePatterns")Set<String> sensitivePatterns,
 			@Named("resistantTerms")Set<String> resistantTerms,
@@ -112,6 +117,9 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 				
 		}
 		
+		
+		extractors.add(new GeoPredictor(Label.c31, "Geographic location",featureRender));
+		
 		//System.out.println("initializing new characters "+extractors.size());
 		//extractors.add(new OrganicCompoundsNotUsedOrNotHydrolyzedExtractor(Label.c52));
 		//extractors.add(new InorganicSubstancesNotUsedExtractor(Label.c54));
@@ -122,7 +130,7 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 		
 		extractors.add(new AntibioticSyntacticExtractor(Label.c32, "Antibiotic sensitivity",sensitivePatterns,sentSplitter,stanfordWrapper));
 		//extractors.add(new AntibioticPhraseExtractor(Label.c32, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, sensitiveTerms));
-		extractors.add(new AntibioticSyntacticExtractor(Label.c33, "Antibiotic sensitivity",resistantPatterns,sentSplitter,stanfordWrapper));
+		extractors.add(new AntibioticSyntacticExtractor(Label.c33, "Antibiotic resistant",resistantPatterns,sentSplitter,stanfordWrapper));
 		//extractors.add(new AntibioticPhraseExtractor(Label.c33, "Antibiotic sensitivity", posTagger, phraseParser,phraseRelationParser, sentSplitter, resistantTerms));
 
 		
@@ -238,5 +246,18 @@ public class CharacterValueExtractorProvider implements ICharacterValueExtractor
 	public boolean hasExtractor(Label label) {
 		return !this.getContentExtractor(label).isEmpty();
 	}
+
+
+	@Override
+	public Set<ICharacterValueExtractor> getAllContentExtractor() {
+		Set<ICharacterValueExtractor> allExtractor = new HashSet();
+		Iterator<Entry<ILabel, Set<ICharacterValueExtractor>>> entryIter = labelExtractorsMap.entrySet().iterator();
+		while(entryIter.hasNext()){
+			Entry<ILabel, Set<ICharacterValueExtractor>> entry = entryIter.next();
+			allExtractor.addAll(entry.getValue());
+		}
+		return allExtractor;
+	}
+
 
 }

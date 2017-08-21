@@ -3,13 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.arizona.biosemantics.micropie</groupId>
 	<artifactId>micropie</artifactId>
-	<version>0.0.9-SNAPSHOT</version>
+	<version>0.1.6-SNAPSHOT</version>
 	
 
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<aspectj.version>1.8.10</aspectj.version>
 	</properties>
 	
 	<profiles>
@@ -19,6 +20,15 @@
 				<mainName>main</mainName>
 				<mainClass>edu.arizona.biosemantics.micropie.Main</mainClass>
 			</properties>
+		</profile>
+		<profile>
+			<id>java8-doclint-disabled</id>
+	 		<activation>
+	 		  <jdk>[1.8,)</jdk>
+	 		</activation>
+	 		<properties>
+	 		  <javadoc.opts>-Xdoclint:none</javadoc.opts>
+	 		</properties>
 		</profile>
 	</profiles>
 	
@@ -73,7 +83,7 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>1.7.4</version>
+			<version>${aspectj.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -153,38 +163,76 @@
 			<artifactId>jgrapht-core</artifactId>
 			<version>0.9.1</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/jaxen/jaxen -->
+		<dependency>
+		    <groupId>jaxen</groupId>
+		    <artifactId>jaxen</artifactId>
+		    <version>1.1.6</version>
+		</dependency>
+				
+		<dependency>
+			<groupId>edu.arizona.biosemantics.common</groupId>
+			<artifactId>taxonomy</artifactId>
+			<version>0.0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.arizona.biosemantics.common</groupId>
+			<artifactId>log</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>cc.mallet</groupId>
+		    <artifactId>mallet</artifactId>
+		    <version>2.0.8</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-compiler-plugin</artifactId>
+ 				<version>3.6.0</version>
+ 				<configuration>
+ 				  <source>${java.version}</source>
+ 				  <target>${java.version}</target>
+ 				  <!-- IMPORTANT -->
+ 				  <useIncrementalCompilation>false</useIncrementalCompilation>
+ 				</configuration>
+ 			</plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>aspectj-maven-plugin</artifactId>
-				<version>1.8</version>
+				<version>1.9</version>
 				<configuration>
-					<proceedOnError>true</proceedOnError>
-					<complianceLevel>${java.version}</complianceLevel>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
+				  <!--<showWeaveInfo>true</showWeaveInfo>-->
+				  <source>${java.version}</source>
+				  <target>${java.version}</target>
+				  <proceedOnError>true</proceedOnError>
+				  <Xlint>ignore</Xlint>
+				  <complianceLevel>${java.version}</complianceLevel>
+				  <encoding>${project.build.sourceEncoding}</encoding>
+				  <!--<verbose>true</verbose>-->
+				  <!--<warn>constructorName,packageDefaultMethod,deprecation,maskedCatchBlocks,unusedLocals,unusedArguments,unusedImport</warn>-->
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.aspectj</groupId>
-						<artifactId>aspectjrt</artifactId>
-						<version>1.7.4</version>
-					</dependency>
-				</dependencies>
 				<executions>
-					<execution>
-						<!-- Necessary, so aspectj compile is executed before java compile -->
-						<phase>process-sources</phase>
-						<goals>
-							<goal>compile</goal>
-							<goal>test-compile</goal>
-						</goals>
-					</execution>
+				  <execution>
+					<!-- IMPORTANT -->
+					<phase>process-sources</phase>
+					<goals>
+					  <goal>compile</goal>
+					  <goal>test-compile</goal>
+					</goals>
+				  </execution>
 				</executions>
+				<dependencies>
+				  <dependency>
+					<groupId>org.aspectj</groupId>
+					<artifactId>aspectjtools</artifactId>
+					<version>${aspectj.version}</version>
+				  </dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
       <!-- Build an executable JAR -->
@@ -218,6 +266,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9.1</version>
+				<configuration>
+					<additionalparam>${javadoc.opts}</additionalparam>
+				</configuration>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>

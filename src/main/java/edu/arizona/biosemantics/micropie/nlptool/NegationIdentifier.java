@@ -12,14 +12,20 @@ import edu.stanford.nlp.ling.TaggedWord;
 /**
  * identify explicit negative expressions
  * 
+ * Alternatives: 
+DepND:https://github.com/zachguo/DepND
+NegEx: http://blulab.chpc.utah.edu/content/contextnegex
+DEEPEN: DEEPEN: Mehrabi, S., Krishnan, A., Sohn, S., Roch, A. M., Schmidt, H., Kesterson, J., ... & Palakal, M. (2015). DEEPEN: A negation detection system for clinical text incorp
+
  * @author maojin
  *
  */
 public class NegationIdentifier implements INegationIdentifier{
 	
 	private Set<String> privativeSet = new HashSet();
-	{
+	{//a more complete list is in http://www.enchantedlearning.com/wordlist/negativewords.shtml
 		privativeSet.add("no");
+		privativeSet.add("none");
 		privativeSet.add("not");
 		privativeSet.add("doesn't");
 		privativeSet.add("don't");
@@ -30,6 +36,13 @@ public class NegationIdentifier implements INegationIdentifier{
 		privativeSet.add("nor");
 		privativeSet.add("unable");
 		privativeSet.add("impossible");
+		//inhibited
+		privativeSet.add("inhibited");
+		privativeSet.add("fail");
+		privativeSet.add("fails");
+		privativeSet.add("failed");
+		privativeSet.add("negative");
+		privativeSet.add("never");
 	}
 	
 	
@@ -100,6 +113,31 @@ public class NegationIdentifier implements INegationIdentifier{
 			return true;
 		}
 		return false;
+	}
+
+
+	@Override
+	public String detectFirstNegation(List<TaggedWord> taggedwordsList) {
+		for(int checkIndex = 0;checkIndex<taggedwordsList.size();checkIndex++){
+			String word = taggedwordsList.get(checkIndex).word().toLowerCase();
+			
+			if(privativeSet.contains(word)){
+				return word;
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public int detectFirstNegationIndex(List<TaggedWord> taggedwordsList) {
+		for(int checkIndex = 0;checkIndex<taggedwordsList.size();checkIndex++){
+			String word = taggedwordsList.get(checkIndex).word().toLowerCase();
+			
+			if(privativeSet.contains(word)){
+				return checkIndex;
+			}
+		}
+		return -1;
 	}
 
 }

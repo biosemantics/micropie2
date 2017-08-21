@@ -59,8 +59,17 @@ public class HabitatIsolatedFromExtractor extends PhraseBasedExtractor{
 
 	@Override
 	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+		List<CharacterValue> characterValueList = new ArrayList();
+		//situation 1: Habitat: sea ice and seawater, algae, marine sediments, soil and fresh water.
+		extractByComma(characterValueList, sentence.getText());
+		if(characterValueList.size()>0) return characterValueList;
+		
+		//situation 2: The habitat is a marshy soil in the Sippenauer Moor close to Kelheim/Bavaria. 
+		extractByExplicitStatement(characterValueList, sentence.getText());
+		if(characterValueList.size()>0) return characterValueList;
+		
 		//noun phrases
-		String cleanSent = sentSplitter.removeBrackets(sentence.getText());
+		String cleanSent = sentence.getText();//sentSplitter.removeBrackets(sentence.getText());
 		Tree phraseTree = stanParser.parsePhraseTree(cleanSent);
 		List<Phrase> nounPhrases = phraseParser.extractNounPharse(phraseTree);
 		
@@ -75,14 +84,13 @@ public class HabitatIsolatedFromExtractor extends PhraseBasedExtractor{
 		PhraseRelationGraph verbRelationGraph = relationParser.parseVerbDependencyRelation(verbPhrases, nounPhrases, deptTree);
 		//System.out.println("verbRelationGraph edges ="+verbRelationGraph.edgeSet().size());
 		//filter the edges by edge type constraints
-		List<CharacterValue> characterValueList = new ArrayList();
+		
 		Set<PhraseRelation> edges = verbRelationGraph.edgeSet();
 		Iterator<PhraseRelation> edgeIter = edges.iterator();
 		while(edgeIter.hasNext()){
 			PhraseRelation pr = edgeIter.next();
 			
 			String type = pr.getType();
-			//System.out.println(type);
 			//System.out.println(pr+" the edge type is "+type);
 			if(type.startsWith("prep")){//this is the right type
 				Phrase source = pr.getSource();
@@ -94,6 +102,7 @@ public class HabitatIsolatedFromExtractor extends PhraseBasedExtractor{
 					cv = target.convertValue(this.getLabel());
 				}
 				if(cv!=null){
+					normalize(cv);
 					characterValueList.add(cv);
 					continue;
 				}
@@ -104,6 +113,7 @@ public class HabitatIsolatedFromExtractor extends PhraseBasedExtractor{
 			Phrase withinPhrase = verbIsInTheNoun(pr);
 			if(withinPhrase!=null){
 				CharacterValue cv = withinPhrase.convertValue(this.getLabel());
+				normalize(cv);
 				characterValueList.add(cv);
 				//System.out.println("HIT "+cv);
 			}
@@ -112,7 +122,45 @@ public class HabitatIsolatedFromExtractor extends PhraseBasedExtractor{
 		return characterValueList;
 	}
  
+	public void normalize(CharacterValue cv){
+		String value = cv.getValue();
+		value = value.replace("-LRB- ", "(").replace(" -RRB-", ")");
+		cv.setValue(value);
+	}
 
+	//situation 1: Habitat: sea ice and seawater, algae, marine sediments, soil and fresh water.
+	private void extractByComma(List<CharacterValue> characterValueList,
+			String text) {
+		String lowertext = text.toLowerCase().trim();
+		if(lowertext.indexOf("habitat:")>-1||lowertext.indexOf("habitat :")>-1){
+			text = text.substring(text.indexOf(":")+1,text.length()-1).trim();
+			if(text.endsWith(".")) text = text.substring(0,text.length()-2);
+			CharacterValue cv = new CharacterValue(this.getLabel(), text);
+			characterValueList.add(cv);
+		}else if((lowertext.indexOf("source:")>-1||lowertext.indexOf("source :")>-1)&&lowertext.indexOf("isolated")==-1){
+			text = text.substring(text.indexOf(":")+1,text.length()-1).trim();
+			if(text.endsWith(".")) text = text.substring(0,text.length()-2);
+			CharacterValue cv = new CharacterValue(this.getLabel(), text);
+			characterValueList.add(cv);
+		}
+		
+	}
+	
+	//The habitat is the guinea pig vagina. 
+	private void extractByExplicitStatement(List<CharacterValue> characterValueList,
+			String text) {
+		String lowertext = text.toLowerCase().trim();
+		if(lowertext.indexOf("habitat is")>-1){
+			text = text.substring(text.indexOf("habitat is")+10,text.length()-1).trim();
+			if(text.endsWith(".")) text = text.substring(0,text.length()-2);
+			CharacterValue cv = new CharacterValue(this.getLabel(), text);
+			characterValueList.add(cv);
+		}
+		
+	}
+	
+	
+	
 	/**
 	 * 
 	 * @param pr

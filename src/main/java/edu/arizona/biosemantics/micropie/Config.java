@@ -37,6 +37,7 @@ import edu.arizona.biosemantics.micropie.extract.CharacterValueExtractorReader;
 import edu.arizona.biosemantics.micropie.extract.ICharacterBatchExtractor;
 import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractor;
 import edu.arizona.biosemantics.micropie.extract.ICharacterValueExtractorProvider;
+import edu.arizona.biosemantics.micropie.extract.crf.FeatureRender;
 import edu.arizona.biosemantics.micropie.extract.keyword.AntibioticPhraseExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.AntibioticSyntacticExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellDiameterExtractor;
@@ -60,7 +61,6 @@ import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempMinExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GrowthTempOptimumExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.InorganicSubstancesNotUsedExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.OrganicCompoundsNotUsedOrNotHydrolyzedExtractor;
-import edu.arizona.biosemantics.micropie.extract.usp.AntibioticSensitivityExtractor;
 import edu.arizona.biosemantics.micropie.io.CSVAbbreviationReader;
 import edu.arizona.biosemantics.micropie.io.CSVSentenceReader;
 import edu.arizona.biosemantics.micropie.io.CharacterReader;
@@ -92,14 +92,12 @@ import edu.stanford.nlp.process.TokenizerFactory;
 public class Config extends AbstractModule {
 
 
-	// private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity preference|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Diameter|Cell Long|Cell Wide|Cell Membrane & Cell Wall Components|External features|Filterability|Internal features|Lysis Susceptibility|Physiological requirements|Antibiotics|Secreted Products|Storage Products|Tests|Pathogen Target Organ|Complex Mixtures|Inorganic|Metals|Nitrogen Compounds|Organic|Organic Acids|Other";
+	// private String characterListString = "16S rRNA accession #|Family|Genus|Species|Strain|Genome size|%G+C|Other genetic characteristics|Cell shape|Pigments|Cell wall|Motility|Biofilm formation|Habitat isolated from|Oxygen Use|Salinity/Salt Relationship to Growth|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|NaCl minimum|NaCl optimum|NaCl maximum|Host|Symbiotic|Pathogenic|Disease Caused|Metabolism (energy & carbon source)|Carbohydrates (mono & disaccharides)|Polysaccharides|Amino Acids|Alcohols|Fatty Acids|Other Energy or Carbon Sources|Fermentation Products|Polyalkanoates (plastics)|Other Metabolic Product|Antibiotic Sensitivity|Antibiotic Resistant|Cell Diameter|Cell Long|Cell Wide|Cell Membrane & Cell Wall Components|External features|Filterability|Internal features|Lysis Susceptibility|Physiological requirements|Antibiotics|Secreted Products|Storage Products|Tests|Pathogen Target Organ|Complex Mixtures|Inorganic|Metals|Nitrogen Compounds|Organic|Organic Acids|Other";
 	
-	// Verison 2, March 08, 2015 Sunday
+	// Verison 2, March 08, 2015 Sundayg
 	// running parameter characters to be extracted
-	//private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used|Other genetic characteristics|Other physiological characteristics";
-	private String characterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|Cell membrane & cell wall components|External features|Internal features|Motility|Pigment compounds|Biofilm formation|Filterability|Lysis susceptibility|Cell division pattern & reproduction|Salinity preference|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Pressure preference |Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Antibiotic production|Colony shape |Colony margin|Colony texture|Colony color |Film test result|Spot test result|Fermentation Products|Antibiotic production|Methanogenesis products|Other Metabolic Product|Tests positive|Tests negative|Symbiotic relationship|Host|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
-	private String ouputCharacterListString = "%G+C|Cell shape|Cell diameter|Cell length|Cell width|Cell relationships&aggregations|Gram stain type|External features|Internal features|Motility|Pigment compounds|Salinity preference|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Aerophilicity|Magnesium requirement for growth|Vitamins and Cofactors required for growth|Antibiotic sensitivity|Antibiotic resistant|Colony shape |Colony margin|Colony texture|Colony color|Fermentation Products|Other Metabolic Product|Pathogenic|Disease caused|Pathogen target Organ|Haemolytic&haemadsorption properties|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used";
-	
+	private String characterListString = Configuration.characterListString;
+	private String ouputCharacterListString =  Configuration.ouputCharacterListString;
 	private String serializedClassifierModel = "nlpmodel/english.all.3class.distsim.crf.ser.gz";
 	
 
@@ -125,14 +123,14 @@ public class Config extends AbstractModule {
 	// private String trainingFile = "training_data/split-training-base-140603.csv";
 	// split-training-base-150110.csv
 	private String trainingFile = "training_data/split-training-base-150110.csv";
-	private String trainedModelFile = "character_model";//predict the characters
-	private String categoryModelFile = "category_model";//predict the categories
+	private String trainedModelFile = Configuration.trainedModelFile;
+	private String categoryModelFile = Configuration.categoryModelFile;
 	
 	//System Parameters
 	//private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_poster.txt";
-	private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_micropie1.5.txt";
-	private String firstLevelCategoryMappingFile = "svmlabelandcategorymapping/categoryMapping_category.txt";
-	private String labelValutypeFile ="svmlabelandcategorymapping/character_valuetype.txt";
+	private String svmLabelAndCategoryMappingFile = Configuration.svmLabelAndCategoryMappingFile;
+	private String firstLevelCategoryMappingFile = Configuration.firstLevelCategoryMappingFile;
+	private String labelValutypeFile =Configuration.labelValutypeFile;
 	//private String svmLabelAndCategoryMappingFile = "svmlabelandcategorymapping_data/SVMLabelAndCategoryMapping.txt";
 	
 	private Set antiResistantTerms = null;
@@ -141,24 +139,12 @@ public class Config extends AbstractModule {
 	private Set antiSensTerms = null;
 	
 	private String testFolder = "input";
-	private String characterValueExtractorsFolder = "CharacterValueExtractors";
+	private String characterValueExtractorsFolder = Configuration.characterValueExtractorsFolder;
 	private String abbreviationFile = "abbrevlist/abbrevlist.csv";
 	private String resFolder = "res";
 	private String kbFolder = "kb";
 	private String dataHolderFolder = "dataholder";
 
-	// private String uspBaseString = "usp_small_test";
-	// private String uspBaseString = "usp_base_new";
-	private String uspBaseString = "job1_usp";
-	private String uspResultsDirectory = "job1_usp_results";
-	private String uspFolder = "job1_usp/dep/0";
-	private String uspString= "job1_usp";
-	
-	
-	// => don't useFolder anymore !!
-	
-	private String uspBaseZipFileName = "usp_base.zip";
-	
 	private int nGramMinSize = 1;
 	private int nGramMaxSize = 1;
 	private int nGramMinFrequency = 1;
@@ -175,7 +161,9 @@ public class Config extends AbstractModule {
 	/** prarallel PROCESSING param **/
 	private boolean parallelProcessing = true;
 	private int maxThreads = 3;
-		
+	
+	
+			
 	@Override
 	protected void configure() {
 		
@@ -203,19 +191,6 @@ public class Config extends AbstractModule {
 		
 		bind(String.class).annotatedWith(Names.named("celsius_degreeReplaceSourcePattern")).toInstance(
 				celsius_degreeReplaceSourcePattern);
-		
-		bind(String.class).annotatedWith(Names.named("uspBaseString")).toInstance(
-				uspBaseString);
-		
-		bind(String.class).annotatedWith(Names.named("uspBaseZipFileName")).toInstance(
-				uspBaseZipFileName);
-
-		
-		
-		bind(String.class).annotatedWith(Names.named("uspString")).toInstance(
-				uspString);
-		
-		bind(String.class).annotatedWith(Names.named("uspResultsDirectory")).toInstance(uspResultsDirectory);
 		
 		
 		/*********************************    sentence classifiers                ******************************/
@@ -283,9 +258,6 @@ public class Config extends AbstractModule {
 		bind(String.class).annotatedWith(Names.named("testFolder")).toInstance(
 				testFolder);
 		
-		bind(String.class).annotatedWith(Names.named("uspFolder")).toInstance(
-				uspFolder);
-		
 		bind(String.class).annotatedWith(Names.named("characterValueExtractorsFolder")).toInstance(
 				characterValueExtractorsFolder);
 		
@@ -327,6 +299,7 @@ public class Config extends AbstractModule {
 		
 		bind(ITextNormalizer.class).to(TextNormalizer.class);
 		
+		/*
 		bind(StanfordCoreNLP.class).annotatedWith(Names.named("TokenizeSSplit")).toProvider(new Provider<StanfordCoreNLP>() {
 			@Override
 			public StanfordCoreNLP get() {
@@ -334,13 +307,13 @@ public class Config extends AbstractModule {
 				stanfordCoreProperties.put("annotators", "tokenize, ssplit");
 				return new StanfordCoreNLP(stanfordCoreProperties);
 			}
-		}).in(Singleton.class);
+		}).in(Singleton.class);*/
 		
 		bind(StanfordCoreNLP.class).annotatedWith(Names.named("TokenizeSSplitPosParse")).toProvider(new Provider<StanfordCoreNLP>() {
 			@Override
 			public StanfordCoreNLP get() {
 				Properties stanfordCoreProperties = new Properties();
-				stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse");
+				stanfordCoreProperties.put("annotators", "tokenize, ssplit, pos, parse,lemma");
 				return new StanfordCoreNLP(stanfordCoreProperties);
 			}
 		});
@@ -430,8 +403,7 @@ public class Config extends AbstractModule {
 		//configure the extractors
 		bind(LabelPhraseValueType.class).toInstance(getLabelPhraseValueType(labelValutypeFile));
 		
-		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(getCharacterValueExtractors(characterValueExtractorsFolder, 
-		 		uspResultsDirectory, uspString));
+		bind(new TypeLiteral<Set<ICharacterValueExtractor>>() {}).toInstance(getCharacterValueExtractors(characterValueExtractorsFolder));
 		
 		bind(ICharacterValueExtractorProvider.class).to(CharacterValueExtractorProvider.class).in(Singleton.class);
 		
@@ -459,6 +431,7 @@ public class Config extends AbstractModule {
 		//bind(MicroPIEProcessor.class);
 		//bind(MicroPIEProcessorOld.class);
 		bind(SentenceBatchProcessor.class).in(Singleton.class);
+		bind(FeatureRender.class).in(Singleton.class);
 	}
 
 	/**
@@ -542,8 +515,7 @@ public class Config extends AbstractModule {
 	 * @param uspString
 	 * @return
 	 */
-	private Set<ICharacterValueExtractor> getCharacterValueExtractors(String extratorsDirectory, String uspResultsDirectory, 
-			String uspString) {
+	private Set<ICharacterValueExtractor> getCharacterValueExtractors(String extratorsDirectory) {
 		Set<ICharacterValueExtractor> extractors = new HashSet<ICharacterValueExtractor>();
 		
 		File inputDir = new File(extratorsDirectory);
@@ -552,8 +524,7 @@ public class Config extends AbstractModule {
 		
 		
 		//read extractors from configure files
-		ICharacterValueExtractorReader extractorReader = new CharacterValueExtractorReader(
-				uspBaseString, uspResultsDirectory, uspString);
+		ICharacterValueExtractorReader extractorReader = new CharacterValueExtractorReader();
 		for(File file : inputDir.listFiles()) {
 			try {
 				ICharacterValueExtractor extractor = extractorReader.read(file);
@@ -615,10 +586,6 @@ public class Config extends AbstractModule {
 		kbFolder = inputDirectory + File.separator + kbFolder;
 		dataHolderFolder = inputDirectory + File.separator + dataHolderFolder;
 		
-		uspBaseString = inputDirectory + File.separator + uspBaseString;
-		uspBaseZipFileName = inputDirectory + File.separator + uspBaseZipFileName;
-		uspFolder = inputDirectory + File.separator + uspFolder;
-		
 		serializedClassifierModel = inputDirectory + File.separator+serializedClassifierModel;
 
 		//System.out.println("resFolder = "+resFolder);
@@ -629,7 +596,6 @@ public class Config extends AbstractModule {
 		matrixFile = outputDirectory + File.separator + "matrix.csv";
 		//uspBaseString= outputDirectory + File.separator + uspBaseString;
 		//new File(uspString).mkdirs();
-		uspResultsDirectory = outputDirectory + File.separator + uspResultsDirectory;
 		//new File(uspResultsDirectory).mkdirs();
 	}
 

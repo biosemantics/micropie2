@@ -7,6 +7,7 @@ package edu.arizona.biosemantics.micropie.model;
  *
  */
 public enum CharacterGroup {
+	GC,
 	CWIDTH,
 	CDIAM,
 	CLENGTH,

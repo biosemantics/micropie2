@@ -9,6 +9,9 @@ import edu.arizona.biosemantics.micropie.classify.ILabel;
  *
  */
 public class PredictedSentence extends Sentence{
+	public PredictedSentence(String string) {
+		super(string);
+	}
 	private ILabel label = null;
 	private ILabel prediction = null;
 	

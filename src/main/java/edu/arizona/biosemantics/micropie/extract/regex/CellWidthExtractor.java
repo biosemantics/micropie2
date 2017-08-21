@@ -43,7 +43,7 @@ public class CellWidthExtractor extends AbstractCharacterValueExtractor {
 		Set<String> output = new HashSet();
 		List<CharacterValue> charValueList = null;
 		String text = sentence.getText();
-		System.out.println(text);
+		//System.out.println(text);
 		// Example: Cells are slender , cylindrical , sometimes crooked rods that are 0.35-0.5 µm wide and 2.5 µm long and occur singly or in pairs , or in longer chains.
 		String patternString = "(.*)(\\s?µm\\swide\\s?)(.*)";
 		
@@ -105,7 +105,7 @@ public class CellWidthExtractor extends AbstractCharacterValueExtractor {
 
 			output.add(rangeString);	
 		}
-		System.out.println(output);
+		//System.out.println(output);
 		charValueList = CharacterValueFactory.createList(this.getLabel(), output);
 		return charValueList;
 	}

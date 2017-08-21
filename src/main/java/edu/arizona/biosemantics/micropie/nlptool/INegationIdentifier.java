@@ -16,4 +16,8 @@ public interface INegationIdentifier {
 	 * identify a negation near an given wordindex
 	 */
 	public String detectNeighbourNegation(List<TaggedWord> taggedwordsList, TaggedWord verbWord);
+
+	public String detectFirstNegation(List<TaggedWord> taggedwordsList);
+	
+	public int detectFirstNegationIndex(List<TaggedWord> taggedwordsList);
 }

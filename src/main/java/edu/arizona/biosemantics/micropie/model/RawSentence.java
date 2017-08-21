@@ -13,11 +13,11 @@ public class RawSentence extends Sentence implements Cloneable {
 	private ILabel label = null;
 	
 	public RawSentence(String text) {
-		this.text = text;
+		super(text);
 	}
 	
 	public RawSentence(String text, ILabel label) {
-		this.text = text;
+		super(text);
 		this.label = label;
 	}
 	

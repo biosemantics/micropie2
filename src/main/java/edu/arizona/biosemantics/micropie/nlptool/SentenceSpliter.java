@@ -8,10 +8,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import semanticMarkup.know.lib.WordNetPOSKnowledgeBase;
-import semanticMarkup.ling.Token;
-import semanticMarkup.ling.learn.utility.LearnerUtility;
-import semanticMarkup.ling.transform.ITokenizer;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -54,14 +50,14 @@ public class SentenceSpliter {
 		//long b = System.currentTimeMillis();
 		//long b1 = System.currentTimeMillis();
 		//text = textNormalizer.transform(text);
-		System.out.println(text);
+		//System.out.println(text);
 		if(text==null) return null;
 		text = textNormalizer.toDBC(text);
 		text = textNormalizer.transformEntity(text);
 		text = textNormalizer.transformDash(text); // replace \"–\" to \"-\" ..."
 		text = textNormalizer.transformPeriod(text); // · =>.
 		text = textNormalizer.transformSpchar(text); 
-		System.out.println(text);
+		//System.out.println(text);
 		text = replaceCapitalPeriod(text);
 		//long e = System.currentTimeMillis();
 		//System.out.println("long replacements costs "+(e-b)+" ms");
@@ -164,40 +160,6 @@ public class SentenceSpliter {
 	}	
 	
 	
-	/**
-	 * CharaParser's segmentSentence
-	 * @param sentences
-	 * @param sentenceDetector
-	 * @param tokenizer
-	 * @param wordNetPOSKnowledgeBase
-	 * @return
-	 */
-	private List<String> getSentencesDongyeMengSegmentSent(List<String> sentences,
-			ITokenizer sentenceDetector,
-			ITokenizer tokenizer,
-			WordNetPOSKnowledgeBase wordNetPOSKnowledgeBase) {
-		
-		//System.out.println("Go to getSentencesStep4()");
-		List<String> result = new LinkedList<String>();		
-
-
-		for (String sentence : sentences) {
-			//System.out.println("sentence::" + sentence);
-			
-			List<Token> tokenList = new ArrayList<Token>();
-			// this.tester = new LearnerUtility(sentenceDetector, tokenizer, wordNetPOSKnowledgeBase);
-			//tokenList = this.tester.segmentSentence(sentence);
-			LearnerUtility tester = new LearnerUtility(sentenceDetector, tokenizer, wordNetPOSKnowledgeBase);
-			tokenList = tester.segmentSentence(sentence);
-			
-			for ( int i = 0; i < tokenList.size(); i++ ) {
-				String subSent = tokenList.get(i).getContent();
-				//System.out.println("segmentSentence()::" + subSent);
-				result.add(subSent);
-			}			
-		}
-		return result;
-	}
 	
 
 	/**
@@ -323,6 +285,7 @@ public class SentenceSpliter {
         }
         sent = sent.replace("(", "");
         sent = sent.replace(")", "");
+        sent = sent.replace(" ,", ",").replace(" :", ":").replace(" .", ".");
 		return sent;
 	}
 	
@@ -376,6 +339,6 @@ public class SentenceSpliter {
 	
 	public static void main(String[] args){
 		SentenceSpliter spliter = new SentenceSpliter(null, null); 
-		System.out.println(spliter.removeBrackets("The following amounts of fermentation acids (in milliequivalents per 100 ml of culture; mean % standard error of the mean) are produced in PYG-serum broth cultures: succinic acid, 2.9 2 0.5; acetic acid, 0.9 -+ 0.2; and lactic acid, 0.2 k 0.1."));
+		System.out.println(spliter.removeBrackets("The following amounts of fermentation acids (in milliequivalents per 100 ml of culture; mean % standard error of the mean), are produced in PYG-serum broth cultures: succinic acid, 2.9 2 0.5; acetic acid, 0.9 -+ 0.2; and lactic acid, 0.2 k 0.1."));
 	}
 }
