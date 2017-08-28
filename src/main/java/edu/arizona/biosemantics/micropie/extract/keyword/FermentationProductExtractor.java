@@ -9,7 +9,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
@@ -163,7 +162,6 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 				phraseRelationParser.findConjPhrase(dependent,phraseList,semanticGraph,prepPhrases);
 				//List coList = findCoordTerms(dependentPhrase,coordTermLists);
 				//prepPhrases.addAll(coList);
-				
 			}
 		}
 		
@@ -471,6 +469,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 	 * @return
 	 */
 	public boolean isInorganic(String text){
+		//System.out.println("inorganicWords="+inorganicWords.size());
 		for (String keywordString : inorganicWords) {
 			if(extract(keywordString, text)) return true;
 		}

@@ -51,7 +51,7 @@ public class Main {
 	 * -m various models used by MicrioPIE
 	 * -f output format i.e., csv default CSV; mc, MatrixConverter format; xml, markup XML files; csm, character and sentence matrix
 	 * -vi  value infer; true or false. Only apply to CSV output
-	 * 
+	 * -pg propagate genus
 	 * @param args
 	 * @throws Throwable
 	 */

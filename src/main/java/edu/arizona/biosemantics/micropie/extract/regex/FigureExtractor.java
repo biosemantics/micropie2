@@ -168,6 +168,13 @@ public class FigureExtractor  extends AbstractCharacterValueExtractor{
 					features.add(fd);
 				}
 				
+			}else if(word.word().equals("absence")){
+				NumericCharacterValue fd = new NumericCharacterValue(this.getLabel());
+				fd.setValueModifier("<");
+				fd.setTermBegIdx(i);
+				fd.setTermEndIdx(i+1);
+				fd.setValue("0");
+				features.add(fd);
 			}
 			
 			i++;

@@ -12,7 +12,7 @@ public class EvaluationTest {
 		//String comparedCharacterNames ="%G+C|Cell shape|Gram stain type|Motility|Pigment compounds|Biofilm formation|Habitat isolated from|NaCl minimum|NaCl optimum|NaCl maximum|pH minimum|pH optimum|pH maximum|Temperature minimum|Temperature optimum|Temperature maximum|Aerophilicity|Salinity preference|Host|Symbiotic relationship|Pathogenic|Disease caused|organic compounds used or hydrolyzed|organic compounds not used or not hydrolyzed|inorganic substances used|inorganic substances not used|fermentation substrates used|fermentation substrates not used|Fermentation products|Alcohols|Amino acids|Carbohydrates (mono & disaccharides)|Polysaccharides|Fatty acids|Polyalkanoates|Antibiotic sensitivity|Antibiotic resistant";
 		//58 character version
 		/**/
-		String comparedCharacterNames ="%g+c|cell shape|cell length|cell width|"
+		String comparedCharacterNames ="%g+c|cell shape|cell length|cell width/diameter|"
 				+ "cell relationships&aggregations|gram stain type|cell membrane & cell wall components|external features|"
 				+ "internal features|motility|pigment compounds|biofilm formation|filterability|lysis susceptibility|cell division pattern & reproduction|"
 				+ "habitat isolated from|Salinity/Salt Relationship to Growth|nacl minimum|nacl optimum|nacl maximum|ph minimum|"
@@ -26,10 +26,10 @@ public class EvaluationTest {
 		
 		String categoryMappingFile = "F:/MicroPIE/micropie0.2_model/svmlabelandcategorymapping/categoryMapping_micropie.txt";
 		
-		String charValEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/charValEvalResult.csv";
-		String charAllEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/charAllEvalResult.csv";
-		String taxonEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/taxonEvalResult.csv";
-		String matrixEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/matrixEvalResult.csv";
+		String charValEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/charValEvalResult-v2-1.csv";
+		String charAllEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/charAllEvalResult-v2-1.csv";
+		String taxonEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/taxonEvalResult-v2-1.csv";
+		String matrixEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/matrixEvalResult-v2-1.csv";
 		
 		/*
 		String charValEvalResultFile = "F:/MicroPIE/evaluation/output/charValEvalResult_58.csv";
@@ -52,7 +52,7 @@ public class EvaluationTest {
 		String tgXMLField = "XML file";
 		//String tgMatrixFile ="F:/MicroPIE/2017tasks/results/matrix.csv";
 		//String tgMatrixFile ="F:/MicroPIE/ext/GSMv1/matrix-0.1.csv";
-		String tgMatrixFile ="F:/MicroPIE/ext/GSMv1/matrix.csv";
+		String tgMatrixFile ="F:/MicroPIE/ext/GSMv1/matrix-0.2-1.csv";
 		//String tgMatrixFile ="F:/MicroPIE/ext/final111/PartOne111_NOSVM_matrix.csv";//final_114_1214.csv
 		//String tgMatrixFile ="F:/MicroPIE/ext/studentoutput/Microbial Phenomics Project Data Form experiment output 031715_filename&taxon_stu344.csv";//student output
 		//tgMatrixFile

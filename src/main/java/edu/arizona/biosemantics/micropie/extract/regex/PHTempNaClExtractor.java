@@ -22,6 +22,8 @@ import edu.arizona.biosemantics.micropie.model.NumericCharacterValue;
 import edu.arizona.biosemantics.micropie.model.Sentence;
 import edu.arizona.biosemantics.micropie.model.SubSentence;
 import edu.arizona.biosemantics.micropie.model.ValueGroup;
+import edu.arizona.biosemantics.micropie.nlptool.INegationIdentifier;
+import edu.arizona.biosemantics.micropie.nlptool.NegationIdentifier;
 import edu.arizona.biosemantics.micropie.nlptool.PosTagger;
 import edu.arizona.biosemantics.micropie.nlptool.SentenceSpliter;
 import edu.stanford.nlp.ling.TaggedWord;
@@ -35,7 +37,8 @@ import edu.stanford.nlp.process.PTBTokenizer;
  *
  */
 public class PHTempNaClExtractor extends FigureExtractor {
-
+	protected INegationIdentifier negationIdentifier = new NegationIdentifier();
+	
 	public PHTempNaClExtractor(ILabel label, String characterName) {
 		super(label, characterName);
 	}
@@ -48,9 +51,15 @@ public class PHTempNaClExtractor extends FigureExtractor {
 	}
 	
 	@Override
-	public List<CharacterValue> getCharacterValue(Sentence sentence) {
+	public List getCharacterValue(Sentence sentence) {
 		String text = sentence.getText();
-		text = text.replace("degree_celsius_1", "˚C").replace("degree_celsius_7", "˚C").replace("–", "-");
+		if(text.toLowerCase().indexOf("colony")>-1||text.toLowerCase().indexOf("colonies")>-1) return new ArrayList();
+		text = text.replace("degree_celsius_1", "˚C")
+				.replace("degree_celsius_4", "˚C")
+				.replace("degree_celsius_7", "˚C")
+				.replace("celsius_degree", "˚C")
+				.replace("–", "-");
+		sentence.setText(text);
 		//System.out.println(text);
 		MultiClassifiedSentence sent = (MultiClassifiedSentence)sentence;
 		sent.setSubSentence(null);//reseparate
@@ -63,7 +72,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		List<List<TaggedWord>> taggedWordList = sent.getSubSentTaggedWords();
 		//
 		int sentSize = taggedWordList.size();
-		List sentValueList = new LinkedList();
+		List<NumericCharacterValue> sentValueList = new LinkedList();
 		boolean containWV = false;//whether the sentence contains the unit w/v; 
 		for(int sid=0;sid<sentSize;sid++){
 			List<TaggedWord> taggedWords = taggedWordList.get(sid);
@@ -71,6 +80,8 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			if(isWVUnit(taggedWords)){
 				containWV = true;
 			}
+			
+			String negation = negationIdentifier.detectFirstNegation(taggedWords);
 			
 			List<NumericCharacterValue> valueList = detectFigures(taggedWords);
 			
@@ -119,8 +130,16 @@ public class PHTempNaClExtractor extends FigureExtractor {
 						maxFd.setUnit(curFd.getUnit());
 						maxFd.setSubCharacter(curFd.getSubCharacter());
 						valueList.add(maxFd);
-					}else{// really unspecified
+					}else if ("<".equals(curFd.getValueModifier())){// really unspecified
 						//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
+						if(negation==null) curFd.setValueGroup(ValueGroup.MAX);//maximum
+						else curFd.setValueGroup(ValueGroup.MIN);//mininum
+						curFd.setValueModifier(null);
+					}else if (">".equals(curFd.getValueModifier())){// really unspecified
+						//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
+						if(negation!=null) curFd.setValueGroup(ValueGroup.MAX);//maximum
+						else curFd.setValueGroup(ValueGroup.MIN);//mininum
+						curFd.setValueModifier(null);
 					}
 					
 				}
@@ -149,11 +168,35 @@ public class PHTempNaClExtractor extends FigureExtractor {
 			//combine all the subsentences
 			sentValueList.addAll(valueList);
 		}
-		
 		if(containWV) updateNaClUnitWV(sentValueList);
-		//System.out.println(sentValueList);
+		for(CharacterValue cv:sentValueList){
+			if(cv.getCharacter()==null) cv.setCharacter(Label.USP);
+		}
+		
+		//filter ph values
+		for(int i=0;i<sentValueList.size();){
+			NumericCharacterValue curFd = sentValueList.get(i);
+			
+			if(CharacterGroup.PH.equals(curFd.getCharacterGroup())){
+				try{
+					double value= Double.parseDouble(curFd.getValue());
+					if(value<=0||value>=14){
+						sentValueList.remove(i);		
+					}else{
+						i++;
+					}
+				}catch(Exception e){
+					//System.out.println("remove:"+curFd.toString());
+					//sentValueList.remove(i);
+					i++;
+				}
+			}else{
+				i++;
+			}
+		}
 		return sentValueList;
 	}
+	
 	
 	/**
 	 * update the unit of NaCL characters
