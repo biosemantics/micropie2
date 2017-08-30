@@ -164,7 +164,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 				//prepPhrases.addAll(coList);
 			}
 		}
-		
+		System.out.println("charValueList1="+charValueList);
 		// add the from,  form ,product
 		
 		//detectFermentList(tagList, coordTermLists,prepPhrases);
@@ -173,7 +173,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 		
 		
 		//System.out.println("prepPhrases2="+prepPhrases);
-		//System.out.println("charValueList="+charValueList);
+		System.out.println("charValueList2="+charValueList);
 		//fermentation products
 		if(!isOrganicComp(cleanSent)){
 			charValueList.addAll(extractFermentationProducts(phraseList, prepPhrases,cleanSent));
@@ -227,7 +227,8 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 			for(int index = phraseIndex-1;index>=0&&index>=phraseIndex-2;index--){
 				TaggedWord tw = tagList.get(index);
 				//if(tw.word().equalsIgnoreCase("ferment")||tw.word().equalsIgnoreCase("Ferments")||tw.word().equalsIgnoreCase("from")){
-				if(tw.word().toLowerCase().startsWith("ferment")||tw.word().toLowerCase().startsWith("produc")||tw.word().toLowerCase().startsWith("from")
+				if(tw.tag().startsWith("V")&&tw.word().toLowerCase().startsWith("ferment")||tw.tag().startsWith("V")&&tw.word().toLowerCase().startsWith("produc")
+						||tw.word().toLowerCase().startsWith("from")
 						//||tw.word().toLowerCase().startsWith("positive")||tw.word().toLowerCase().startsWith("negative")
 						//||tw.word().toLowerCase().startsWith("utili")||tw.word().toLowerCase().startsWith("use")||tw.word().toLowerCase().startsWith("test")
 						){	

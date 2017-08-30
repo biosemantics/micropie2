@@ -107,7 +107,7 @@ public class PHTempNaClExtractor extends FigureExtractor {
 				
 				posCharaMap.put(curFd.getTermBegIdx(), curFd);
 				//determine the value group of the character value: MIN,MAX,OPT,USP
-				ValueGroup valueGroup = detectValueGroup(curFd,taggedWords,text,posCharaMap);
+				ValueGroup valueGroup = detectValueGroup(curFd,taggedWords,sents.get(sid).getContent(),posCharaMap, negation);//use the subsentence
 				curFd.setValueGroup(valueGroup);
 				
 				//detectModifier(curFd,taggedWords);// detect the modifier for the figure
@@ -424,7 +424,8 @@ public class PHTempNaClExtractor extends FigureExtractor {
 	 * @param posCharaMap
 	 * @return
 	 */
-	private ValueGroup detectValueGroup(NumericCharacterValue curFd,List<TaggedWord> taggedWords, String content, Map<Integer,NumericCharacterValue> posCharaMap) {
+	private ValueGroup detectValueGroup(NumericCharacterValue curFd,List<TaggedWord> taggedWords, String content, Map<Integer,NumericCharacterValue> posCharaMap
+			,String negation) {
 		int termIndex = curFd.getTermBegIdx();
 		int termEndIndex = curFd.getTermEndIdx();
 		int size = taggedWords.size();
@@ -456,8 +457,12 @@ public class PHTempNaClExtractor extends FigureExtractor {
 				return ValueGroup.MAX;
 			}else if(wordStr.indexOf("mini")>-1){
 				return ValueGroup.MIN;
+			}else if(negation!=null&&wordStr.indexOf("presen")>-1&&termIndex-t<4){//not in the presence of 
+				return ValueGroup.MAX;
 			}
 		}
+		
+		if(content.toLowerCase().contains("optim")) return ValueGroup.OPT;
 		
 		//it may lead to some errors
 		/*
