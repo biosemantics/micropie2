@@ -9,6 +9,7 @@ import java.util.Set;
 import edu.arizona.biosemantics.micropie.classify.ILabel;
 import edu.arizona.biosemantics.micropie.classify.Label;
 import edu.arizona.biosemantics.micropie.extract.context.RelationParser;
+import edu.arizona.biosemantics.micropie.model.CharacterGroup;
 import edu.arizona.biosemantics.micropie.model.CharacterValue;
 import edu.arizona.biosemantics.micropie.model.Phrase;
 import edu.arizona.biosemantics.micropie.model.Sentence;
@@ -73,8 +74,12 @@ public class OrganicCompoundExtractor extends PhraseBasedExtractor{
 	
 	public Set<String> excluSet = new HashSet();
 	{
+		excluSet.add("fermentation");
+		excluSet.add("fermented");
+		excluSet.add("ferments");
 		excluSet.add("ferment");
-		excluSet.add("produc");
+		excluSet.add("fermenting");
+		excluSet.add("produced");
 		excluSet.add("form");
 	}
 	
@@ -101,13 +106,16 @@ public class OrganicCompoundExtractor extends PhraseBasedExtractor{
 		
 		//First, identify the coordinative relationships.
 		List<List<Phrase>> coordTermLists = phraseRelationParser.getCoordList(phraseList,tagList);
-		//System.out.println("coordTermLists:"+coordTermLists);
+		//TODO: filter coordList by useOrHydFeature(cleanSent.toLowerCase())&&!useFermentation(cleanSent.toLowerCase())
+		//System.out.println("coordTermLists:"+coordTermLists.size()+" ==>"+coordTermLists);
+		
+		coordTermLists = filterByRule(coordTermLists,tagList);
+		
+		//System.out.println("after coordTermLists:\n"+coordTermLists.size()+" ==>"+coordTermLists);
 		List<CharacterValue> valueList = new ArrayList();
 		//find features 
 		//System.out.println("sentence:"+cleanSent);
-		//System.out.println("useOrHydFeature(cleanSent):"+useOrHydFeature(cleanSent));
-		//System.out.println("useFermentation(cleanSent):"+useFermentation(cleanSent));
-		if(useOrHydFeature(cleanSent.toLowerCase())&&!useFermentation(cleanSent.toLowerCase())){
+		//if(useOrHydFeature(cleanSent.toLowerCase())&&!useFermentation(cleanSent.toLowerCase())){
 			//phrase List
 			for(List<Phrase> phList : coordTermLists){
 				//System.out.println("phList:"+phList);
@@ -151,9 +159,51 @@ public class OrganicCompoundExtractor extends PhraseBasedExtractor{
 				}
 				
 			}
-		}
+		//}
 		//System.out.println(valueList);
 		return valueList;
+	}
+
+	/**
+	 * should contain utilize but not have ferment
+	 * @param coordTermLists
+	 * @return
+	 */
+	private List<List<Phrase>> filterByRule(List<List<Phrase>> coordTermLists, List<TaggedWord> tagList) {
+		for(int i=0;i<coordTermLists.size();){
+			int smallestIndex =1000;
+			int largestIndex = 0;
+			List<Phrase> phList = coordTermLists.get(i);
+			for(Phrase p:phList){
+				if(p.getStartIndex()<smallestIndex) smallestIndex = p.getStartIndex();
+				if(p.getEndIndex()>largestIndex) largestIndex = p.getEndIndex();
+			}
+			boolean hasUtilize = false;
+			boolean hasFerment = false;
+			for(int t=smallestIndex-3>0?smallestIndex-3:0;t<smallestIndex;t++){
+				TaggedWord word = tagList.get(t);
+				String wordStr = word.word().toLowerCase();
+				if(excluSet.contains(wordStr.toString())) hasFerment= true;
+				for(String feature:featureSet){
+					if(wordStr.indexOf(feature)>-1) hasUtilize= true;
+				}
+			}
+			for(int t=largestIndex+1;t<largestIndex+4&&t<tagList.size();t++){
+				TaggedWord word = tagList.get(t);
+				String wordStr = word.word().toLowerCase();
+				if(excluSet.contains(wordStr.toString())) hasFerment= true;
+				for(String feature:featureSet){
+					if(wordStr.indexOf(feature)>-1) hasUtilize= true;
+				}
+			}
+			if(hasUtilize&&!hasFerment){
+				i++;
+			}else{
+				coordTermLists.remove(i);
+			}
+		}
+		
+		return coordTermLists;
 	}
 
 	private boolean useFermentation(String cleanSent) {

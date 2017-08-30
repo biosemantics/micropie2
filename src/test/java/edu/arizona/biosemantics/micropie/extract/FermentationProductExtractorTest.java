@@ -53,7 +53,7 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 public class FermentationProductExtractorTest {
 	
 	public static void main(String[] args){
-		String inputDirectory = "C:\\micropie\\micropie0.2_model";
+		String inputDirectory = "f:\\micropie\\micropie0.2_model";
 		String abbreviationFile = inputDirectory + File.separator + "abbrevlist/abbrevlist.csv";
 		LinkedHashMap<String, String> abbreviations = null;
 		CSVAbbreviationReader abbreviationReader = new CSVAbbreviationReader();
@@ -86,7 +86,7 @@ public class FermentationProductExtractorTest {
 		
 		LexicalizedParser lexParser = LexicalizedParser.loadModel("edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz");
 		 
-		String serializedClassifierModel = "C:\\micropie\\micropie0.2_model\\nlpmodel/english.all.3class.distsim.crf.ser.gz";
+		String serializedClassifierModel = "f:\\micropie\\micropie0.2_model\\nlpmodel/english.all.3class.distsim.crf.ser.gz";
 		AbstractSequenceClassifier nerClassifier=CRFClassifier.getClassifierNoExceptions(serializedClassifierModel);
 		
 		StanfordParserWrapper stanfordWrapper = new StanfordParserWrapper(sfCoreNLP, lexParser,nerClassifier);
@@ -108,15 +108,15 @@ public class FermentationProductExtractorTest {
 		
 		
 		SentenceBatchProcessor sentBatPIEProcessor =  new SentenceBatchProcessor(matrixCreator, matrixWriter, true, 3, null, sentenceMetadataMap, sentenceClassificationMap, sentencePredictor, sentSplitter, classifiedSentenceWriter, contentExtractorProvider);
-		String lineFile = "C:/micropie/sentences//9.5 fermentation substrate simple.txt";// Small
+		String lineFile = "F:/MicroPIE/micropieInput/sentences/9.5 fermentation substrate simple.txt";// Small
 		//STEP 1: split sentences
 		List<RawSentence> testSentences = sentBatPIEProcessor.createSentencesByLine(lineFile);
 				
 		//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
 		//List<MultiClassifiedSentence> predictions = new LinkedList<MultiClassifiedSentence>();
 		FermentationProductExtractor extractor = new FermentationProductExtractor(postagger, Label.c41, "Fermentation Products", null, null);
-		Set inOrgWords = extractor.readKeywords("C:\\micropie\\micropie0.2_model\\CharacterValueExtractors\\c55.inorganic substances used.key");
-		extractor.readKeywords("C:\\micropie\\micropie0.2_model\\CharacterValueExtractors\\c41.Fermentation Products.W.key");
+		Set inOrgWords = extractor.readKeywords("f:\\micropie\\micropie0.2_model\\CharacterValueExtractors\\c55.inorganic substances used.key");
+		extractor.readKeywords("f:\\micropie\\micropie0.2_model\\CharacterValueExtractors\\c41.Fermentation Products.W.key");
 		extractor.setRelationParser(new RelationParser());
 		extractor.setStanParser(stanfordWrapper);
 		extractor.setPhraseParser(new PhraseParser());

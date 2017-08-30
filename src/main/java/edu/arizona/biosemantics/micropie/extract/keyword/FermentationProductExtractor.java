@@ -164,7 +164,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 				//prepPhrases.addAll(coList);
 			}
 		}
-		System.out.println("charValueList1="+charValueList);
+		//System.out.println("charValueList1="+charValueList);
 		// add the from,  form ,product
 		
 		//detectFermentList(tagList, coordTermLists,prepPhrases);
@@ -173,7 +173,7 @@ public class FermentationProductExtractor extends PhraseBasedExtractor {
 		
 		
 		//System.out.println("prepPhrases2="+prepPhrases);
-		System.out.println("charValueList2="+charValueList);
+		//System.out.println("charValueList2="+charValueList);
 		//fermentation products
 		if(!isOrganicComp(cleanSent)){
 			charValueList.addAll(extractFermentationProducts(phraseList, prepPhrases,cleanSent));
