@@ -99,7 +99,8 @@ public class PHTempNaClExtractorTest {
 		Map<RawSentence, MultiClassifiedSentence> sentenceClassificationMap = new HashMap();
 		
 		SentenceBatchProcessor sentBatPIEProcessor =  new SentenceBatchProcessor(matrixCreator, matrixWriter, true, 3, sentenceMetadataMap, sentenceMetadataMap, sentenceClassificationMap, sentencePredictor, sentSplitter, classifiedSentenceWriter, contentExtractorProvider);
-		String lineFile = "F:/MicroPIE/micropieInput/sentences/3.1G salinity preference simple.txt";//3.2 Nacl Min small.csv
+		//String lineFile = "F:/MicroPIE/micropieInput/sentences/3.2 Nacl Min small2.csv";//3.2 Nacl Min small.csv
+		String lineFile = "F:/MicroPIE/micropieInput/sentences/3.1G salinity preference simple2.txt";
 		//phsamples.txt
 		//3.2 Nacl Min small.csv
 		//STEP 1: split sentences
@@ -120,9 +121,9 @@ public class PHTempNaClExtractorTest {
 			System.out.println("\n before USP values: "+content);
 			
 			List<CharacterValue> noLabelValueList = new ArrayList();
-			pp.seperateLabelAndUnlabelList(content,noLabelValueList);
+			//pp.seperateLabelAndUnlabelList(content,noLabelValueList);
 			pp.dealUSP(noLabelValueList, new HashMap());
-			pp.postProcessor(content,new ArrayList());
+			//pp.postProcessor(content,new ArrayList());
 			System.out.println(testSentence.getText()+"\n after USP values: "+content+" "+noLabelValueList);
 		}
 		

@@ -51,7 +51,7 @@ public class SalinityExtractorTest {
 	
 	
 	public static void main(String[] args){
-		String inputDirectory = "C:\\micropie\\micropie0.2_model";
+		String inputDirectory = "F:/MicroPIE/micropie0.2_model";
 		String abbreviationFile = inputDirectory + File.separator + "abbrevlist/abbrevlist.csv";
 		LinkedHashMap<String, String> abbreviations = null;
 		CSVAbbreviationReader abbreviationReader = new CSVAbbreviationReader();
@@ -84,7 +84,7 @@ public class SalinityExtractorTest {
 		
 		LexicalizedParser lexParser = LexicalizedParser.loadModel("edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz");
 		 
-		String serializedClassifierModel = "C:\\micropie\\micropie0.2_model\\nlpmodel/english.all.3class.distsim.crf.ser.gz";
+		String serializedClassifierModel = "F:\\micropie\\micropie0.2_model\\nlpmodel/english.all.3class.distsim.crf.ser.gz";
 		AbstractSequenceClassifier nerClassifier=CRFClassifier.getClassifierNoExceptions(serializedClassifierModel);
 		
 		StanfordParserWrapper stanfordWrapper = new StanfordParserWrapper(sfCoreNLP, lexParser,nerClassifier);
@@ -107,7 +107,7 @@ public class SalinityExtractorTest {
 		Map<RawSentence, MultiClassifiedSentence> sentenceClassificationMap = new HashMap();
 		
 		
-		String svmLabelAndCategoryMappingFile ="C:\\micropie\\micropie0.2_model\\svmlabelandcategorymapping\\categoryMapping_micropie.txt";
+		String svmLabelAndCategoryMappingFile ="F:\\micropie\\micropie0.2_model\\svmlabelandcategorymapping\\categoryMapping_micropie.txt";
 		CharacterReader categoryReader = new CharacterReader();
 		categoryReader.setCategoryFile(svmLabelAndCategoryMappingFile);
 		categoryReader.read();
@@ -115,14 +115,14 @@ public class SalinityExtractorTest {
 		
 		
 		SentenceBatchProcessor sentBatPIEProcessor =  new SentenceBatchProcessor(matrixCreator, matrixWriter, true, 3, categoryLabelCodeMap, sentenceMetadataMap, sentenceClassificationMap, sentencePredictor, sentSplitter, classifiedSentenceWriter, contentExtractorProvider);
-		String lineFile = "C:/micropie/sentences/3.1G salinity preference simple.txt";// simple   3.1G salinity preference.txt
+		String lineFile = "F:/MicroPIE/micropieInput/sentences/3.1G salinity preference simple2.txt";// simple   3.1G salinity preference.txt
 		//STEP 1: split sentences
 		List<RawSentence> testSentences = sentBatPIEProcessor.createSentencesByLine(lineFile);
 				
 		//STEP 2: predict the classifications of the sentences, i.e., the characters in each sentences
 		PhraseParser phraseParser = new PhraseParser();
 		SalinityPreferenceExtractor extractor = new SalinityPreferenceExtractor(postagger, Label.c59, "Salinity preference",null,null,phraseParser);
-		extractor.readKeywords("C:\\micropie\\micropie0.2_model\\CharacterValueExtractors\\c59.Salinity preference.key");
+		extractor.readKeywords("F:\\micropie\\micropie0.2_model\\CharacterValueExtractors\\c59.Salinity preference.key");
 		
 		for (RawSentence testSentence : testSentences) {
 			Set prediction = new HashSet();

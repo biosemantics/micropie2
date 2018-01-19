@@ -19,8 +19,8 @@ import edu.arizona.biosemantics.micropie.model.MultiClassifiedSentence;
 public class SentencePredictorTest {
 	public static void main(String[] args) {
 		Config config = new Config();
-		String prjInputFolder = "C:\\micropie\\micropie0.2_model";
-		String prjOutputFolder ="C:\\micropie\\micropie0.2_model\\output";
+		String prjInputFolder = "f:\\micropie\\micropie0.2_model";
+		String prjOutputFolder ="f:\\micropie\\micropie0.2_model\\output";
 		config.setInputDirectory(prjInputFolder);
 		config.setOutputDirectory(prjOutputFolder);
 		
@@ -44,8 +44,10 @@ public class SentencePredictorTest {
 				//"Grows in the presence of 0–2%(w/v) NaCl, with optimum growth in the absence of NaCl.",
 				//"Halophilic, growing between 1.0 and 7.5 % (w/v) NaCl with optimum growth at 1–3 %.",
 				//"growth does not occur in the absence of NaCl or in the presence of > 7%(w/v) NaCl."
-				"Acetoin is produced."
-				};
+				//"Acetoin is produced."
+				"Gelatin hydrolysis, Voges–Proskauer test and citrate utilization results are positive, but activities of ONPG, arginine dihydrolase, lysine decarboxylase, ornithine decarboxylase and urease, production of hydrogen sulfide and indole and reduction of nitrate and nitrite are negative.",
+				"The major end products are butyric and isobutyric acids; smaller amounts of acetic, propionic and succinic acids are produced."		
+		};
 		
 		CategoryPredictor cp = (CategoryPredictor)injector.getInstance(CategoryPredictor.class);
 		

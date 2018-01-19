@@ -26,10 +26,10 @@ public class EvaluationTest {
 		
 		String categoryMappingFile = "F:/MicroPIE/micropie0.2_model/svmlabelandcategorymapping/categoryMapping_micropie.txt";
 		
-		String charValEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/charValEvalResult-v2-1.csv";
-		String charAllEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/charAllEvalResult-v2-1.csv";
-		String taxonEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/taxonEvalResult-v2-1.csv";
-		String matrixEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/matrixEvalResult-v2-1.csv";
+		String charValEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/charValEvalResult.csv";
+		String charAllEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/charAllEvalResult.csv";
+		String taxonEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/taxonEvalResult.csv";
+		String matrixEvalResultFile = "F:/MicroPIE/2017tasks/GSMv1comparison/temp/matrixEvalResult.csv";
 		
 		/*
 		String charValEvalResultFile = "F:/MicroPIE/evaluation/output/charValEvalResult_58.csv";
@@ -43,7 +43,7 @@ public class EvaluationTest {
 		String gstXMLField = "XML file";
 		//String gstMatrixFile ="F:/MicroPIE/evaluation/GSM_MicroPIE1.5_010316_111_final.csv";//Gold_matrix_22_1213.csv.csv";
 		//String gstMatrixFile ="F:\\MicroPIE\\manuscript\\results\\GSM_MicroPIE1.5_after_MS_0208.csv";
-		String gstMatrixFile ="F:/MicroPIE/2017tasks/GSMv1comparison/GSM_MicroPIE_133_submission.csv";
+		String gstMatrixFile ="F:/MicroPIE/2017tasks/GSMv1comparison/GSM_MicroPIE_133_submission_v2format.csv";
 		//String gstMatrixFile ="F:/MicroPIE/2017tasks/GSM v2/GSM_v2_matrixC_072717.csv";
 		//gstMatrixFile
 		//Taxon	Family	Genus	Species	Strain	16S rRNA accession #	XMsL file
@@ -52,7 +52,7 @@ public class EvaluationTest {
 		String tgXMLField = "XML file";
 		//String tgMatrixFile ="F:/MicroPIE/2017tasks/results/matrix.csv";
 		//String tgMatrixFile ="F:/MicroPIE/ext/GSMv1/matrix-0.1.csv";
-		String tgMatrixFile ="F:/MicroPIE/ext/GSMv1/matrix-0.2-1.csv";
+		String tgMatrixFile ="F:/MicroPIE/ext/GSMv1/matrix.csv";
 		//String tgMatrixFile ="F:/MicroPIE/ext/final111/PartOne111_NOSVM_matrix.csv";//final_114_1214.csv
 		//String tgMatrixFile ="F:/MicroPIE/ext/studentoutput/Microbial Phenomics Project Data Form experiment output 031715_filename&taxon_stu344.csv";//student output
 		//tgMatrixFile
