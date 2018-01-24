@@ -45,7 +45,6 @@ import edu.arizona.biosemantics.micropie.extract.regex.CellLengthExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellShapeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellSizeExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.CellWidthExtractor;
-import edu.arizona.biosemantics.micropie.extract.regex.FermentationProductsExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.FermentationSubstratesNotUsed;
 import edu.arizona.biosemantics.micropie.extract.regex.GcExtractor;
 import edu.arizona.biosemantics.micropie.extract.regex.GcFigureExtractor;
