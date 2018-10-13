@@ -39,7 +39,7 @@ public class TrainClassifierTest {
 		
 		//injector.getInstance(Key.get(new TypeLiteral<GenericDbClass<Integer>>(){});
 		List<ILabel> labels = injector.getInstance(Key.get(new TypeLiteral<List<ILabel>>() {},  Names.named("MultiSVMClassifier_Labels")));
-		run.trainNew(trainFiles,savedModelFolder,labels, categoryMappingFile);//the first parameter is not used.
+		run.train(trainFiles,savedModelFolder,labels, categoryMappingFile);//the first parameter is not used.
 		//run.testTruePositive(testSentFile,savedModelFolder,labels);
 		//run.testTrueNegative(testSentFile,savedModelFolder,labels);
 	}
