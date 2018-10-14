@@ -152,6 +152,47 @@ public class CSVTaxonCharacterMatrixWriter implements ITaxonCharacterMatrixWrite
 		log(LogLevel.INFO, "Done writing matrix");
 	}
 	
+	
+	/**
+	 * output
+	 * @param matrix
+	 * @param outputCharacterLabels 
+	 * @throws Exception
+	 */
+	public void writeKeyValue(NewTaxonCharacterMatrix matrix, Map<ILabel, String> labelNameMap, LinkedHashSet<ILabel> outputCharacterLabels, boolean isFormat) throws Exception {
+		log(LogLevel.INFO, "Writing key value format...");
+		LinkedHashSet<ILabel> characterLabels = matrix.getCharacterLabels();
+		LinkedHashSet<String> characterNames = matrix.getCharacterNames();
+		
+		//System.out.println("characterLabels="+characterLabels.size()+" "+characterNames.size());
+		OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF8");	
+		
+		
+		ValueFormatterUtil formatter = new ValueFormatterUtil();
+		//create matrix content
+		Set<TaxonTextFile> textFiles = matrix.getTaxonFiles();
+		for(TaxonTextFile taxonFile : textFiles) {
+			String fileName = taxonFile.getXmlFile();
+			writer.write("$$"+fileName);
+			writer.write("\n");
+			Map<ILabel, List> taxonCharValues = matrix.getAllTaxonCharacterValues(taxonFile);
+			for(ILabel character : characterLabels) {
+				if(outputCharacterLabels==null||outputCharacterLabels.contains(character)){
+					List values = taxonCharValues.get(character);
+					writer.write(labelNameMap.get(character)+":"+formatter.simpleFormat(values));
+					writer.write("\n");
+				}
+			}
+			writer.flush();
+		}
+		
+		//write
+		writer.flush();
+		writer.close();
+		log(LogLevel.INFO, "Done writing matrix");
+	}
+	
+	
 	/**
 	 * output
 	 * @param matrix

@@ -197,6 +197,10 @@ public class MicroPIEProcessor{
 					matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
 					matrixWriter.writeCharSentMatrix(matrix, labelCategoryNameMap,outputCharacterLabels,true);
 					break;
+				case 4://kv, key-value format, leaded by filename, character:values,values split with #
+					matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
+					matrixWriter.writeKeyValue(matrix, labelCategoryNameMap,outputCharacterLabels,true);
+					break;
 				default://output default csv
 					matrixWriter.setOutputStream(new FileOutputStream(outputMatrixFile, true));
 					matrixWriter.write(matrix, labelCategoryNameMap,outputCharacterLabels,true);

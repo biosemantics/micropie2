@@ -50,6 +50,7 @@ public class Main {
 	 * -o output folder for CSV file or markup XML files
 	 * -m various models used by MicrioPIE
 	 * -f output format i.e., csv default CSV; mc, MatrixConverter format; xml, markup XML files; csm, character and sentence matrix
+	 *     kv, key-value format, leaded by filename, character:values,values split with #
 	 * -vi  value infer; true or false. Only apply to CSV output
 	 * -pg propagate genus
 	 * @param args
@@ -60,10 +61,10 @@ public class Main {
 		//args = "-i in -o out -m models -f xml".split(" ");
 		
 		//-f xml
-		//args = "-i F:\\MicroPIE\\datasets\\craft -o F:\\MicroPIE\\ext\\2017new -m F:/MicroPIE/micropie0.2_model  -vi true -f mc".split("\\s+");
+		args = "-i F:\\MicroPIE\\datasets\\craft -o F:\\MicroPIE\\ext\\2017new  -vi true -f kv".split("\\s+");
 		
 		//Part_One_111_final  GSM V1
-		args = "-i F:\\MicroPIE\\datasets\\Part_One_111_final -o F:\\MicroPIE\\ext\\GSMv1 -vi false".split("\\s+");
+		//args = "-i F:\\MicroPIE\\datasets\\Part_One_111_final -o F:\\MicroPIE\\ext\\GSMv1 -f kv -vi false".split("\\s+");
 		//args = "-i F:/MicroPIE/datasets/2017/GSM_v2_103_desccriptions_011217 -o F:/MicroPIE/ext/2017new -vi true".split("\\s+");// -f mc
 		//System.out.println(args);
 		main.parse(args);
@@ -130,6 +131,8 @@ public class Main {
 		    		outputformat = 2;
 		    	}else if("csm".equals(outputformatStr)){
 		    		outputformat = 3;
+		    	}else if("kv".equals(outputformatStr)){
+		    		outputformat = 4;
 		    	}else if("csv".equals(outputformatStr)){
 		    		outputformat = 0;
 		    	}else{

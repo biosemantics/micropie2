@@ -29,6 +29,21 @@ public class ValueFormatterUtil {
 
 	}
 	
+	//only return the main value
+	public static String simpleFormat(List<CharacterValue> values){
+		if(values==null) return "";
+		StringBuffer valueStr = new StringBuffer();
+		int size = values.size();
+		for(int i=0; i<size;i++){
+			CharacterValue cv = values.get(i);
+			valueStr.append(cv.getValue());
+			if(i!=size-1) valueStr.append("#");
+		}
+		return valueStr.toString();
+
+	}
+	
+	
 	public static String format(CharacterValue value){
 		if(value instanceof NumericCharacterValue){
 			return clean(nvFormatter.format(value));
