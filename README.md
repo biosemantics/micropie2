@@ -28,7 +28,16 @@ Ranade S, Cui H, Moore L, Blank C, Gasparich G, and Burleigh JG.  2013. A prelim
 
 Compile Instruction
 ====================
-MicroPIE is an open source application. The source codes are organized with Maven. The Java sources are under the “src” folder. The “models” folders contains SVM- trained model files, Term Lists and other configuration files. After downloading all the source files, you can place the “models” folder out ofin your IDE(e.g.,Eclipse)  workspace.
+MicroPIE is an open source application. The source codes are organized with Maven. 
+
+In Eclipse you can therefore use:
+
+m2e - Maven Integration for Eclipse (e.g. for Juno version: http://download.eclipse.org/releases/juno) http://download.eclipse.org/technology/m2e/releases
+AspectJ Development Tools (http://download.eclipse.org/tools/ajdt/42/update)
+Maven Integration for AJDT
+
+
+The Java sources are under the “src” folder. The “models” folders contains SVM- trained model files, Term Lists and other configuration files. After downloading all the source files, you can place the “models” folder out ofin your IDE(e.g.,Eclipse)  workspace.
 
 You are suggested to use <a href="https://eclipse.org">Eclipse(https://eclipse.org)</a>to compile MicroPIE. After downloading the project, transfer it into a <a href="https://maven.apache.org/">Maven(https://maven.apache.org/)</a> project. You can compile the project into a .jar file.
 
