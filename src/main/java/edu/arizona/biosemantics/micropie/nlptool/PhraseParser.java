@@ -1,5 +1,6 @@
 package edu.arizona.biosemantics.micropie.nlptool;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -653,7 +654,11 @@ public class PhraseParser {
 			//determine the scope of its application
 			//int negStart = negationWord.beginPosition();
 			//negStart should be in the scope
-			determineNegationScope(negationWord, sentTaggedWords, expressions);
+			try {
+				determineNegationScope(negationWord, sentTaggedWords, expressions);
+			}catch (Exception e) {
+				//e.printStackTrace();
+			}
 		}
 		return expressions;
 	}

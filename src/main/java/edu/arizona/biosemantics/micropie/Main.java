@@ -61,7 +61,7 @@ public class Main {
 		//args = "-i in -o out -m models -f xml".split(" ");
 		
 		//-f xml
-		args = "-i F:\\MicroPIE\\datasets\\craft -o F:\\MicroPIE\\ext\\2017new  -vi true -f kv".split("\\s+");
+		args = "-i F:\\MicroPIE\\datasets\\vikas\\AllFirmicutes.Jul2017.formattedforETCXML -o F:\\MicroPIE\\datasets\\vikas  -vi true -f kv".split("\\s+");
 		
 		//Part_One_111_final  GSM V1
 		//args = "-i F:\\MicroPIE\\datasets\\Part_One_111_final -o F:\\MicroPIE\\ext\\GSMv1 -f kv -vi false".split("\\s+");

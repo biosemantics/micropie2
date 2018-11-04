@@ -51,45 +51,52 @@ public class CellScaleExtractor extends FigureExtractor{
 		
 		//System.out.println(text);//+":\n"+taggedWords
 		//detect all the figures
-		List valueList = detectFigures(taggedWords);
-		//System.out.println("figures = "+valueList);
-		//merge the figure ranges
-		mergeFigureRange(valueList,taggedWords);
-		//System.out.println("after merged figures = "+valueList);
-		/**
-		 * 0.5-3.0 x 0.4-0.5 µm===>0.5-3.0x0.4-0.5
-		 * 0.4 by 2 to 20 µm===>0.4x2-20
-		 */
-		mergeMultiplication(valueList,taggedWords);
-		//System.out.println("after mergeMultiplication figures = "+valueList);
+		List valueList = new ArrayList();
 		
-		for(int i=0;i<valueList.size();i++){
-			NumericCharacterValue curFd = (NumericCharacterValue) valueList.get(i);
+		try {
+			valueList = detectFigures(taggedWords);
+			//System.out.println("figures = "+valueList);
+			//merge the figure ranges
+			mergeFigureRange(valueList,taggedWords);
+			//System.out.println("after merged figures = "+valueList);
+			/**
+			 * 0.5-3.0 x 0.4-0.5 µm===>0.5-3.0x0.4-0.5
+			 * 0.4 by 2 to 20 µm===>0.4x2-20
+			 */
+			mergeMultiplication(valueList,taggedWords);
+			//System.out.println("after mergeMultiplication figures = "+valueList);
 			
-			//4,determine the character of the figures.				
-			CharacterGroup characterGroup = detectChracterGroup(curFd,taggedWords,text);
-			curFd.setCharacterGroup(characterGroup);
-			
-			//detectModifier(curFd,taggedWords);// detect the modifier for the figure
-			
-			//filter
-			if(characterGroup == null&&(curFd.getUnit()==null||"".equals(curFd.getUnit().trim()))||!containNumber(curFd.getValue())){
-				//System.err.println(curFd.toString());
-				valueList.remove(curFd);
-				i--;
-			}else{
-				if(characterGroup == null){
-					curFd.setCharacterGroup(CharacterGroup.CSIZE);
+			for(int i=0;i<valueList.size();i++){
+				NumericCharacterValue curFd = (NumericCharacterValue) valueList.get(i);
+				
+				//4,determine the character of the figures.				
+				CharacterGroup characterGroup = detectChracterGroup(curFd,taggedWords,text);
+				curFd.setCharacterGroup(characterGroup);
+				
+				//detectModifier(curFd,taggedWords);// detect the modifier for the figure
+				
+				//filter
+				if(characterGroup == null&&(curFd.getUnit()==null||"".equals(curFd.getUnit().trim()))||!containNumber(curFd.getValue())){
+					//System.err.println(curFd.toString());
+					valueList.remove(curFd);
+					i--;
+				}else{
+					if(characterGroup == null){
+						curFd.setCharacterGroup(CharacterGroup.CSIZE);
+					}
 				}
+				
+				
+				LabelUtil.determineLabel(curFd);
 			}
-			
-			
-			LabelUtil.determineLabel(curFd);
+			//System.out.println(valueList);
+			separateCellSize(valueList);
+			//remove some error files
+			filter(valueList);
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		//System.out.println(valueList);
-		separateCellSize(valueList);
-		//remove some error files
-		filter(valueList);
+		
 		return valueList;
 	}
 	

@@ -73,126 +73,131 @@ public class PHTempNaClExtractor extends FigureExtractor {
 		//
 		int sentSize = taggedWordList.size();
 		List<NumericCharacterValue> sentValueList = new LinkedList();
-		boolean containWV = false;//whether the sentence contains the unit w/v; 
-		for(int sid=0;sid<sentSize;sid++){
-			List<TaggedWord> taggedWords = taggedWordList.get(sid);
-			//System.out.println(taggedWords);
-			if(isWVUnit(taggedWords)){
-				containWV = true;
-			}
-			
-			String negation = negationIdentifier.detectFirstNegation(taggedWords);
-			
-			List<NumericCharacterValue> valueList = detectFigures(taggedWords);
-			
-			mergeFigureRange(valueList,taggedWords);
-//			for(int i=0;i<valueList.size();i++){
-//				NumericCharacterValue curFd = valueList.get(i);
-//				System.out.println("after merge:"+curFd.getValue()+" "+curFd.getUnit());
-//			}
-			
-			//detect neutral pH
-			recNeutralPH(valueList,text,taggedWords);
-			
-			int fsize = valueList.size();
-			Map posCharaMap = new HashMap();//??
-			for(int i=0;i<fsize;i++){
-				NumericCharacterValue curFd = valueList.get(i);
+		
+		try {
+			boolean containWV = false;//whether the sentence contains the unit w/v; 
+			for(int sid=0;sid<sentSize;sid++){
+				List<TaggedWord> taggedWords = taggedWordList.get(sid);
+				//System.out.println(taggedWords);
+				if(isWVUnit(taggedWords)){
+					containWV = true;
+				}
 				
-				//4,determine the character of the figures.				
-				CharacterGroup characterGroup = detectChracterGroup(curFd,taggedWords,text);
-				curFd.setCharacterGroup(characterGroup);
+				String negation = negationIdentifier.detectFirstNegation(taggedWords);
 				
-				detectSubCharacter(curFd,taggedWords);
+				List<NumericCharacterValue> valueList = detectFigures(taggedWords);
 				
-				posCharaMap.put(curFd.getTermBegIdx(), curFd);
-				//determine the value group of the character value: MIN,MAX,OPT,USP
-				ValueGroup valueGroup = detectValueGroup(curFd,taggedWords,sents.get(sid).getContent(),posCharaMap, negation);//use the subsentence
-				curFd.setValueGroup(valueGroup);
+				mergeFigureRange(valueList,taggedWords);
+	//			for(int i=0;i<valueList.size();i++){
+	//				NumericCharacterValue curFd = valueList.get(i);
+	//				System.out.println("after merge:"+curFd.getValue()+" "+curFd.getUnit());
+	//			}
 				
-				//detectModifier(curFd,taggedWords);// detect the modifier for the figure
+				//detect neutral pH
+				recNeutralPH(valueList,text,taggedWords);
 				
-				//curFd.setNegation(detectNegation(curFd,taggedWords));
-				//if(curFd.isNegation()) System.out.println("negation:"+curFd.isNegation()+" "+curFd.getValueModifier());
-				//System.out.println(curFd+" "+valueGroup);
-				if(valueGroup==ValueGroup.USP){//
-					if(curFd.getValue().indexOf("-")>-1){// range
-						int rIndex =  curFd.getValue().lastIndexOf("-");
-						String minValue = curFd.getValue().substring(0, rIndex);
-						String maxValue = curFd.getValue().substring(rIndex+1, curFd.getValue().length());
-						curFd.setValue(minValue);
-						curFd.setCharacterGroup(characterGroup);
-						curFd.setValueGroup(ValueGroup.MIN);
+				int fsize = valueList.size();
+				Map posCharaMap = new HashMap();//??
+				for(int i=0;i<fsize;i++){
+					NumericCharacterValue curFd = valueList.get(i);
+					
+					//4,determine the character of the figures.				
+					CharacterGroup characterGroup = detectChracterGroup(curFd,taggedWords,text);
+					curFd.setCharacterGroup(characterGroup);
+					
+					detectSubCharacter(curFd,taggedWords);
+					
+					posCharaMap.put(curFd.getTermBegIdx(), curFd);
+					//determine the value group of the character value: MIN,MAX,OPT,USP
+					ValueGroup valueGroup = detectValueGroup(curFd,taggedWords,sents.get(sid).getContent(),posCharaMap, negation);//use the subsentence
+					curFd.setValueGroup(valueGroup);
+					
+					//detectModifier(curFd,taggedWords);// detect the modifier for the figure
+					
+					//curFd.setNegation(detectNegation(curFd,taggedWords));
+					//if(curFd.isNegation()) System.out.println("negation:"+curFd.isNegation()+" "+curFd.getValueModifier());
+					//System.out.println(curFd+" "+valueGroup);
+					if(valueGroup==ValueGroup.USP){//
+						if(curFd.getValue().indexOf("-")>-1){// range
+							int rIndex =  curFd.getValue().lastIndexOf("-");
+							String minValue = curFd.getValue().substring(0, rIndex);
+							String maxValue = curFd.getValue().substring(rIndex+1, curFd.getValue().length());
+							curFd.setValue(minValue);
+							curFd.setCharacterGroup(characterGroup);
+							curFd.setValueGroup(ValueGroup.MIN);
+							
+							NumericCharacterValue maxFd = new NumericCharacterValue(null,maxValue);
+							maxFd.setCharacterGroup(characterGroup);
+							maxFd.setValueGroup(ValueGroup.MAX);
+							maxFd.setUnit(curFd.getUnit());
+							maxFd.setSubCharacter(curFd.getSubCharacter());
+							valueList.add(maxFd);
+						}else if ("<".equals(curFd.getValueModifier())){// really unspecified
+							//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
+							if(negation==null) curFd.setValueGroup(ValueGroup.MAX);//maximum
+							else curFd.setValueGroup(ValueGroup.MIN);//mininum
+							curFd.setValueModifier(null);
+						}else if (">".equals(curFd.getValueModifier())){// really unspecified
+							//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
+							if(negation!=null) curFd.setValueGroup(ValueGroup.MAX);//maximum
+							else curFd.setValueGroup(ValueGroup.MIN);//mininum
+							curFd.setValueModifier(null);
+						}
 						
-						NumericCharacterValue maxFd = new NumericCharacterValue(null,maxValue);
-						maxFd.setCharacterGroup(characterGroup);
-						maxFd.setValueGroup(ValueGroup.MAX);
-						maxFd.setUnit(curFd.getUnit());
-						maxFd.setSubCharacter(curFd.getSubCharacter());
-						valueList.add(maxFd);
-					}else if ("<".equals(curFd.getValueModifier())){// really unspecified
-						//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
-						if(negation==null) curFd.setValueGroup(ValueGroup.MAX);//maximum
-						else curFd.setValueGroup(ValueGroup.MIN);//mininum
-						curFd.setValueModifier(null);
-					}else if (">".equals(curFd.getValueModifier())){// really unspecified
-						//System.out.println(character(characterGroup)+"_"+valueGroup(valueGroup)+" "+curFd.getValue()+" "+curFd.getUnit());
-						if(negation!=null) curFd.setValueGroup(ValueGroup.MAX);//maximum
-						else curFd.setValueGroup(ValueGroup.MIN);//mininum
-						curFd.setValueModifier(null);
 					}
+				}
+				
+				//disambiguation according to the logic of value
+				disambCharacters(valueList,taggedWords);
+				
+				fsize =  valueList.size();
+				for(int i=0;i<fsize;i++){
+					NumericCharacterValue curFd = valueList.get(i);
+					
+					if(curFd.getValue()!=null) curFd.setValue(curFd.getValue().replace("−", "-"));
+					
+					//detemine the type
+					LabelUtil.determineLabel(curFd);
+					/*
+					if(curFd.getCharacterGroup()!=null){
+						System.out.println(curFd.getCharacter()+" "+curFd.getCharacterGroup()+"_"+curFd.getValueGroup()+" "+curFd.getValueModifier()+" "+curFd.getValue()+" "+curFd.getUnit());
+					}else{
+						System.err.println(curFd.getCharacter()+" "+curFd.getCharacterGroup()+"_"+curFd.getValueGroup()+" "+curFd.getValueModifier()+" "+curFd.getValue()+" "+curFd.getUnit());
+					}*/
 					
 				}
+				
+				//combine all the subsentences
+				sentValueList.addAll(valueList);
+			}
+			if(containWV) updateNaClUnitWV(sentValueList);
+			for(CharacterValue cv:sentValueList){
+				if(cv.getCharacter()==null) cv.setCharacter(Label.USP);
 			}
 			
-			//disambiguation according to the logic of value
-			disambCharacters(valueList,taggedWords);
-			
-			fsize =  valueList.size();
-			for(int i=0;i<fsize;i++){
-				NumericCharacterValue curFd = valueList.get(i);
+			//filter ph values
+			for(int i=0;i<sentValueList.size();){
+				NumericCharacterValue curFd = sentValueList.get(i);
 				
-				if(curFd.getValue()!=null) curFd.setValue(curFd.getValue().replace("−", "-"));
-				
-				//detemine the type
-				LabelUtil.determineLabel(curFd);
-				/*
-				if(curFd.getCharacterGroup()!=null){
-					System.out.println(curFd.getCharacter()+" "+curFd.getCharacterGroup()+"_"+curFd.getValueGroup()+" "+curFd.getValueModifier()+" "+curFd.getValue()+" "+curFd.getUnit());
-				}else{
-					System.err.println(curFd.getCharacter()+" "+curFd.getCharacterGroup()+"_"+curFd.getValueGroup()+" "+curFd.getValueModifier()+" "+curFd.getValue()+" "+curFd.getUnit());
-				}*/
-				
-			}
-			
-			//combine all the subsentences
-			sentValueList.addAll(valueList);
-		}
-		if(containWV) updateNaClUnitWV(sentValueList);
-		for(CharacterValue cv:sentValueList){
-			if(cv.getCharacter()==null) cv.setCharacter(Label.USP);
-		}
-		
-		//filter ph values
-		for(int i=0;i<sentValueList.size();){
-			NumericCharacterValue curFd = sentValueList.get(i);
-			
-			if(CharacterGroup.PH.equals(curFd.getCharacterGroup())){
-				try{
-					double value= Double.parseDouble(curFd.getValue());
-					if(value<=0||value>=14){
-						sentValueList.remove(i);		
-					}else{
+				if(CharacterGroup.PH.equals(curFd.getCharacterGroup())){
+					try{
+						double value= Double.parseDouble(curFd.getValue());
+						if(value<=0||value>=14){
+							sentValueList.remove(i);		
+						}else{
+							i++;
+						}
+					}catch(Exception e){
+						//System.out.println("remove:"+curFd.toString());
+						//sentValueList.remove(i);
 						i++;
 					}
-				}catch(Exception e){
-					//System.out.println("remove:"+curFd.toString());
-					//sentValueList.remove(i);
+				}else{
 					i++;
 				}
-			}else{
-				i++;
 			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 		return sentValueList;
 	}
